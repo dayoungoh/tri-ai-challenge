@@ -1,0 +1,7 @@
+# 확인용으로 잠깐 만들었다 지우는 파일
+__*.html
+
+# OS 부스러기
+Thumbs.db
+desktop.ini
+.DS_Store
