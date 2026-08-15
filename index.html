@@ -236,15 +236,6 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   .me-av,.me-av .ears,.me-av .gl,.me-av .face{transition:none}
 }
 
-/* 귀를 못 보는 사람도 있습니다 — 손가락으로 보는 화면에는 hover 가 없습니다.
-   그래서 글로도 한 줄 둡니다. 작고 흐리게. */
-.mui-door{display:inline-flex;align-items:center;gap:6px;margin-top:14px;
-  border:0;background:none;padding:4px 0;cursor:pointer;font-family:inherit;
-  font-size:var(--t-ui);color:var(--ink-3);
-  transition:color 150ms ease,gap 200ms var(--out)}
-.mui-door:hover{color:var(--ink-2);gap:9px}
-.mui-door svg{width:13px;height:13px}
-
 /* 무이 쪽에서 돌아오는 길 */
 .mui-back{display:inline-flex;align-items:center;gap:7px;margin-bottom:22px;
   border:0;background:none;padding:4px 0;cursor:pointer;font-family:inherit;
@@ -382,7 +373,8 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   /* 영수증을 뽑는 순간에는 종이만 나갑니다 */
   body.rcp-print .shell,body.rcp-print .skip{display:none!important}
   body.rcp-print #rcpPrint{display:block!important;position:static}
-  body.rcp-print #rcpPrint img{width:76mm;display:block;margin:0 auto}
+  body.rcp-print #rcpPrint img{width:76mm;display:block;margin:0 auto;
+    image-rendering:auto;print-color-adjust:exact;-webkit-print-color-adjust:exact}
 }
 #rcpPrint{display:none}
 
@@ -648,16 +640,22 @@ td.n{font-variant-numeric:tabular-nums}
 a.cta{text-decoration:none}
 .ask .fine{margin-top:13px;font-size:var(--t-ui);color:var(--ink-3);line-height:1.55}
 
-.pager{display:flex;gap:10px;margin-top:44px;padding-top:20px;border-top:1px solid var(--line)}
-.pager button{flex:1;display:flex;flex-direction:column;gap:2px;text-align:left;background:var(--shell);
-  border:0;border-radius:11px;padding:13px 16px;cursor:pointer;font-family:inherit;
-  box-shadow:var(--shadow-card);color:var(--ink);transition:transform 140ms var(--out),box-shadow 140ms ease}
-.pager button:hover:not(:disabled){box-shadow:0 0 0 1px rgb(25 25 25/.16),0 1px 2px rgb(25 25 25/.05)}
-.pager button:active:not(:disabled){transform:scale(.98)}
-.pager button:disabled{opacity:.3;cursor:default}
-.pager .d{font-size:var(--t-micro);color:var(--ink-3);letter-spacing:.09em;text-transform:uppercase;font-weight:640}
-.pager .t{font-size:var(--t-sm);font-weight:620;letter-spacing:-.01em}
-.pager .nx{text-align:right;align-items:flex-end}
+/* 다음 쪽으로 가는 길일 뿐입니다. 카드 두 장이 본문만큼 자리를 차지하면
+   눈이 마지막에 머무는 곳이 내용이 아니라 단추가 됩니다. 한 줄로 줄입니다. */
+.pager{display:flex;align-items:center;gap:16px;margin-top:40px;padding-top:14px;
+  border-top:1px solid var(--line)}
+.pager button{display:flex;align-items:center;gap:7px;min-width:0;background:none;border:0;
+  padding:6px 2px;cursor:pointer;font-family:inherit;color:var(--ink-3);
+  font-size:var(--t-ui);line-height:1.4;
+  transition:color 150ms ease,gap 200ms var(--out)}
+.pager button:hover:not(:disabled){color:var(--ink);gap:10px}
+.pager button:disabled{opacity:.32;cursor:default}
+.pager .d{display:none}
+.pager .t{font-weight:600;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pager .nx{margin-left:auto}
+.pager button:not(.nx)::before{content:"←";font-family:var(--mono);opacity:.7}
+.pager .nx::after{content:"→";font-family:var(--mono);opacity:.7}
+@media(max-width:620px){ .pager .t{max-width:36vw} }
 
 /* ── 내가 고쳐야 하는 곳 (칩 목록) ── */
 .fix{margin-top:24px}
@@ -1016,16 +1014,10 @@ a.cta{text-decoration:none}
           <span class="tx"><b>A. Git과 GitHub</b><span class="ft">되돌릴 수 있게 만들기</span></span>
         </button>
 
-        <button class="row" data-ch="6" data-t="apxb" data-first="apxb" aria-expanded="false" aria-controls="kidsB">
+        <button class="row" data-ch="6" data-t="apxb" data-first="apxb">
           <svg aria-hidden="true" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>
-          <span class="tx"><b>B. Claude Code 넓히기</b><span class="ft">스킬 · 플러그인 · 커넥터</span></span>
-          <svg aria-hidden="true" class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
+          <span class="tx"><b>B. AI 활용 넓히기</b><span class="ft">스킬 · 플러그인 · 커넥터</span></span>
         </button>
-        <div class="kids" id="kidsB" data-kids="6"><div>
-          <a class="row" href="#apxb1" data-t="apxb1"><span class="kn">B-1</span><span class="kt">스킬</span></a>
-          <a class="row" href="#apxb2" data-t="apxb2"><span class="kn">B-2</span><span class="kt">플러그인</span></a>
-          <a class="row" href="#apxb3" data-t="apxb3"><span class="kn">B-3</span><span class="kt">커넥터</span></a>
-        </div></div>
       </div>
 
       <div class="nores hide" id="nores">일치하는 항목이 없습니다.</div>
@@ -2655,137 +2647,74 @@ Thumbs.db</code></div>
 
   <!-- 부록 B -->
   <section id="apxb" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">부록 B</div><h2>Claude Code 넓히기</h2></div></div>
-    <div class="chips"><span class="chip">#Claude Code</span></div>
-    <p class="lead">AI를 쓰다 보면 같은 설명을 반복하게 됩니다. 그걸 매번 다시 말하지 않으려는 시도가 이 층입니다.</p>
+    <div class="phead"><div class="ttl"><div class="eyebrow">부록 B</div><h2>AI 활용 넓히기</h2></div></div>
+    <div class="chips"><span class="chip">#스킬</span><span class="chip">#플러그인</span><span class="chip">#커넥터</span></div>
+    <p class="lead">AI를 쓰다 보면 같은 설명을 반복하게 됩니다. 매번 다시 말하지 않으려는 시도가 이 세 가지입니다.</p>
 
-    <p>부서마다 이런 말을 매번 하게 됩니다.</p>
     <div class="note">"우리 부서는 이런 양식을 씁니다. 파일명 규칙은 이렇고, 결과는 이 폴더에 넣어 주세요. 개인정보 열은 항상 마스킹하고요."</div>
+    <p>이 말을 매번 하고 계신다면, 그것이 넓힐 신호입니다.</p>
 
-    <h3>넓히는 방법은 다섯 가지입니다</h3>
-    <div class="tw"><table>
-      <tr><th>이름</th><th>무엇인가</th><th>언제 쓰나</th></tr>
-      <tr><td><strong>기억 파일</strong></td><td>폴더에 두면 AI가 매번 읽는 지침서</td><td>"이 프로젝트에서는 항상 이렇게"</td></tr>
-      <tr><td><strong>스킬</strong></td><td>특정 작업의 <strong>절차서</strong>를 폴더로 만든 것</td><td>"이런 종류의 일이면 이 절차대로"</td></tr>
-      <tr><td><strong>커넥터(MCP)</strong></td><td>AI를 <strong>바깥 서비스에 연결</strong>하는 규격</td><td>메일 · 캘린더 · 데이터베이스</td></tr>
-      <tr><td><strong>훅</strong></td><td>정해진 시점에 <strong>자동으로 끼어드는</strong> 규칙</td><td>"파일 저장할 때마다 검사"</td></tr>
-      <tr><td><strong>플러그인</strong></td><td>위의 것들을 <strong>한 꾸러미로 묶어</strong> 나눠 주는 것</td><td>남이 만든 묶음을 통째로 받을 때</td></tr>
-    </table></div>
-    <p>이 부록에서는 <strong>스킬 · 플러그인 · 커넥터</strong> 셋을 봅니다. 흔히 뭉뚱그려 부르지만 하는 일이 다릅니다.</p>
-    <div class="note"><strong>"매번 ○○ 해 줘"라고 반복해 부탁하고 계시다면, 그건 넓힐 신호입니다.</strong></div>
-  </section>
-
-  <!-- B-1 -->
-  <section id="apxb1" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">B-1 · 넓히기</div><h2>스킬</h2></div></div>
-    <div class="chips"><span class="chip">#skills</span><span class="chip">#GitHub</span></div>
-    <p class="lead">코드가 아니라 절차서입니다. 그래서 셋 중 비개발자가 만들기에 가장 알맞습니다.</p>
-
-    <h3>폴더 하나 + 문서 하나</h3>
+    <h3>1. 스킬 — 절차를 글로 적어 두는 것</h3>
+    <p><strong>무엇인가.</strong> 특정 작업의 절차서입니다. 코드가 아니라 마크다운 문서 한 장이며, 폴더 하나에 <span class="tok m">SKILL.md</span> 하나가 전부입니다.</p>
     <div class="pre"><code>my-skill/
 └── <b>SKILL.md</b></code></div>
-    <p class="pre-cap">이게 전부입니다. 그 안에는 이렇게 씁니다.</p>
-
+    <p><strong>어떻게 하나.</strong> 지금 그 일을 어떤 순서로 하고 계신지를 그대로 적으시면 됩니다. 1-1의 순서표를 글로 옮긴다고 생각하시면 가깝습니다.</p>
     <div class="pre"><code><i>---</i>
 <i>name: 지원서-병합</i>
 <i>description: 지원자 폴더의 PDF를 정해진 순서로 1인 1파일로 병합할 때 사용</i>
 <i>---</i>
 
 <b># 절차</b>
-
 1. 대상 폴더를 확인합니다
 2. <b>파일명 키워드</b>로 서류 종류를 판별합니다
-3. 아래 순서표대로 정렬합니다
-   1. 지원서   2. 추천서   …   11. 논문(앞 2쪽만)
+3. 정해진 순서표대로 정렬합니다
 4. `전공/학번_이름.pdf` 형태로 저장합니다
 
 <b># 주의</b>
-- <u>이름 규칙이 어긋난 파일은 건너뛰고 목록으로 보고합니다</u>
-- 기존 파일을 덮어쓰지 않습니다</code></div>
+- <u>이름 규칙이 어긋난 파일은 건너뛰고 목록으로 보고합니다</u></code></div>
+    <p><strong>무엇이 좋은가.</strong> 같은 설명을 다시 하지 않아도 되고, 그 절차를 팀이 함께 씁니다. 무엇보다 <strong>글이라 누구나 읽고 고칠 수 있습니다.</strong></p>
+    <div class="note">스킬을 잘 쓰는 사람은 코딩을 잘하는 사람이 아니라 <strong>업무 절차를 정확히 글로 적을 수 있는 사람</strong>입니다. 그 능력은 이미 갖고 계실 가능성이 큽니다.</div>
 
-    <p><strong>1-1에서 사람이 하던 판단을 그대로 글로 옮긴 것</strong>입니다. 코드가 한 줄도 없습니다.</p>
+    <h3>2. 플러그인 — 여러 개를 한 번에 나눠 주는 것</h3>
+    <p><strong>무엇인가.</strong> 스킬 여럿과 명령어·설정을 한 꾸러미로 묶은 것입니다. 스킬 하나가 절차서 한 장이라면, 플러그인은 <strong>그 절차서들을 묶은 업무 지침 묶음</strong>입니다.</p>
+    <p><strong>어떻게 하나.</strong> 대개 저장소 주소 하나를 등록하면 안에 든 것이 한꺼번에 들어옵니다.</p>
+    <p><strong>무엇이 좋은가.</strong> 여러 사람이 같은 방식으로 일해야 할 때 한 번에 나눠 주고 한 번에 갱신할 수 있습니다. <strong>각자 챙기게 두면 각자 다르게 챙깁니다.</strong></p>
+    <div class="note">다만, 묶음은 안이 보이지 않습니다. 낱개 스킬은 문서 하나만 읽으면 되지만, <strong>플러그인은 무엇이 들어 있는지 목록을 먼저 확인</strong>하셔야 합니다.</div>
 
-    <div class="note"><strong>스킬을 잘 쓰는 사람은 코딩을 잘하는 사람이 아니라 업무 절차를 정확히 글로 적을 수 있는 사람입니다.</strong> 그 능력은 이미 갖고 계실 가능성이 큽니다.</div>
+    <h3>3. 커넥터 — 바깥 서비스에 연결하는 것</h3>
+    <p><strong>무엇인가.</strong> AI가 메일·문서·데이터베이스 같은 바깥 서비스에 닿을 수 있게 하는 통로입니다. 규격 이름은 <span class="tok m">MCP</span>입니다.</p>
+    <p><strong>어떻게 하나.</strong> 붙이려는 서비스가 제공하는 커넥터를 등록하고, 그 서비스에 로그인해 권한을 허용합니다.</p>
+    <p><strong>무엇이 좋은가.</strong> 스킬이 "어떻게 할지"를 정한다면 커넥터는 <strong>"어디까지 닿을지"</strong>를 넓힙니다. 둘은 짝입니다.</p>
 
-    <h3>받아서 쓰는 법</h3>
-    <p>남이 만든 스킬은 GitHub에 올라와 있습니다. 받아서 <span class="tok m">~/.claude/skills/</span> 아래에 폴더째 넣으면 끝입니다. 설치랄 것이 없습니다.</p>
-    <p>부록 A에서 본 것이 그대로 다시 쓰입니다 — <strong>Git으로 관리하고, GitHub로 나누고, 고칠 것이 있으면 제안을 받습니다.</strong> 새로 배울 것이 없습니다.</p>
-
-    <div class="steps"><div class="stp">
-      <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
-      <div class="bd">
-        <p>스킬은 <strong>AI가 읽는 지시문</strong>입니다. 남의 스킬을 넣는 것은 <strong>남이 쓴 지시를 내 AI에게 그대로 읽히는 일</strong>입니다.</p>
-        <p><span class="tok a">무엇을 하라고 적혀 있는지 먼저 읽으십시오</span>. 글이라 읽을 수 있습니다.</p>
-      </div>
-    </div></div>
-  </section>
-
-  <!-- B-2 -->
-  <section id="apxb2" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">B-2 · 넓히기</div><h2>플러그인</h2></div></div>
-    <div class="chips"><span class="chip">#plugin</span></div>
-    <p class="lead">스킬을 하나씩 챙기지 않고 묶음으로 받는 방법입니다.</p>
-
-    <h3>무엇이 묶여 있나</h3>
     <div class="tw"><table>
-      <tr><th>들어 있는 것</th><th>하는 일</th></tr>
-      <tr><td>스킬 여러 개</td><td>"이런 일이면 이 절차대로"</td></tr>
-      <tr><td>명령어</td><td><strong>/이름</strong> 으로 부르는 지름길</td></tr>
-      <tr><td>훅</td><td>정해진 시점에 자동으로 끼어드는 규칙</td></tr>
-      <tr><td>커넥터 설정</td><td>어떤 바깥 서비스에 붙을지</td></tr>
-    </table></div>
-    <p>스킬 하나가 <strong>절차서 한 장</strong>이라면, 플러그인은 <strong>그 절차서들을 묶은 업무 지침 묶음</strong>입니다.</p>
-
-    <h3>언제 묶고 언제 낱개로 두나</h3>
-    <div class="split">
-      <div class="box"><div class="t">낱개 스킬</div><p>내 일에만 쓰는 절차. 자주 고칩니다.</p></div>
-      <div class="box"><div class="t">플러그인</div><p><strong>여러 사람이 같은 방식으로</strong> 일해야 할 때. 한 번에 나눠 주고 한 번에 갱신합니다.</p></div>
-    </div>
-    <p>팀 전체가 같은 파일명 규칙, 같은 마스킹 기준을 쓴다면 묶는 편이 낫습니다. <strong>각자 챙기게 두면 각자 다르게 챙깁니다.</strong></p>
-
-    <div class="steps"><div class="stp">
-      <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
-      <div class="bd">
-        <p>묶음은 안이 안 보입니다. 낱개 스킬은 파일 하나만 읽으면 되지만, <strong>플러그인은 무엇이 들어 있는지 목록을 먼저 봐야</strong> 합니다.</p>
-        <p>훅과 커넥터가 함께 들어 있으면 <span class="tok a">내가 모르는 사이 실행되는 것</span>이 생깁니다.</p>
-      </div>
-    </div></div>
-  </section>
-
-  <!-- B-3 -->
-  <section id="apxb3" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">B-3 · 넓히기</div><h2>커넥터</h2></div></div>
-    <div class="chips"><span class="chip">#MCP</span><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#Slack</span><span class="chip">#Gmail</span></div>
-    <p class="lead">바깥 서비스로 나가는 통로입니다. 스킬이 "어떻게"라면 커넥터는 "어디까지".</p>
-
-    <h3>스킬과 무엇이 다른가</h3>
-    <div class="tw"><table>
-      <tr><th></th><th>스킬</th><th>커넥터(MCP)</th></tr>
+      <tr><th></th><th>스킬</th><th>커넥터</th></tr>
       <tr><td>무엇</td><td>절차서 (글)</td><td><strong>연결 통로</strong> (프로그램)</td></tr>
       <tr><td>하는 일</td><td>"이럴 땐 이렇게 하라"</td><td>"이 서비스에 닿을 수 있게 하라"</td></tr>
       <tr><td>만들기</td><td>마크다운을 씁니다</td><td>코드가 필요합니다</td></tr>
       <tr><td>예</td><td>서류 병합 절차</td><td>Gmail · Drive · 데이터베이스</td></tr>
     </table></div>
-    <p><strong>둘은 짝입니다.</strong> 커넥터가 할 수 있는 일의 범위를 넓히고, 스킬이 그 일을 어떻게 할지 정합니다.</p>
 
-    <h3>붙이는 것은 두 종류입니다</h3>
-    <div class="split">
-      <div class="box"><div class="t">내가 만든 것</div><p>Supabase · Netlify · GitHub. <strong>내 계정, 내 프로젝트</strong>입니다.</p></div>
-      <div class="box"><div class="t">회사 것</div><p>Gmail · Slack. <strong>재단의 메일과 대화</strong>에 닿습니다.</p></div>
-    </div>
+    <h3>도구를 바꿔도 그대로 쓰입니까</h3>
+    <p>셋 중 둘은 그렇습니다.</p>
+    <div class="tw"><table>
+      <tr><th>것</th><th>표준인가</th><th>어디까지</th></tr>
+      <tr><td><strong>스킬</strong></td><td>예</td><td>Claude Code · Codex · Cursor · VS Code · Gemini CLI · Copilot 등 30여 개 도구</td></tr>
+      <tr><td><strong>커넥터(MCP)</strong></td><td>예</td><td>OpenAI · Google이 정식 지원. 2025년 말 리눅스 재단 산하로 이관</td></tr>
+      <tr><td><strong>플러그인</strong></td><td><strong>아니오</strong></td><td>도구마다 방식이 다릅니다</td></tr>
+    </table></div>
+    <p>따라서 <strong>스킬과 커넥터는 한 번 만들어 두면 도구를 바꿔도 따라옵니다.</strong> 플러그인은 그 도구 안에서만 쓰입니다.</p>
 
     <div class="steps"><div class="stp">
       <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
       <div class="bd">
+        <p>스킬은 <strong>AI가 읽는 지시문</strong>입니다. 남의 스킬을 넣는 것은 남이 쓴 지시를 내 AI에게 그대로 읽히는 일이므로, <span class="tok a">무엇을 하라고 적혀 있는지 먼저 읽으십시오</span>. 글이라 읽을 수 있습니다.</p>
         <p><strong>사내 계정 연결은 정보보안 규정을 확인한 뒤에 하십시오.</strong> Supabase·Netlify는 본인이 만든 것에 붙지만, <span class="tok a">Gmail·Slack은 재단의 메일과 대화에 접근합니다</span>. 결이 다릅니다.</p>
         <p><span class="tok a">출처가 불분명한 커넥터는 붙이지 마십시오</span>. <strong>남의 코드에 내 메일함 권한을 주는 일</strong>입니다.</p>
-        <p>커넥터 하나에 계정 하나입니다. 개인 계정과 회사 계정을 같은 커넥터에 동시에 물릴 수 없습니다.</p>
       </div>
     </div></div>
   </section>
 
-
-  <!-- 쓴 사람 · 목차 밖 페이지 -->
+        <!-- 쓴 사람 · 목차 밖 페이지 -->
   <section id="me" class="page">
     <div class="me-head">
       <button class="me-av" id="muiAv" aria-label="무이 보기"><span class="gl">오</span><svg class="face" aria-hidden="true" viewBox="0 0 64 64"><circle cx="22.5" cy="26.6" r="2.6" fill="currentColor"/><circle cx="41.5" cy="26.6" r="2.6" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M27.4,40.4 L32,33.8 L36.6,40.4"/><path d="M8,29.8 L17.5,31.5M7.4,35.4 L17.5,35.4M8,41 L17.5,38.3"/><path d="M56,29.8 L46.5,31.5M56.6,35.4 L46.5,35.4M56,41 L46.5,38.3"/></g><circle cx="32" cy="31.6" r="1.7" fill="currentColor"/></svg><svg class="ears" aria-hidden="true" viewBox="0 -13 64 27"><path d="M8.0,10.8 L13.1,-5.9 Q14.0,-9.0 16.5,-7.0 L26.0,0.6 Z M56.0,10.8 L50.9,-5.9 Q50.0,-9.0 47.5,-7.0 L38.0,0.6 Z"/></svg></button>
@@ -2809,7 +2738,6 @@ Thumbs.db</code></div>
       </a>
     </div>
 
-    <button class="mui-door" id="muiDoor">우리집 고양이 무이 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
 
     <div class="gb">
       <form class="gb-f" id="gbForm">
@@ -3349,7 +3277,6 @@ function showMui(push = true){
   muiSec.querySelector('h2').focus();
 }
 document.getElementById('muiAv').addEventListener('click', () => showMui());
-document.getElementById('muiDoor').addEventListener('click', () => showMui());
 document.getElementById('muiBack').addEventListener('click', () => showMe());
 
 /* ── 끌어 넘기는 무한 캐러셀 ──
@@ -3576,7 +3503,9 @@ const won = n => n.toLocaleString('ko-KR');
 const pick = a => a[Math.floor(Math.random() * a.length)];
 
 function drawReceipt(){
-  const S = 2;                              /* 화면용 2배 확대 */
+  /* 화면에서는 2배로 충분하지만 인쇄하면 76mm 로 늘어나며 글자가 뭉갭니다.
+     300dpi 로 뽑으려면 898px 이 필요한데 768px 뿐이었습니다. 4배로 그립니다. */
+  const S = 4;
   const items = [];
   const n = 3 + Math.floor(Math.random() * 3);
   const pool = [...GOODS];
