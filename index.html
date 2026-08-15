@@ -1468,128 +1468,278 @@ a.cta{text-decoration:none}
   </section>
 
   <!-- 1-4 -->
-  <section id="p4" class="page">
+  <section id="p4" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-4 · 예시 4</div><h2>웹 조작<span class="ft">업로드 · 다운로드 · 스크래핑</span></h2></div></div>
     <div class="chips"><span class="chip">#2024.08~2025.07</span><span class="chip">#Selenium</span><span class="chip">#gspread</span></div>
+    <p class="lead">데이터가 내 컴퓨터가 아니라 시스템 화면 안에만 있을 때 씁니다. 세 방향이 다 되고, 1년에 걸쳐 하나씩 붙였습니다.</p>
 
-    <div class="gain">
-      <div class="cell"><div class="lbl">사람이 하면</div><div class="val">6~8시간</div><div class="unit">지원서 수백 건 저장</div></div>
-      <div class="arw"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div>
-      <div class="cell to"><div class="lbl">무인 실행</div><div class="val">2시간</div><div class="unit">그동안 다른 일을 함</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p>업무 자료가 늘 파일로 오지는 않습니다. 시스템에 들어가 화면으로 봐야만 있는 것이 있습니다.</p>
+          <p>그런데 일은 파일 단위로 합니다. 넣을 것은 <span class="tok">엑셀 명단</span>이고, 받을 것은 <span class="tok">PDF 지원서</span>이고, 쌓을 곳은 <span class="tok">공유 문서</span>입니다.</p>
+          <p><strong>시스템은 사람이 눈으로 보고 손으로 누르도록 만들어져 있습니다.</strong> 그 사이를 사람이 이어 주고 있었습니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p>세 방향 모두 같은 모양의 손일입니다. 화면을 열고, 값을 넣거나 읽고, 다음으로 넘어가는 것을 건수만큼 반복합니다.</p>
+          <p>지원서 수백 건을 저장하는 데 <strong>6~8시간</strong>이 걸렸습니다. 그 시간에는 다른 일을 못 합니다.</p>
+          <p>사람이 하면 중간에 한 건을 건너뛰어도 알 수 없습니다. 화면은 그냥 다음으로 넘어갑니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p>사람이 누르는 자리를 코드가 누릅니다. 어디를 누를지는 <span class="tok">id</span>와 <span class="tok m">xpath</span>로 가리킵니다. 브라우저에서 오른쪽 클릭 → 검사를 누르면 누구나 볼 수 있는 값입니다.</p>
+
+          <div class="tw"><table>
+            <tr><th>방향</th><th>한 일</th><th>시기</th><th>건당</th></tr>
+            <tr><td><strong>업로드·입력</strong></td><td>명단 엑셀을 읽어 평가위원 계정 등록</td><td class="n">2024.08</td><td class="n">1.5~2분 → 5~8초</td></tr>
+            <tr><td><strong>스크래핑</strong></td><td>전자결재 지출 전표를 읽어 Google Sheets 원장에 적재</td><td class="n">2024.12</td><td class="n">2~3분 → 6~8초</td></tr>
+            <tr><td><strong>다운로드</strong></td><td>지원서를 PDF로 저장해 전공별 분류</td><td class="n">2025.07</td><td class="n">60~90초 → 22초</td></tr>
+          </table></div>
+
+          <h3>붙이면서 배운 네 가지</h3>
+          <div class="split">
+            <div class="box"><div class="t">처음에는 켜두고</div><p>자동화 화면을 볼 수 있게 해서 <strong>어디서 막히는지 확인</strong>합니다.</p></div>
+            <div class="box"><div class="t">완성한 뒤에는 끄기</div><p>화면 없이 조용히 돌립니다. 그 사이 컴퓨터로 다른 일을 합니다.</p></div>
+            <div class="box"><div class="t">대기 시간</div><p><strong>버그의 대부분이 여기서 났습니다.</strong> 코드가 화면을 볼 수 있는 시간을 줘야 합니다.</p></div>
+            <div class="box"><div class="t">자격증명</div><p>아이디·비밀번호는 코드에 적지 않습니다. <strong>파일은 공유됩니다.</strong></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <div class="tw"><table>
+            <tr><th>잰 것</th><th>이전</th><th>이후</th></tr>
+            <tr><td>지원서 수백 건 저장</td><td>6~8시간</td><td><strong>2시간 · 무인</strong></td></tr>
+            <tr><td>그 시간에 하는 일</td><td>이것만</td><td><strong>다른 일</strong></td></tr>
+          </table></div>
+          <p><strong>되찾은 것은 두 시간이 아니라 하루입니다.</strong> 무인으로 도는 동안 사람은 자리를 비울 수 있습니다.</p>
+          <p>스크래핑 쪽은 결과가 제 PC에 남지 않고 <span class="tok g">공유 문서</span>가 됩니다. 부서 전체가 실시간으로 같은 표를 봅니다. 이 조합의 값어치는 속도가 아니라 여기 있습니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p>화면이 바뀌면 멈춥니다. 시스템이 개편되면 <span class="tok">id</span>와 <span class="tok m">xpath</span>를 다시 잡아야 합니다.</p>
+          <p><span class="tok a">대기 시간이 짧으면 조용히 어긋납니다</span> — 화면이 아직 안 떴는데 다음을 누르면, 오류가 아니라 빈 값이 들어갑니다.</p>
+          <p>세 방향을 한 번에 만들지 않았습니다. 2024년 8월부터 2025년 7월까지 <strong>하나씩</strong> 붙였습니다.</p>
+        </div>
+      </div>
+
     </div>
-    <div class="gain-cap">진짜 절감은 시간 차이가 아닙니다. 실제로 되찾은 건 하루입니다.</div>
-
-    <p class="lead">데이터가 내 컴퓨터가 아니라 <strong>시스템 화면 안에만</strong> 있을 때 씁니다. 세 방향이 다 되고, <strong>1년에 걸쳐 하나씩</strong> 붙였습니다.</p>
-    <div class="tw"><table>
-      <tr><th>방향</th><th>한 일</th><th>시기</th><th>건당</th></tr>
-      <tr><td><strong>업로드·입력</strong></td><td>명단 엑셀을 읽어 평가위원 계정 등록</td><td class="n">2024.08</td><td class="n">1.5~2분 → 5~8초</td></tr>
-      <tr><td><strong>스크래핑</strong></td><td>전자결재 지출 전표를 읽어 Google Sheets 원장에 적재</td><td class="n">2024.12</td><td class="n">2~3분 → 6~8초</td></tr>
-      <tr><td><strong>다운로드</strong></td><td>지원서를 PDF로 저장해 전공별 분류</td><td class="n">2025.07</td><td class="n">60~90초 → 22초</td></tr>
-    </table></div>
-    <div class="note">스크래핑 사례는 <strong>Google Sheets와 연동해 부서 전체가 실시간으로 봅니다.</strong> 결과물이 제 PC에 남지 않고 공유 문서가 되는 것이 이 조합의 값어치입니다.</div>
-
-    <h3>이 경우도 중요한 것은 식별자를 활용하는 것</h3>
-    <p>어떠한 메뉴로 진입할 것인지 <strong>id</strong>와 <strong>xpath(주소)</strong>를 활용해 진입합니다. 브라우저에서 오른쪽 클릭 → 검사를 누르면 누구나 볼 수 있습니다.</p>
-
-    <div class="split">
-      <div class="box"><div class="t">처음에는 켜두고</div><p>자동화 화면을 볼 수 있게 해서 <strong>어디서 막히는지 확인</strong>합니다.</p></div>
-      <div class="box"><div class="t">빌딩 후에는 끄기</div><p>완성한 뒤에는 화면 없이 조용히 돌립니다.</p></div>
-      <div class="box"><div class="t">대기 시간</div><p><strong>대부분의 버그가 여기서 났습니다.</strong> 코드가 화면을 '볼 수 있는' 시간을 줘야 합니다.</p></div>
-      <div class="box"><div class="t">자격증명</div><p>아이디·비밀번호는 코드에 적지 않습니다. 파일은 공유됩니다.</p></div>
-    </div>
-
-    <div class="fix" data-fix="p4"></div>
   </section>
 
   
   <!-- 1-4-1 · 웹 조작 -->
-  <section id="p4a" class="page">
+  <section id="p4a" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-4-1 · 웹 조작</div><h2>자료 업로드</h2></div></div>
     <div class="chips"><span class="chip">#2024.07</span><span class="chip">#Selenium</span><span class="chip">#2026 성공</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">명단 엑셀을 읽어 평가위원 계정을 시스템에 등록합니다.</p>
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
-      <div class="r"><div class="k">문제</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p class="todo-v">고쳐도 없어지지 않는 조건. "들어오는 모양과 봐야 하는 모양이 다르다" 같은 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p class="todo-v">그 조건을 지금 방식이 어떻게 감당하고 있나. 시간, 그리고 시간보다 큰 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p class="todo-v">무엇을 어떤 차례로 했나. 규칙을 어디에 두었나.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <p class="todo-v">잰 값. 그리고 사람이 안 하게 된 일.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+<p><strong>2024년에는 못 했습니다.</strong> 생각은 있었지만 시간이 없었고, 당시 모델로는 디버깅이 되지 않았습니다. <strong>2026년에 다시 필요해져 해보니 잘 됐습니다.</strong></p>
+        </div>
+      </div>
+
     </div>
-    <div class="note"><strong>2024년에는 못 했습니다.</strong> 생각은 있었지만 시간이 없었고, 당시 모델로는 디버깅이 되지 않았습니다. <strong>2026년에 다시 필요해져 해보니 잘 됐습니다.</strong></div>
   </section>
 
   <!-- 1-4-2 · 웹 조작 -->
-  <section id="p4b" class="page">
+  <section id="p4b" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-4-2 · 웹 조작</div><h2>자료 다운로드</h2></div></div>
     <div class="chips"><span class="chip">#2024.07</span><span class="chip">#Selenium</span><span class="chip">#2026 성공</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">지원서를 PDF로 저장해 전공별로 분류합니다.</p>
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
-      <div class="r"><div class="k">문제</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p class="todo-v">고쳐도 없어지지 않는 조건. "들어오는 모양과 봐야 하는 모양이 다르다" 같은 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p class="todo-v">그 조건을 지금 방식이 어떻게 감당하고 있나. 시간, 그리고 시간보다 큰 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p class="todo-v">무엇을 어떤 차례로 했나. 규칙을 어디에 두었나.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <p class="todo-v">잰 값. 그리고 사람이 안 하게 된 일.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+<p><strong>2024년에는 못 했습니다.</strong> 업로드와 같은 이유였습니다. <strong>2026년에 다시 해보니 됐습니다.</strong></p>
+        </div>
+      </div>
+
     </div>
-    <div class="note"><strong>2024년에는 못 했습니다.</strong> 업로드와 같은 이유였습니다. <strong>2026년에 다시 해보니 됐습니다.</strong></div>
   </section>
 
   <!-- 1-4-3 · 웹 조작 -->
-  <section id="p4c" class="page">
+  <section id="p4c" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-4-3 · 웹 조작</div><h2>웹 스크래핑</h2></div></div>
     <div class="chips"><span class="chip">#2024.12</span><span class="chip">#Selenium</span><span class="chip">#gspread</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">전자결재 지출 전표를 읽어 Google Sheets 원장에 쌓습니다.</p>
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
-      <div class="r"><div class="k">문제</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p class="todo-v">고쳐도 없어지지 않는 조건. "들어오는 모양과 봐야 하는 모양이 다르다" 같은 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p class="todo-v">그 조건을 지금 방식이 어떻게 감당하고 있나. 시간, 그리고 시간보다 큰 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p class="todo-v">무엇을 어떤 차례로 했나. 규칙을 어디에 두었나.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <p class="todo-v">잰 값. 그리고 사람이 안 하게 된 일.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+<p>셋 중 <strong>유일하게 한 번에 된 것</strong>입니다. 결과가 제 PC에 남지 않고 <strong>부서 전체가 실시간으로 보는 공유 문서</strong>가 되는 것이 이 조합의 값어치입니다.</p>
+        </div>
+      </div>
+
     </div>
-    <div class="note">셋 중 <strong>유일하게 한 번에 된 것</strong>입니다. 결과가 제 PC에 남지 않고 <strong>부서 전체가 실시간으로 보는 공유 문서</strong>가 되는 것이 이 조합의 값어치입니다.</div>
   </section>
 
   <!-- 1-5 -->
-  <section id="p6" class="page">
+  <section id="p6" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-5 · 예시 5</div><h2>개인정보 마스킹</h2></div></div>
     <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#pdfplumber</span><span class="chip">#PyInstaller</span><span class="chip free">#무료</span><span class="chip free">#소스 공개</span></div>
+    <p class="lead">가리는 것은 쉽습니다. 어려운 것은 가리면서 문서를 못 쓰게 만들지 않는 것입니다.</p>
 
-    <div class="stats">
-      <div class="stat"><div class="b"><div class="l">탐지 항목</div><div class="n">34<span class="u">종</span></div></div><div class="f">3등급 · 민감정보 별도</div></div>
-      <div class="stat"><div class="b"><div class="l">읽는 형식</div><div class="n">5<span class="u">가지</span></div></div><div class="f">PDF · DOCX · HWPX · HWP · TXT</div></div>
-      <div class="stat"><div class="b"><div class="l">마스킹 모드</div><div class="n">3<span class="u">개</span></div></div><div class="f">가명 · 삭제 · 부분</div></div>
-    </div>
+    <div class="steps">
 
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v">선발 자료를 심사위원께 드리거나 AI에게 분석시키려면 <strong>개인정보를 먼저 가려야</strong> 합니다.</div></div>
-      <div class="r"><div class="k">문제</div><div class="v"><strong>손으로 가리면 빠뜨립니다.</strong> 그렇다고 전부 <strong>[성명]</strong>으로 지우면 문서 안에서 누가 누구인지 사라져, AI가 지원자와 추천인의 경력을 뒤섞습니다.</div></div>
-    </div>
-
-    <h3>가리되 구조는 남긴다</h3>
-    <p>세 가지 모드를 두고 쓰는 곳에 따라 고릅니다. 기본값은 <strong>가명</strong>입니다.</p>
-    <div class="tw"><table>
-      <tr><th>모드</th><th>결과</th><th>쓰는 곳</th></tr>
-      <tr><td><strong>가명</strong></td><td><strong>[성명1]</strong> · <strong>[휴대전화2]</strong></td><td>AI 분석용. 같은 값이면 같은 번호라 <strong>인물이 구분됩니다</strong></td></tr>
-      <tr><td>삭제</td><td>[성명] · [휴대전화]</td><td>외부 공유용. 다시 알아낼 위험이 가장 작음</td></tr>
-      <tr><td>부분</td><td>홍** · 010-****-5678</td><td>사람이 눈으로 대조 검수할 때</td></tr>
-    </table></div>
-    <div class="note">번호를 붙이면 <strong>개인정보는 사라지고 문서의 논리 구조는 남습니다.</strong> 번호는 묶음 전체에서 공유되므로, 파일이 달라도 같은 전화번호는 같은 번호를 받습니다.</div>
-
-    <h3>가릴지 말지를 고르게 둔 것</h3>
-    <div class="split">
-      <div class="box"><div class="t">민감정보</div><p>장애·병역·건강·종교·소득분위. <strong>개인정보보호법 제23조</strong> 대상이면서 동시에 <strong>전형 기준</strong>이기도 합니다.</p></div>
-      <div class="box"><div class="t">소속·학교·전공</div><p>블라인드 심사면 가리고, 평가 요소로 쓸 때는 남깁니다.</p></div>
-      <div class="box"><div class="t">라벨이 있을 때만</div><p><strong>여</strong>·<strong>대한민국</strong>은 그 자체로는 개인정보가 아닙니다. 앞에 항목 이름이 붙어 있을 때만 가립니다.</p></div>
-      <div class="box"><div class="t">오탐 막기</div><p><strong>A형 간염</strong>·<strong>등록금 면제</strong>·<strong>21세기</strong>를 잘못 잡지 않는지 시험으로 고정해 뒀습니다.</p></div>
-    </div>
-
-    <div class="fix" data-fix="p6"></div>
-
-    <h3>주의할 점</h3>
-    <p><strong>스캔한 문서는 읽지 못합니다.</strong> 글자가 이미지로 박혀 있으면 좌표를 읽을 수 없습니다. 한글 문서는 <strong>.hwp보다 .hwpx</strong>로 저장해 넣어야 표 구조가 살아 정확도가 올라갑니다.</p>
-    <div class="note">결과마다 <strong>원본 파일의 지문(SHA-256)</strong>과 항목별 마스킹 건수를 함께 남깁니다. 나중에 <strong>"이 사본이 어느 원본에서 나왔는지"</strong>를 증명할 수 있습니다.</div>
-
-    <h3>소스 코드</h3>
-    <div class="panel">
-      <div class="panel-h"><span class="t">GitHub</span><span class="m">MIT</span></div>
-      <div class="lnk">
-        <a href="https://github.com/dayoungoh/personal-info-mask" target="_blank" rel="noopener noreferrer">
-          <span class="n">↗</span>
-          <span class="b"><strong>personal-info-mask</strong><em>github.com/dayoungoh/personal-info-mask</em></span>
-          <span class="c">공개</span>
-          <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
-        </a>
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p>선발 자료를 심사위원께 드리거나 AI에게 분석시키려면 <strong>개인정보를 먼저 가려야</strong> 합니다.</p>
+          <p>그런데 자료는 실명으로 들어옵니다. 이름·연락처·소속이 본문 곳곳에 섞여 있습니다.</p>
+          <p><strong>들어올 때의 모양과 내보낼 때의 모양이 다릅니다.</strong> 자료를 받는 한 이 차이는 매번 생깁니다.</p>
+        </div>
       </div>
-      <div class="tip">파이썬 없는 PC에서도 쓰도록 <strong>실행 파일 하나</strong>로 묶을 수 있습니다. 저장소에는 실제 문서가 들어가지 않도록 문서 확장자를 통째로 막아 뒀습니다.</div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p><strong>손으로 가리면 빠뜨립니다.</strong> 한 문서에 같은 이름이 열 번 나오면 열 번을 다 찾아야 합니다.</p>
+          <p>그렇다고 전부 <span class="tok">[성명]</span>으로 지우면 다른 것이 깨집니다. 문서 안에서 누가 누구인지 사라져, <strong>AI가 지원자와 추천인의 경력을 뒤섞습니다.</strong></p>
+          <p>가리는 것과 쓸모 있게 두는 것이 서로를 밀어냅니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p>지우는 대신 <strong>번호를 붙입니다.</strong> 같은 값이면 같은 번호라, 개인정보는 사라지고 문서의 논리 구조는 남습니다.</p>
+
+          <div class="tw"><table>
+            <tr><th>모드</th><th>결과</th><th>쓰는 곳</th></tr>
+            <tr><td><strong>가명</strong></td><td><strong>[성명1]</strong> · <strong>[휴대전화2]</strong></td><td>AI 분석용. 같은 값이면 같은 번호라 <strong>인물이 구분됩니다</strong></td></tr>
+            <tr><td>삭제</td><td>[성명] · [휴대전화]</td><td>외부 공유용. 다시 알아낼 위험이 가장 작음</td></tr>
+            <tr><td>부분</td><td>홍** · 010-****-5678</td><td>사람이 눈으로 대조 검수할 때</td></tr>
+          </table></div>
+          <p>기본값은 <span class="tok">가명</span>입니다. 번호는 묶음 전체에서 공유되므로, <strong>파일이 달라도 같은 전화번호는 같은 번호를 받습니다.</strong></p>
+
+          <h3>가릴지 말지를 고르게 둔 것</h3>
+          <div class="split">
+            <div class="box"><div class="t">민감정보</div><p>장애·병역·건강·종교·소득분위. <strong>개인정보보호법 제23조</strong> 대상이면서 동시에 <strong>전형 기준</strong>이기도 합니다.</p></div>
+            <div class="box"><div class="t">소속·학교·전공</div><p>블라인드 심사면 가리고, 평가 요소로 쓸 때는 남깁니다.</p></div>
+            <div class="box"><div class="t">라벨이 있을 때만</div><p><strong>여</strong>·<strong>대한민국</strong>은 그 자체로는 개인정보가 아닙니다. 앞에 항목 이름이 붙어 있을 때만 가립니다.</p></div>
+            <div class="box"><div class="t">오탐 막기</div><p><strong>A형 간염</strong>·<strong>등록금 면제</strong>·<strong>21세기</strong>를 잘못 잡지 않는지 시험으로 고정해 뒀습니다.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <div class="stats">
+            <div class="stat"><div class="b"><div class="l">탐지 항목</div><div class="n">34<span class="u">종</span></div></div><div class="f">3등급 · 민감정보 별도</div></div>
+            <div class="stat"><div class="b"><div class="l">읽는 형식</div><div class="n">5<span class="u">가지</span></div></div><div class="f">PDF · DOCX · HWPX · HWP · TXT</div></div>
+            <div class="stat"><div class="b"><div class="l">마스킹 모드</div><div class="n">3<span class="u">개</span></div></div><div class="f">가명 · 삭제 · 부분</div></div>
+          </div>
+          <p>결과마다 <strong>원본 파일의 지문(SHA-256)</strong>과 항목별 마스킹 건수를 함께 남깁니다. 나중에 <strong>"이 사본이 어느 원본에서 나왔는지"</strong>를 증명할 수 있습니다.</p>
+
+          <h3>소스 코드</h3>
+          <div class="panel">
+            <div class="panel-h"><span class="t">GitHub</span><span class="m">MIT</span></div>
+            <div class="lnk">
+              <a href="https://github.com/dayoungoh/personal-info-mask" target="_blank" rel="noopener noreferrer">
+                <span class="n">↗</span>
+                <span class="b"><strong>personal-info-mask</strong><em>github.com/dayoungoh/personal-info-mask</em></span>
+                <span class="c">공개</span>
+                <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+              </a>
+            </div>
+            <div class="tip">파이썬 없는 PC에서도 쓰도록 <strong>실행 파일 하나</strong>로 묶을 수 있습니다. 저장소에는 실제 문서가 들어가지 않도록 문서 확장자를 통째로 막아 뒀습니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p><span class="tok a">스캔한 문서는 읽지 못합니다</span>. 글자가 이미지로 박혀 있으면 좌표를 읽을 수 없습니다.</p>
+          <p>한글 문서는 <span class="tok m">.hwp 보다 .hwpx</span>로 저장해 넣어야 표 구조가 살아 정확도가 올라갑니다.</p>
+          <p>가릴지 말지는 사람이 정합니다. 민감정보가 동시에 전형 기준이기도 한 이상, <strong>이 결정은 코드가 대신할 수 없습니다.</strong></p>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1691,43 +1841,85 @@ a.cta{text-decoration:none}
 
   
   <!-- 2-1 · 예시 1 -->
-  <section id="g0" class="page">
+  <section id="g0" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">2-1 · 예시 1</div><h2>Form 생성</h2></div></div>
     <div class="chips"><span class="chip">#Apps Script</span><span class="chip">#Forms</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">신청을 받을 양식을 손이 아니라 코드로 만듭니다.</p>
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
-      <div class="r"><div class="k">문제</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p class="todo-v">고쳐도 없어지지 않는 조건. "들어오는 모양과 봐야 하는 모양이 다르다" 같은 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p class="todo-v">그 조건을 지금 방식이 어떻게 감당하고 있나. 시간, 그리고 시간보다 큰 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p class="todo-v">무엇을 어떤 차례로 했나. 규칙을 어디에 두었나.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <p class="todo-v">잰 값. 그리고 사람이 안 하게 된 일.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p class="todo-v">안 되는 것. 언제 어디서 썼는지. 다음 사람이 알아야 할 것.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- 2-2 -->
-  <section id="g2" class="page">
+  <section id="g2" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">2-2 · 예시 2</div><h2>Calendar에 반영<span class="ft">Spreadsheet 응답을 옮깁니다</span></h2></div></div>
     <div class="chips"><span class="chip">#Calendar</span><span class="chip">#대면 교류 지원</span></div>
+    <p class="lead">신청은 폼으로 들어오고, 다른 사람이 참여하려면 캘린더에 있어야 합니다. 그 사이를 제가 옮기고 있었습니다.</p>
 
-    <div class="gain">
-      <div class="cell"><div class="lbl">손으로</div><div class="val">3분</div><div class="unit">신청 한 건당</div></div>
-      <div class="arw"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div>
-      <div class="cell to"><div class="lbl">제출과 동시에</div><div class="val">0</div><div class="unit">대기 시간도 사라짐</div></div>
-    </div>
-    <div class="gain-cap">신청한 순간 캘린더에 올라가므로 모집 기간이 온전히 확보됐습니다.</div>
+    <div class="steps">
 
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v">전 세계에 흩어진 장학생들이 각지에서 모임을 엽니다. 다른 장학생이 참여하려면 일정이 공유 캘린더에 있어야 했습니다.</div></div>
-      <div class="r"><div class="k">문제</div><div class="v"><strong>진짜 문제는 시간이 아니었습니다.</strong> 제가 확인하기 전까지 일정이 안 올라갔고, 모집 마감이 임박한 모임은 그 지연이 그대로 손해였습니다.</div></div>
-    </div>
-    <div class="tw"><table>
-      <tr><th>메모에 적히는 것</th><th>공개 모임</th><th>비공개 모임</th></tr>
-      <tr><td>제목 · 장소 · 목적</td><td>기재</td><td>기재</td></tr>
-      <tr><td><strong>연락처</strong></td><td>기재</td><td><strong>기재 안 함</strong></td></tr>
-      <tr><td><strong>모집 마감</strong></td><td>기재</td><td><strong>기재 안 함</strong></td></tr>
-    </table></div>
-    <div class="fix" data-fix="g2"></div>
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p>전 세계에 흩어진 장학생들이 각지에서 모임을 엽니다. 여는 사람은 <span class="tok">폼</span>으로 신청합니다.</p>
+          <p>다른 장학생이 그 모임에 참여하려면 일정이 <span class="tok">공유 캘린더</span>에 있어야 합니다.</p>
+          <p><strong>신청이 쌓이는 곳과 사람들이 보는 곳이 다릅니다.</strong> 폼으로 받는 한 이 간극은 매번 생깁니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p>옮기는 데 한 건에 3분입니다. 그런데 <strong>진짜 문제는 시간이 아니었습니다.</strong></p>
+          <p>제가 확인하기 전까지 일정이 안 올라갑니다. 제가 자거나 회의 중이면 그동안은 아무에게도 안 보입니다.</p>
+          <p>모집 마감이 임박한 모임에게 <strong>그 지연은 그대로 손해입니다.</strong> 사람을 못 모읍니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p>폼이 제출되는 순간 코드가 깨어나 캘린더에 씁니다. 사람이 확인하는 단계를 없앴습니다.</p>
+          <p>메모에 무엇을 적을지는 <span class="tok">공개 여부</span>가 정합니다. 사람이 판단하지 않습니다.</p>
 
-    <div class="note">사람이 옮겨 적으면 언젠가 실수합니다. <strong>규칙으로 박아두면 실수 자체가 불가능해집니다.</strong></div>
+          <div class="tw"><table>
+            <tr><th>메모에 적히는 것</th><th>공개 모임</th><th>비공개 모임</th></tr>
+            <tr><td>제목 · 장소 · 목적</td><td>기재</td><td>기재</td></tr>
+            <tr><td><strong>연락처</strong></td><td>기재</td><td><strong>기재 안 함</strong></td></tr>
+            <tr><td><strong>모집 마감</strong></td><td>기재</td><td><strong>기재 안 함</strong></td></tr>
+          </table></div>
+          <p>사람이 옮겨 적으면 언젠가 실수합니다. <strong>규칙으로 박아두면 실수 자체가 불가능해집니다.</strong> 비공개 모임의 연락처는 적으려야 적을 수가 없습니다.</p>
 
-    <div class="ann">
+          <div class="ann">
       <svg viewBox="0 0 660 250" xmlns="http://www.w3.org/2000/svg" role="img"
         aria-label="폼 응답 시트의 열 제목을 코드가 열쇠로 쓰는 방식을 손글씨 주석으로 표시한 그림">
         <!-- ── 주석 화살촉 세 개. 곡선 끝 접선에 맞춰 자동으로 돌아갑니다 ──
@@ -1790,39 +1982,92 @@ a.cta{text-decoration:none}
       </svg>
       <div class="ann-cap">코드는 <strong>열 제목 글자 그대로</strong>를 열쇠로 씁니다. 폼 문구를 다듬는 순간 그 열쇠가 사라집니다.</div>
     </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <div class="tw"><table>
+            <tr><th>잰 것</th><th>이전</th><th>이후</th></tr>
+            <tr><td>신청 한 건 옮기기</td><td>3분</td><td><strong>사람 손이 들지 않음</strong></td></tr>
+            <tr><td>올라가기까지</td><td>내가 확인할 때까지</td><td><strong>제출과 동시에</strong></td></tr>
+          </table></div>
+          <p><strong>모집 기간이 온전히 확보됐습니다.</strong> 줄어든 것은 3분이지만 되찾은 것은 그 사이에 잃던 며칠입니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p>폼 질문의 <span class="tok a">문구를 바꾸면 그 값이 조용히 빈칸이 됩니다</span>. 코드가 질문 제목을 열쇠로 쓰기 때문입니다.</p>
+          <p>맞춤법을 고치거나 물음표 하나를 더해도 마찬가지입니다. <strong>폼 문구는 코드의 일부입니다.</strong></p>
+        </div>
+      </div>
 
-    <h3>주의할 점</h3>
-    <p>폼 질문의 <strong>문구를 바꾸면 그 값이 조용히 빈칸이 됩니다.</strong> 코드는 질문 제목을 열쇠로 쓰기 때문입니다.</p>
+    </div>
   </section>
 
   <!-- 2-3 -->
-  <section id="g3" class="page">
+  <section id="g3" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">2-3 · 예시 3</div><h2>Docs 생성<span class="ft">후기 · 영수증 증빙</span></h2></div></div>
     <div class="chips"><span class="chip">#Docs</span><span class="chip">#Drive</span></div>
+    <p class="lead">같은 폼 하나에서 사람에 따라 다른 문서가 나와야 했습니다.</p>
 
-    <div class="gain">
-      <div class="cell"><div class="lbl">손으로</div><div class="val">20~25분</div><div class="unit">후기 한 건당</div></div>
-      <div class="arw"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div>
-      <div class="cell to"><div class="lbl">제출과 동시에</div><div class="val">0</div><div class="unit">계좌 오류도 사라짐</div></div>
-    </div>
-    <div class="gain-cap">참석자가 많은 달에는 이것만으로 며칠이 갔습니다.</div>
+    <div class="steps">
 
-    <div class="kv">
-      <div class="r"><div class="k">문제</div><div class="v">사진이 여러 장인데 크기가 제각각이고, <strong>아이폰 사진은 문서에 아예 안 들어갑니다.</strong></div></div>
-    </div>
-    <div class="tw"><table>
-      <tr><th>사진 종류</th><th>처리</th></tr>
-      <tr><td>일반 사진</td><td>높이 10cm로 맞춰 삽입</td></tr>
-      <tr><td>아이폰 사진</td><td>형식을 자동 변환한 뒤 삽입</td></tr>
-      <tr><td>영수증</td><td>높이 20cm — 글씨를 읽어야 해서 더 크게</td></tr>
-    </table></div>
-    <div class="split">
-      <div class="box"><div class="t">참석자가 내면</div><p>후기 문서 1개</p></div>
-      <div class="box"><div class="t">모임장이 내면</div><p>후기 문서 + <strong>환급 계좌·영수증 문서</strong></p></div>
-    </div>
-    <div class="fix" data-fix="g3"></div>
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p>모임이 끝나면 후기를 받습니다. 참석자는 후기만, 모임장은 <strong>후기와 정산 서류</strong>를 함께 냅니다.</p>
+          <p>후기에는 사진이 여러 장 붙습니다. 정산에는 영수증이 붙습니다.</p>
+          <p><strong>같은 폼에서 두 가지 다른 산출물이 나와야 합니다.</strong> 역할이 다르니 필요한 서류도 다릅니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p>사진 크기가 제각각입니다. 그대로 넣으면 어떤 장은 한 쪽을 다 먹고 어떤 장은 손톱만 합니다.</p>
+          <p>그리고 <strong>아이폰 사진은 문서에 아예 안 들어갑니다.</strong> 형식이 다릅니다.</p>
+          <p>후기 한 건에 20~25분이 걸렸습니다. 참석자가 많은 달에는 이것만으로 며칠이 갔습니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p>사진은 종류를 보고 크기를 정합니다. 영수증만 더 큽니다 — <strong>글씨를 읽어야 하기 때문입니다.</strong></p>
 
-    <div class="note">폼 하나에서 조건에 따라 다른 산출물이 나옵니다. <strong>해외 송금은 한 글자만 틀려도 반송되기 때문에</strong> 이게 시간 절약보다 컸습니다.</div>
+          <div class="tw"><table>
+            <tr><th>사진 종류</th><th>처리</th></tr>
+            <tr><td>일반 사진</td><td>높이 10cm로 맞춰 삽입</td></tr>
+            <tr><td>아이폰 사진</td><td>형식을 자동 변환한 뒤 삽입</td></tr>
+            <tr><td>영수증</td><td>높이 20cm — 글씨를 읽어야 해서 더 크게</td></tr>
+          </table></div>
+
+          <div class="split">
+            <div class="box"><div class="t">참석자가 내면</div><p>후기 문서 1개</p></div>
+            <div class="box"><div class="t">모임장이 내면</div><p>후기 문서 + <strong>환급 계좌·영수증 문서</strong></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <div class="tw"><table>
+            <tr><th>잰 것</th><th>이전</th><th>이후</th></tr>
+            <tr><td>후기 한 건</td><td>20~25분</td><td><strong>제출과 동시에</strong></td></tr>
+            <tr><td>계좌 옮겨 적기</td><td>손으로</td><td><strong>없어짐</strong></td></tr>
+          </table></div>
+          <p>시간보다 큰 것은 계좌 쪽입니다. <strong>해외 송금은 한 글자만 틀려도 반송됩니다.</strong> 사람이 옮겨 적는 단계를 없앤 것이 여기서는 속도보다 값어치가 있었습니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p>사진이 아주 많으면 문서가 무거워집니다. 만드는 데 시간이 걸리고, 여는 쪽도 느립니다.</p>
+          <p>2-2와 같은 약점이 있습니다 — <span class="tok a">폼 문구를 바꾸면 값이 빈칸이 됩니다</span>.</p>
+        </div>
+      </div>
+
+    </div>
   </section>
 
   <!-- 3-1 -->
@@ -1918,92 +2163,251 @@ a.cta{text-decoration:none}
   </section>
 
   <!-- 3-2 -->
-  <section id="w2" class="page">
+  <section id="w2" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">3-1 · 예시 1</div><h2>이수율 tracker<span class="ft">해외유학워크숍</span></h2></div></div>
     <div class="chips"><span class="chip">#2026.07</span><span class="chip">#SAW 운영</span></div>
+    <p class="lead">각자 자기 진도만 볼 수 있어야 했습니다. 그래서 파일이 아니라 웹이 됐습니다.</p>
 
-    <div class="gain">
-      <div class="cell"><div class="lbl">회차마다</div><div class="val">2~3시간</div><div class="unit">개인별 계산·안내</div></div>
-      <div class="arw"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div>
-      <div class="cell to"><div class="lbl">이제는</div><div class="val">0</div><div class="unit">참여자가 직접 확인</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p>1년에 걸친 워크숍입니다. 항목이 열두 개, 배점 합계 100점, <span class="tok">90점 이상</span>이어야 수료증이 나갑니다.</p>
+          <p>참여자는 자기가 지금 몇 점인지 알아야 남은 기간을 계획할 수 있습니다.</p>
+          <p><strong>기록은 한 곳에 모여 있고, 봐야 하는 것은 각자 자기 것뿐입니다.</strong></p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p>참여자가 자기 진도를 스스로 계산하기 어렵습니다. 항목마다 배점이 다르고 회차도 여럿입니다.</p>
+          <p>그렇다고 <strong>전체 명단을 공유할 수는 없습니다.</strong> 남의 점수까지 보이게 됩니다.</p>
+          <p>그래서 회차마다 제가 개인별로 계산해 안내했습니다. 2~3시간이 들었고, 그 사이 문의가 또 들어왔습니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p>파일로는 풀 수 없는 문제입니다. 파일은 <strong>연 사람이 누구인지 모릅니다.</strong> 그래서 웹으로 만들었습니다.</p>
+          <p><span class="tok g">비밀번호 없는 이메일 링크 로그인</span>으로 들어오면, 데이터베이스가 그 사람 것만 내줍니다. 관리자는 같은 페이지에서 전체를 입력합니다.</p>
+
+          <div class="tw"><table>
+            <tr><th>항목 종류</th><th>개수</th><th>항목당 배점</th></tr>
+            <tr><td>강연 출석 및 후기</td><td class="n">5회</td><td class="n">10점</td></tr>
+            <tr><td>멘토링 참석</td><td class="n">2회</td><td class="n">10점</td></tr>
+            <tr><td>과제 제출 (중간)</td><td class="n">1건</td><td class="n">10점</td></tr>
+            <tr><td>과제 제출 (최종)</td><td class="n">1건</td><td class="n">20점</td></tr>
+            <tr><td>기록용 항목</td><td class="n">3건</td><td class="n">0점</td></tr>
+            <tr><td><strong>합계</strong></td><td class="n"><strong>12건</strong></td><td class="n"><strong>100점</strong></td></tr>
+          </table></div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <div class="tw"><table>
+            <tr><th>잰 것</th><th>이전</th><th>이후</th></tr>
+            <tr><td>회차마다 개인별 계산·안내</td><td>2~3시간</td><td><strong>참여자가 직접 확인</strong></td></tr>
+            <tr><td>진도 문의</td><td>회차마다</td><td><strong>줄어듦</strong></td></tr>
+          </table></div>
+          <p>안내를 빨리 한 것이 아니라 <strong>안내할 일이 없어졌습니다.</strong> 궁금하면 본인이 들어가 봅니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p><strong>출석 입력은 여전히 제가 손으로 합니다.</strong> 강의장에서 QR로 받으면 이 마지막 수작업도 없어집니다.</p>
+          <p>2026년 7월 해외유학워크숍 운영에 썼습니다.</p>
+        </div>
+      </div>
+
     </div>
-    <div class="gain-cap">문의 자체가 줄었습니다.</div>
-
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v">1년에 걸친 워크숍, 열두 개 항목, 배점 합계 100점. <strong>90점 이상이어야 수료증</strong>이 나갑니다.</div></div>
-      <div class="r"><div class="k">문제</div><div class="v">참여자가 자기 진도를 스스로 계산하기 어려웠습니다. 그렇다고 전체 명단을 공유할 수는 없었습니다.</div></div>
-      <div class="r"><div class="k">해결</div><div class="v">비밀번호 없는 이메일 링크 로그인 → 본인 기록만 조회 → 관리자는 같은 페이지에서 전체 입력</div></div>
-    </div>
-    <div class="tw"><table>
-      <tr><th>항목 종류</th><th>개수</th><th>항목당 배점</th></tr>
-      <tr><td>강연 출석 및 후기</td><td class="n">5회</td><td class="n">10점</td></tr>
-      <tr><td>멘토링 참석</td><td class="n">2회</td><td class="n">10점</td></tr>
-      <tr><td>과제 제출 (중간)</td><td class="n">1건</td><td class="n">10점</td></tr>
-      <tr><td>과제 제출 (최종)</td><td class="n">1건</td><td class="n">20점</td></tr>
-      <tr><td>기록용 항목</td><td class="n">3건</td><td class="n">0점</td></tr>
-      <tr><td><strong>합계</strong></td><td class="n"><strong>12건</strong></td><td class="n"><strong>100점</strong></td></tr>
-    </table></div>
-    <div class="fix" data-fix="w2"></div>
-
-    <div class="note"><strong>아직 남은 것 —</strong> 출석 입력은 여전히 제가 손으로 합니다. 강의장에서 QR로 받으면 이 마지막 수작업도 없어집니다.</div>
   </section>
 
   <!-- 3-3 -->
-  <section id="w3" class="page">
+  <section id="w3" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">3-2 · 예시 2</div><h2>인재성장 플랫폼<span class="ft">T-LAB · 개발 중</span></h2></div></div>
     <div class="chips"><span class="chip">#2026.07~</span><span class="chip hold">#개발 중</span></div>
-    <p class="lead">재단은 오랫동안 사람에게 투자해 왔는데, 그분들이 지금 어디서 무엇을 하는지는 잘 알지 못합니다. 장학생들끼리도 서로를 찾지 못합니다.</p>
-    <div class="split">
-      <div class="box"><div class="t">인재 프로필</div><p>경력·전공·소속을 담는 구조</p></div>
-      <div class="box"><div class="t">동문 네트워크</div><p>조건으로 사람을 찾고 프로필을 보는 화면</p></div>
-      <div class="box"><div class="t">커피챗 요청</div><p>수락·보류가 기록으로 남는 구조</p></div>
-      <div class="box"><div class="t">아직 남은 것</div><p>AI 키를 서버로 이동, 커피챗 표 적용</p></div>
-    </div>
-    <h3>막힌 지점 — 여쭙고 싶은 세 가지</h3>
-    <p>데이터베이스는 최신 정보가 아니면 쓸모가 없습니다. 그런데 경력 업데이트는 본인에게 당장 이득이 없는 일입니다.</p>
-    <div class="q"><div class="qt">1. 경력을 남기는 진입점으로 CV 업로드가 맞을까요?</div>
-      <div class="qa">파일 하나 올리는 게 항목을 채우는 것보다 쉽다고 봤습니다. 그런데 최신 CV를 갖고 계신 분이 얼마나 될지 모르겠습니다.</div></div>
-    <div class="q"><div class="qt">2. 무엇이 있어야 자발적으로 업데이트하게 될까요?</div>
-      <div class="qa">내 정보를 넣어야 남의 정보가 보이는 구조, 연 1회 행사에 묶기, 미리 채워두고 확인만 받기, 눈에 보이는 보상.</div></div>
-    <div class="q"><div class="qt">3. 언제 요청받으면 부담스럽지 않을까요?</div>
-      <div class="qa">아무 때나 오는 메일은 무시됩니다. 그렇다고 뜸하면 데이터가 낡습니다.</div></div>
-    <div class="acts">
-      <a class="cta" href="https://forms.gle/____의견-폼-주소를-여기에____" target="_blank" rel="noopener noreferrer">의견 남기기
-        <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+    <p class="lead">재단은 오랫동안 사람에게 투자해 왔는데, 그분들이 지금 어디서 무엇을 하는지는 잘 알지 못합니다.</p>
+
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p>재단이 오래 투자해 온 분들은 지금 전 세계에 흩어져 있습니다.</p>
+          <p>재단은 그분들의 현재를 모르고, <strong>장학생들끼리도 서로를 찾지 못합니다.</strong></p>
+          <p>사람은 계속 움직입니다. <strong>한 번 모은 정보는 그 순간부터 낡기 시작합니다.</strong> 이 낡음은 없어지지 않습니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p>데이터베이스는 <strong>최신이 아니면 쓸모가 없습니다.</strong> 3년 전 소속으로는 아무도 못 찾습니다.</p>
+          <p>그런데 경력 업데이트는 <strong>본인에게 당장 이득이 없는 일</strong>입니다. 부탁하는 쪽만 급합니다.</p>
+          <p>기술 문제가 아닙니다. 넣을 화면은 만들면 됩니다. <strong>넣을 이유를 만드는 것이 문제입니다.</strong></p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">만드는 중</div></div>
+        <div class="bd">
+          <div class="split">
+            <div class="box"><div class="t">인재 프로필</div><p>경력·전공·소속을 담는 구조</p></div>
+            <div class="box"><div class="t">동문 네트워크</div><p>조건으로 사람을 찾고 프로필을 보는 화면</p></div>
+            <div class="box"><div class="t">커피챗 요청</div><p>수락·보류가 기록으로 남는 구조</p></div>
+            <div class="box"><div class="t">아직 남은 것</div><p>AI 키를 서버로 이동, 커피챗 표 적용</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">막힌 곳</div></div>
+        <div class="bd">
+          <p>여기서부터는 코드로 풀리지 않습니다. 세 가지를 여쭙습니다.</p>
+          <div class="q"><div class="qt">1. 경력을 남기는 진입점으로 CV 업로드가 맞을까요?</div>
+            <div class="qa">파일 하나 올리는 게 항목을 채우는 것보다 쉽다고 봤습니다. 그런데 최신 CV를 갖고 계신 분이 얼마나 될지 모르겠습니다.</div></div>
+          <div class="q"><div class="qt">2. 무엇이 있어야 자발적으로 업데이트하게 될까요?</div>
+            <div class="qa">내 정보를 넣어야 남의 정보가 보이는 구조, 연 1회 행사에 묶기, 미리 채워두고 확인만 받기, 눈에 보이는 보상.</div></div>
+          <div class="q"><div class="qt">3. 언제 요청받으면 부담스럽지 않을까요?</div>
+            <div class="qa">아무 때나 오는 메일은 무시됩니다. 그렇다고 뜸하면 데이터가 낡습니다.</div></div>
+          <div class="acts">
+            <a class="cta" href="https://forms.gle/____의견-폼-주소를-여기에____" target="_blank" rel="noopener noreferrer">의견 남기기
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p><span class="tok a">아직 개발 중입니다</span>. 결과를 적을 수 있는 단계가 아닙니다.</p>
+          <p>2026년 7월부터 만들고 있습니다. 구조는 3장에서 설명한 것과 같습니다.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   
   <!-- 3-2-1 · T-LAB -->
-  <section id="w3a" class="page">
+  <section id="w3a" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">3-2-1 · T-LAB</div><h2>H2 인재성장랩</h2></div></div>
     <div class="chips"><span class="chip">#사업추진2팀</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">무엇을 하는 곳이고, 왜 이 플랫폼이 필요했는지.</p>
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
-      <div class="r"><div class="k">문제</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p class="todo-v">고쳐도 없어지지 않는 조건. "들어오는 모양과 봐야 하는 모양이 다르다" 같은 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p class="todo-v">그 조건을 지금 방식이 어떻게 감당하고 있나. 시간, 그리고 시간보다 큰 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p class="todo-v">무엇을 어떤 차례로 했나. 규칙을 어디에 두었나.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <p class="todo-v">잰 값. 그리고 사람이 안 하게 된 일.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p class="todo-v">안 되는 것. 언제 어디서 썼는지. 다음 사람이 알아야 할 것.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- 3-2-2 · T-LAB -->
-  <section id="w3b" class="page">
+  <section id="w3b" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">3-2-2 · T-LAB</div><h2>플랫폼 구조</h2></div></div>
     <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">인재 프로필 · 동문 네트워크 · 커피챗 요청이 어떻게 맞물리는지.</p>
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
-      <div class="r"><div class="k">문제</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p class="todo-v">고쳐도 없어지지 않는 조건. "들어오는 모양과 봐야 하는 모양이 다르다" 같은 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p class="todo-v">그 조건을 지금 방식이 어떻게 감당하고 있나. 시간, 그리고 시간보다 큰 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p class="todo-v">무엇을 어떤 차례로 했나. 규칙을 어디에 두었나.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <p class="todo-v">잰 값. 그리고 사람이 안 하게 된 일.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p class="todo-v">안 되는 것. 언제 어디서 썼는지. 다음 사람이 알아야 할 것.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- 3-2-3 · T-LAB -->
-  <section id="w3c" class="page">
+  <section id="w3c" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">3-2-3 · T-LAB</div><h2>동문 네트워크 확장</h2></div></div>
     <div class="chips"><span class="chip hold">#설계 중</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">사람이 사람을 찾을 수 있게 하려면 무엇이 더 있어야 하는지.</p>
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
-      <div class="r"><div class="k">문제</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p class="todo-v">고쳐도 없어지지 않는 조건. "들어오는 모양과 봐야 하는 모양이 다르다" 같은 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p class="todo-v">그 조건을 지금 방식이 어떻게 감당하고 있나. 시간, 그리고 시간보다 큰 것.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p class="todo-v">무엇을 어떤 차례로 했나. 규칙을 어디에 두었나.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <p class="todo-v">잰 값. 그리고 사람이 안 하게 된 일.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p class="todo-v">안 되는 것. 언제 어디서 썼는지. 다음 사람이 알아야 할 것.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
