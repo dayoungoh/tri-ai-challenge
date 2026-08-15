@@ -90,6 +90,8 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   font-family:inherit;text-align:left;transition:transform 140ms var(--out),box-shadow 140ms ease}
 .ws:hover{box-shadow:var(--shadow-lift)}
 .ws:active{transform:scale(.97)}
+/* 배는 목차 옆 레일을 따라가는 그 배와 같은 그림입니다. 같은 것이니 같게 그립니다 */
+.ws .av svg{width:19px;height:19px}
 .ws .av{flex:0 0 32px;width:32px;height:32px;border-radius:9px;background:var(--ink);color:var(--shell);
   display:grid;place-items:center;font-size:var(--t-sm);font-weight:660}
 .ws .tt{min-width:0;flex:1}
@@ -175,21 +177,62 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   transition:transform 140ms var(--out),box-shadow 140ms ease}
 .uc:active{transform:scale(.98)}
 .uc[aria-expanded="true"]{box-shadow:var(--shadow-lift)}
-.uc .av{flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:var(--inset);
-  display:grid;place-items:center;font-size:var(--t-ui);font-weight:640;color:var(--ink-2)}
+.uc .av{flex:0 0 30px;width:30px;height:30px;border-radius:50%;background:var(--ink);
+  display:grid;place-items:center;font-size:var(--t-ui);font-weight:640;color:var(--shell)}
 .uc .tt{min-width:0;flex:1}
 .uc .tt b{display:block;font-size:var(--t-ui);font-weight:620;line-height:1.3;color:var(--ink)}
 .uc .tt span{display:block;font-size:var(--t-micro);color:var(--ink-3);line-height:1.35}
-.uc .dot{flex:0 0 7px;width:7px;height:7px;border-radius:50%;background:var(--green)}
+/* 예전엔 초록 점이었습니다. 대화 앱에서 "접속 중"을 뜻하는 표시라
+   여기서는 아무 뜻도 없었습니다. 눌러서 넘어간다는 표시로 바꿉니다. */
+.crumb.solo svg{display:none}
+.uc .cv{flex:0 0 12px;color:var(--ink-3);transition:transform 200ms var(--out)}
+.uc:hover .cv{transform:translateX(2px)}
 
 /* ── 프로필 페이지 ──
    사진을 크게 보이려고 사이드바 팝오버가 아니라 본문 폭을 씁니다. ── */
 /* 이름·소속·돌아가기를 한 줄에 세웁니다. 예전엔 제목 덩어리 옆에
    버튼만 떠 있어 오른쪽이 비고 버튼이 허공에 걸렸습니다. */
 .me-head{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.me-av{flex:0 0 64px;width:64px;height:64px;border-radius:50%;
+/* ── 문 ──
+   이 동그라미는 누르면 무이에게 갑니다. 그냥 두면 아무도 안 누르므로,
+   가까이 가면 귀가 섭니다. 귀가 서는 것 자체가 "여기 뭐가 있다"는 말입니다.
+   가만히 있을 때 계속 움직이지는 않습니다 — 늘 보이는 자리라 그러면 성가십니다. */
+.me-av{position:relative;flex:0 0 64px;width:64px;height:64px;border-radius:50%;
   background:var(--ink);color:var(--shell);display:grid;place-items:center;
-  font-size:var(--t-h3);font-weight:660}
+  font-size:var(--t-h3);font-weight:660;
+  border:0;padding:0;font-family:inherit;cursor:pointer;
+  transition:transform 260ms var(--out)}
+.me-av::before,.me-av::after{content:"";position:absolute;top:-14px;
+  width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;
+  border-bottom:20px solid var(--ink);
+  transition:transform 240ms var(--out)}
+/* 귀는 바깥으로 눕습니다. 곧게 세우면 뿔처럼 보입니다 */
+.me-av::before{left:2px;transform-origin:bottom right;transform:rotate(-24deg) scaleY(0)}
+.me-av::after{right:2px;transform-origin:bottom left;transform:rotate(24deg) scaleY(0)}
+.me-av:hover,.me-av:focus-visible{transform:rotate(-4deg)}
+.me-av:hover::before,.me-av:focus-visible::before,.me-av.peek::before{transform:rotate(-24deg) scaleY(1)}
+.me-av:hover::after,.me-av:focus-visible::after,.me-av.peek::after{transform:rotate(24deg) scaleY(1)}
+.me-av:active{transform:scale(.95)}
+@media(prefers-reduced-motion:reduce){
+  .me-av,.me-av::before,.me-av::after{transition:none}
+  .me-av:hover,.me-av:focus-visible{transform:none}
+}
+
+/* 귀를 못 보는 사람도 있습니다 — 손가락으로 보는 화면에는 hover 가 없습니다.
+   그래서 글로도 한 줄 둡니다. 작고 흐리게. */
+.mui-door{display:inline-flex;align-items:center;gap:6px;margin-top:14px;
+  border:0;background:none;padding:4px 0;cursor:pointer;font-family:inherit;
+  font-size:var(--t-ui);color:var(--ink-3);
+  transition:color 150ms ease,gap 200ms var(--out)}
+.mui-door:hover{color:var(--ink-2);gap:9px}
+.mui-door svg{width:13px;height:13px}
+
+/* 무이 쪽에서 돌아오는 길 */
+.mui-back{display:inline-flex;align-items:center;gap:7px;margin-bottom:22px;
+  border:0;background:none;padding:4px 0;cursor:pointer;font-family:inherit;
+  font-size:var(--t-ui);color:var(--ink-3);transition:color 150ms ease,gap 200ms var(--out)}
+.mui-back:hover{color:var(--ink-2);gap:10px}
+.mui-back svg{width:13px;height:13px}
 .me-id{flex:1;min-width:200px}
 .me-id h2{margin-top:4px}
 .me-role{margin-top:5px;font-size:var(--t-sm);color:var(--ink-2)}
@@ -758,9 +801,8 @@ a.cta{text-decoration:none}
 <nav class="side" id="side" aria-label="목차">
   <div class="side-top">
     <button class="ws" id="homeBtn">
-      <span class="av">오</span>
-      <span class="tt"><em>응모작</em><b>TRI-AI Challenge</b></span>
-      <svg aria-hidden="true" class="cv" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 15l5 5 5-5M7 9l5-5 5 5"/></svg>
+      <span class="av"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c1.2 0 1.8.8 3 .8s1.8-.8 3-.8 1.8.8 3 .8 1.8-.8 3-.8 1.8.8 3 .8"/><path d="M5 14.5 4 10h16l-2.2 4.5"/><path d="M12 10V3l6 3.5-6 1"/></svg></span>
+      <span class="tt"><em>2026</em><b>TRI-AI Challenge</b></span>
     </button>
   </div>
 
@@ -870,7 +912,7 @@ a.cta{text-decoration:none}
         <button class="uc" id="ucBtn" aria-controls="me">
           <span class="av" aria-hidden="true">오</span>
           <span class="tt"><b>오다영</b><span>한국고등교육재단 사업추진2팀 매니저</span></span>
-          <span class="dot" aria-hidden="true"></span>
+          <svg aria-hidden="true" class="cv" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
         </button>
       </div>
 </nav>
@@ -881,7 +923,7 @@ a.cta{text-decoration:none}
     <button class="mbtn" id="mbtn" aria-label="목차 열기" aria-expanded="false" aria-controls="side">
       <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
-    <div class="crumb">
+    <div class="crumb" id="crumb">
       <span id="cbSec">시작</span>
       <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
       <b id="cbPage">개요</b>
@@ -1824,7 +1866,7 @@ a.cta{text-decoration:none}
   <!-- 쓴 사람 · 목차 밖 페이지 -->
   <section id="me" class="page">
     <div class="me-head">
-      <span class="me-av" aria-hidden="true">오</span>
+      <button class="me-av" id="muiAv" aria-label="무이 보기">오</button>
       <div class="me-id">
         <div class="eyebrow">쓴 사람</div>
         <h2>오다영</h2>
@@ -1845,8 +1887,38 @@ a.cta{text-decoration:none}
       </a>
     </div>
 
+    <button class="mui-door" id="muiDoor">우리집 고양이 무이 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+
+    <div class="gb">
+      <div class="gb-h">
+        <span class="t">방명록</span>
+        <span class="d" id="gbCount"></span>
+      </div>
+
+      <form class="gb-f" id="gbForm">
+        <div class="row1">
+          <input id="gbName" name="name" maxlength="20" placeholder="이름 또는 별명" aria-label="이름" autocomplete="off" required>
+        </div>
+        <textarea id="gbBody" name="body" maxlength="300" placeholder="한 마디 남겨 주세요. 무이가 읽습니다." aria-label="남길 말" required></textarea>
+        <div class="gb-b">
+          <span class="c" id="gbLen">0 / 300</span>
+          <button class="cta" type="submit" id="gbSend">남기기</button>
+        </div>
+        <div class="gb-msg" id="gbMsg" role="status" aria-live="polite"></div>
+      </form>
+
+      <div class="gb-list" id="gbList"></div>
+      <div class="gb-empty" id="gbEmpty" hidden>불러오는 중…</div>
+    </div>
+</section>
+
+  <!-- 무이 · 목차 밖 · 문은 프로필의 동그라미와 링크 둘 -->
+  <section id="mui" class="page">
+    <button class="mui-back" id="muiBack"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 6l-6 6 6 6"/></svg> 쓴 사람으로</button>
+    <div class="phead"><div class="ttl"><div class="eyebrow">곁길</div><h2>우리집 고양이 무이</h2></div></div>
+    <p class="lead">여기부터는 일과 아무 상관이 없습니다.</p>
+
     <div class="cats-h">
-      <span class="t">우리집 고양이 무이</span>
       <span class="d">끌어서 넘기기 · 눌러서 크게 보기</span>
     </div>
     <div class="cats" id="cats"><div class="cats-track" id="catsTrack"></div></div>
@@ -1879,28 +1951,6 @@ a.cta{text-decoration:none}
         <div class="msg" id="petMsg" role="status" aria-live="polite">무이가 기다리고 있습니다.</div>
         <div class="n" id="petN"></div>
       </div>
-    </div>
-
-    <div class="gb">
-      <div class="gb-h">
-        <span class="t">방명록</span>
-        <span class="d" id="gbCount"></span>
-      </div>
-
-      <form class="gb-f" id="gbForm">
-        <div class="row1">
-          <input id="gbName" name="name" maxlength="20" placeholder="이름 또는 별명" aria-label="이름" autocomplete="off" required>
-        </div>
-        <textarea id="gbBody" name="body" maxlength="300" placeholder="한 마디 남겨 주세요. 무이가 읽습니다." aria-label="남길 말" required></textarea>
-        <div class="gb-b">
-          <span class="c" id="gbLen">0 / 300</span>
-          <button class="cta" type="submit" id="gbSend">남기기</button>
-        </div>
-        <div class="gb-msg" id="gbMsg" role="status" aria-live="polite"></div>
-      </form>
-
-      <div class="gb-list" id="gbList"></div>
-      <div class="gb-empty" id="gbEmpty" hidden>불러오는 중…</div>
     </div>
 
     <div id="rcpPrint" aria-hidden="true"></div>
@@ -1945,6 +1995,7 @@ const ship=document.getElementById('ship'), side=document.getElementById('side')
 const content=document.getElementById('content'), live=document.getElementById('live');
 const mbtn=document.getElementById('mbtn');
 const cbSec=document.getElementById('cbSec'), cbPage=document.getElementById('cbPage');
+const crumb=document.querySelector('.crumb');
 const prevB=document.getElementById('prev'), nextB=document.getElementById('next');
 const prevT=document.getElementById('prevT'), nextT=document.getElementById('nextT');
 const tPrev=document.getElementById('tPrev'), tNext=document.getElementById('tNext');
@@ -1998,6 +2049,7 @@ function show(i, push = true){
     a.classList.toggle('cur', on); a.setAttribute('aria-current', on ? 'page' : 'false');
   });
 
+  crumb.classList.remove('solo');
   cbSec.textContent = SECS[ch] || '본문';
   cbPage.textContent = titles[i];
   prevB.disabled = tPrev.disabled = i === 0;
@@ -2022,6 +2074,7 @@ function show(i, push = true){
 addEventListener('popstate', () => {
   const h = location.hash.slice(1);
   if(h === 'me') return showMe(false);
+  if(h === 'mui') return showMui(false);
   const i = order.indexOf(h);
   show(i >= 0 ? i : 0, false);
 });
@@ -2299,6 +2352,7 @@ const CATS = [
    곁길이라, 페이저가 여기로 걸어 들어오면 안 됩니다. */
 const ucBtn = document.getElementById('ucBtn');
 const meSec = document.getElementById('me');
+const muiSec = document.getElementById('mui');
 const allPages = [...document.querySelectorAll('section.page')];
 let backTo = 0;
 
@@ -2307,7 +2361,10 @@ function showMe(push = true){
   allPages.forEach(p => p.classList.remove('on'));
   meSec.classList.add('on');
   rows.forEach(r => { r.classList.remove('cur'); r.setAttribute('aria-current', 'false'); });
-  cbSec.textContent = '곁'; cbPage.textContent = '쓴 사람';
+  /* 예전엔 "곁 / 쓴 사람" 이었습니다. 목차 밖이라는 뜻으로 "곁"을 썼는데,
+     읽는 사람에게 그 뜻이 닿지 않았습니다. 한 칸으로 줄입니다. */
+  cbSec.textContent = '쓴 사람'; cbPage.textContent = '';
+  crumb.classList.add('solo');
   prevB.disabled = nextB.disabled = tPrev.disabled = tNext.disabled = true;
   prevT.textContent = nextT.textContent = '';
   content.scrollTop = 0;
@@ -2315,8 +2372,13 @@ function showMe(push = true){
   side.classList.remove('open'); scrim.classList.remove('on');
   mbtn.setAttribute('aria-expanded', 'false');
   live.textContent = '쓴 사람';
-  buildCats();
   if(window.__gbLoad) window.__gbLoad();
+  /* 동그라미가 문이라는 걸 한 번만 알려 줍니다. 계속 움직이면 성가십니다. */
+  const av = document.getElementById('muiAv');
+  if(av && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    av.classList.add('peek');
+    setTimeout(() => av.classList.remove('peek'), 1100);
+  }
   /* 곁길이라 목차 위 어느 줄도 가리키지 않습니다. 배와 페이저를 숨깁니다 */
   hl.style.opacity = 0; ship.style.opacity = 0;
   document.querySelector('.pager').style.display = 'none';
@@ -2324,6 +2386,31 @@ function showMe(push = true){
   meSec.querySelector('h2').focus();
 }
 ucBtn.addEventListener('click', () => showMe());
+
+/* ── 무이 쪽 ──
+   쓴 사람과 같은 곁길입니다. 목차에 없고, 페이저도 서지 않습니다. */
+function showMui(push = true){
+  allPages.forEach(p => p.classList.remove('on'));
+  muiSec.classList.add('on');
+  rows.forEach(r => { r.classList.remove('cur'); r.setAttribute('aria-current', 'false'); });
+  cbSec.textContent = '무이'; cbPage.textContent = '';
+  crumb.classList.add('solo');
+  prevB.disabled = nextB.disabled = tPrev.disabled = tNext.disabled = true;
+  prevT.textContent = nextT.textContent = '';
+  content.scrollTop = 0;
+  if(push) history.pushState(null, '', '#mui'); else history.replaceState(null, '', '#mui');
+  side.classList.remove('open'); scrim.classList.remove('on');
+  mbtn.setAttribute('aria-expanded', 'false');
+  live.textContent = '무이';
+  buildCats();
+  hl.style.opacity = 0; ship.style.opacity = 0;
+  document.querySelector('.pager').style.display = 'none';
+  muiSec.querySelector('h2').setAttribute('tabindex', '-1');
+  muiSec.querySelector('h2').focus();
+}
+document.getElementById('muiAv').addEventListener('click', () => showMui());
+document.getElementById('muiDoor').addEventListener('click', () => showMui());
+document.getElementById('muiBack').addEventListener('click', () => showMe());
 
 /* ── 끌어 넘기는 무한 캐러셀 ──
    카드 목록을 세 벌 이어 붙이고, 한 벌만큼 밀리면 되감습니다.
@@ -2592,7 +2679,7 @@ function drawReceipt(){
   if(imgH){ x.drawImage(rcpImg, 24, y, 336, imgH); y += imgH + 42; }
 
   F(700, 21); ctr('무이네 편의점', y); y += 15;
-  F(400, 10); ctr('M U I   C O N V E N I E N C E', y); y += 22;
+  F(400, 10); ctr("M U I ' S   C O N V E N I E N C E   S T O R E", y); y += 22;
   line(y); y += 20;
 
   F(400, 12);
@@ -2610,7 +2697,7 @@ function drawReceipt(){
   y -= 6; line(y); y += 24;
 
   F(700, 16); L('합    계', y); R(won(sum) + '원', y); y += 22;
-  F(400, 12); L('받은 돈  집사 카드', y); R(won(paid) + '원', y); y += 18;
+  F(400, 12); L('받은 돈', y); R(won(paid) + '원', y); y += 18;
   L('거스름돈', y); R(won(paid - sum) + '원', y); y += 14;
   line(y); y += 22;
 
@@ -2890,6 +2977,7 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
 
 const h0 = location.hash.slice(1);
 if(h0 === 'me'){ show(0, false); showMe(false); }
+else if(h0 === 'mui'){ show(0, false); showMui(false); }
 else { const s = order.indexOf(h0); show(s >= 0 ? s : 0, false); }
 </script>
 </body>
