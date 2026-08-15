@@ -208,7 +208,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 /* 귀는 삼각형 둘이 아니라 하나의 path 입니다.
    밑동을 머리 원호 위에 앉히고 꼭지를 둥글려야 뿔이 아니라 고양이로 읽힙니다.
    여섯 벌을 나란히 그려 놓고 고른 모양입니다. */
-.me-av .ears{position:absolute;left:0;top:-18px;width:64px;height:32px;
+.me-av .ears{position:absolute;left:0;top:-13px;width:64px;height:27px;
   fill:var(--ink);pointer-events:none;
   transform-origin:bottom center;transform:scaleY(0);
   transition:transform 260ms var(--out)}
@@ -222,12 +222,19 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   transition:opacity 190ms ease,transform 260ms var(--out)}
 .me-av:hover .gl,.me-av:focus-visible .gl,.me-av.peek .gl{opacity:0;transform:scale(.72)}
 .me-av:hover .face,.me-av:focus-visible .face,.me-av.peek .face{opacity:1;transform:none}
-.me-av:hover,.me-av:focus-visible{transform:rotate(-4deg)}
+/* 한쪽으로만 기울면 굳은 것처럼 보입니다. 왼쪽으로 갔다 오른쪽으로 오고
+   제자리에 섭니다. 한 번만 돌고 멈춥니다 — 계속 흔들리면 성가십니다.
+   rotate 를 transform 과 따로 씁니다. 눌렀을 때의 축소와 겹치지 않게. */
+@keyframes tilt{
+  0%{rotate:0deg} 22%{rotate:-6deg} 55%{rotate:4.5deg}
+  78%{rotate:-2deg} 100%{rotate:0deg}
+}
+.me-av:hover,.me-av:focus-visible{animation:tilt 620ms var(--out)}
 .me-av:hover .ears,.me-av:focus-visible .ears,.me-av.peek .ears{transform:scaleY(1)}
 .me-av:active{transform:scale(.95)}
 @media(prefers-reduced-motion:reduce){
   .me-av,.me-av .ears,.me-av .gl,.me-av .face{transition:none}
-  .me-av:hover,.me-av:focus-visible{transform:none}
+  .me-av:hover,.me-av:focus-visible{animation:none}
 }
 
 /* 귀를 못 보는 사람도 있습니다 — 손가락으로 보는 화면에는 hover 가 없습니다.
@@ -500,7 +507,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
 /* 붙어 있으면 제목·꼬리표·본문이 한 덩어리로 읽힙니다 */
-.chips+.lead,.chips+p{margin-top:22px}
+.chips+.lead,.chips+p{margin-top:30px}
 .chip{font-family:var(--mono);font-size:var(--t-ui);color:var(--ink-2);background:var(--shell);
   box-shadow:var(--shadow-hair);border-radius:20px;padding:3px 10px}
 .chip.free{color:var(--green);background:var(--green-soft);box-shadow:none}
@@ -1062,7 +1069,7 @@ a.cta{text-decoration:none}
   <!-- 1-1 -->
   <section id="p1" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">1 · 안내문</div><h2>Python으로 업무 자동화<span class="ft">ft. PyCharm</span></h2></div></div>
-    <div class="chips"><span class="chip">#Python</span><span class="chip">#PyCharm</span><span class="chip">#2024.07~</span><span class="chip free">#무료</span></div>
+    <div class="chips"><span class="chip">#2024.07~</span><span class="chip">#Python</span><span class="chip">#PyCharm</span><span class="chip free">#무료</span></div>
     <p class="lead">내 컴퓨터에 있는 파일, 그리고 시스템 화면 안에만 있는 데이터를 다룹니다. <strong>깔아야 할 것이 있는 유일한 장</strong>입니다.</p>
 
     <div class="note">바이브 코딩 순서는 <strong>개요</strong>에 정리해 뒀습니다. 여기서는 <strong>Python으로 시작할 때만 필요한 것</strong>을 적습니다.</div>
@@ -1106,7 +1113,7 @@ a.cta{text-decoration:none}
   <!-- 1-2 -->
   <section id="p2" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-1 · 예시 1</div><h2>PDF 편집·병합</h2></div></div>
-    <div class="chips"><span class="chip">#PyPDF</span><span class="chip">#2024.07</span><span class="chip">#50기 선발</span></div>
+    <div class="chips"><span class="chip">#2024.07</span><span class="chip">#PyPDF</span><span class="chip">#50기 선발</span></div>
     <p class="lead">지원 서류는 사람별로 들어오는데, 심사는 사람별로 한 파일을 봅니다. 그 사이를 손으로 메우고 있었습니다.</p>
 
     <div class="steps">
@@ -1176,7 +1183,7 @@ a.cta{text-decoration:none}
             <div class="ann-cap">사람이 열 개를 골라 붙이던 자리를, <strong>파일명 규칙 하나</strong>가 대신합니다.</div>
           </div>
 
-          <p>순서 규칙은 코드 안에 쓰지 않고 <strong>표로 뺐습니다.</strong> 규칙이 바뀌는 것은 코드가 아니라 업무이기 때문입니다.</p>
+          <p>순서 규칙은 코드 안에 쓰지 않고 <strong>표로 뺐습니다.</strong> 규칙이 바뀌는 것은 코드가 아니라 업무이기 때문입니다. 다음에 손댈 곳은 <strong>읽어올 폴더, 저장할 폴더, 이 표 한 장</strong>이 전부입니다.</p>
 
           <div class="ann">
             <svg viewBox="0 0 660 262" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -1235,8 +1242,6 @@ a.cta{text-decoration:none}
             </svg>
             <div class="ann-cap">순서가 바뀌면 <strong>표의 줄만 옮깁니다.</strong> 코드 본문은 건드리지 않습니다.</div>
           </div>
-
-          <div class="fix" data-fix="p2"></div>
         </div>
       </div>
 
@@ -1269,7 +1274,7 @@ a.cta{text-decoration:none}
   <!-- 1-3 -->
   <section id="p3" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-2 · 예시 2</div><h2>엑셀 나누기·합치기</h2></div></div>
-    <div class="chips"><span class="chip">#openpyxl</span><span class="chip">#pandas</span><span class="chip">#2024.07</span></div>
+    <div class="chips"><span class="chip">#2024.07</span><span class="chip">#openpyxl</span><span class="chip">#pandas</span></div>
 
     <div class="gain">
       <div class="cell"><div class="lbl">나누기 · 손으로</div><div class="val">3~4분</div><div class="unit">심사표 한 장당</div></div>
@@ -1356,7 +1361,7 @@ a.cta{text-decoration:none}
   <!-- 1-5 -->
   <section id="p5" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-3 · 예시 3</div><h2>개인별 맞춤 메일 발송</h2></div></div>
-    <div class="chips"><span class="chip">#python-docx</span><span class="chip">#smtplib</span><span class="chip">#2024.07</span><span class="chip free">#소스 공개</span></div>
+    <div class="chips"><span class="chip">#2024.07</span><span class="chip">#python-docx</span><span class="chip">#smtplib</span><span class="chip free">#소스 공개</span></div>
 
     <div class="gain">
       <div class="cell"><div class="lbl">손으로</div><div class="val">2~3분</div><div class="unit">한 통당</div></div>
@@ -1397,7 +1402,7 @@ a.cta{text-decoration:none}
   <!-- 1-4 -->
   <section id="p4" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-4 · 예시 4</div><h2>웹 조작<span class="ft">업로드 · 다운로드 · 스크래핑</span></h2></div></div>
-    <div class="chips"><span class="chip">#Selenium</span><span class="chip">#gspread</span><span class="chip">#2024.08~2025.07</span></div>
+    <div class="chips"><span class="chip">#2024.08~2025.07</span><span class="chip">#Selenium</span><span class="chip">#gspread</span></div>
 
     <div class="gain">
       <div class="cell"><div class="lbl">사람이 하면</div><div class="val">6~8시간</div><div class="unit">지원서 수백 건 저장</div></div>
@@ -1432,7 +1437,7 @@ a.cta{text-decoration:none}
   <!-- 1-4-1 · 웹 조작 -->
   <section id="p4a" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-4-1 · 웹 조작</div><h2>자료 업로드</h2></div></div>
-    <div class="chips"><span class="chip">#Selenium</span><span class="chip">#2024.07</span><span class="chip">#2026 성공</span><span class="chip todo">#작성 필요</span></div>
+    <div class="chips"><span class="chip">#2024.07</span><span class="chip">#Selenium</span><span class="chip">#2026 성공</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">명단 엑셀을 읽어 평가위원 계정을 시스템에 등록합니다.</p>
     <div class="kv">
       <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
@@ -1444,7 +1449,7 @@ a.cta{text-decoration:none}
   <!-- 1-4-2 · 웹 조작 -->
   <section id="p4b" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-4-2 · 웹 조작</div><h2>자료 다운로드</h2></div></div>
-    <div class="chips"><span class="chip">#Selenium</span><span class="chip">#2024.07</span><span class="chip">#2026 성공</span><span class="chip todo">#작성 필요</span></div>
+    <div class="chips"><span class="chip">#2024.07</span><span class="chip">#Selenium</span><span class="chip">#2026 성공</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">지원서를 PDF로 저장해 전공별로 분류합니다.</p>
     <div class="kv">
       <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
@@ -1456,7 +1461,7 @@ a.cta{text-decoration:none}
   <!-- 1-4-3 · 웹 조작 -->
   <section id="p4c" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-4-3 · 웹 조작</div><h2>웹 스크래핑</h2></div></div>
-    <div class="chips"><span class="chip">#Selenium</span><span class="chip">#gspread</span><span class="chip">#2024.12</span><span class="chip todo">#작성 필요</span></div>
+    <div class="chips"><span class="chip">#2024.12</span><span class="chip">#Selenium</span><span class="chip">#gspread</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">전자결재 지출 전표를 읽어 Google Sheets 원장에 쌓습니다.</p>
     <div class="kv">
       <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
@@ -1468,7 +1473,7 @@ a.cta{text-decoration:none}
   <!-- 1-5 -->
   <section id="p6" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-5 · 예시 5</div><h2>개인정보 마스킹</h2></div></div>
-    <div class="chips"><span class="chip">#pdfplumber</span><span class="chip">#PyInstaller</span><span class="chip">#2026.07~</span><span class="chip free">#무료</span><span class="chip free">#소스 공개</span></div>
+    <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#pdfplumber</span><span class="chip">#PyInstaller</span><span class="chip free">#무료</span><span class="chip free">#소스 공개</span></div>
 
     <div class="stats">
       <div class="stat"><div class="b"><div class="l">탐지 항목</div><div class="n">34<span class="u">종</span></div></div><div class="f">3등급 · 민감정보 별도</div></div>
@@ -1523,7 +1528,7 @@ a.cta{text-decoration:none}
   <!-- 2-1 -->
   <section id="g1" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">2 · 안내문</div><h2>Apps Script로 업무 자동화<span class="ft">ft. Google Apps Script</span></h2></div></div>
-    <div class="chips"><span class="chip">#AppsScript</span><span class="chip">#설치 0개</span><span class="chip">#2026.02</span><span class="chip free">#무료</span></div>
+    <div class="chips"><span class="chip">#2026.02</span><span class="chip">#AppsScript</span><span class="chip">#설치 0개</span><span class="chip free">#무료</span></div>
     <p class="lead">후기와 영수증을 수합하여 실비 지급하는 업무에 유용합니다. 설치할 것이 없고 이미 쓰는 구글 계정에서 바로 시작합니다.</p>
 
     <div class="tw"><table>
@@ -1755,7 +1760,7 @@ a.cta{text-decoration:none}
   <!-- 3-1 -->
   <section id="w1" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">3 · 안내문</div><h2>서버 없이 웹앱 개발·배포<span class="ft">ft. Supabase · Netlify · Vercel · GitHub</span></h2></div></div>
-    <div class="chips"><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#Vercel</span><span class="chip">#GitHub</span><span class="chip">#2026.07~</span><span class="chip free">#무료 티어</span></div>
+    <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#Vercel</span><span class="chip">#GitHub</span><span class="chip free">#무료 티어</span></div>
     <p class="lead">사용자가 각자 로그인해서 반응하는 웹앱이 필요할 때 씁니다. 데이터베이스와 접속 주소가 필요합니다.</p>
 
     <div class="panel">
@@ -1915,7 +1920,7 @@ a.cta{text-decoration:none}
   <!-- 3-2-2 · T-LAB -->
   <section id="w3b" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">3-2-2 · T-LAB</div><h2>플랫폼 구조</h2></div></div>
-    <div class="chips"><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#2026.07~</span><span class="chip todo">#작성 필요</span></div>
+    <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">인재 프로필 · 동문 네트워크 · 커피챗 요청이 어떻게 맞물리는지.</p>
     <div class="kv">
       <div class="r"><div class="k">상황</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
@@ -1937,7 +1942,7 @@ a.cta{text-decoration:none}
   <!-- 4 -->
   <section id="f1" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">맺음</div><h2>맺음말</h2></div></div>
-    <div class="chips"><span class="chip hold">#보류</span><span class="chip">#2026.07</span><span class="chip todo">#다시 쓸 곳</span></div>
+    <div class="chips"><span class="chip">#2026.07</span><span class="chip hold">#보류</span><span class="chip todo">#다시 쓸 곳</span></div>
     <p class="lead">재단에는 여러 해에 걸쳐 쌓인 유학수기가 있습니다. AI로 분석하면 선발을 돕는 도구를, 나아가 유학을 준비하는 인재림·문우림 수료생에게 상담을 해주는 도구를 만들 수 있지 않을까 생각했습니다.</p>
     <h3>기술적으로는 여기까지 해봤습니다</h3>
     <p>스캔한 수기에서 글자를 뽑아내고, 이름·연락처를 자동으로 지웠습니다. 한 편에 3~5분 걸리던 일이 20~40초로 줄었습니다.</p>
@@ -1975,7 +1980,7 @@ a.cta{text-decoration:none}
   <!-- 부록 A -->
   <section id="apxa" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">부록 A</div><h2>Git과 GitHub</h2></div></div>
-    <div class="chips"><span class="chip">#Git</span><span class="chip">#GitHub</span><span class="chip todo">#작성 필요</span></div>
+    <div class="chips"><span class="chip">#GitHub</span><span class="chip">#Git</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">고쳤다가 망가뜨려도 되돌릴 수 있게 만드는 일. AI를 쓰든 안 쓰든 필요합니다.</p>
     <div class="kv">
       <div class="r"><div class="k">무엇</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
@@ -1998,7 +2003,7 @@ a.cta{text-decoration:none}
   <!-- B-1 -->
   <section id="apxb1" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">B-1 · 넓히기</div><h2>스킬</h2></div></div>
-    <div class="chips"><span class="chip">#skills</span><span class="chip">#GitHub</span><span class="chip todo">#작성 필요</span></div>
+    <div class="chips"><span class="chip">#GitHub</span><span class="chip">#skills</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">받아서 폴더에 넣으면 끝입니다. 코드가 아니라 글로 된 지시문입니다.</p>
     <div class="kv">
       <div class="r"><div class="k">무엇</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
@@ -2020,7 +2025,7 @@ a.cta{text-decoration:none}
   <!-- B-3 -->
   <section id="apxb3" class="page">
     <div class="phead"><div class="ttl"><div class="eyebrow">B-3 · 넓히기</div><h2>커넥터</h2></div></div>
-    <div class="chips"><span class="chip">#MCP</span><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#Slack</span><span class="chip">#Gmail</span><span class="chip todo">#작성 필요</span></div>
+    <div class="chips"><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#MCP</span><span class="chip">#Slack</span><span class="chip">#Gmail</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">바깥 서비스에 연결하는 통로. 내가 만든 것에 붙이는 것과, 회사 것에 붙이는 것은 성격이 다릅니다.</p>
     <div class="kv">
       <div class="r"><div class="k">무엇</div><div class="v todo-v">— 채워 넣을 자리 —</div></div>
@@ -2033,7 +2038,7 @@ a.cta{text-decoration:none}
   <!-- 쓴 사람 · 목차 밖 페이지 -->
   <section id="me" class="page">
     <div class="me-head">
-      <button class="me-av" id="muiAv" aria-label="무이 보기"><span class="gl">오</span><svg class="face" aria-hidden="true" viewBox="0 0 64 64"><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="22.5" cy="27" r="3.1"/><circle cx="41.5" cy="27" r="3.1"/><path d="M27.4,40.4 L32,33.8 L36.6,40.4"/><path d="M6.5,29.5 L17.5,31.4M5.8,35.4 L17.5,35.4M6.5,41.3 L17.5,38.4"/><path d="M57.5,29.5 L46.5,31.4M58.2,35.4 L46.5,35.4M57.5,41.3 L46.5,38.4"/></g><circle cx="32" cy="31.4" r="2.1" fill="currentColor"/></svg><svg class="ears" aria-hidden="true" viewBox="0 -18 64 32"><path d="M6.0,13.3 L12.0,-10.1 Q13.0,-14.0 16.1,-11.5 L30.0,0.1 Z M58.0,13.3 L52.0,-10.1 Q51.0,-14.0 47.9,-11.5 L34.0,0.1 Z"/></svg></button>
+      <button class="me-av" id="muiAv" aria-label="무이 보기"><span class="gl">오</span><svg class="face" aria-hidden="true" viewBox="0 0 64 64"><circle cx="22.5" cy="26.6" r="2.6" fill="currentColor"/><circle cx="41.5" cy="26.6" r="2.6" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M27.4,40.4 L32,33.8 L36.6,40.4"/><path d="M6.5,29.5 L17.5,31.4M5.8,35.4 L17.5,35.4M6.5,41.3 L17.5,38.4"/><path d="M57.5,29.5 L46.5,31.4M58.2,35.4 L46.5,35.4M57.5,41.3 L46.5,38.4"/></g><circle cx="32" cy="31.6" r="1.7" fill="currentColor"/></svg><svg class="ears" aria-hidden="true" viewBox="0 -13 64 27"><path d="M10.0,8.8 L15.0,-6.0 Q16.0,-9.0 18.6,-7.2 L29.0,0.1 Z M54.0,8.8 L49.0,-6.0 Q48.0,-9.0 45.4,-7.2 L35.0,0.1 Z"/></svg></button>
       <div class="me-id">
         <div class="eyebrow">쓴 사람</div>
         <h2>오다영</h2>
