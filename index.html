@@ -766,10 +766,17 @@ a.cta{text-decoration:none}
    이 크기를 쓰는 쪽에만 .doc 을 답니다. ── */
 /* 한글은 어절 안에서 끊으면 안 됩니다. keep-all 이 없으면
    "멀쩡히" 가 "멀 / 쩡히" 로 갈라져 글자가 잘린 것처럼 보입니다. */
-.doc .lead,.doc p,.doc li,.doc .kv .v,.doc .note,.doc .tw td{font-size:11pt;line-height:1.66;
-  word-break:keep-all;overflow-wrap:break-word}
-/* 표 머리글은 다른 표와 같은 작은 대문자 라벨을 그대로 씁니다 */
-.doc h3{font-size:12pt}
+.doc .lead,.doc p,.doc li,.doc .kv .v,.doc .note,.doc .tw td,
+.doc .box p,.doc .tip,.doc .step,.doc .qa,.doc .ask p,.doc .ask li,
+.doc .stat .f,.doc .lnk .b strong,
+.doc .gain-cap,.doc .dg-cap,.doc .ann-cap,.doc .pre-cap{
+  font-size:11pt;line-height:1.66;word-break:keep-all;overflow-wrap:break-word}
+/* 소제목은 12pt. 표 머리글과 라벨은 작은 대문자 그대로 둡니다 —
+   그건 제목이 아니라 칸 이름이라 커지면 표가 아니라 목록으로 읽힙니다. */
+.doc h3,.doc .box .t,.doc .qt,.doc .panel-h .t,.doc .ask h3{font-size:12pt}
+/* 상자 이름은 대문자 라벨이었습니다. 12pt 로 키우면 대문자가 소리를 지릅니다 */
+.doc .box .t{letter-spacing:-.01em;text-transform:none;color:var(--ink);font-weight:660}
+.doc .ask h3{line-height:1.5}
 /* 값·이름은 글자를 키우지 않고 조각으로 감쌉니다.
    본문 안에서 크기가 들쭉날쭉하면 줄 간격이 흔들립니다.
    색은 그림과 같은 규칙 — 기본은 사실, 초록은 코드가 하는 일, 주황은 깨지는 곳. */
@@ -1071,13 +1078,13 @@ a.cta{text-decoration:none}
   </section>
 
   <!-- 개요 -->
-  <section id="intro" class="page">
+  <section id="intro" class="page doc">
     <div class="phead">
       <div class="ttl"><div class="eyebrow">서문</div><h2>개요<span class="ft">무엇을 어떤 도구로 했나</span></h2></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="b"><div class="l">익힌 도구</div><div class="n">3<span class="u">개</span></div></div><div class="f">Python · Apps Script · Supabase</div></div>
-      <div class="stat"><div class="b"><div class="l">자동화한 업무</div><div class="n">9<span class="u">가지</span></div></div><div class="f">예시 9건 · 2024.07 – 2026.08</div></div>
+      <div class="stat"><div class="b"><div class="l">자동화한 업무</div><div class="n">12<span class="u">가지</span></div></div><div class="f">예시 12건 · 2024.07 – 2026.08</div></div>
       <div class="stat pos"><div class="b"><div class="l">2년간 든 비용</div><div class="n">0<span class="u">원</span></div></div><div class="f">전부 무료 플랜</div></div>
     </div>
 
@@ -1111,7 +1118,7 @@ a.cta{text-decoration:none}
   </section>
 
   <!-- 1-1 -->
-  <section id="p1" class="page">
+  <section id="p1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1 · 안내문</div><h2>Python으로 업무 자동화<span class="ft">ft. PyCharm</span></h2></div></div>
     <div class="chips"><span class="chip">#2024.07~</span><span class="chip">#Python</span><span class="chip">#PyCharm</span><span class="chip free">#무료</span></div>
     <p class="lead">내 컴퓨터에 있는 파일, 그리고 시스템 화면 안에만 있는 데이터를 다룹니다. <strong>깔아야 할 것이 있는 유일한 장</strong>입니다.</p>
@@ -1807,7 +1814,7 @@ a.cta{text-decoration:none}
   </section>
 
   <!-- 2-1 -->
-  <section id="g1" class="page">
+  <section id="g1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">2 · 안내문</div><h2>Apps Script로 업무 자동화<span class="ft">ft. Google Apps Script</span></h2></div></div>
     <div class="chips"><span class="chip">#2026.02</span><span class="chip">#AppsScript</span><span class="chip">#설치 0개</span><span class="chip free">#무료</span></div>
     <p class="lead">후기와 영수증을 수합하여 실비 지급하는 업무에 유용합니다. 설치할 것이 없고 이미 쓰는 구글 계정에서 바로 시작합니다.</p>
@@ -2134,7 +2141,7 @@ a.cta{text-decoration:none}
   </section>
 
   <!-- 3-1 -->
-  <section id="w1" class="page">
+  <section id="w1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">3 · 안내문</div><h2>서버 없이 웹앱 개발·배포<span class="ft">ft. Supabase · Netlify · Vercel · GitHub</span></h2></div></div>
     <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#Vercel</span><span class="chip">#GitHub</span><span class="chip free">#무료 티어</span></div>
     <p class="lead">사용자가 각자 로그인해서 반응하는 웹앱이 필요할 때 씁니다. 데이터베이스와 접속 주소가 필요합니다.</p>
@@ -2475,7 +2482,7 @@ a.cta{text-decoration:none}
   </section>
 
   <!-- 4 -->
-  <section id="f1" class="page">
+  <section id="f1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">맺음</div><h2>맺음말</h2></div></div>
     <div class="chips"><span class="chip">#2026.07</span><span class="chip hold">#보류</span><span class="chip todo">#다시 쓸 곳</span></div>
     <p class="lead">재단에는 여러 해에 걸쳐 쌓인 유학수기가 있습니다. AI로 분석하면 선발을 돕는 도구를, 나아가 유학을 준비하는 인재림·문우림 수료생에게 상담을 해주는 도구를 만들 수 있지 않을까 생각했습니다.</p>
