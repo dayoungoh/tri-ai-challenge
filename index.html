@@ -2592,6 +2592,7 @@ function showMe(push = true){
   side.classList.remove('open'); scrim.classList.remove('on');
   mbtn.setAttribute('aria-expanded', 'false');
   live.textContent = '쓴 사람';
+  if(window.__rotOff) window.__rotOff();
   if(window.__gbLoad) window.__gbLoad();
   /* 동그라미가 문이라는 걸 한 번만 알려 줍니다. 계속 움직이면 성가십니다. */
   const av = document.getElementById('muiAv');
@@ -2622,6 +2623,7 @@ function showMui(push = true){
   side.classList.remove('open'); scrim.classList.remove('on');
   mbtn.setAttribute('aria-expanded', 'false');
   live.textContent = '무이';
+  if(window.__rotOff) window.__rotOff();
   buildCats();
   hl.style.opacity = 0; ship.style.opacity = 0;
   document.querySelector('.pager').style.display = 'none';
@@ -2633,8 +2635,9 @@ function showMui(push = true){
   const av = document.getElementById('muiAv');
   const pick = () => av.style.setProperty('--tilt',
     (Math.random() < .5 ? -1 : 1) * (5 + Math.random() * 3).toFixed(1) + 'deg');
-  av.addEventListener('pointerenter', pick);
-  av.addEventListener('focus', pick);
+  pick();                                   /* 첫 각도는 미리 정해 둡니다 */
+  av.addEventListener('pointerleave', pick);  /* 다음 각도도 미리 */
+  av.addEventListener('blur', pick);
 })();
 document.getElementById('muiAv').addEventListener('click', () => showMui());
 document.getElementById('muiDoor').addEventListener('click', () => showMui());
