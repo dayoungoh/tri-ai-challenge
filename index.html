@@ -31,6 +31,8 @@
   --hover:rgb(26 26 26/.045);
   --green:#146d34; --green-soft:#e9f4ec;
   --amber:#a16207; --amber-soft:#fdf6e3;
+  /* 비고 표시에만 씁니다. 흰 바탕에서 5.9:1 — 본문 글자로 써도 되는 짙기입니다 */
+  --red:#b3261e;   --red-soft:#fdeceb;
   --shadow-hair:0 0 0 1px rgb(26 26 26/.08);
   --shadow-card:0 0 0 1px rgb(26 26 26/.07);
   --shadow-lift:0 0 0 1px rgb(26 26 26/.08), 0 1px 2px rgb(26 26 26/.05);
@@ -744,8 +746,8 @@ a.cta{text-decoration:none}
   font-family:var(--mono);font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
 .stp .t{margin-top:8px;font-size:12pt;font-weight:660;color:var(--ink);letter-spacing:-.01em}
 /* 비고는 차례의 한 칸이 아닙니다. 번호 대신 다른 표시를 답니다 */
-.stp>.hd .n.alt{background:var(--amber-soft);color:var(--amber);
-  box-shadow:inset 0 0 0 1px rgb(161 98 7/.28)}
+.stp>.hd .n.alt{background:var(--red-soft);color:var(--red);
+  box-shadow:inset 0 0 0 1px rgb(179 38 30/.3)}
 .stp>.hd .n.alt+.t{color:var(--ink-2)}
 .stp>.bd>*:first-child{margin-top:0}
 @media(max-width:1000px){
