@@ -215,17 +215,22 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 /* 오 → 고양이.
    ㅇ 자리에 코가 앉고, 그 아래 ㅗ 는 ㅅ 모양 입이 됩니다.
    눈과 수염은 원래 글자에 없던 것이라 가늘게만 얹습니다. */
-.me-av .gl{position:relative;z-index:1;
-  transition:opacity 170ms ease,transform 220ms var(--out)}
+/* 글자와 얼굴은 마우스를 받지 않습니다.
+   받으면 얼굴 위로 커서가 지날 때마다 pointerenter 가 다시 나서
+   기울기가 새로 뽑히고, 그래서 코·입·수염이 떨렸습니다. */
+.me-av .gl{position:relative;z-index:1;pointer-events:none;
+  transition:opacity 170ms ease}
 .me-av .face{position:absolute;inset:0;width:100%;height:100%;color:var(--shell);
-  opacity:0;transform:scale(.86);
-  transition:opacity 190ms ease,transform 260ms var(--out)}
-.me-av:hover .gl,.me-av:focus-visible .gl,.me-av.peek .gl{opacity:0;transform:scale(.72)}
-.me-av:hover .face,.me-av:focus-visible .face,.me-av.peek .face{opacity:1;transform:none}
+  pointer-events:none;opacity:0;
+  shape-rendering:geometricPrecision;
+  transition:opacity 190ms ease}
+.me-av:hover .gl,.me-av:focus-visible .gl,.me-av.peek .gl{opacity:0}
+.me-av:hover .face,.me-av:focus-visible .face,.me-av.peek .face{opacity:1}
 /* 갸웃하고 멈춥니다. 어느 쪽으로 갸웃할지는 그때그때 다릅니다 —
    방향은 스크립트가 --tilt 에 넣어 줍니다.
    rotate 를 transform 과 따로 씁니다. 눌렀을 때의 축소와 겹치지 않게. */
-.me-av{transition:transform 260ms var(--out),rotate 300ms var(--out)}
+.me-av{transition:transform 260ms var(--out),rotate 300ms var(--out);
+  will-change:rotate;backface-visibility:hidden}
 .me-av:hover,.me-av:focus-visible{rotate:var(--tilt,-6deg)}
 .me-av:hover .ears,.me-av:focus-visible .ears,.me-av.peek .ears{transform:scaleY(1)}
 .me-av:active{transform:scale(.95)}
@@ -422,21 +427,25 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gb-list{display:flex;flex-direction:column;
   max-height:min(420px,58vh);overflow-y:auto;padding:6px 0}
 .gb-list:empty{display:none}
+/* 창 안의 글자는 두 크기만 씁니다 — 본문은 --t-ui, 곁말은 --t-micro.
+   앞서는 목록만 --t-sm 이라 쓰는 칸보다 커 보였습니다. */
 .gb-item{display:flex;gap:7px;padding:5px 13px;
-  font-size:var(--t-sm);line-height:1.62;color:var(--ink-2)}
+  font-size:var(--t-ui);line-height:1.65;color:var(--ink-2)}
 .gb-item .dot{flex:0 0 auto;color:var(--ink-3);user-select:none}
 .gb-item .ln{min-width:0}
 .gb-item .bd{word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap}
 .gb-item .nm{font-weight:660;white-space:nowrap}
+.gb-item .bd{font-size:var(--t-ui)}
 .gb-item time{margin-left:6px;font-family:var(--mono);font-size:var(--t-micro);
   color:var(--ink-3);white-space:nowrap}
 .gb-item:hover{background:var(--inset)}
 
 .gb-h{display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:8px 13px;border-top:1px solid var(--line)}
-.gb-h .t{font-size:var(--t-micro);color:var(--ink-3)}
-.gb-h .d{font-size:var(--t-micro);color:var(--ink-3);font-variant-numeric:tabular-nums}
-.gb-msg{font-size:var(--t-micro);line-height:1.5;color:var(--ink-3)}
+.gb-h .t,.gb-h .d,.gb-msg{font-size:var(--t-micro);line-height:1.5;color:var(--ink-3)}
+.gb-h .d{font-variant-numeric:tabular-nums}
+/* 알림은 가운데 떠 있지 않고 이름표 자리를 잠깐 대신합니다 */
+.gb-h .t[hidden],.gb-msg:empty{display:none}
 .gb-msg.err{color:var(--amber)}
 .gb-msg.ok{color:var(--green)}
 .gb-empty{padding:26px 16px;text-align:center;font-size:var(--t-sm);color:var(--ink-3)}
@@ -575,7 +584,8 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 .kv .k{font-size:var(--t-micro);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);padding-top:5px}
 .kv .v{color:var(--ink-2);font-size:var(--t-body);line-height:1.62}
 
-table{width:100%;border-collapse:collapse;font-size:var(--t-sm)}
+table{width:100%;border-collapse:collapse;font-size:var(--t-sm);
+  font-variant-numeric:tabular-nums}
 .tw{margin-top:16px;background:var(--shell);border-radius:12px;box-shadow:var(--shadow-card);overflow:hidden}
 .tw table{margin:0}
 th,td{text-align:left;padding:10px 16px;border-bottom:1px solid var(--line-2)}
@@ -759,9 +769,10 @@ a.cta{text-decoration:none}
    이 크기를 쓰는 쪽에만 .doc 을 답니다. ── */
 /* 한글은 어절 안에서 끊으면 안 됩니다. keep-all 이 없으면
    "멀쩡히" 가 "멀 / 쩡히" 로 갈라져 글자가 잘린 것처럼 보입니다. */
-.doc .lead,.doc p,.doc li,.doc .kv .v,.doc .note,.doc .tbl td{font-size:11pt;line-height:1.66;
+.doc .lead,.doc p,.doc li,.doc .kv .v,.doc .note,.doc .tw td{font-size:11pt;line-height:1.66;
   word-break:keep-all;overflow-wrap:break-word}
-.doc h3,.doc .kv .k,.doc .tbl th{font-size:12pt}
+/* 표 머리글은 다른 표와 같은 작은 대문자 라벨을 그대로 씁니다 */
+.doc h3{font-size:12pt}
 /* 값·이름은 글자를 키우지 않고 조각으로 감쌉니다.
    본문 안에서 크기가 들쭉날쭉하면 줄 간격이 흔들립니다.
    색은 그림과 같은 규칙 — 기본은 사실, 초록은 코드가 하는 일, 주황은 깨지는 곳. */
@@ -784,15 +795,6 @@ a.cta{text-decoration:none}
 .doc strong{font-weight:660}
 .doc .kv .k{font-weight:600}
 
-/* 잰 값을 늘어놓는 표. "손으로 → 코드로" 같은 말 대신 항목과 수치만 둡니다 */
-.tbl{width:100%;border-collapse:collapse;margin-top:18px}
-.tbl th,.tbl td{text-align:left;padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
-.tbl thead th{border-top:0;padding-bottom:7px;font-size:var(--t-micro);font-weight:640;
-  letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
-.tbl td:first-child{color:var(--ink-2);white-space:nowrap}
-.tbl td+td{font-variant-numeric:tabular-nums;color:var(--ink)}
-.tbl td.aft{font-weight:640}
-@media(max-width:620px){ .tbl th,.tbl td{padding:9px 8px} }
 
 /* ── 손글씨 주석 (.ann) ──
    앞의 .dg가 "구조를 그리는" 도표라면, 이쪽은 "실물을 가리키는" 주석입니다.
@@ -1282,14 +1284,12 @@ a.cta{text-decoration:none}
       <div class="stp">
         <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
         <div class="bd">
-          <table class="tbl">
-            <thead><tr><th>잰 것</th><th>이전</th><th>이후</th></tr></thead>
-            <tbody>
-              <tr><td>지원자 한 명</td><td>4~8분</td><td class="aft">1~3초</td></tr>
-              <tr><td>수백 명 전체</td><td>며칠</td><td class="aft">10분 이내</td></tr>
-              <tr><td>순서 규칙이 적힌 곳</td><td>사람의 기억</td><td class="aft">표 한 장</td></tr>
-            </tbody>
-          </table>
+          <div class="tw"><table>
+            <tr><th>잰 것</th><th>이전</th><th>이후</th></tr>
+            <tr><td>지원자 한 명</td><td>4~8분</td><td><strong>1~3초</strong></td></tr>
+            <tr><td>수백 명 전체</td><td>며칠</td><td><strong>10분 이내</strong></td></tr>
+            <tr><td>순서 규칙이 적힌 곳</td><td>사람의 기억</td><td><strong>표 한 장</strong></td></tr>
+          </table></div>
           <p>순서와 쪽수 규칙이 한 군데에만 있으니, 매번 같은 결과가 나옵니다. 규칙이 바뀌면 표를 고칩니다.</p>
         </div>
       </div>
@@ -2108,7 +2108,7 @@ a.cta{text-decoration:none}
       <div class="gb-empty" id="gbEmpty" hidden>불러오는 중…</div>
 
       <div class="gb-h">
-        <span class="t">방명록</span>
+        <span class="t" id="gbLabel">방명록</span>
         <span class="gb-msg" id="gbMsg" role="status" aria-live="polite"></span>
         <span class="d" id="gbCount"></span>
       </div>
@@ -3094,7 +3094,17 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
   const emptyEl = document.getElementById('gbEmpty'), countEl = document.getElementById('gbCount');
   let loaded = false;
 
-  const say = (t, kind) => { msgEl.textContent = t; msgEl.className = 'gb-msg' + (kind ? ' ' + kind : ''); };
+  const labelEl = document.getElementById('gbLabel');
+  let sayT = 0;
+  /* 알림은 "방명록" 이름표 자리를 잠깐 빌려 쓰고 돌려줍니다.
+     가운데 띄워 두면 왼쪽 이름표·오른쪽 개수와 셋이 나란해져 어디를 봐야 할지 흐려집니다. */
+  const say = (t, kind) => {
+    msgEl.textContent = t;
+    msgEl.className = 'gb-msg' + (kind ? ' ' + kind : '');
+    labelEl.hidden = !!t;
+    clearTimeout(sayT);
+    if(t && kind === 'ok') sayT = setTimeout(() => say(''), 4000);
+  };
 
   const ago = iso => {
     const d = new Date(iso), m = (Date.now() - d) / 60000;
