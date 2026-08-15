@@ -683,7 +683,8 @@ a.cta{text-decoration:none}
 /* ── 다이어그램 ── */
 .dg{margin-top:20px;background:var(--shell);border-radius:12px;box-shadow:var(--shadow-card);
   padding:18px 16px;overflow-x:auto}
-.dg svg{display:block;width:100%;height:auto;min-width:520px}
+.dg{overflow-x:auto}
+.dg svg{display:block;width:100%;height:auto;min-width:480px}
 .dg-cap{font-size:var(--t-ui);color:var(--ink-3);margin-top:9px;line-height:1.5}
 .dg .nm{font-family:var(--sans);font-size:var(--t-ui);font-weight:600;fill:var(--ink)}
 /* 부제·화살표 라벨은 한글 문장입니다. 코드가 아니므로 본문 서체 */
@@ -694,8 +695,11 @@ a.cta{text-decoration:none}
    원인 → 문제 → 해결 → 결과. 읽는 사람이 지금 어느 칸에 있는지
    눈으로 알아야 하므로, 이름을 본문 옆에 세워 둡니다. ── */
 .steps{margin-top:24px}
-.stp{display:grid;grid-template-columns:104px 1fr;gap:22px;
+/* 이름 칸이 넓으면 본문 칸이 좁아져 그림이 밀려 나갑니다.
+   88 + 20 = 108 만 내주고 나머지는 본문이 씁니다. */
+.stp{display:grid;grid-template-columns:88px minmax(0,1fr);gap:20px;
   padding:22px 0;border-top:1px solid var(--line)}
+.stp>.bd{min-width:0}
 .stp:first-child{border-top:0;padding-top:4px}
 .stp>.hd{position:sticky;top:0;align-self:start}
 .stp .n{display:grid;place-items:center;width:23px;height:23px;border-radius:6px;
@@ -703,7 +707,7 @@ a.cta{text-decoration:none}
   font-family:var(--mono);font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
 .stp .t{margin-top:8px;font-size:12pt;font-weight:660;color:var(--ink);letter-spacing:-.01em}
 .stp>.bd>*:first-child{margin-top:0}
-@media(max-width:760px){
+@media(max-width:900px){
   .stp{grid-template-columns:1fr;gap:11px;padding:18px 0}
   .stp>.hd{display:flex;align-items:center;gap:9px}
   .stp .t{margin-top:0}
@@ -712,7 +716,10 @@ a.cta{text-decoration:none}
 /* ── 문서 글자 크기 ──
    본문 11pt 고정, 제목·강조 12pt. 화면 단위가 아니라 문서 단위로 잽니다.
    이 크기를 쓰는 쪽에만 .doc 을 답니다. ── */
-.doc .lead,.doc p,.doc li,.doc .kv .v,.doc .note,.doc .tbl td{font-size:11pt;line-height:1.66}
+/* 한글은 어절 안에서 끊으면 안 됩니다. keep-all 이 없으면
+   "멀쩡히" 가 "멀 / 쩡히" 로 갈라져 글자가 잘린 것처럼 보입니다. */
+.doc .lead,.doc p,.doc li,.doc .kv .v,.doc .note,.doc .tbl td{font-size:11pt;line-height:1.66;
+  word-break:keep-all;overflow-wrap:break-word}
 .doc h3,.doc .kv .k,.doc .tbl th,.doc strong{font-size:12pt}
 .doc h3{margin-top:26px;font-weight:660}
 .doc .lead{font-weight:500}
@@ -741,6 +748,8 @@ a.cta{text-decoration:none}
 .ann .cel{font-family:var(--sans);font-size:var(--t-ui);fill:var(--ink-2)}
 /* 손글씨는 자소가 작게 그려집니다. 같은 크기로 보이려면 한 단계 올려야 합니다.
    기울기·장평 변형 금지 라이선스라 rotate/skew/textLength를 걸지 않습니다 */
+.ann .ic-t{font-family:var(--sans);font-size:13px;font-weight:640;fill:var(--ink)}
+.ann .ic-s{font-family:var(--sans);font-size:11px;fill:var(--ink-3)}
 .ann .hw{font-family:"InkLiquid",var(--sans);font-size:18px;font-weight:400}
 .ann .st{fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .ann-cap{font-size:var(--t-ui);color:var(--ink-3);margin-top:9px;line-height:1.5}
@@ -880,12 +889,12 @@ a.cta{text-decoration:none}
         <div class="kids" id="kids1" data-kids="1"><div>
           <a class="row" href="#p2" data-t="p2"><span class="kn">1-1</span><span class="kt">PDF 편집·병합</span></a>
           <a class="row" href="#p3" data-t="p3"><span class="kn">1-2</span><span class="kt">엑셀 나누기·합치기</span></a>
-          <a class="row" href="#p5" data-t="p5"><span class="kn">1-3</span><span class="kt">맞춤 메일 발송</span></a>
+          <a class="row" href="#p5" data-t="p5"><span class="kn">1-3</span><span class="kt">개인별 맞춤 메일 발송</span></a>
           <a class="row mid" href="#p4" data-t="p4" data-mid="14" aria-expanded="false" aria-controls="gk14"><span class="kn">1-4</span><span class="kt">웹 조작</span><svg aria-hidden="true" class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
           <div class="gkids" id="gk14" data-gkids="14"><div>
-            <a class="row" href="#p4a" data-t="p4a"><span class="kn">1-4-1</span><span class="kt">업로드</span></a>
-            <a class="row" href="#p4b" data-t="p4b"><span class="kn">1-4-2</span><span class="kt">다운로드</span></a>
-            <a class="row" href="#p4c" data-t="p4c"><span class="kn">1-4-3</span><span class="kt">스크래핑</span></a>
+            <a class="row" href="#p4a" data-t="p4a"><span class="kn">1-4-1</span><span class="kt">자료 업로드</span></a>
+            <a class="row" href="#p4b" data-t="p4b"><span class="kn">1-4-2</span><span class="kt">자료 다운로드</span></a>
+            <a class="row" href="#p4c" data-t="p4c"><span class="kn">1-4-3</span><span class="kt">웹 스크래핑</span></a>
           </div></div>
           <a class="row" href="#p6" data-t="p6"><span class="kn">1-5</span><span class="kt">개인정보 마스킹</span></a>
         </div></div>
@@ -912,7 +921,7 @@ a.cta{text-decoration:none}
           <div class="gkids" id="gk32" data-gkids="32"><div>
             <a class="row" href="#w3a" data-t="w3a"><span class="kn">3-2-1</span><span class="kt">H2 인재성장랩</span></a>
             <a class="row" href="#w3b" data-t="w3b"><span class="kn">3-2-2</span><span class="kt">플랫폼 구조</span></a>
-            <a class="row" href="#w3c" data-t="w3c"><span class="kn">3-2-3</span><span class="kt">동문 네트워크</span></a>
+            <a class="row" href="#w3c" data-t="w3c"><span class="kn">3-2-3</span><span class="kt">동문 네트워크 확장</span></a>
           </div></div>
         </div></div>
       </div>
@@ -996,7 +1005,7 @@ a.cta{text-decoration:none}
   <!-- 개요 -->
   <section id="intro" class="page">
     <div class="phead">
-      <div class="ttl"><div class="eyebrow">개요</div><h2>무엇을 어떤 도구로 했나</h2></div>
+      <div class="ttl"><div class="eyebrow">서문</div><h2>개요<span class="ft">무엇을 어떤 도구로 했나</span></h2></div>
     </div>
     <div class="stats">
       <div class="stat"><div class="b"><div class="l">익힌 도구</div><div class="n">3<span class="u">개</span></div></div><div class="f">Python · Apps Script · Supabase</div></div>
@@ -1079,7 +1088,7 @@ a.cta{text-decoration:none}
 
   <!-- 1-2 -->
   <section id="p2" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">1-1 · 예시 1</div><h2>PDF 편집 / 병합</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">1-1 · 예시 1</div><h2>PDF 편집·병합</h2></div></div>
     <div class="chips"><span class="chip">#PyPDF</span><span class="chip">#2024.07</span><span class="chip">#50기 선발</span></div>
     <p class="lead">지원 서류는 사람별로 들어오는데, 심사는 사람별로 한 파일을 봅니다. 그 사이를 손으로 메우고 있었습니다.</p>
 
@@ -1108,41 +1117,46 @@ a.cta{text-decoration:none}
         <div class="bd">
           <p>네 단계로 나눴습니다. 파일명으로 서류 종류를 알아내고, 정해진 순서로 잇고, 논문만 앞 두 쪽을 자르고, 전공별 폴더에 씁니다.</p>
 
-          <div class="dg">
-            <svg viewBox="0 0 736 124" role="img" aria-label="지원자 폴더에서 파일을 판별하고 순서대로 병합해 한 사람 한 파일로 저장하는 흐름">
+          <div class="ann">
+            <svg viewBox="0 0 660 250" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="지원자 폴더에 흩어진 PDF 를 순서표대로 한 장으로 잇고 전공별 폴더에 넣는 그림">
               <defs>
-                <marker id="a1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                  <polygon points="0 0, 8 3, 0 6" fill="#8a8a86"/></marker>
-                <marker id="a1g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-                  <polygon points="0 0, 8 3, 0 6" fill="#146d34"/></marker>
+                <marker id="fwN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+                <marker id="fwG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#146d34"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+                <marker id="fwA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
               </defs>
-              <line x1="168" y1="58" x2="196" y2="58" stroke="#8a8a86" stroke-width="1" marker-end="url(#a1)"/>
-              <line x1="352" y1="58" x2="380" y2="58" stroke="#8a8a86" stroke-width="1" marker-end="url(#a1)"/>
-              <line x1="536" y1="58" x2="564" y2="58" stroke="#146d34" stroke-width="1" marker-end="url(#a1g)"/>
 
-              <rect x="16" y="24" width="152" height="68" rx="8" fill="rgb(26 26 26/.03)" stroke="rgb(26 26 26/.16)"/>
-              <text class="nm" x="92" y="52" text-anchor="middle">지원자 폴더</text>
-              <text class="sb" x="92" y="70" text-anchor="middle">PDF 10여 개</text>
+              <path d="M52,96 q0,-7 7,-7 h24 l7,9 h47 q7,0 7,7 v38 H52 Z" fill="#fafaf9" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/><path d="M58,69 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M71,66 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M78,71 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M91,68 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M98,69 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M111,66 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M49,114 h92 q7,0 6,8 l-5,26 q-1,8 -8,8 H57 q-7,0 -8,-8 l-5,-26 q-1,-8 6,-8 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="95" y="176" text-anchor="middle">지원자 폴더</text><text class="ic-s" x="95" y="192" text-anchor="middle">PDF 10여 개</text>
+              <path d="M178,128 L246,128" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#fwN)"/>
+              <text class="ic-s" x="212" y="118" text-anchor="middle">훑기</text>
+              <path d="M303,96 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M329,93 v8 q0,3 3,3 h8" fill="none" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M307.5,91.5 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M333.5,88.5 v8 q0,3 3,3 h8" fill="none" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M312,87 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M338,84 v8 q0,3 3,3 h8" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><rect x="322" y="100" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="101" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="110" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="111" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="120" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="121" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="130" width="4" height="4" rx="1" fill="#146d34"/><rect x="330" y="131" width="12" height="2" rx="1" fill="#146d34" opacity=".55"/><text class="ic-t" x="332" y="176" text-anchor="middle">순서표대로 잇기</text><text class="ic-s" x="332" y="192" text-anchor="middle">논문은 앞 2쪽만</text>
+              <path d="M392,128 L460,128" fill="none" stroke="#146d34" stroke-width="1.4" stroke-linecap="round" marker-end="url(#fwG)"/>
+              <text class="ic-s" x="426" y="118" text-anchor="middle" fill="#146d34">저장</text>
+              <path d="M524,96 q0,-7 7,-7 h24 l7,9 h47 q7,0 7,7 v38 H524 Z" fill="#e9f4ec" stroke="#146d34" stroke-width="1.5" stroke-linejoin="round"/><path d="M552,73 q0,-3 3,-3 h17 l8,8 v33 q0,3 -3,3 h-22 q-3,0 -3,-3 Z" fill="#fff" stroke="#146d34" stroke-width="1.4" stroke-linejoin="round"/><path d="M569,70 v5 q0,3 3,3 h5" fill="none" stroke="#146d34" stroke-width="1.4" stroke-linejoin="round"/><path d="M521,114 h92 q7,0 6,8 l-5,26 q-1,8 -8,8 H529 q-7,0 -8,-8 l-5,-26 q-1,-8 6,-8 Z" fill="#f2f8f4" stroke="#146d34" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="567" y="176" text-anchor="middle" fill="#146d34">전공별 폴더</text><text class="ic-s" x="567" y="192" text-anchor="middle" fill="#146d34">한 사람 한 파일</text>
 
-              <rect x="200" y="24" width="152" height="68" rx="8" fill="#fff" stroke="#1a1a1a"/>
-              <text class="nm" x="276" y="52" text-anchor="middle">파일명으로 판별</text>
-              <text class="sb" x="276" y="70" text-anchor="middle">지원서 · 추천서 …</text>
-
-              <rect x="384" y="24" width="152" height="68" rx="8" fill="#fff" stroke="#1a1a1a"/>
-              <text class="nm" x="460" y="52" text-anchor="middle">순서표대로 병합</text>
-              <text class="sb" x="460" y="70" text-anchor="middle">논문은 앞 2쪽만</text>
-
-              <rect x="568" y="24" width="152" height="68" rx="8" fill="rgb(23 128 61/.07)" stroke="#146d34"/>
-              <text class="nm" x="644" y="52" text-anchor="middle" fill="#146d34">한 사람 한 파일</text>
-              <text class="sb" x="644" y="70" text-anchor="middle" fill="#146d34">전공별 폴더에 저장</text>
-
-              <rect x="164" y="30" width="36" height="12" rx="2" fill="#fff"/>
-              <text class="al" x="182" y="39" text-anchor="middle">훑기</text>
-              <rect x="348" y="30" width="36" height="12" rx="2" fill="#fff"/>
-              <text class="al" x="366" y="39" text-anchor="middle">정렬</text>
-              <rect x="532" y="30" width="36" height="12" rx="2" fill="#fff"/>
-              <text class="al" x="550" y="39" text-anchor="middle">저장</text>
+              <g stroke="#737370" fill="#737370">
+                <path class="st" d="M118,34 C112,46 105,54 100,60" marker-end="url(#fwN)"/>
+                <text class="hw" x="124" y="28" stroke="none">이름으로 종류를 알아냅니다</text>
+              </g>
+              <g stroke="#146d34" fill="#146d34">
+                <path class="st" d="M420,52 C400,58 380,66 362,78" marker-end="url(#fwG)"/>
+                <text class="hw" x="426" y="46" stroke="none">정해진 차례로 포갭니다</text>
+              </g>
+              <g stroke="#a16207" fill="#a16207">
+                <path class="st" d="M60,224 C54,206 50,182 49,154" marker-end="url(#fwA)"/>
+                <text class="hw" x="22" y="240" stroke="none">이름이 안 맞으면 여기서 빠집니다</text>
+              </g>
             </svg>
+            <div class="ann-cap">사람이 열 개를 골라 붙이던 자리를, <strong>파일명 규칙 하나</strong>가 대신합니다.</div>
           </div>
 
           <p>순서 규칙은 코드 안에 쓰지 않고 <strong>표로 뺐습니다.</strong> 규칙이 바뀌는 것은 코드가 아니라 업무이기 때문입니다.</p>
@@ -1359,7 +1373,7 @@ a.cta{text-decoration:none}
 
   <!-- 1-4 -->
   <section id="p4" class="page">
-    <div class="phead"><div class="ttl"><div class="eyebrow">1-4 · 예시 4</div><h2>화면 조작하여<br>업로드 · 스크래핑 · 다운로드</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">1-4 · 예시 4</div><h2>웹 조작<span class="ft">업로드 · 다운로드 · 스크래핑</span></h2></div></div>
     <div class="chips"><span class="chip">#Selenium</span><span class="chip">#gspread</span><span class="chip">#2024.08~2025.07</span></div>
 
     <div class="gain">
@@ -1394,7 +1408,7 @@ a.cta{text-decoration:none}
   
   <!-- 1-4-1 · 웹 조작 -->
   <section id="p4a" class="page">
-    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-1 · 웹 조작</div><h2>시스템에 자료 올리기</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-1 · 웹 조작</div><h2>자료 업로드</h2></div></div>
     <div class="chips"><span class="chip">#Selenium</span><span class="chip">#2024.07</span><span class="chip">#2026 성공</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">명단 엑셀을 읽어 평가위원 계정을 시스템에 등록합니다.</p>
     <div class="kv">
@@ -1406,7 +1420,7 @@ a.cta{text-decoration:none}
 
   <!-- 1-4-2 · 웹 조작 -->
   <section id="p4b" class="page">
-    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-2 · 웹 조작</div><h2>시스템에서 자료 내려받기</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-2 · 웹 조작</div><h2>자료 다운로드</h2></div></div>
     <div class="chips"><span class="chip">#Selenium</span><span class="chip">#2024.07</span><span class="chip">#2026 성공</span><span class="chip todo">#작성 필요</span></div>
     <p class="lead">지원서를 PDF로 저장해 전공별로 분류합니다.</p>
     <div class="kv">
@@ -1593,7 +1607,7 @@ a.cta{text-decoration:none}
 
   <!-- 2-2 -->
   <section id="g2" class="page">
-    <div class="phead"><div class="ttl"><div class="eyebrow">2-1 · 예시 1</div><h2>Spreadsheet 응답을<br>Google Calendar에 반영</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">2-2 · 예시 2</div><h2>Calendar에 반영<span class="ft">Spreadsheet 응답을 옮깁니다</span></h2></div></div>
     <div class="chips"><span class="chip">#Calendar</span><span class="chip">#대면 교류 지원</span></div>
 
     <div class="gain">
@@ -1687,7 +1701,7 @@ a.cta{text-decoration:none}
 
   <!-- 2-3 -->
   <section id="g3" class="page">
-    <div class="phead"><div class="ttl"><div class="eyebrow">2-2 · 예시 2</div><h2>Spreadsheet 응답으로 Docs 생성<span class="ft">후기 · 영수증 증빙</span></h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">2-3 · 예시 3</div><h2>Docs 생성<span class="ft">후기 · 영수증 증빙</span></h2></div></div>
     <div class="chips"><span class="chip">#Docs</span><span class="chip">#Drive</span></div>
 
     <div class="gain">
@@ -1809,7 +1823,7 @@ a.cta{text-decoration:none}
 
   <!-- 3-2 -->
   <section id="w2" class="page">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-1 · 예시 1</div><h2>해외유학워크숍 이수율 tracker</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">3-1 · 예시 1</div><h2>이수율 tracker<span class="ft">해외유학워크숍</span></h2></div></div>
     <div class="chips"><span class="chip">#2026.07</span><span class="chip">#SAW 운영</span></div>
 
     <div class="gain">
