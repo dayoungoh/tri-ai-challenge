@@ -351,11 +351,12 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .pet .cta{flex:0 0 auto}
 .pet.done .msg{color:var(--amber)}
 @media(max-width:620px){ .pet{flex-wrap:wrap} .pet .bd{flex:1 1 100%;order:3} }
-.rcp-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.rcp-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  max-width:412px;margin:0 auto}
 .rcp-h .t{font-size:var(--t-h3);font-weight:640;letter-spacing:-.018em;color:var(--ink)}
 .rcp-h .d{font-size:var(--t-ui);color:var(--ink-3)}
 /* 프린터 몸통 */
-.prn{margin-top:14px;max-width:412px;border-radius:18px;padding:14px 14px 0;
+.prn{margin:14px auto 0;max-width:412px;border-radius:18px;padding:14px 14px 0;
   background:linear-gradient(180deg,#3a3a38,#2a2a28);
   box-shadow:0 18px 34px rgb(26 26 26/.24), inset 0 1px 0 rgb(255 255 255/.12),
              inset 0 -1px 0 rgb(0 0 0/.4)}
@@ -366,12 +367,12 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 /* 종이가 나오는 틈 */
 .prn-slot{position:relative;height:11px;margin:13px -14px 0;
   background:#141413;box-shadow:inset 0 2px 5px rgb(0 0 0/.75)}
-.prn-out{position:relative;max-width:412px;overflow:hidden;padding:0 14px}
+.prn-out{position:relative;max-width:412px;margin:0 auto;overflow:hidden;padding:0 14px}
 .prn-out::before{content:"";position:absolute;inset:0 14px auto;height:9px;z-index:2;
   background:linear-gradient(180deg,rgb(26 26 26/.28),transparent);pointer-events:none}
 .prn-out canvas{display:block;width:100%;height:auto;
   filter:drop-shadow(0 10px 18px rgb(26 26 26/.22))}
-.prn-acts{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+.prn-acts{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px;justify-content:center}
 
 @media print{
   /* 영수증을 뽑는 순간에는 종이만 나갑니다 */
@@ -989,7 +990,7 @@ a.cta{text-decoration:none}
 
         <button class="row" data-ch="3" data-t="w1" data-first="w1" aria-expanded="false" aria-controls="kids3">
           <svg aria-hidden="true" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          <span class="tx"><b>3. 서버 없이 웹앱 개발·배포</b><span class="ft">ft. Supabase · Netlify · Vercel · GitHub</span></span>
+          <span class="tx"><b>3. 서버 없이 웹앱 개발·배포</b><span class="ft">ft. Supabase · Netlify · GitHub</span></span>
           <svg aria-hidden="true" class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="kids" id="kids3" data-kids="3"><div>
@@ -2135,8 +2136,8 @@ a.cta{text-decoration:none}
 
   <!-- 3-1 -->
   <section id="w1" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3 · 안내문</div><h2>서버 없이 웹앱 개발·배포<span class="ft">ft. Supabase · Netlify · Vercel · GitHub</span></h2></div></div>
-    <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#Vercel</span><span class="chip">#GitHub</span><span class="chip free">#무료 티어</span></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">3 · 안내문</div><h2>서버 없이 웹앱 개발·배포<span class="ft">ft. Supabase · Netlify · GitHub</span></h2></div></div>
+    <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#GitHub</span><span class="chip free">#무료 티어</span></div>
     <p class="lead">사용자가 각자 로그인해서 반응하는 웹앱이 필요할 때 씁니다. 데이터베이스와 접속 주소가 필요합니다.</p>
 
     <div class="panel">
