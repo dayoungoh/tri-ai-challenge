@@ -387,74 +387,59 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 /* ── 방명록 ──
    3장에서 설명한 구조가 이 페이지에서 실제로 돌아갑니다.
    익명 키는 브라우저에 박히라고 만든 키이고, 안전은 데이터베이스의
-   접근 규칙이 지킵니다 — 읽기는 모두, 쓰기는 모두, 수정·삭제는 아무도. ── */
-/* 대화창 한 덩이. 높이를 고정해 두면 글이 늘어도 창의 모양이 변하지 않고,
-   새 글은 창 안에서만 스크롤됩니다. */
-.gb{margin-top:38px;display:flex;flex-direction:column;
-  height:min(440px,70vh);border-radius:14px;background:var(--shell);
+   접근 규칙이 지킵니다 — 읽기는 모두, 쓰기는 모두, 수정·삭제는 아무도.
+
+   생김새는 싸이월드 방명록입니다. 한 줄에 한 마디, 뒤에 이름과 날짜.
+   다만 그 시절 글꼴과 파란 링크를 그대로 가져오지는 않았습니다 —
+   이 문서 안에서 혼자 딴 데서 온 것처럼 보이면 재미가 아니라 흠입니다. ── */
+.gb{margin-top:38px;border-radius:12px;background:var(--shell);
   box-shadow:var(--shadow-card);overflow:hidden}
-.gb-h{flex:0 0 auto;display:flex;align-items:center;justify-content:space-between;
-  gap:12px;padding:11px 14px;border-bottom:1px solid var(--line)}
-.gb-h .t{font-size:var(--t-sm);font-weight:660;letter-spacing:-.01em;color:var(--ink)}
-.gb-h .d{font-size:var(--t-micro);color:var(--ink-3);font-variant-numeric:tabular-nums}
-.gb-scroll{flex:1;min-height:0;overflow-y:auto;padding:12px 14px 4px}
-/* 쓰는 칸은 아래에 붙어 있습니다. 대화창이 그렇습니다. */
-.gb-f{flex:0 0 auto;margin:0;padding:8px;background:none;box-shadow:none}
-.gb-box{display:flex;flex-direction:column;gap:7px;padding:9px 10px 7px;
-  border-radius:11px;background:var(--inset);
-  box-shadow:inset 0 0 0 1px var(--line);
-  transition:box-shadow 160ms ease}
-.gb-box:focus-within{box-shadow:inset 0 0 0 1px var(--ink-3)}
-.gb-send{flex:0 0 28px;width:28px;height:28px;border:0;border-radius:8px;padding:0;
-  display:grid;place-items:center;cursor:pointer;
+
+/* 쓰는 칸은 맨 위 한 줄. 라벨 · 이름 · 한 마디 · 단추 */
+.gb-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0;
+  padding:9px 11px;background:var(--inset);border-bottom:1px solid var(--line)}
+.gb-f .gb-lb{flex:0 0 auto;font-size:var(--t-ui);font-weight:700;color:var(--ink);
+  letter-spacing:-.01em}
+.gb-f input{font-family:inherit;color:var(--ink);background:var(--shell);
+  border:0;border-radius:7px;padding:7px 10px;outline:none;
+  box-shadow:inset 0 0 0 1px var(--line);font-size:var(--t-ui)}
+.gb-f .nm{flex:0 0 96px;min-width:0;font-weight:640}
+.gb-f .bd{flex:1 1 220px;min-width:0}
+.gb-f input:focus-visible{box-shadow:inset 0 0 0 1px var(--ink)}
+.gb-f input::placeholder{color:var(--ink-3);font-weight:400}
+.gb-send{flex:0 0 auto;border:0;border-radius:7px;padding:7px 13px;cursor:pointer;
+  font-family:inherit;font-size:var(--t-ui);font-weight:640;
   background:var(--line);color:var(--ink-3);
-  transition:background-color 200ms ease,color 200ms ease,transform 120ms var(--out)}
+  transition:background-color 180ms ease,color 180ms ease,transform 120ms var(--out)}
 .gb-send.on{background:var(--ink);color:var(--shell)}
-.gb-send:active{transform:scale(.94)}
+.gb-send:active{transform:scale(.96)}
 .gb-send:disabled{cursor:default}
-.gb-f .row1{display:flex;gap:10px;flex-wrap:wrap}
-.gb-f input,.gb-f textarea{font-family:inherit;font-size:var(--t-sm);color:var(--ink);
-  background:var(--shell);border:0;border-radius:9px;padding:10px 12px;
-  box-shadow:var(--shadow-hair);outline:none;resize:none}
-.gb-f input{flex:0 0 150px;max-width:100%}
-.gb-f textarea{flex:1;min-width:0;width:100%;margin-top:10px;min-height:74px;line-height:1.6}
-.gb-f input:focus-visible,.gb-f textarea:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.gb-f input::placeholder,.gb-f textarea::placeholder{color:var(--ink-3)}
-.gb-b{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:0}
-.gb-b .c{font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);font-variant-numeric:tabular-nums}
-.gb-b .c.over{color:var(--amber);font-weight:700}
-.gb-msg{margin:5px 4px 0;font-size:var(--t-micro);line-height:1.5;min-height:1.2em;color:var(--ink-3)}
+.gb-f .c{flex:0 0 auto;font-family:var(--mono);font-size:var(--t-micro);
+  color:var(--amber);font-weight:700;font-variant-numeric:tabular-nums}
+.gb-f .c[hidden]{display:none}
+
+/* 한 줄에 한 마디. 길면 접히고, 접힌 줄은 가운뎃점 자리만큼 들여씁니다 */
+.gb-list{display:flex;flex-direction:column;
+  max-height:min(420px,58vh);overflow-y:auto;padding:6px 0}
+.gb-list:empty{display:none}
+.gb-item{display:flex;gap:7px;padding:5px 13px;
+  font-size:var(--t-sm);line-height:1.62;color:var(--ink-2)}
+.gb-item .dot{flex:0 0 auto;color:var(--ink-3);user-select:none}
+.gb-item .ln{min-width:0}
+.gb-item .bd{word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap}
+.gb-item .nm{font-weight:660;white-space:nowrap}
+.gb-item time{margin-left:6px;font-family:var(--mono);font-size:var(--t-micro);
+  color:var(--ink-3);white-space:nowrap}
+.gb-item:hover{background:var(--inset)}
+
+.gb-h{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:8px 13px;border-top:1px solid var(--line)}
+.gb-h .t{font-size:var(--t-micro);color:var(--ink-3)}
+.gb-h .d{font-size:var(--t-micro);color:var(--ink-3);font-variant-numeric:tabular-nums}
+.gb-msg{font-size:var(--t-micro);line-height:1.5;color:var(--ink-3)}
 .gb-msg.err{color:var(--amber)}
 .gb-msg.ok{color:var(--green)}
-/* 대화처럼 읽히게. 줄마다 칸을 두르면 게시판이 되고,
-   이름과 시각을 한 줄에 두면 사람이 말한 것처럼 읽힙니다.
-   같은 사람이 잇달아 남기면 이름과 동그라미를 다시 그리지 않습니다. */
-.gb-list{display:flex;flex-direction:column}
-.gb-list:empty{display:none}
-.gb-item{display:grid;grid-template-columns:34px minmax(0,1fr);gap:11px;padding:9px 4px 9px 0}
-.gb-item+.gb-item{padding-top:11px}
-.gb-item.cont{padding-top:1px}
-.gb-av{grid-row:span 2;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
-  font-size:var(--t-sm);font-weight:660;color:#fff;user-select:none}
-/* 이어지는 줄에서는 동그라미가 자리를 차지하면 안 됩니다.
-   span 2 를 그대로 두면 빈 줄이 하나 생겨 간격이 들쭉날쭉해집니다. */
-.gb-item.cont .gb-av{grid-row:auto;visibility:hidden;height:0}
-.gb-item .who{display:flex;align-items:baseline;gap:8px;min-width:0}
-.gb-item .who b{font-size:var(--t-sm);font-weight:660;color:var(--ink);letter-spacing:-.008em;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.gb-item .who time{flex:0 0 auto;font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3)}
-.gb-item.cont .who{display:none}
-.gb-item p{margin-top:2px;font-size:var(--t-sm);color:var(--ink-2);line-height:1.62;
-  white-space:pre-wrap;word-break:break-word;overflow-wrap:anywhere}
-/* 쓰는 칸도 대화창처럼 한 덩이로 */
-.gb-f{display:grid;gap:0}
-.gb-f input{flex:0 0 auto;width:100%;background:none;box-shadow:none;padding:0;
-  font-size:var(--t-micro);font-weight:660;color:var(--ink)}
-.gb-f textarea{margin:0;background:none;box-shadow:none;padding:0;min-height:38px;
-  font-size:var(--t-sm);line-height:1.55}
-.gb-f input:focus-visible,.gb-f textarea:focus-visible{outline:none}
-.gb-empty{margin:auto;padding:22px 16px;text-align:center;
-  font-size:var(--t-sm);color:var(--ink-3)}
+.gb-empty{padding:26px 16px;text-align:center;font-size:var(--t-sm);color:var(--ink-3)}
 
 /* ── 회전 텍스트 ── */
 /* 세 단어를 지우지 않고 겹쳐 둡니다. 격자 폭이 가장 넓은 단어로 고정되어
@@ -2111,27 +2096,22 @@ a.cta{text-decoration:none}
     <button class="mui-door" id="muiDoor">우리집 고양이 무이 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
 
     <div class="gb">
+      <form class="gb-f" id="gbForm">
+        <span class="gb-lb">한 마디</span>
+        <input class="nm" id="gbName" name="name" maxlength="20" placeholder="이름" aria-label="이름" autocomplete="off" required>
+        <input class="bd" id="gbBody" name="body" maxlength="300" placeholder="남기고 싶은 이야기를 적어 주세요" aria-label="남길 말" autocomplete="off" required>
+        <span class="c" id="gbLen" hidden></span>
+        <button class="gb-send" type="submit" id="gbSend" disabled>확인</button>
+      </form>
+
+      <div class="gb-list" id="gbList"></div>
+      <div class="gb-empty" id="gbEmpty" hidden>불러오는 중…</div>
+
       <div class="gb-h">
         <span class="t">방명록</span>
+        <span class="gb-msg" id="gbMsg" role="status" aria-live="polite"></span>
         <span class="d" id="gbCount"></span>
       </div>
-
-      <div class="gb-scroll" id="gbScroll">
-        <div class="gb-list" id="gbList"></div>
-        <div class="gb-empty" id="gbEmpty" hidden>불러오는 중…</div>
-      </div>
-
-      <form class="gb-f" id="gbForm">
-        <div class="gb-box">
-          <input id="gbName" name="name" maxlength="20" placeholder="이름" aria-label="이름" autocomplete="off" required>
-          <textarea id="gbBody" name="body" maxlength="300" placeholder="한 마디 남겨 주세요" aria-label="남길 말" required></textarea>
-          <div class="gb-b">
-            <span class="c" id="gbLen">0 / 300</span>
-            <button class="gb-send" type="submit" id="gbSend" aria-label="남기기" disabled><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
-          </div>
-        </div>
-        <div class="gb-msg" id="gbMsg" role="status" aria-live="polite"></div>
-      </form>
     </div>
 </section>
 
@@ -3122,44 +3102,39 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
     if(m < 60)   return Math.floor(m) + '분 전';
     if(m < 1440) return Math.floor(m / 60) + '시간 전';
     if(m < 10080)return Math.floor(m / 1440) + '일 전';
-    const z = n => String(n).padStart(2, '0');
-    return `${d.getFullYear()}-${z(d.getMonth()+1)}-${z(d.getDate())}`;
+    return `${d.getFullYear()}.${d.getMonth()+1}.${d.getDate()}`;
   };
 
   /* 이름마다 색을 하나씩. 같은 이름이면 늘 같은 색이 나오게 글자 코드를 더합니다 */
-  const HUES = ['#4a5b6b','#6b5344','#4f5f4a','#5a4a63','#3f5560','#6b4a4a'];
+  const HUES = ['#3f5a72','#6b4f3a','#41603f','#5c3f66','#2f5d63','#7a3f4a'];
   const hue = nm => HUES[[...nm].reduce((a, c) => a + c.charCodeAt(0), 0) % HUES.length];
 
   function paint(rows){
     listEl.replaceChildren();
     countEl.textContent = rows.length ? rows.length + '개' : '';
+    listEl.scrollTop = 0;
     if(!rows.length){
       emptyEl.hidden = false;
       emptyEl.textContent = '아직 아무도 남기지 않았습니다. 첫 글을 남겨 주세요.';
       return;
     }
     emptyEl.hidden = true;
-    let prev = null, prevAt = 0;
     for(const r of rows){
-      const at = +new Date(r.created_at);
-      /* 같은 사람이 5분 안에 이어 남겼으면 한 사람의 말로 묶습니다 */
-      const cont = r.name === prev && Math.abs(prevAt - at) < 300000;
-      prev = r.name; prevAt = at;
+      const it = document.createElement('div'); it.className = 'gb-item';
+      const dot = document.createElement('span'); dot.className = 'dot';
+      dot.textContent = '·'; dot.setAttribute('aria-hidden', 'true');
 
-      const it = document.createElement('div');
-      it.className = 'gb-item' + (cont ? ' cont' : '');
+      const ln = document.createElement('span'); ln.className = 'ln';
+      const bd = document.createElement('span'); bd.className = 'bd';
+      bd.textContent = r.body;                                  /* textContent — 남의 글 */
+      const nm = document.createElement('span'); nm.className = 'nm';
+      nm.style.color = hue(r.name);
+      nm.textContent = ' (' + r.name + ')';                     /* textContent — 남의 글 */
+      const t = document.createElement('time');
+      t.dateTime = r.created_at; t.textContent = ago(r.created_at);
 
-      const av = document.createElement('div'); av.className = 'gb-av';
-      av.style.background = hue(r.name);
-      av.textContent = [...r.name][0] || '?';                             /* textContent — 남의 글 */
-      av.setAttribute('aria-hidden', 'true');
-
-      const who = document.createElement('div'); who.className = 'who';
-      const b = document.createElement('b'); b.textContent = r.name;      /* textContent — 남의 글 */
-      const t = document.createElement('time'); t.dateTime = r.created_at; t.textContent = ago(r.created_at);
-      who.append(b, t);
-      const p = document.createElement('p'); p.textContent = r.body;      /* textContent — 남의 글 */
-      it.append(av, who, p); listEl.append(it);
+      ln.append(bd, nm, t);
+      it.append(dot, ln); listEl.append(it);
     }
   }
 
@@ -3190,18 +3165,13 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
   };
   nameEl.addEventListener('input', ready);
   bodyEl.addEventListener('input', () => {
+    /* 300자에 가까워질 때만 셈을 보여 줍니다. 늘 떠 있으면 잔소리입니다 */
     const n = bodyEl.value.length;
+    lenEl.hidden = n <= 260;
     lenEl.textContent = n + ' / 300';
-    lenEl.classList.toggle('over', n > 280);
     ready();
   });
-  /* 대화창이므로 Enter 로 보냅니다. 줄바꿈은 Shift+Enter */
-  bodyEl.addEventListener('keydown', e => {
-    if(e.key === 'Enter' && !e.shiftKey && !e.isComposing){
-      e.preventDefault();
-      if(!sendEl.disabled) form.requestSubmit();
-    }
-  });
+
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -3218,7 +3188,7 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
         const j = await r.json().catch(() => ({}));
         throw new Error(j.message || ('오류 ' + r.status));
       }
-      bodyEl.value = ''; lenEl.textContent = '0 / 300'; lenEl.classList.remove('over');
+      bodyEl.value = ''; lenEl.hidden = true;
       ready();
       say('고맙습니다. 잘 남겨졌습니다.', 'ok');
       loaded = false; await load();
