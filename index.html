@@ -222,19 +222,16 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   transition:opacity 190ms ease,transform 260ms var(--out)}
 .me-av:hover .gl,.me-av:focus-visible .gl,.me-av.peek .gl{opacity:0;transform:scale(.72)}
 .me-av:hover .face,.me-av:focus-visible .face,.me-av.peek .face{opacity:1;transform:none}
-/* 한쪽으로만 기울면 굳은 것처럼 보입니다. 왼쪽으로 갔다 오른쪽으로 오고
-   제자리에 섭니다. 한 번만 돌고 멈춥니다 — 계속 흔들리면 성가십니다.
+/* 갸웃하고 멈춥니다. 어느 쪽으로 갸웃할지는 그때그때 다릅니다 —
+   방향은 스크립트가 --tilt 에 넣어 줍니다.
    rotate 를 transform 과 따로 씁니다. 눌렀을 때의 축소와 겹치지 않게. */
-@keyframes tilt{
-  0%{rotate:0deg} 22%{rotate:-6deg} 55%{rotate:4.5deg}
-  78%{rotate:-2deg} 100%{rotate:0deg}
-}
-.me-av:hover,.me-av:focus-visible{animation:tilt 620ms var(--out)}
+.me-av{transition:transform 260ms var(--out),rotate 300ms var(--out)}
+.me-av:hover,.me-av:focus-visible{rotate:var(--tilt,-6deg)}
 .me-av:hover .ears,.me-av:focus-visible .ears,.me-av.peek .ears{transform:scaleY(1)}
 .me-av:active{transform:scale(.95)}
 @media(prefers-reduced-motion:reduce){
   .me-av,.me-av .ears,.me-av .gl,.me-av .face{transition:none}
-  .me-av:hover,.me-av:focus-visible{animation:none}
+  .me-av:hover,.me-av:focus-visible{rotate:none}
 }
 
 /* 귀를 못 보는 사람도 있습니다 — 손가락으로 보는 화면에는 hover 가 없습니다.
@@ -480,7 +477,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .content{flex:1;overflow-y:auto;padding:26px 32px 44px}
 .wrap{max-width:780px;margin:0 auto}
 
-.phead{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:26px}
+.phead{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:13px}
 .phead .ttl{flex:1;min-width:0}
 .eyebrow{font-size:var(--t-micro);font-weight:640;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
 /* h2 = 페이지 제목. 열세 장 전부 같은 크기여야 "같은 층"으로 읽힙니다 */
@@ -505,7 +502,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 .cta:disabled{opacity:.3;cursor:default}
 .cta:disabled:active{transform:none}
 
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
 /* 붙어 있으면 제목·꼬리표·본문이 한 덩어리로 읽힙니다 */
 .chips+.lead,.chips+p{margin-top:30px}
 .chip{font-family:var(--mono);font-size:var(--t-ui);color:var(--ink-2);background:var(--shell);
@@ -1186,7 +1183,7 @@ a.cta{text-decoration:none}
           <p>순서 규칙은 코드 안에 쓰지 않고 <strong>표로 뺐습니다.</strong> 규칙이 바뀌는 것은 코드가 아니라 업무이기 때문입니다. 다음에 손댈 곳은 <strong>읽어올 폴더, 저장할 폴더, 이 표 한 장</strong>이 전부입니다.</p>
 
           <div class="ann">
-            <svg viewBox="0 0 660 262" xmlns="http://www.w3.org/2000/svg" role="img"
+            <svg viewBox="-36 0 732 262" xmlns="http://www.w3.org/2000/svg" role="img"
               aria-label="병합 순서를 적어 둔 표와, 그 표를 코드가 어떻게 쓰는지를 손글씨로 표시한 그림">
               <defs>
                 <marker id="p2N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
@@ -2038,7 +2035,7 @@ a.cta{text-decoration:none}
   <!-- 쓴 사람 · 목차 밖 페이지 -->
   <section id="me" class="page">
     <div class="me-head">
-      <button class="me-av" id="muiAv" aria-label="무이 보기"><span class="gl">오</span><svg class="face" aria-hidden="true" viewBox="0 0 64 64"><circle cx="22.5" cy="26.6" r="2.6" fill="currentColor"/><circle cx="41.5" cy="26.6" r="2.6" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M27.4,40.4 L32,33.8 L36.6,40.4"/><path d="M6.5,29.5 L17.5,31.4M5.8,35.4 L17.5,35.4M6.5,41.3 L17.5,38.4"/><path d="M57.5,29.5 L46.5,31.4M58.2,35.4 L46.5,35.4M57.5,41.3 L46.5,38.4"/></g><circle cx="32" cy="31.6" r="1.7" fill="currentColor"/></svg><svg class="ears" aria-hidden="true" viewBox="0 -13 64 27"><path d="M10.0,8.8 L15.0,-6.0 Q16.0,-9.0 18.6,-7.2 L29.0,0.1 Z M54.0,8.8 L49.0,-6.0 Q48.0,-9.0 45.4,-7.2 L35.0,0.1 Z"/></svg></button>
+      <button class="me-av" id="muiAv" aria-label="무이 보기"><span class="gl">오</span><svg class="face" aria-hidden="true" viewBox="0 0 64 64"><circle cx="22.5" cy="26.6" r="2.6" fill="currentColor"/><circle cx="41.5" cy="26.6" r="2.6" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M27.4,40.4 L32,33.8 L36.6,40.4"/><path d="M6.5,29.5 L17.5,31.4M5.8,35.4 L17.5,35.4M6.5,41.3 L17.5,38.4"/><path d="M57.5,29.5 L46.5,31.4M58.2,35.4 L46.5,35.4M57.5,41.3 L46.5,38.4"/></g><circle cx="32" cy="31.6" r="1.7" fill="currentColor"/></svg><svg class="ears" aria-hidden="true" viewBox="0 -13 64 27"><path d="M8.0,10.8 L13.1,-5.9 Q14.0,-9.0 16.5,-7.0 L26.0,0.6 Z M56.0,10.8 L50.9,-5.9 Q50.0,-9.0 47.5,-7.0 L38.0,0.6 Z"/></svg></button>
       <div class="me-id">
         <div class="eyebrow">쓴 사람</div>
         <h2>오다영</h2>
@@ -2599,6 +2596,14 @@ function showMui(push = true){
   muiSec.querySelector('h2').setAttribute('tabindex', '-1');
   muiSec.querySelector('h2').focus();
 }
+(() => {
+  /* 갈 때마다 고개를 다른 쪽으로 갸웃합니다. 늘 같은 쪽이면 그림 같습니다. */
+  const av = document.getElementById('muiAv');
+  const pick = () => av.style.setProperty('--tilt',
+    (Math.random() < .5 ? -1 : 1) * (5 + Math.random() * 3).toFixed(1) + 'deg');
+  av.addEventListener('pointerenter', pick);
+  av.addEventListener('focus', pick);
+})();
 document.getElementById('muiAv').addEventListener('click', () => showMui());
 document.getElementById('muiDoor').addEventListener('click', () => showMui());
 document.getElementById('muiBack').addEventListener('click', () => showMe());
