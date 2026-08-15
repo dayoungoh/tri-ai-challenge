@@ -746,14 +746,14 @@ a.cta{text-decoration:none}
 .stp>.bd{min-width:0}
 .stp:first-child{border-top:0;padding-top:4px}
 .stp>.hd{position:sticky;top:0;align-self:start}
-.stp .n{display:grid;place-items:center;width:23px;height:23px;border-radius:6px;
+.stp>.hd .n{display:grid;place-items:center;width:23px;height:23px;border-radius:6px;
   background:var(--ink);color:var(--shell);
   font-family:var(--mono);font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
 .stp .t{margin-top:8px;font-size:12pt;font-weight:660;color:var(--ink);letter-spacing:-.01em}
 /* 비고는 차례의 한 칸이 아닙니다. 번호 대신 다른 표시를 답니다 */
-.stp .n.alt{background:var(--amber-soft);color:var(--amber);
+.stp>.hd .n.alt{background:var(--amber-soft);color:var(--amber);
   box-shadow:inset 0 0 0 1px rgb(161 98 7/.28)}
-.stp .n.alt+.t{color:var(--ink-2)}
+.stp>.hd .n.alt+.t{color:var(--ink-2)}
 .stp>.bd>*:first-child{margin-top:0}
 @media(max-width:1000px){
   .stp{grid-template-columns:1fr;gap:11px;padding:18px 0}
@@ -1303,130 +1303,167 @@ a.cta{text-decoration:none}
   </section>
 
   <!-- 1-3 -->
-  <section id="p3" class="page">
+  <section id="p3" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-2 · 예시 2</div><h2>엑셀 나누기·합치기</h2></div></div>
     <div class="chips"><span class="chip">#2024.07</span><span class="chip">#openpyxl</span><span class="chip">#pandas</span></div>
+    <p class="lead">평가는 평가자별로 갈라서 하고, 집계는 한 장으로 봅니다. 나눴다 다시 모으는 왕복이 매번 생깁니다.</p>
 
-    <div class="gain">
-      <div class="cell"><div class="lbl">나누기 · 손으로</div><div class="val">3~4분</div><div class="unit">심사표 한 장당</div></div>
-      <div class="arw"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div>
-      <div class="cell to"><div class="lbl">코드로</div><div class="val">1초</div><div class="unit">서식·잠금 그대로</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p>지원자 한 명을 여러 평가자가 봅니다. 그래서 심사표는 <span class="tok">평가자별로 한 장</span>이어야 합니다.</p>
+          <p>집계는 반대입니다. 한 지원자의 점수를 나란히 놓고 봐야 하니 <span class="tok">전체가 한 장</span>이어야 합니다.</p>
+          <p><strong>갈라야 볼 수 있고, 모아야 셀 수 있습니다.</strong> 이 왕복은 자동화해도 없어지지 않습니다. 회차마다 반복됩니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p>왕복 한 번에 손이 두 번 갑니다. 나누는 데 심사표 한 장당 3~4분, 모으는 데 시트 한 장당 2~3분이 걸렸습니다.</p>
+          <p>옮겨 적을 항목이 여럿입니다. 그리고 <strong>숫자를 하나 잘못 옮기면 당사자의 심사 결과가 바뀝니다.</strong></p>
+          <p>손으로 나누면 서식과 잠금도 함께 풀립니다. 받는 분마다 다르게 생긴 표가 갑니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p>값 자체를 열쇠로 씁니다. <span class="tok">지원자번호</span> + <span class="tok">평가자명</span>을 이어 붙이면 그 칸이 세상에 하나뿐인 이름을 갖습니다.</p>
+          <p>파일과 시트의 이름도 데이터로 씁니다. <span class="tok">파일명 = 전공</span>, <span class="tok">시트명 = 평가자</span>. 파일을 열지 않아도 어디에 넣을지 알 수 있습니다.</p>
+
+          <div class="ann">
+            <svg viewBox="-112 0 780 240" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="명단 한 장을 평가자별 심사표로 나눴다가 다시 한 장으로 모으는 그림">
+              <defs><marker id="e2N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="e2G" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#146d34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="e2A" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+              <rect x="40" y="74" width="44" height="54" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/><path d="M40,84 h44" stroke="#1a1a1a" stroke-width="1.4" opacity=".55"/><path d="M45,92.8 h34" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M45,101.6 h34" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M45,110.4 h34" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M45,119.2 h34" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M58.48,84 v44" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><text class="ic-t" x="62" y="150" text-anchor="middle">명단 한 장</text><text class="ic-s" x="62" y="166" text-anchor="middle">전공 · 지원자 · 평가자</text>
+              <path d="M112,100 L236,100" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#e2N)"/>
+              <text class="ic-s" x="172" y="92" text-anchor="middle">나누기</text>
+              <rect x="250" y="62" width="40" height="50" rx="4" fill="#fff" stroke="#d8d8d4" stroke-width="1.1"/><path d="M250,72 h40" stroke="#d8d8d4" stroke-width="1.1" opacity=".55"/><path d="M255,82 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M255,92 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M255,102 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M266.8,72 v40" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><rect x="265" y="70" width="40" height="50" rx="4" fill="#fff" stroke="#d8d8d4" stroke-width="1.1"/><path d="M265,80 h40" stroke="#d8d8d4" stroke-width="1.1" opacity=".55"/><path d="M270,90 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M270,100 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M270,110 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M281.8,80 v40" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><rect x="280" y="78" width="40" height="50" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/><path d="M280,88 h40" stroke="#1a1a1a" stroke-width="1.4" opacity=".55"/><path d="M285,98 h30" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M285,108 h30" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M285,118 h30" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M296.8,88 v40" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><text class="ic-t" x="300" y="150" text-anchor="middle">평가자별 심사표</text><text class="ic-s" x="300" y="166" text-anchor="middle">파일명 = 전공 · 시트명 = 평가자</text>
+              <path d="M342,100 L500,100" fill="none" stroke="#146d34" stroke-width="1.4" stroke-linecap="round" marker-end="url(#e2G)"/>
+              <text class="ic-s" x="450" y="92" text-anchor="middle" fill="#146d34">합치기</text>
+              <rect x="514" y="74" width="44" height="54" rx="4" fill="#f2f8f4" stroke="#146d34" stroke-width="1.4"/><path d="M515,75 h42 v9 h-42 Z" fill="#146d34" opacity=".14"/><path d="M514,84 h44" stroke="#146d34" stroke-width="1.4" opacity=".55"/><path d="M519,92.8 h34" stroke="#146d34" stroke-width="1" opacity=".25"/><path d="M519,101.6 h34" stroke="#146d34" stroke-width="1" opacity=".25"/><path d="M519,110.4 h34" stroke="#146d34" stroke-width="1" opacity=".25"/><path d="M519,119.2 h34" stroke="#146d34" stroke-width="1" opacity=".25"/><path d="M532.48,84 v44" stroke="#146d34" stroke-width="1" opacity=".25"/><text class="ic-t" x="536" y="150" text-anchor="middle" fill="#146d34">다시 한 장</text><text class="ic-s" x="536" y="166" text-anchor="middle" fill="#146d34">제자리에 채워짐</text>
+              <g stroke="#737370" fill="#737370">
+                <path class="st" d="M120,36 C124,48 128,58 132,66" marker-end="url(#e2N)"/>
+                <text class="hw" x="118" y="30" text-anchor="end" stroke="none">번호와 평가자명을 이름표로 붙입니다</text>
+              </g>
+              <g stroke="#146d34" fill="#146d34">
+                <path class="st" d="M572,58 C566,68 560,80 552,92" marker-end="url(#e2G)"/>
+                <text class="hw" x="598" y="48" text-anchor="end" stroke="none">이름표를 읽어 제자리를 찾습니다</text>
+              </g>
+              <g stroke="#a16207" fill="#a16207">
+                <path class="st" d="M186,214 C196,202 206,190 218,172" marker-end="url(#e2A)"/>
+                <text class="hw" x="180" y="224" text-anchor="end" stroke="none">열 위치가 바뀌면 조용히 어긋납니다</text>
+              </g>
+            </svg>
+            <div class="ann-cap">뿌릴 때 붙인 이름표를 모을 때 읽습니다. <strong>파일이 뒤섞여 돌아와도 제자리를 찾습니다.</strong></div>
+          </div>
+
+          <div class="tw"><table>
+            <tr><th>지원자번호</th><th>이름</th><th>담당 평가자</th></tr>
+            <tr><td class="n">12345</td><td>홍길동</td><td>김평가 · 이평가 …</td></tr>
+            <tr><td class="n">12346</td><td>김철수</td><td>김평가 · 박평가 …</td></tr>
+          </table></div>
+          <p>이 명단 한 줄에서 <strong>담당 평가자 수만큼 심사표가 만들어집니다.</strong> 전공·대상자·평가자 세 값이 모두 맞을 때만 값을 씁니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <div class="tw"><table>
+            <tr><th>잰 것</th><th>이전</th><th>이후</th></tr>
+            <tr><td>심사표 한 장 나누기</td><td>3~4분</td><td><strong>1초</strong></td></tr>
+            <tr><td>시트 한 장 모으기</td><td>2~3분</td><td><strong>0.5초</strong></td></tr>
+            <tr><td>서식·잠금</td><td>손으로 다시</td><td><strong>그대로 유지</strong></td></tr>
+          </table></div>
+          <p>옮겨 적는 과정 자체가 없어졌습니다. 사람이 눈으로 읽고 손으로 치는 단계가 빠지면 <strong>전사 오류가 생길 자리도 사라집니다.</strong></p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p>명단의 <strong>열 위치가 바뀌면 전부 틀어집니다.</strong> 그런데 오류는 나지 않습니다. <span class="tok a">잘못된 값이 조용히 채워집니다</span>. 이 쪽이 더 위험합니다.</p>
+          <p>이름표는 <span class="tok">띄어쓰기 하나</span>에도 안 맞습니다. 평가자명을 손으로 고쳐 적으면 그 줄만 빠집니다.</p>
+          <p>2024년 7월 50기 선발에서 썼습니다.</p>
+        </div>
+      </div>
+
     </div>
-    <div class="gain">
-      <div class="cell"><div class="lbl">합치기 · 손으로</div><div class="val">2~3분</div><div class="unit">시트 한 장당</div></div>
-      <div class="arw"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div>
-      <div class="cell to"><div class="lbl">코드로</div><div class="val">0.5초</div><div class="unit">전사 오류 0</div></div>
-    </div>
-    <div class="gain-cap">며칠짜리 일이 몇 분으로 줄었고, 옮겨 적는 과정 자체가 없어졌습니다.</div>
-
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v">지원자 한 명을 여러 평가자가 봅니다. 평가자별 파일을 만들어 드리고, 끝나면 다시 한 장으로 합쳐야 했습니다.</div></div>
-      <div class="r"><div class="k">문제</div><div class="v">옮겨 적을 항목이 여럿. 숫자를 잘못 옮기면 <strong>당사자의 심사 결과가 바뀝니다.</strong></div></div>
-    </div>
-
-    <h3>중요한 것은 식별자를 활용하는 것</h3>
-    <div class="split">
-      <div class="box"><div class="t">값으로 식별자 생성</div><p>지원자번호와 평가자명을 조합해 열쇠를 만듭니다.</p></div>
-      <div class="box"><div class="t">셀 주소 활용</div><p>명단의 어느 열이 심사표의 어느 칸으로 갈지 고정합니다.</p></div>
-      <div class="box"><div class="t">식별자끼리의 관계</div><p>전공·대상자·평가자 세 값이 모두 맞을 때만 기입합니다.</p></div>
-      <div class="box"><div class="t">파일명·시트명을 데이터로</div><p>파일명 = 전공, 시트명 = 평가자.</p></div>
-    </div>
-
-    <div class="tw"><table>
-      <tr><th>지원자번호</th><th>이름</th><th>담당 평가자</th></tr>
-      <tr><td class="n">12345</td><td>홍길동</td><td>김평가 · 이평가 …</td></tr>
-      <tr><td class="n">12346</td><td>김철수</td><td>김평가 · 박평가 …</td></tr>
-    </table></div>
-    <p>이 명단에서 <strong>평가자 이름으로 된 파일</strong>이 만들어집니다. <strong>한 지원자가 담당 평가자 수만큼 복제</strong>되는 구조입니다.</p>
-
-    <div class="dg">
-      <svg viewBox="0 0 616 280" role="img" aria-label="명단 한 장이 평가자별 파일로 나뉘고, 돌아온 파일이 다시 한 장으로 합쳐지는 왕복 구조">
-        <defs>
-          <marker id="a2" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#8a8a86"/></marker>
-          <marker id="a2g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#146d34"/></marker>
-        </defs>
-
-        <path d="M152,124 L184,124 Q192,124 192,116 L192,68 Q192,60 200,60 L232,60" fill="none" stroke="#8a8a86" marker-end="url(#a2)"/>
-        <path d="M152,140 L232,140" fill="none" stroke="#8a8a86" marker-end="url(#a2)"/>
-        <path d="M152,156 L184,156 Q192,156 192,164 L192,212 Q192,220 200,220 L232,220" fill="none" stroke="#8a8a86" marker-end="url(#a2)"/>
-
-        <path d="M384,60 L424,60 Q432,60 432,68 L432,116 Q432,124 440,124 L464,124" fill="none" stroke="#146d34" marker-end="url(#a2g)"/>
-        <path d="M384,140 L464,140" fill="none" stroke="#146d34" marker-end="url(#a2g)"/>
-        <path d="M384,220 L424,220 Q432,220 432,212 L432,164 Q432,156 440,156 L464,156" fill="none" stroke="#146d34" marker-end="url(#a2g)"/>
-
-        <rect x="16" y="108" width="136" height="64" rx="8" fill="rgb(26 26 26/.03)" stroke="rgb(26 26 26/.16)"/>
-        <text class="nm" x="84" y="134" text-anchor="middle">명단 1장</text>
-        <text class="sb" x="84" y="152" text-anchor="middle">담당 평가자 기재</text>
-
-        <rect x="232" y="32" width="152" height="56" rx="8" fill="#fff" stroke="#1a1a1a"/>
-        <text class="nm" x="308" y="56" text-anchor="middle">김평가.xlsx</text>
-        <text class="sb" x="308" y="72" text-anchor="middle">시트 = 지원자</text>
-
-        <rect x="232" y="112" width="152" height="56" rx="8" fill="#fff" stroke="#1a1a1a"/>
-        <text class="nm" x="308" y="136" text-anchor="middle">이평가.xlsx</text>
-        <text class="sb" x="308" y="152" text-anchor="middle">시트 = 지원자</text>
-
-        <rect x="232" y="192" width="152" height="56" rx="8" fill="#fff" stroke="#1a1a1a"/>
-        <text class="nm" x="308" y="216" text-anchor="middle">박평가.xlsx</text>
-        <text class="sb" x="308" y="232" text-anchor="middle">시트 = 지원자</text>
-
-        <rect x="464" y="108" width="136" height="64" rx="8" fill="rgb(23 128 61/.07)" stroke="#146d34"/>
-        <text class="nm" x="532" y="134" text-anchor="middle" fill="#146d34">최종 표 1장</text>
-        <text class="sb" x="532" y="152" text-anchor="middle" fill="#146d34">두 열쇠로 자리 찾기</text>
-
-        <text class="al" x="192" y="20" text-anchor="middle">나누기</text>
-        <text class="al" x="432" y="20" text-anchor="middle" fill="#146d34">합치기</text>
-      </svg>
-    </div>
-    <div class="dg-cap">뿌릴 때 붙인 이름표(지원자번호 · 평가자명)를 모을 때 읽습니다. 파일이 뒤섞여 돌아와도 제자리를 찾습니다.</div>
-
-    <div class="fix" data-fix="p3"></div>
-
-    <div class="note"><strong>뿌릴 때 정한 이름 규칙이 모을 때 열쇠가 됩니다.</strong> 사람들이 파일을 뒤섞어 보내와도 이름만 맞으면 제자리를 찾아갑니다.</div>
-    <h3>주의할 점</h3>
-    <p>명단의 <strong>열 위치가 바뀌면 전부 틀어집니다.</strong> 오류 없이 잘못된 값이 채워지므로 더 위험합니다. 그리고 식별자는 띄어쓰기 하나에도 안 맞습니다.</p>
   </section>
 
   <!-- 1-5 -->
-  <section id="p5" class="page">
+  <section id="p5" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-3 · 예시 3</div><h2>개인별 맞춤 메일 발송</h2></div></div>
     <div class="chips"><span class="chip">#2024.07</span><span class="chip">#python-docx</span><span class="chip">#smtplib</span><span class="chip free">#소스 공개</span></div>
+    <p class="lead">같은 안내를 보내는데 사람마다 내용이 다릅니다. 그 차이를 한 통씩 손으로 맞추고 있었습니다.</p>
 
-    <div class="gain">
-      <div class="cell"><div class="lbl">손으로</div><div class="val">2~3분</div><div class="unit">한 통당</div></div>
-      <div class="arw"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div>
-      <div class="cell to"><div class="lbl">코드로</div><div class="val">0</div><div class="unit">사람 손이 들지 않음</div></div>
-    </div>
-    <div class="gain-cap">하루 이상 걸릴 분량이 실행 한 번으로 끝났습니다.</div>
+    <div class="steps">
 
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v">서류심사 단계에서는 심사위원께 위촉 안내를, 면접 단계에서는 대상자와 위원께 일정 안내를 보내야 했습니다. 사람마다 이름·전공이 다르고 첨부파일도 달랐습니다.</div></div>
-      <div class="r"><div class="k">문제</div><div class="v">일반 메일 머지로는 안내문의 굵게·색·링크가 죽고, <strong>사람마다 다른 첨부</strong>를 붙일 수 없었습니다.</div></div>
-      <div class="r"><div class="k">해결</div><div class="v">워드 서식을 살려 본문으로 변환 → 명단에서 값 치환 → 개인별 첨부 최대 3개 → 기록용 주소를 숨은참조로</div></div>
-    </div>
-    <div class="tw"><table>
-      <tr><th>받는 사람</th><th>본문 첫 줄</th><th>첨부</th></tr>
-      <tr><td>홍길동</td><td>안녕하세요 홍길동 교수님, <strong>경제학</strong> 분야 심사를…</td><td class="n">2개</td></tr>
-      <tr><td>김철수</td><td>안녕하세요 김철수 교수님, <strong>물리학</strong> 분야 심사를…</td><td class="n">3개</td></tr>
-    </table></div>
-    <div class="fix" data-fix="p5"></div>
-
-    <div class="note"><strong>메일은 되돌릴 수 없습니다.</strong> 이 자동화만큼은 실행 전에 명단과 첨부를 눈으로 확인하는 습관이 코드보다 중요합니다.</div>
-
-    <h3>소스 코드</h3>
-    <div class="panel">
-      <div class="panel-h"><span class="t">GitHub</span><span class="m">MIT</span></div>
-      <div class="lnk">
-        <a href="https://github.com/dayoungoh/mail-merge-sender" target="_blank" rel="noopener noreferrer">
-          <span class="n">↗</span>
-          <span class="b"><strong>mail-merge-sender</strong><em>github.com/dayoungoh/mail-merge-sender</em></span>
-          <span class="c">공개</span>
-          <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
-        </a>
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p>서류심사에서는 심사위원께 위촉 안내를, 면접에서는 대상자와 위원께 일정 안내를 보냅니다.</p>
+          <p>안내문의 뼈대는 같지만 <span class="tok">이름</span>, <span class="tok">전공</span>, <span class="tok">첨부파일</span>이 사람마다 다릅니다.</p>
+          <p><strong>한 벌의 문서가 사람 수만큼 갈라져야 합니다.</strong> 명단이 있는 한 이 갈라짐은 없어지지 않습니다.</p>
+        </div>
       </div>
-      <div class="tip">엑셀 명단과 워드 서식을 넣으면 개인별로 치환해 보냅니다. 계정과 비밀번호는 <strong>그 자리에서만 쓰고 저장하지 않습니다.</strong> 연속 발송에는 제동과 휴지기간이 걸려 있습니다.</div>
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p>메일 프로그램의 메일 머지로는 두 가지가 안 됐습니다.</p>
+          <p>하나, 안내문의 <strong>굵게·색·링크가 죽습니다.</strong> 서식을 살리려면 결국 한 통씩 붙여넣게 됩니다.</p>
+          <p>둘, <strong>사람마다 다른 첨부</strong>를 붙일 수 없습니다. 첨부만은 손으로 골라야 합니다.</p>
+          <p>그래서 한 통에 2~3분이 걸렸습니다. 명단이 길면 하루가 넘어갑니다.</p>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p>워드 서식을 그대로 읽어 메일 본문으로 옮깁니다. 굵게·색·링크가 살아 있는 채로 넘어갑니다.</p>
+          <p>명단에서 값을 찾아 빈칸을 채우고, 그 사람 몫의 첨부를 <span class="tok">최대 3개</span>까지 붙입니다.</p>
+          <p>보낸 기록이 필요한 주소는 <span class="tok">숨은참조</span>로 넣습니다. 받는 사람에게는 보이지 않습니다.</p>
+
+          <div class="tw"><table>
+            <tr><th>받는 사람</th><th>본문 첫 줄</th><th>첨부</th></tr>
+            <tr><td>홍길동</td><td>안녕하세요 홍길동 교수님, <strong>경제학</strong> 분야 심사를…</td><td class="n">2개</td></tr>
+            <tr><td>김철수</td><td>안녕하세요 김철수 교수님, <strong>물리학</strong> 분야 심사를…</td><td class="n">3개</td></tr>
+          </table></div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <div class="tw"><table>
+            <tr><th>잰 것</th><th>이전</th><th>이후</th></tr>
+            <tr><td>한 통 보내기</td><td>2~3분</td><td><strong>사람 손이 들지 않음</strong></td></tr>
+            <tr><td>명단 전체</td><td>하루 이상</td><td><strong>실행 한 번</strong></td></tr>
+            <tr><td>안내문 서식</td><td>붙여넣으며 깨짐</td><td><strong>그대로</strong></td></tr>
+          </table></div>
+
+          <h3>소스 코드</h3>
+          <div class="panel">
+            <div class="panel-h"><span class="t">GitHub</span><span class="m">MIT</span></div>
+            <div class="lnk">
+              <a href="https://github.com/dayoungoh/mail-merge-sender" target="_blank" rel="noopener noreferrer">
+                <span class="n">↗</span>
+                <span class="b"><strong>mail-merge-sender</strong><em>github.com/dayoungoh/mail-merge-sender</em></span>
+                <span class="c">공개</span>
+                <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
+              </a>
+            </div>
+            <div class="tip">엑셀 명단과 워드 서식을 넣으면 개인별로 치환해 보냅니다. 계정과 비밀번호는 <strong>그 자리에서만 쓰고 저장하지 않습니다.</strong> 연속 발송에는 제동과 휴지기간이 걸려 있습니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="stp">
+        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="bd">
+          <p><strong>메일은 되돌릴 수 없습니다.</strong> 잘못 보낸 줄은 지울 수 없고, 받은 분의 받은편지함에 그대로 남습니다.</p>
+          <p>그래서 이 자동화만큼은 <span class="tok a">실행 전에 명단과 첨부를 눈으로</span> 확인합니다. 코드보다 이 습관이 중요합니다.</p>
+          <p>2024년 7월 50기 선발에서 썼습니다.</p>
+        </div>
+      </div>
+
     </div>
   </section>
 
