@@ -112,8 +112,9 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 
 .grp{padding:12px 0 4px;border-top:1px solid var(--line)}
 .grp:first-of-type{border-top:0;padding-top:2px}
-/* 사진처럼 섹션 라벨은 대문자가 아니라 일반 회색 텍스트 */
-.sec{padding:0 8px 7px;font-size:var(--t-ui);font-weight:500;color:var(--ink-3);letter-spacing:-.004em}
+/* 묶음 이름은 그 아래 줄들보다 짙습니다. 옅으면 이름이 아니라
+   여백처럼 읽혀 서문·본문·맺음·부록의 경계가 안 보입니다. */
+.sec{padding:0 8px 7px;font-size:var(--t-ui);font-weight:640;color:var(--ink);letter-spacing:-.004em}
 
 .row{position:relative;z-index:1;display:flex;align-items:center;gap:9px;width:100%;
   padding:7px 8px;border:0;border-radius:8px;background:none;cursor:pointer;
@@ -202,19 +203,19 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   font-size:var(--t-h3);font-weight:660;
   border:0;padding:0;font-family:inherit;cursor:pointer;
   transition:transform 260ms var(--out)}
-.me-av::before,.me-av::after{content:"";position:absolute;top:-14px;
-  width:0;height:0;border-left:9px solid transparent;border-right:9px solid transparent;
-  border-bottom:20px solid var(--ink);
-  transition:transform 240ms var(--out)}
-/* 귀는 바깥으로 눕습니다. 곧게 세우면 뿔처럼 보입니다 */
-.me-av::before{left:2px;transform-origin:bottom right;transform:rotate(-24deg) scaleY(0)}
-.me-av::after{right:2px;transform-origin:bottom left;transform:rotate(24deg) scaleY(0)}
+/* 귀는 삼각형 둘이 아니라 하나의 path 입니다.
+   밑동을 머리 원호 위에 앉히고 꼭지를 둥글려야 뿔이 아니라 고양이로 읽힙니다.
+   여섯 벌을 나란히 그려 놓고 고른 모양입니다. */
+.me-av .ears{position:absolute;left:0;top:-18px;width:64px;height:32px;
+  fill:var(--ink);pointer-events:none;
+  transform-origin:bottom center;transform:scaleY(0);
+  transition:transform 260ms var(--out)}
+.me-av .gl{position:relative;z-index:1}
 .me-av:hover,.me-av:focus-visible{transform:rotate(-4deg)}
-.me-av:hover::before,.me-av:focus-visible::before,.me-av.peek::before{transform:rotate(-24deg) scaleY(1)}
-.me-av:hover::after,.me-av:focus-visible::after,.me-av.peek::after{transform:rotate(24deg) scaleY(1)}
+.me-av:hover .ears,.me-av:focus-visible .ears,.me-av.peek .ears{transform:scaleY(1)}
 .me-av:active{transform:scale(.95)}
 @media(prefers-reduced-motion:reduce){
-  .me-av,.me-av::before,.me-av::after{transition:none}
+  .me-av,.me-av .ears{transition:none}
   .me-av:hover,.me-av:focus-visible{transform:none}
 }
 
@@ -689,6 +690,45 @@ a.cta{text-decoration:none}
 .dg .sb{font-family:var(--sans);font-size:var(--t-micro);fill:var(--ink-3);letter-spacing:-.004em}
 .dg .al{font-family:var(--sans);font-size:var(--t-micro);font-weight:500;fill:var(--ink-3);letter-spacing:.01em}
 
+/* ── 네 칸 구조 ──
+   원인 → 문제 → 해결 → 결과. 읽는 사람이 지금 어느 칸에 있는지
+   눈으로 알아야 하므로, 이름을 본문 옆에 세워 둡니다. ── */
+.steps{margin-top:24px}
+.stp{display:grid;grid-template-columns:104px 1fr;gap:22px;
+  padding:22px 0;border-top:1px solid var(--line)}
+.stp:first-child{border-top:0;padding-top:4px}
+.stp>.hd{position:sticky;top:0;align-self:start}
+.stp .n{display:grid;place-items:center;width:23px;height:23px;border-radius:6px;
+  background:var(--ink);color:var(--shell);
+  font-family:var(--mono);font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
+.stp .t{margin-top:8px;font-size:12pt;font-weight:660;color:var(--ink);letter-spacing:-.01em}
+.stp>.bd>*:first-child{margin-top:0}
+@media(max-width:760px){
+  .stp{grid-template-columns:1fr;gap:11px;padding:18px 0}
+  .stp>.hd{display:flex;align-items:center;gap:9px}
+  .stp .t{margin-top:0}
+}
+
+/* ── 문서 글자 크기 ──
+   본문 11pt 고정, 제목·강조 12pt. 화면 단위가 아니라 문서 단위로 잽니다.
+   이 크기를 쓰는 쪽에만 .doc 을 답니다. ── */
+.doc .lead,.doc p,.doc li,.doc .kv .v,.doc .note,.doc .tbl td{font-size:11pt;line-height:1.66}
+.doc h3,.doc .kv .k,.doc .tbl th,.doc strong{font-size:12pt}
+.doc h3{margin-top:26px;font-weight:660}
+.doc .lead{font-weight:500}
+.doc strong{font-weight:660}
+.doc .kv .k{font-weight:600}
+
+/* 잰 값을 늘어놓는 표. "손으로 → 코드로" 같은 말 대신 항목과 수치만 둡니다 */
+.tbl{width:100%;border-collapse:collapse;margin-top:18px}
+.tbl th,.tbl td{text-align:left;padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+.tbl thead th{border-top:0;padding-bottom:7px;font-size:var(--t-micro);font-weight:640;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+.tbl td:first-child{color:var(--ink-2);white-space:nowrap}
+.tbl td+td{font-variant-numeric:tabular-nums;color:var(--ink)}
+.tbl td.aft{font-weight:640}
+@media(max-width:620px){ .tbl th,.tbl td{padding:9px 8px} }
+
 /* ── 손글씨 주석 (.ann) ──
    앞의 .dg가 "구조를 그리는" 도표라면, 이쪽은 "실물을 가리키는" 주석입니다.
    실물(표·한 줄)은 본문 서체로 반듯하게, 가리키는 손은 흐트러지게.
@@ -1038,65 +1078,155 @@ a.cta{text-decoration:none}
   </section>
 
   <!-- 1-2 -->
-  <section id="p2" class="page">
+  <section id="p2" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-1 · 예시 1</div><h2>PDF 편집 / 병합</h2></div></div>
     <div class="chips"><span class="chip">#PyPDF</span><span class="chip">#2024.07</span><span class="chip">#50기 선발</span></div>
+    <p class="lead">지원 서류는 사람별로 들어오는데, 심사는 사람별로 한 파일을 봅니다. 그 사이를 손으로 메우고 있었습니다.</p>
 
-    <div class="gain">
-      <div class="cell"><div class="lbl">손으로</div><div class="val">4~8분</div><div class="unit">지원자 한 명당</div></div>
-      <div class="arw"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></div>
-      <div class="cell to"><div class="lbl">코드로</div><div class="val">1~3초</div><div class="unit">순서 오류·누락 0</div></div>
+    <div class="steps">
+
+      <div class="stp">
+        <div class="hd"><span class="n">1</span><div class="t">원인</div></div>
+        <div class="bd">
+          <p>서류는 지원자가 각자 올립니다. 한 사람 앞으로 <strong>열 개 남짓</strong>이 자기 폴더에 쌓입니다.</p>
+          <p>심사위원은 지원자 한 명을 한 번에 봅니다. 그래서 <strong>한 사람에 한 파일</strong>이어야 합니다.</p>
+          <p><strong>들어오는 모양과 봐야 하는 모양이 다릅니다.</strong> 이 차이는 없어지지 않습니다. 누군가 매번 메워야 합니다.</p>
+        </div>
+      </div>
+
+      <div class="stp">
+        <div class="hd"><span class="n">2</span><div class="t">문제</div></div>
+        <div class="bd">
+          <p>메우는 데 규칙이 둘 있습니다. <strong>병합 순서가 정해져 있고</strong>, <strong>논문은 앞 두 쪽까지만</strong> 넣습니다.</p>
+          <p>지원자가 수백 명이면 같은 판단을 수백 번 반복합니다. 한 명에 4~8분이 걸렸습니다.</p>
+          <p>다만 더 큰 문제는 시간이 아니었습니다. <strong>틀려도 티가 안 납니다.</strong> 순서가 뒤바뀌거나 서류 하나가 빠져도 파일은 멀쩡히 열립니다. 어긋난 것은 심사 중에 드러납니다.</p>
+        </div>
+      </div>
+
+      <div class="stp">
+        <div class="hd"><span class="n">3</span><div class="t">해결</div></div>
+        <div class="bd">
+          <p>네 단계로 나눴습니다. 파일명으로 서류 종류를 알아내고, 정해진 순서로 잇고, 논문만 앞 두 쪽을 자르고, 전공별 폴더에 씁니다.</p>
+
+          <div class="dg">
+            <svg viewBox="0 0 736 124" role="img" aria-label="지원자 폴더에서 파일을 판별하고 순서대로 병합해 한 사람 한 파일로 저장하는 흐름">
+              <defs>
+                <marker id="a1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                  <polygon points="0 0, 8 3, 0 6" fill="#8a8a86"/></marker>
+                <marker id="a1g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+                  <polygon points="0 0, 8 3, 0 6" fill="#146d34"/></marker>
+              </defs>
+              <line x1="168" y1="58" x2="196" y2="58" stroke="#8a8a86" stroke-width="1" marker-end="url(#a1)"/>
+              <line x1="352" y1="58" x2="380" y2="58" stroke="#8a8a86" stroke-width="1" marker-end="url(#a1)"/>
+              <line x1="536" y1="58" x2="564" y2="58" stroke="#146d34" stroke-width="1" marker-end="url(#a1g)"/>
+
+              <rect x="16" y="24" width="152" height="68" rx="8" fill="rgb(26 26 26/.03)" stroke="rgb(26 26 26/.16)"/>
+              <text class="nm" x="92" y="52" text-anchor="middle">지원자 폴더</text>
+              <text class="sb" x="92" y="70" text-anchor="middle">PDF 10여 개</text>
+
+              <rect x="200" y="24" width="152" height="68" rx="8" fill="#fff" stroke="#1a1a1a"/>
+              <text class="nm" x="276" y="52" text-anchor="middle">파일명으로 판별</text>
+              <text class="sb" x="276" y="70" text-anchor="middle">지원서 · 추천서 …</text>
+
+              <rect x="384" y="24" width="152" height="68" rx="8" fill="#fff" stroke="#1a1a1a"/>
+              <text class="nm" x="460" y="52" text-anchor="middle">순서표대로 병합</text>
+              <text class="sb" x="460" y="70" text-anchor="middle">논문은 앞 2쪽만</text>
+
+              <rect x="568" y="24" width="152" height="68" rx="8" fill="rgb(23 128 61/.07)" stroke="#146d34"/>
+              <text class="nm" x="644" y="52" text-anchor="middle" fill="#146d34">한 사람 한 파일</text>
+              <text class="sb" x="644" y="70" text-anchor="middle" fill="#146d34">전공별 폴더에 저장</text>
+
+              <rect x="164" y="30" width="36" height="12" rx="2" fill="#fff"/>
+              <text class="al" x="182" y="39" text-anchor="middle">훑기</text>
+              <rect x="348" y="30" width="36" height="12" rx="2" fill="#fff"/>
+              <text class="al" x="366" y="39" text-anchor="middle">정렬</text>
+              <rect x="532" y="30" width="36" height="12" rx="2" fill="#fff"/>
+              <text class="al" x="550" y="39" text-anchor="middle">저장</text>
+            </svg>
+          </div>
+
+          <p>순서 규칙은 코드 안에 쓰지 않고 <strong>표로 뺐습니다.</strong> 규칙이 바뀌는 것은 코드가 아니라 업무이기 때문입니다.</p>
+
+          <div class="ann">
+            <svg viewBox="0 0 660 262" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="병합 순서를 적어 둔 표와, 그 표를 코드가 어떻게 쓰는지를 손글씨로 표시한 그림">
+              <defs>
+                <marker id="p2N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+                <marker id="p2G" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#146d34"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+                <marker id="p2A" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+              </defs>
+
+              <text class="cel" x="500" y="74" text-anchor="end" font-size="11" fill="#737370">병합 순서표</text>
+              <rect x="160" y="84" width="340" height="132" rx="8" fill="#fff" stroke="#ededea"/>
+              <path d="M160,92 Q160,84 168,84 L492,84 Q500,84 500,92 L500,110 L160,110 Z" fill="#fafaf9"/>
+              <path d="M160,110 H500 M160,136 H500 M160,162 H500 M160,188 H500 M212,84 V216 M372,84 V216"
+                stroke="#ededea" fill="none"/>
+              <text class="hd" x="186" y="102" text-anchor="middle">순서</text>
+              <text class="hd" x="292" y="102" text-anchor="middle">서류</text>
+              <text class="hd" x="436" y="102" text-anchor="middle">쪽</text>
+              <text class="cel" x="186" y="128" text-anchor="middle">1</text>
+              <text class="cel" x="292" y="128" text-anchor="middle">지원서</text>
+              <text class="cel" x="436" y="128" text-anchor="middle">전체</text>
+              <text class="cel" x="186" y="154" text-anchor="middle">2</text>
+              <text class="cel" x="292" y="154" text-anchor="middle">추천서</text>
+              <text class="cel" x="436" y="154" text-anchor="middle">전체</text>
+              <text class="cel" x="186" y="180" text-anchor="middle">3</text>
+              <text class="cel" x="292" y="180" text-anchor="middle">…</text>
+              <text class="cel" x="436" y="180" text-anchor="middle">전체</text>
+              <rect x="373" y="189" width="126" height="26" fill="#e9f4ec"/>
+              <text class="cel" x="186" y="206" text-anchor="middle">4</text>
+              <text class="cel" x="292" y="206" text-anchor="middle">논문</text>
+              <text class="cel" x="436" y="206" text-anchor="middle">앞 2쪽</text>
+
+              <g stroke="#737370" fill="#737370">
+                <path class="st" d="M126,44 C133,58 143,76 155,96" marker-end="url(#p2N)"/>
+                <text class="hw" x="124" y="36" text-anchor="end" stroke="none">이 줄 차례가 곧 병합 차례</text>
+              </g>
+
+              <g stroke="#146d34" fill="#146d34">
+                <path class="st" d="M556,168 C536,178 518,190 508,199" marker-end="url(#p2G)"/>
+                <text class="hw" x="560" y="162" stroke="none">코드가 여기만 읽습니다</text>
+              </g>
+
+              <g stroke="#a16207" fill="#a16207">
+                <path class="st" d="M250,246 C262,236 274,226 284,214" marker-end="url(#p2A)"/>
+                <text class="hw" x="244" y="254" text-anchor="end" stroke="none">이름이 안 맞으면 조용히 빠집니다</text>
+              </g>
+            </svg>
+            <div class="ann-cap">순서가 바뀌면 <strong>표의 줄만 옮깁니다.</strong> 코드 본문은 건드리지 않습니다.</div>
+          </div>
+
+          <div class="fix" data-fix="p2"></div>
+        </div>
+      </div>
+
+      <div class="stp">
+        <div class="hd"><span class="n">4</span><div class="t">결과</div></div>
+        <div class="bd">
+          <table class="tbl">
+            <thead><tr><th>잰 것</th><th>이전</th><th>이후</th></tr></thead>
+            <tbody>
+              <tr><td>지원자 한 명</td><td>4~8분</td><td class="aft">1~3초</td></tr>
+              <tr><td>수백 명 전체</td><td>며칠</td><td class="aft">10분 이내</td></tr>
+              <tr><td>순서 규칙이 적힌 곳</td><td>사람의 기억</td><td class="aft">표 한 장</td></tr>
+            </tbody>
+          </table>
+          <p>순서와 쪽수 규칙이 한 군데에만 있으니, 매번 같은 결과가 나옵니다. 규칙이 바뀌면 표를 고칩니다.</p>
+          <h3>남는 것</h3>
+          <p>이름 규칙에 안 맞는 파일은 <strong>조용히 빠집니다.</strong> 오류도 나지 않습니다. 그래서 실행한 뒤 <strong>결과 파일 개수가 지원자 수와 맞는지</strong> 세어 봅니다. 이 검산은 아직 사람이 합니다.</p>
+        </div>
+      </div>
+
     </div>
-    <div class="gain-cap">수백 명이면 며칠짜리 일이 10분 안에 끝났습니다.</div>
-
-    <div class="kv">
-      <div class="r"><div class="k">상황</div><div class="v">지원자 수백 명. 한 사람마다 서류 열 개 남짓이 개인 폴더에 흩어져 있었고, 심사위원께는 1인 1파일로 드려야 했습니다.</div></div>
-      <div class="r"><div class="k">문제</div><div class="v">병합 순서가 정해져 있고 논문은 두 쪽까지만. 손으로 하면 <strong>순서가 틀리거나 서류가 빠지는 게</strong> 시간보다 더 문제였습니다.</div></div>
-      <div class="r"><div class="k">해결</div><div class="v">파일명으로 서류 종류 판별 → 순서표대로 병합 → 논문은 앞 두 쪽만 → 전공별 폴더에 저장</div></div>
-    </div>
-    <div class="dg">
-      <svg viewBox="0 0 736 124" role="img" aria-label="지원자 폴더에서 파일을 판별하고 순서대로 병합해 1인 1파일로 저장하는 흐름">
-        <defs>
-          <marker id="a1" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#8a8a86"/></marker>
-          <marker id="a1g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
-            <polygon points="0 0, 8 3, 0 6" fill="#146d34"/></marker>
-        </defs>
-        <line x1="168" y1="58" x2="196" y2="58" stroke="#8a8a86" stroke-width="1" marker-end="url(#a1)"/>
-        <line x1="352" y1="58" x2="380" y2="58" stroke="#8a8a86" stroke-width="1" marker-end="url(#a1)"/>
-        <line x1="536" y1="58" x2="564" y2="58" stroke="#146d34" stroke-width="1" marker-end="url(#a1g)"/>
-
-        <rect x="16" y="24" width="152" height="68" rx="8" fill="rgb(26 26 26/.03)" stroke="rgb(26 26 26/.16)"/>
-        <text class="nm" x="92" y="52" text-anchor="middle">지원자 폴더</text>
-        <text class="sb" x="92" y="70" text-anchor="middle">PDF 10여 개</text>
-
-        <rect x="200" y="24" width="152" height="68" rx="8" fill="#fff" stroke="#1a1a1a"/>
-        <text class="nm" x="276" y="52" text-anchor="middle">파일명으로 판별</text>
-        <text class="sb" x="276" y="70" text-anchor="middle">지원서 · 추천서 …</text>
-
-        <rect x="384" y="24" width="152" height="68" rx="8" fill="#fff" stroke="#1a1a1a"/>
-        <text class="nm" x="460" y="52" text-anchor="middle">순서표대로 병합</text>
-        <text class="sb" x="460" y="70" text-anchor="middle">논문은 앞 2쪽만</text>
-
-        <rect x="568" y="24" width="152" height="68" rx="8" fill="rgb(23 128 61/.07)" stroke="#146d34"/>
-        <text class="nm" x="644" y="52" text-anchor="middle" fill="#146d34">1인 1파일</text>
-        <text class="sb" x="644" y="70" text-anchor="middle" fill="#146d34">전공별 폴더에 저장</text>
-
-        <rect x="164" y="30" width="36" height="12" rx="2" fill="#fff"/>
-        <text class="al" x="182" y="39" text-anchor="middle">훑기</text>
-        <rect x="348" y="30" width="36" height="12" rx="2" fill="#fff"/>
-        <text class="al" x="366" y="39" text-anchor="middle">정렬</text>
-        <rect x="532" y="30" width="36" height="12" rx="2" fill="#fff"/>
-        <text class="al" x="550" y="39" text-anchor="middle">저장</text>
-      </svg>
-    </div>
-    <div class="dg-cap">순서표 하나만 고치면 병합 순서가 바뀝니다. 코드 본문은 손대지 않습니다.</div>
-
-    <div class="fix" data-fix="p2"></div>
-
-    <div class="note"><strong>핵심 —</strong> 머릿속에 있던 규칙을 순서표로 적어주면, 코드는 그 목록대로만 움직입니다. 순서가 바뀌면 목록만 고칩니다.</div>
-    <h3>주의할 점</h3>
-    <p>이름 규칙에 안 맞는 파일은 <strong>조용히 빠집니다.</strong> 오류도 안 납니다. 실행 후 결과 개수가 예상과 맞는지 세어보세요.</p>
   </section>
 
   <!-- 1-3 -->
@@ -1866,7 +1996,7 @@ a.cta{text-decoration:none}
   <!-- 쓴 사람 · 목차 밖 페이지 -->
   <section id="me" class="page">
     <div class="me-head">
-      <button class="me-av" id="muiAv" aria-label="무이 보기">오</button>
+      <button class="me-av" id="muiAv" aria-label="무이 보기"><span class="gl">오</span><svg class="ears" aria-hidden="true" viewBox="0 -18 64 32"><path d="M6.0,13.3 L12.0,-10.1 Q13.0,-14.0 16.1,-11.5 L30.0,0.1 Z M58.0,13.3 L52.0,-10.1 Q51.0,-14.0 47.9,-11.5 L34.0,0.1 Z"/></svg></button>
       <div class="me-id">
         <div class="eyebrow">쓴 사람</div>
         <h2>오다영</h2>
@@ -2088,12 +2218,31 @@ document.querySelectorAll('.kids,.gkids').forEach(k =>
   k.addEventListener('transitionend', e => { if(e.propertyName === 'grid-template-rows') rest(); }));
 
 const go = id => show(order.indexOf(id));
-chRows.forEach(b => b.addEventListener('click', () => go(b.dataset.first)));
+
+/* 펼쳐진 묶음을 다시 누르면 접습니다.
+   예전에는 같은 쪽으로 다시 갈 뿐이라 아무 일도 안 일어났습니다.
+   접을 때는 쪽을 옮기지 않습니다 — 읽던 자리를 뺏지 않으려는 것입니다. */
+function toggleOrGo(btn, openNow, first){
+  const id = btn.getAttribute('aria-controls');
+  const box = id && document.getElementById(id);
+  if(box && box.classList.contains('open') && openNow){
+    box.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    requestAnimationFrame(rest);
+    return;
+  }
+  go(first);
+}
+chRows.forEach(b => b.addEventListener('click',
+  () => toggleOrGo(b, chapterOf(order[cur]) === b.dataset.ch, b.dataset.first)));
 /* href 가 있으니 Enter·가운데클릭·링크복사가 전부 브라우저 기본으로 됩니다.
    좌클릭만 가로채 SPA 전환으로 넘깁니다. */
 kidRows.forEach(a => a.addEventListener('click', e => {
   if(e.metaKey||e.ctrlKey||e.shiftKey||e.button) return;
-  e.preventDefault(); go(a.dataset.t);
+  e.preventDefault();
+  /* 중항목도 마찬가지입니다 */
+  if(a.classList.contains('mid')) return toggleOrGo(a, MID_OF[order[cur]] === a.dataset.mid, a.dataset.t);
+  go(a.dataset.t);
 }));
 document.getElementById('homeBtn').addEventListener('click', () => show(0));  /* 인삿말 */
 /* 본문 어디서든 특정 페이지로 보내는 버튼 */
