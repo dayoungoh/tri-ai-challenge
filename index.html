@@ -2667,9 +2667,9 @@ Thumbs.db</code></div>
       <div class="rows">
         <div class="r"><span class="k">이름</span><span class="v">무이 <span class="soft">(Mui) · 남</span></span></div>
         <div class="r"><span class="k">사번</span><span class="v">MUI-0001</span></div>
+        <div class="r"><span class="k">생일</span><span class="v" id="muiBirth">—</span></div>
         <div class="r"><span class="k">출신</span><span class="v">대구 <span class="soft">· 길거리</span></span></div>
         <div class="r"><span class="k">입사일</span><span class="v" id="muiJoin">—</span></div>
-        <div class="r"><span class="k">근속</span><span class="v" id="muiTenure">—</span></div>
         <div class="r"><span class="k">직책</span><span class="v">골골송 담당 <span class="soft">(자칭)</span></span></div>
         <div class="r"><span class="k">근무지</span><span class="v">캣타워 2층 <span class="soft">· 창가 근무 가능</span></span></div>
         <div class="r"><span class="k">특기</span><span class="v">꾹꾹이 <span class="soft">· 3초 안에 이불 잠입</span></span></div>
@@ -3673,30 +3673,29 @@ function drawReceipt(){
 /* ── 무이 사원증 ──
    상태는 들를 때마다 다릅니다. 고양이의 근무란 대체로 이렇습니다. */
 (() => {
-  /* ↓ 무이를 데려오신 날. 'YYYY-MM-DD' 로 적으면 근속이 저절로 계산됩니다.
-       비워 두면 두 줄 모두 채울 자리로 표시됩니다. */
-  const JOINED = '';
+  const BORN   = '2021-10-05';   /* 태어난 날 */
+  const JOINED = '2021-12-05';   /* 우리집에 온 날 */
 
-  const joinEl = document.getElementById('muiJoin');
-  const tenEl  = document.getElementById('muiTenure');
-  if(joinEl && tenEl){
-    const d = JOINED && new Date(JOINED);
-    if(d && !isNaN(d)){
-      joinEl.textContent = d.getFullYear() + '. ' + (d.getMonth() + 1) + '. ' + d.getDate() + '.';
-      /* 개월 수로 세고 열두 달이 넘으면 해로 끊습니다 */
-      const now = new Date();
-      let m = (now.getFullYear() - d.getFullYear()) * 12 + (now.getMonth() - d.getMonth());
-      if(now.getDate() < d.getDate()) m--;
-      m = Math.max(m, 0);
-      const y = Math.floor(m / 12), mm = m % 12;
-      tenEl.textContent = (y ? y + '년 ' : '') + (mm || !y ? mm + '개월' : '');
-    }else{
-      joinEl.textContent = '— 데려오신 날 —';
-      tenEl.textContent  = '입사일을 넣으면 계산됩니다';
-      joinEl.classList.add('todo-v');
-      tenEl.classList.add('todo-v');
-    }
-  }
+  const ymd = t => t.getFullYear() + '. ' + (t.getMonth() + 1) + '. ' + t.getDate() + '.';
+  /* 지난 개월 수. 날짜가 아직 안 지났으면 한 달 빼야 맞습니다 */
+  const months = t => {
+    const n = new Date();
+    let m = (n.getFullYear() - t.getFullYear()) * 12 + (n.getMonth() - t.getMonth());
+    if(n.getDate() < t.getDate()) m--;
+    return Math.max(m, 0);
+  };
+  const span = m => {
+    const y = Math.floor(m / 12), mm = m % 12;
+    return (y ? y + '년' : '') + (mm ? (y ? ' ' : '') + mm + '개월' : (y ? '' : '0개월'));
+  };
+
+  const b = new Date(BORN), j = new Date(JOINED);
+  const birthEl = document.getElementById('muiBirth');
+  const joinEl  = document.getElementById('muiJoin');
+  if(birthEl) birthEl.innerHTML = ymd(b)
+    + ' <span class="soft">· ' + Math.floor(months(b) / 12) + '세</span>';
+  if(joinEl)  joinEl.innerHTML  = ymd(j)
+    + ' <span class="soft">· 근속 ' + span(months(j)) + '</span>';
 
   const st = document.getElementById('muiState');
   if(st){
