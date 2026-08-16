@@ -415,6 +415,14 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gb-f .bd{flex:1 1 220px;min-width:0}
 .gb-f input:focus-visible{box-shadow:inset 0 0 0 1px var(--ink)}
 .gb-f input::placeholder{color:var(--ink-3);font-weight:400}
+/* 한 번 눌러 채우는 단추. 값을 미리 박아 두면 아무나 그대로 눌러
+   같은 글만 쌓이므로, 채우기만 하고 보내기는 사람이 누릅니다. */
+.gb-quick{flex:0 0 auto;border:0;border-radius:7px;padding:6px 10px;cursor:pointer;
+  font-family:inherit;font-size:var(--t-ui);color:var(--ink-3);
+  background:var(--shell);box-shadow:inset 0 0 0 1px var(--line);
+  transition:color 140ms ease,box-shadow 140ms ease,transform 120ms var(--out)}
+.gb-quick:hover{color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink-3)}
+.gb-quick:active{transform:scale(.94)}
 .gb-send{flex:0 0 auto;border:0;border-radius:7px;padding:7px 13px;cursor:pointer;
   font-family:inherit;font-size:var(--t-ui);font-weight:640;
   background:var(--line);color:var(--ink-3);
@@ -2629,7 +2637,8 @@ Thumbs.db</code></div>
       <form class="gb-f" id="gbForm">
         <span class="gb-lb">한 마디</span>
         <input class="nm" id="gbName" name="name" maxlength="20" placeholder="이름 또는 별명" aria-label="이름" autocomplete="off" required>
-        <input class="bd" id="gbBody" name="body" maxlength="300" placeholder="남기고 싶은 말을 적어 주세요 (예. 퍼가요~♡)" aria-label="남길 말" autocomplete="off" required>
+        <input class="bd" id="gbBody" name="body" maxlength="300" placeholder="남기고 싶은 말을 적어 주세요" aria-label="남길 말" autocomplete="off" required>
+        <button class="gb-quick" type="button" id="gbQuick" title="퍼가요~♡ 채워 넣기">퍼가요~♡</button>
         <span class="c" id="gbLen" hidden></span>
         <span class="gb-msg" id="gbMsg" role="status" aria-live="polite"></span>
         <button class="gb-send" type="submit" id="gbSend" disabled>확인</button>
@@ -2640,15 +2649,15 @@ Thumbs.db</code></div>
   <!-- 무이 · 목차 밖 · 문은 프로필의 동그라미와 링크 둘 -->
   <section id="mui" class="page">
     <button class="mui-back" id="muiBack"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 6l-6 6 6 6"/></svg> 쓴 사람으로</button>
-    <div class="phead"><div class="ttl"><div class="eyebrow">집필에 도움 주지 않은 고양이</div><h2>우리집 고양이 무이</h2></div></div>
-    <p class="lead">여기부터는 일과 아무 상관이 없습니다.</p>
+    <div class="phead"><div class="ttl"><div class="eyebrow">집필에 도움 주지 않은 고양이</div><h2>무이네 편의점</h2></div></div>
+    <p class="lead">여기부터는 일과 아무 상관이 없습니다. 무이가 지키는 가게입니다.</p>
 
     <div class="pet" id="pet">
       <img id="petImg" src="photos/receipt/mui-badge.jpg" alt="무이" width="96" height="96">
       <div class="rows">
         <div class="r"><span class="k">이름</span><span class="v">무이</span></div>
         <div class="r"><span class="k">직책</span><span class="v">골골송 담당 <span class="soft">(자칭)</span></span></div>
-        <div class="r"><span class="k">근무지</span><span class="v">캣타워 2층 · 무이네 편의점</span></div>
+        <div class="r"><span class="k">근무지</span><span class="v">캣타워 2층 <span class="soft">· 창가 근무 가능</span></span></div>
         <div class="r"><span class="k">상태</span><span class="v" id="muiState">근무 중</span></div>
       </div>
       <div class="petrow">
@@ -2661,7 +2670,7 @@ Thumbs.db</code></div>
     <div class="mui-two">
       <div class="mui-col">
   <div class="cats-h">
-        <span class="t">무이 사진첩</span>
+        <span class="t">근무 사진첩</span>
         <span class="d">끌어서 넘기기</span>
       </div>
       <div class="cats" id="cats"><div class="cats-track" id="catsTrack"></div></div>
@@ -2669,7 +2678,7 @@ Thumbs.db</code></div>
 
       <div class="rcp">
       <div class="rcp-h">
-        <span class="t">무이네 편의점</span>
+        <span class="t">계산대</span>
         <span class="d">누르면 영수증이 나옵니다</span>
       </div>
       <div class="prn">
@@ -3148,7 +3157,7 @@ function showMui(push = true){
   allPages.forEach(p => p.classList.remove('on'));
   muiSec.classList.add('on');
   rows.forEach(r => { r.classList.remove('cur'); r.setAttribute('aria-current', 'false'); });
-  cbSec.textContent = '무이'; cbPage.textContent = '';
+  cbSec.textContent = '무이네 편의점'; cbPage.textContent = '';
   crumb.classList.add('solo');
   prevB.disabled = nextB.disabled = tPrev.disabled = tNext.disabled = true;
   prevT.textContent = nextT.textContent = '';
@@ -3156,7 +3165,7 @@ function showMui(push = true){
   if(push) history.pushState(null, '', '#mui'); else history.replaceState(null, '', '#mui');
   side.classList.remove('open'); scrim.classList.remove('on');
   mbtn.setAttribute('aria-expanded', 'false');
-  live.textContent = '무이';
+  live.textContent = '무이네 편의점';
   if(window.__rotOff) window.__rotOff();
   buildCats();
   hl.style.opacity = 0; ship.style.opacity = 0;
@@ -3731,6 +3740,14 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
     sendEl.classList.toggle('on', !!ok);
   };
   nameEl.addEventListener('input', ready);
+
+  /* 퍼가요 단추 — 칸을 채우고 이름 쪽으로 보냅니다. 보내기는 사람이 누릅니다 */
+  const quickEl = document.getElementById('gbQuick');
+  if(quickEl) quickEl.addEventListener('click', () => {
+    bodyEl.value = '퍼가요~♡';
+    bodyEl.dispatchEvent(new Event('input'));
+    (nameEl.value.trim() ? bodyEl : nameEl).focus();
+  });
   bodyEl.addEventListener('input', () => {
     /* 300자에 가까워질 때만 셈을 보여 줍니다. 늘 떠 있으면 잔소리입니다 */
     const n = bodyEl.value.length;
