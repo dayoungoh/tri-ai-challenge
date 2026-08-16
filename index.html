@@ -2789,10 +2789,33 @@ function moveHL(el){
   const g = groups.getBoundingClientRect(), r = el.getBoundingClientRect();
   hl.style.top = (r.top - g.top) + 'px'; hl.style.height = r.height + 'px'; hl.style.opacity = 1;
 }
+/* 배가 갈 자리.
+   묶음이 접히고 펴지는 데 300ms 가 걸리는데, 쪽을 옮긴 바로 다음 프레임에 재면
+   아직 옛 배치입니다. 1장이 펼쳐진 채로 잰 2장 줄은 한참 아래에 있고,
+   접히고 나면 위로 올라옵니다 — 배가 밑까지 내려갔다 되올라오던 이유입니다.
+   그래서 지금 자리에, 아직 안 끝난 여닫힘이 만들 높이 차를 미리 더해 셉니다. */
+function shipY(el){
+  const t = document.getElementById('sideScroll').getBoundingClientRect().top;
+  let y = el.getBoundingClientRect().top - t;
+  for(const k of document.querySelectorAll('.kids,.gkids')){
+    if(k.contains(el)) continue;                 /* 나를 담은 통은 나를 밀어내지 않습니다 */
+    /* 내 아래에 있는 통도 상관없습니다 */
+    if(k.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_PRECEDING) continue;
+    /* 닫힌 통 안에 든 통은 이미 그 통 높이에 다 셈해져 있습니다 */
+    if(k.parentElement.closest('.kids:not(.open),.gkids:not(.open)')) continue;
+    const inner = k.firstElementChild;
+    const cs = getComputedStyle(inner);
+    /* 접혀도 안쪽 여백만큼은 남습니다. 0 으로 치면 통마다 1px 씩 어긋납니다 */
+    const shut = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
+    const now = k.getBoundingClientRect().height;
+    const end = k.classList.contains('open') ? inner.scrollHeight : shut;
+    y += end - now;
+  }
+  return y + 6;
+}
 function moveShip(el){
   if(!el) return;
-  const t = document.getElementById('sideScroll').getBoundingClientRect().top;
-  ship.style.transform = `translateY(${el.getBoundingClientRect().top - t + 6}px)`;
+  ship.style.transform = `translateY(${shipY(el)}px)`;
 }
 /* 현재 항목은 흰 알약이 표시하므로, 미끄러지는 박스는 가리킬 때만 보입니다 */
 const rest = () => { hl.style.opacity = 0; moveShip(activeEl()); };
