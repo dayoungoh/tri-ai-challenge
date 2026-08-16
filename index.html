@@ -880,11 +880,37 @@ a.cta{text-decoration:none}
   box-shadow:inset 0 0 0 1px rgb(20 109 52/.16)}
 .doc .tok.a{background:rgb(161 98 7/.12);color:var(--amber);
   box-shadow:inset 0 0 0 1px rgb(161 98 7/.18)}
-.doc h3{margin-top:26px;font-weight:660}
+.doc h3{margin-top:44px;padding-top:15px;font-weight:660;
+  border-top:1px solid var(--line)}
+/* 제목 바로 다음 것은 붙여 둡니다. 위 44 · 아래 8 의 어긋남이 묶음을 만듭니다 */
+.doc h3+*{margin-top:8px}
+/* 쪽 첫 소제목은 위에 아무것도 없어 선이 뜬 줄로 보입니다 */
+.doc .lead+h3,.doc .chips+h3,.doc .note+h3:first-of-type{border-top:0;padding-top:0}
 .doc .lead{font-weight:500}
 .doc strong{font-weight:660}
 .doc .kv .k{font-weight:600}
 
+
+/* ── 소제목 눈금 ──
+   왼쪽 여백에 소제목 수만큼 눈금을 긋습니다. 지금 읽는 자리가 굵고 깁니다.
+   목차(사이드바)는 '쪽' 을 가리키고 이것은 '쪽 안' 을 가리킵니다 — 층이 다릅니다.
+   여백이 좁아지면 글자를 덮으므로 넓은 화면에서만 나옵니다. */
+.hrail{position:fixed;z-index:20;display:none;flex-direction:column;gap:9px;
+  padding:6px 0;transform:translateY(-50%)}
+@media(min-width:1240px){ .hrail.on{display:flex} }
+.hrail button{position:relative;display:block;width:22px;height:12px;padding:0;
+  border:0;background:none;cursor:pointer}
+.hrail button::before{content:"";position:absolute;left:0;top:5px;height:2px;width:13px;
+  border-radius:1px;background:#d8d8d4;   /* --line 은 너무 옅어 눈금이 안 보입니다 */
+  transition:width 200ms var(--out),background 200ms ease}
+.hrail button:hover::before{width:22px;background:var(--ink-3)}
+.hrail button[aria-current="true"]::before{width:22px;background:var(--ink)}
+/* 이름은 눈금 왼쪽으로 자랍니다. 오른쪽으로 뻗으면 본문을 덮습니다 */
+.hrail .nm{position:absolute;right:100%;top:50%;margin-right:11px;transform:translateY(-50%);
+  white-space:nowrap;font-size:var(--t-micro);color:var(--ink-2);
+  background:var(--shell);padding:3px 9px;border-radius:7px;box-shadow:var(--shadow-lift);
+  opacity:0;pointer-events:none;transition:opacity 140ms ease}
+.hrail button:hover .nm,.hrail button:focus-visible .nm{opacity:1}
 
 /* ── 그대로 보여주는 칸 ──
    명령이나 파일 내용은 고쳐 쓰면 안 되는 글자라 따로 둡니다. ── */
@@ -2923,6 +2949,9 @@ Thumbs.db</code></div>
      안에 두면 인쇄할 때 .shell 과 함께 사라져 빈 종이가 나갑니다. -->
 <div id="rcpPrint" aria-hidden="true"></div>
 
+<!-- 소제목 눈금. 쪽마다 다시 채웁니다 -->
+<nav class="hrail" id="hrail" aria-label="이 쪽의 소제목"></nav>
+
 <script>
 const targets = [...document.querySelectorAll('.row[data-t]')];
 const order   = targets.map(el => el.dataset.t);
@@ -3047,6 +3076,7 @@ function show(i, push = true){
   /* 화면은 바뀌는데 스크린리더에는 아무 일도 안 일어나던 자리 */
   live.textContent = titles[i] + ' — ' + (i + 1) + ' / ' + order.length;
   if(window.__rotOn) (order[i] === 'hello' ? window.__rotOn() : window.__rotOff());
+  if(window.buildHRail) window.buildHRail();
   requestAnimationFrame(rest);
 }
 
@@ -3970,6 +4000,67 @@ function drawReceipt(){
                     '츄르 재고 조사 중', '이불 잠입 중'];
     st.textContent = STATES[Math.floor(Math.random() * STATES.length)];
   }
+})();
+
+/* ── 소제목 눈금 레일 ──
+   왼쪽 여백에 이 쪽의 소제목 수만큼 눈금을 긋습니다.
+   눈금에 올리면 이름이 뜨고, 누르면 그 자리로 갑니다.
+
+   올리는 것만으로 옮기지는 않습니다 — 지나가다 스친 것과 가려는 것을
+   구분할 수 없어, 마우스가 훑고 지나갈 때마다 쪽이 튑니다. */
+(() => {
+  const rail = document.getElementById('hrail'); if(!rail) return;
+  const box = document.getElementById('content');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  let heads = [];
+
+  const place = () => {
+    /* 본문 칸 왼쪽 여백에 세웁니다. 여백이 좁으면 CSS 가 알아서 감춥니다 */
+    /* .wrap 은 .page 의 부모입니다. 자손으로 찾으면 늘 빈손입니다 */
+    const w = document.querySelector('.wrap');
+    if(!w) return;
+    const r = w.getBoundingClientRect();
+    rail.style.left = Math.round(r.left - 40) + 'px';
+    rail.style.top  = Math.round(box.getBoundingClientRect().top + box.clientHeight / 2) + 'px';
+  };
+
+  const mark = () => {
+    if(!heads.length) return;
+    /* 화면 위쪽 3분의 1 을 지난 것 중 마지막 것이 지금 읽는 자리입니다 */
+    const line = box.getBoundingClientRect().top + box.clientHeight * .33;
+    let cur = 0;
+    heads.forEach((h, i) => { if(h.getBoundingClientRect().top <= line) cur = i; });
+    [...rail.children].forEach((b, i) =>
+      b.setAttribute('aria-current', String(i === cur)));
+  };
+
+  window.buildHRail = () => {
+    const page = document.querySelector('.page.on');
+    heads = page ? [...page.querySelectorAll('h3')] : [];
+    rail.replaceChildren();
+    /* 두 개짜리 눈금은 눈금이 아니라 점 두 개입니다 */
+    rail.classList.toggle('on', heads.length >= 3);
+    if(heads.length < 3) return;
+    heads.forEach((h, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      const name = (h.textContent || '').trim();
+      b.setAttribute('aria-label', name);
+      const nm = document.createElement('span');
+      nm.className = 'nm'; nm.textContent = name;
+      b.appendChild(nm);
+      b.addEventListener('click', () => {
+        const top = box.scrollTop + h.getBoundingClientRect().top
+                  - box.getBoundingClientRect().top - 24;
+        box.scrollTo({ top, behavior: reduce.matches ? 'auto' : 'smooth' });
+      });
+      rail.appendChild(b);
+    });
+    place(); mark();
+  };
+
+  box.addEventListener('scroll', mark, { passive: true });
+  addEventListener('resize', () => { place(); mark(); });
 })();
 
 /* ── 무이 쓰다듬기 ──
