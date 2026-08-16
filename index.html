@@ -2736,7 +2736,6 @@ Thumbs.db</code></div>
     </div>
     </div>
 
-    <div id="rcpPrint" aria-hidden="true"></div>
   </section>
 
   <div class="pager">
@@ -2748,6 +2747,10 @@ Thumbs.db</code></div>
   </div>  <!-- .content -->
 </main>
 </div>  <!-- .shell -->
+
+<!-- 영수증 인쇄용 종이. .shell 밖에 있어야 합니다 —
+     안에 두면 인쇄할 때 .shell 과 함께 사라져 빈 종이가 나갑니다. -->
+<div id="rcpPrint" aria-hidden="true"></div>
 
 <script>
 const targets = [...document.querySelectorAll('.row[data-t]')];
@@ -3516,9 +3519,20 @@ function stickOn(x, RW, HH){
 
   const kinds = Object.keys(STK);
   const used = [];
+  const put = [];                                      /* 이미 붙인 자리 */
+  /* 반지름이 최대 14, 종이색 테두리까지 17. 둘이 34 안쪽이면 서로 물립니다.
+     넉넉히 잡아야 비스듬히 붙어도 안 겹칩니다. */
+  const APART = 52;
   const many = 3 + Math.floor(Math.random() * 2);      /* 서너 장 */
-  for(let n = 0; n < many && slots.length; n++){
-    const [sx, sy] = slots.splice(Math.floor(Math.random() * slots.length), 1)[0];
+  for(let n = 0; n < many; n++){
+    /* 이미 붙은 것과 너무 가까운 자리는 뺍니다 */
+    const free = slots.filter(([ax, ay]) =>
+      put.every(([bx, by]) => Math.hypot(ax - bx, ay - by) >= APART));
+    if(!free.length) break;
+    const pickAt = free[Math.floor(Math.random() * free.length)];
+    slots.splice(slots.indexOf(pickAt), 1);
+    const [sx, sy] = pickAt;
+    put.push(pickAt);
     let k;                                             /* 같은 스티커가 겹치지 않게 */
     do { k = kinds[Math.floor(Math.random() * kinds.length)]; }
     while(used.length < kinds.length && used.includes(k));
