@@ -4018,10 +4018,28 @@ function drawReceipt(){
     /* 본문 칸 왼쪽 여백에 세웁니다. 여백이 좁으면 CSS 가 알아서 감춥니다 */
     /* .wrap 은 .page 의 부모입니다. 자손으로 찾으면 늘 빈손입니다 */
     const w = document.querySelector('.wrap');
-    if(!w) return;
-    const r = w.getBoundingClientRect();
-    rail.style.left = Math.round(r.left - 40) + 'px';
-    rail.style.top  = Math.round(box.getBoundingClientRect().top + box.clientHeight / 2) + 'px';
+    if(!w || !heads.length) return;
+    const r = w.getBoundingClientRect(), c = box.getBoundingClientRect();
+    /* 레일 길이는 화면 높이의 절반쯤. 더 길면 사이드바와 키를 겨루고,
+       더 짧으면 눈금이 서로 붙습니다. */
+    const H = Math.max(150, Math.min(Math.round(c.height * .52), 420));
+    rail.style.left   = Math.round(r.left - 40) + 'px';
+    rail.style.top    = Math.round(c.top + (c.height - H) / 2) + 'px';
+    rail.style.height = H + 'px';
+
+    /* 제목이 쪽의 몇 할 지점에 있는지를 그대로 눈금 자리로 씁니다.
+       균등 간격으로 세우면 눈금과 제목이 아무 사이도 아니게 되어,
+       첫째 눈금의 이름이 둘째 제목 옆에 뜹니다. */
+    const total = Math.max(box.scrollHeight, 1);
+    let last = -99;
+    heads.forEach((h, i) => {
+      const y = h.getBoundingClientRect().top - c.top + box.scrollTop;
+      let t = Math.round(Math.max(0, Math.min(1, y / total)) * H);
+      /* 제목끼리 붙어 있으면 눈금도 겹칩니다. 최소 간격만 벌립니다 */
+      if(t - last < 13) t = last + 13;
+      last = t;
+      rail.children[i].style.top = t + 'px';
+    });
   };
 
   const mark = () => {
