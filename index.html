@@ -271,14 +271,34 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   gap:12px;flex-wrap:wrap;margin-top:34px}
 .cats-h .t{font-size:var(--t-h3);font-weight:640;letter-spacing:-.018em;color:var(--ink)}
 .cats-h .d{font-size:var(--t-ui);color:var(--ink-3)}
-.cats{margin-top:14px;overflow:hidden;border-radius:14px;
-  perspective:1100px;cursor:grab;touch-action:pan-y}
+/* ── 커버플로 ──
+   가운데 한 장이 정면, 옆으로 갈수록 눕고 뒤로 물러납니다.
+   자리는 자바스크립트가 프레임마다 직접 씁니다 — transition 을 걸면
+   끄는 동안 매번 전환이 새로 시작돼 덜컹거립니다. */
+.cats{margin-top:14px;position:relative;height:312px;overflow:hidden;border-radius:14px;
+  perspective:1000px;cursor:grab;touch-action:pan-y;user-select:none}
 .cats.drag{cursor:grabbing}
-.cats-track{display:flex;gap:12px;will-change:transform}
-.cat{flex:0 0 236px;height:296px;border-radius:13px;overflow:hidden;background:var(--inset);
-  box-shadow:var(--shadow-card);transform-style:preserve-3d;
-  transition:transform 300ms var(--out),box-shadow 300ms ease}
-.cat:not(.empty){cursor:zoom-in}
+.cats-track{position:absolute;inset:0;transform-style:preserve-3d}
+.cat{position:absolute;left:50%;top:50%;width:176px;height:232px;margin:-116px 0 0 -88px;
+  border-radius:13px;overflow:hidden;background:var(--inset);
+  box-shadow:var(--shadow-card);will-change:transform,opacity}
+.cat.far{visibility:hidden}          /* 화면 밖까지 그리면 31장을 매 프레임 칠합니다 */
+.cat.mid{cursor:zoom-in}
+.cat:not(.mid):not(.empty){cursor:pointer}
+
+/* 넘기는 줄 — 점 서른한 개는 셀 수 없습니다. 자리와 번호로 보여줍니다 */
+.cats-nav{display:flex;align-items:center;gap:11px;margin-top:11px}
+.cats-nav button{display:grid;place-items:center;width:27px;height:27px;flex:none;
+  border:0;border-radius:50%;background:var(--inset);color:var(--ink-2);cursor:pointer;
+  box-shadow:inset 0 0 0 1px var(--line);
+  transition:background 140ms ease,color 140ms ease,transform 140ms var(--out)}
+.cats-nav button:hover{background:var(--shell);color:var(--ink);box-shadow:var(--shadow-lift)}
+.cats-nav button:active{transform:scale(.93)}
+.cats-nav button svg{width:13px;height:13px}
+.cats-bar{flex:1;height:3px;border-radius:2px;background:var(--line);overflow:hidden}
+.cats-bar .fill{display:block;height:100%;border-radius:2px;background:var(--ink-3)}
+.cats-num{flex:none;font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);
+  font-variant-numeric:tabular-nums}
 .cat img{width:100%;height:100%;object-fit:cover;display:block;
   pointer-events:none;-webkit-user-drag:none}
 .cat.empty{display:grid;place-items:center;padding:10px;text-align:center;
@@ -333,7 +353,8 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 /* 좌우로 서면 두 칸의 머리줄이 같은 높이에서 시작해야 합니다 */
 .mui-two .cats-h,.mui-two .rcp-h{margin-top:0}
 .mui-two .cats{margin-top:14px}
-.mui-two .cat{flex:0 0 176px;height:232px}
+.mui-two .cats{height:288px}
+.mui-two .cat{width:158px;height:208px;margin:-104px 0 0 -79px}
 
 /* ── 무이 사원증 ──
    쪽의 첫 덩이. 누구인지(신상)와 만질 수 있는 것(쓰다듬기)을 한 카드에 둡니다.
@@ -2713,6 +2734,12 @@ Thumbs.db</code></div>
         <span class="d">끌어서 넘기기</span>
       </div>
       <div class="cats" id="cats"><div class="cats-track" id="catsTrack"></div></div>
+      <div class="cats-nav">
+        <button id="catsPrev" aria-label="이전 사진"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg></button>
+        <span class="cats-bar"><span class="fill" id="catsFill"></span></span>
+        <span class="cats-num" id="catsNum">1 / 1</span>
+        <button id="catsNext" aria-label="다음 사진"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
+      </div>
       </div>
 
       <div class="rcp">
@@ -3253,118 +3280,143 @@ function showMui(push = true){
 document.getElementById('muiAv').addEventListener('click', () => showMui());
 document.getElementById('muiBack').addEventListener('click', () => showMe());
 
-/* ── 끌어 넘기는 무한 캐러셀 ──
-   카드 목록을 세 벌 이어 붙이고, 한 벌만큼 밀리면 되감습니다.
-   되감을 때 위치를 한 벌 폭만큼 옮기므로 눈에는 끊김이 없습니다. */
+/* ── 커버플로 사진첩 ──
+   가운데 한 장이 정면으로 서고 옆으로 갈수록 눕습니다.
+   그래도 끌어서 넘기는 것은 남겼습니다 — 서른한 장을 한 장씩 눌러 넘기면
+   보는 것보다 넘기는 데 시간이 더 듭니다.
+
+   자리는 pos(소수) 하나로 정합니다. 끄는 동안에는 pos 가 손을 따라가고,
+   손을 떼면 가장 가까운 정수로 붙습니다. 그리는 것은 프레임당 한 번뿐입니다. */
 let catsReady = false;
 function buildCats(){
   if(catsReady) return; catsReady = true;
-  const box = document.getElementById('cats');
+  const box   = document.getElementById('cats');
   const track = document.getElementById('catsTrack');
+  const numEl = document.getElementById('catsNum');
+  const fill  = document.getElementById('catsFill');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const card = src => {
+  const cards = CATS.map((src, i) => {
     const d = document.createElement('div');
-    d.className = 'cat';
+    d.className = 'cat far';
     const img = new Image();
     img.src = src; img.alt = '';
-    img.onerror = () => {                      /* 아직 파일이 없을 때 */
+    img.loading = i < 6 ? 'eager' : 'lazy';
+    img.onerror = () => {                        /* 아직 파일이 없을 때 */
       d.classList.add('empty');
       d.innerHTML = '<em>' + src + '</em>';
     };
     d.appendChild(img);
+    track.appendChild(d);
     return d;
-  };
-  for(let i = 0; i < 3; i++) CATS.forEach(src => track.appendChild(card(src)));
+  });
+  const N = cards.length;
+  if(!N) return;
 
-  const SET = () => (248 * CATS.length);       /* 카드 236 + gap 12 */
-  let x = -SET(), vx = 0, dragging = false, lastX = 0, lastT = 0, raf = 0;
+  const TILT  = 44;    /* 눕는 각도 */
+  const DEPTH = 74;    /* 뒤로 물러나는 깊이 */
+  const SHOW  = 2;     /* 이보다 멀면 안 그립니다 */
+  const GRAB  = 116;   /* 이만큼 끌면 한 장 넘어갑니다 */
 
-  const draw = () => {
-    const w = SET();
-    if(x <= -2 * w) x += w;
-    if(x >= 0)      x -= w;
-    track.style.transform = 'translate3d(' + x + 'px,0,0)';
-  };
-  draw();
-
-  const glide = () => {
-    if(dragging) return;
-    vx *= 0.94;                                 /* 실제 물건처럼 서서히 섭니다 */
-    if(Math.abs(vx) < 0.06){ vx = 0; return; }
-    x += vx; draw(); raf = requestAnimationFrame(glide);
+  /* 옆 장이 비켜서는 폭. 카드 폭의 절반쯤은 벌어져야 뒤에 안 숨습니다.
+     부채를 통째로 상자 안에 넣으려 하면 좁은 칸에서 다 겹쳐 버립니다 —
+     끝 장은 상자 모서리에 잘려도 됩니다. 원래 그렇게 생긴 물건입니다.
+     쪽 폭은 화면에 따라 달라지므로 그때그때 잽니다. */
+  let STEP = 84;
+  const fit = () => {
+    const bw = box.clientWidth, cw = cards[0].offsetWidth || 158;
+    STEP = Math.max(38, Math.min(cw * .56, bw * .24));
   };
 
+  let pos = Math.min(2, N - 1);   /* 지금 자리 (소수) */
+  let aim = pos;                  /* 가려는 자리 (정수) */
+  let raf = 0, dragging = false, lastX = 0, vel = 0;
+
+  const paint = () => {
+    for(let i = 0; i < N; i++){
+      const c = cards[i], off = i - pos, ab = Math.abs(off);
+      /* mid 도 같이 뗍니다. 안 떼면 한 번 가운데였던 장이 멀리 가서도
+         가운데인 척해 커서가 돋보기로 남습니다. */
+      if(ab > SHOW + .5){ c.classList.add('far'); c.classList.remove('mid'); continue; }
+      c.classList.remove('far');
+      const t = Math.max(-1, Math.min(1, off));   /* 각도는 한 장 지나면 더 안 눕습니다 */
+      c.style.transform =
+        'translate3d(' + (off * STEP).toFixed(1) + 'px,0,' +
+        (-ab * DEPTH).toFixed(1) + 'px) rotateY(' + (-t * TILT).toFixed(1) + 'deg)' +
+        ' scale(' + Math.max(.6, 1.1 - ab * .1).toFixed(3) + ')';
+      c.style.opacity = Math.max(0, 1 - ab * .26).toFixed(2);
+      c.style.zIndex  = String(100 - Math.round(ab * 10));
+      c.classList.toggle('mid', ab < .5);
+    }
+    const n = Math.round(pos);
+    numEl.textContent = (n + 1) + ' / ' + N;
+    fill.style.width = N > 1 ? (n / (N - 1) * 100).toFixed(1) + '%' : '100%';
+  };
+
+  /* 목표까지 미끄러집니다. 다 왔으면 멈춥니다 — 빈 루프를 계속 돌리지 않습니다 */
+  const step = () => {
+    pos += (aim - pos) * (reduce ? 1 : .17);
+    if(Math.abs(aim - pos) < .002){ pos = aim; paint(); raf = 0; return; }
+    paint(); raf = requestAnimationFrame(step);
+  };
+  const settle = () => { if(!raf) raf = requestAnimationFrame(step); };
+  /* 기준은 pos 가 아니라 aim 입니다 — 아직 미끄러지는 중에 연달아 누르면
+     pos 는 제자리라 같은 곳을 두 번 가리킵니다. */
+  const goTo = i => { aim = Math.max(0, Math.min(N - 1, i)); settle(); };
+  const nudge = d => goTo(Math.round(aim) + d);
+
+  /* ── 끌기 ── */
   box.addEventListener('pointerdown', e => {
-    dragging = true; cancelAnimationFrame(raf); vx = 0;
-    lastX = e.clientX; lastT = performance.now();
+    dragging = true; lastX = e.clientX; vel = 0;
+    cancelAnimationFrame(raf); raf = 0;
     box.classList.add('drag');
-    try { box.setPointerCapture(e.pointerId); } catch(_){}  /* 손가락이 카드 밖으로 나가도 계속 끌립니다 */
+    try{ box.setPointerCapture(e.pointerId); }catch(_){}
   });
   box.addEventListener('pointermove', e => {
     if(!dragging) return;
-    const dx = e.clientX - lastX, dt = performance.now() - lastT;
-    x += dx; draw();
-    if(dt > 0) vx = dx / dt * 16;               /* px/프레임 */
-    lastX = e.clientX; lastT = performance.now();
+    const dx = e.clientX - lastX; lastX = e.clientX;
+    vel = dx;
+    pos = Math.max(-.4, Math.min(N - .6, pos - dx / GRAB));
+    paint();
   });
-  const end = e => {
+  const drop = e => {
     if(!dragging) return;
     dragging = false; box.classList.remove('drag');
-    try { box.releasePointerCapture(e.pointerId); } catch(_){}
-    if(!reduce) raf = requestAnimationFrame(glide);
+    try{ box.releasePointerCapture(e.pointerId); }catch(_){}
+    /* 세게 튕기면 한 장 더 갑니다. 손끝 힘이 그대로 남는 느낌 */
+    goTo(Math.round(pos - Math.max(-2, Math.min(2, vel / 9))));
   };
-  box.addEventListener('pointerup', end);
-  box.addEventListener('pointercancel', end);
+  box.addEventListener('pointerup', drop);
+  box.addEventListener('pointercancel', drop);
 
-  /* 끌기와 누르기 구분.
-     주의 — pointerdown 에서 setPointerCapture 를 걸면 그 뒤의 click 은
-     카드가 아니라 캡처 대상(box)을 target 으로 옵니다. 그래서
-     click 의 e.target 을 믿으면 안 되고, 눌린 카드를 미리 기억해야 합니다. */
-  let downAt = 0, moved = 0, pressed = null;
+  /* ── 누르기 ── 가운데 장은 크게 보고, 옆 장은 가운데로 데려옵니다.
+     끌고 나서 손을 떼는 것도 click 이 되므로 움직인 거리를 봅니다. */
+  let downX = 0, moved = 0, hit = null;
   box.addEventListener('pointerdown', e => {
-    pressed = e.target.closest('.cat'); downAt = e.clientX; moved = 0;
+    hit = e.target.closest('.cat'); downX = e.clientX; moved = 0;
   });
   box.addEventListener('pointermove', e => {
-    if(dragging) moved = Math.max(moved, Math.abs(e.clientX - downAt));
+    if(dragging) moved = Math.max(moved, Math.abs(e.clientX - downX));
   });
   box.addEventListener('click', () => {
-    if(moved > 6 || !pressed || pressed.classList.contains('empty')) return;
-    openLB([...track.children].indexOf(pressed) % CATS.length);
+    if(moved > 6 || !hit || hit.classList.contains('empty')) return;
+    const i = cards.indexOf(hit);
+    if(i === Math.round(pos)) openLB(i); else goTo(i);
   });
 
-  /* 가만히 두면 천천히 흐릅니다.
-     끌고 있거나 · 관성이 남았거나 · 마우스를 올렸거나 · 크게 보는 중이면 멈춥니다. */
-  let hover = false;
-  box.addEventListener('pointerenter', () => hover = true);
-  box.addEventListener('pointerleave', () => hover = false);
-  if(!reduce){
-    const drift = () => {
-      const busy = dragging || hover || Math.abs(vx) > 0.06 ||
-                   document.getElementById('lb').classList.contains('on') ||
-                   !document.getElementById('mui').classList.contains('on');
-      if(!busy){ x -= 0.32; draw(); }
-      requestAnimationFrame(drift);
-    };
-    requestAnimationFrame(drift);
-  }
+  /* ── 단추와 자판 ── */
+  document.getElementById('catsPrev').addEventListener('click', () => nudge(-1));
+  document.getElementById('catsNext').addEventListener('click', () => nudge(1));
+  box.tabIndex = 0;
+  box.setAttribute('aria-label', '무이 사진첩. 좌우 화살표로 넘깁니다');
+  box.addEventListener('keydown', e => {
+    if(e.key === 'ArrowLeft'){ nudge(-1); e.preventDefault(); }
+    if(e.key === 'ArrowRight'){ nudge(1); e.preventDefault(); }
+    if(e.key === 'Enter' || e.key === ' '){ openLB(Math.round(pos)); e.preventDefault(); }
+  });
 
-  /* 3D 기울기 — 손가락 조작에는 hover 가 없으므로 마우스에서만 */
-  if(!reduce && matchMedia('(hover:hover) and (pointer:fine)').matches){
-    track.addEventListener('pointermove', e => {
-      if(dragging) return;
-      const c = e.target.closest('.cat'); if(!c) return;
-      const b = c.getBoundingClientRect();
-      const rx = ((e.clientY - b.top) / b.height - .5) * -12;
-      const ry = ((e.clientX - b.left) / b.width - .5) *  14;
-      c.style.transform = 'perspective(700px) rotateX(' + rx.toFixed(2) +
-                          'deg) rotateY(' + ry.toFixed(2) + 'deg) scale(1.06)';
-      c.style.boxShadow = 'var(--shadow-lift)';
-    });
-    track.addEventListener('pointerleave', () => {
-      track.querySelectorAll('.cat').forEach(c => { c.style.transform = ''; c.style.boxShadow = ''; });
-    });
-  }
+  fit(); paint();
+  addEventListener('resize', () => { fit(); paint(); });
 }
 
 /* ── 사진 크게 보기 ── */
