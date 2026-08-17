@@ -1391,17 +1391,17 @@ CELL_MAPPING = {
     <p>이제는 <span class="tok">라이브러리</span><span class="cite-w"><a class="cite" href="#n-p1-2">2</a><span class="cite-t" role="tooltip">남이 만들어 둔 도구 묶음. 엑셀을 읽는 일, PDF를 자르는 일은 이미 누군가 만들어 두었습니다. <b>pip install 이름</b> 으로 받아 씁니다.</span></span>를 몰라도 된다고 생각합니다. AI가 필요한 것을 스스로 찾아 설치하고 실행하기 때문입니다. 그래도 목록을 한 번 보면 <strong>Python이 어떤 일을 할 수 있는지</strong> 알 수 있습니다. 아래는 제가 2년 동안 실제로 쓴 것만 적었습니다.</p>
 
     <div class="tw"><table>
-      <tr><th>하는 일</th><th>도구</th><th>쓴 곳</th></tr>
-      <tr><td><strong>엑셀 읽고 쓰기</strong></td><td><span class="tok m">openpyxl</span> · <span class="tok m">pandas</span></td><td>1-2 나누기·합치기</td></tr>
-      <tr><td><strong>PDF 다루기</strong></td><td><span class="tok m">pypdf</span> · <span class="tok m">pdfplumber</span> · <span class="tok m">PyMuPDF</span> · <span class="tok m">reportlab</span></td><td>1-1 편집·병합, 1-4-2 내려받기</td></tr>
-      <tr><td><strong>워드 다루기</strong></td><td><span class="tok m">python-docx</span></td><td>1-5 마스킹</td></tr>
-      <tr><td><strong>브라우저 움직이기</strong></td><td><span class="tok m">selenium</span></td><td>1-4 웹 조작 전부</td></tr>
-      <tr><td><strong>메일 보내기</strong></td><td><span class="tok m">smtplib</span> · <span class="tok m">email</span> · <span class="tok m">pywin32</span></td><td>1-3 맞춤 메일</td></tr>
-      <tr><td><strong>그림에서 글자 읽기</strong></td><td><span class="tok m">Pillow</span> · <span class="tok m">easyocr</span> · <span class="tok m">pdf2image</span></td><td>1-5 스캔 문서</td></tr>
-      <tr><td><strong>이름·기관 알아보기</strong></td><td><span class="tok m">spaCy</span></td><td>1-5 규칙으로 안 잡히는 이름</td></tr>
-      <tr><td><strong>바깥 서비스에 붙기</strong></td><td><span class="tok m">gspread</span> · <span class="tok m">requests</span></td><td>1-4-3 구글 시트</td></tr>
-      <tr><td><strong>화면 붙이기</strong></td><td><span class="tok m">flask</span> · <span class="tok m">tkinter</span></td><td>1-3 · 1-5 남 주려고 만든 화면</td></tr>
-      <tr><td><strong>exe로 묶기</strong></td><td><span class="tok m">PyInstaller</span></td><td>1-5 파이썬 없는 PC에서 쓰게</td></tr>
+      <tr><th>하는 일</th><th>주요 라이브러리</th><th>실제 활용</th></tr>
+      <tr><td><strong>엑셀 파일 읽고 쓰기</strong></td><td><span class="tok m">openpyxl</span> · <span class="tok m">pandas</span></td><td>엑셀 파일 나누기·합치기, 데이터 정리</td></tr>
+      <tr><td><strong>PDF 읽고 만들기</strong></td><td><span class="tok m">pypdf</span> · <span class="tok m">pdfplumber</span> · <span class="tok m">PyMuPDF</span> · <span class="tok m">reportlab</span></td><td>PDF 편집·병합, 내용 추출, PDF 생성</td></tr>
+      <tr><td><strong>Word 문서 다루기</strong></td><td><span class="tok m">python-docx</span></td><td>Word 문서 수정·생성, 개인정보 마스킹</td></tr>
+      <tr><td><strong>웹 브라우저 자동화</strong></td><td><span class="tok m">selenium</span></td><td>웹사이트 로그인, 조회, 입력, 다운로드 등 자동화</td></tr>
+      <tr><td><strong>이메일 보내기</strong></td><td><span class="tok m">smtplib</span> · <span class="tok m">email</span> · <span class="tok m">pywin32</span></td><td>맞춤형 이메일 작성·발송</td></tr>
+      <tr><td><strong>이미지·스캔 문서 처리</strong></td><td><span class="tok m">Pillow</span> · <span class="tok m">easyocr</span> · <span class="tok m">pdf2image</span></td><td>이미지 처리, 스캔 문서에서 글자 추출</td></tr>
+      <tr><td><strong>이름·기관 등 정보 추출</strong></td><td><span class="tok m">spaCy</span></td><td>문장에서 사람 이름·기관명 등 추출</td></tr>
+      <tr><td><strong>외부 서비스 연결</strong></td><td><span class="tok m">gspread</span> · <span class="tok m">requests</span></td><td>Google Sheets, 웹 API 등과 데이터 주고받기</td></tr>
+      <tr><td><strong>간단한 프로그램 화면 만들기</strong></td><td><span class="tok m">Flask</span> · <span class="tok m">tkinter</span></td><td>다른 사람이 사용할 수 있는 간단한 화면 제작</td></tr>
+      <tr><td><strong>Python 프로그램을 EXE로 만들기</strong></td><td><span class="tok m">PyInstaller</span></td><td>Python이 설치되지 않은 PC에서도 실행할 수 있도록 패키징</td></tr>
     </table></div>
     <p class="dg-cap">표준으로 딸려 오는 것(<span class="tok m">os</span> · <span class="tok m">re</span> · <span class="tok m">pathlib</span> · <span class="tok m">csv</span> · <span class="tok m">json</span> · <span class="tok m">zipfile</span>)은 설치가 필요 없어 뺐습니다.</p>
     <p>정리하면 Python은 <strong>사람이 손으로 열고, 누르고, 옮기던 일</strong>을 대신합니다. 엑셀에서 데이터를 읽어 PDF로 만들고 메일로 보내는 일을 <span class="tok">코드 실행 한 번으로</span> 처리할 수 있다는 점이 가장 큰 장점입니다.</p>
