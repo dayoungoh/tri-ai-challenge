@@ -40,6 +40,9 @@
   /* 초록은 뜻을 지지 않는 자리에만 남습니다 — 무료 딱지처럼 글자가 뜻을 지는 곳 */
   --green:#146d34; --green-soft:#e9f4ec;
   --amber:#a16207; --amber-soft:#fdf6e3;
+  /* 주황 딱지 글자 전용. 딱지 배경(#f4ece1) 위에서 --amber 는 4.20 으로 AA 미달입니다.
+     이 값은 같은 배경에서 5.07 입니다. 도형·선은 --amber 그대로 씁니다. */
+  --amber-ink:#8f5706;
   /* 비고 표시에만 씁니다. 흰 바탕에서 5.9:1 — 본문 글자로 써도 되는 짙기입니다 */
   --red:#b3261e;   --red-soft:#fdeceb;
   --shadow-hair:0 0 0 1px rgb(26 26 26/.08);
@@ -674,6 +677,8 @@ table{width:100%;border-collapse:collapse;font-size:var(--t-sm);
   font-variant-numeric:tabular-nums}
 .tw{margin-top:16px;background:var(--shell);border-radius:12px;box-shadow:var(--shadow-card);overflow:hidden}
 .tw table{margin:0}
+/* 표를 색인으로도 쓰라고 절 번호를 답니다. 글이 아니라 자리 표시입니다 */
+.where{margin-left:6px;font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);white-space:nowrap}
 th,td{text-align:left;padding:10px 16px;border-bottom:1px solid var(--line-2)}
 th{font-weight:640;font-size:var(--t-micro);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);
   background:var(--inset);border-bottom:1px solid var(--line)}
@@ -901,7 +906,7 @@ a.cta{text-decoration:none}
 .doc .tok.m{font-family:var(--mono);font-size:.9em;font-weight:400}
 .doc .tok.g{background:rgb(26 95 180/.10);color:var(--blue);
   box-shadow:inset 0 0 0 1px rgb(26 95 180/.18)}
-.doc .tok.a{background:rgb(161 98 7/.12);color:var(--amber);
+.doc .tok.a{background:rgb(161 98 7/.12);color:var(--amber-ink);
   box-shadow:inset 0 0 0 1px rgb(161 98 7/.18)}
 /* 크기가 13pt 로 올라가 선까지 그을 이유가 없어졌습니다.
    앞의 막대와 넓은 위 여백만으로 층이 갈립니다. */
@@ -962,6 +967,9 @@ a.cta{text-decoration:none}
 .notes dt{font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);
   font-variant-numeric:tabular-nums;padding-top:3px}
 .notes dd{margin:0;font-size:var(--t-ui);line-height:1.6;color:var(--ink-2);word-break:keep-all}
+/* 각주를 눌러 내려왔으면 올라갈 길도 있어야 합니다 */
+.backref{margin-left:6px;color:var(--ink-3);text-decoration:none;font-size:var(--t-micro)}
+.backref:hover,.backref:focus-visible{color:var(--ink)}
 .notes dd b{color:var(--ink);font-weight:640}
 /* 번호를 눌러 여기로 오면 잠깐 밝혀 어디로 왔는지 보이게 합니다 */
 .notes .hit{animation:noteHit 1.6s ease}
@@ -1284,7 +1292,7 @@ a.cta{text-decoration:none}
   <section id="p1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1 · 안내문</div><h2>Python으로 업무 자동화<span class="ft">ft. PyCharm</span></h2></div></div>
     <div class="chips"><span class="chip">#2024.07~</span><span class="chip">#Python</span><span class="chip">#PyCharm</span><span class="chip free">#무료</span></div>
-    <p class="lead">처음 AI를 활용해 Python<span class="cite-w"><a class="cite" href="#n-p1-1">1</a><span class="cite-t" role="tooltip">1991년에 나온 프로그래밍 언어. 문장이 사람 말에 가깝고, 컴파일 없이 바로 실행됩니다. 엑셀·PDF·웹을 다루는 도구가 많아 사무 자동화에 씁니다.</span></span> 코딩을 접한 것은 2024년 7월, <span class="tok">해외유학후보장학생 선발</span>을 진행하면서였습니다. 다루는 자료가 모두 개인정보를 포함하고 있었기 때문에 AI나 웹에 원문을 올릴 수 없다는 제약이 있었고, 그때 <span class="tok">Python을 활용한 로컬 처리</span>를 시작하게 되었습니다. 제가 느낀 Python의 가장 큰 장점은 개인정보가 담긴 서류를 내 PC 안에서 처리하면서도, <span class="tok">대량의 반복 업무</span>를 빠르고 일관되게 처리할 수 있다는 점이었습니다. 2024년에는 AI에게 코드를 받아 제가 직접 실행하고 오류를 수정했지만, 이제는 코드를 만들고 실행하고 오류를 찾아 수정하는 반복 과정까지 <span class="tok">AI가 상당 부분 대신</span>할 수 있게 되었습니다.</p>
+    <p class="lead">처음 AI를 활용해 Python<span class="cite-w"><a class="cite" id="c-p1-1" href="#n-p1-1" aria-describedby="d-p1-1">1</a><span class="cite-t" role="tooltip">1991년에 나온 프로그래밍 언어. 문장이 사람 말에 가깝고, 컴파일 없이 바로 실행됩니다. 엑셀·PDF·웹을 다루는 도구가 많아 사무 자동화에 씁니다.</span></span> 코딩을 접한 것은 2024년 7월, <span class="tok">해외유학후보장학생 선발</span>을 진행하면서였습니다. 다루는 자료가 모두 개인정보를 포함하고 있었기 때문에 AI나 웹에 원문을 올릴 수 없다는 제약이 있었고, 그때 <span class="tok">Python을 활용한 로컬 처리</span>를 시작하게 되었습니다. 제가 느낀 Python의 가장 큰 장점은 개인정보가 담긴 서류를 내 PC 안에서 처리하면서도, <span class="tok">대량의 반복 업무</span>를 빠르고 일관되게 처리할 수 있다는 점이었습니다. 2024년에는 AI에게 코드를 받아 제가 직접 실행하고 오류를 수정했지만, 이제는 코드를 만들고 실행하고 오류를 찾아 수정하는 반복 과정까지 <span class="tok">AI가 상당 부분 대신</span>할 수 있게 되었습니다.</p>
 
     <h3>Python의 장점</h3>
     <p>제가 짧게나마 Python을 사용해 보며 느낀, Python을 사용해야 하는 이유(장점)는 다음과 같습니다.</p>
@@ -1303,7 +1311,7 @@ a.cta{text-decoration:none}
       <div class="bd">
         <p>사람이 하나씩 열어 볼 일을 <strong>수백 개, 수천 개 단위로</strong> 처리할 수 있습니다.</p>
         <p>예를 들어 평가결과 폴더에 있는 엑셀 파일을 전부 읽어 하나로 합치는 작업이라면,</p>
-        <div class="pre"><code><b>for</b> file_name <b>in</b> os.listdir(folder_path):
+        <div class="pre" tabindex="0" role="region" aria-label="코드"><code><b>for</b> file_name <b>in</b> os.listdir(folder_path):
     <b>if</b> file_name.endswith(<u>'.xlsx'</u>):
         wb = openpyxl.load_workbook(file_path, data_only=<b>True</b>)</code></div>
         <p class="pre-cap">파일이 몇 개인지는 코드가 묻지 않습니다. 정해진 폴더에 있는 파일을 같은 규칙으로 처리할 뿐입니다.</p>
@@ -1316,7 +1324,7 @@ a.cta{text-decoration:none}
       <div class="bd">
         <p>"파일 열기 → 값 복사 → 붙여넣기 → 저장"처럼 <strong>규칙이 정해진 일</strong>은 규칙만 한 번 적어 두면 됩니다.</p>
         <p>예를 들어 원본의 어느 열을 심사표의 어느 셀로 옮길지 정해져 있다면,</p>
-        <div class="pre"><code>CELL_MAPPING = {
+        <div class="pre" tabindex="0" role="region" aria-label="코드"><code>CELL_MAPPING = {
     <u>'D'</u>: <u>'B3'</u>, <u>'C'</u>: <u>'E3'</u>, <u>'L'</u>: <u>'B4'</u>, <u>'M'</u>: <u>'E4'</u>,
     <u>'G'</u>: <u>'B6'</u>, <u>'H'</u>: <u>'B7'</u>, <u>'I'</u>: <u>'B8'</u>, <i>… 14칸</i>
 }</code></div>
@@ -1337,7 +1345,7 @@ a.cta{text-decoration:none}
       <div class="hd"><span class="n">5</span><div class="t">프로그램 연결</div></div>
       <div class="bd">
         <p>엑셀 · PDF · 데이터베이스 · API · AI · 메일 · 웹서비스처럼 <strong>사람이 중간에서 옮겨주던 데이터</strong>를 자동 연결할 수 있습니다.</p>
-        <div class="pre"><code><i># 예산 관리 — 웹에서 읽어 구글 시트에 씁니다</i>
+        <div class="pre" tabindex="0" role="region" aria-label="코드"><code><i># 예산 관리 — 웹에서 읽어 구글 시트에 씁니다</i>
 <b>from</b> selenium <b>import</b> webdriver      <i>← 브라우저를 움직입니다</i>
 <b>import</b> gspread                       <i>← 구글 시트에 씁니다</i></code></div>
         <p class="pre-cap">1-4-3에서 쓴 코드입니다. 코드 두 줄이 서로 모르는 두 시스템을 잇습니다.</p>
@@ -1406,25 +1414,30 @@ a.cta{text-decoration:none}
     <p>가짜 자료를 주면 AI가 <span class="tok g">그것으로 수십 번 돌려 보며 코드를 완성</span>합니다. 개인정보 유출을 방지하면서도 코드를 실행해 볼 수 있습니다.</p>
 
     <h3>Python 라이브러리</h3>
-    <p>이제는 <span class="tok">라이브러리</span><span class="cite-w"><a class="cite" href="#n-p1-2">2</a><span class="cite-t" role="tooltip">남이 만들어 둔 도구 묶음. 엑셀을 읽는 일, PDF를 자르는 일은 이미 누군가 만들어 두었습니다. <b>pip install 이름</b> 으로 받아 씁니다.</span></span>를 몰라도 된다고 생각합니다. AI가 필요한 것을 스스로 찾아 설치하고 실행하기 때문입니다. 그래도 목록을 한 번 보면 <strong>Python이 어떤 일을 할 수 있는지</strong> 알 수 있습니다. 아래는 제가 2년 동안 실제로 쓴 것만 적었습니다.</p>
+    <p>이제는 <span class="tok">라이브러리</span><span class="cite-w"><a class="cite" id="c-p1-2" href="#n-p1-2" aria-describedby="d-p1-2">2</a><span class="cite-t" role="tooltip">남이 만들어 둔 도구 묶음. 엑셀을 읽는 일, PDF를 자르는 일은 이미 누군가 만들어 두었습니다. <b>pip install 이름</b> 으로 받아 씁니다.</span></span>를 몰라도 된다고 생각합니다. AI가 필요한 것을 스스로 찾아 설치하고 실행하기 때문입니다. 그래도 목록을 한 번 보면 <strong>Python이 어떤 일을 할 수 있는지</strong> 알 수 있습니다. 외우지 마시고 훑어만 보세요. 아래는 제가 2년 동안 실제로 쓴 것만 적었고, 오른쪽 번호는 그 일을 실제로 한 절입니다.</p>
 
     <div class="tw"><table>
-      <tr><th>하는 일</th><th>주요 라이브러리</th><th>실제 활용</th></tr>
-      <tr><td><strong>엑셀 파일 읽고 쓰기</strong></td><td><span class="tok m">openpyxl</span> · <span class="tok m">pandas</span></td><td>엑셀 파일 나누기·합치기, 데이터 정리</td></tr>
-      <tr><td><strong>PDF 읽고 만들기</strong></td><td><span class="tok m">pypdf</span> · <span class="tok m">pdfplumber</span> · <span class="tok m">PyMuPDF</span> · <span class="tok m">reportlab</span></td><td>PDF 편집·병합, 내용 추출, PDF 생성</td></tr>
-      <tr><td><strong>Word 문서 다루기</strong></td><td><span class="tok m">python-docx</span></td><td>Word 문서 수정·생성, 개인정보 마스킹</td></tr>
-      <tr><td><strong>웹 브라우저 자동화</strong></td><td><span class="tok m">selenium</span></td><td>웹사이트 로그인, 조회, 입력, 다운로드 등 자동화</td></tr>
-      <tr><td><strong>이메일 보내기</strong></td><td><span class="tok m">smtplib</span> · <span class="tok m">email</span> · <span class="tok m">pywin32</span></td><td>맞춤형 이메일 작성·발송</td></tr>
-      <tr><td><strong>이미지·스캔 문서 처리</strong></td><td><span class="tok m">Pillow</span> · <span class="tok m">easyocr</span> · <span class="tok m">pdf2image</span></td><td>이미지 처리, 스캔 문서에서 글자 추출</td></tr>
-      <tr><td><strong>이름·기관 등 정보 추출</strong></td><td><span class="tok m">spaCy</span></td><td>문장에서 사람 이름·기관명 등 추출</td></tr>
-      <tr><td><strong>외부 서비스 연결</strong></td><td><span class="tok m">gspread</span> · <span class="tok m">requests</span></td><td>Google Sheets, 웹 API 등과 데이터 주고받기</td></tr>
-      <tr><td><strong>간단한 프로그램 화면 만들기</strong></td><td><span class="tok m">Flask</span> · <span class="tok m">tkinter</span></td><td>다른 사람이 사용할 수 있는 간단한 화면 제작</td></tr>
-      <tr><td><strong>Python 프로그램을 EXE로 만들기</strong></td><td><span class="tok m">PyInstaller</span></td><td>Python이 설치되지 않은 PC에서도 실행할 수 있도록 패키징</td></tr>
+      <caption class="sr">Python 으로 할 수 있는 일과 그때 쓴 라이브러리</caption>
+      <thead>
+      <tr><th scope="col">하는 일</th><th scope="col">주요 라이브러리</th><th scope="col">실제 활용</th></tr>
+      </thead>
+      <tbody>
+      <tr><td><strong>엑셀 파일 읽고 쓰기</strong></td><td><span class="tok m">openpyxl</span> · <span class="tok m">pandas</span></td><td>엑셀 파일 나누기·합치기, 데이터 정리 <span class="where">1-2</span></td></tr>
+      <tr><td><strong>PDF 읽고 만들기</strong></td><td><span class="tok m">pypdf</span> · <span class="tok m">pdfplumber</span> · <span class="tok m">PyMuPDF</span> · <span class="tok m">reportlab</span></td><td>PDF 편집·병합, 내용 추출, PDF 생성 <span class="where">1-1 · 1-4-2</span></td></tr>
+      <tr><td><strong>Word 문서 다루기</strong></td><td><span class="tok m">python-docx</span></td><td>Word 문서 수정·생성, 개인정보 마스킹 <span class="where">1-5</span></td></tr>
+      <tr><td><strong>웹 브라우저 자동화</strong></td><td><span class="tok m">selenium</span></td><td>웹사이트 로그인, 조회, 입력, 다운로드 등 자동화 <span class="where">1-4</span></td></tr>
+      <tr><td><strong>이메일 보내기</strong></td><td><span class="tok m">smtplib</span> · <span class="tok m">email</span> · <span class="tok m">pywin32</span></td><td>맞춤형 이메일 작성·발송 <span class="where">1-3</span></td></tr>
+      <tr><td><strong>이미지·스캔 문서 처리</strong></td><td><span class="tok m">Pillow</span> · <span class="tok m">easyocr</span> · <span class="tok m">pdf2image</span></td><td>이미지 처리, 스캔 문서에서 글자 추출 <span class="where">1-5</span></td></tr>
+      <tr><td><strong>이름·기관 등 정보 추출</strong></td><td><span class="tok m">spaCy</span></td><td>문장에서 사람 이름·기관명 등 추출 <span class="where">1-5</span></td></tr>
+      <tr><td><strong>외부 서비스 연결</strong></td><td><span class="tok m">gspread</span> · <span class="tok m">requests</span></td><td>Google Sheets, 웹 API 등과 데이터 주고받기 <span class="where">1-4-3</span></td></tr>
+      <tr><td><strong>간단한 프로그램 화면 만들기</strong></td><td><span class="tok m">Flask</span> · <span class="tok m">tkinter</span></td><td>다른 사람이 사용할 수 있는 간단한 화면 제작 <span class="where">1-3 · 1-5</span></td></tr>
+      <tr><td><strong>Python 프로그램을 EXE로 만들기</strong></td><td><span class="tok m">PyInstaller</span></td><td>Python이 설치되지 않은 PC에서도 실행할 수 있도록 패키징 <span class="where">1-5</span></td></tr>
+      </tbody>
     </table></div>
     <p class="dg-cap">표준으로 딸려 오는 것(<span class="tok m">os</span> · <span class="tok m">re</span> · <span class="tok m">pathlib</span> · <span class="tok m">csv</span> · <span class="tok m">json</span> · <span class="tok m">zipfile</span>)은 설치가 필요 없어 뺐습니다.</p>
     <p>정리하면 Python은 <strong>사람이 손으로 열고, 누르고, 옮기던 일</strong>을 대신합니다. 엑셀에서 데이터를 읽어 PDF로 만들고 메일로 보내는 일을 <span class="tok">코드 실행 한 번으로</span> 처리할 수 있다는 점이 가장 큰 장점입니다.</p>
 
-    <div class="note warn">라이브러리를 정확히 몰라도 되지만, <strong>결과가 이상하면 사용한 라이브러리를 의심</strong>해 볼 수 있습니다. 같은 일을 하는 도구는 여럿이지만 도구에 따라 결과가 서로 다를 수 있다는 점을 유의해야 합니다.</div>
+    <div class="note">라이브러리를 정확히 몰라도 되지만, <strong>결과가 이상하면 사용한 라이브러리를 의심</strong>해 볼 수 있습니다. 같은 일을 하는 도구는 여럿이지만 도구에 따라 결과가 서로 다를 수 있다는 점을 유의해야 합니다.</div>
 
     <h3>Python 설치</h3>
     <p>이제는 AI가 Python 설치까지 대신해 줄 수 있지만, 혹시 직접 설치 및 Python 실행을 원하신다면 다음 링크로 가셔서 설치하시기 바랍니다.</p>
@@ -1451,17 +1464,17 @@ a.cta{text-decoration:none}
         </a>
       </div>
     </div>
-    <div class="note warn"><strong>설치 순서가 중요합니다.</strong> 파이썬을 먼저 깔고 PyCharm<span class="cite-w"><a class="cite" href="#n-p1-3">3</a><span class="cite-t" role="tooltip">Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램. 이 글에서는 <b>PyCharm</b> 을 씁니다.</span></span>을 깔아야 합니다. 반대로 하면 첫 실행에서 인터프리터<span class="cite-w"><a class="cite" href="#n-p1-4">4</a><span class="cite-t" role="tooltip">코드를 한 줄씩 읽어 실행하는 프로그램. Python 을 설치한다는 말은 이것을 설치한다는 뜻입니다. IDE 는 설치된 인터프리터를 찾아 씁니다.</span></span>를 못 찾습니다.</div>
-    <div class="note warn">그리고 처음 코드를 실행하면 보통 <strong>라이브러리(도구)를 설치하라</strong>는 에러가 뜹니다. 그런 경우 터미널(PyCharm은 <strong>Alt + F12</strong>)에서 <strong>pip install 라이브러리명</strong> 을 치고 다시 실행하면 됩니다. 받았는데도 또 없다고 하면 가상환경<span class="cite-w"><a class="cite" href="#n-p1-5">5</a><span class="cite-t" role="tooltip">프로젝트마다 따로 두는 라이브러리 보관함. 한 프로젝트에서 받은 것이 다른 프로젝트에 없는 이유가 이것입니다.</span></span>을 의심해 보세요.</div>
+    <div class="note warn"><strong>설치 순서가 중요합니다.</strong> 파이썬을 먼저 깔고 PyCharm<span class="cite-w"><a class="cite" id="c-p1-3" href="#n-p1-3" aria-describedby="d-p1-3">3</a><span class="cite-t" role="tooltip">Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램. 이 글에서는 <b>PyCharm</b> 을 씁니다.</span></span>을 깔아야 합니다. 반대로 하면 첫 실행에서 인터프리터<span class="cite-w"><a class="cite" id="c-p1-4" href="#n-p1-4" aria-describedby="d-p1-4">4</a><span class="cite-t" role="tooltip">코드를 한 줄씩 읽어 실행하는 프로그램. Python 을 설치한다는 말은 이것을 설치한다는 뜻입니다. IDE 는 설치된 인터프리터를 찾아 씁니다.</span></span>를 못 찾습니다.</div>
+    <div class="note">그리고 처음 코드를 실행하면 보통 <strong>라이브러리(도구)를 설치하라</strong>는 에러가 뜹니다. 그런 경우 터미널(PyCharm은 <strong>Alt + F12</strong>)에서 <strong>pip install 라이브러리명</strong> 을 치고 다시 실행하면 됩니다. 받았는데도 또 없다고 하면 가상환경<span class="cite-w"><a class="cite" id="c-p1-5" href="#n-p1-5" aria-describedby="d-p1-5">5</a><span class="cite-t" role="tooltip">프로젝트마다 따로 두는 라이브러리 보관함. 한 프로젝트에서 받은 것이 다른 프로젝트에 없는 이유가 이것입니다.</span></span>을 의심해 보세요.</div>
 
     <div class="notes">
       <div class="notes-h">낱말</div>
       <dl>
-        <dt id="n-p1-1">1</dt><dd><b>Python</b> — 1991년에 나온 프로그래밍 언어. 문장이 사람 말에 가깝고, 컴파일 없이 바로 실행됩니다. 엑셀·PDF·웹을 다루는 도구가 많아 사무 자동화에 자주 씁니다.</dd>
-        <dt id="n-p1-2">2</dt><dd><b>라이브러리</b> — 남이 만들어 둔 도구 묶음. 엑셀을 읽는 일, PDF를 자르는 일은 이미 누군가 만들어 두었습니다. <b>pip install 이름</b> 으로 받아 씁니다.</dd>
-        <dt id="n-p1-3">3</dt><dd><b>IDE</b> — Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램. 저는 <b>PyCharm</b> 을 사용했습니다. <a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer">Jupyter Notebook</a>도 많이 사용하는 것으로 알고 있습니다.</dd>
-        <dt id="n-p1-4">4</dt><dd><b>인터프리터</b> — 코드를 한 줄씩 읽어 실행하는 프로그램. Python 을 설치한다는 말은 이것을 설치한다는 뜻입니다. IDE 는 설치된 인터프리터를 찾아 씁니다.</dd>
-        <dt id="n-p1-5">5</dt><dd><b>가상환경</b> — 프로젝트마다 따로 두는 라이브러리 보관함. 한 프로젝트에서 받은 것이 다른 프로젝트에 없는 이유가 이것입니다.</dd>
+        <dt id="n-p1-1">1</dt><dd id="d-p1-1"><b>Python</b> — 1991년에 나온 프로그래밍 언어. 문장이 사람 말에 가깝고, 컴파일 없이 바로 실행됩니다. 엑셀·PDF·웹을 다루는 도구가 많아 사무 자동화에 자주 씁니다. <a class="backref" href="#c-p1-1" aria-label="본문 1번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p1-2">2</dt><dd id="d-p1-2"><b>라이브러리</b> — 남이 만들어 둔 도구 묶음. 엑셀을 읽는 일, PDF를 자르는 일은 이미 누군가 만들어 두었습니다. <b>pip install 이름</b> 으로 받아 씁니다. <a class="backref" href="#c-p1-2" aria-label="본문 2번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p1-3">3</dt><dd id="d-p1-3"><b>IDE</b> — Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램. 저는 <b>PyCharm</b> 을 사용했습니다. <a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer">Jupyter Notebook</a>도 많이 사용하는 것으로 알고 있습니다. <a class="backref" href="#c-p1-3" aria-label="본문 3번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p1-4">4</dt><dd id="d-p1-4"><b>인터프리터</b> — 코드를 한 줄씩 읽어 실행하는 프로그램. Python 을 설치한다는 말은 이것을 설치한다는 뜻입니다. IDE 는 설치된 인터프리터를 찾아 씁니다. <a class="backref" href="#c-p1-4" aria-label="본문 4번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p1-5">5</dt><dd id="d-p1-5"><b>가상환경</b> — 프로젝트마다 따로 두는 라이브러리 보관함. 한 프로젝트에서 받은 것이 다른 프로젝트에 없는 이유가 이것입니다. <a class="backref" href="#c-p1-5" aria-label="본문 5번 주석으로 돌아가기">↩</a></dd>
       </dl>
     </div>
   </section>
@@ -2682,7 +2695,7 @@ a.cta{text-decoration:none}
 
     <h3>우리는 이미 하고 있었습니다</h3>
     <p>누구나 이런 폴더를 갖고 있습니다.</p>
-    <div class="pre"><code>사업계획서.hwp
+    <div class="pre" tabindex="0" role="region" aria-label="코드"><code>사업계획서.hwp
 사업계획서_수정.hwp
 사업계획서_수정2.hwp
 사업계획서_최종.hwp
@@ -2787,7 +2800,7 @@ a.cta{text-decoration:none}
 
     <h3>.gitignore — 보안의 최전선</h3>
     <p>Git이 <strong>쳐다보지도 않을 파일 목록</strong>입니다. 여기 안 적으면 그대로 올라갑니다.</p>
-    <div class="pre"><code><i># 비밀값 — 가장 중요합니다</i>
+    <div class="pre" tabindex="0" role="region" aria-label="코드"><code><i># 비밀값 — 가장 중요합니다</i>
 <u>.env</u>
 <u>*.key</u>
 <u>credentials.json</u>
@@ -2822,10 +2835,10 @@ Thumbs.db</code></div>
 
     <h3>1. 스킬 — 절차를 글로 적어 두는 것</h3>
     <p><strong>무엇인가.</strong> 특정 작업의 절차서입니다. 코드가 아니라 마크다운 문서 한 장이며, 폴더 하나에 <span class="tok m">SKILL.md</span> 하나가 전부입니다.</p>
-    <div class="pre"><code>my-skill/
+    <div class="pre" tabindex="0" role="region" aria-label="코드"><code>my-skill/
 └── <b>SKILL.md</b></code></div>
     <p><strong>어떻게 하나.</strong> 지금 그 일을 어떤 순서로 하고 계신지를 그대로 적으시면 됩니다. 1-1의 순서표를 글로 옮긴다고 생각하시면 가깝습니다.</p>
-    <div class="pre"><code><i>---</i>
+    <div class="pre" tabindex="0" role="region" aria-label="코드"><code><i>---</i>
 <i>name: 지원서-병합</i>
 <i>description: 지원자 폴더의 PDF를 정해진 순서로 1인 1파일로 병합할 때 사용</i>
 <i>---</i>
