@@ -826,8 +826,9 @@ a.cta{text-decoration:none}
    눈으로 알아야 하므로, 이름을 본문 옆에 세워 둡니다. ── */
 .steps{margin-top:24px}
 /* 이름 칸이 넓으면 본문 칸이 좁아져 그림이 밀려 나갑니다.
-   88 + 20 = 108 만 내주고 나머지는 본문이 씁니다. */
-.stp{display:grid;grid-template-columns:88px minmax(0,1fr);gap:20px;
+   106 + 20 = 126 만 내주고 나머지는 본문이 씁니다.
+   88 이던 것을 늘린 이유 — 1장 이름이 "반복 업무 자동화" 처럼 깁니다. */
+.stp{display:grid;grid-template-columns:106px minmax(0,1fr);gap:20px;
   padding:22px 0;border-top:1px solid var(--line)}
 .stp>.bd{min-width:0}
 .stp:first-child{border-top:0;padding-top:4px}
@@ -835,7 +836,9 @@ a.cta{text-decoration:none}
 .stp>.hd .n{display:grid;place-items:center;width:23px;height:23px;border-radius:6px;
   background:var(--ink);color:var(--shell);
   font-family:var(--mono);font-size:11px;font-weight:700;font-variant-numeric:tabular-nums}
-.stp .t{margin-top:8px;font-size:12pt;font-weight:660;color:var(--ink);letter-spacing:-.01em}
+/* keep-all 이 없으면 "Human Error 감소" 가 낱말 가운데서 끊깁니다 */
+.stp .t{margin-top:8px;font-size:12pt;font-weight:660;color:var(--ink);letter-spacing:-.01em;
+  word-break:keep-all;line-height:1.36}
 /* 비고는 차례의 한 칸이 아닙니다. 번호 대신 다른 표시를 답니다 */
 .stp>.hd .n.alt{background:var(--red-soft);color:var(--red);
   box-shadow:inset 0 0 0 1px rgb(179 38 30/.3)}
@@ -1378,13 +1381,6 @@ CELL_MAPPING = {
       <div class="tip">그리고 처음 코드를 실행하면 보통 <strong>라이브러리(도구)를 설치하라</strong>는 에러가 뜹니다. 그런 경우 터미널(PyCharm은 <strong>Alt + F12</strong>)에서 <strong>pip install 라이브러리명</strong> 을 치고 다시 실행하면 됩니다.</div>
     </div>
 
-    <p>그때 자주 막히던 자리는 이랬습니다.</p>
-    <div class="tw"><table>
-      <tr><th>상황</th><th>원인</th></tr>
-      <tr><td>첫 실행이 안 됨</td><td>IDE를 먼저 깔았을 때. <strong>파이썬을 먼저</strong> 설치해야 인터프리터를 잡습니다</td></tr>
-      <tr><td>터미널을 못 찾음</td><td>PyCharm 터미널 단축키는 <strong>Alt + F12</strong></td></tr>
-      <tr><td>설치했는데 또 "모듈 없음"</td><td>PyCharm은 프로젝트마다 <strong>가상환경</strong>을 따로 만듭니다</td></tr>
-    </table></div>
   </section>
 
   <!-- 1-2 -->
