@@ -974,7 +974,9 @@ a.cta{text-decoration:none}
 .pre code b{font-weight:700;color:var(--ink)}
 .pre code i{font-style:normal;color:var(--ink-3)}
 .pre code u{text-decoration:none;color:var(--amber)}
-.pre+.pre-cap{margin-top:8px;font-size:var(--t-ui);color:var(--ink-3);line-height:1.55}
+/* 크기는 .doc 규칙(11pt)에 맡깁니다. 여기서 또 정하면 뒤에 있다는 이유로
+   이 값이 이겨, 코드 설명만 본문보다 작아집니다. */
+.pre+.pre-cap{margin-top:8px;color:var(--ink-3);line-height:1.55}
 
 /* ── 손글씨 주석 (.ann) ──
    앞의 .dg가 "구조를 그리는" 도표라면, 이쪽은 "실물을 가리키는" 주석입니다.
@@ -1425,29 +1427,12 @@ CELL_MAPPING = {
 
     <h3>Python 설치</h3>
     <p>이제는 AI가 Python 설치까지 대신해 줄 수 있지만, 혹시 직접 설치 및 Python 실행을 원하신다면 다음 링크로 가셔서 설치하시기 바랍니다.</p>
-    <div class="panel">
-      <div class="panel-h"><span class="t">설치 · 준비물</span><span class="m">3</span></div>
-      <div class="lnk">
-        <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">
-          <span class="n">1</span>
-          <span class="b"><strong>파이썬 설치</strong><em>python.org/downloads</em></span>
-          <span class="c">무료</span>
-          <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
-        </a>
-        <a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="noopener noreferrer">
-          <span class="n">2</span>
-          <span class="b"><strong>PyCharm 설치</strong><em>jetbrains.com/pycharm/download</em></span>
-          <span class="c">무료</span>
-          <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
-        </a>
-        <a href="https://pypi.org" target="_blank" rel="noopener noreferrer">
-          <span class="n">3</span>
-          <span class="b"><strong>라이브러리 찾아보기</strong><em>pypi.org</em></span>
-          <span class="c opt">참고</span>
-          <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
-        </a>
-      </div>
-    </div>
+    <div class="tw"><table>
+      <tr><th>설치할 것</th><th>주소</th><th>비용</th></tr>
+      <tr><td><strong>파이썬 설치</strong></td><td><a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">python.org/downloads</a></td><td>무료</td></tr>
+      <tr><td><strong>PyCharm 설치</strong></td><td><a href="https://www.jetbrains.com/pycharm/download/" target="_blank" rel="noopener noreferrer">jetbrains.com/pycharm/download</a></td><td>무료</td></tr>
+      <tr><td><strong>라이브러리 찾아보기</strong></td><td><a href="https://pypi.org" target="_blank" rel="noopener noreferrer">pypi.org</a></td><td>참고</td></tr>
+    </table></div>
     <div class="note warn"><strong>설치 순서가 중요합니다.</strong> 파이썬을 먼저 깔고 PyCharm<span class="cite-w"><a class="cite" href="#n-p1-3">3</a><span class="cite-t" role="tooltip">Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램. 이 글에서는 <b>PyCharm</b> 을 씁니다.</span></span>을 깔아야 합니다. 반대로 하면 첫 실행에서 인터프리터<span class="cite-w"><a class="cite" href="#n-p1-4">4</a><span class="cite-t" role="tooltip">코드를 한 줄씩 읽어 실행하는 프로그램. Python 을 설치한다는 말은 이것을 설치한다는 뜻입니다. IDE 는 설치된 인터프리터를 찾아 씁니다.</span></span>를 못 찾습니다.</div>
     <div class="note warn">그리고 처음 코드를 실행하면 보통 <strong>라이브러리(도구)를 설치하라</strong>는 에러가 뜹니다. 그런 경우 터미널(PyCharm은 <strong>Alt + F12</strong>)에서 <strong>pip install 라이브러리명</strong> 을 치고 다시 실행하면 됩니다. 받았는데도 또 없다고 하면 가상환경<span class="cite-w"><a class="cite" href="#n-p1-5">5</a><span class="cite-t" role="tooltip">프로젝트마다 따로 두는 라이브러리 보관함. 한 프로젝트에서 받은 것이 다른 프로젝트에 없는 이유가 이것입니다.</span></span>을 의심해 보세요.</div>
 
