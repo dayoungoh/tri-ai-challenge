@@ -33,6 +33,11 @@
   --line:#ededea; --line-2:#f4f4f1;
   --inset:#fafaf9;
   --hover:rgb(26 26 26/.045);
+  /* 뜻을 지는 색은 파랑·주황 두 짝입니다. 초록·주황·빨강은 적록색맹에게
+     한 색으로 뭉칩니다 — 재 보니 주황과 빨강이 23밖에 안 떨어졌습니다.
+     파랑↔주황은 어느 유형에서도 170 넘게 벌어집니다. */
+  --blue:#1a5fb4; --blue-soft:#e8f0fb;
+  /* 초록은 뜻을 지지 않는 자리에만 남습니다 — 무료 딱지처럼 글자가 뜻을 지는 곳 */
   --green:#146d34; --green-soft:#e9f4ec;
   --amber:#a16207; --amber-soft:#fdf6e3;
   /* 비고 표시에만 씁니다. 흰 바탕에서 5.9:1 — 본문 글자로 써도 되는 짙기입니다 */
@@ -629,7 +634,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 /* 숫자 뒤 단위. em 으로 두면 36×0.46=16.56px 이라 스케일 밖으로 샙니다 */
 .stat .u{font-size:var(--t-body);font-weight:500;letter-spacing:0;color:var(--ink-3)}
 .stat .f{padding:9px 17px;border-top:1px solid var(--line);background:var(--inset);font-size:var(--t-ui);color:var(--ink-3)}
-.stat.pos .n{color:var(--green)}
+.stat.pos .n{color:var(--blue)}
 
 /* 전 → 후 */
 .gain{display:grid;grid-template-columns:1fr auto 1fr;margin-top:24px;background:var(--shell);
@@ -640,7 +645,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 .gain .val{font-size:var(--t-h3);font-weight:660;letter-spacing:.035em;line-height:1.12;
   margin-top:8px;color:var(--ink);font-variant-numeric:tabular-nums}
 .gain .unit{font-size:var(--t-ui);color:var(--ink-3);margin-top:5px}
-.gain .to .val{color:var(--green)}
+.gain .to .val{color:var(--blue)}
 .gain .arw{display:grid;place-items:center;padding:0 14px;color:var(--ink-3);
   border-left:1px solid var(--line);border-right:1px solid var(--line)}
 .gain-cap{font-size:var(--t-sm);color:var(--ink-3);margin-top:9px;line-height:1.55}
@@ -796,7 +801,7 @@ a.cta{text-decoration:none}
 .fix-det li.g::before{content:"↑ "}
 .fix-det li.a::before{content:"! "}
 .fix-det li.m{font-family:var(--mono)}
-.fix-det li.g{color:var(--green)}
+.fix-det li.g{color:var(--blue)}
 .fix-det li.a{color:var(--amber)}
 
 /* ── 시작 링크 목록 ── */
@@ -892,8 +897,8 @@ a.cta{text-decoration:none}
   box-shadow:inset 0 0 0 1px rgb(26 26 26/.09)}
 /* 진짜 코드 이름일 때만 고정폭. 한글을 고정폭에 넣으면 자간이 벌어집니다 */
 .doc .tok.m{font-family:var(--mono);font-size:.9em;font-weight:400}
-.doc .tok.g{background:rgb(20 109 52/.11);color:var(--green);
-  box-shadow:inset 0 0 0 1px rgb(20 109 52/.16)}
+.doc .tok.g{background:rgb(26 95 180/.10);color:var(--blue);
+  box-shadow:inset 0 0 0 1px rgb(26 95 180/.18)}
 .doc .tok.a{background:rgb(161 98 7/.12);color:var(--amber);
   box-shadow:inset 0 0 0 1px rgb(161 98 7/.18)}
 /* 크기가 13pt 로 올라가 선까지 그을 이유가 없어졌습니다.
@@ -1353,9 +1358,9 @@ CELL_MAPPING = {
         <rect x="6" y="30" width="104" height="44" rx="9" fill="#fafaf9" stroke="#d8d8d4" stroke-width="1.3"/>
         <text class="nm" x="58" y="52" text-anchor="middle">요구사항 설명</text>
         <text class="sb" x="58" y="67" text-anchor="middle">AI에게</text>
-        <rect x="136" y="30" width="104" height="44" rx="9" fill="#e9f4ec" stroke="#146d34" stroke-width="1.4"/>
-        <text class="nm" x="188" y="52" text-anchor="middle" fill="#146d34">코드 만들기</text>
-        <text class="sb" x="188" y="67" text-anchor="middle" fill="#146d34">AI</text>
+        <rect x="136" y="30" width="104" height="44" rx="9" fill="#e8f0fb" stroke="#1a5fb4" stroke-width="1.4"/>
+        <text class="nm" x="188" y="52" text-anchor="middle" fill="#1a5fb4">코드 만들기</text>
+        <text class="sb" x="188" y="67" text-anchor="middle" fill="#1a5fb4">AI</text>
         <rect x="266" y="30" width="104" height="44" rx="9" fill="#fafaf9" stroke="#d8d8d4" stroke-width="1.3"/>
         <text class="nm" x="318" y="52" text-anchor="middle">실행</text>
         <text class="sb" x="318" y="67" text-anchor="middle">IDE(예. PyCharm)</text>
@@ -1375,20 +1380,20 @@ CELL_MAPPING = {
         <text class="sb" x="6" y="150">2024년</text>
         <rect x="6" y="158" width="104" height="24" rx="7" fill="#f2f2ef" stroke="#d8d8d4" stroke-width="1.2"/>
         <text class="sb" x="58" y="174" text-anchor="middle">사람</text>
-        <rect x="136" y="158" width="104" height="24" rx="7" fill="#e9f4ec" stroke="#146d34" stroke-width="1.2"/>
-        <text class="sb" x="188" y="174" text-anchor="middle" fill="#146d34">AI</text>
+        <rect x="136" y="158" width="104" height="24" rx="7" fill="#e8f0fb" stroke="#1a5fb4" stroke-width="1.2"/>
+        <text class="sb" x="188" y="174" text-anchor="middle" fill="#1a5fb4">AI</text>
         <rect x="266" y="158" width="364" height="24" rx="7" fill="#f2f2ef" stroke="#d8d8d4" stroke-width="1.2"/>
         <text class="sb" x="448" y="174" text-anchor="middle">사람</text>
         <text class="sb" x="6" y="202">지금</text>
         <rect x="6" y="210" width="104" height="24" rx="7" fill="#f2f2ef" stroke="#d8d8d4" stroke-width="1.2"/>
         <text class="sb" x="58" y="226" text-anchor="middle">사람</text>
-        <rect x="136" y="210" width="364" height="24" rx="7" fill="#e9f4ec" stroke="#146d34" stroke-width="1.2"/>
-        <text class="sb" x="318" y="226" text-anchor="middle" fill="#146d34">AI</text>
+        <rect x="136" y="210" width="364" height="24" rx="7" fill="#e8f0fb" stroke="#1a5fb4" stroke-width="1.2"/>
+        <text class="sb" x="318" y="226" text-anchor="middle" fill="#1a5fb4">AI</text>
         <rect x="526" y="210" width="104" height="24" rx="7" fill="#fdf6e3" stroke="#a16207" stroke-width="1.2"/>
         <text class="sb" x="578" y="226" text-anchor="middle" fill="#a16207">사람</text>
       </svg>
     </div>
-    <p class="dg-cap">단계는 그대로입니다. 회색은 사람이 도는 구간, 초록은 AI가 도는 구간입니다. <span style="color:var(--amber)">주황은 지금도 사람이 해야 하는 곳</span>입니다. 2024년에도 고칠 코드는 AI가 줬습니다. 다만 오류를 복사해 붙이고 다시 돌리는 일은 제가 했습니다.</p>
+    <p class="dg-cap">단계는 그대로입니다. 회색은 사람이 도는 구간, 파랑은 AI가 도는 구간입니다. <span style="color:var(--amber)">주황은 지금도 사람이 해야 하는 곳</span>입니다. 2024년에도 고칠 코드는 AI가 줬습니다. 다만 오류를 복사해 붙이고 다시 돌리는 일은 제가 했습니다.</p>
 
     <p>그리고 제가 느끼기에 가장 유용한 부분은, AI가 실제 데이터를 쓰는 게 아니라 <span class="tok">가짜 자료를 활용</span>하도록 루프를 구성하면 가짜 자료로 실행을 반복해서 코드를 개발해 준다는 것입니다.</p>
     <p>가짜 자료를 주면 AI가 <span class="tok g">그것으로 수십 번 돌려 보며 코드를 완성</span>합니다. 개인정보 유출을 방지하면서도 코드를 실행해 볼 수 있습니다.</p>
@@ -1488,7 +1493,7 @@ CELL_MAPPING = {
                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
                 <marker id="fwG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
                   markerUnits="userSpaceOnUse" orient="auto">
-                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#146d34"
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4"
                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
                 <marker id="fwA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
                   markerUnits="userSpaceOnUse" orient="auto">
@@ -1499,16 +1504,16 @@ CELL_MAPPING = {
               <path d="M52,96 q0,-7 7,-7 h24 l7,9 h47 q7,0 7,7 v38 H52 Z" fill="#fafaf9" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/><path d="M58,69 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M71,66 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M78,71 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M91,68 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M98,69 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M111,66 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M49,114 h92 q7,0 6,8 l-5,26 q-1,8 -8,8 H57 q-7,0 -8,-8 l-5,-26 q-1,-8 6,-8 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="95" y="176" text-anchor="middle">지원자 폴더</text><text class="ic-s" x="95" y="192" text-anchor="middle">PDF 10여 개</text>
               <path d="M178,128 L246,128" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#fwN)"/>
               <text class="ic-s" x="212" y="118" text-anchor="middle">훑기</text>
-              <path d="M303,96 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M329,93 v8 q0,3 3,3 h8" fill="none" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M307.5,91.5 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M333.5,88.5 v8 q0,3 3,3 h8" fill="none" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M312,87 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M338,84 v8 q0,3 3,3 h8" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><rect x="322" y="100" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="101" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="110" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="111" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="120" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="121" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="130" width="4" height="4" rx="1" fill="#146d34"/><rect x="330" y="131" width="12" height="2" rx="1" fill="#146d34" opacity=".55"/><text class="ic-t" x="332" y="176" text-anchor="middle">순서표대로 잇기</text><text class="ic-s" x="332" y="192" text-anchor="middle">논문은 앞 2쪽만</text>
-              <path d="M392,128 L460,128" fill="none" stroke="#146d34" stroke-width="1.4" stroke-linecap="round" marker-end="url(#fwG)"/>
-              <text class="ic-s" x="426" y="118" text-anchor="middle" fill="#146d34">저장</text>
-              <path d="M524,96 q0,-7 7,-7 h24 l7,9 h47 q7,0 7,7 v38 H524 Z" fill="#e9f4ec" stroke="#146d34" stroke-width="1.5" stroke-linejoin="round"/><path d="M552,73 q0,-3 3,-3 h17 l8,8 v33 q0,3 -3,3 h-22 q-3,0 -3,-3 Z" fill="#fff" stroke="#146d34" stroke-width="1.4" stroke-linejoin="round"/><path d="M569,70 v5 q0,3 3,3 h5" fill="none" stroke="#146d34" stroke-width="1.4" stroke-linejoin="round"/><path d="M521,114 h92 q7,0 6,8 l-5,26 q-1,8 -8,8 H529 q-7,0 -8,-8 l-5,-26 q-1,-8 6,-8 Z" fill="#f2f8f4" stroke="#146d34" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="567" y="176" text-anchor="middle" fill="#146d34">전공별 폴더</text><text class="ic-s" x="567" y="192" text-anchor="middle" fill="#146d34">한 사람 한 파일</text>
+              <path d="M303,96 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M329,93 v8 q0,3 3,3 h8" fill="none" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M307.5,91.5 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M333.5,88.5 v8 q0,3 3,3 h8" fill="none" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M312,87 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M338,84 v8 q0,3 3,3 h8" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><rect x="322" y="100" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="101" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="110" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="111" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="120" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="121" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="130" width="4" height="4" rx="1" fill="#1a5fb4"/><rect x="330" y="131" width="12" height="2" rx="1" fill="#1a5fb4" opacity=".55"/><text class="ic-t" x="332" y="176" text-anchor="middle">순서표대로 잇기</text><text class="ic-s" x="332" y="192" text-anchor="middle">논문은 앞 2쪽만</text>
+              <path d="M392,128 L460,128" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linecap="round" marker-end="url(#fwG)"/>
+              <text class="ic-s" x="426" y="118" text-anchor="middle" fill="#1a5fb4">저장</text>
+              <path d="M524,96 q0,-7 7,-7 h24 l7,9 h47 q7,0 7,7 v38 H524 Z" fill="#e8f0fb" stroke="#1a5fb4" stroke-width="1.5" stroke-linejoin="round"/><path d="M552,73 q0,-3 3,-3 h17 l8,8 v33 q0,3 -3,3 h-22 q-3,0 -3,-3 Z" fill="#fff" stroke="#1a5fb4" stroke-width="1.4" stroke-linejoin="round"/><path d="M569,70 v5 q0,3 3,3 h5" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linejoin="round"/><path d="M521,114 h92 q7,0 6,8 l-5,26 q-1,8 -8,8 H529 q-7,0 -8,-8 l-5,-26 q-1,-8 6,-8 Z" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="567" y="176" text-anchor="middle" fill="#1a5fb4">전공별 폴더</text><text class="ic-s" x="567" y="192" text-anchor="middle" fill="#1a5fb4">한 사람 한 파일</text>
 
               <g stroke="#737370" fill="#737370">
                 <path class="st" d="M118,34 C112,46 105,54 100,60" marker-end="url(#fwN)"/>
                 <text class="hw" x="124" y="28" stroke="none">이름으로 종류를 알아냅니다</text>
               </g>
-              <g stroke="#146d34" fill="#146d34">
+              <g stroke="#1a5fb4" fill="#1a5fb4">
                 <path class="st" d="M420,52 C400,58 380,66 362,78" marker-end="url(#fwG)"/>
                 <text class="hw" x="426" y="46" stroke="none">정해진 차례로 포갭니다</text>
               </g>
@@ -1532,7 +1537,7 @@ CELL_MAPPING = {
                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
                 <marker id="p2G" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
                   markerUnits="userSpaceOnUse" orient="auto">
-                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#146d34"
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4"
                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
                 <marker id="p2A" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
                   markerUnits="userSpaceOnUse" orient="auto">
@@ -1557,7 +1562,7 @@ CELL_MAPPING = {
               <text class="cel" x="186" y="180" text-anchor="middle">3</text>
               <text class="cel" x="292" y="180" text-anchor="middle">…</text>
               <text class="cel" x="436" y="180" text-anchor="middle">전체</text>
-              <rect x="373" y="189" width="126" height="26" fill="#e9f4ec"/>
+              <rect x="373" y="189" width="126" height="26" fill="#e8f0fb"/>
               <text class="cel" x="186" y="206" text-anchor="middle">4</text>
               <text class="cel" x="292" y="206" text-anchor="middle">논문</text>
               <text class="cel" x="436" y="206" text-anchor="middle">앞 2쪽</text>
@@ -1567,7 +1572,7 @@ CELL_MAPPING = {
                 <text class="hw" x="124" y="36" text-anchor="end" stroke="none">이 줄 차례가 곧 병합 차례</text>
               </g>
 
-              <g stroke="#146d34" fill="#146d34">
+              <g stroke="#1a5fb4" fill="#1a5fb4">
                 <path class="st" d="M556,168 C536,178 518,190 508,199" marker-end="url(#p2G)"/>
                 <text class="hw" x="560" y="162" stroke="none">코드가 여기만 읽습니다</text>
               </g>
@@ -1632,19 +1637,19 @@ CELL_MAPPING = {
           <div class="ann">
             <svg viewBox="-112 0 780 240" xmlns="http://www.w3.org/2000/svg" role="img"
               aria-label="명단 한 장을 평가자별 심사표로 나눴다가 다시 한 장으로 모으는 그림">
-              <defs><marker id="e2N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="e2G" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#146d34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="e2A" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+              <defs><marker id="e2N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="e2G" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="e2A" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
               <rect x="40" y="74" width="44" height="54" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/><path d="M40,84 h44" stroke="#1a1a1a" stroke-width="1.4" opacity=".55"/><path d="M45,92.8 h34" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M45,101.6 h34" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M45,110.4 h34" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M45,119.2 h34" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M58.48,84 v44" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><text class="ic-t" x="62" y="150" text-anchor="middle">명단 한 장</text><text class="ic-s" x="62" y="166" text-anchor="middle">전공 · 지원자 · 평가자</text>
               <path d="M112,100 L236,100" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#e2N)"/>
               <text class="ic-s" x="172" y="92" text-anchor="middle">나누기</text>
               <rect x="250" y="62" width="40" height="50" rx="4" fill="#fff" stroke="#d8d8d4" stroke-width="1.1"/><path d="M250,72 h40" stroke="#d8d8d4" stroke-width="1.1" opacity=".55"/><path d="M255,82 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M255,92 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M255,102 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M266.8,72 v40" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><rect x="265" y="70" width="40" height="50" rx="4" fill="#fff" stroke="#d8d8d4" stroke-width="1.1"/><path d="M265,80 h40" stroke="#d8d8d4" stroke-width="1.1" opacity=".55"/><path d="M270,90 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M270,100 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M270,110 h30" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><path d="M281.8,80 v40" stroke="#d8d8d4" stroke-width="1" opacity=".25"/><rect x="280" y="78" width="40" height="50" rx="4" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/><path d="M280,88 h40" stroke="#1a1a1a" stroke-width="1.4" opacity=".55"/><path d="M285,98 h30" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M285,108 h30" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M285,118 h30" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><path d="M296.8,88 v40" stroke="#1a1a1a" stroke-width="1" opacity=".25"/><text class="ic-t" x="300" y="150" text-anchor="middle">평가자별 심사표</text><text class="ic-s" x="300" y="166" text-anchor="middle">파일명 = 전공 · 시트명 = 평가자</text>
-              <path d="M342,100 L500,100" fill="none" stroke="#146d34" stroke-width="1.4" stroke-linecap="round" marker-end="url(#e2G)"/>
-              <text class="ic-s" x="450" y="92" text-anchor="middle" fill="#146d34">합치기</text>
-              <rect x="514" y="74" width="44" height="54" rx="4" fill="#f2f8f4" stroke="#146d34" stroke-width="1.4"/><path d="M515,75 h42 v9 h-42 Z" fill="#146d34" opacity=".14"/><path d="M514,84 h44" stroke="#146d34" stroke-width="1.4" opacity=".55"/><path d="M519,92.8 h34" stroke="#146d34" stroke-width="1" opacity=".25"/><path d="M519,101.6 h34" stroke="#146d34" stroke-width="1" opacity=".25"/><path d="M519,110.4 h34" stroke="#146d34" stroke-width="1" opacity=".25"/><path d="M519,119.2 h34" stroke="#146d34" stroke-width="1" opacity=".25"/><path d="M532.48,84 v44" stroke="#146d34" stroke-width="1" opacity=".25"/><text class="ic-t" x="536" y="150" text-anchor="middle" fill="#146d34">다시 한 장</text><text class="ic-s" x="536" y="166" text-anchor="middle" fill="#146d34">제자리에 채워짐</text>
+              <path d="M342,100 L500,100" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linecap="round" marker-end="url(#e2G)"/>
+              <text class="ic-s" x="450" y="92" text-anchor="middle" fill="#1a5fb4">합치기</text>
+              <rect x="514" y="74" width="44" height="54" rx="4" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.4"/><path d="M515,75 h42 v9 h-42 Z" fill="#1a5fb4" opacity=".14"/><path d="M514,84 h44" stroke="#1a5fb4" stroke-width="1.4" opacity=".55"/><path d="M519,92.8 h34" stroke="#1a5fb4" stroke-width="1" opacity=".25"/><path d="M519,101.6 h34" stroke="#1a5fb4" stroke-width="1" opacity=".25"/><path d="M519,110.4 h34" stroke="#1a5fb4" stroke-width="1" opacity=".25"/><path d="M519,119.2 h34" stroke="#1a5fb4" stroke-width="1" opacity=".25"/><path d="M532.48,84 v44" stroke="#1a5fb4" stroke-width="1" opacity=".25"/><text class="ic-t" x="536" y="150" text-anchor="middle" fill="#1a5fb4">다시 한 장</text><text class="ic-s" x="536" y="166" text-anchor="middle" fill="#1a5fb4">제자리에 채워짐</text>
               <g stroke="#737370" fill="#737370">
                 <path class="st" d="M120,36 C124,48 128,58 132,66" marker-end="url(#e2N)"/>
                 <text class="hw" x="118" y="30" text-anchor="end" stroke="none">번호와 평가자명을 이름표로 붙입니다</text>
               </g>
-              <g stroke="#146d34" fill="#146d34">
+              <g stroke="#1a5fb4" fill="#1a5fb4">
                 <path class="st" d="M572,58 C566,68 560,80 552,92" marker-end="url(#e2G)"/>
                 <text class="hw" x="598" y="48" text-anchor="end" stroke="none">이름표를 읽어 제자리를 찾습니다</text>
               </g>
@@ -2091,7 +2096,7 @@ CELL_MAPPING = {
     <div class="ann">
       <svg viewBox="-30 0 630 226" xmlns="http://www.w3.org/2000/svg" role="img"
         aria-label="폼 제출이 트리거를 깨워 후기 문서를 만들고, 모임장일 때만 정산 서류가 하나 더 나오는 흐름">
-        <defs><marker id="ggN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ggG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#146d34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ggA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><path d="M40,46 q0,-4 4,-4 h29 l11,11 v41 q0,4 -4,4 h-36 q-4,0 -4,-4 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M69,42 v7 q0,4 4,4 h7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M49,62 h24" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M49,72 h16" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M49,82 h24" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><rect x="49" y="82" width="9" height="9" rx="2" fill="none" stroke="#737370" stroke-width="1.5"/><path d="M51,86.5 l2,2.5 4,-5" fill="none" stroke="#737370" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><text class="ic-t" x="62" y="126" text-anchor="middle">신청자가 폼 제출</text><text class="ic-s" x="62" y="142" text-anchor="middle">Google Form</text><path d="M104,70 L176,70" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#ggN)"/><path d="M218,26 l-10,20 h8 l-4,16 14,-22 h-8 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="214" y="126" text-anchor="middle">트리거가 깨움</text><text class="ic-s" x="214" y="142" text-anchor="middle">양식 제출 시</text><path d="M252,70 L324,70" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#ggN)"/><path d="M348,46 q0,-4 4,-4 h29 l11,11 v41 q0,4 -4,4 h-36 q-4,0 -4,-4 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M377,42 v7 q0,4 4,4 h7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M357,62 h24" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M357,69.5 h16" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M357,77 h24" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M357,84.5 h16" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><text class="ic-t" x="370" y="126" text-anchor="middle">후기 문서</text><text class="ic-s" x="370" y="142" text-anchor="middle">누가 내든 하나</text><path d="M396,70 L468,70" fill="none" stroke="#146d34" stroke-width="1.4" stroke-linecap="round" marker-end="url(#ggG)"/><path d="M492,46 q0,-4 4,-4 h29 l11,11 v41 q0,4 -4,4 h-36 q-4,0 -4,-4 Z" fill="#f2f8f4" stroke="#146d34" stroke-width="1.4" stroke-linejoin="round"/><path d="M521,42 v7 q0,4 4,4 h7" fill="none" stroke="#146d34" stroke-width="1.4" stroke-linejoin="round"/><path d="M501,62 h24" stroke="#146d34" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M501,69.5 h16" stroke="#146d34" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M501,77 h24" stroke="#146d34" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M501,84.5 h16" stroke="#146d34" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><text class="ic-t" x="514" y="126" text-anchor="middle" fill="#146d34">정산 서류</text><text class="ic-s" x="514" y="142" text-anchor="middle" fill="#146d34">모임장일 때만</text><g stroke="#737370" fill="#737370"><path class="st" d="M150,26 C158,36 166,46 176,58" marker-end="url(#ggN)"/><text class="hw" x="144" y="20" text-anchor="end" stroke="none">사람이 누르는 단계가 없습니다</text></g><g stroke="#146d34" fill="#146d34"><path class="st" d="M556,28 C542,30 528,32 518,38" marker-end="url(#ggG)"/><text class="hw" x="600" y="22" text-anchor="end" stroke="none">역할에 따라 하나가 더</text></g><g stroke="#a16207" fill="#a16207"><path class="st" d="M214,196 C214,180 214,162 214,110" marker-end="url(#ggA)"/><text class="hw" x="214" y="212" text-anchor="middle" stroke="none">폼 문구를 바꾸면 여기서 끊깁니다</text></g>
+        <defs><marker id="ggN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ggG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ggA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><path d="M40,46 q0,-4 4,-4 h29 l11,11 v41 q0,4 -4,4 h-36 q-4,0 -4,-4 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M69,42 v7 q0,4 4,4 h7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M49,62 h24" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M49,72 h16" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M49,82 h24" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><rect x="49" y="82" width="9" height="9" rx="2" fill="none" stroke="#737370" stroke-width="1.5"/><path d="M51,86.5 l2,2.5 4,-5" fill="none" stroke="#737370" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><text class="ic-t" x="62" y="126" text-anchor="middle">신청자가 폼 제출</text><text class="ic-s" x="62" y="142" text-anchor="middle">Google Form</text><path d="M104,70 L176,70" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#ggN)"/><path d="M218,26 l-10,20 h8 l-4,16 14,-22 h-8 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="214" y="126" text-anchor="middle">트리거가 깨움</text><text class="ic-s" x="214" y="142" text-anchor="middle">양식 제출 시</text><path d="M252,70 L324,70" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#ggN)"/><path d="M348,46 q0,-4 4,-4 h29 l11,11 v41 q0,4 -4,4 h-36 q-4,0 -4,-4 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M377,42 v7 q0,4 4,4 h7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M357,62 h24" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M357,69.5 h16" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M357,77 h24" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M357,84.5 h16" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><text class="ic-t" x="370" y="126" text-anchor="middle">후기 문서</text><text class="ic-s" x="370" y="142" text-anchor="middle">누가 내든 하나</text><path d="M396,70 L468,70" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linecap="round" marker-end="url(#ggG)"/><path d="M492,46 q0,-4 4,-4 h29 l11,11 v41 q0,4 -4,4 h-36 q-4,0 -4,-4 Z" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.4" stroke-linejoin="round"/><path d="M521,42 v7 q0,4 4,4 h7" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linejoin="round"/><path d="M501,62 h24" stroke="#1a5fb4" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M501,69.5 h16" stroke="#1a5fb4" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M501,77 h24" stroke="#1a5fb4" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M501,84.5 h16" stroke="#1a5fb4" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><text class="ic-t" x="514" y="126" text-anchor="middle" fill="#1a5fb4">정산 서류</text><text class="ic-s" x="514" y="142" text-anchor="middle" fill="#1a5fb4">모임장일 때만</text><g stroke="#737370" fill="#737370"><path class="st" d="M150,26 C158,36 166,46 176,58" marker-end="url(#ggN)"/><text class="hw" x="144" y="20" text-anchor="end" stroke="none">사람이 누르는 단계가 없습니다</text></g><g stroke="#1a5fb4" fill="#1a5fb4"><path class="st" d="M556,28 C542,30 528,32 518,38" marker-end="url(#ggG)"/><text class="hw" x="600" y="22" text-anchor="end" stroke="none">역할에 따라 하나가 더</text></g><g stroke="#a16207" fill="#a16207"><path class="st" d="M214,196 C214,180 214,162 214,110" marker-end="url(#ggA)"/><text class="hw" x="214" y="212" text-anchor="middle" stroke="none">폼 문구를 바꾸면 여기서 끊깁니다</text></g>
       </svg>
       <div class="ann-cap">사람이 확인하는 단계가 없습니다. <strong>폼이 제출되는 순간 코드가 깨어납니다.</strong></div>
     </div>
@@ -2200,7 +2205,7 @@ CELL_MAPPING = {
         <!-- ── 주석 화살촉 세 개. 곡선 끝 접선에 맞춰 자동으로 돌아갑니다 ──
              날개는 축에서 정확히 ±25.3°, 길이 10.3으로 좌우 대칭입니다.
              손으로 좌표를 찍으면 이 각도가 어긋나 촉이 갈고리처럼 보입니다.
-             회색=사실 · 초록=코드가 해주는 일 · 주황=깨지는 곳 ── -->
+             회색=사실 · 파랑=코드가 해주는 일 · 주황=깨지는 곳 ── -->
         <defs>
           <marker id="hwN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
             markerUnits="userSpaceOnUse" orient="auto">
@@ -2209,7 +2214,7 @@ CELL_MAPPING = {
           </marker>
           <marker id="hwG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
             markerUnits="userSpaceOnUse" orient="auto">
-            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#146d34"
+            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4"
               stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </marker>
           <marker id="hwA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
@@ -2222,8 +2227,8 @@ CELL_MAPPING = {
         <text class="cel" x="582" y="94" text-anchor="end" font-size="11" fill="#737370">폼 응답이 쌓이는 Spreadsheet</text>
         <rect x="78" y="104" width="504" height="62" rx="8" fill="#fff" stroke="#ededea"/>
         <path d="M78,112 Q78,104 86,104 L574,104 Q582,104 582,112 L582,134 L78,134 Z" fill="#fafaf9"/>
-        <rect x="330" y="105" width="126" height="29" fill="#e9f4ec"/>
-        <rect x="456" y="105" width="125" height="29" fill="#e9f4ec"/>
+        <rect x="330" y="105" width="126" height="29" fill="#e8f0fb"/>
+        <rect x="456" y="105" width="125" height="29" fill="#e8f0fb"/>
         <path d="M78,134 H582 M204,104 V166 M330,104 V166 M456,104 V166" stroke="#ededea" fill="none"/>
         <text class="hd" x="141" y="123" text-anchor="middle">타임스탬프</text>
         <text class="hd" x="267" y="123" text-anchor="middle">모임 제목</text>
@@ -2243,7 +2248,7 @@ CELL_MAPPING = {
         </g>
 
         <!-- 가리키는 손 · 코드가 실제로 하는 일 -->
-        <g stroke="#146d34" fill="#146d34">
+        <g stroke="#1a5fb4" fill="#1a5fb4">
           <path class="st" d="M344,201 C362,197 380,188 390,176" marker-end="url(#hwG)"/>
           <text class="hw" x="330" y="213" text-anchor="end" stroke="none">이 문구가 그대로 열쇠</text>
           <path class="st" d="M472,199 C492,196 508,187 516,175" marker-end="url(#hwG)"/>
@@ -2395,7 +2400,7 @@ CELL_MAPPING = {
     <div class="ann">
       <svg viewBox="-20 0 680 210" xmlns="http://www.w3.org/2000/svg" role="img"
         aria-label="같은 요청이지만 데이터베이스가 참여자에게는 본인 것만, 관리자에게는 전체를 내주는 구조">
-        <defs><marker id="wwN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="wwG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#146d34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="wwA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect x="34" y="40" width="76" height="56" rx="6" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/><path d="M34,54 h76" stroke="#1a1a1a" stroke-width="1.4" opacity=".5"/><circle cx="43" cy="47" r="2" fill="#1a1a1a" opacity=".5"/><circle cx="51" cy="47" r="2" fill="#1a1a1a" opacity=".5"/><text class="ic-t" x="72" y="122" text-anchor="middle">화면이 요청</text><text class="ic-s" x="72" y="138" text-anchor="middle">"전체 자료 주세요"</text><path d="M122,68 L194,68" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#wwN)"/><path d="M218,45 a38,9 0 0 1 76,0 v44 a38,9 0 0 1 -76,0 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/><path d="M218,45 a38,9 0 0 0 76,0" fill="none" stroke="#1a1a1a" stroke-width="1.3" opacity=".55"/><rect x="247" y="73" width="18" height="14" rx="3" fill="#f2f8f4" stroke="#146d34" stroke-width="1.5"/><path d="M251,73 v-4 a5,5 0 0 1 10,0 v4" fill="none" stroke="#146d34" stroke-width="1.5"/><text class="ic-t" x="256" y="122" text-anchor="middle">데이터베이스가 판단</text><text class="ic-s" x="256" y="138" text-anchor="middle">접근 규칙</text><path d="M306,52 L378,30" fill="none" stroke="#146d34" stroke-width="1.4" stroke-linecap="round" marker-end="url(#wwG)"/><path d="M306,84 L378,106" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#wwN)"/><path d="M402,10 q0,-4 4,-4 h25 l11,11 v27 q0,4 -4,4 h-32 q-4,0 -4,-4 Z" fill="#f2f8f4" stroke="#146d34" stroke-width="1.4" stroke-linejoin="round"/><path d="M427,6 v7 q0,4 4,4 h7" fill="none" stroke="#146d34" stroke-width="1.4" stroke-linejoin="round"/><path d="M411,26 h20" stroke="#146d34" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><text class="ic-t" x="466" y="26" fill="#146d34">참여자</text><text class="ic-s" x="466" y="42" fill="#146d34">본인 것 1건</text><path d="M402,86 q0,-4 4,-4 h25 l11,11 v27 q0,4 -4,4 h-32 q-4,0 -4,-4 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M427,82 v7 q0,4 4,4 h7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M411,102 h20" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M411,106 h12" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M411,110 h20" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M411,114 h12" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><text class="ic-t" x="466" y="102">관리자</text><text class="ic-s" x="466" y="118">전체</text><g stroke="#737370" fill="#737370"><path class="st" d="M118,24 C110,28 100,32 90,38" marker-end="url(#wwN)"/><text class="hw" x="-14" y="18" stroke="none">요청은 둘 다 똑같습니다</text></g><g stroke="#146d34" fill="#146d34"><path class="st" d="M256,20 C256,24 256,28 256,32" marker-end="url(#wwG)"/><text class="hw" x="264" y="18" stroke="none">누구로 로그인했는지로 갈립니다</text></g><g stroke="#a16207" fill="#a16207"><path class="st" d="M470,168 C462,156 452,144 440,132" marker-end="url(#wwA)"/><text class="hw" x="476" y="178" stroke="none">화면에서 감추는 것과 다릅니다</text></g>
+        <defs><marker id="wwN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="wwG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="wwA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><rect x="34" y="40" width="76" height="56" rx="6" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/><path d="M34,54 h76" stroke="#1a1a1a" stroke-width="1.4" opacity=".5"/><circle cx="43" cy="47" r="2" fill="#1a1a1a" opacity=".5"/><circle cx="51" cy="47" r="2" fill="#1a1a1a" opacity=".5"/><text class="ic-t" x="72" y="122" text-anchor="middle">화면이 요청</text><text class="ic-s" x="72" y="138" text-anchor="middle">"전체 자료 주세요"</text><path d="M122,68 L194,68" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#wwN)"/><path d="M218,45 a38,9 0 0 1 76,0 v44 a38,9 0 0 1 -76,0 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/><path d="M218,45 a38,9 0 0 0 76,0" fill="none" stroke="#1a1a1a" stroke-width="1.3" opacity=".55"/><rect x="247" y="73" width="18" height="14" rx="3" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5"/><path d="M251,73 v-4 a5,5 0 0 1 10,0 v4" fill="none" stroke="#1a5fb4" stroke-width="1.5"/><text class="ic-t" x="256" y="122" text-anchor="middle">데이터베이스가 판단</text><text class="ic-s" x="256" y="138" text-anchor="middle">접근 규칙</text><path d="M306,52 L378,30" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linecap="round" marker-end="url(#wwG)"/><path d="M306,84 L378,106" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#wwN)"/><path d="M402,10 q0,-4 4,-4 h25 l11,11 v27 q0,4 -4,4 h-32 q-4,0 -4,-4 Z" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.4" stroke-linejoin="round"/><path d="M427,6 v7 q0,4 4,4 h7" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linejoin="round"/><path d="M411,26 h20" stroke="#1a5fb4" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><text class="ic-t" x="466" y="26" fill="#1a5fb4">참여자</text><text class="ic-s" x="466" y="42" fill="#1a5fb4">본인 것 1건</text><path d="M402,86 q0,-4 4,-4 h25 l11,11 v27 q0,4 -4,4 h-32 q-4,0 -4,-4 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M427,82 v7 q0,4 4,4 h7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M411,102 h20" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M411,106 h12" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M411,110 h20" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><path d="M411,114 h12" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".38"/><text class="ic-t" x="466" y="102">관리자</text><text class="ic-s" x="466" y="118">전체</text><g stroke="#737370" fill="#737370"><path class="st" d="M118,24 C110,28 100,32 90,38" marker-end="url(#wwN)"/><text class="hw" x="-14" y="18" stroke="none">요청은 둘 다 똑같습니다</text></g><g stroke="#1a5fb4" fill="#1a5fb4"><path class="st" d="M256,20 C256,24 256,28 256,32" marker-end="url(#wwG)"/><text class="hw" x="264" y="18" stroke="none">누구로 로그인했는지로 갈립니다</text></g><g stroke="#a16207" fill="#a16207"><path class="st" d="M470,168 C462,156 452,144 440,132" marker-end="url(#wwA)"/><text class="hw" x="476" y="178" stroke="none">화면에서 감추는 것과 다릅니다</text></g>
       </svg>
       <div class="ann-cap">같은 요청에 다른 답이 나갑니다. <strong>가르는 곳은 화면이 아니라 데이터베이스입니다.</strong></div>
     </div>
@@ -2708,7 +2713,7 @@ CELL_MAPPING = {
               stroke-linecap="round" stroke-linejoin="round"/></marker>
           <marker id="gtG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
             markerUnits="userSpaceOnUse" orient="auto">
-            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#146d34" stroke-width="1.5"
+            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5"
               stroke-linecap="round" stroke-linejoin="round"/></marker>
         </defs>
 
@@ -2721,7 +2726,7 @@ CELL_MAPPING = {
           fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
         <path d="M192,74 h20 M192,86 h34 M192,98 h26" stroke="#1a1a1a" stroke-width="2"
           stroke-linecap="round" opacity=".45"/>
-        <path d="M236,72 l5,6 9,-11" fill="none" stroke="#146d34" stroke-width="2"
+        <path d="M236,72 l5,6 9,-11" fill="none" stroke="#1a5fb4" stroke-width="2"
           stroke-linecap="round" stroke-linejoin="round"/>
         <text class="ic-t" x="223" y="140" text-anchor="middle">스테이지</text>
         <text class="ic-s" x="223" y="156" text-anchor="middle">이번에 남길 것만</text>
@@ -2733,9 +2738,9 @@ CELL_MAPPING = {
         <text class="ic-s" x="387" y="156" text-anchor="middle">되돌아갈 수 있는 곳</text>
 
         <path d="M520,96 q-10,0 -10,-11 t11,-11 q3,-14 17,-14 t18,13 q11,0 11,11 t-12,12 Z"
-          fill="#f2f8f4" stroke="#146d34" stroke-width="1.5" stroke-linejoin="round"/>
-        <text class="ic-t" x="539" y="140" text-anchor="middle" fill="#146d34">GitHub</text>
-        <text class="ic-s" x="539" y="156" text-anchor="middle" fill="#146d34">공유와 백업</text>
+          fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5" stroke-linejoin="round"/>
+        <text class="ic-t" x="539" y="140" text-anchor="middle" fill="#1a5fb4">GitHub</text>
+        <text class="ic-s" x="539" y="156" text-anchor="middle" fill="#1a5fb4">공유와 백업</text>
 
         <path d="M112,86 L172,86" fill="none" stroke="#737370" stroke-width="1.4"
           stroke-linecap="round" marker-end="url(#gtN)"/>
@@ -2743,15 +2748,15 @@ CELL_MAPPING = {
         <path d="M274,86 L336,86" fill="none" stroke="#737370" stroke-width="1.4"
           stroke-linecap="round" marker-end="url(#gtN)"/>
         <text class="ic-s" x="305" y="76" text-anchor="middle">git commit</text>
-        <path d="M438,86 L500,86" fill="none" stroke="#146d34" stroke-width="1.4"
+        <path d="M438,86 L500,86" fill="none" stroke="#1a5fb4" stroke-width="1.4"
           stroke-linecap="round" marker-end="url(#gtG)"/>
-        <text class="ic-s" x="469" y="76" text-anchor="middle" fill="#146d34">git push</text>
+        <text class="ic-s" x="469" y="76" text-anchor="middle" fill="#1a5fb4">git push</text>
 
         <g stroke="#737370" fill="#737370">
           <path class="st" d="M300,34 C288,42 278,50 268,58" marker-end="url(#gtN)"/>
           <text class="hw" x="306" y="28" stroke="none">셋을 다 고쳤어도 둘만 고를 수 있습니다</text>
         </g>
-        <g stroke="#146d34" fill="#146d34">
+        <g stroke="#1a5fb4" fill="#1a5fb4">
           <path class="st" d="M302,184 C312,168 326,142 344,116" marker-end="url(#gtG)"/>
           <text class="hw" x="296" y="192" text-anchor="end" stroke="none">여기까지만 해도 되돌리기는 됩니다</text>
         </g>
