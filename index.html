@@ -700,6 +700,12 @@ td.n{font-variant-numeric:tabular-nums}
 .box p{margin-top:6px;font-size:var(--t-sm);line-height:1.55}
 
 .note{border-left:2px solid var(--ink);padding:1px 0 1px 17px;margin-top:22px;color:var(--ink-2);font-size:var(--t-body);line-height:1.62}
+/* 조심할 곳. 세로선은 "곁말" 이라는 뜻뿐이라, 조심하라는 말을 못 합니다.
+   표지판을 답니다. 다만 열네 개 전부에 달면 흔해져서 또 아무 말도 못 합니다. */
+.note.warn{border-left:0;padding:1px 0 1px 31px;position:relative}
+.note.warn::before{content:"";position:absolute;left:0;top:.16em;
+  width:19px;height:19px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 3.3 2.0 20.3a1.3 1.3 0 0 0 1.12 1.95h17.76a1.3 1.3 0 0 0 1.12-1.95Z' fill='none' stroke='%23b3261e' stroke-width='2.1' stroke-linejoin='round'/%3E%3Cpath d='M12 9.7v4.4' stroke='%231a1a1a' stroke-width='2.1' stroke-linecap='round'/%3E%3Ccircle cx='12' cy='17.7' r='1.2' fill='%231a1a1a'/%3E%3C/svg%3E") center/contain no-repeat}
+@media print{ .note.warn::before{print-color-adjust:exact;-webkit-print-color-adjust:exact} }
 .note strong{color:var(--ink)}
 
 .q{background:var(--shell);border-radius:12px;padding:17px 20px;margin-top:11px;box-shadow:var(--shadow-card)}
@@ -1277,7 +1283,7 @@ a.cta{text-decoration:none}
       <div class="bd">
         <p>개인정보와 기밀 자료를 외부 서비스에 올리지 않고 <strong>내 PC 안에서 처리</strong>할 수 있습니다.</p>
         <p>가령, 선발 심사 중 지원자의 자료를 병합하고 싶은 경우, 개인정보가 들어 있어 AI나 웹사이트(예. <a href="https://www.ilovepdf.com/" target="_blank" rel="noopener noreferrer">ilovepdf</a>)에 업로드할 수 없습니다. 이런 상황에 Python을 사용하면 유용합니다.</p>
-        <div class="note"><strong>다만, 밖으로 안 나가는 것은 자료이지 코드는 아닙니다.</strong> 코드 안에 든 정보(예. <span class="tok a">API</span>, <span class="tok a">로그인 정보</span>)는 AI에 잘못 보낼 수 있기 때문에 조심해야 합니다.</div>
+        <div class="note warn"><strong>다만, 밖으로 안 나가는 것은 자료이지 코드는 아닙니다.</strong> 코드 안에 든 정보(예. <span class="tok a">API</span>, <span class="tok a">로그인 정보</span>)는 AI에 잘못 보낼 수 있기 때문에 조심해야 합니다.</div>
       </div>
     </div>
 
@@ -1311,7 +1317,7 @@ CELL_MAPPING = {
       <div class="bd">
         <p>사람의 실수는 <span class="tok a">불규칙</span>합니다. 300명 중 87번만 틀리고, 왜 87번인지 아무도 모릅니다. 찾으려면 300개를 다 봐야 합니다. 코드의 실수는 <span class="tok g">규칙적</span>입니다. 틀리면 300개가 다 같은 방식으로 틀립니다. 하나만 찾으면 나머지는 저절로 고쳐집니다.</p>
         <p>사람의 변칙성이 기획에서는 강점이 되기도 하지만 문서 처리에서는 아닙니다.</p>
-        <div class="note"><strong>다만, 코드는 무엇이 실수인지 스스로 인지하지 못합니다.</strong> 항상 <span class="tok a">검증 코드</span>를 넣어야 하며, 마지막에 결과를 확인하는 단계가 필요합니다.</div>
+        <div class="note warn"><strong>다만, 코드는 무엇이 실수인지 스스로 인지하지 못합니다.</strong> 항상 <span class="tok a">검증 코드</span>를 넣어야 하며, 마지막에 결과를 확인하는 단계가 필요합니다.</div>
       </div>
     </div>
 
@@ -1406,7 +1412,7 @@ CELL_MAPPING = {
     <p class="dg-cap">표준으로 딸려 오는 것(<span class="tok m">os</span> · <span class="tok m">re</span> · <span class="tok m">pathlib</span> · <span class="tok m">csv</span> · <span class="tok m">json</span> · <span class="tok m">zipfile</span>)은 설치가 필요 없어 뺐습니다.</p>
     <p>정리하면 Python은 <strong>사람이 손으로 열고, 누르고, 옮기던 일</strong>을 대신합니다. 엑셀에서 데이터를 읽어 PDF로 만들고 메일로 보내는 일을 <span class="tok">코드 실행 한 번으로</span> 처리할 수 있다는 점이 가장 큰 장점입니다.</p>
 
-    <div class="note">라이브러리를 정확히 몰라도 되지만, <strong>결과가 이상하면 사용한 라이브러리를 의심</strong>해 볼 수 있습니다. 같은 일을 하는 도구는 여럿이지만 도구에 따라 결과가 서로 다를 수 있다는 점을 유의해야 합니다.</div>
+    <div class="note warn">라이브러리를 정확히 몰라도 되지만, <strong>결과가 이상하면 사용한 라이브러리를 의심</strong>해 볼 수 있습니다. 같은 일을 하는 도구는 여럿이지만 도구에 따라 결과가 서로 다를 수 있다는 점을 유의해야 합니다.</div>
 
     <h3>Python 설치</h3>
     <p>이제는 AI가 Python 설치까지 대신해 줄 수 있지만, 혹시 직접 설치 및 Python 실행을 원하신다면 다음 링크로 가셔서 설치하시기 바랍니다.</p>
@@ -1432,9 +1438,9 @@ CELL_MAPPING = {
           <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
         </a>
       </div>
-      <div class="tip"><strong>설치 순서가 중요합니다.</strong> 파이썬을 먼저 깔고 PyCharm<span class="cite-w"><a class="cite" href="#n-p1-3">3</a><span class="cite-t" role="tooltip">Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램. 이 글에서는 <b>PyCharm</b> 을 씁니다.</span></span>을 깔아야 합니다. 반대로 하면 첫 실행에서 인터프리터<span class="cite-w"><a class="cite" href="#n-p1-4">4</a><span class="cite-t" role="tooltip">코드를 한 줄씩 읽어 실행하는 프로그램. Python 을 설치한다는 말은 이것을 설치한다는 뜻입니다. IDE 는 설치된 인터프리터를 찾아 씁니다.</span></span>를 못 찾습니다.</div>
-      <div class="tip">그리고 처음 코드를 실행하면 보통 <strong>라이브러리(도구)를 설치하라</strong>는 에러가 뜹니다. 그런 경우 터미널(PyCharm은 <strong>Alt + F12</strong>)에서 <strong>pip install 라이브러리명</strong> 을 치고 다시 실행하면 됩니다. 받았는데도 또 없다고 하면 가상환경<span class="cite-w"><a class="cite" href="#n-p1-5">5</a><span class="cite-t" role="tooltip">프로젝트마다 따로 두는 라이브러리 보관함. 한 프로젝트에서 받은 것이 다른 프로젝트에 없는 이유가 이것입니다.</span></span>을 의심해 보세요.</div>
     </div>
+    <div class="note warn"><strong>설치 순서가 중요합니다.</strong> 파이썬을 먼저 깔고 PyCharm<span class="cite-w"><a class="cite" href="#n-p1-3">3</a><span class="cite-t" role="tooltip">Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램. 이 글에서는 <b>PyCharm</b> 을 씁니다.</span></span>을 깔아야 합니다. 반대로 하면 첫 실행에서 인터프리터<span class="cite-w"><a class="cite" href="#n-p1-4">4</a><span class="cite-t" role="tooltip">코드를 한 줄씩 읽어 실행하는 프로그램. Python 을 설치한다는 말은 이것을 설치한다는 뜻입니다. IDE 는 설치된 인터프리터를 찾아 씁니다.</span></span>를 못 찾습니다.</div>
+    <div class="note warn">그리고 처음 코드를 실행하면 보통 <strong>라이브러리(도구)를 설치하라</strong>는 에러가 뜹니다. 그런 경우 터미널(PyCharm은 <strong>Alt + F12</strong>)에서 <strong>pip install 라이브러리명</strong> 을 치고 다시 실행하면 됩니다. 받았는데도 또 없다고 하면 가상환경<span class="cite-w"><a class="cite" href="#n-p1-5">5</a><span class="cite-t" role="tooltip">프로젝트마다 따로 두는 라이브러리 보관함. 한 프로젝트에서 받은 것이 다른 프로젝트에 없는 이유가 이것입니다.</span></span>을 의심해 보세요.</div>
 
     <div class="notes">
       <div class="notes-h">낱말</div>
@@ -1898,7 +1904,7 @@ CELL_MAPPING = {
           <p>인쇄 설정을 <strong>사전에 고정한 뒤</strong> 시작합니다 — 머리글·바닥글 해제, 배경 그래픽 적용, 여백 기본, 배율 100%. 사람이 매번 선택하지 않습니다.</p>
           <p>목록을 페이지 단위로 순회하며 한 사람씩 열고, 상세 화면에서 <span class="tok">이름</span>과 <span class="tok">전공</span>을 읽어 둔 뒤 인쇄를 실행합니다.</p>
           <p>가장 까다로웠던 부분은 <strong>저장이 완료되었는지 판단하는 것</strong>이었습니다.</p>
-          <div class="note">파일이 생성되었다고 하여 전송이 끝난 것은 아닙니다. <strong>크기가 세 차례 연속 동일할 때</strong> 완료로 간주하며, 최대 60초까지 대기하고 그래도 끝나지 않으면 해당 건은 건너뛰고 표시를 남깁니다.</div>
+          <div class="note warn">파일이 생성되었다고 하여 전송이 끝난 것은 아닙니다. <strong>크기가 세 차례 연속 동일할 때</strong> 완료로 간주하며, 최대 60초까지 대기하고 그래도 끝나지 않으면 해당 건은 건너뛰고 표시를 남깁니다.</div>
           <p>수신이 완료되면 파일명에서 사용할 수 없는 문자를 제거하고 공백을 밑줄로 변환해 <span class="tok">전공 폴더</span>로 이동합니다.</p>
         </div>
       </div>
@@ -2090,7 +2096,7 @@ CELL_MAPPING = {
       <div class="ann-cap">사람이 확인하는 단계가 없습니다. <strong>폼이 제출되는 순간 코드가 깨어납니다.</strong></div>
     </div>
 
-    <div class="note">스크립트를 <strong>저장하는 것</strong>과 트리거를 <strong>거는 것</strong>은 별개입니다. 코드를 다 만들고 "왜 안 되지" 하는 곳이 대부분 4번입니다.</div>
+    <div class="note warn">스크립트를 <strong>저장하는 것</strong>과 트리거를 <strong>거는 것</strong>은 별개입니다. 코드를 다 만들고 "왜 안 되지" 하는 곳이 대부분 4번입니다.</div>
 
     <h3>어디서 시작하나</h3>
     <div class="panel">
@@ -2394,7 +2400,7 @@ CELL_MAPPING = {
       <div class="ann-cap">같은 요청에 다른 답이 나갑니다. <strong>가르는 곳은 화면이 아니라 데이터베이스입니다.</strong></div>
     </div>
 
-    <div class="note"><strong>화면은 꾸미는 곳이지 지키는 곳이 아닙니다.</strong> 데이터베이스에 규칙을 걸면 애초에 남의 자료가 밖으로 나가지 않습니다.</div>
+    <div class="note warn"><strong>화면은 꾸미는 곳이지 지키는 곳이 아닙니다.</strong> 데이터베이스에 규칙을 걸면 애초에 남의 자료가 밖으로 나가지 않습니다.</div>
   </section>
 
   <!-- 3-2 -->
@@ -2827,7 +2833,7 @@ Thumbs.db</code></div>
     <p><strong>무엇인가.</strong> 스킬 여럿과 명령어·설정을 한 꾸러미로 묶은 것입니다. 스킬 하나가 절차서 한 장이라면, 플러그인은 <strong>그 절차서들을 묶은 업무 지침 묶음</strong>입니다.</p>
     <p><strong>어떻게 하나.</strong> 대개 저장소 주소 하나를 등록하면 안에 든 것이 한꺼번에 들어옵니다.</p>
     <p><strong>무엇이 좋은가.</strong> 여러 사람이 같은 방식으로 일해야 할 때 한 번에 나눠 주고 한 번에 갱신할 수 있습니다. <strong>각자 챙기게 두면 각자 다르게 챙깁니다.</strong></p>
-    <div class="note">다만, 묶음은 안이 보이지 않습니다. 낱개 스킬은 문서 하나만 읽으면 되지만, <strong>플러그인은 무엇이 들어 있는지 목록을 먼저 확인</strong>하셔야 합니다.</div>
+    <div class="note warn">다만, 묶음은 안이 보이지 않습니다. 낱개 스킬은 문서 하나만 읽으면 되지만, <strong>플러그인은 무엇이 들어 있는지 목록을 먼저 확인</strong>하셔야 합니다.</div>
 
     <h3>3. 커넥터 — 바깥 서비스에 연결하는 것</h3>
     <p><strong>무엇인가.</strong> AI가 메일·문서·데이터베이스 같은 바깥 서비스에 닿을 수 있게 하는 통로입니다. 규격 이름은 <span class="tok m">MCP</span>입니다.</p>
