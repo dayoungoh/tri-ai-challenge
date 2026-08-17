@@ -1212,32 +1212,32 @@ a.cta{text-decoration:none}
     <div class="chips"><span class="chip">#2024.07~</span><span class="chip">#Python</span><span class="chip">#PyCharm</span><span class="chip free">#무료</span></div>
     <p class="lead">자료를 밖으로 내보낼 수 없다는 조건이, 제가 코드를 처음 쓰게 된 이유였습니다.</p>
 
-    <h3>왜 Python이었나</h3>
-    <p>제가 2년 동안 쓰면서 느낀 이유는 다섯입니다. 중요한 것부터 적습니다.</p>
+    <h3>Python의 장점</h3>
+    <p>제가 짧게나마 Python을 사용해 보며 느낀, Python을 사용해야 하는 이유(장점)는 다음과 같습니다.</p>
 
     <div class="stp">
-      <div class="hd"><span class="n">1</span><div class="t">밖에 안 나감</div></div>
+      <div class="hd"><span class="n">1</span><div class="t">로컬 처리</div></div>
       <div class="bd">
         <p>개인정보와 기밀 자료를 외부 서비스에 올리지 않고 <strong>내 PC 안에서 처리</strong>할 수 있습니다.</p>
-        <p>선발 심사 자료가 그렇습니다. 처리할 일은 많은데 개인정보가 들어 있어 AI에 통째로 올릴 수 없습니다. 이때 <span class="tok">자료는 그대로 두고 처리하는 방법만 밖에서 배워 오는</span> 방식이 가능합니다.</p>
+        <p>가령, 선발 심사 중 지원자의 자료를 병합하고 싶은 경우, 개인정보가 들어 있어 <span class="tok a">AI나 웹사이트(예. ilovepdf)에 업로드할 수 없습니다</span>. 이런 상황에 Python을 사용하면 유용합니다.</p>
         <div class="note"><strong>다만 밖으로 안 나가는 것은</strong> <span class="tok">자료</span>뿐입니다. <span class="tok a">코드</span>는 나갑니다. 코드에 파일 경로와 열 이름과 서식이 그대로 들어 있는데, 그건 AI에게 보냅니다. 그래서 저는 <strong>가짜 자료(dummy data)를 만들어 그것으로 코드를 만들게 합니다.</strong> 완성된 코드만 가져와 진짜 자료에 돌립니다.</div>
       </div>
     </div>
 
     <div class="stp">
-      <div class="hd"><span class="n">2</span><div class="t">많이 처리함</div></div>
+      <div class="hd"><span class="n">2</span><div class="t">대량 처리</div></div>
       <div class="bd">
-        <p>사람이 하나씩 열어 볼 일을 수백에서 수천 단위로 처리합니다. 사람에게는 500개와 5개가 100배 다른 일이지만, 코드에게는 <strong>같은 한 줄</strong>입니다.</p>
+        <p>사람이 하나씩 열어 볼 일을 Python은 수백에서 수천 단위로 처리합니다. 사람에게는 500개와 5개가 100배 다른 일이지만, 코드에게는 <strong>같은 한 줄</strong>입니다.</p>
         <div class="pre"><code><i># 평가결과 폴더에 든 엑셀을 전부 열어 한 장으로 합칩니다</i>
 <b>for</b> file_name <b>in</b> os.listdir(folder_path):
     <b>if</b> file_name.endswith(<u>'.xlsx'</u>):
         wb = openpyxl.load_workbook(file_path, data_only=<b>True</b>)</code></div>
-        <p class="pre-cap">1-2에서 쓴 코드입니다. 파일이 몇 개인지 코드는 묻지 않습니다.</p>
+        <p class="pre-cap">1-2에서 쓴 코드입니다.</p>
       </div>
     </div>
 
     <div class="stp">
-      <div class="hd"><span class="n">3</span><div class="t">규칙만 적음</div></div>
+      <div class="hd"><span class="n">3</span><div class="t">반복 업무 자동화</div></div>
       <div class="bd">
         <p>"파일 열기 → 값 복사 → 붙여넣기 → 저장"처럼 <strong>규칙이 정해진 일</strong>은 규칙만 한 번 적어 두면 됩니다.</p>
         <div class="pre"><code><i># 원본의 어느 칸을 심사표의 어느 칸으로 옮길지</i>
@@ -1245,34 +1245,34 @@ CELL_MAPPING = {
     <u>'D'</u>: <u>'B3'</u>, <u>'C'</u>: <u>'E3'</u>, <u>'L'</u>: <u>'B4'</u>, <u>'M'</u>: <u>'E4'</u>,
     <u>'G'</u>: <u>'B6'</u>, <u>'H'</u>: <u>'B7'</u>, <u>'I'</u>: <u>'B8'</u>, <i>… 14칸</i>
 }</code></div>
-        <p class="pre-cap">규칙은 열네 줄입니다. 사람이 이 열네 번을 수백 명분 반복하던 자리입니다.</p>
+        <p class="pre-cap">코드에서는 열네 줄이지만, 제가 만약에 이 일을 한다면 값을 열네 번 옮기는 작업을 수백 번 반복해야 합니다.</p>
       </div>
     </div>
 
     <div class="stp">
-      <div class="hd"><span class="n">4</span><div class="t">실수가 다름</div></div>
+      <div class="hd"><span class="n">4</span><div class="t">Human Error 감소</div></div>
       <div class="bd">
-        <p>사람이 반복하면 누락, 오타, 잘못된 붙여넣기가 납니다. 이것을 줄입니다.</p>
+        <p>사람이 여러 번 반복하면 누락, 오타, 잘못된 붙여넣기가 납니다. 코드를 활용하면 이런 <strong>human error</strong>를 줄일 수 있습니다.</p>
         <p>사람의 실수는 <span class="tok a">불규칙</span>합니다. 300명 중 87번만 틀리고, 왜 87번인지 아무도 모릅니다. 찾으려면 300개를 다 봐야 합니다. 코드의 실수는 <span class="tok g">규칙적</span>입니다. 틀리면 300개가 다 같은 방식으로 틀립니다. 하나만 찾으면 나머지는 저절로 고쳐집니다.</p>
-        <p>사람의 변칙성이 기획에서는 강점이 되기도 합니다. 문서 처리에서는 아닙니다.</p>
+        <p>사람의 변칙성이 기획에서는 강점이 되기도 하지만 문서 처리에서는 아닙니다.</p>
         <div class="note"><strong>다만 코드에도 남는 오류가 하나 있습니다.</strong> 멈추지 않고 <span class="tok a">조용히 틀리는 것</span>입니다. 에러를 안 내니 규칙적이라는 장점도 소용이 없습니다. 1-1의 PDF 병합이 그랬습니다. 순서가 뒤바뀌어도 파일은 멀쩡히 열립니다. 그래서 <strong>결과를 사람이 확인하는 단계는 남겨 둡니다.</strong></div>
       </div>
     </div>
 
     <div class="stp">
-      <div class="hd"><span class="n">5</span><div class="t">사이를 이음</div></div>
+      <div class="hd"><span class="n">5</span><div class="t">프로그램 연결</div></div>
       <div class="bd">
-        <p>엑셀 · PDF · 데이터베이스 · API · AI · 메일 · 웹서비스는 서로 말이 통하지 않습니다. 그 사이를 사람이 손으로 옮겨 주고 있었습니다. <strong>그 자리를 코드가 대신합니다.</strong></p>
+        <p>엑셀 · PDF · 데이터베이스 · API · AI · 메일 · 웹서비스처럼 <strong>사람이 중간에서 옮겨주던 데이터</strong>를 자동 연결할 수 있습니다.</p>
         <div class="pre"><code><i># 예산 관리 — 웹에서 읽어 구글 시트에 씁니다</i>
 <b>from</b> selenium <b>import</b> webdriver      <i>← 브라우저를 움직입니다</i>
 <b>import</b> gspread                       <i>← 구글 시트에 씁니다</i></code></div>
-        <p class="pre-cap">1-4-3에서 쓴 코드입니다. 두 줄이 서로 모르는 두 시스템을 잇습니다.</p>
+        <p class="pre-cap">1-4-3에서 쓴 코드입니다. 코드 두 줄이 서로 모르는 두 시스템을 잇습니다.</p>
       </div>
     </div>
 
-    <h3>개발 흐름은 이렇게 바뀌었습니다</h3>
-    <p>제가 처음 코드를 쓴 2024년 7월만 해도 AI의 코딩 능력이 지금 같지 않았습니다. <strong>코드는 AI가 썼지만, 돌려 보고 고치는 일은 사람이 했습니다.</strong></p>
-    <p>지금은 그 반복을 AI가 대신 돕니다.</p>
+    <h3>Python 코딩 방법</h3>
+    <p>제가 처음 코드를 쓴 2024년 7월만 해도 AI의 코딩 능력이 지금 같지 않았습니다. <strong>코드는 AI가 썼지만, "실행과 검증 루프"는 제가 했습니다.</strong></p>
+    <p>2026년 7월, 2년이 지난 지금 다시 Python을 다뤄보니, 이제는 AI 에이전트가 그 루프의 상당 부분을 대신 돌릴 수 있습니다.</p>
 
     <div class="dg">
       <svg viewBox="0 0 660 244" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -1325,13 +1325,13 @@ CELL_MAPPING = {
         <text class="sb" x="574" y="226" text-anchor="middle" fill="#a16207">사람</text>
       </svg>
     </div>
-    <p class="dg-cap">단계는 그대로입니다. 아래 두 줄만 바뀌었습니다. 회색은 사람이 도는 구간, 초록은 AI가 도는 구간입니다. <span style="color:var(--amber)">주황은 지금도 사람이 해야 하는 곳</span>입니다.</p>
+    <p class="dg-cap">단계는 그대로입니다. 회색은 사람이 도는 구간, 초록은 AI가 도는 구간입니다. <span style="color:var(--amber)">주황은 지금도 사람이 해야 하는 곳</span>입니다.</p>
 
-    <p>앞서 말한 가짜 자료가 여기서 한 번 더 쓰입니다.</p>
-    <p>가짜 자료를 주면 AI가 <span class="tok g">그것으로 수십 번 돌려 보며 코드를 완성</span>합니다. 진짜 자료는 한 번도 안 봅니다.</p>
+    <p>그리고 제가 느끼기에 가장 유용한 부분은, AI가 실제 데이터를 쓰는 게 아니라 <strong>Dummy data를 활용하도록 루프를 구성하면</strong> Dummy data로 실행을 반복해서 코드를 개발해 준다는 것입니다.</p>
+    <p>가짜 자료를 주면 AI가 <span class="tok g">그것으로 수십 번 돌려 보며 코드를 완성</span>합니다. 개인정보 유출을 방지하면서도 코드를 실행해 볼 수 있습니다.</p>
 
     <h3>무엇을 할 수 있나</h3>
-    <p>이제는 <span class="tok">라이브러리</span>(남이 만들어 둔 도구)를 몰라도 됩니다. AI가 필요한 것을 스스로 찾아 설치하고 실행합니다. 그래도 목록을 한 번 보면 <strong>Python이 어디까지 닿는지</strong> 가늠이 됩니다. 아래는 제가 2년 동안 실제로 쓴 것만 적었습니다.</p>
+    <p>이제는 <span class="tok">라이브러리</span>(남이 만들어 둔 도구)를 몰라도 된다고 생각합니다. AI가 필요한 것을 스스로 찾아 설치하고 실행하기 때문입니다. 그래도 목록을 한 번 보면 <strong>Python이 어떤 일을 할 수 있는지</strong> 가늠이 됩니다. 아래는 제가 2년 동안 실제로 쓴 것만 적었습니다.</p>
 
     <div class="tw"><table>
       <tr><th>하는 일</th><th>도구</th><th>쓴 곳</th></tr>
@@ -1350,8 +1350,8 @@ CELL_MAPPING = {
 
     <div class="note"><strong>몰라도 되지만, 결과가 이상하면 여기를 의심하십시오.</strong> 같은 일을 하는 도구가 여럿이고 결과가 서로 다릅니다. PDF에서 글자를 뽑는 것만 해도 위에 셋이 있는데, 표가 든 문서에서 나오는 결과가 제각각입니다. AI가 고른 것이 늘 최선은 아닙니다.</div>
 
-    <h3>2024년에는 여기서 시작했습니다</h3>
-    <p>앞 그림의 <strong>사람이 돌던 구간</strong>은 이런 모습이었습니다. 지금은 AI가 대부분 대신하지만, <span class="tok">파이썬 자체를 한 번 깔아 두는 일</span>은 여전히 남습니다.</p>
+    <h3>Python 설치</h3>
+    <p>이제는 AI가 Python 설치까지 대신해 줄 수 있지만, 혹시 직접 설치를 원하신다면 다음 링크로 가셔서 설치하시기 바랍니다.</p>
     <div class="panel">
       <div class="panel-h"><span class="t">설치 · 준비물</span><span class="m">3</span></div>
       <div class="lnk">
@@ -1374,8 +1374,8 @@ CELL_MAPPING = {
           <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
         </a>
       </div>
-      <div class="tip"><strong>순서가 중요합니다.</strong> 파이썬을 먼저 깔고 PyCharm을 깝니다. 반대로 하면 첫 실행에서 인터프리터를 못 찾습니다. 회사 PC라면 설치 권한이 필요할 수 있으니 미리 확인하세요.</div>
-      <div class="tip">코드를 실행하면 <strong>라이브러리(도구)를 설치하라</strong>는 안내가 뜹니다. 터미널(PyCharm은 <strong>Alt + F12</strong>)에서 <strong>pip install 라이브러리명</strong> 을 치고 다시 실행합니다. <strong>이 왕복이 그때 가장 자주 걸리던 곳</strong>이었고, 지금 AI가 대신 도는 구간이 바로 여기입니다.</div>
+      <div class="tip"><strong>설치 순서가 중요합니다.</strong> 파이썬을 먼저 깔고 PyCharm을 깔아야 합니다. 반대로 하면 첫 실행에서 인터프리터를 못 찾습니다.</div>
+      <div class="tip">그리고 처음 코드를 실행하면 보통 <strong>라이브러리(도구)를 설치하라</strong>는 에러가 뜹니다. 그런 경우 터미널(PyCharm은 <strong>Alt + F12</strong>)에서 <strong>pip install 라이브러리명</strong> 을 치고 다시 실행하면 됩니다.</div>
     </div>
 
     <p>그때 자주 막히던 자리는 이랬습니다.</p>
