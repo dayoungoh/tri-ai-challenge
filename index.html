@@ -646,7 +646,9 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 .gain-cap{font-size:var(--t-sm);color:var(--ink-3);margin-top:9px;line-height:1.55}
 
 /* ── 패널 ── */
-.panel{background:var(--shell);border-radius:13px;box-shadow:var(--shadow-card);margin-top:22px;overflow:hidden}
+/* overflow 를 감추면 안의 낱말 주석 상자가 패널 밖으로 못 나와 잘립니다.
+   둥근 모서리를 지키려던 것이므로, 자르는 일은 링크 목록에만 맡깁니다. */
+.panel{background:var(--shell);border-radius:13px;box-shadow:var(--shadow-card);margin-top:22px}
 .panel-h{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;border-bottom:1px solid var(--line)}
 /* 패널 머리글은 한글 문장입니다. 11px 트래킹 라벨로 두면
    자기가 소개하는 15px 내용보다 작아져 위계가 뒤집힙니다.
@@ -792,7 +794,7 @@ a.cta{text-decoration:none}
 .fix-det li.a{color:var(--amber)}
 
 /* ── 시작 링크 목록 ── */
-.lnk{display:flex;flex-direction:column}
+.lnk{display:flex;flex-direction:column;overflow:hidden;border-radius:0 0 13px 13px}
 .lnk a{display:flex;align-items:center;gap:13px;padding:12px 16px;border-top:1px solid var(--line-2);
   text-decoration:none;color:inherit;transition:background 140ms ease}
 .lnk a:first-child{border-top:0}
@@ -897,6 +899,42 @@ a.cta{text-decoration:none}
 .doc strong{font-weight:660}
 .doc .kv .k{font-weight:600}
 
+
+/* ── 낱말 주석 ──
+   본문에서 낱말을 설명하려면 괄호를 열어야 하고, 괄호가 길어지면 문장이 끊깁니다.
+   번호만 남기고 뜻은 쪽 끝으로 보냅니다. 아는 사람은 그냥 지나갑니다. */
+.cite{display:inline-flex;align-items:center;justify-content:center;
+  min-width:15px;height:15px;padding:0 3px;margin-left:2px;
+  vertical-align:2px;border-radius:4px;
+  background:var(--inset);box-shadow:inset 0 0 0 1px var(--line);
+  font-family:var(--mono);font-size:9.5px;font-weight:600;line-height:1;
+  color:var(--ink-3);text-decoration:none;
+  transition:background 140ms ease,color 140ms ease}
+.cite:hover,.cite:focus-visible{background:var(--ink);color:var(--shell);box-shadow:none}
+/* 뜻은 번호 위에 뜹니다. 손가락에는 hover 가 없어, 눌러서 목록으로 가는 길도 둡니다 */
+.cite-w{position:relative;display:inline-block}
+.cite-t{position:absolute;left:50%;bottom:calc(100% + 7px);transform:translateX(-50%);
+  z-index:30;width:max-content;max-width:290px;
+  padding:8px 11px;border-radius:9px;background:var(--shell);
+  box-shadow:var(--shadow-lift);font-size:var(--t-micro);line-height:1.5;
+  color:var(--ink-2);font-weight:400;letter-spacing:0;text-align:left;
+  word-break:keep-all;opacity:0;visibility:hidden;
+  transition:opacity 140ms ease,visibility 0s 140ms}
+.cite-w:hover .cite-t,.cite-w:focus-within .cite-t{opacity:1;visibility:visible;transition-delay:0s}
+@media(hover:none){ .cite-t{display:none} }
+
+/* 쪽 끝에 모아 두는 뜻풀이 */
+.notes{margin-top:40px;padding-top:15px;border-top:1px solid var(--line)}
+.notes-h{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.06em;
+  text-transform:uppercase;color:var(--ink-3);margin-bottom:11px}
+.notes dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px 12px;margin:0}
+.notes dt{font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);
+  font-variant-numeric:tabular-nums;padding-top:3px}
+.notes dd{margin:0;font-size:var(--t-ui);line-height:1.6;color:var(--ink-2);word-break:keep-all}
+.notes dd b{color:var(--ink);font-weight:640}
+/* 번호를 눌러 여기로 오면 잠깐 밝혀 어디로 왔는지 보이게 합니다 */
+.notes dd:target,.notes dt:target{animation:noteHit 1.6s ease}
+@keyframes noteHit{0%,55%{background:var(--amber-soft)}100%{background:transparent}}
 
 /* ── 그대로 보여주는 칸 ──
    명령이나 파일 내용은 고쳐 쓰면 안 되는 글자라 따로 둡니다. ── */
@@ -1216,13 +1254,13 @@ a.cta{text-decoration:none}
     <p class="lead">자료를 밖으로 내보낼 수 없다는 조건이, 제가 코드를 처음 쓰게 된 이유였습니다.</p>
 
     <h3>Python의 장점</h3>
-    <p>제가 짧게나마 Python을 사용해 보며 느낀, Python을 사용해야 하는 이유(장점)는 다음과 같습니다.</p>
+    <p>제가 짧게나마 Python<span class="cite-w"><a class="cite" href="#n-p1-1">1</a><span class="cite-t" role="tooltip">1991년에 나온 프로그래밍 언어. 문장이 사람 말에 가깝고, 컴파일 없이 바로 실행됩니다. 엑셀·PDF·웹을 다루는 도구가 많아 사무 자동화에 씁니다.</span></span>을 사용해 보며 느낀, Python을 사용해야 하는 이유(장점)는 다음과 같습니다.</p>
 
     <div class="stp">
       <div class="hd"><span class="n">1</span><div class="t">로컬 처리</div></div>
       <div class="bd">
         <p>개인정보와 기밀 자료를 외부 서비스에 올리지 않고 <strong>내 PC 안에서 처리</strong>할 수 있습니다.</p>
-        <p>가령, 선발 심사 중 지원자의 자료를 병합하고 싶은 경우, 개인정보가 들어 있어 <span class="tok a">AI나 웹사이트(예. ilovepdf)에 업로드할 수 없습니다</span>. 이런 상황에 Python을 사용하면 유용합니다.</p>
+        <p>가령, 선발 심사 중 지원자의 자료를 병합하고 싶은 경우, 개인정보가 들어 있어 AI나 웹사이트(예. ilovepdf)에 업로드할 수 없습니다. 이런 상황에 Python을 사용하면 유용합니다.</p>
         <div class="note"><strong>다만, 밖으로 안 나가는 것은 자료이지 코드는 아닙니다.</strong> 코드 안에 든 정보(예. <span class="tok a">API</span>, <span class="tok a">로그인 정보</span>)는 AI에 잘못 보낼 수 있기 때문에 조심해야 합니다.</div>
       </div>
     </div>
@@ -1230,12 +1268,12 @@ a.cta{text-decoration:none}
     <div class="stp">
       <div class="hd"><span class="n">2</span><div class="t">대량 처리</div></div>
       <div class="bd">
-        <p>사람이 하나씩 열어 볼 일을 Python은 수백에서 수천 단위로 처리합니다. 사람에게는 500개와 5개가 100배 다른 일이지만, 코드에게는 <strong>같은 한 줄</strong>입니다.</p>
+        <p>사람이 하나씩 열어봐야 하는 일을 Python은 수백, 수천 개씩 처리할 수 있습니다. 사람에게는 5개와 500개가 전혀 다른 일이지만, 코드 입장에서는 결국 같은 작업을 반복하는 일입니다.</p>
         <div class="pre"><code><i># 평가결과 폴더에 든 엑셀을 전부 열어 한 장으로 합칩니다</i>
 <b>for</b> file_name <b>in</b> os.listdir(folder_path):
     <b>if</b> file_name.endswith(<u>'.xlsx'</u>):
         wb = openpyxl.load_workbook(file_path, data_only=<b>True</b>)</code></div>
-        <p class="pre-cap">1-2에서 쓴 코드입니다.</p>
+        <p class="pre-cap">1-2에서 쓴 코드입니다. 코드 한 줄로 몇 백건의 작업을 한 번에 처리할 수 있습니다.</p>
       </div>
     </div>
 
@@ -1333,7 +1371,7 @@ CELL_MAPPING = {
     <p>가짜 자료를 주면 AI가 <span class="tok g">그것으로 수십 번 돌려 보며 코드를 완성</span>합니다. 개인정보 유출을 방지하면서도 코드를 실행해 볼 수 있습니다.</p>
 
     <h3>Python 라이브러리</h3>
-    <p>이제는 <span class="tok">라이브러리</span>(남이 만들어 둔 도구)를 몰라도 된다고 생각합니다. AI가 필요한 것을 스스로 찾아 설치하고 실행하기 때문입니다. 그래도 목록을 한 번 보면 <strong>Python이 어떤 일을 할 수 있는지</strong> 가늠이 됩니다. 아래는 제가 2년 동안 실제로 쓴 것만 적었습니다.</p>
+    <p>이제는 <span class="tok">라이브러리</span><span class="cite-w"><a class="cite" href="#n-p1-2">2</a><span class="cite-t" role="tooltip">남이 만들어 둔 도구 묶음. 엑셀을 읽는 일, PDF를 자르는 일은 이미 누군가 만들어 두었습니다. <b>pip install 이름</b> 으로 받아 씁니다.</span></span>를 몰라도 된다고 생각합니다. AI가 필요한 것을 스스로 찾아 설치하고 실행하기 때문입니다. 그래도 목록을 한 번 보면 <strong>Python이 어떤 일을 할 수 있는지</strong> 가늠이 됩니다. 아래는 제가 2년 동안 실제로 쓴 것만 적었습니다.</p>
 
     <div class="tw"><table>
       <tr><th>하는 일</th><th>도구</th><th>쓴 곳</th></tr>
@@ -1350,10 +1388,10 @@ CELL_MAPPING = {
     </table></div>
     <p class="dg-cap">표준으로 딸려 오는 것(<span class="tok m">os</span> · <span class="tok m">re</span> · <span class="tok m">pathlib</span> · <span class="tok m">csv</span> · <span class="tok m">json</span> · <span class="tok m">zipfile</span>)은 설치가 필요 없어 뺐습니다.</p>
 
-    <div class="note"><strong>몰라도 되지만, 결과가 이상하면 여기를 의심하십시오.</strong> 같은 일을 하는 도구가 여럿이고 결과가 서로 다릅니다. PDF에서 글자를 뽑는 것만 해도 위에 셋이 있는데, 표가 든 문서에서 나오는 결과가 제각각입니다. AI가 고른 것이 늘 최선은 아닙니다.</div>
+    <div class="note"><strong>라이브러리를 정확히 몰라도 되지만, 결과가 이상하면 사용한 라이브러리를 의심해 볼 수 있습니다.</strong> 같은 일을 하는 도구는 여럿이지만 결과가 서로 다를 수 있습니다.</div>
 
     <h3>Python 설치</h3>
-    <p>이제는 AI가 Python 설치까지 대신해 줄 수 있지만, 혹시 직접 설치를 원하신다면 다음 링크로 가셔서 설치하시기 바랍니다.</p>
+    <p>이제는 AI가 Python 설치까지 대신해 줄 수 있지만, 혹시 직접 설치 및 Python 실행을 원하신다면 다음 링크로 가셔서 설치하시기 바랍니다.</p>
     <div class="panel">
       <div class="panel-h"><span class="t">설치 · 준비물</span><span class="m">3</span></div>
       <div class="lnk">
@@ -1376,10 +1414,20 @@ CELL_MAPPING = {
           <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
         </a>
       </div>
-      <div class="tip"><strong>설치 순서가 중요합니다.</strong> 파이썬을 먼저 깔고 PyCharm을 깔아야 합니다. 반대로 하면 첫 실행에서 인터프리터를 못 찾습니다.</div>
-      <div class="tip">그리고 처음 코드를 실행하면 보통 <strong>라이브러리(도구)를 설치하라</strong>는 에러가 뜹니다. 그런 경우 터미널(PyCharm은 <strong>Alt + F12</strong>)에서 <strong>pip install 라이브러리명</strong> 을 치고 다시 실행하면 됩니다.</div>
+      <div class="tip"><strong>설치 순서가 중요합니다.</strong> 파이썬을 먼저 깔고 PyCharm<span class="cite-w"><a class="cite" href="#n-p1-3">3</a><span class="cite-t" role="tooltip">Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램. 이 글에서는 <b>PyCharm</b> 을 씁니다.</span></span>을 깔아야 합니다. 반대로 하면 첫 실행에서 인터프리터<span class="cite-w"><a class="cite" href="#n-p1-4">4</a><span class="cite-t" role="tooltip">코드를 한 줄씩 읽어 실행하는 프로그램. Python 을 설치한다는 말은 이것을 설치한다는 뜻입니다. IDE 는 설치된 인터프리터를 찾아 씁니다.</span></span>를 못 찾습니다.</div>
+      <div class="tip">그리고 처음 코드를 실행하면 보통 <strong>라이브러리(도구)를 설치하라</strong>는 에러가 뜹니다. 그런 경우 터미널(PyCharm은 <strong>Alt + F12</strong>)에서 <strong>pip install 라이브러리명</strong> 을 치고 다시 실행하면 됩니다. 받았는데도 또 없다고 하면 가상환경<span class="cite-w"><a class="cite" href="#n-p1-5">5</a><span class="cite-t" role="tooltip">프로젝트마다 따로 두는 라이브러리 보관함. 한 프로젝트에서 받은 것이 다른 프로젝트에 없는 이유가 이것입니다.</span></span>을 의심하십시오.</div>
     </div>
 
+    <div class="notes">
+      <div class="notes-h">낱말</div>
+      <dl>
+        <dt id="n-p1-1">1</dt><dd><b>Python</b> — 1991년에 나온 프로그래밍 언어. 문장이 사람 말에 가깝고, 컴파일 없이 바로 실행됩니다. 엑셀·PDF·웹을 다루는 도구가 많아 사무 자동화에 씁니다.</dd>
+        <dt id="n-p1-2">2</dt><dd><b>라이브러리</b> — 남이 만들어 둔 도구 묶음. 엑셀을 읽는 일, PDF를 자르는 일은 이미 누군가 만들어 두었습니다. <b>pip install 이름</b> 으로 받아 씁니다.</dd>
+        <dt id="n-p1-3">3</dt><dd><b>IDE</b> — Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램. 이 글에서는 <b>PyCharm</b> 을 씁니다.</dd>
+        <dt id="n-p1-4">4</dt><dd><b>인터프리터</b> — 코드를 한 줄씩 읽어 실행하는 프로그램. Python 을 설치한다는 말은 이것을 설치한다는 뜻입니다. IDE 는 설치된 인터프리터를 찾아 씁니다.</dd>
+        <dt id="n-p1-5">5</dt><dd><b>가상환경</b> — 프로젝트마다 따로 두는 라이브러리 보관함. 한 프로젝트에서 받은 것이 다른 프로젝트에 없는 이유가 이것입니다.</dd>
+      </dl>
+    </div>
   </section>
 
   <!-- 1-2 -->
