@@ -886,7 +886,7 @@ a.cta{text-decoration:none}
 .doc .ask h3{line-height:1.5}
 /* 값·이름은 글자를 키우지 않고 조각으로 감쌉니다.
    본문 안에서 크기가 들쭉날쭉하면 줄 간격이 흔들립니다.
-   색은 그림과 같은 규칙 — 기본은 사실, 초록은 코드가 하는 일, 주황은 깨지는 곳. */
+   색은 그림과 같은 규칙 — 기본은 사실, 파랑은 코드가 하는 일, 주황은 깨지는 곳. */
 /* 두 가지 강조가 하는 일이 다릅니다.
      조각(.tok) = 규칙·값·이름. 그대로 옮겨 적을 수 있는 것.
      굵게(strong) = 그 문단의 요지. 한 문단에 하나만.
@@ -1295,12 +1295,14 @@ a.cta{text-decoration:none}
     <div class="stp">
       <div class="hd"><span class="n">2</span><div class="t">대량 처리</div></div>
       <div class="bd">
-        <p>사람이 하나씩 열어봐야 하는 일을 Python은 수백, 수천 개씩 처리할 수 있습니다. 사람에게는 5개와 500개가 전혀 다른 일이지만, 코드 입장에서는 결국 같은 작업을 반복하는 일입니다.</p>
-        <div class="pre"><code><i># 평가결과 폴더에 든 엑셀을 전부 열어 한 장으로 합칩니다</i>
-<b>for</b> file_name <b>in</b> os.listdir(folder_path):
+        <p>사람이 하나씩 열어 볼 일을 <strong>수백 개, 수천 개 단위로</strong> 처리할 수 있습니다.</p>
+        <p>사람에게는 500개와 5개가 전혀 다른 일입니다. 코드에게는 그렇지 않습니다. 파일이 5개인지 500개인지는 대부분 <span class="tok">같은 반복문 안에서</span> 처리됩니다.</p>
+        <p>예를 들어 평가결과 폴더에 있는 엑셀 파일을 전부 읽어 하나로 합치는 작업이라면,</p>
+        <div class="pre"><code><b>for</b> file_name <b>in</b> os.listdir(folder_path):
     <b>if</b> file_name.endswith(<u>'.xlsx'</u>):
         wb = openpyxl.load_workbook(file_path, data_only=<b>True</b>)</code></div>
-        <p class="pre-cap">1-2에서 쓴 코드입니다. 코드 한 줄로 몇 백건의 작업을 한 번에 처리할 수 있습니다.</p>
+        <p class="pre-cap">파일이 몇 개인지는 코드가 묻지 않습니다. 정해진 폴더에 있는 파일을 같은 규칙으로 처리할 뿐입니다.</p>
+        <p>사람이 파일 하나를 처리하는 데 1분이 걸린다면 500개는 500분이지만, 컴퓨터에게는 <span class="tok">반복 횟수가 늘어나는 문제</span>일 뿐입니다.</p>
       </div>
     </div>
 
