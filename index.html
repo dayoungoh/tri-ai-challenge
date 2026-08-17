@@ -936,6 +936,24 @@ a.cta{text-decoration:none}
 /* 쪽 첫 소제목은 위에 아무것도 없어 선이 뜬 줄로 보입니다 */
 .doc .lead+h3,.doc .chips+h3,.doc .note+h3:first-of-type{border-top:0;padding-top:0}
 .doc .lead{font-weight:500}
+/* ── 인삿말 · 손글씨 ──
+   편지 전체를 주석 라벨과 같은 잉크립퀴드체로 씁니다. 편지니까 손으로 씁니다.
+   굵기가 하나뿐인 글씨체입니다. strong 에 굵게를 걸면 브라우저가 획을 억지로
+   불려 그리는데, 이 글씨체는 변형을 금지하고 있고 모양도 뭉갭니다.
+   그래서 인삿말에서만 강조를 굵기가 아니라 진하기로 냅니다 — 본문은 회색,
+   요지는 먹색. 파랑을 쓰지 않는 이유는 이 문서에서 파랑이 이미
+   "코드·AI가 하는 일" 이라는 뜻을 지고 있기 때문입니다.
+   글씨체를 못 받아 오면 Pretendard 로 떨어집니다. 조금 크지만 글은 그대로 읽힙니다. */
+#hello .lead,#hello p,#hello li{font-family:"InkLiquid",var(--sans);
+  font-size:21px;line-height:1.72;letter-spacing:.004em}
+#hello .lead{font-weight:400;color:var(--ink)}
+#hello p{color:#4a4a47}
+#hello p strong,#hello li strong{font-weight:400;color:var(--ink)}
+/* 코드는 손글씨로 쓰지 않습니다. 21px 기준의 .9em 은 너무 크므로 따로 잡습니다 */
+#hello .tok.m{font-size:15.5px;vertical-align:1px}
+#hello p+p{margin-top:16px}
+/* 좁은 화면에서 21px 은 한 줄에 들어가는 글자가 너무 적습니다 */
+@media(max-width:700px){#hello .lead,#hello p,#hello li{font-size:19px;line-height:1.7}}
 /* 편지 안의 번호 목록. 앞 문장과 같은 간격을 띄우고, 항목끼리는 그 절반만 띄웁니다.
    .ask 안의 목록은 따로 꾸미므로 여기서는 쪽 바로 밑 목록만 잡습니다. */
 .doc>ol,.doc>ul{margin-top:14px;padding-left:23px}
