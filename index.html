@@ -1285,21 +1285,7 @@ a.cta{text-decoration:none}
     <p>그런데 2025년에 마지막 해외유학후보장학생 선발을 진행하게 되었고, 전년도에 만들었던 코드를 마지막으로 한 번 더 사용할 수 있었습니다. <strong>어쩌면 이것이 제가 처음 만든 ‘업무 자동화 시스템’의 마지막 출근이었던 셈입니다.</strong></p>
     <p>2026년부터는 재단의 조직 변화와 함께 사업추진2팀으로 이동했습니다. 업무도 달라지면서 기존처럼 대규모 선발 업무를 진행하지는 않게 되었고, 대신 새로운 업무를 맡으면서 Google Workspace에서 활용할 수 있는 Google Apps Script를 사용하거나, 최근에는 Supabase와 Netlify 등을 활용해 웹앱과 DB를 AI와 함께 만들어 보고 있습니다.</p>
 
-    <p>돌이켜 보면 제가 AI를 활용하는 방식은 조금씩 확장되어 왔습니다. 처음에는 “수백 개의 PDF를 어떻게 병합하지?”라는 아주 구체적인 문제에서 시작했습니다. 이후에는 엑셀과 메일, 웹 스크래핑처럼 반복되는 업무를 자동화했고, 지금은 <strong>다른 사람이 직접 참여해야 하는 업무</strong>를 조금 더 편리하게 만들기 위해 웹앱과 DB까지 만들고 있습니다.</p>
-    <p>지금까지의 경험을 아주 단순하게 정리하면 다음과 같습니다.</p>
-    <ol>
-      <li>개인정보가 포함된 대량의 문서를 반복해서 처리해야 한다면, 저는 로컬에서 실행할 수 있는 <span class="tok">파이썬 자동화</span>를 먼저 생각합니다.</li>
-      <li>Google Workspace 안에서 반복적인 증빙·자료 처리 업무를 자동화해야 한다면, <span class="tok">Google Apps Script</span>를 활용합니다.</li>
-      <li>단순히 제 업무를 줄이는 것을 넘어 다른 사람의 참여와 입력이 필요한 업무라면, <span class="tok">Supabase</span>와 <span class="tok">Netlify</span> 같은 서비스를 활용해 웹앱 형태로 만들어 보고 있습니다.</li>
-    </ol>
-
-    <p>제가 특별히 코딩을 잘해서 이런 일을 시작한 것은 아닙니다. 오히려 코딩을 몰랐기 때문에 AI에게 하나씩 물어보면서 여기까지 오게 되었습니다.</p>
-    <p>그래서 이번 TRI-AI Challenge를 통해 제가 보여드리고 싶은 것도 완성도 높은 ‘AI 작품’이라기보다는, 업무 중 <strong>“이걸 사람이 계속 해야 하나?”</strong>라는 생각이 들었던 순간에 AI를 옆자리에 앉혀 놓고 한번 같이 해결해 본 과정입니다.</p>
-    <p>아직도 제가 아는 코드는 <span class="tok m">print("Hello, World!")</span>에서 크게 벗어나지 않았지만, <strong>적어도 이제는 그 말을 출력하기 위해 수백 번의 클릭을 반복하지는 않게 되었습니다.</strong></p>
-
-    <div class="note">혼자 쓰려고 만든 것이 아니라 <strong>다음 사람이 가져다 쓰라고</strong> 남깁니다. 그래서 무엇을 만들었는지보다 어디서 막혔고 무엇을 바꿔야 하는지를 더 길게 적었고, 그중 <strong>두 가지는 소스를 열어 뒀습니다</strong> — 메일 발송과 개인정보 마스킹. MIT라 고쳐 쓰셔도 됩니다.</div>
-    <div class="note">상단 검색이 <strong>본문 내용까지</strong> 찾기 때문에, 자기 업무와 닮은 대목이 보이면 그 장만 보셔도 됩니다.</div>
-  </section>
+    <p>돌이켜 보면 제가 AI를 활용하는 방식은 조금씩 확장되어 왔습니다. 처음에는 “수백 개의 PDF를 어떻게 병합하지?”라는 아주 구체적인 문제에서 시작했습니다. 이후에는 엑셀과 메일, 웹 스크래핑처럼 반복되는 업무를 자동화했고, 지금은 <strong>다른 사람이 직접 참여해야 하는 업무</strong>를 조금 더 편리하게 만들기 위해 웹앱과 DB까지 만들고 있습니다.</p>  </section>
 
 
 
@@ -1308,6 +1294,13 @@ a.cta{text-decoration:none}
     <div class="phead">
       <div class="ttl"><div class="eyebrow">서문</div><h2>개요<span class="ft">무엇을 어떤 도구로 했나</span></h2></div>
     </div>
+    <p class="lead">지금까지의 경험을 아주 단순하게 정리하면 다음과 같습니다.</p>
+    <ol>
+      <li>개인정보가 포함된 대량의 문서를 반복해서 처리해야 한다면, 저는 로컬에서 실행할 수 있는 <span class="tok">파이썬 자동화</span>를 먼저 생각합니다.</li>
+      <li>Google Workspace 안에서 반복적인 증빙·자료 처리 업무를 자동화해야 한다면, <span class="tok">Google Apps Script</span>를 활용합니다.</li>
+      <li>단순히 제 업무를 줄이는 것을 넘어 다른 사람의 참여와 입력이 필요한 업무라면, <span class="tok">Supabase</span>와 <span class="tok">Netlify</span> 같은 서비스를 활용해 웹앱 형태로 만들어 보고 있습니다.</li>
+    </ol>
+
     <div class="stats">
       <div class="stat"><div class="b"><div class="l">익힌 도구</div><div class="n">3<span class="u">개</span></div></div><div class="f">Python · Apps Script · Supabase</div></div>
       <div class="stat"><div class="b"><div class="l">자동화한 업무</div><div class="n">12<span class="u">가지</span></div></div><div class="f">예시 12건 · 2024.07 – 2026.08</div></div>
@@ -1345,7 +1338,13 @@ a.cta{text-decoration:none}
       </div>
     </div>
     <div class="note">4번을 겁내지 않으면 됩니다. <strong>오류는 실패가 아니라 다음 질문거리이기 때문입니다.</strong> 저도 2년 내내 이것만 반복했습니다.</div>
-    <div class="note">왼쪽에서 <strong>장을 누르면 안내문</strong>이 열리고, 그 아래로 예시가 펼쳐집니다. 키보드 <strong>← →</strong> 로도 넘어갑니다.</div>
+
+    <h3>이 문서에 대하여</h3>
+    <p>제가 특별히 코딩을 잘해서 이런 일을 시작한 것은 아닙니다. 오히려 코딩을 몰랐기 때문에 AI에게 하나씩 물어보면서 여기까지 오게 되었습니다.</p>
+    <p>그래서 이번 TRI-AI Challenge를 통해 제가 보여드리고 싶은 것도 완성도 높은 ‘AI 작품’이라기보다는, 업무 중 <strong>“이걸 사람이 계속 해야 하나?”</strong>라는 생각이 들었던 순간에 AI를 옆자리에 앉혀 놓고 한번 같이 해결해 본 과정입니다.</p>
+    <p>아직도 제가 아는 코드는 <span class="tok m">print("Hello, World!")</span>에서 크게 벗어나지 않았지만, <strong>적어도 이제는 그 말을 출력하기 위해 수백 번의 클릭을 반복하지는 않게 되었습니다.</strong></p>
+    <div class="note">혼자 쓰려고 만든 것이 아니라 <strong>다음 사람이 가져다 쓰라고</strong> 남깁니다. 그래서 무엇을 만들었는지보다 어디서 막혔고 무엇을 바꿔야 하는지를 더 길게 적었고, 그중 <strong>두 가지는 소스를 열어 뒀습니다</strong> — 메일 발송과 개인정보 마스킹. MIT라 고쳐 쓰셔도 됩니다.</div>
+    <div class="note">상단 검색이 <strong>본문 내용까지</strong> 찾기 때문에, 자기 업무와 닮은 대목이 보이면 그 장만 보셔도 됩니다. 왼쪽에서 <strong>장을 누르면 안내문</strong>이 열리고 그 아래로 예시가 펼쳐지는데, 키보드 <strong>← →</strong> 로도 넘어갑니다.</div>
   </section>
 
   <!-- 1-1 -->
