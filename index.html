@@ -1531,33 +1531,30 @@ a.cta{text-decoration:none}
 
 
     <h3>파일 확장자</h3>
-    <p>파일 이름 끝의 점 뒤에 붙는 몇 글자를 확장자라고 하는데, <strong>윈도우는 이 글자를 보고 그 파일을 무엇으로 열지 정합니다.</strong></p>
-    <p>이 문서에 나오는 것은 셋입니다.</p>
+    <p>Python으로 프로그램을 만들 때는 보통 PyCharm 같은 IDE에서 코드를 작성하고 실행합니다. 하지만 프로그램을 어느 정도 완성한 뒤에는 <strong>매번 IDE를 열어 코드를 실행할 필요가 없습니다.</strong> 자주 사용하는 프로그램이라면 <span class="tok m">.bat</span> 파일로 실행 과정을 간단하게 만들거나, <span class="tok m">.exe</span> 파일로 만들어 일반 프로그램처럼 실행할 수 있습니다.</p>
 
     <div class="tw"><table>
       <caption class="sr">Python으로 업무 자동화 ft. PyCharm — 표</caption>
       <thead>
-      <tr><th scope="col">확장자</th><th scope="col">무엇인가</th><th scope="col">두 번 누르면</th></tr>
+      <tr><th scope="col">확장자</th><th scope="col">무엇인가</th><th scope="col">주로 언제 쓰나</th></tr>
       </thead>
       <tbody>
-      <tr><td><span class="tok m">.py</span></td><td>Python 코드를 적어 둔 파일</td><td>Python이 깔려 있어야 실행됩니다</td></tr>
-      <tr><td><span class="tok m">.bat</span></td><td>윈도우 명령을 차례로 적어 둔 파일</td><td>적힌 명령이 위에서부터 실행됩니다</td></tr>
-      <tr><td><span class="tok m">.exe</span></td><td>그 자체로 실행되는 프로그램</td><td><strong>바로 실행됩니다</strong></td></tr>
+      <tr><td><span class="tok m">.py</span></td><td>Python 코드를 적어 둔 파일</td><td>코드를 작성하고 수정할 때</td></tr>
+      <tr><td><span class="tok m">.bat</span></td><td>실행할 명령을 미리 적어 둔 파일</td><td>Python 프로그램을 간편하게 실행할 때</td></tr>
+      <tr><td><span class="tok m">.exe</span></td><td>Windows에서 실행할 수 있는 프로그램 파일</td><td>다른 프로그램처럼 바로 실행하거나 배포할 때</td></tr>
       </tbody>
     </table></div>
 
-    <p><span class="tok m">.py</span> 는 글자로만 되어 있어서 메모장으로 열어도 내용이 그대로 보이지만, 그 안의 명령을 실제로 돌리려면 Python이 깔려 있어야 합니다.</p>
-    <p><span class="tok m">.bat</span> 은 손으로 치던 명령을 미리 적어 두는 파일인데, 같은 명령을 매번 옮겨 적지 않아도 되기 때문에 <strong>두 번 누르는 것으로 끝나는 단추가 됩니다.</strong> 이 문서를 만들면서 쓴 <span class="tok m">1_본문 열기.bat</span> 이 그것입니다.</p>
-    <p><span class="tok m">.exe</span> 는 필요한 것이 안에 다 들어 있어서 <strong>받는 사람 컴퓨터에 Python이 없어도 돌아가기 때문에</strong>, 만든 것을 남에게 건넬 때 씁니다. Python 코드를 <span class="tok m">.exe</span> 로 묶어 주는 도구도 있습니다.</p>
-
-    <div class="note">윈도우는 기본 설정에서 <strong>확장자를 숨깁니다.</strong> 탐색기의 <span class="tok">보기</span> 메뉴에서 <span class="tok">파일 확장명</span>을 켜 두면 지금 열려는 것이 무엇인지 이름만 보고도 알 수 있습니다.</div>
-    <div class="note warn"><strong>모르는 곳에서 받은 <span class="tok a">.exe</span> 와 <span class="tok a">.bat</span> 은 열지 마십시오.</strong> 문서와 달리 이 둘은 여는 순간 안에 적힌 명령이 그대로 내 컴퓨터에서 실행되기 때문에, 이름이 문서처럼 보여도 확장자를 먼저 확인해야 합니다.</div>
+    <p><span class="tok m">.py</span>는 Python 코드가 들어 있는 원본 파일입니다. 개발할 때는 IDE에서 이 파일을 열어 코드를 수정하고 실행합니다. 메모장으로도 내용을 볼 수 있지만, <strong>실제로 실행하려면 Python 실행 환경이 필요합니다.</strong></p>
+    <p><span class="tok m">.bat</span>은 Python 프로그램을 실행하는 명령을 미리 적어 두는 파일입니다. 매번 IDE를 열고 코드를 찾아 실행하는 대신 <span class="tok m">.bat</span> 파일을 두 번 눌러 프로그램을 실행할 수 있습니다. 이 문서를 만들면서 사용한 <span class="tok m">1_본문 열기.bat</span>도 이런 방식입니다. 간단히 말하면 <strong>개발해 둔 Python 프로그램을 두 번 누르는 단추로 만드는 방법입니다.</strong></p>
+    <p><span class="tok m">.exe</span>는 Python으로 만든 프로그램을 Windows에서 일반적인 프로그램처럼 실행할 수 있도록 패키징한 파일입니다. 잘 만들어진 실행 파일이라면 사용자는 Python이나 IDE를 따로 열지 않고 <span class="tok m">.exe</span>를 두 번 눌러 프로그램을 실행할 수 있습니다. <strong>다른 사람에게 프로그램을 전달할 때도 유용합니다.</strong></p>
+    <p>즉, <strong>개발할 때는 <span class="tok m">.py</span>를 IDE에서 다루고, 실제로 사용할 때는 <span class="tok m">.bat</span>이나 <span class="tok m">.exe</span>를 통해 실행하는 식</strong>으로 생각하면 쉽습니다.</p>
     <div class="notes">
       <div class="notes-h">낱말</div>
       <dl>
         <dt id="n-p1-1">1</dt><dd id="d-p1-1"><b>Python</b> — 1991년에 처음 공개된 프로그래밍 언어. 문법이 비교적 읽기 쉽고, 별도의 컴파일 과정을 거치지 않고 코드를 바로 실행할 수 있는 인터프리터 언어입니다. 엑셀·PDF·웹 등을 다루는 라이브러리가 많아 데이터 처리와 업무 자동화에 널리 사용됩니다. <a class="backref" href="#c-p1-1" aria-label="본문 1번 주석으로 돌아가기">↩</a></dd>
-        <dt id="n-p1-2">2</dt><dd id="d-p1-2"><b>라이브러리</b> — 른 사람이 미리 만들어 둔 기능과 도구의 묶음. 엑셀을 읽고 쓰거나 PDF를 다루는 기능도 이미 만들어진 라이브러리를 가져와 사용할 수 있습니다. Python에서는 보통 pip install 이름 명령으로 설치합니다. <a class="backref" href="#c-p1-2" aria-label="본문 2번 주석으로 돌아가기">↩</a></dd>
-        <dt id="n-p1-3">3</dt><dd id="d-p1-3"><b>IDE</b> — ntegrated Development Environment. 코드를 작성하고 실행하고 오류를 확인하는 작업을 한곳에서 할 수 있도록 만든 프로그램입니다. PyCharm, Visual Studio Code 등이 대표적입니다. <a class="backref" href="#c-p1-3" aria-label="본문 3번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p1-2">2</dt><dd id="d-p1-2"><b>라이브러리</b> — 다른 사람이 미리 만들어 둔 기능과 도구의 묶음. 엑셀을 읽고 쓰거나 PDF를 다루는 기능도 이미 만들어진 라이브러리를 가져와 사용할 수 있습니다. Python에서는 보통 pip install 이름 명령으로 설치합니다. <a class="backref" href="#c-p1-2" aria-label="본문 2번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p1-3">3</dt><dd id="d-p1-3"><b>IDE</b> — Integrated Development Environment. 코드를 작성하고 실행하고 오류를 확인하는 작업을 한곳에서 할 수 있도록 만든 프로그램입니다. PyCharm, Visual Studio Code 등이 대표적입니다. <a class="backref" href="#c-p1-3" aria-label="본문 3번 주석으로 돌아가기">↩</a></dd>
         <dt id="n-p1-4">4</dt><dd id="d-p1-4"><b>인터프리터</b> — 프로그래밍 언어로 작성된 코드를 실행할 수 있도록 해주는 프로그램. Python에서는 작성한 코드를 Python 인터프리터가 해석하고 실행합니다. Python을 설치하면 일반적으로 Python 인터프리터도 함께 설치됩니다. IDE는 이 인터프리터를 이용해 Python 코드를 실행합니다. <a class="backref" href="#c-p1-4" aria-label="본문 4번 주석으로 돌아가기">↩</a></dd>
         <dt id="n-p1-5">5</dt><dd id="d-p1-5"><b>가상환경</b> — 프로젝트마다 독립된 Python 실행 환경을 만드는 기능. 프로젝트별로 필요한 Python 버전이나 라이브러리를 따로 관리할 수 있기 때문에, 한 프로젝트에 설치한 라이브러리가 다른 프로젝트에 영향을 주지 않도록 할 수 있습니다. <a class="backref" href="#c-p1-5" aria-label="본문 5번 주석으로 돌아가기">↩</a></dd>
       </dl>
