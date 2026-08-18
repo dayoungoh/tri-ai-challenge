@@ -1640,65 +1640,13 @@ a.cta{text-decoration:none}
             <div class="ann-cap">사람이 열 개를 골라 붙이던 자리를, <strong>파일명 규칙 하나</strong>가 대신합니다.</div>
           </div>
 
-          <p>순서 규칙은 코드 안에 두지 않고 <strong>별도의 표로 분리하였습니다.</strong> 바뀌는 것은 코드가 아니라 업무이기 때문입니다. 이후 손대야 할 곳은 <span class="tok">읽어올 폴더</span>, <span class="tok">저장할 폴더</span>, <span class="tok">이 표 한 장</span>이 전부입니다.</p>
+          <p>순서 규칙은 코드 곳곳에 흩어 두지 않고 <strong><span class="tok m">keywords</span> 목록 한 줄에 모아 두었습니다.</strong> 바뀌는 것은 코드가 아니라 업무이기 때문입니다. 이후 손대야 할 곳은 <span class="tok">읽어올 폴더</span>, <span class="tok">저장할 폴더</span>, <span class="tok">이 목록 한 줄</span>입니다.</p>
 
-          <div class="ann">
-            <svg viewBox="-36 0 732 262" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="병합 순서를 적어 둔 표와, 그 표를 코드가 어떻게 쓰는지를 손글씨로 표시한 그림">
-              <defs>
-                <marker id="p2N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
-                  markerUnits="userSpaceOnUse" orient="auto">
-                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370"
-                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
-                <marker id="p2G" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
-                  markerUnits="userSpaceOnUse" orient="auto">
-                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4"
-                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
-                <marker id="p2A" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
-                  markerUnits="userSpaceOnUse" orient="auto">
-                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207"
-                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
-              </defs>
+          <div class="pre" tabindex="0" role="region" aria-label="코드"><code>keywords = ["지원서", "추천서", "학적 및 학력정보", "TOEFL", "IELTS",
+            "GRE", "GMAT", "HSK", "영문CV", "Writing Sample", "논문 및 저서"]
 
-              <text class="cel" x="500" y="74" text-anchor="end" font-size="11" fill="#737370">병합 순서표</text>
-              <rect x="160" y="84" width="340" height="132" rx="8" fill="#fff" stroke="#ededea"/>
-              <path d="M160,92 Q160,84 168,84 L492,84 Q500,84 500,92 L500,110 L160,110 Z" fill="#fafaf9"/>
-              <path d="M160,110 H500 M160,136 H500 M160,162 H500 M160,188 H500 M212,84 V216 M372,84 V216"
-                stroke="#ededea" fill="none"/>
-              <text class="hd" x="186" y="102" text-anchor="middle">순서</text>
-              <text class="hd" x="292" y="102" text-anchor="middle">서류</text>
-              <text class="hd" x="436" y="102" text-anchor="middle">쪽</text>
-              <text class="cel" x="186" y="128" text-anchor="middle">1</text>
-              <text class="cel" x="292" y="128" text-anchor="middle">지원서</text>
-              <text class="cel" x="436" y="128" text-anchor="middle">전체</text>
-              <text class="cel" x="186" y="154" text-anchor="middle">2</text>
-              <text class="cel" x="292" y="154" text-anchor="middle">추천서</text>
-              <text class="cel" x="436" y="154" text-anchor="middle">전체</text>
-              <text class="cel" x="186" y="180" text-anchor="middle">3</text>
-              <text class="cel" x="292" y="180" text-anchor="middle">…</text>
-              <text class="cel" x="436" y="180" text-anchor="middle">전체</text>
-              <rect x="373" y="189" width="126" height="26" fill="#e8f0fb"/>
-              <text class="cel" x="186" y="206" text-anchor="middle">4</text>
-              <text class="cel" x="292" y="206" text-anchor="middle">논문</text>
-              <text class="cel" x="436" y="206" text-anchor="middle">앞 2쪽</text>
-
-              <g stroke="#737370" fill="#737370">
-                <path class="st" d="M126,44 C133,58 143,76 155,96" marker-end="url(#p2N)"/>
-                <text class="hw" x="124" y="36" text-anchor="end" stroke="none">이 줄 차례가 곧 병합 차례</text>
-              </g>
-
-              <g stroke="#1a5fb4" fill="#1a5fb4">
-                <path class="st" d="M556,168 C536,178 518,190 508,199" marker-end="url(#p2G)"/>
-                <text class="hw" x="560" y="162" stroke="none">코드가 여기만 읽습니다</text>
-              </g>
-
-              <g stroke="#a16207" fill="#a16207">
-                <path class="st" d="M250,246 C262,236 274,226 284,214" marker-end="url(#p2A)"/>
-                <text class="hw" x="244" y="254" text-anchor="end" stroke="none">이름이 안 맞으면 조용히 빠집니다</text>
-              </g>
-            </svg>
-            <div class="ann-cap">순서가 바뀌면 <span class="tok g">표의 줄만 옮깁니다</span>. <strong>코드 본문은 건드리지 않습니다.</strong></div>
-          </div>
+pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_pages</code></div>
+          <div class="pre-cap">적힌 차례가 곧 병합 차례입니다. 순서가 바뀌면 낱말 자리를 옮기고, 서류가 늘면 낱말을 하나 더합니다. 논문만 앞 두 쪽으로 자르는 조건도 <span class="tok m">min</span> 한 번으로 끝납니다.</div>
         </div>
       </div>
       <div class="stp">
@@ -1712,17 +1660,17 @@ a.cta{text-decoration:none}
       <tbody>
             <tr><td>지원자 한 명</td><td>4~8분</td><td><strong>1~3초</strong></td></tr>
             <tr><td>수백 명 전체</td><td>며칠</td><td><strong>10분 이내</strong></td></tr>
-            <tr><td>순서 규칙이 적힌 곳</td><td>사람의 기억</td><td><strong>표 한 장</strong></td></tr>
+            <tr><td>순서 규칙이 적힌 곳</td><td>사람의 기억</td><td><strong>코드 한 줄</strong></td></tr>
       </tbody>
     </table></div>
-          <p>순서와 쪽수 규칙이 한 곳에만 존재하므로 <strong>매번 동일한 결과가 산출되며,</strong> 규칙이 변경되면 표만 수정하면 됩니다.</p>
+          <p>순서와 쪽수 규칙이 한 곳에만 존재하므로 <strong>매번 동일한 결과가 산출되며,</strong> 규칙이 변경되면 그 줄만 고치면 됩니다.</p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
         <div class="bd">
           <p>이름 규칙에 맞지 않는 파일은 <span class="tok a">조용히 빠집니다</span>. 오류도 발생하지 않기 때문에, 실행 후 <span class="tok a">개수가 맞는지</span> 확인하는 절차를 두었습니다. <strong>이 검산은 아직 사람이 합니다.</strong></p>
-          <p>2024년 7월 50기 선발에 사용하였으며, 서류 종류나 순서가 변경될 경우 순서표를 수정해야 합니다.</p>
+          <p>2024년 7월 50기 선발에 사용하였으며, 서류 종류나 순서가 변경될 경우 <span class="tok m">keywords</span> 목록을 수정해야 합니다.</p>
         </div>
       </div>
 
