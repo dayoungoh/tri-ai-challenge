@@ -1012,6 +1012,30 @@ a.cta{text-decoration:none}
   box-shadow:inset 0 0 0 1px var(--line);overflow-x:auto}
 .pre code{display:block;font-family:var(--mono);font-size:var(--t-ui);line-height:1.72;
   color:var(--ink-2);white-space:pre;font-variant-ligatures:none}
+/* ── 코드 칸 머리띠 ──
+   data-nm 이 있는 코드칸에만 붙습니다. 어디서 온 코드인지 밝히고, 눌러서 가져가게 합니다.
+   파일 목록이나 폴더 그림처럼 옮겨 적을 것이 없는 칸에는 달지 않습니다. */
+.pre.card{padding:0;background:var(--shell);overflow:visible}
+.pre.card .cbar{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:7px 9px 7px 13px;border-bottom:1px solid var(--line)}
+.pre.card .cbar .nm{flex:1 1 auto;display:flex;align-items:baseline;gap:8px;min-width:0}
+.pre.card .cbar .f{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pre.card .cbar .lg{font-size:11px;color:var(--ink-3);white-space:nowrap}
+.pre.card .cpy{flex:0 0 auto;white-space:nowrap;display:flex;align-items:center;gap:5px;height:23px;padding:0 7px;border:0;
+  border-radius:6px;background:none;font-family:inherit;font-size:11.5px;font-weight:500;
+  color:var(--ink-3);cursor:pointer;transition:background 120ms ease,color 120ms ease}
+.pre.card .cpy:hover,.pre.card .cpy:focus-visible{background:var(--hover);color:var(--ink)}
+.pre.card .cpy.ok{color:var(--green)}
+.pre.card .cbody{padding:11px 13px;background:var(--inset);overflow-x:auto;
+  border-radius:0 0 10px 10px}
+.pre.card .ln{display:flex}
+.pre.card .ln .no{flex:0 0 22px;text-align:right;font-family:var(--mono);
+  font-size:var(--t-micro);line-height:1.86;color:rgb(115 115 112/.55);user-select:none}
+.pre.card .ln .tx{padding-left:11px;min-width:0}
+/* 예약어만 파랑입니다. 파랑은 이 문서에서 "코드가 하는 일" 이라 뜻이 어긋나지 않습니다.
+   초록·주황을 문법 색으로 쓰면 문서의 색 뜻과 겹치고, 적록색맹에서 둘이 뭉칩니다. */
+.pre.card .kw{color:var(--blue)}
 .pre code b{font-weight:700;color:var(--ink)}
 .pre code i{font-style:normal;color:var(--ink-3)}
 .pre code u{text-decoration:none;color:var(--amber)}
@@ -1384,7 +1408,7 @@ a.cta{text-decoration:none}
       <div class="bd">
         <p>사람이 하나씩 열어 처리해야 하는 일도 <strong>코드는 수백 개, 수천 개의 파일을 한꺼번에 처리</strong>할 수 있습니다.</p>
         <p>예를 들어 평가결과 폴더에 있는 엑셀 파일을 모두 읽어 하나의 파일로 합치는 작업이라면,</p>
-        <div class="pre" tabindex="0" role="region" aria-label="코드"><code><b>for</b> file_name <b>in</b> os.listdir(folder_path):
+        <div class="pre" data-nm="제50기 해외유학후보장학생 선발" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code><b>for</b> file_name <b>in</b> os.listdir(folder_path):
     <b>if</b> file_name.endswith(<u>'.xlsx'</u>):
         wb = openpyxl.load_workbook(file_path, data_only=<b>True</b>)</code></div>
         <p class="pre-cap"><strong>파일이 몇 개인지는 중요하지 않습니다.</strong> 코드는 정해진 규칙에 따라 폴더 안의 파일을 하나씩 읽고 같은 작업을 반복할 뿐입니다.</p>
@@ -1397,7 +1421,7 @@ a.cta{text-decoration:none}
       <div class="bd">
         <p>"파일 열기 → 값 복사 → 붙여넣기 → 저장"처럼 규칙이 정해진 일은 그 규칙을 코드로 한 번 정해 두면 됩니다.</p>
         <p>예를 들어 엑셀 시트의 어느 셀에 있는 값을 심사표의 어느 셀로 옮길지 정해져 있다면,</p>
-        <div class="pre" tabindex="0" role="region" aria-label="코드"><code>CELL_MAPPING = {
+        <div class="pre" data-nm="제50기 해외유학후보장학생 선발" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code>CELL_MAPPING = {
     <u>'D'</u>: <u>'B3'</u>, <u>'C'</u>: <u>'E3'</u>, <u>'L'</u>: <u>'B4'</u>, <u>'M'</u>: <u>'E4'</u>,
     <u>'G'</u>: <u>'B6'</u>, <u>'H'</u>: <u>'B7'</u>, <u>'I'</u>: <u>'B8'</u>, <i>… 14칸</i>
 }</code></div>
@@ -1419,7 +1443,7 @@ a.cta{text-decoration:none}
       <div class="hd"><span class="n">5</span><div class="t">프로그램 연결</div></div>
       <div class="bd">
         <p>엑셀 · PDF · 데이터베이스 · API · AI · 메일 · 웹서비스처럼 <strong>서로 다른 프로그램 사이에서 사람이 직접 옮겨주던 데이터</strong>를 코드로 연결할 수 있습니다.</p>
-        <div class="pre" tabindex="0" role="region" aria-label="코드"><code><b>from</b> selenium <b>import</b> webdriver      <i>← 브라우저를 움직입니다</i>
+        <div class="pre" data-nm="재단 예산 관리" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code><b>from</b> selenium <b>import</b> webdriver      <i>← 브라우저를 움직입니다</i>
 <b>import</b> gspread                       <i>← 구글 시트에 씁니다</i></code></div>
         <p class="pre-cap">1-4-3 웹 스크래핑에서 사용한 코드입니다. Selenium으로 웹에서 데이터를 가져오고, gspread를 이용해 그 데이터를 구글 시트에 기록합니다. <strong>사람이 웹에서 데이터를 복사해 구글 시트에 붙여넣던 과정을 코드가 대신 연결하는 것입니다.</strong></p>
       </div>
@@ -1644,7 +1668,7 @@ a.cta{text-decoration:none}
 
           <p>순서 규칙은 코드 곳곳에 흩어 두지 않고 <strong><span class="tok m">keywords</span> 목록 한 줄에 모아 두었습니다.</strong> 바뀌는 것은 코드가 아니라 업무이기 때문입니다. 이후 손대야 할 곳은 <span class="tok">읽어올 폴더</span>, <span class="tok">저장할 폴더</span>, <span class="tok">이 목록 한 줄</span>입니다.</p>
 
-          <div class="pre" tabindex="0" role="region" aria-label="코드"><code>keywords = ["지원서", "추천서", "학적 및 학력정보", "TOEFL", "IELTS",
+          <div class="pre" data-nm="제50기 해외유학후보장학생 선발" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code>keywords = ["지원서", "추천서", "학적 및 학력정보", "TOEFL", "IELTS",
             "GRE", "GMAT", "HSK", "영문CV", "Writing Sample", "논문 및 저서"]
 
 pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_pages</code></div>
@@ -2875,7 +2899,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
           <p>메일로 주고받으면 성사됐는지를 아무도 알 수 없지만 화면에서 누르면 표에 남기 때문에, <span class="tok">얼마나 요청되고 얼마나 만나졌는지</span>를 셀 수 있습니다.</p>
           <p>같은 사람에게 대기 중인 요청은 한 건만 두고, 취소는 줄을 지우는 것이 아니라 <span class="tok m">withdrawn</span>이라고 적습니다. 아래는 상태와 자기 자신에게 보내는 것을 막는 규칙을 표 정의에 박아 둔 부분입니다.</p>
 
-          <div class="pre" tabindex="0" role="region" aria-label="코드"><code>status text not null default 'pending'
+          <div class="pre" data-nm="T-LAB 인재성장 플랫폼" data-lg="SQL" tabindex="0" role="region" aria-label="코드"><code>status text not null default 'pending'
   check (status in ('pending','accepted','held','withdrawn')),
 
 constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
@@ -3155,7 +3179,7 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
 
     <h3>.gitignore — 보안의 최전선</h3>
     <p>Git이 <strong>쳐다보지도 않을 파일 목록</strong>이기 때문에, 여기 안 적으면 그대로 올라갑니다.</p>
-    <div class="pre" tabindex="0" role="region" aria-label="코드"><code><u>.env</u>
+    <div class="pre" data-nm=".gitignore" tabindex="0" role="region" aria-label="코드"><code><u>.env</u>
 <u>*.key</u>
 <u>credentials.json</u>
 
@@ -3192,7 +3216,7 @@ Thumbs.db</code></div>
     <div class="pre" tabindex="0" role="region" aria-label="코드"><code>my-skill/
 └── <b>SKILL.md</b></code></div>
     <p><strong>어떻게 하나.</strong> 지금 그 일을 어떤 순서로 하고 계신지를 그대로 적으시면 됩니다. 1-1의 순서표를 글로 옮긴다고 생각하시면 가깝습니다.</p>
-    <div class="pre" tabindex="0" role="region" aria-label="코드"><code><i>---</i>
+    <div class="pre" data-nm="SKILL.md" data-lg="Markdown" tabindex="0" role="region" aria-label="코드"><code><i>---</i>
 <i>name: 지원서-병합</i>
 <i>description: 지원자 폴더의 PDF를 정해진 순서로 1인 1파일로 병합할 때 사용</i>
 <i>---</i>
@@ -4760,6 +4784,73 @@ const h0 = location.hash.slice(1);
 if(h0 === 'me'){ show(0, false); showMe(false); }
 else if(h0 === 'mui'){ show(0, false); showMui(false); }
 else { const s = order.indexOf(h0); show(s >= 0 ? s : 0, false); }
+
+
+/* ── 코드 칸 머리띠 · 줄번호 · 복사 ──
+   글은 원본 <code> 그대로 두고 표시만 여기서 만듭니다.
+   본문.txt 왕복이 코드칸을 통째로 다루므로 마크업을 늘리지 않습니다. */
+(() => {
+  const NL = String.fromCharCode(10);
+  const KW = new RegExp('\b(' + 'if|else|elif|for|while|in|not|and|or|return|import|from|as|def|class|try|except|finally|with|lambda|None|True|False|await|async|select|check|constraint|default|null|text' + ')\b', 'g');
+  const esc = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  document.querySelectorAll('.pre[data-nm]').forEach(pre => {
+    const code = pre.querySelector('code');
+    if(!code) return;
+    const raw = code.textContent.replace(new RegExp(NL + '+$'), '');
+
+    /* 예약어만 파랑. 글자마디만 손대고 b·i·u 는 그대로 둡니다 */
+    const walk = document.createTreeWalker(code, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while(walk.nextNode()) nodes.push(walk.currentNode);
+    nodes.forEach(t => {
+      KW.lastIndex = 0;
+      if(!KW.test(t.nodeValue)) return;
+      KW.lastIndex = 0;
+      const span = document.createElement('span');
+      span.innerHTML = esc(t.nodeValue).replace(KW, '<span class="kw">$1</span>');
+      t.parentNode.replaceChild(span, t);
+    });
+
+    const lines = code.innerHTML.split(NL);
+    while(lines.length && !lines[lines.length - 1].trim()) lines.pop();
+
+    const body = document.createElement('div');
+    body.className = 'cbody';
+    lines.forEach((line, i) => {
+      const row = document.createElement('div');
+      row.className = 'ln';
+      row.innerHTML = '<span class="no">' + (i + 1) + '</span><code class="tx">' + line + '</code>';
+      body.appendChild(row);
+    });
+
+    const bar = document.createElement('div');
+    bar.className = 'cbar';
+    bar.innerHTML = '<span class="nm"><span class="f"></span><span class="lg"></span></span>' +
+      '<button class="cpy" type="button">' +
+      '<svg aria-hidden="true" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2.5"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' +
+      '<span class="ct">복사</span></button>';
+    bar.querySelector('.f').textContent = pre.dataset.nm;
+    bar.querySelector('.lg').textContent = pre.dataset.lg || '';
+    const btn = bar.querySelector('.cpy');
+    btn.setAttribute('aria-label', pre.dataset.nm + ' 코드 복사');
+
+    code.remove();
+    pre.classList.add('card');
+    pre.append(bar, body);
+
+    btn.addEventListener('click', () => {
+      navigator.clipboard.writeText(raw).then(() => {
+        btn.classList.add('ok');
+        btn.querySelector('.ct').textContent = '복사됨';
+        setTimeout(() => {
+          btn.classList.remove('ok');
+          btn.querySelector('.ct').textContent = '복사';
+        }, 1500);
+      });
+    });
+  });
+})();
 </script>
 </body>
 </html>
