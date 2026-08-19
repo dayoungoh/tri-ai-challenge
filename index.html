@@ -24,6 +24,14 @@
   src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/InkLipquid.woff') format('woff');
   font-weight:normal;font-style:normal;font-display:swap;
 }
+/* ── 모서리 굴림 네 단 ──
+   6px   딱지 · 작은 단추 · 주석 번호
+   10px  줄 · 칸 · 입력창 · 코드칸
+   14px  상자 · 표 · 카드 · 액자
+   18px  가장 바깥 껍데기
+   999px 알약(딱지 칩) · 50% 원형(아바타)
+   한때 4·5·7·8·9·11·12·13·16·20px 이 뒤섞여 있었습니다. 새 값을 만들지 말고
+   위 넷 중에서 고르십시오. ── */
 :root{
   color-scheme:light;
   --canvas:#e9e9e7;
@@ -75,7 +83,7 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-optical-sizing:auto;
   font-size:var(--t-body);line-height:1.68;-webkit-font-smoothing:antialiased;padding:18px}
-:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:7px}
+:focus-visible{outline:2px solid var(--ink);outline-offset:2px;border-radius:6px}
 /* tabindex="-1" 은 화면 낭독기에 제목을 읽히려고 코드가 옮긴 초점입니다.
    브라우저는 그런 초점도 키보드 초점으로 보아 테두리를 그리는데,
    누를 수 없는 제목에 테두리가 붙으면 오히려 오해를 부릅니다. */
@@ -84,7 +92,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
   clip-path:inset(50%);white-space:nowrap;border:0}
 /* 평소엔 숨어 있다가 탭 첫 타에 나옵니다 */
-.skip{position:fixed;top:-60px;left:14px;z-index:40;padding:9px 14px;border-radius:9px;
+.skip{position:fixed;top:-60px;left:14px;z-index:40;padding:9px 14px;border-radius:10px;
   background:var(--ink);color:var(--shell);font-size:var(--t-ui);font-weight:600;
   text-decoration:none;transition:top 160ms var(--out)}
 .skip:focus{top:14px}
@@ -101,14 +109,14 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .side{width:var(--nav-w);flex:0 0 var(--nav-w);background:var(--side);
   border-right:1px solid var(--line);display:flex;flex-direction:column}
 .side-top{padding:14px 12px 6px}
-.ws{display:flex;align-items:center;gap:10px;width:100%;padding:8px;border-radius:11px;
+.ws{display:flex;align-items:center;gap:10px;width:100%;padding:8px;border-radius:10px;
   background:var(--shell);box-shadow:var(--shadow-hair);cursor:pointer;border:0;
   font-family:inherit;text-align:left;transition:transform 140ms var(--out),box-shadow 140ms ease}
 .ws:hover{box-shadow:var(--shadow-lift)}
 .ws:active{transform:scale(.97)}
 /* 배는 목차 옆 레일을 따라가는 그 배와 같은 그림입니다. 같은 것이니 같게 그립니다 */
 .ws .av svg{width:19px;height:19px}
-.ws .av{flex:0 0 32px;width:32px;height:32px;border-radius:9px;background:var(--ink);color:var(--shell);
+.ws .av{flex:0 0 32px;width:32px;height:32px;border-radius:10px;background:var(--ink);color:var(--shell);
   display:grid;place-items:center;font-size:var(--t-sm);font-weight:660}
 .ws .tt{min-width:0;flex:1}
 .ws .tt em{display:block;font-style:normal;font-size:var(--t-micro);color:var(--ink-3);line-height:1.2}
@@ -123,7 +131,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .ship{position:absolute;left:0;top:0;width:16px;height:16px;color:var(--ink);
   transition:transform 420ms var(--out);will-change:transform}
 .groups{flex:1;min-width:0;position:relative}
-.hl{position:absolute;left:0;right:0;border-radius:8px;background:var(--hover);pointer-events:none;opacity:0;z-index:0;
+.hl{position:absolute;left:0;right:0;border-radius:10px;background:var(--hover);pointer-events:none;opacity:0;z-index:0;
   transition:top 220ms var(--out),height 220ms var(--out),opacity 150ms ease}
 
 .grp{padding:12px 0 4px;border-top:1px solid var(--line)}
@@ -133,7 +141,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .sec{padding:0 8px 7px;font-size:var(--t-ui);font-weight:640;color:var(--ink);letter-spacing:-.004em}
 
 .row{position:relative;z-index:1;display:flex;align-items:center;gap:9px;width:100%;
-  padding:7px 8px;border:0;border-radius:8px;background:none;cursor:pointer;
+  padding:7px 8px;border:0;border-radius:10px;background:none;cursor:pointer;
   font-family:inherit;text-align:left;text-decoration:none;color:var(--ink-2);
   font-size:var(--t-ui);font-weight:500;line-height:1.35;letter-spacing:-.008em;
   transition:color 150ms ease,transform 150ms var(--out)}
@@ -183,12 +191,12 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .hide{display:none!important}
 .nores{padding:12px 8px;font-size:var(--t-ui);color:var(--ink-3)}
 /* 검색 중에만 나타나는 적중 수 */
-.mc{flex:0 0 auto;height:17px;min-width:17px;padding:0 5px;border-radius:9px;display:grid;
+.mc{flex:0 0 auto;height:17px;min-width:17px;padding:0 5px;border-radius:10px;display:grid;
   place-items:center;font-size:var(--t-micro);font-weight:700;font-variant-numeric:tabular-nums;
   background:var(--green-soft);color:var(--green)}
 
 .side-foot{position:relative;padding:10px 12px 12px;border-top:1px solid var(--line)}
-.uc{display:flex;align-items:center;gap:10px;width:100%;padding:8px;border-radius:11px;
+.uc{display:flex;align-items:center;gap:10px;width:100%;padding:8px;border-radius:10px;
   background:var(--shell);box-shadow:var(--shadow-hair);border:0;cursor:pointer;
   font-family:inherit;text-align:left;
   transition:transform 140ms var(--out),box-shadow 140ms ease}
@@ -288,7 +296,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .cats.drag{cursor:grabbing}
 .cats-track{position:absolute;inset:0;transform-style:preserve-3d}
 .cat{position:absolute;left:50%;top:50%;width:176px;height:232px;margin:-116px 0 0 -88px;
-  border-radius:13px;overflow:hidden;background:var(--inset);
+  border-radius:14px;overflow:hidden;background:var(--inset);
   box-shadow:var(--shadow-card);will-change:transform,opacity}
 .cat.far{visibility:hidden}          /* 화면 밖까지 그리면 31장을 매 프레임 칠합니다 */
 .cat.mid{cursor:zoom-in}
@@ -328,7 +336,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
    못합니다. 화면 단위로 직접 묶습니다. */
 .lb img{max-width:calc(100vw - 132px);max-height:calc(100dvh - 112px);
   width:auto;height:auto;object-fit:contain;
-  border-radius:12px;display:block;box-shadow:0 24px 70px rgb(0 0 0/.5);
+  border-radius:14px;display:block;box-shadow:0 24px 70px rgb(0 0 0/.5);
   transform:scale(.97);transition:transform 220ms var(--out)}
 .lb.on img{transform:none}
 .lb-x,.lb-p,.lb-n{position:absolute;display:grid;place-items:center;
@@ -370,7 +378,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .pet{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 20px;
   margin-top:22px;padding:18px;align-items:start;
   background:var(--inset);border-radius:14px;box-shadow:inset 0 0 0 1px var(--line)}
-.pet img{grid-row:1/3;width:132px;height:132px;border-radius:16px;object-fit:cover;display:block;
+.pet img{grid-row:1/3;width:132px;height:132px;border-radius:14px;object-fit:cover;display:block;
   cursor:pointer;user-select:none;-webkit-user-drag:none;
   box-shadow:0 5px 14px rgb(26 26 26/.16);
   transition:transform 240ms var(--out),box-shadow 240ms ease}
@@ -460,7 +468,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
    생김새는 싸이월드 방명록입니다. 한 줄에 한 마디, 뒤에 이름과 날짜.
    다만 그 시절 글꼴과 파란 링크를 그대로 가져오지는 않았습니다 —
    이 문서 안에서 혼자 딴 데서 온 것처럼 보이면 재미가 아니라 흠입니다. ── */
-.gb{margin-top:38px;border-radius:12px;background:var(--shell);
+.gb{margin-top:38px;border-radius:14px;background:var(--shell);
   box-shadow:var(--shadow-card);overflow:hidden}
 
 /* 쓰는 칸은 맨 위 한 줄. 라벨 · 이름 · 한 마디 · 단추 */
@@ -470,7 +478,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gb-f .gb-lb{flex:0 0 auto;font-size:var(--t-ui);font-weight:700;color:var(--ink);
   letter-spacing:-.01em}
 .gb-f input{font-family:inherit;color:var(--ink);background:var(--shell);
-  border:0;border-radius:7px;padding:7px 10px;outline:none;
+  border:0;border-radius:6px;padding:7px 10px;outline:none;
   box-shadow:inset 0 0 0 1px var(--line);font-size:var(--t-ui)}
 .gb-f .nm{flex:0 0 96px;min-width:0;font-weight:640}
 .gb-f .bd{flex:1 1 220px;min-width:0}
@@ -478,13 +486,13 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gb-f input::placeholder{color:var(--ink-3);font-weight:400}
 /* 한 번 눌러 채우는 단추. 값을 미리 박아 두면 아무나 그대로 눌러
    같은 글만 쌓이므로, 채우기만 하고 보내기는 사람이 누릅니다. */
-.gb-quick{flex:0 0 auto;border:0;border-radius:7px;padding:6px 10px;cursor:pointer;
+.gb-quick{flex:0 0 auto;border:0;border-radius:6px;padding:6px 10px;cursor:pointer;
   font-family:inherit;font-size:var(--t-ui);color:var(--ink-3);
   background:var(--shell);box-shadow:inset 0 0 0 1px var(--line);
   transition:color 140ms ease,box-shadow 140ms ease,transform 120ms var(--out)}
 .gb-quick:hover{color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink-3)}
 .gb-quick:active{transform:scale(.94)}
-.gb-send{flex:0 0 auto;border:0;border-radius:7px;padding:7px 13px;cursor:pointer;
+.gb-send{flex:0 0 auto;border:0;border-radius:6px;padding:7px 13px;cursor:pointer;
   font-family:inherit;font-size:var(--t-ui);font-weight:640;
   background:var(--line);color:var(--ink-3);
   transition:background-color 180ms ease,color 180ms ease,transform 120ms var(--out)}
@@ -514,7 +522,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 /* 반응 — 줄 끝의 아주 작은 단추 둘. 평소엔 흐리고, 셈이 있으면 또렷합니다 */
 .gb-item .rx{margin-left:auto;display:flex;gap:3px;flex:0 0 auto}
 .gb-item .rx button{display:inline-flex;align-items:center;gap:3px;border:0;background:none;
-  padding:1px 5px;border-radius:7px;cursor:pointer;font-family:inherit;
+  padding:1px 5px;border-radius:6px;cursor:pointer;font-family:inherit;
   font-size:var(--t-micro);color:var(--ink-3);opacity:.45;
   transition:opacity 140ms ease,background-color 140ms ease,transform 120ms var(--out)}
 .gb-item:hover .rx button,.gb-item .rx button.has{opacity:1}
@@ -573,20 +581,20 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .crumb svg{flex:0 0 12px;color:var(--ink-3)}
 .tb-sp{flex:1}
 .srch{display:flex;align-items:center;gap:8px;width:280px;max-width:34vw;height:32px;padding:0 10px;
-  border-radius:9px;background:var(--inset);box-shadow:var(--shadow-hair)}
+  border-radius:10px;background:var(--inset);box-shadow:var(--shadow-hair)}
 .srch:focus-within{outline:2px solid var(--ink);outline-offset:2px}
 .srch svg{flex:0 0 13px;color:var(--ink-3)}
 .srch input{min-width:0;flex:1;background:none;border:0;outline:none;font-family:inherit;font-size:var(--t-ui);color:var(--ink)}
 .srch input::placeholder{color:var(--ink-3)}
-.srch kbd{flex:0 0 auto;padding:2px 5px;border-radius:5px;background:var(--shell);
+.srch kbd{flex:0 0 auto;padding:2px 5px;border-radius:6px;background:var(--shell);
   font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);box-shadow:var(--shadow-hair)}
 /* 거른 상태를 푸는 단추. 검색창이 비어 있을 때는 / 딱지가, 글자가 있을 때는 이것이 보입니다.
    거르고 나서 다른 쪽으로 넘어가면 눌렀던 딱지가 화면 밖이라, 나갈 길이 여기 하나뿐입니다. */
 .srch .clr{flex:0 0 auto;display:grid;place-items:center;width:19px;height:19px;padding:0;border:0;
-  border-radius:5px;background:var(--shell);box-shadow:var(--shadow-hair);color:var(--ink-3);
+  border-radius:6px;background:var(--shell);box-shadow:var(--shadow-hair);color:var(--ink-3);
   cursor:pointer;font-family:inherit;transition:color 120ms ease,background 120ms ease}
 .srch .clr:hover,.srch .clr:focus-visible{background:var(--ink);color:var(--shell);box-shadow:none}
-.ibtn{width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:9px;
+.ibtn{width:32px;height:32px;display:grid;place-items:center;border:0;border-radius:10px;
   background:var(--shell);box-shadow:var(--shadow-hair);color:var(--ink-2);cursor:pointer;
   transition:transform 140ms var(--out),color 140ms ease}
 .ibtn:hover{color:var(--ink)}
@@ -614,7 +622,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
    문단이 되어, 짧은 한 줄인 제목보다 시각적 질량이 커집니다.
    대신 본문보다 진하게 — 첫 문단이라는 건 위치와 색이 말합니다 */
 .lead{font-size:var(--t-body);font-weight:500;line-height:1.62;color:var(--ink);margin-top:16px;letter-spacing:-.012em}
-.cta{display:flex;align-items:center;gap:7px;height:36px;padding:0 14px;border:0;border-radius:9px;
+.cta{display:flex;align-items:center;gap:7px;height:36px;padding:0 14px;border:0;border-radius:10px;
   background:#262626;color:#fff;font-family:inherit;font-size:var(--t-ui);font-weight:600;cursor:pointer;
   transition:transform 140ms var(--out),background 140ms ease}
 .cta:hover{background:#111}
@@ -626,7 +634,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 /* 붙어 있으면 제목·꼬리표·본문이 한 덩어리로 읽힙니다 */
 .chips+.lead,.chips+p{margin-top:30px}
 .chip{font-family:var(--mono);font-size:var(--t-ui);color:var(--ink-2);background:var(--shell);
-  box-shadow:var(--shadow-hair);border-radius:20px;padding:3px 10px}
+  box-shadow:var(--shadow-hair);border-radius:999px;padding:3px 10px}
 /* 눌러서 거를 수 있다는 표시. 딱지 글자가 곧 검색어입니다 */
 .chip{cursor:pointer;transition:background 120ms ease,color 120ms ease}
 .chip:hover,.chip:focus-visible{background:var(--ink);color:var(--shell);box-shadow:none}
@@ -639,7 +647,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 
 /* ── 지표 카드 ── */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
-.stat{background:var(--shell);border-radius:13px;box-shadow:var(--shadow-card);overflow:hidden}
+.stat{background:var(--shell);border-radius:14px;box-shadow:var(--shadow-card);overflow:hidden}
 .stat .b{padding:15px 17px 13px}
 .stat .l{font-size:var(--t-micro);font-weight:640;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
 .stat .n{font-size:var(--t-num);font-weight:660;letter-spacing:.035em;line-height:1.1;margin-top:9px;
@@ -651,7 +659,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 
 /* 전 → 후 */
 .gain{display:grid;grid-template-columns:1fr auto 1fr;margin-top:24px;background:var(--shell);
-  border-radius:13px;box-shadow:var(--shadow-card);overflow:hidden}
+  border-radius:14px;box-shadow:var(--shadow-card);overflow:hidden}
 .gain+.gain{margin-top:10px}
 .gain .cell{padding:15px 18px;min-width:0}
 .gain .lbl{font-size:var(--t-micro);font-weight:640;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
@@ -666,10 +674,10 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 /* ── 패널 ── */
 /* overflow 를 감추면 안의 낱말 주석 상자가 패널 밖으로 못 나와 잘립니다.
    둥근 모서리를 지키려던 것이므로, 자르는 일은 링크 목록에만 맡깁니다. */
-.panel{background:var(--shell);border-radius:13px;box-shadow:var(--shadow-card);margin-top:22px}
+.panel{background:var(--shell);border-radius:14px;box-shadow:var(--shadow-card);margin-top:22px}
 /* 표 머리글은 음영이 깔리는데 카드 머리글만 하얬습니다. 같은 층이면 같아야 합니다 */
 .panel-h{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;
-  background:var(--inset);border-bottom:1px solid var(--line);border-radius:13px 13px 0 0}
+  background:var(--inset);border-bottom:1px solid var(--line);border-radius:14px 14px 0 0}
 /* 패널 머리글은 한글 문장입니다. 11px 트래킹 라벨로 두면
    자기가 소개하는 15px 내용보다 작아져 위계가 뒤집힙니다.
    uppercase 는 한글에 아무 일도 하지 않고, 양수 자간은 벌어져 보이기만 합니다 */
@@ -685,11 +693,11 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 
 table{width:100%;border-collapse:collapse;font-size:var(--t-sm);
   font-variant-numeric:tabular-nums}
-.tw{margin-top:16px;background:var(--shell);border-radius:12px;box-shadow:var(--shadow-card);overflow:hidden}
+.tw{margin-top:16px;background:var(--shell);border-radius:14px;box-shadow:var(--shadow-card);overflow:hidden}
 .tw table{margin:0}
 /* 표를 색인으로도 쓰라고 절 번호를 답니다. 글이 아니라 자리 표시입니다 */
 .where{margin-left:6px;font-family:var(--mono);font-size:var(--t-micro);white-space:nowrap}
-.where a{color:var(--ink-3);text-decoration:none;padding:1px 4px;border-radius:4px;
+.where a{color:var(--ink-3);text-decoration:none;padding:1px 4px;border-radius:6px;
   box-shadow:inset 0 0 0 1px var(--line);transition:background 140ms ease,color 140ms ease}
 .where a:hover,.where a:focus-visible{background:var(--ink);color:var(--shell);box-shadow:none}
 th,td{text-align:left;padding:10px 16px;border-bottom:1px solid var(--line-2)}
@@ -707,7 +715,7 @@ td.n{font-variant-numeric:tabular-nums}
 .flow{margin-top:16px;max-width:680px;display:grid;gap:10px}
 .step{position:relative;display:flex;gap:12px;align-items:flex-start;
   background:var(--shell);box-shadow:var(--shadow-card);
-  border-radius:11px;padding:13px 16px;font-size:var(--t-sm);color:var(--ink-2);line-height:1.55}
+  border-radius:10px;padding:13px 16px;font-size:var(--t-sm);color:var(--ink-2);line-height:1.55}
 /* left:26px = 안쪽 여백 16 + 번호칸 21의 절반. 번호 한가운데를 지납니다 */
 .step+.step::before{content:"";position:absolute;left:26px;top:-10px;
   width:1px;height:10px;background:var(--line-2)}
@@ -722,7 +730,7 @@ td.n{font-variant-numeric:tabular-nums}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:16px}
 .split.three{grid-template-columns:repeat(3,1fr)}
 @media(max-width:900px){.split,.split.three{grid-template-columns:1fr}}
-.box{background:var(--shell);border-radius:12px;padding:15px 17px;box-shadow:var(--shadow-card)}
+.box{background:var(--shell);border-radius:14px;padding:15px 17px;box-shadow:var(--shadow-card)}
 .box .t{font-size:var(--t-micro);font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
 .box p{margin-top:6px;font-size:var(--t-sm);line-height:1.55}
 
@@ -739,7 +747,7 @@ td.n{font-variant-numeric:tabular-nums}
 @media print{ .note.warn::before{print-color-adjust:exact;-webkit-print-color-adjust:exact} }
 .note strong{color:var(--ink)}
 
-.q{background:var(--shell);border-radius:12px;padding:17px 20px;margin-top:11px;box-shadow:var(--shadow-card)}
+.q{background:var(--shell);border-radius:14px;padding:17px 20px;margin-top:11px;box-shadow:var(--shadow-card)}
 .q .qt{font-weight:640;color:var(--ink);font-size:var(--t-body);letter-spacing:-.012em}
 .q .qa{margin-top:8px;font-size:var(--t-sm);color:var(--ink-2);border-left:2px solid var(--line);padding-left:15px;line-height:1.6}
 
@@ -753,11 +761,11 @@ td.n{font-variant-numeric:tabular-nums}
 .ask h3{margin-top:9px;font-size:var(--t-h3);letter-spacing:-.018em;line-height:1.36}
 .ask p{margin-top:11px;font-size:var(--t-sm);line-height:1.6}
 .ask ol{list-style:none;counter-reset:a;margin-top:16px;display:grid;gap:1px;
-  background:var(--line);border-radius:11px;overflow:hidden}
+  background:var(--line);border-radius:10px;overflow:hidden}
 .ask li{counter-increment:a;display:flex;gap:11px;align-items:baseline;
   background:var(--shell);padding:12px 16px;font-size:var(--t-sm);
   color:var(--ink-2);line-height:1.55}
-.ask li::before{content:counter(a);flex:0 0 17px;height:17px;border-radius:5px;
+.ask li::before{content:counter(a);flex:0 0 17px;height:17px;border-radius:6px;
   background:var(--inset);color:var(--ink-3);font-family:var(--mono);
   font-size:var(--t-micro);display:grid;place-items:center;transform:translateY(2px)}
 .acts{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
@@ -786,7 +794,7 @@ a.cta{text-decoration:none}
 
 /* ── 내가 고쳐야 하는 곳 (칩 목록) ── */
 .fix{margin-top:24px}
-.fix-h{display:flex;align-items:center;gap:7px;margin-left:-6px;padding:5px 7px;border:0;border-radius:8px;
+.fix-h{display:flex;align-items:center;gap:7px;margin-left:-6px;padding:5px 7px;border:0;border-radius:10px;
   background:none;cursor:pointer;font-family:inherit;font-size:var(--t-ui);color:var(--ink-2);
   transition:background 100ms ease}
 .fix-h .cv{width:12px;height:12px;transition:transform 200ms var(--out)}
@@ -800,7 +808,7 @@ a.cta{text-decoration:none}
 .fix-list{display:flex;flex-direction:column;gap:3px;padding-top:6px}
 
 .fix-row{display:flex;align-items:center;gap:9px;width:100%;min-width:0;margin-left:-4px;
-  padding:5px 4px;border:0;border-radius:8px;background:none;cursor:pointer;
+  padding:5px 4px;border:0;border-radius:10px;background:none;cursor:pointer;
   font-family:inherit;text-align:left;transition:background 100ms ease}
 .fix-row .gl{position:relative;flex:0 0 17px;height:17px;display:grid;place-items:center;color:var(--ink-3)}
 .fix-row .gl svg{position:absolute;transition:opacity 120ms ease,transform 160ms var(--out)}
@@ -809,7 +817,7 @@ a.cta{text-decoration:none}
 .fix-row[aria-expanded="true"] .gl .ch{opacity:1;transform:rotate(0)}
 .fix-row .lb{flex:0 0 auto;font-size:var(--t-ui);font-weight:600;color:var(--ink);letter-spacing:-.008em}
 .fix-row .cp{flex:1;min-width:0;display:inline-flex;align-items:center;height:23px;padding:0 8px;
-  border-radius:7px;background:var(--inset);box-shadow:var(--shadow-hair);
+  border-radius:6px;background:var(--inset);box-shadow:var(--shadow-hair);
   font-family:var(--mono);font-size:var(--t-ui);color:var(--ink-2);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background 100ms ease}
 .fix-row .cp.warn{color:var(--amber);background:var(--amber-soft);box-shadow:none}
@@ -831,7 +839,7 @@ a.cta{text-decoration:none}
 .fix-det li.a{color:var(--amber)}
 
 /* ── 시작 링크 목록 ── */
-.lnk{display:flex;flex-direction:column;overflow:hidden;border-radius:0 0 13px 13px}
+.lnk{display:flex;flex-direction:column;overflow:hidden;border-radius:0 0 14px 14px}
 .lnk a{display:flex;align-items:center;gap:13px;padding:12px 16px;border-top:1px solid var(--line-2);
   text-decoration:none;color:inherit;transition:background 140ms ease}
 .lnk a:first-child{border-top:0}
@@ -842,7 +850,7 @@ a.cta{text-decoration:none}
 .lnk .b em{display:block;font-style:normal;font-family:var(--mono);font-size:var(--t-ui);color:var(--ink-3);
   margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lnk .c{flex:0 0 auto;font-size:var(--t-micro);font-weight:700;letter-spacing:.05em;
-  color:var(--green);background:var(--green-soft);border-radius:20px;padding:3px 9px}
+  color:var(--green);background:var(--green-soft);border-radius:999px;padding:3px 9px}
 .lnk .c.opt{color:var(--ink-3);background:var(--inset)}
 .lnk .go{flex:0 0 13px;width:13px;height:13px;color:var(--ink-3);transition:color 140ms ease}
 .tip{padding:12px 16px;border-top:1px solid var(--line);background:var(--inset);
@@ -850,7 +858,7 @@ a.cta{text-decoration:none}
 .tip strong{color:var(--ink);font-weight:620}
 
 /* ── 다이어그램 ── */
-.dg{margin-top:20px;background:var(--shell);border-radius:12px;box-shadow:var(--shadow-card);
+.dg{margin-top:20px;background:var(--shell);border-radius:14px;box-shadow:var(--shadow-card);
   padding:18px 16px;overflow-x:auto}
 .dg{overflow-x:auto}
 .dg svg{display:block;width:100%;height:auto;min-width:480px}
@@ -907,7 +915,7 @@ a.cta{text-decoration:none}
 /* 화면 캡처. 눌러서 원본 크기로 열립니다 — 캡처 안 글자가 본문보다 작습니다.
    이 두 줄은 위 선택자 목록 안이 아니라 밖에 있어야 합니다. 목록 안에 끼우면
    쉼표로 이어진 .doc .tw td 까지 display:block 을 먹어 표가 무너집니다. */
-.doc .ann .shot-l{display:block;border-radius:8px;overflow:hidden}
+.doc .ann .shot-l{display:block;border-radius:10px;overflow:hidden}
 .doc .ann img.shot{display:block;width:100%;height:auto;
   box-shadow:inset 0 0 0 1px var(--line)}
 /* 소제목은 12pt. 표 머리글과 라벨은 작은 대문자 그대로 둡니다 —
@@ -980,7 +988,7 @@ a.cta{text-decoration:none}
    윗첨자처럼 보여야 하므로 글자선 위로 띄웁니다. */
 .cite{display:inline-flex;align-items:center;justify-content:center;
   min-width:16px;height:16px;padding:0 3.5px;margin-left:2px;
-  vertical-align:5px;border-radius:4px;
+  vertical-align:5px;border-radius:6px;
   background:var(--inset);box-shadow:inset 0 0 0 1px var(--line);
   font-family:var(--mono);font-size:10.5px;font-weight:600;line-height:1;
   color:var(--ink-3);text-decoration:none;
@@ -990,7 +998,7 @@ a.cta{text-decoration:none}
 .cite-w{position:relative;display:inline-block}
 .cite-t{position:absolute;left:50%;bottom:calc(100% + 7px);transform:translateX(-50%);
   z-index:30;width:max-content;max-width:290px;
-  padding:8px 11px;border-radius:9px;background:var(--shell);
+  padding:8px 11px;border-radius:10px;background:var(--shell);
   box-shadow:var(--shadow-lift);font-size:var(--t-micro);line-height:1.5;
   color:var(--ink-2);font-weight:400;letter-spacing:0;text-align:left;
   word-break:keep-all;opacity:0;visibility:hidden;
@@ -1056,7 +1064,7 @@ a.cta{text-decoration:none}
    실물(표·한 줄)은 본문 서체로 반듯하게, 가리키는 손은 흐트러지게.
    두 층의 성격이 달라야 무엇이 자료이고 무엇이 설명인지 구분됩니다.
    .hw 웹폰트를 못 받으면 Pretendard로 떨어집니다. 글은 그대로 읽힙니다. ── */
-.ann{margin-top:20px;background:var(--shell);border-radius:12px;box-shadow:var(--shadow-card);
+.ann{margin-top:20px;background:var(--shell);border-radius:14px;box-shadow:var(--shadow-card);
   padding:10px 16px 14px;overflow-x:auto}
 .ann svg{display:block;width:100%;height:auto;min-width:520px}
 .ann .hd{font-family:var(--sans);font-size:var(--t-ui);font-weight:600;fill:var(--ink)}
@@ -1092,7 +1100,7 @@ a.cta{text-decoration:none}
     transition:transform 300ms var(--out),visibility 0s 300ms;
     visibility:hidden;box-shadow:0 0 40px rgb(0 0 0/.2)}
   .side.open{transform:none;visibility:visible;transition:transform 300ms var(--out)}
-  .mbtn{display:grid;place-items:center;width:32px;height:32px;border:0;border-radius:9px;
+  .mbtn{display:grid;place-items:center;width:32px;height:32px;border:0;border-radius:10px;
     background:var(--shell);box-shadow:var(--shadow-hair);color:var(--ink-2);cursor:pointer}
   .content{padding:20px 18px 40px}
   .srch{display:none}
