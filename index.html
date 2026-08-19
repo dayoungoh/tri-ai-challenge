@@ -898,7 +898,8 @@ a.cta{text-decoration:none}
 .stp>.bd>*:first-child{margin-top:0}
 @media(max-width:1000px){
   .stp{grid-template-columns:1fr;gap:11px;padding:18px 0}
-  .stp>.hd{display:flex;align-items:center;gap:9px}
+  /* 한 칸으로 서면 이름이 본문 위에 얹혀 따라다닙니다. 붙박이로 되돌립니다 */
+  .stp>.hd{position:static;display:flex;align-items:center;gap:9px}
   .stp .t{margin-top:0}
 }
 
@@ -1064,7 +1065,8 @@ a.cta{text-decoration:none}
    실물(표·한 줄)은 본문 서체로 반듯하게, 가리키는 손은 흐트러지게.
    두 층의 성격이 달라야 무엇이 자료이고 무엇이 설명인지 구분됩니다.
    .hw 웹폰트를 못 받으면 Pretendard로 떨어집니다. 글은 그대로 읽힙니다. ── */
-.ann{margin-top:20px;background:var(--shell);border-radius:14px;box-shadow:var(--shadow-card);
+/* svg 가 min-width 를 지고 있어, 이 통이 안 넘어가면 쪽 전체가 화면보다 넓어집니다 */
+.ann{overflow-x:auto;margin-top:20px;background:var(--shell);border-radius:14px;box-shadow:var(--shadow-card);
   padding:10px 16px 14px;overflow-x:auto}
 .ann svg{display:block;width:100%;height:auto;min-width:520px}
 .ann .hd{font-family:var(--sans);font-size:var(--t-ui);font-weight:600;fill:var(--ink)}
@@ -1107,7 +1109,12 @@ a.cta{text-decoration:none}
   .split,.stats{grid-template-columns:1fr}
   .gain{grid-template-columns:1fr;}
   .gain .arw{padding:6px 0;border:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);transform:rotate(90deg)}
-  .pager{flex-direction:column}
+  /* 세로로 쌓으면 .pager 의 align-items:center 때문에 이전 단추만 가운데로 몰리고,
+     nx 의 margin-left:auto 는 가로가 아니라 세로 축을 밀어 오른쪽 끝으로 갑니다.
+     쌓되 둘 다 왼쪽에 세우고, 다음 단추는 자리만 오른쪽으로 보냅니다. */
+  .pager{flex-direction:column;align-items:stretch;gap:4px}
+  .pager button{justify-content:flex-start}
+  .pager .nx{margin-left:0;justify-content:flex-end}
   /* 좁은 화면에서 큰 단계만 한 칸씩 내림 */
   :root{--t-num:30px;--t-h2:25px;--t-h3:20px}
 }
@@ -3475,7 +3482,9 @@ function moveHL(el){
    접히고 나면 위로 올라옵니다 — 배가 밑까지 내려갔다 되올라오던 이유입니다.
    그래서 지금 자리에, 아직 안 끝난 여닫힘이 만들 높이 차를 미리 더해 셉니다. */
 function shipY(el){
-  const t = document.getElementById('sideScroll').getBoundingClientRect().top;
+  /* 배가 놓이는 기준은 스크롤 통이 아니라 배를 담은 레일입니다.
+     통을 기준으로 재면 레일이 통보다 8px 내려와 있는 만큼 계속 어긋납니다. */
+  const t = ship.offsetParent.getBoundingClientRect().top;
   let y = el.getBoundingClientRect().top - t;
   for(const k of document.querySelectorAll('.kids,.gkids')){
     if(k.contains(el)) continue;                 /* 나를 담은 통은 나를 밀어내지 않습니다 */
@@ -3491,7 +3500,9 @@ function shipY(el){
     const end = k.classList.contains('open') ? inner.scrollHeight : shut;
     y += end - now;
   }
-  return y + 6;
+  /* 행 높이가 한 줄(32px)과 두 줄(장 이름+부제)로 다릅니다.
+     6 처럼 고정값을 더하면 두 줄 행에서 배가 위로 쏠립니다. */
+  return y + (el.getBoundingClientRect().height - 16) / 2;
 }
 function moveShip(el){
   if(!el) return;
