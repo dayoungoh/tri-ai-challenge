@@ -1547,33 +1547,6 @@ a.cta{text-decoration:none}
     <p><strong>제가 특히 유용하다고 느낀 부분은 실제 데이터를 사용하지 않고도 이 과정을 반복할 수 있다는 점입니다.</strong> 개인정보가 포함된 실제 자료 대신 <span class="tok">가짜 자료(dummy data)</span>를 만들어 테스트에 사용하면, AI가 그 자료를 반복해서 처리하며 코드를 수정하고 검증할 수 있습니다.</p>
     <p>가짜 자료를 주면 <strong>AI가 여러 차례 실행하고 결과를 확인</strong>하면서 코드를 다듬어 갈 수 있습니다. 실제 개인정보를 사용하지 않고도 코드를 실행하고 테스트할 수 있다는 점에서 유용합니다.</p>
 
-    <h3>Python 라이브러리</h3>
-    <p>이제는 AI가 필요한 <span class="tok">라이브러리</span><span class="cite-w"><a class="cite" id="c-p1-2" href="#n-p1-2" aria-describedby="d-p1-2">2</a><span class="cite-t" role="tooltip">남이 만들어 둔 도구 묶음. 엑셀을 읽는 일, PDF를 자르는 일은 이미 누군가 만들어 두었습니다. <b>pip install 이름</b> 으로 받아 씁니다.</span></span>를 찾아 설치하고 코드에 적용하는 과정까지 상당 부분 처리할 수 있습니다. 따라서 모든 라이브러리의 이름과 사용법을 미리 외워둘 필요는 없다고 생각합니다. 그래도 라이브러리 목록을 한 번 훑어보면 <strong>Python으로 어떤 일을 할 수 있는지</strong> 감을 잡는 데 도움이 됩니다.</p>
-    <p>아래는 제가 AI와 Python 코딩하며 실제로 사용한 라이브러리입니다. <strong>오른쪽 번호를 누르면 해당 라이브러리를 사용한 프로젝트로 이동합니다.</strong></p>
-
-    <div class="tw"><table>
-      <caption class="sr">Python 으로 할 수 있는 일과 그때 쓴 라이브러리</caption>
-      <thead>
-      <tr><th scope="col">하는 일</th><th scope="col">주요 라이브러리</th><th scope="col">실제 활용</th></tr>
-      </thead>
-      <tbody>
-      <tr><td><strong>엑셀 파일 읽고 쓰기</strong></td><td><span class="tok m">openpyxl</span> · <span class="tok m">pandas</span></td><td>엑셀 파일 나누기·합치기, 데이터 정리 <span class="where"><a href="#p3">1-2</a></span></td></tr>
-      <tr><td><strong>PDF 읽고 만들기</strong></td><td><span class="tok m">pypdf</span> · <span class="tok m">pdfplumber</span> · <span class="tok m">PyMuPDF</span> · <span class="tok m">reportlab</span></td><td>PDF 편집·병합, 내용 추출, PDF 생성 <span class="where"><a href="#p2">1-1</a> · <a href="#p4b">1-4-2</a></span></td></tr>
-      <tr><td><strong>Word 문서 다루기</strong></td><td><span class="tok m">python-docx</span></td><td>Word 문서 수정·생성, 개인정보 마스킹 <span class="where"><a href="#p6">1-5</a></span></td></tr>
-      <tr><td><strong>웹 브라우저 자동화</strong></td><td><span class="tok m">selenium</span></td><td>웹사이트 로그인, 조회, 입력, 다운로드 등 자동화 <span class="where"><a href="#p4">1-4</a></span></td></tr>
-      <tr><td><strong>이메일 보내기</strong></td><td><span class="tok m">smtplib</span> · <span class="tok m">email</span> · <span class="tok m">pywin32</span></td><td>맞춤형 이메일 작성·발송 <span class="where"><a href="#p5">1-3</a></span></td></tr>
-      <tr><td><strong>이미지·스캔 문서 처리</strong></td><td><span class="tok m">Pillow</span> · <span class="tok m">easyocr</span> · <span class="tok m">pdf2image</span></td><td>이미지 처리, 스캔 문서에서 글자 추출 <span class="where"><a href="#p6">1-5</a></span></td></tr>
-      <tr><td><strong>이름·기관 등 정보 추출</strong></td><td><span class="tok m">spaCy</span></td><td>문장에서 사람 이름·기관명 등 추출 <span class="where"><a href="#p6">1-5</a></span></td></tr>
-      <tr><td><strong>외부 서비스 연결</strong></td><td><span class="tok m">gspread</span> · <span class="tok m">requests</span></td><td>Google Sheets, 웹 API 등과 데이터 주고받기 <span class="where"><a href="#p4c">1-4-3</a></span></td></tr>
-      <tr><td><strong>간단한 프로그램 화면 만들기</strong></td><td><span class="tok m">Flask</span> · <span class="tok m">tkinter</span></td><td>다른 사람이 사용할 수 있는 간단한 화면 제작 <span class="where"><a href="#p5">1-3</a> · <a href="#p6">1-5</a></span></td></tr>
-      <tr><td><strong>Python 프로그램을 EXE로 만들기</strong></td><td><span class="tok m">PyInstaller</span></td><td>Python이 설치되지 않은 PC에서도 실행할 수 있도록 패키징 <span class="where"><a href="#p6">1-5</a></span></td></tr>
-      </tbody>
-    </table></div>
-    <p class="dg-cap">표준으로 딸려 오는 것(<span class="tok m">os</span> · <span class="tok m">re</span> · <span class="tok m">pathlib</span> · <span class="tok m">csv</span> · <span class="tok m">json</span> · <span class="tok m">zipfile</span>)은 설치가 필요 없어 뺐습니다.</p>
-    <div class="note">라이브러리를 정확히 몰라도 되지만, <strong>결과가 이상하면 사용한 라이브러리를 의심</strong>해 볼 수 있습니다. 같은 일을 하는 도구는 여럿이지만 도구에 따라 결과가 서로 다를 수 있다는 점을 유의해야 합니다.</div>
-
-    <p>정리하면 Python은 <strong>사람이 손으로 열고, 누르고, 옮기던 일</strong>을 대신합니다. 엑셀에서 데이터를 읽어 PDF로 만들고 메일로 보내는 일을 <span class="tok">코드 실행 한 번으로</span> 처리할 수 있다는 점이 가장 큰 장점입니다.</p>
-
     <h3>Python 설치</h3>
     <p><strong>이제는 AI가 Python 설치까지 대신해 주고,</strong> IDE<span class="cite-w"><a class="cite" id="c-p1-3" href="#n-p1-3" aria-describedby="d-p1-3">3</a><span class="cite-t" role="tooltip">Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램.</span></span> 없이도 코딩할 수 있습니다. 혹시 직접 설치해 두고 쓰고 싶으시다면 다음 링크로 가시면 됩니다.</p>
     <p>저는 <strong>PyCharm</strong>을 사용했습니다. <a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer">Jupyter Notebook</a>도 많이 사용하는 것으로 알고 있습니다.</p>
@@ -1603,6 +1576,33 @@ a.cta{text-decoration:none}
     <div class="note warn"><strong>설치 순서가 중요합니다.</strong> 파이썬을 먼저 깔고 PyCharm을 깔아야 합니다. 반대로 하면 첫 실행에서 인터프리터<span class="cite-w"><a class="cite" id="c-p1-4" href="#n-p1-4" aria-describedby="d-p1-4">4</a><span class="cite-t" role="tooltip">코드를 한 줄씩 읽어 실행하는 프로그램. Python 을 설치한다는 말은 이것을 설치한다는 뜻입니다. IDE 는 설치된 인터프리터를 찾아 씁니다.</span></span>를 못 찾습니다.</div>
     <div class="note">그리고 처음 코드를 실행하면 보통 <strong>라이브러리(도구)를 설치하라</strong>는 에러가 뜹니다. 그런 경우 터미널(PyCharm은 <span class="tok m">Alt + F12</span>)에서 <span class="tok m">pip install 라이브러리명</span> 을 치고 다시 실행하면 됩니다. 받았는데도 또 없다고 하면 가상환경<span class="cite-w"><a class="cite" id="c-p1-5" href="#n-p1-5" aria-describedby="d-p1-5">5</a><span class="cite-t" role="tooltip">프로젝트마다 따로 두는 라이브러리 보관함. 한 프로젝트에서 받은 것이 다른 프로젝트에 없는 이유가 이것입니다.</span></span>을 의심해 보세요.</div>
 
+
+    <h3>Python 라이브러리</h3>
+    <p>이제는 AI가 필요한 <span class="tok">라이브러리</span><span class="cite-w"><a class="cite" id="c-p1-2" href="#n-p1-2" aria-describedby="d-p1-2">2</a><span class="cite-t" role="tooltip">남이 만들어 둔 도구 묶음. 엑셀을 읽는 일, PDF를 자르는 일은 이미 누군가 만들어 두었습니다. <b>pip install 이름</b> 으로 받아 씁니다.</span></span>를 찾아 설치하고 코드에 적용하는 과정까지 상당 부분 처리할 수 있습니다. 따라서 모든 라이브러리의 이름과 사용법을 미리 외워둘 필요는 없다고 생각합니다. 그래도 라이브러리 목록을 한 번 훑어보면 <strong>Python으로 어떤 일을 할 수 있는지</strong> 감을 잡는 데 도움이 됩니다.</p>
+    <p>아래는 제가 AI와 Python 코딩하며 실제로 사용한 라이브러리입니다. <strong>오른쪽 번호를 누르면 해당 라이브러리를 사용한 프로젝트로 이동합니다.</strong></p>
+
+    <div class="tw"><table>
+      <caption class="sr">Python 으로 할 수 있는 일과 그때 쓴 라이브러리</caption>
+      <thead>
+      <tr><th scope="col">하는 일</th><th scope="col">주요 라이브러리</th><th scope="col">실제 활용</th></tr>
+      </thead>
+      <tbody>
+      <tr><td><strong>엑셀 파일 읽고 쓰기</strong></td><td><span class="tok m">openpyxl</span> · <span class="tok m">pandas</span></td><td>엑셀 파일 나누기·합치기, 데이터 정리 <span class="where"><a href="#p3">1-2</a></span></td></tr>
+      <tr><td><strong>PDF 읽고 만들기</strong></td><td><span class="tok m">pypdf</span> · <span class="tok m">pdfplumber</span> · <span class="tok m">PyMuPDF</span> · <span class="tok m">reportlab</span></td><td>PDF 편집·병합, 내용 추출, PDF 생성 <span class="where"><a href="#p2">1-1</a> · <a href="#p4b">1-4-2</a></span></td></tr>
+      <tr><td><strong>Word 문서 다루기</strong></td><td><span class="tok m">python-docx</span></td><td>Word 문서 수정·생성, 개인정보 마스킹 <span class="where"><a href="#p6">1-5</a></span></td></tr>
+      <tr><td><strong>웹 브라우저 자동화</strong></td><td><span class="tok m">selenium</span></td><td>웹사이트 로그인, 조회, 입력, 다운로드 등 자동화 <span class="where"><a href="#p4">1-4</a></span></td></tr>
+      <tr><td><strong>이메일 보내기</strong></td><td><span class="tok m">smtplib</span> · <span class="tok m">email</span> · <span class="tok m">pywin32</span></td><td>맞춤형 이메일 작성·발송 <span class="where"><a href="#p5">1-3</a></span></td></tr>
+      <tr><td><strong>이미지·스캔 문서 처리</strong></td><td><span class="tok m">Pillow</span> · <span class="tok m">easyocr</span> · <span class="tok m">pdf2image</span></td><td>이미지 처리, 스캔 문서에서 글자 추출 <span class="where"><a href="#p6">1-5</a></span></td></tr>
+      <tr><td><strong>이름·기관 등 정보 추출</strong></td><td><span class="tok m">spaCy</span></td><td>문장에서 사람 이름·기관명 등 추출 <span class="where"><a href="#p6">1-5</a></span></td></tr>
+      <tr><td><strong>외부 서비스 연결</strong></td><td><span class="tok m">gspread</span> · <span class="tok m">requests</span></td><td>Google Sheets, 웹 API 등과 데이터 주고받기 <span class="where"><a href="#p4c">1-4-3</a></span></td></tr>
+      <tr><td><strong>간단한 프로그램 화면 만들기</strong></td><td><span class="tok m">Flask</span> · <span class="tok m">tkinter</span></td><td>다른 사람이 사용할 수 있는 간단한 화면 제작 <span class="where"><a href="#p5">1-3</a> · <a href="#p6">1-5</a></span></td></tr>
+      <tr><td><strong>Python 프로그램을 EXE로 만들기</strong></td><td><span class="tok m">PyInstaller</span></td><td>Python이 설치되지 않은 PC에서도 실행할 수 있도록 패키징 <span class="where"><a href="#p6">1-5</a></span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="dg-cap">표준으로 딸려 오는 것(<span class="tok m">os</span> · <span class="tok m">re</span> · <span class="tok m">pathlib</span> · <span class="tok m">csv</span> · <span class="tok m">json</span> · <span class="tok m">zipfile</span>)은 설치가 필요 없어 뺐습니다.</p>
+    <div class="note">라이브러리를 정확히 몰라도 되지만, <strong>결과가 이상하면 사용한 라이브러리를 의심</strong>해 볼 수 있습니다. 같은 일을 하는 도구는 여럿이지만 도구에 따라 결과가 서로 다를 수 있다는 점을 유의해야 합니다.</div>
+
+    <p>정리하면 Python은 <strong>사람이 손으로 열고, 누르고, 옮기던 일</strong>을 대신합니다. 엑셀에서 데이터를 읽어 PDF로 만들고 메일로 보내는 일을 <span class="tok">코드 실행 한 번으로</span> 처리할 수 있다는 점이 가장 큰 장점입니다.</p>
 
     <h3>파일 확장자</h3>
     <p>Python으로 프로그램을 만들 때는 보통 PyCharm 같은 IDE에서 코드를 작성하고 실행합니다. 하지만 프로그램을 어느 정도 완성한 뒤에는 <strong>매번 IDE를 열어 코드를 실행할 필요가 없습니다.</strong> 자주 사용하는 프로그램이라면 <span class="tok m">.bat</span> 파일로 실행 과정을 간단하게 만들거나, <span class="tok m">.exe</span> 파일로 만들어 일반 프로그램처럼 실행할 수 있습니다.</p>
@@ -1703,7 +1703,7 @@ a.cta{text-decoration:none}
             <div class="ann-cap">사람이 파일을 하나씩 열어 확인하고 순서를 맞추던 과정을, <strong>파일명의 keyword와 미리 정해둔 순서만으로 처리할 수 있습니다.</strong></div>
           </div>
 
-          <p>서류의 병합 순서는 <span class="tok m">keywords</span> 목록 하나로 관리했습니다. 적힌 순서가 곧 병합 순서이기 때문에, 규칙이 바뀌면 <strong>코드의 전체 로직을 수정할 필요 없이 목록의 순서나 항목만 변경하면 됩니다</strong></p>
+          <p>서류의 병합 순서는 <span class="tok m">keywords</span> 목록 하나로 관리했습니다. 적힌 순서가 곧 병합 순서이기 때문에, 규칙이 바뀌면 <strong>코드의 전체 로직을 수정할 필요 없이 목록의 순서나 항목만 변경하면 됩니다.</strong></p>
 
           <div class="pre" data-nm="제50기 해외유학후보장학생 선발" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code>keywords = ["지원서", "추천서", "학적 및 학력정보", "TOEFL", "IELTS",
             "GRE", "GMAT", "HSK", "영문CV", "Writing Sample", "논문 및 저서"]
@@ -1724,7 +1724,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
             <tr><td>수백 명 전체</td><td>며칠</td><td><strong>10분 이내</strong></td></tr>
       </tbody>
     </table></div>
-          <p>실제로 자동화 이후에는 지원자별 작업 시간이 수분에서 수초로 줄었고, 수백 명의 서류도 10분 이내에 처리할 수 있었습니다. 그리고 제 생각에 Python 자동화의 가장 큰 장점은 단순히 작업 시간을 줄이는 데 그치지 않고, 사람이 파일을 하나씩 확인하고 정리하는 과정에서 발생할 수 있는 <strong>human error까지 상당 부분 줄일 수 있다는 점입니다.</strong></p>
+          <p>제 생각에 Python 자동화의 가장 큰 장점은 단순히 작업 시간을 줄이는 데 그치지 않고, 사람이 파일을 하나씩 확인하고 정리하는 과정에서 발생할 수 있는 <strong>human error까지 상당 부분 줄일 수 있다는 점입니다.</strong></p>
 
           <div class="ann">
             <a class="shot-l" href="photos/slack-2024-07-23.png" target="_blank" rel="noopener noreferrer">
