@@ -1708,7 +1708,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
   <section id="p3" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-2 · 예시 2</div><h2>엑셀 나누기·합치기</h2></div></div>
     <div class="chips"><span class="chip">#2024.07</span><span class="chip">#Python</span><span class="chip">#openpyxl</span><span class="chip">#pandas</span><span class="chip">#제50기_해외유학후보장학생_선발</span></div>
-    <p class="lead">평가는 평가자별로 나누어 진행하고 집계는 한 장으로 확인하므로, 나눴다 다시 모으는 왕복이 매 회차 발생합니다.</p>
+    <p class="lead">1-1과 같은 해외유학후보장학생 선발 과정에서 사용한 코드입니다. 서류평가자에게 지원자별 심사표를 나누어 전달하고, 평가가 끝난 뒤 점수를 다시 한 장으로 모으는 것이 목적이었습니다. 심사는 평가자별로 진행하고 집계는 지원자별로 확인해야 하기 때문에 배포와 취합이 회차마다 반복되었고, 손으로 처리할 경우 심사표의 서식과 잠금까지 매번 다시 맞춰야 했습니다.</p>
 
     <div class="steps">
 
@@ -1717,8 +1717,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         <div class="bd">
           <p>지원자 한 명을 <span class="tok">최대 세 명</span>의 서류평가자가 심사하기 때문에, 심사표는 평가자별로 따로 만들어야 합니다.</p>
           <p>반면 집계는 한 지원자의 점수를 나란히 놓고 확인해야 하므로 <span class="tok">전체가 한 장</span>이어야 합니다.</p>
-          <p><strong>나누어야 심사할 수 있고 모아야 집계할 수 있으므로,</strong> 배포와 취합은 회차마다 반복되는 작업입니다.</p>
-          <p><strong>배포와 취합에 각각 시간이 듭니다.</strong> 심사표 한 장을 만드는 데 3~4분, 시트 한 장의 값을 옮기는 데 2~3분이 소요됩니다.</p>
+          <p><strong>배포와 취합에 각각 시간이 듭니다.</strong> 만약 손으로 처리한다면 심사표 한 장을 만드는 데 3~4분(예측), 시트 한 장의 값을 옮기는 데 2~3분(예측)이 소요되는 작업입니다.</p>
           <p>심사표 한 장에 옮겨 적어야 하는 항목이 <span class="tok">14개</span>이고, <strong>숫자를 하나 잘못 옮기면 해당 지원자의 심사 결과가 달라집니다.</strong></p>
           <p>또한 손으로 복사하면 데이터 유효성 검사와 시트 보호가 함께 풀리기 때문에, <strong>평가자마다 다른 형태의 심사표를 받게 됩니다.</strong></p>
         </div>
