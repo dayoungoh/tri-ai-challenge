@@ -1647,7 +1647,7 @@ a.cta{text-decoration:none}
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
           <p>지원자는 지원서, 학적·학력정보(학·석·박 공식 성적표), TOEFL 또는 IELTS, 영문 CV 등을 필수로 제출하고, 인문사회 분야 지원자는 Writing Sample을 추가로 제출합니다. 여기에 GRE·GMAT·HSK, 논문 및 저서 등 선택 서류가 더해져, 지원자별로 약 <span class="tok">10개 내외의 파일</span>이 <strong>개인 폴더에 분산되어 제출됩니다.</strong></p>
-          <p>반면 심사는 지원자 단위로 이루어지므로, 심사위원의 편의를 위해 지원자가 제출한 여러 서류를 순서대로 묶어 <span class="tok">1인 1파일</span> 형태로 전달하고자 했습니다.</p>
+          <p>반면 심사는 지원자 단위로 이루어지므로, 심사위원의 편의를 위해 지원자가 제출한 여러 서류를 순서대로 묶어 <span class="tok">1인 1파일</span> <strong>형태로 전달하고자 했습니다.</strong></p>
           <p>따라서 접수된 여러 개의 파일을 <strong>지원자별 하나의 PDF로 재구성하는 작업이 필요했습니다.</strong></p>
           <p>재구성 과정에서는 정해진 순서에 따라 서류를 배열하고, 논문 및 저서는 <strong>앞 두 페이지만 포함</strong>하는 등 일정한 처리 규칙을 적용해야 했습니다.</p>
           <p>만약 손으로 직접 병합한다면, 지원자가 수백 명 단위이니 <strong>동일한 절차를 수백 회 반복하게 되며,</strong> 한 명당 4~8분(예측)이 소요됩니다.</p>
@@ -1659,7 +1659,7 @@ a.cta{text-decoration:none}
         <div class="bd">
           <p><strong>병합 작업을 네 단계로 나누었습니다.</strong> 1) 파일명 속 keyword로 서류 종류를 판별하고, 2) 정해진 순서에 따라 병합한 뒤, 3) '논문 및 저서'는 앞 두 페이지만 포함하여 4) 전공별 폴더에 저장합니다.</p>
 
-          <p>이 방식이 가능한 것은 제출 시스템이 서류를 내려받을 때 해당 항목의 keyword를 파일명에 넣어 주기 때문입니다. 예를 들어 TOEFL 항목에 제출된 파일에는 파일명에 TOEFL이 포함되어 있어, 파일을 열지 않고도 어느 항목의 서류인지 판별할 수 있습니다.</p>
+          <p>이 방식이 가능한 것은 <strong>제출 시스템이 서류를 내려받을 때 해당 항목의 keyword를 파일명에 넣어 주기 때문입니다.</strong> 예를 들어 TOEFL 항목에 제출된 파일에는 파일명에 <span class="tok m">TOEFL</span>이 포함되어 있어, 파일을 열지 않고도 어느 항목의 서류인지 판별할 수 있습니다.</p>
 
           <div class="ann">
             <svg viewBox="0 0 660 250" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -1700,10 +1700,10 @@ a.cta{text-decoration:none}
                 <text class="hw" x="22" y="240" stroke="none">keyword 확인이 안 되면 병합에서 제외</text>
               </g>
             </svg>
-            <div class="ann-cap">사람이 파일을 하나씩 열어 확인하고 순서를 맞추던 과정을, 파일명의 keyword와 미리 정해둔 순서만으로 처리할 수 있습니다.</div>
+            <div class="ann-cap">사람이 파일을 하나씩 열어 확인하고 순서를 맞추던 과정을, <strong>파일명의 keyword와 미리 정해둔 순서만으로 처리할 수 있습니다.</strong></div>
           </div>
 
-          <p>서류의 병합 순서는 keywords 목록 하나로 관리했습니다. 적힌 순서가 곧 병합 순서이기 때문에, 규칙이 바뀌면 코드의 전체 로직을 수정할 필요 없이 목록의 순서나 항목만 변경하면 됩니다</p>
+          <p>서류의 병합 순서는 <span class="tok m">keywords</span> 목록 하나로 관리했습니다. 적힌 순서가 곧 병합 순서이기 때문에, 규칙이 바뀌면 <strong>코드의 전체 로직을 수정할 필요 없이 목록의 순서나 항목만 변경하면 됩니다</strong></p>
 
           <div class="pre" data-nm="제50기 해외유학후보장학생 선발" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code>keywords = ["지원서", "추천서", "학적 및 학력정보", "TOEFL", "IELTS",
             "GRE", "GMAT", "HSK", "영문CV", "Writing Sample", "논문 및 저서"]
@@ -1724,14 +1724,14 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
             <tr><td>수백 명 전체</td><td>며칠</td><td><strong>10분 이내</strong></td></tr>
       </tbody>
     </table></div>
-          <p>실제로 자동화 이후에는 지원자별 작업 시간이 수분에서 수초로 줄었고, 수백 명의 서류도 10분 이내에 처리할 수 있었습니다. 그리고 제 생각에 Python 자동화의 가장 큰 장점은 단순히 작업 시간을 줄이는 데 그치지 않고, 사람이 파일을 하나씩 확인하고 정리하는 과정에서 발생할 수 있는 human error까지 상당 부분 줄일 수 있다는 점입니다.</p>
+          <p>실제로 자동화 이후에는 지원자별 작업 시간이 수분에서 수초로 줄었고, 수백 명의 서류도 10분 이내에 처리할 수 있었습니다. 그리고 제 생각에 Python 자동화의 가장 큰 장점은 단순히 작업 시간을 줄이는 데 그치지 않고, 사람이 파일을 하나씩 확인하고 정리하는 과정에서 발생할 수 있는 <strong>human error까지 상당 부분 줄일 수 있다는 점입니다.</strong></p>
 
           <div class="ann">
             <a class="shot-l" href="photos/slack-2024-07-23.png" target="_blank" rel="noopener noreferrer">
               <img class="shot" src="photos/slack-2024-07-23.png" width="1146" height="739" loading="lazy"
                 alt="2024년 7월 23일 팀 메신저 글. 병합이 잘 된다는 확인과 함께, 논문 전문을 첨부한 경우 2페이지까지만 잘라 병합하도록 했다는 내용, 그리고 지원서와 추천서를 미리 내려받아 폴더에 넣어 두어야 한다는 사전 준비 사항이 적혀 있습니다.">
             </a>
-            <div class="ann-cap">2024년 7월 23일, 병합이 되는 것을 확인하고 (기쁜 마음에) 팀에 공유한 기록입니다. 처음 만들어 본 거라 팀에 공유했던 기억이 있어 찾아왔습니다. (fyi. 그 이후에는 작업 과정을 공유하지 않았습니다...)</div>
+            <div class="ann-cap"><strong>2024년 7월 23일, 병합이 되는 것을 확인하고 (기쁜 마음에) 팀에 공유한 기록입니다.</strong> 처음 만들어 본 거라 팀에 공유했던 기억이 있어 찾아왔습니다. (fyi. 그 이후에는 작업 과정을 공유하지 않았습니다...)</div>
           </div>
         </div>
       </div>
