@@ -25,11 +25,11 @@
   font-weight:normal;font-style:normal;font-display:swap;
 }
 /* ── 모서리 굴림 네 단 ──
-   6px   딱지 · 작은 단추 · 주석 번호
+   6px   태그 · 작은 단추 · 주석 번호
    10px  줄 · 칸 · 입력창 · 코드칸
    14px  상자 · 표 · 카드 · 액자
    18px  가장 바깥 껍데기
-   999px 알약(딱지 칩) · 50% 원형(아바타)
+   999px 알약(태그 칩) · 50% 원형(아바타)
    한때 4·5·7·8·9·11·12·13·16·20px 이 뒤섞여 있었습니다. 새 값을 만들지 말고
    위 넷 중에서 고르십시오. ── */
 :root{
@@ -45,10 +45,10 @@
      한 색으로 뭉칩니다 — 재 보니 주황과 빨강이 23밖에 안 떨어졌습니다.
      파랑↔주황은 어느 유형에서도 170 넘게 벌어집니다. */
   --blue:#1a5fb4; --blue-soft:#e8f0fb;
-  /* 초록은 뜻을 지지 않는 자리에만 남습니다 — 무료 딱지처럼 글자가 뜻을 지는 곳 */
+  /* 초록은 뜻을 지지 않는 자리에만 남습니다 — 무료 태그처럼 글자가 뜻을 지는 곳 */
   --green:#146d34; --green-soft:#e9f4ec;
   --amber:#a16207; --amber-soft:#fdf6e3;
-  /* 주황 딱지 글자 전용. 딱지 배경(#f4ece1) 위에서 --amber 는 4.20 으로 AA 미달입니다.
+  /* 주황 태그 글자 전용. 태그 배경(#f4ece1) 위에서 --amber 는 4.20 으로 AA 미달입니다.
      이 값은 같은 배경에서 5.07 입니다. 도형·선은 --amber 그대로 씁니다. */
   --amber-ink:#8f5706;
   /* 비고 표시에만 씁니다. 흰 바탕에서 5.9:1 — 본문 글자로 써도 되는 짙기입니다 */
@@ -602,8 +602,8 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .srch input::placeholder{color:var(--ink-3)}
 .srch kbd{flex:0 0 auto;padding:2px 5px;border-radius:6px;background:var(--shell);
   font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);box-shadow:var(--shadow-hair)}
-/* 거른 상태를 푸는 단추. 검색창이 비어 있을 때는 / 딱지가, 글자가 있을 때는 이것이 보입니다.
-   거르고 나서 다른 쪽으로 넘어가면 눌렀던 딱지가 화면 밖이라, 나갈 길이 여기 하나뿐입니다. */
+/* 거른 상태를 푸는 단추. 검색창이 비어 있을 때는 / 태그가, 글자가 있을 때는 이것이 보입니다.
+   거르고 나서 다른 쪽으로 넘어가면 눌렀던 태그가 화면 밖이라, 나갈 길이 여기 하나뿐입니다. */
 .srch .clr{flex:0 0 auto;display:grid;place-items:center;width:19px;height:19px;padding:0;border:0;
   border-radius:6px;background:var(--shell);box-shadow:var(--shadow-hair);color:var(--ink-3);
   cursor:pointer;font-family:inherit;transition:color 120ms ease,background 120ms ease}
@@ -649,7 +649,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 .chips+.lead,.chips+p{margin-top:30px}
 .chip{font-family:var(--mono);font-size:var(--t-ui);color:var(--ink-2);background:var(--shell);
   box-shadow:var(--shadow-hair);border-radius:999px;padding:3px 10px}
-/* 눌러서 거를 수 있다는 표시. 딱지 글자가 곧 검색어입니다 */
+/* 눌러서 거를 수 있다는 표시. 태그 글자가 곧 검색어입니다 */
 .chip{cursor:pointer;transition:background 120ms ease,color 120ms ease}
 .chip:hover,.chip:focus-visible{background:var(--ink);color:var(--shell);box-shadow:none}
 .chip.on{background:var(--ink);color:var(--shell);box-shadow:none}
@@ -948,7 +948,7 @@ a.cta{text-decoration:none}
      조각(.tok) = 규칙·값·이름. 그대로 옮겨 적을 수 있는 것.
      굵게(strong) = 그 문단의 요지. 한 문단에 하나만.
    흐릿하면 둘이 구별되지 않아, 바탕을 또렷하게 깔았습니다. */
-/* nowrap 이었습니다. "해외유학후보장학생 선발" 같은 긴 딱지가 못 접혀
+/* nowrap 이었습니다. "해외유학후보장학생 선발" 같은 긴 태그가 못 접혀
    200% 확대에서 칸 밖으로 나갔습니다. 이제 띄어쓰기에서만 접힙니다 —
    keep-all 이 낱말 가운데를 지켜 줍니다.
    clone 이 없으면 접힌 두 조각 중 안쪽 모서리가 각지고 여백도 사라집니다. */
@@ -987,7 +987,7 @@ a.cta{text-decoration:none}
 
 
 /* ── 본문 안 링크 ──
-   바깥으로 나가는 길입니다. 딱지처럼 보이면 안 되고, 그냥 글자여도 안 됩니다.
+   바깥으로 나가는 길입니다. 태그처럼 보이면 안 되고, 그냥 글자여도 안 됩니다.
    밑줄을 글자에서 한 칸 떨어뜨려 받침을 안 건드리게 합니다. */
 .doc p a[href^="http"],.doc dd a[href^="http"],.doc li a[href^="http"]{
   color:var(--ink);text-decoration:underline;text-decoration-color:rgb(26 26 26/.28);
@@ -1320,7 +1320,7 @@ a.cta{text-decoration:none}
       <svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
       <input id="q" type="text" placeholder="내용 검색" autocomplete="off" aria-label="문서 전체 내용 검색">
       <kbd id="qKbd">/</kbd>
-      <button class="clr" id="qClr" type="button" aria-label="검색과 딱지 거르기 지우기" hidden>
+      <button class="clr" id="qClr" type="button" aria-label="검색과 태그 필터 지우기" hidden>
         <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </label>
@@ -2321,7 +2321,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
   <section id="g0" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">2-1 · 예시 1</div><h2>Form 만들기<span class="ft">코드가 읽을 폼</span></h2></div></div>
     <div class="chips"><span class="chip">#2026.02</span><span class="chip">#Apps_Script</span><span class="chip">#Forms</span><span class="chip">#해외유학장학생_대면_교류_지원</span></div>
-    <p class="lead">폼은 손으로 만들면 5분이면 되지만 그 답을 사람이 아니라 코드가 읽기 때문에, 질문 제목 한 줄이 그대로 코드의 열쇠가 됩니다.</p>
+    <p class="lead">폼은 손으로 만들면 5분이면 되지만 그 답을 사람이 아니라 코드가 읽기 때문에, 질문 제목 한 줄이 그대로 코드의 키가 됩니다.</p>
 
     <div class="steps">
 
@@ -2339,7 +2339,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
       <div class="stp">
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
-          <p>값 하나가 지나가는 자리는 셋인데, <strong>폼 질문 제목 · 템플릿 문서에 적어둔 자리 · 코드가 찾는 열쇠가 모두 같은 글자여야 합니다.</strong></p>
+          <p>값 하나가 지나가는 자리는 셋인데, <strong>폼 질문 제목 · 템플릿 문서에 적어둔 자리 · 코드가 찾는 키가 모두 같은 글자여야 합니다.</strong></p>
           <p>한 곳이라도 다르면 오류가 나지 않고 <span class="tok a">그 자리만 조용히 빈칸으로</span> 나가기 때문에, 세 곳을 같이 놓고 맞추는 것이 폼을 만드는 일의 전부입니다.</p>
 
           <div class="tw"><table>
@@ -2439,7 +2439,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
 
           <div class="ann">
       <svg viewBox="0 0 660 250" xmlns="http://www.w3.org/2000/svg" role="img"
-        aria-label="폼 응답 시트의 열 제목을 코드가 열쇠로 쓰는 방식을 손글씨 주석으로 표시한 그림">
+        aria-label="폼 응답 시트의 열 제목을 코드가 키로 쓰는 방식을 손글씨 주석으로 표시한 그림">
         <!-- ── 주석 화살촉 세 개. 곡선 끝 접선에 맞춰 자동으로 돌아갑니다 ──
              날개는 축에서 정확히 ±25.3°, 길이 10.3으로 좌우 대칭입니다.
              손으로 좌표를 찍으면 이 각도가 어긋나 촉이 갈고리처럼 보입니다.
@@ -2488,7 +2488,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         <!-- 가리키는 손 · 코드가 실제로 하는 일 -->
         <g stroke="#1a5fb4" fill="#1a5fb4">
           <path class="st" d="M344,201 C362,197 380,188 390,176" marker-end="url(#hwG)"/>
-          <text class="hw" x="330" y="213" text-anchor="end" stroke="none">이 문구가 그대로 열쇠</text>
+          <text class="hw" x="330" y="213" text-anchor="end" stroke="none">이 문구가 그대로 키</text>
           <path class="st" d="M472,199 C492,196 508,187 516,175" marker-end="url(#hwG)"/>
           <text class="hw" x="440" y="218" stroke="none">'비공개'면 연락처를 뺍니다</text>
         </g>
@@ -2498,7 +2498,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
           <text class="hw" x="330" y="233" text-anchor="end" stroke="none">한 글자만 고쳐도 빈칸</text>
         </g>
       </svg>
-      <div class="ann-cap">코드는 <strong>열 제목 글자 그대로</strong>를 열쇠로 씁니다. 폼 문구를 다듬는 순간 그 열쇠가 사라집니다.</div>
+      <div class="ann-cap">코드는 <strong>열 제목 글자 그대로</strong>를 키로 씁니다. 폼 문구를 다듬는 순간 그 키가 사라집니다.</div>
     </div>
         </div>
       </div>
@@ -2521,7 +2521,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
       <div class="stp">
         <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
-          <p>폼 질문의 <span class="tok a">문구를 바꾸면 그 값이 조용히 빈칸이 됩니다</span>. 코드가 질문 제목을 열쇠로 쓰기 때문입니다.</p>
+          <p>폼 질문의 <span class="tok a">문구를 바꾸면 그 값이 조용히 빈칸이 됩니다</span>. 코드가 질문 제목을 키로 쓰기 때문입니다.</p>
           <p>맞춤법을 고치거나 물음표 하나를 더해도 마찬가지이기 때문에, <strong>폼 문구는 코드의 일부입니다.</strong></p>
         </div>
       </div>
@@ -3418,7 +3418,7 @@ Thumbs.db</code></div>
       </div>
       <div class="prn-out" id="prnOut"></div>
       <div class="prn-acts">
-        <button class="cta" id="rcpGo">영수증 뽑기</button>
+        <button class="cta" id="rcpGo">영수증 만들기</button>
         <button class="cta gh" id="rcpSave" disabled>PNG로 저장</button>
         <button class="cta gh" id="rcpPrintBtn" disabled>인쇄</button>
       </div>
@@ -3728,10 +3728,10 @@ function runSearch(){
 }
 q.addEventListener('input', runSearch);
 
-/* ── 딱지 누르면 그 딱지만 걸러 봅니다 ──
-   검색이 이미 쪽 전체 글자를 훑고 딱지도 그 안에 있으므로,
-   딱지 글자를 검색창에 넣고 돌리기만 하면 됩니다.
-   같은 딱지를 다시 누르면 풀립니다. */
+/* ── 태그 누르면 그 태그만 걸러 봅니다 ──
+   검색이 이미 쪽 전체 글자를 훑고 태그도 그 안에 있으므로,
+   태그 글자를 검색창에 넣고 돌리기만 하면 됩니다.
+   같은 태그를 다시 누르면 풀립니다. */
 function clearFilter(){
   q.value = '';
   runSearch();
@@ -3808,7 +3808,7 @@ const FIX = {
     {k:'path',l:'명단 파일',c:'지원자 명단 .xlsx 경로',d:['담당 평가자가 적혀 있어야 합니다']},
     {k:'path',l:'서식 파일',c:'심사표 템플릿 .xlsx 경로',d:['드롭다운·시트 보호가 걸린 원본을 그대로 씁니다']},
     {k:'list',l:'열 ↔ 칸 대응표',c:'명단의 어느 열 → 서식의 어느 칸',d:['서식이 바뀌면 이 표만 고칩니다','g:실제로 다음 해에 여기만 손봤습니다']},
-    {k:'rule',l:'이름표 위치',c:'식별번호 · 평가자명을 심을 칸',d:['회수할 때 이 두 값으로 자리를 찾습니다','a:띄어쓰기 하나만 달라도 매칭이 실패합니다']},
+    {k:'rule',l:'식별자 위치',c:'식별번호 · 평가자명을 심을 칸',d:['회수할 때 이 두 값으로 자리를 찾습니다','a:띄어쓰기 하나만 달라도 매칭이 실패합니다']},
   ],
   p4:[
     {k:'url',l:'시스템 주소',c:'로그인할 시스템 URL',d:['사내 시스템 주소를 넣습니다']},
@@ -3836,7 +3836,7 @@ const FIX = {
   ],
   g2:[
     {k:'key',l:'캘린더 ID',c:'일정을 올릴 공유 캘린더',d:['캘린더 설정 → 캘린더 통합 → 캘린더 ID']},
-    {k:'list',l:'폼 질문 제목',c:'응답을 꺼낼 때 쓰는 열쇠',d:['코드가 질문 제목을 그대로 열쇠로 씁니다','a:폼 문구를 한 글자만 고쳐도 그 값이 빈칸이 됩니다']},
+    {k:'list',l:'폼 질문 제목',c:'응답을 꺼낼 때 쓰는 키',d:['코드가 질문 제목을 그대로 키로 씁니다','a:폼 문구를 한 글자만 고쳐도 그 값이 빈칸이 됩니다']},
     {k:'rule',l:'일정 길이',c:'시작 시각부터 4시간',d:['g:신청자가 직접 고르게 하면 더 정확합니다']},
     {k:'rule',l:'비공개 판정',c:"'비공개'가 들어 있으면 연락처 제외",d:['개인정보 노출을 규칙으로 막는 자리','a:선택지 문구가 바뀌면 필터가 풀립니다']},
   ],
