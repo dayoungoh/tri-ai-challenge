@@ -375,6 +375,20 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 /* ── 무이 사원증 ──
    쪽의 첫 덩이. 누구인지(신상)와 만질 수 있는 것(쓰다듬기)을 한 카드에 둡니다.
    신상은 전부 장난이라는 것이 값 자체로 보입니다 — 직책이 골골송 담당입니다. */
+/* ── 무이 소개글이 한 어절씩 나타납니다 ──
+   본문에는 쓰지 않습니다. 읽으러 온 사람을 기다리게 하는 장치라, 곁길 쪽에만 둡니다.
+   글은 처음부터 자리에 다 있고 보이기만 감춥니다. 배치가 흔들리지 않고,
+   화면을 못 보는 사람에게는 처음부터 전문이 읽힙니다. */
+#muiLead .w{display:inline-block;opacity:0;filter:blur(3px);transform:translateY(3px)}
+#muiLead .w.on{animation:muiIn 320ms cubic-bezier(.22,.61,.25,1) forwards}
+@keyframes muiIn{to{opacity:1;filter:blur(0);transform:none}}
+#muiLead .cur{display:inline-block;width:2px;height:.95em;vertical-align:-2px;margin-left:2px;
+  border-radius:1px;background:var(--ink);animation:muiBlink 1s steps(1,end) infinite}
+@keyframes muiBlink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){
+  #muiLead .w{opacity:1;filter:none;transform:none;animation:none}
+  #muiLead .cur{display:none}
+}
 .pet{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 20px;
   margin-top:22px;padding:18px;align-items:start;
   background:var(--inset);border-radius:14px;box-shadow:inset 0 0 0 1px var(--line)}
@@ -3351,8 +3365,8 @@ Thumbs.db</code></div>
   <!-- 무이 · 목차 밖 · 문은 프로필의 동그라미와 링크 둘 -->
   <section id="mui" class="page">
     <button class="mui-back" id="muiBack"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H6M11 6l-6 6 6 6"/></svg> 쓴 사람으로</button>
-    <div class="phead"><div class="ttl"><div class="eyebrow">무이</div><h2>무이네 편의점</h2></div></div>
-    <p class="lead">여기부터는 일과 아무 상관이 없습니다. 무이가 지키는 가게입니다.</p>
+    <div class="phead"><div class="ttl"><div class="eyebrow">Easter Egg</div><h2>무이네 편의점</h2></div></div>
+    <p class="lead" id="muiLead">2021년 대구 길거리에서 태어나, 지금은 캣타워 2층 창가에서 편의점을 운영하고 있습니다.<br>빵끈과 방울을 좋아하고, 옷장과 이불 속에 숨는 것을 즐깁니다.<br>병원, 목욕, 캐리어, 양치는 아주 싫어합니다.<br>오늘도 무이의 편의점은 평화롭게 영업 중입니다.</p>
 
     <div class="pet" id="pet">
       <img id="petImg" src="photos/receipt/mui-badge.jpg" alt="무이" width="132" height="132">
@@ -3970,6 +3984,49 @@ ucBtn.addEventListener('click', () => showMe());
 
 /* ── 무이 쪽 ──
    쓴 사람과 같은 곁길입니다. 목차에 없고, 페이저도 서지 않습니다. */
+
+/* ── 무이 소개글 타자 ──
+   어절을 미리 감싸 두어 자리를 잡아 놓고, 보이기만 차례로 켭니다. */
+const muiLead = document.getElementById('muiLead');
+let muiWords = [], muiTimer = 0;
+(() => {
+  if(!muiLead) return;
+  const NL = String.fromCharCode(10);
+  [...muiLead.childNodes].forEach(node => {
+    if(node.nodeType !== 3) return;
+    const frag = document.createDocumentFragment();
+    node.nodeValue.split(/(\s+)/).forEach(part => {
+      if(!part) return;
+      if(!part.trim()){ frag.appendChild(document.createTextNode(part)); return; }
+      const w = document.createElement('span');
+      w.className = 'w'; w.textContent = part;
+      frag.appendChild(w);
+      frag.appendChild(document.createTextNode(' '));
+    });
+    node.parentNode.replaceChild(frag, node);
+  });
+  muiWords = [...muiLead.querySelectorAll('.w')];
+})();
+
+function typeMui(){
+  if(!muiWords.length) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+    muiWords.forEach(w => w.classList.add('on')); return;
+  }
+  clearInterval(muiTimer);
+  muiLead.querySelector('.cur')?.remove();
+  muiWords.forEach(w => w.classList.remove('on'));
+  const cur = document.createElement('span');
+  cur.className = 'cur'; cur.setAttribute('aria-hidden', 'true');
+  let i = 0;
+  muiTimer = setInterval(() => {
+    if(i >= muiWords.length){ clearInterval(muiTimer); cur.remove(); return; }
+    muiWords[i].classList.add('on');
+    muiWords[i].after(cur);
+    i++;
+  }, 46);
+}
+
 function showMui(push = true){
   allPages.forEach(p => p.classList.remove('on'));
   muiSec.classList.add('on');
@@ -3983,6 +4040,7 @@ function showMui(push = true){
   side.classList.remove('open'); scrim.classList.remove('on');
   mbtn.setAttribute('aria-expanded', 'false');
   live.textContent = '무이네 편의점';
+  typeMui();
   if(window.__rotOff) window.__rotOff();
   buildCats();
   hl.style.opacity = 0; ship.style.opacity = 0;
