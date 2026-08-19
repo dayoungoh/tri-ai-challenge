@@ -1435,7 +1435,7 @@ a.cta{text-decoration:none}
       <div class="hd"><span class="n">1</span><div class="t">로컬 처리</div></div>
       <div class="bd">
         <p>개인정보와 대외비 자료를 외부 서비스에 올리지 않고 <strong>내 PC 안에서 처리</strong>할 수 있습니다.</p>
-        <p>가령, 선발 심사 중 지원자의 서류를 병합하고 싶은 경우, 개인정보가 들어 있어 AI나 외부 웹서비스(예. <a href="https://www.ilovepdf.com/" target="_blank" rel="noopener noreferrer">ilovepdf</a>)에 업로드할 수 없습니다. 이런 상황에 Python을 사용하면 유용합니다.</p>
+        <p>가령, 선발 심사 중 지원자의 서류를 병합하고 싶은 경우, 개인정보가 들어 있어 AI나 외부 웹서비스(예. <a href="https://www.ilovepdf.com/" target="_blank" rel="noopener noreferrer">ilovepdf</a>)에 업로드할 수 없습니다. <strong>이런 상황에 Python을 사용하면 유용합니다.</strong></p>
         <div class="note warn"><strong>다만, 밖으로 안 나가는 것은 자료이지 코드는 아닙니다!</strong> 코드 안에 든 정보(예. <span class="tok a">API</span>, <span class="tok a">비밀번호</span>)는 AI에 잘못 보낼 수 있기 때문에 항상 조심해야 합니다.</div>
       </div>
     </div>
@@ -1456,7 +1456,7 @@ a.cta{text-decoration:none}
     <div class="stp">
       <div class="hd"><span class="n">3</span><div class="t">반복 업무 자동화</div></div>
       <div class="bd">
-        <p>"파일 열기 → 값 복사 → 붙여넣기 → 저장"처럼 규칙이 정해진 일은 그 규칙을 코드로 한 번 정해 두면 됩니다.</p>
+        <p>"파일 열기 → 값 복사 → 붙여넣기 → 저장"처럼 규칙이 정해진 일은 <strong>그 규칙을 코드로 한 번 정해 두면 됩니다.</strong></p>
         <p>예를 들어 엑셀 시트의 어느 셀에 있는 값을 심사표의 어느 셀로 옮길지 정해져 있다면,</p>
         <div class="pre" data-nm="제50기 해외유학후보장학생 선발" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code>CELL_MAPPING = {
     <u>'D'</u>: <u>'B3'</u>, <u>'C'</u>: <u>'E3'</u>, <u>'L'</u>: <u>'B4'</u>, <u>'M'</u>: <u>'E4'</u>,
@@ -1470,7 +1470,7 @@ a.cta{text-decoration:none}
       <div class="hd"><span class="n">4</span><div class="t">Human Error 감소</div></div>
       <div class="bd">
         <p>사람의 실수는 <span class="tok a">불규칙</span>합니다. 300명 중 87명에서만 오류가 발생할 수도 있고, 왜 그 87명에게서 오류가 발생했는지 원인을 찾기 어려울 수 있습니다. 결국 300개의 결과를 모두 확인해야 합니다. 
-반면 코드는 <span class="tok g">같은 규칙을 반복해서 적용</span>합니다. 코드에 잘못된 규칙이 있다면 300개에 같은 방식으로 오류가 발생할 수 있습니다. 원인을 하나 찾아 수정하면 같은 규칙이 적용된 모든 결과를 바로잡을 수 있습니다.</p>
+반면 코드는 <span class="tok g">같은 규칙을 반복해서 적용</span>합니다. 코드에 잘못된 규칙이 있다면 300개에 같은 방식으로 오류가 발생할 수 있습니다. <strong>원인을 하나 찾아 수정하면 같은 규칙이 적용된 모든 결과를 바로잡을 수 있습니다.</strong></p>
         <p>사람의 <span class="tok">취향, 선택, 미감</span>이 필요한 일에서는 이런 <span class="tok">변칙성이 오히려 강점</span>이 되기도 합니다. 하지만 규칙에 따라 반복하는 문서 처리에서는 <strong>일관되게 처리하는 것이 더 중요</strong>합니다.</p>
         <div class="note warn"><strong>다만 코드가 무엇이 잘못되었는지를 스스로 판단하는 것은 아닙니다.</strong> 따라서 예상한 결과가 나왔는지 확인할 수 있도록 <span class="tok">검증 코드</span>를 함께 작성하고, 작업이 끝난 뒤에는 실제 <span class="tok">결과를 확인하는 단계</span>가 필요합니다.</div>
       </div>
