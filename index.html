@@ -882,8 +882,10 @@ a.cta{text-decoration:none}
 .stp .t{margin-top:8px;font-size:12pt;font-weight:600;color:var(--ink);letter-spacing:-.004em;
   word-break:keep-all;line-height:1.36}
 /* 비고는 차례의 한 칸이 아닙니다. 번호 대신 다른 표시를 답니다 */
-.stp>.hd .n.alt{background:var(--red-soft);color:var(--red);
-  box-shadow:inset 0 0 0 1px rgb(179 38 30/.3)}
+/* 비고는 주의가 아니라 덧붙이는 말입니다. 빨강은 주의 기호에만 씁니다. */
+.stp>.hd .n.alt{background:var(--inset);color:var(--ink-3);
+  box-shadow:inset 0 0 0 1px var(--line)}
+.stp>.hd .n.alt svg{width:14px;height:14px}
 .stp>.hd .n.alt+.t{color:var(--ink-2)}
 .stp>.bd>*:first-child{margin-top:0}
 @media(max-width:1000px){
@@ -1602,31 +1604,31 @@ a.cta{text-decoration:none}
   <section id="p2" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-1 · 예시 1</div><h2>PDF 편집·병합</h2></div></div>
     <div class="chips"><span class="chip">#2024.07</span><span class="chip">#Python</span><span class="chip">#PyPDF</span><span class="chip">#제50기_해외유학후보장학생_선발</span></div>
-    <p class="lead">제가 처음 AI로 만들었던 Python 코드입니다. 당시 해외유학후보장학생 선발 과정에서 서류 평가자에게 지원자의 각종 서류를 하나의 PDF 파일로 전달하는 것이 목적이었습니다. 다만, 1) 로컬에서 처리할 수 있는 마땅한 병합 프로그램이 없었고, 2) AI나 외부 서비스에 업로드할 수 없는 제약(개인정보 유출 우려)으로 인하여 ChatGPT와 함께 Python 코딩을 시작하게 되었습니다.</p>
+    <p class="lead">제가 처음 AI로 만들었던 Python 코드입니다. 당시 해외유학후보장학생 선발 과정에서 서류 평가자에게 지원자의 각종 서류를 하나의 PDF 파일로 전달하는 것이 목적이었습니다. 다만, 1) 로컬에서 처리할 수 있는 마땅한 병합 프로그램이 없었고, 2) AI나 외부 서비스에 업로드할 수 없는 제약(개인정보 유출 우려)으로 인하여 ChatGPT와 함께 Python 코딩을 시작하게 되었습니다. (더불어, 단순반복을 아주 괴로워하고 야근이 하기 싫은 저의 개인적인 성향도 강한 동기가 되었습니다... ^^)</p>
 
     <div class="steps">
 
       <div class="stp">
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
-          <p>지원 서류는 지원자가 각자 제출하며, 한 사람 앞으로 <span class="tok">열 개 남짓</span>이 개인 폴더에 쌓입니다.</p>
-          <p>반면 심사는 지원자 단위로 이루어지므로, 심사위원께는 <span class="tok">1인 1파일</span> 형태로 전달되어야 합니다.</p>
-          <p><strong>이에 따라 서류가 접수되는 형태와 심사에 필요한 형태가 서로 다른 상황이 매 회차 발생하였고,</strong> 그 간극은 사람이 메울 수밖에 없었습니다.</p>
-          <p><strong>병합에는 두 가지 규칙이 있습니다.</strong> 정해진 <span class="tok">순서표</span>를 따라야 하고, 논문은 <span class="tok">앞 두 쪽</span>까지만 포함합니다.</p>
-          <p>지원자가 수백 명에 이르는 만큼 <strong>동일한 판단을 수백 회 반복하게 되며,</strong> 한 명당 4~8분이 소요되었습니다.</p>
-          <p><strong>다만, 더 큰 문제는 소요 시간이 아니었습니다.</strong> 순서가 뒤바뀌거나 서류가 누락되어도 파일은 정상적으로 열리기 때문에, 오류가 드러나지 않은 채 심사 단계까지 넘어갑니다.</p>
+          <p>지원자는 지원서, 학적·학력정보(학·석·박 공식 성적표), TOEFL 또는 IELTS, 영문 CV 등을 필수로 제출하고, 인문사회 분야 지원자는 Writing Sample을 추가로 제출합니다. 여기에 GRE·GMAT·HSK, 논문 및 저서 등 선택 서류가 더해져, 지원자별로 약 <span class="tok">10개 내외의 파일</span>이 <strong>개인 폴더에 분산되어 제출됩니다.</strong></p>
+          <p>반면 심사는 지원자 단위로 이루어지므로, 심사 편의를 위하여 심사위원에게는 여러 서류를 순서대로 묶은 <span class="tok">1인 1 파일</span> <strong>형태로 전달하고자 했습니다.</strong></p>
+          <p>따라서 접수된 여러 개의 파일을 <strong>지원자별 하나의 PDF로 재구성하는 작업이 필요했습니다.</strong></p>
+          <p>재구성 과정에서는 정해진 순서에 따라 서류를 배열하고, 논문 및 저서는 <strong>앞 두 페이지만 포함</strong>하는 등 일정한 처리 규칙을 적용해야 했습니다.</p>
+          <p>만약 손으로 직접 병합한다면, 지원자가 수백 명 단위이니 <strong>동일한 판단을 수백 회 반복하게 되며,</strong> 한 명당 4~8분(예측)이 소요되는 작업입니다.</p>
+          <p>수작업 병합은 <strong>서류 누락이나 순서 오류의 가능성이 있어,</strong> 작업 후 별도의 검증 과정이 필요합니다.</p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
-          <p><strong>작업을 네 단계로 나누었습니다.</strong> 파일명으로 서류 종류를 판별하고, 정해진 순서로 병합하며, 논문만 앞 두 쪽을 잘라내고, 전공별 폴더에 저장합니다.</p>
+          <p><strong>작업을 네 단계로 자동화했습니다.</strong> 1) 파일명으로 서류 종류를 판별하고, 2) 정해진 순서에 따라 병합한 뒤, 3) 논문 및 저서는 앞 두 페이지만 포함하여 4) 전공별 폴더에 저장합니다.</p>
 
-          <p>이것이 가능한 것은 지원자가 제출한 서류를 내려받을 때 <strong>제출 시스템이 그 항목의 낱말을 파일명에 넣어 주기 때문입니다.</strong> TOEFL 자리에 낸 파일에는 이름에 <span class="tok m">TOEFL</span>이 들어 있어서, 파일을 열지 않고도 어느 자리의 서류인지 알 수 있습니다.</p>
+          <p>이 방식이 가능한 것은 <strong>제출 시스템이 서류를 내려받을 때 해당 항목의 Keyword를 파일명에 넣어 주기 때문입니다.</strong> TOEFL 항목에 제출된 파일에는 파일명에 <span class="tok m">TOEFL</span>이 포함되어 있어, 파일을 열지 않고도 어느 항목의 서류인지 판별할 수 있습니다. 서류 종류가 확인되지 않는 파일은 병합 대상에서 제외하도록 했습니다.</p>
 
           <div class="ann">
             <svg viewBox="0 0 660 250" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="지원자 폴더에 흩어진 PDF 를 순서표대로 한 장으로 잇고 전공별 폴더에 넣는 그림">
+              aria-label="전공별 폴더 안 지원자 폴더에 흩어진 PDF 를 정해진 순서로 한 장으로 잇고, 전공별 폴더에 지원자마다 한 파일씩 쌓는 그림">
               <defs>
                 <marker id="fwN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
                   markerUnits="userSpaceOnUse" orient="auto">
@@ -1642,37 +1644,37 @@ a.cta{text-decoration:none}
                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
               </defs>
 
-              <path d="M52,96 q0,-7 7,-7 h24 l7,9 h47 q7,0 7,7 v38 H52 Z" fill="#fafaf9" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/><path d="M58,69 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M71,66 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M78,71 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M91,68 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M98,69 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M111,66 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M49,114 h92 q7,0 6,8 l-5,26 q-1,8 -8,8 H57 q-7,0 -8,-8 l-5,-26 q-1,-8 6,-8 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="95" y="176" text-anchor="middle">지원자 폴더</text><text class="ic-s" x="95" y="192" text-anchor="middle">PDF 10여 개</text>
+              <path d="M52,96 q0,-7 7,-7 h24 l7,9 h47 q7,0 7,7 v38 H52 Z" fill="#fafaf9" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/><path d="M58,69 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M71,66 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M78,71 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M91,68 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M98,69 q0,-3 3,-3 h13 l8,8 v29 q0,3 -3,3 h-18 q-3,0 -3,-3 Z" fill="#fff" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M111,66 v5 q0,3 3,3 h5" fill="none" stroke="#737370" stroke-width="1.4" stroke-linejoin="round"/><path d="M49,114 h92 q7,0 6,8 l-5,26 q-1,8 -8,8 H57 q-7,0 -8,-8 l-5,-26 q-1,-8 6,-8 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="95" y="176" text-anchor="middle">지원자 폴더</text><text class="ic-s" x="95" y="192" text-anchor="middle">전공별 폴더 안 · PDF 10개 내외</text>
               <path d="M178,128 L246,128" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#fwN)"/>
               <text class="ic-s" x="212" y="118" text-anchor="middle">훑기</text>
-              <path d="M303,96 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M329,93 v8 q0,3 3,3 h8" fill="none" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M307.5,91.5 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M333.5,88.5 v8 q0,3 3,3 h8" fill="none" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M312,87 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M338,84 v8 q0,3 3,3 h8" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><rect x="322" y="100" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="101" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="110" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="111" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="120" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="121" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="130" width="4" height="4" rx="1" fill="#1a5fb4"/><rect x="330" y="131" width="12" height="2" rx="1" fill="#1a5fb4" opacity=".55"/><text class="ic-t" x="332" y="176" text-anchor="middle">순서표대로 잇기</text><text class="ic-s" x="332" y="192" text-anchor="middle">논문은 앞 2쪽만</text>
+              <path d="M303,96 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M329,93 v8 q0,3 3,3 h8" fill="none" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M307.5,91.5 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M333.5,88.5 v8 q0,3 3,3 h8" fill="none" stroke="#d8d8d4" stroke-width="1.2" stroke-linejoin="round"/><path d="M312,87 q0,-3 3,-3 h26 l11,11 v38 q0,3 -3,3 h-34 q-3,0 -3,-3 Z" fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><path d="M338,84 v8 q0,3 3,3 h8" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/><rect x="322" y="100" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="101" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="110" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="111" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="120" width="4" height="4" rx="1" fill="#1a1a1a"/><rect x="330" y="121" width="20" height="2" rx="1" fill="#1a1a1a" opacity=".55"/><rect x="322" y="130" width="4" height="4" rx="1" fill="#1a5fb4"/><rect x="330" y="131" width="12" height="2" rx="1" fill="#1a5fb4" opacity=".55"/><text class="ic-t" x="332" y="176" text-anchor="middle">1인 1 파일</text><text class="ic-s" x="332" y="192" text-anchor="middle">논문·저서는 앞 2페이지만</text>
               <path d="M392,128 L460,128" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linecap="round" marker-end="url(#fwG)"/>
               <text class="ic-s" x="426" y="118" text-anchor="middle" fill="#1a5fb4">저장</text>
-              <path d="M524,96 q0,-7 7,-7 h24 l7,9 h47 q7,0 7,7 v38 H524 Z" fill="#e8f0fb" stroke="#1a5fb4" stroke-width="1.5" stroke-linejoin="round"/><path d="M552,73 q0,-3 3,-3 h17 l8,8 v33 q0,3 -3,3 h-22 q-3,0 -3,-3 Z" fill="#fff" stroke="#1a5fb4" stroke-width="1.4" stroke-linejoin="round"/><path d="M569,70 v5 q0,3 3,3 h5" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linejoin="round"/><path d="M521,114 h92 q7,0 6,8 l-5,26 q-1,8 -8,8 H529 q-7,0 -8,-8 l-5,-26 q-1,-8 6,-8 Z" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="567" y="176" text-anchor="middle" fill="#1a5fb4">전공별 폴더</text><text class="ic-s" x="567" y="192" text-anchor="middle" fill="#1a5fb4">한 사람 한 파일</text>
+              <path d="M524,96 q0,-7 7,-7 h24 l7,9 h47 q7,0 7,7 v38 H524 Z" fill="#e8f0fb" stroke="#1a5fb4" stroke-width="1.5" stroke-linejoin="round"/><path d="M552,73 q0,-3 3,-3 h17 l8,8 v33 q0,3 -3,3 h-22 q-3,0 -3,-3 Z" fill="#fff" stroke="#1a5fb4" stroke-width="1.4" stroke-linejoin="round"/><path d="M569,70 v5 q0,3 3,3 h5" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linejoin="round"/><path d="M521,114 h92 q7,0 6,8 l-5,26 q-1,8 -8,8 H529 q-7,0 -8,-8 l-5,-26 q-1,-8 6,-8 Z" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5" stroke-linejoin="round"/><text class="ic-t" x="567" y="176" text-anchor="middle" fill="#1a5fb4">전공별 폴더</text><text class="ic-s" x="567" y="192" text-anchor="middle" fill="#1a5fb4">전공별로 지원자 수만큼 쌓임</text>
 
               <g stroke="#737370" fill="#737370">
                 <path class="st" d="M118,34 C112,46 105,54 100,60" marker-end="url(#fwN)"/>
-                <text class="hw" x="124" y="28" stroke="none">이름으로 종류를 알아냅니다</text>
+                <text class="hw" x="124" y="28" stroke="none">파일명으로 서류 식별</text>
               </g>
               <g stroke="#1a5fb4" fill="#1a5fb4">
                 <path class="st" d="M420,52 C400,58 380,66 362,78" marker-end="url(#fwG)"/>
-                <text class="hw" x="426" y="46" stroke="none">정해진 차례로 포갭니다</text>
+                <text class="hw" x="426" y="46" stroke="none">keywords 순서대로 이어 붙입니다</text>
               </g>
               <g stroke="#a16207" fill="#a16207">
                 <path class="st" d="M60,224 C54,206 50,182 49,154" marker-end="url(#fwA)"/>
-                <text class="hw" x="22" y="240" stroke="none">이름이 안 맞으면 여기서 빠집니다</text>
+                <text class="hw" x="22" y="240" stroke="none">keyword 확인이 안 되면 병합에서 제외</text>
               </g>
             </svg>
             <div class="ann-cap">사람이 열 개를 골라 붙이던 자리를, <strong>파일명 규칙 하나</strong>가 대신합니다.</div>
           </div>
 
-          <p>순서 규칙은 코드 곳곳에 흩어 두지 않고 <strong><span class="tok m">keywords</span> 목록 한 줄에 모아 두었습니다.</strong> 바뀌는 것은 코드가 아니라 업무이기 때문입니다. 이후 손대야 할 곳은 <span class="tok">읽어올 폴더</span>, <span class="tok">저장할 폴더</span>, <span class="tok">이 목록 한 줄</span>입니다.</p>
+          <p>서류의 순서는 <span class="tok m">keywords</span> 목록 하나로 관리했습니다. 병합 규칙이 바뀌면 <strong>프로그램의 로직을 수정하는 것이 아니라 이 목록의 순서나 항목만 변경하면 됩니다.</strong></p>
 
           <div class="pre" data-nm="제50기 해외유학후보장학생 선발" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code>keywords = ["지원서", "추천서", "학적 및 학력정보", "TOEFL", "IELTS",
             "GRE", "GMAT", "HSK", "영문CV", "Writing Sample", "논문 및 저서"]
 
 pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_pages</code></div>
-          <div class="pre-cap">적힌 차례가 곧 병합 차례입니다. 순서가 바뀌면 낱말 자리를 옮기고, 서류가 늘면 낱말을 하나 더합니다. 논문만 앞 두 쪽으로 자르는 조건도 <span class="tok m">min</span> 한 번으로 끝납니다.</div>
+          <div class="pre-cap">적힌 순서가 곧 병합 순서입니다. 순서가 바뀌면 목록의 위치를 바꾸고, 서류가 추가되면 항목을 추가합니다. 논문 및 저서만 앞 두 페이지만 포함하는 조건도 하나의 규칙으로 처리했습니다.</div>
         </div>
       </div>
       <div class="stp">
@@ -1689,14 +1691,14 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
             <tr><td>순서 규칙이 적힌 곳</td><td>사람의 기억</td><td><strong>코드 한 줄</strong></td></tr>
       </tbody>
     </table></div>
-          <p>순서와 쪽수 규칙이 한 곳에만 존재하므로 <strong>매번 동일한 결과가 산출되며,</strong> 규칙이 변경되면 그 줄만 고치면 됩니다.</p>
+          <p>업무 규칙을 한 곳에 모아 관리하여 <strong>동일한 규칙을 일관되게 적용하고,</strong> 규칙이 바뀌면 해당 부분만 수정할 수 있습니다.</p>
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
-          <p>추천서와 어학 성적처럼 필수가 아닌 서류는 애초에 없을 수 있는데, 없으면 그 자리는 그냥 건너뜁니다. 다만, <strong>코드는 안 낸 것과 파일명이 어긋나 못 찾은 것을 구분하지 못하기 때문에,</strong> 둘 다 <span class="tok a">조용히 빠집니다</span>.</p>
-          <p>오류도 발생하지 않기 때문에, 실행 후 <span class="tok a">개수가 맞는지</span> 확인하는 절차를 두었습니다. <strong>이 검산은 아직 사람이 합니다.</strong></p>
+          <p>추천서나 어학 성적처럼 선택 제출 서류는 제출하지 않은 경우 해당 순서를 건너뜁니다. 다만, 코드상으로는 ‘미제출’과 ‘파일명 불일치로 서류를 찾지 못한 경우’를 구분하지 않기 때문에, 두 경우 모두 별도의 오류 없이 제외됩니다. 따라서 <strong>파일명으로 식별된 서류 수와 실제 병합된 서류 수를 비교하는 검증 과정을 꼭 추가해야 합니다.</strong> </p>
+          <p>지금 돌이켜 생각해 보면, 제출한 1) 학·석·박 성적표가 제출 기준인 ‘최근 6개월 이내’에 해당하는지, 2) TOEFL/IELTS 성적표가 아직 유효한지, 3) 추천서가 실제 추천서인지(추천서 대신 논문을 제출하시는 분들도 종종 있습니다) 등을 확인하는 <strong>검증 과정까지 코딩으로 자동화했으면 좋았겠다는 생각이 듭니다.</strong> </p>
           <p>2024년 7월 50기 선발에 사용하였으며, 서류 종류나 순서가 변경될 경우 <span class="tok m">keywords</span> 목록을 수정해야 합니다.</p>
         </div>
       </div>
@@ -1787,7 +1789,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p>명단의 <strong>열 위치가 바뀌면 전체가 어긋납니다.</strong> 다만, 오류는 발생하지 않고 <span class="tok a">잘못된 값이 조용히 채워지므로</span> 이쪽이 더 위험합니다.</p>
           <p>이름표는 <span class="tok">띄어쓰기 하나</span>에도 일치하지 않습니다. <strong>평가자명을 임의로 수정하면 해당 줄만 누락됩니다.</strong></p>
@@ -1869,7 +1871,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p><strong>메일은 되돌릴 수 없습니다.</strong> 잘못 발송된 줄은 삭제할 수 없고 받는 분의 편지함에 그대로 남습니다.</p>
           <p>다만, 이 자동화만큼은 <span class="tok a">실행 전에 명단과 첨부를 눈으로</span> 확인하는 절차를 두고 있습니다. 코드보다 이 습관이 중요합니다.</p>
@@ -1943,7 +1945,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p>화면이 변경되면 중단됩니다. 시스템이 개편될 경우 <span class="tok">id</span>와 <span class="tok m">xpath</span>를 다시 지정해야 합니다.</p>
           <p><span class="tok a">대기 시간이 짧으면 조용히 어긋납니다</span> — 화면이 아직 표시되지 않은 상태에서 다음을 누르면 오류가 아니라 빈 값이 입력됩니다.</p>
@@ -2003,7 +2005,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p><strong>파일 업로드는 이 시점에 완성하지 못하였습니다.</strong> 계정을 생성하는 값 입력까지는 되었으나 <strong>파일을 첨부해 올리는 부분</strong>은 2025년에 미완으로 남겼습니다. 소스에 그대로 적혀 있습니다 — <span class="tok am">미완성 UNTIL 2026</span>.</p>
           <p><span class="tok a">화면이 변경되면 중단됩니다</span>. 버튼 위치를 화면 주소로 지정하기 때문에, 시스템이 개편되면 다시 지정해야 합니다.</p>
@@ -2061,7 +2063,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p><span class="tok a">이름이나 전공을 읽지 못하면</span> 해당 항목을 <strong>Unknown</strong>·<strong>기타</strong>로 두고 진행합니다. 중단되지 않는 대신 <strong>이후 해당 폴더를 확인해야</strong> 합니다.</p>
           <p>인쇄는 새 창에서 이루어지므로, 창을 닫지 못하면 다음 건에서 엉킵니다.</p>
@@ -2119,7 +2121,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p>값의 위치를 <strong>표의 몇 번째 줄</strong>로 지정합니다. <span class="tok a">전표 서식이 변경되면 엉뚱한 값이 입력됩니다</span> — 오류가 아니라 잘못된 값입니다.</p>
           <p>결재 계정과 시트 주소는 코드에 두지 않고 <span class="tok g">환경변수</span>로 주입합니다.</p>
@@ -2202,7 +2204,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p><span class="tok a">스캔한 문서는 읽지 못합니다</span>. 글자가 이미지로 저장되어 있으면 좌표를 읽을 수 없습니다.</p>
           <p>한글 문서는 <span class="tok m">.hwp 보다 .hwpx</span>로 저장해 넣어야 표 구조가 유지되어 정확도가 올라갑니다.</p>
@@ -2350,7 +2352,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
       </div>
 
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p>폼은 Apps Script로도 만들 수 있지만 저는 손으로 만들었는데, 한 번 만들고 마는 폼이라면 손으로 만드는 편이 빠르기 때문입니다.</p>
           <div class="note warn"><strong>필수 응답으로 묶지 않은 질문은 빈칸인 채로 들어옵니다.</strong> 코드는 빈칸을 오류로 보지 않고 그대로 문서에 옮기기 때문에, <span class="tok a">막는 자리는 코드가 아니라 폼</span>입니다.</div>
@@ -2483,7 +2485,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p>폼 질문의 <span class="tok a">문구를 바꾸면 그 값이 조용히 빈칸이 됩니다</span>. 코드가 질문 제목을 열쇠로 쓰기 때문입니다.</p>
           <p>맞춤법을 고치거나 물음표 하나를 더해도 마찬가지이기 때문에, <strong>폼 문구는 코드의 일부입니다.</strong></p>
@@ -2552,7 +2554,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p>사진이 아주 많으면 문서가 무거워지기 때문에, 만드는 데 시간이 걸리고 여는 쪽도 느립니다.</p>
           <p>2-2와 같은 약점이 있습니다 — <span class="tok a">폼 문구를 바꾸면 값이 빈칸이 됩니다</span>.</p>
@@ -2688,7 +2690,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p><strong>출석 입력은 여전히 제가 손으로 하는데,</strong> 강의장에서 QR로 받으면 이 마지막 수작업도 없어집니다.</p>
           <p>2026년 7월 해외유학워크숍 운영에 썼습니다.</p>
@@ -2745,7 +2747,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p>2026년 7월부터 만들고 있어 <span class="tok a">아직 개발 중이기 때문에</span>, 결과를 적을 수 있는 단계가 아닙니다.</p>
           <p>어떤 사업 안에 있는 일인지, 구조가 어떻게 되어 있는지, 앞으로 무엇을 더 붙이려는지는 다음 세 쪽에 이어 적었습니다.</p>
@@ -2829,7 +2831,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
       </div>
 
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <div class="note warn"><strong>지금 정하는 구조가 최장 7년 동안 남습니다.</strong> 뒤에 바꾸면 이미 쌓인 해의 자료까지 함께 옮겨야 하기 때문에, <span class="tok a">무엇을 덮어쓰고 무엇을 새 줄로 쌓을지</span>를 화면보다 먼저 정했습니다.</div>
           <p>소속·직무·거주 지역처럼 사람이 옮겨 다니는 항목은 덮어쓰지 않고 바뀔 때마다 한 줄씩 쌓는데, <strong>그 변화 자체가 이 연구가 보려는 것이기 때문입니다.</strong></p>
@@ -2930,7 +2932,7 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
       </div>
 
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <div class="note warn"><strong>화면에 두어도 되는 키와 절대 두면 안 되는 키가 다릅니다.</strong> 화면이 데이터베이스에 접속할 때 쓰는 키는 공개를 전제로 만들어진 것이라 괜찮지만, <span class="tok a">AI를 부르는 키는 쓴 만큼 요금이 나가기 때문에</span> 화면에 두면 안 됩니다.</div>
           <p>지금 표에 들어 있는 자료는 대부분 시험용이기 때문에, 이 쪽에서는 수치가 아니라 구조만 적었습니다.</p>
@@ -3028,7 +3030,7 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
       </div>
 
       <div class="stp">
-        <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p>아직 설계 단계이고 실제 CV로 돌려 본 적은 없기 때문에, 여기 적은 것은 만들어 본 결과가 아니라 <strong>만들려는 방향입니다.</strong></p>
           <p>가장 확인이 필요한 것은 <span class="tok a">최신 CV를 갖고 계신 분이 얼마나 될지</span>입니다. 연구자가 아닌 진로를 택한 분들은 CV를 따로 관리하지 않기 때문에, 그분들에게는 다른 진입점이 필요합니다.</p>
@@ -3193,7 +3195,7 @@ __pycache__/
 Thumbs.db</code></div>
 
     <div class="steps"><div class="stp">
-      <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+      <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
       <div class="bd">
         <p><strong>.gitignore는 "앞으로 무시하라"는 뜻이지 "이미 올린 것을 지우라"는 뜻이 아닙니다.</strong></p>
         <p>키가 든 파일을 한 번이라도 커밋했다면 목록에 추가해도 <span class="tok a">이력에는 그대로 남기 때문에</span>, 이력을 지우려 애쓰는 것보다 확실한 조치는 <strong>그 키를 폐기하고 새로 발급하는 것</strong>입니다.</p>
@@ -3272,7 +3274,7 @@ Thumbs.db</code></div>
     <p>따라서 <strong>스킬과 커넥터는 한 번 만들어 두면 도구를 바꿔도 따라옵니다.</strong> 플러그인은 그 도구 안에서만 쓰입니다.</p>
 
     <div class="steps"><div class="stp">
-      <div class="hd"><span class="n alt">!</span><div class="t">비고</div></div>
+      <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
       <div class="bd">
         <p>스킬은 <strong>AI가 읽는 지시문</strong>입니다. 남의 스킬을 넣는 것은 남이 쓴 지시를 내 AI에게 그대로 읽히는 일이므로, <span class="tok a">무엇을 하라고 적혀 있는지 먼저 읽으십시오</span>. 글이라 읽을 수 있습니다.</p>
         <p><strong>사내 계정 연결은 정보보안 규정을 확인한 뒤에 하십시오.</strong> Supabase·Netlify는 본인이 만든 것에 붙지만 <span class="tok a">Gmail·Slack은 재단의 메일과 대화에 접근하기 때문에</span>, 결이 다릅니다.</p>
