@@ -902,12 +902,14 @@ a.cta{text-decoration:none}
 .doc .lead,.doc p,.doc li,.doc .kv .v,.doc .note,.doc .tw td,
 .doc .box p,.doc .tip,.doc .step,.doc .qa,.doc .ask p,.doc .ask li,
 .doc .stat .f,.doc .lnk .b strong,
-/* 화면 캡처. 눌러서 원본 크기로 열립니다 — 캡처 안 글자가 본문보다 작습니다 */
+.doc .gain-cap,.doc .dg-cap,.doc .ann-cap,.doc .pre-cap{
+  font-size:11pt;line-height:1.66;word-break:keep-all;overflow-wrap:break-word}
+/* 화면 캡처. 눌러서 원본 크기로 열립니다 — 캡처 안 글자가 본문보다 작습니다.
+   이 두 줄은 위 선택자 목록 안이 아니라 밖에 있어야 합니다. 목록 안에 끼우면
+   쉼표로 이어진 .doc .tw td 까지 display:block 을 먹어 표가 무너집니다. */
 .doc .ann .shot-l{display:block;border-radius:8px;overflow:hidden}
 .doc .ann img.shot{display:block;width:100%;height:auto;
   box-shadow:inset 0 0 0 1px var(--line)}
-.doc .gain-cap,.doc .dg-cap,.doc .ann-cap,.doc .pre-cap{
-  font-size:11pt;line-height:1.66;word-break:keep-all;overflow-wrap:break-word}
 /* 소제목은 12pt. 표 머리글과 라벨은 작은 대문자 그대로 둡니다 —
    그건 제목이 아니라 칸 이름이라 커지면 표가 아니라 목록으로 읽힙니다. */
 .doc .box .t,.doc .qt,.doc .panel-h .t,.doc .ask h3{font-size:12pt}
