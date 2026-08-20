@@ -1236,9 +1236,8 @@ a.cta{text-decoration:none}
           <a class="row" href="#p5" data-t="p5"><span class="kn">1-3</span><span class="kt">개인별 맞춤 메일 발송</span></a>
           <a class="row mid" href="#p4" data-t="p4" data-mid="14" aria-expanded="false" aria-controls="gk14"><span class="kn">1-4</span><span class="kt">웹 조작</span><svg aria-hidden="true" class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
           <div class="gkids" id="gk14" data-gkids="14"><div>
-            <a class="row" href="#p4a" data-t="p4a"><span class="kn">1-4-1</span><span class="kt">자료 업로드</span></a>
-            <a class="row" href="#p4b" data-t="p4b"><span class="kn">1-4-2</span><span class="kt">자료 다운로드</span></a>
-            <a class="row" href="#p4c" data-t="p4c"><span class="kn">1-4-3</span><span class="kt">웹 스크래핑</span></a>
+            <a class="row" href="#p4a" data-t="p4a"><span class="kn">1-4-1</span><span class="kt">자료 업로드 · 다운로드</span></a>
+            <a class="row" href="#p4b" data-t="p4b"><span class="kn">1-4-2</span><span class="kt">웹 스크래핑</span></a>
           </div></div>
           <a class="row" href="#p6" data-t="p6"><span class="kn">1-5</span><span class="kt">개인정보 마스킹</span></a>
         </div></div>
@@ -1483,7 +1482,7 @@ a.cta{text-decoration:none}
         <p>엑셀 · PDF · 데이터베이스 · API · AI · 메일 · 웹서비스처럼 <strong>서로 다른 프로그램 사이에서 사람이 직접 옮겨주던 데이터</strong>를 코드로 연결할 수 있습니다.</p>
         <div class="pre" data-nm="재단 예산 관리" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code><b>from</b> selenium <b>import</b> webdriver      <i>← 브라우저를 움직입니다</i>
 <b>import</b> gspread                       <i>← 구글 시트에 씁니다</i></code></div>
-        <p class="pre-cap">1-4-3 웹 스크래핑에서 사용한 코드입니다. Selenium으로 웹에서 데이터를 가져오고, gspread를 이용해 그 데이터를 구글 시트에 기록합니다. <strong>사람이 웹에서 데이터를 복사해 구글 시트에 붙여넣던 과정을 코드가 대신 연결하는 것입니다.</strong></p>
+        <p class="pre-cap">1-4-2 웹 스크래핑에서 사용한 코드입니다. Selenium으로 웹에서 데이터를 가져오고, gspread를 이용해 그 데이터를 구글 시트에 기록합니다. <strong>사람이 웹에서 데이터를 복사해 구글 시트에 붙여넣던 과정을 코드가 대신 연결하는 것입니다.</strong></p>
       </div>
     </div>
 
@@ -1584,9 +1583,9 @@ a.cta{text-decoration:none}
       </thead>
       <tbody>
       <tr><td><strong>엑셀 · 워드 파일</strong></td><td><span class="tok m">openpyxl</span> · <span class="tok m">pandas</span> · <span class="tok m">python-docx</span></td><td>엑셀 나누기·합치기, 워드 서식 읽어 메일 본문으로 <span class="where"><a href="#p3">1-2</a> · <a href="#p5">1-3</a></span></td></tr>
-      <tr><td><strong>PDF</strong></td><td><span class="tok m">pypdf</span> · <span class="tok m">pdfplumber</span> · <span class="tok m">PyMuPDF</span></td><td>PDF 편집·병합, 글자와 좌표 추출 <span class="where"><a href="#p2">1-1</a> · <a href="#p4b">1-4-2</a> · <a href="#p6">1-5</a></span></td></tr>
+      <tr><td><strong>PDF</strong></td><td><span class="tok m">pypdf</span> · <span class="tok m">pdfplumber</span> · <span class="tok m">PyMuPDF</span></td><td>PDF 편집·병합, 글자와 좌표 추출 <span class="where"><a href="#p2">1-1</a> · <a href="#p4a">1-4-1</a> · <a href="#p6">1-5</a></span></td></tr>
       <tr><td><strong>웹 브라우저 자동화</strong></td><td><span class="tok m">selenium</span></td><td>로그인, 조회, 입력, 다운로드 <span class="where"><a href="#p4">1-4</a></span></td></tr>
-      <tr><td><strong>이메일 · 외부 서비스 연결</strong></td><td><span class="tok m">smtplib</span> · <span class="tok m">pywin32</span> · <span class="tok m">gspread</span></td><td>맞춤형 이메일 발송, Google Sheets 축적 <span class="where"><a href="#p5">1-3</a> · <a href="#p4c">1-4-3</a></span></td></tr>
+      <tr><td><strong>이메일 · 외부 서비스 연결</strong></td><td><span class="tok m">smtplib</span> · <span class="tok m">pywin32</span> · <span class="tok m">gspread</span></td><td>맞춤형 이메일 발송, Google Sheets 축적 <span class="where"><a href="#p5">1-3</a> · <a href="#p4b">1-4-2</a></span></td></tr>
       <tr><td><strong>화면 만들기 · 배포</strong></td><td><span class="tok m">Flask</span> · <span class="tok m">PyInstaller</span></td><td>다른 사람이 쓸 화면 제작, EXE 패키징 <span class="where"><a href="#p5">1-3</a> · <a href="#p6">1-5</a></span></td></tr>
       </tbody>
     </table></div>
@@ -1954,6 +1953,10 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
       </tbody>
     </table></div>
 
+          <h3>세 방향이 함께 쓰는 항해</h3>
+          <p>세 방향은 <strong>화면에 도착하기까지의 과정이 같습니다.</strong> 로그인하고 메뉴를 눌러 목록으로 들어간 뒤 한 건씩 열고 다음으로 넘어갑니다. 실제로 세 코드의 로그인과 메뉴 이동 부분은 <span class="tok a">같은 줄로 되어 있습니다</span>.</p>
+          <p>달라지는 것은 <strong>화면에 도착한 다음입니다.</strong> 넣을 때는 엑셀을 읽어 칸을 채우고, 받을 때는 인쇄를 눌러 파일을 기다리며, 모을 때는 값을 읽어 공유 문서에 적습니다.</p>
+
           <h3>만들면서 확인한 네 가지</h3>
           <div class="split">
             <div class="box"><div class="t">처음에는 켜두고</div><p>자동화 화면을 볼 수 있게 해서 <strong>어디서 막히는지 확인</strong>합니다.</p></div>
@@ -1995,9 +1998,9 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
   
   <!-- 1-4-1 · 웹 조작 -->
   <section id="p4a" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-1 · 웹 조작</div><h2>자료 업로드</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-1 · 웹 조작</div><h2>자료 업로드 · 다운로드<span class="ft">넣기와 받기</span></h2></div></div>
     <div class="chips"><span class="chip">#2025.07~08</span><span class="chip">#Python</span><span class="chip">#Selenium</span><span class="chip">#openpyxl</span><span class="chip">#제51기_해외유학후보장학생_선발</span></div>
-    <p class="lead">명단은 엑셀로 접수되는 반면 등록은 관리자 화면에서만 가능하여, 한 줄씩 옮겨 입력하고 있었습니다.</p>
+    <p class="lead">같은 시스템에 명단을 넣고 지원서를 받아야 했는데, 넣는 경로도 받는 경로도 화면뿐이었습니다.</p>
 
     <div class="steps">
 
@@ -2006,34 +2009,47 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         <div class="bd">
           <p>평가위원 계정은 시스템 관리자 화면에서만 생성할 수 있으며, <strong>파일을 넣는 경로가 없습니다.</strong></p>
           <p>다만, 명단은 이름·연락처·메일·시작일·종료일이 한 줄에 담긴 <span class="tok">엑셀 한 장</span>으로 접수됩니다.</p>
-          <p><strong>보유한 것은 표이고 입력해야 하는 곳은 화면이어서,</strong> 표의 값을 화면에 옮겨 넣는 작업이 필요했습니다.</p>
-          <p>한 사람을 등록하려면 등록 버튼 → 세 칸 입력 → 중복 확인 → 날짜 둘 → 활성화 → 저장까지, <strong>화면 조작이 여덟 차례 필요합니다.</strong></p>
-          <p>중간에 <strong>알림창이 두 차례</strong> 표시됩니다. 메일 중복 확인에서 한 번, 등록 완료에서 한 번이며, 알림창을 닫아야 다음 단계로 진행됩니다.</p>
-          <p>만약 손으로 처리한다면 한 건당 <span class="tok">1.5~2분(예측)</span>이 소요되며, <strong>한 줄을 건너뛰어도 확인할 방법이 없습니다.</strong></p>
+          <p><strong>보유한 것은 표이고 입력해야 하는 곳은 화면이어서,</strong> 표의 값을 화면에 옮겨 넣는 작업이 필요했습니다. 한 사람을 등록하려면 등록 버튼 → 세 칸 입력 → 중복 확인 → 날짜 둘 → 활성화 → 저장까지 <strong>화면 조작이 여덟 차례 필요합니다.</strong></p>
+          <p>반대 방향도 사정이 같습니다. 지원서는 시스템 안에서 <strong>웹 화면</strong>으로만 열람되며 내려받기 기능이 없는 반면, 심사위원께는 파일로 전달해야 하고 <strong>전공별로 구분</strong>되어 있어야 합니다.</p>
+          <p>한 사람마다 목록에서 열고, 상단으로 이동한 뒤, 인쇄를 눌러 PDF로 저장하고, 파일명을 정리해 전공 폴더로 옮깁니다.</p>
+          <p>만약 손으로 처리한다면 등록은 한 건당 <span class="tok">1.5~2분(예측)</span>, 저장은 한 건당 <span class="tok">60~90초(예측)</span>가 소요되며, 수백 명이면 <strong>6~8시간(예측)</strong>으로 하루가 통째로 드는 작업입니다.</p>
+          <p>다만, 사람이 처리할 경우 <strong>한 줄을 건너뛰어도 확인할 방법이 없습니다.</strong></p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
+          <h3>넣기 — 평가위원 계정 등록</h3>
           <p><strong>사람이 누르던 자리를 코드가 대신하도록, 엑셀을 읽어 한 줄씩 화면에 입력하게 하였습니다.</strong></p>
           <p>다만, 두 곳에서 막혔습니다.</p>
           <div class="split">
             <div class="box"><div class="t">알림창</div><p>중복 확인과 등록 완료마다 뜨는데, 닫지 않으면 다음 조작이 전부 막히기 때문에 <strong>뜰 때까지 기다렸다 닫습니다.</strong></p></div>
             <div class="box"><div class="t">날짜 칸</div><p>달력 위젯이라 글자를 칠 수 없기 때문에, <strong>칸의 값을 직접 넣어</strong> 우회했습니다.</p></div>
           </div>
-          <p>명단에는 개인정보가 포함되어 있기 때문에, 아이디·비밀번호와 명단 경로는 <strong>코드에 두지 않고 <span class="tok g">환경변수</span>로 주입합니다.</strong></p>
+
+          <h3>받기 — 지원서 PDF 저장</h3>
+          <p>머리글이 포함되거나 배경이 누락되면 같은 서류가 사람마다 다르게 보이기 때문에, 인쇄 설정을 <strong>사전에 고정한 뒤</strong> 시작합니다 — 머리글·바닥글 해제, 배경 그래픽 적용, 여백 기본, 배율 100%.</p>
+          <p><strong>목록을 페이지 단위로 순회하며 한 사람씩 열고,</strong> 상세 화면에서 <span class="tok">이름</span>과 <span class="tok">전공</span>을 읽어 둔 뒤 인쇄를 실행합니다.</p>
+          <p>가장 까다로웠던 부분은 <strong>저장이 완료되었는지 판단하는 것</strong>이었습니다.</p>
+          <div class="note warn">파일이 생성되었다고 하여 전송이 끝난 것은 아닙니다. <strong>크기가 세 차례 연속 동일할 때</strong> 완료로 간주하며, 최대 60초까지 대기하고 그래도 끝나지 않으면 해당 건은 건너뛰고 표시를 남깁니다.</div>
+          <p>수신이 완료되면 <strong>파일명에서 사용할 수 없는 문자를 제거하고 공백을 밑줄로 변환해</strong> <span class="tok">전공 폴더</span>로 이동합니다.</p>
+
+          <p>두 방향 모두 명단과 지원서에 개인정보가 포함되어 있기 때문에, 아이디·비밀번호와 파일 경로는 <strong>코드에 두지 않고 <span class="tok g">환경변수</span>로 주입합니다.</strong></p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n">3</span><div class="t">실행 결과</div></div>
         <div class="bd">
           <div class="tw"><table>
-      <caption class="sr">자료 업로드 — 표</caption>
+      <caption class="sr">자료 업로드 · 다운로드 — 표</caption>
       <thead>
             <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
       </thead>
       <tbody>
             <tr><td>한 사람 등록</td><td>1.5~2분</td><td><strong>5~8초</strong></td></tr>
+            <tr><td>지원서 한 건 저장</td><td>60~90초</td><td><strong>22초</strong></td></tr>
+            <tr><td>수백 건 전체</td><td>6~8시간</td><td><strong>2시간 · 무인</strong></td></tr>
+            <tr><td>인쇄 설정</td><td>매번 사람이</td><td><strong>한 번 박아 둠</strong></td></tr>
             <tr><td>건너뛴 줄</td><td>모름</td><td><strong>줄마다 이름을 찍음</strong></td></tr>
       </tbody>
     </table></div>
@@ -2041,9 +2057,11 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         </div>
       </div>
       <div class="stp">
-        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p><strong>파일 업로드는 이 시점에 완성하지 못하였습니다.</strong> 계정을 생성하는 값 입력까지는 되었으나 <strong>파일을 첨부해 올리는 부분</strong>은 2025년에 미완으로 남겼습니다. 소스에 그대로 적혀 있습니다 — <span class="tok am">미완성 UNTIL 2026</span>.</p>
+          <p><span class="tok a">이름이나 전공을 읽지 못하면</span> 해당 항목을 <strong>Unknown</strong>·<strong>기타</strong>로 두고 진행합니다. 중단되지 않는 대신 <strong>이후 해당 폴더를 확인해야</strong> 합니다.</p>
+          <p>인쇄는 새 창에서 이루어지므로, <strong>창을 닫지 못하면 다음 건에서 엉킵니다.</strong></p>
           <p><strong><span class="tok a">화면이 변경되면 중단됩니다</span>.</strong> 버튼 위치를 화면 주소로 지정하기 때문에, 시스템이 개편되면 다시 지정해야 합니다.</p>
         </div>
       </div>
@@ -2053,64 +2071,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
 
   <!-- 1-4-2 · 웹 조작 -->
   <section id="p4b" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-2 · 웹 조작</div><h2>자료 다운로드</h2></div></div>
-    <div class="chips"><span class="chip">#2025.07~08</span><span class="chip">#Python</span><span class="chip">#Selenium</span><span class="chip">#제51기_해외유학후보장학생_선발</span></div>
-    <p class="lead">지원서는 화면으로만 열람할 수 있으나 심사는 파일로 진행해야 합니다.</p>
-
-    <div class="steps">
-
-      <div class="stp">
-        <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
-        <div class="bd">
-          <p>지원서는 시스템 안에서 <strong>웹 화면</strong>으로만 열람되며 내려받기 기능이 없습니다.</p>
-          <p>반면 심사위원께는 파일로 전달해야 하고, <strong>전공별로 구분</strong>되어 있어야 합니다.</p>
-          <p>열람은 화면에서 하고 전달은 파일로 해야 하기 때문에, <strong>화면을 파일로 저장하는 작업이 회차마다 발생합니다.</strong></p>
-          <p>한 사람마다 목록에서 열고, 상단으로 이동한 뒤, 인쇄를 눌러 PDF로 저장하고, 파일명을 정리해 전공 폴더로 옮깁니다.</p>
-          <p>만약 손으로 처리한다면 한 건당 <span class="tok">60~90초(예측)</span>가 소요되며, 수백 명이면 <strong>6~8시간(예측)</strong>으로 하루가 통째로 드는 작업입니다.</p>
-          <p>다만, 머리글이 포함되거나 배경이 누락되면 <strong>같은 서류가 사람마다 다르게 보이기 때문에,</strong> 저장 설정이 매번 동일해야 합니다.</p>
-        </div>
-      </div>
-      <div class="stp">
-        <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
-        <div class="bd">
-          <p>인쇄 설정을 <strong>사전에 고정한 뒤</strong> 시작합니다 — 머리글·바닥글 해제, 배경 그래픽 적용, 여백 기본, 배율 100%. 사람이 매번 선택하지 않습니다.</p>
-          <p><strong>목록을 페이지 단위로 순회하며 한 사람씩 열고,</strong> 상세 화면에서 <span class="tok">이름</span>과 <span class="tok">전공</span>을 읽어 둔 뒤 인쇄를 실행합니다.</p>
-          <p>가장 까다로웠던 부분은 <strong>저장이 완료되었는지 판단하는 것</strong>이었습니다.</p>
-          <div class="note warn">파일이 생성되었다고 하여 전송이 끝난 것은 아닙니다. <strong>크기가 세 차례 연속 동일할 때</strong> 완료로 간주하며, 최대 60초까지 대기하고 그래도 끝나지 않으면 해당 건은 건너뛰고 표시를 남깁니다.</div>
-          <p>수신이 완료되면 <strong>파일명에서 사용할 수 없는 문자를 제거하고 공백을 밑줄로 변환해</strong> <span class="tok">전공 폴더</span>로 이동합니다.</p>
-        </div>
-      </div>
-      <div class="stp">
-        <div class="hd"><span class="n">3</span><div class="t">실행 결과</div></div>
-        <div class="bd">
-          <div class="tw"><table>
-      <caption class="sr">자료 다운로드 — 표</caption>
-      <thead>
-            <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
-      </thead>
-      <tbody>
-            <tr><td>지원서 한 건</td><td>60~90초</td><td><strong>22초</strong></td></tr>
-            <tr><td>수백 건 전체</td><td>6~8시간</td><td><strong>2시간 · 무인</strong></td></tr>
-            <tr><td>인쇄 설정</td><td>매번 사람이</td><td><strong>한 번 박아 둠</strong></td></tr>
-      </tbody>
-    </table></div>
-          <p>실행되는 동안 자리를 비울 수 있기 때문에, <strong>그 시간에 다른 업무를 병행할 수 있습니다.</strong></p>
-        </div>
-      </div>
-      <div class="stp">
-        <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
-        <div class="bd">
-          <p><span class="tok a">이름이나 전공을 읽지 못하면</span> 해당 항목을 <strong>Unknown</strong>·<strong>기타</strong>로 두고 진행합니다. 중단되지 않는 대신 <strong>이후 해당 폴더를 확인해야</strong> 합니다.</p>
-          <p>인쇄는 새 창에서 이루어지므로, <strong>창을 닫지 못하면 다음 건에서 엉킵니다.</strong></p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 1-4-3 · 웹 조작 -->
-  <section id="p4c" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-3 · 웹 조작</div><h2>웹 스크래핑</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-2 · 웹 조작</div><h2>웹 스크래핑</h2></div></div>
     <div class="chips"><span class="chip">#2024.12</span><span class="chip">#Python</span><span class="chip">#Selenium</span><span class="chip">#gspread</span><span class="chip">#예산_관리</span></div>
     <p class="lead">결재 시스템은 전표를 한 건씩 표시하나, 예산은 전체를 한 표로 확인해야 합니다.</p>
 
