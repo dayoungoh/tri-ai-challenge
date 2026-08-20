@@ -2178,7 +2178,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
   <!-- 1-5 -->
   <section id="p6" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-5 · 예시 5</div><h2>개인정보 마스킹</h2></div></div>
-    <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Python</span><span class="chip">#pdfplumber</span><span class="chip">#PyInstaller</span><span class="chip">#해외유학워크숍</span><span class="chip free">#무료</span><span class="chip free">#소스 공개</span></div>
+    <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Python</span><span class="chip">#pdfplumber</span><span class="chip">#Kiwi</span><span class="chip">#PyInstaller</span><span class="chip">#해외유학워크숍</span><span class="chip free">#무료</span><span class="chip free">#소스 공개</span></div>
     <p class="lead">가리는 것 자체는 어렵지 않으나, 가리면서 문서를 쓸 수 없게 만들지 않는 것이 어렵습니다.</p>
 
     <div class="steps">
@@ -2212,6 +2212,23 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
     </table></div>
           <p>기본값은 <span class="tok">가명</span>입니다. 번호는 묶음 전체에서 공유되므로, <strong>파일이 달라도 동일한 전화번호는 동일한 번호를 부여받습니다.</strong></p>
 
+          <h3>마스킹 강도</h3>
+          <p>가릴 항목을 하나씩 고르기 번거롭기 때문에 <strong>강도 하나만 고르면 나머지가 따라오도록 하였습니다.</strong></p>
+
+          <div class="tw"><table>
+      <caption class="sr">마스킹 강도 — 표</caption>
+      <thead>
+            <tr><th scope="col">강도</th><th scope="col">가리는 것</th><th scope="col">쓰는 곳</th></tr>
+      </thead>
+      <tbody>
+            <tr><td>1 · 기본 보호</td><td>고유식별정보 · 연락처</td><td>내부 검토. 문서 원형을 최대한 남깁니다</td></tr>
+            <tr><td><strong>2 · 표준</strong></td><td><strong>이름 · 주소 · 소속 · 민감정보까지</strong></td><td><strong>AI 입력 · 외부 공유</strong></td></tr>
+            <tr><td>3 · 최대</td><td>라벨이 붙은 칸의 모르는 번호까지</td><td>재식별 위험 최소화</td></tr>
+            <tr><td>4 · 숫자 전면 삭제</td><td>남은 숫자를 전부</td><td>정성 분석 전용</td></tr>
+      </tbody>
+    </table></div>
+          <p>기본값은 <span class="tok">2단계</span>입니다. <strong>개별 지정이 강도보다 우선하기 때문에</strong> 소속만 남기고 싶으면 2단계에 소속 유지를 더하면 됩니다.</p>
+
           <h3>가릴지 여부를 고르게 둔 것</h3>
           <div class="split">
             <div class="box"><div class="t">민감정보</div><p>장애·병역·건강·종교·소득분위. <strong>개인정보보호법 제23조</strong> 대상이면서 동시에 <strong>전형 기준</strong>이기도 합니다.</p></div>
@@ -2231,6 +2248,22 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
           </div>
           <p>결과마다 <strong>원본 파일의 지문(SHA-256)</strong>과 항목별 마스킹 건수를 함께 기록합니다. 이후 <strong>"이 사본이 어느 원본에서 생성되었는지"</strong>를 증명할 수 있습니다.</p>
 
+          <p>문서 9종 · 개인정보 69건으로 만든 <strong>감사 코퍼스에서 강도마다 실제로 재 보았습니다.</strong></p>
+
+          <div class="tw"><table>
+      <caption class="sr">강도별 감사 결과 — 표</caption>
+      <thead>
+            <tr><th scope="col">강도</th><th scope="col">누출</th><th scope="col">마스킹 건수</th><th scope="col">남은 숫자</th></tr>
+      </thead>
+      <tbody>
+            <tr><td>1 · 기본 보호</td><td class="n">23</td><td class="n">65</td><td class="n">243</td></tr>
+            <tr><td>2 · 표준</td><td class="n">1</td><td class="n">92</td><td class="n">83</td></tr>
+            <tr><td>3 · 최대</td><td class="n"><strong>0</strong></td><td class="n">93</td><td class="n">75</td></tr>
+            <tr><td>4 · 숫자 전면 삭제</td><td class="n"><strong>0</strong></td><td class="n">116</td><td class="n"><strong>0</strong></td></tr>
+      </tbody>
+    </table></div>
+          <p>1단계가 남기는 23건은 주소 · 생년월일 · 나이 · 성별 · 소속처럼 <strong>업무에 필요할 수 있는 준식별자여서 의도한 것이고</strong> 주민등록번호 · 연락처 · 계좌 · 이름은 1단계에서도 가립니다.</p>
+
           <h3>소스 코드</h3>
           <div class="panel">
             <div class="panel-h"><span class="t">GitHub</span><span class="m">MIT</span></div>
@@ -2242,7 +2275,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
                 <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
               </a>
             </div>
-            <div class="note">파이썬 없는 PC에서도 쓰도록 <strong>실행 파일 하나</strong>로 묶을 수 있습니다. 저장소에는 실제 문서가 들어가지 않도록 문서 확장자를 통째로 막아 뒀습니다.</div>
+            <div class="note">명령줄로 대량 처리하고 <strong>화면을 띄워 폴더를 골라 쓸 수도 있으며</strong> 파이썬 없는 PC에는 <strong>실행 파일 하나</strong>만 건네면 됩니다. 저장소에는 실제 문서가 들어가지 않도록 문서 확장자를 통째로 막아 뒀습니다.</div>
           </div>
         </div>
       </div>
@@ -2251,6 +2284,9 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         <div class="bd">
           <p><strong><span class="tok a">스캔한 문서는 읽지 못합니다</span>.</strong> 글자가 이미지로 저장되어 있으면 좌표를 읽을 수 없습니다.</p>
           <p>한글 문서는 <span class="tok m">.hwp 보다 .hwpx</span>로 저장해 넣어야 <strong>표 구조가 유지되어 정확도가 올라갑니다.</strong></p>
+          <p>위에서 잰 누출은 <strong>패턴으로 잡히는 항목의 누출입니다.</strong> 이름과 연락처를 모두 가려도 <span class="tok a">서술 자체가 사람을 가리키는 경우</span>는 남아서 학위 과정 · 분야 · 연도가 함께 적힌 글은 <strong>이름이 없어도 누구인지 좁혀집니다.</strong></p>
+          <p>4단계는 남은 숫자를 전부 지우기 때문에 연도와 나이가 함께 사라지지만 <strong>그만큼 문서를 정성 분석 외에는 쓸 수 없게 됩니다.</strong></p>
+          <p>가린 자료를 외부 AI에 올릴지는 <strong>마스킹과 별개의 판단입니다.</strong> 자료를 받을 때 밝힌 <span class="tok">이용 목적</span> 안에 분석이 들어 있는지를 먼저 확인해야 합니다.</p>
           <p>가릴지 여부는 사람이 정합니다. 민감정보가 동시에 전형 기준이기도 한 이상, <strong>이 판단은 코드가 대신할 수 없습니다.</strong></p>
         </div>
       </div>
