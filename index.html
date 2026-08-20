@@ -1841,7 +1841,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
   <!-- 1-5 -->
   <section id="p5" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-3 · 예시 3</div><h2>개인별 맞춤 메일 발송</h2></div></div>
-    <div class="chips"><span class="chip">#2024.07</span><span class="chip">#Python</span><span class="chip">#python-docx</span><span class="chip">#smtplib</span><span class="chip">#제50기_해외유학후보장학생_선발</span><span class="chip free">#소스 공개</span></div>
+    <div class="chips"><span class="chip">#2024.07</span><span class="chip">#2026.08</span><span class="chip">#Python</span><span class="chip">#python-docx</span><span class="chip">#smtplib</span><span class="chip">#Flask</span><span class="chip">#제50기_해외유학후보장학생_선발</span><span class="chip free">#소스 공개</span></div>
     <p class="lead">동일한 안내를 발송하면서도 사람마다 내용이 달라, 그 차이를 한 통씩 손으로 맞추고 있었습니다.</p>
 
     <div class="steps">
@@ -1861,8 +1861,9 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
       <div class="stp">
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
+          <h3>2024년 — 스크립트</h3>
           <p>워드 서식을 그대로 읽어 메일 본문으로 옮기도록 하여, <strong>굵게·색·링크가 유지된 상태로 전달됩니다.</strong></p>
-          <p>명단에서 값을 찾아 빈칸을 채우고, <strong>해당 인원 몫의 첨부를 지정합니다.</strong> 명단에 <span class="tok m">첨부1</span> · <span class="tok m">첨부2</span> 처럼 열을 늘리면 그만큼 함께 붙습니다.</p>
+          <p>명단에서 값을 찾아 빈칸을 채우고, <strong>해당 인원 몫의 첨부를 지정합니다.</strong></p>
           <p>발송 기록이 필요한 주소는 <span class="tok">숨은참조</span>로 넣어, <strong>받는 분께는 노출되지 않도록 하였습니다.</strong></p>
 
           <div class="tw"><table>
@@ -1875,6 +1876,14 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
             <tr><td>김철수</td><td>안녕하세요 김철수 교수님, <strong>물리학</strong> 분야 심사를…</td><td class="n">3개</td></tr>
       </tbody>
     </table></div>
+
+          <p>제50기 선발은 이 코드로 끝냈지만 <strong>이 코드는 제 컴퓨터에서 제가 쓰는 것을 전제로 하고 있습니다.</strong> 명단 파일과 첨부 폴더의 경로 · 첨부 세 개(<span class="tok m">Filename1</span> <span class="tok m">Filename2</span> <span class="tok m">Filename3</span>) · 명단의 열 이름(<span class="tok m">Email</span> <span class="tok m">name</span> <span class="tok m">major</span>)이 코드 안에 적혀 있어 <strong>명단 서식이 달라지거나 첨부가 네 개가 되면 제가 코드를 열어 고쳐야 합니다.</strong></p>
+
+          <h3>2026년 — 화면</h3>
+          <p><span class="tok">해외유학워크숍</span>의 1:1 멘토링 멘토 의뢰로 개별 메일을 다시 보내게 되면서 <strong>코드를 고쳐 쓰는 대신 화면을 만들었습니다.</strong></p>
+          <p>명단과 서식 파일은 <strong>화면에 끌어다 놓고</strong> 열 이름은 <strong>명단의 첫 행을 읽어 정하기 때문에</strong> 코드를 열지 않고 씁니다. 명단에 <span class="tok m">첨부1</span> · <span class="tok m">첨부2</span> 처럼 열을 늘리면 그만큼 함께 붙습니다.</p>
+          <p>보내기 전에는 <span class="tok">미리보기</span>가 이메일 형식 오류 · 중복 · 첨부 누락 · 채워지지 않은 항목 · 용량 초과를 <strong>표로 보여 주고</strong> <span class="tok">초안으로 열기</span>로 실제 나갈 메일을 확인합니다. 다만, <strong>초안으로 열기는 발송이 아니어서</strong> 이 단계에서는 메일이 발송되지 않습니다.</p>
+          <p><strong>실행 파일 하나로 만들어 두었기 때문에</strong> Python이 설치되지 않은 컴퓨터에서도 그 파일만 있으면 동작합니다.</p>
         </div>
       </div>
       <div class="stp">
@@ -1883,15 +1892,15 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
           <div class="tw"><table>
       <caption class="sr">개인별 맞춤 메일 발송 — 표</caption>
       <thead>
-            <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
+            <tr><th scope="col">항목</th><th scope="col">2024 스크립트</th><th scope="col">2026 웹앱</th></tr>
       </thead>
       <tbody>
-            <tr><td>한 통 보내기</td><td>2~3분</td><td><strong>사람 손이 들지 않음</strong></td></tr>
-            <tr><td>명단 전체</td><td>하루 이상</td><td><strong>실행 한 번</strong></td></tr>
-            <tr><td>안내문 서식</td><td>붙여넣으며 깨짐</td><td><strong>그대로</strong></td></tr>
+            <tr><td>명단 · 첨부 경로</td><td>코드에 적음</td><td><strong>화면에 끌어다 놓기</strong></td></tr>
+            <tr><td>첨부 개수</td><td>3개 고정</td><td><strong>열을 늘리는 만큼</strong></td></tr>
+            <tr><td>명단 열 이름</td><td>코드에 적음</td><td><strong>첫 행을 읽음</strong></td></tr>
       </tbody>
     </table></div>
-          <p><strong>명단 전체를 실행 한 번으로 처리하게 되었고,</strong> 안내문 서식도 그대로 유지됩니다.</p>
+          <p>코드를 고쳐야 쓸 수 있던 프로그램을 <strong>실행 파일 하나로 전달할 수 있게 되었습니다.</strong></p>
 
           <h3>소스 코드</h3>
           <div class="panel">
@@ -1904,7 +1913,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
                 <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
               </a>
             </div>
-            <div class="note">엑셀 명단과 워드 서식을 넣으면 개인별로 치환해 보냅니다. 계정과 비밀번호는 <strong>그 자리에서만 쓰고 저장하지 않습니다.</strong> 연속 발송에는 <span class="tok">한 묶음 100건</span>과 휴지기간이 걸려 있습니다.</div>
+            <div class="note">엑셀 명단과 워드 서식을 넣으면 개인별로 치환해 보냅니다. Outlook 방식은 비밀번호를 입력하지 않고 SMTP 방식의 비밀번호는 <strong>그 자리에서만 쓰고 저장하지 않습니다.</strong> 연속 발송에는 <span class="tok">한 묶음 100건</span>과 휴지기간이 걸려 있습니다.</div>
           </div>
         </div>
       </div>
@@ -1912,7 +1921,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p><strong>메일은 되돌릴 수 없기 때문에,</strong> 잘못 발송된 줄은 삭제할 수 없고 받는 분의 편지함에 그대로 남습니다.</p>
-          <p>다만, 이 자동화만큼은 <span class="tok a">실행 전에 명단과 첨부를 눈으로</span> <strong>확인하는 절차를 두고 있습니다.</strong> </p>
+          <p>다만, 이 자동화만큼은 <span class="tok a">발송 전에 미리보기와 초안으로 열기를 거쳐</span> <strong>명단과 첨부를 확인합니다.</strong> </p>
         </div>
       </div>
 
