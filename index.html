@@ -1545,13 +1545,12 @@ a.cta{text-decoration:none}
     <p class="dg-cap"><strong>단계 자체는 크게 달라지지 않았습니다.</strong> 회색은 사람이 담당하는 구간, 파랑은 AI가 담당할 수 있는 구간입니다. 주황색은 지금도 사람이 직접 확인해야 하는 부분입니다. 2024년에도 수정할 코드는 AI가 만들어 주었습니다. 다만 오류 메세지를 복사해 전달하고, 수정된 코드를 다시 실행하는 일은 제가 직접 했습니다.</p>
 
     <p><strong>제가 특히 유용하다고 느낀 부분은 실제 데이터를 사용하지 않고도 이 과정을 반복할 수 있다는 점입니다.</strong> 개인정보가 포함된 실제 자료 대신 <span class="tok">가짜 자료(dummy data)</span>를 만들어 테스트에 사용하면, AI가 그 자료를 반복해서 처리하며 코드를 수정하고 검증할 수 있습니다.</p>
-    <p>가짜 자료를 주면 <strong>AI가 여러 차례 실행하고 결과를 확인</strong>하면서 코드를 다듬어 갈 수 있습니다. 실제 개인정보를 사용하지 않고도 코드를 실행하고 테스트할 수 있다는 점에서 유용합니다.</p>
 
     <h3>Python 설치</h3>
     <p><strong>이제는 AI가 Python 설치까지 대신해 주고,</strong> IDE<span class="cite-w"><a class="cite" id="c-p1-3" href="#n-p1-3" aria-describedby="d-p1-3">3</a><span class="cite-t" role="tooltip">Integrated Development Environment. 코드를 쓰고 실행하고 오류를 잡는 일을 한 창에서 하는 프로그램.</span></span> 없이도 코딩할 수 있습니다. 혹시 직접 설치해 두고 쓰고 싶으시다면 다음 링크로 가시면 됩니다.</p>
     <p>저는 <strong>PyCharm</strong>을 사용했습니다. <a href="https://jupyter.org/" target="_blank" rel="noopener noreferrer">Jupyter Notebook</a>도 많이 사용하는 것으로 알고 있습니다.</p>
     <div class="panel">
-      <div class="panel-h"><span class="t">설치 · 준비물</span><span class="m">3</span></div>
+      <div class="panel-h"><span class="t">설치 · 준비물</span><span class="m">2</span></div>
       <div class="lnk">
         <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">
           <span class="n">1</span>
@@ -1563,12 +1562,6 @@ a.cta{text-decoration:none}
           <span class="n">2</span>
           <span class="b"><strong>PyCharm 설치</strong><em>jetbrains.com/pycharm/download</em></span>
           <span class="c">무료</span>
-          <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
-        </a>
-        <a href="https://pypi.org" target="_blank" rel="noopener noreferrer">
-          <span class="n">3</span>
-          <span class="b"><strong>라이브러리 찾아보기</strong><em>pypi.org</em></span>
-          <span class="c opt">참고</span>
           <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
         </a>
       </div>
@@ -1599,7 +1592,6 @@ a.cta{text-decoration:none}
       <tr><td><strong>Python 프로그램을 EXE로 만들기</strong></td><td><span class="tok m">PyInstaller</span></td><td>Python이 설치되지 않은 PC에서도 실행할 수 있도록 패키징 <span class="where"><a href="#p6">1-5</a></span></td></tr>
       </tbody>
     </table></div>
-    <p class="dg-cap">표준으로 딸려 오는 것(<span class="tok m">os</span> · <span class="tok m">re</span> · <span class="tok m">pathlib</span> · <span class="tok m">csv</span> · <span class="tok m">json</span> · <span class="tok m">zipfile</span>)은 설치가 필요 없어 뺐습니다.</p>
     <div class="note">라이브러리를 정확히 몰라도 되지만, <strong>결과가 이상하면 사용한 라이브러리를 의심</strong>해 볼 수 있습니다. 같은 일을 하는 도구는 여럿이지만 도구에 따라 결과가 서로 다를 수 있다는 점을 유의해야 합니다.</div>
 
     <p>정리하면 Python은 <strong>사람이 손으로 열고, 누르고, 옮기던 일</strong>을 대신합니다. 엑셀에서 데이터를 읽어 PDF로 만들고 메일로 보내는 일을 <span class="tok">코드 실행 한 번으로</span> 처리할 수 있다는 점이 가장 큰 장점입니다.</p>
