@@ -3512,8 +3512,17 @@ let cur = 0;
 const chapterOf = id => CH_OF[id];
 /* 배가 가리킬 줄. 정확히 그 페이지인 줄을 먼저 찾습니다 —
    data-ch 로만 찾으면 같은 장의 첫 줄로 가버립니다. */
-const activeEl = () => rows.find(a => a.dataset.t === order[cur])
-                    || chRows.find(b => b.dataset.ch === chapterOf(order[cur]));
+/* 접힌 통 안이나 검색으로 걸러진 줄은 화면에 없습니다.
+   그런 줄을 가리키면 배가 엉뚱한 높이에 섭니다. 보이는 줄까지 거슬러 올라갑니다. */
+const shown = el => !!el && !el.classList.contains('hide')
+                 && !el.closest('.kids:not(.open),.gkids:not(.open)');
+const activeEl = () => {
+  const exact = rows.find(a => a.dataset.t === order[cur]);
+  if(shown(exact)) return exact;
+  const mid = midRows.find(m => m.dataset.mid === MID_OF[order[cur]]);
+  if(shown(mid)) return mid;
+  return chRows.find(b => b.dataset.ch === chapterOf(order[cur]));
+};
 
 function moveHL(el){
   if(!el || el.offsetParent === null){ hl.style.opacity = 0; return; }
@@ -3640,29 +3649,16 @@ document.querySelectorAll('.kids,.gkids').forEach(k =>
 
 const go = id => show(order.indexOf(id));
 
-/* 펼쳐진 묶음을 다시 누르면 접습니다.
-   예전에는 같은 쪽으로 다시 갈 뿐이라 아무 일도 안 일어났습니다.
-   접을 때는 쪽을 옮기지 않습니다 — 읽던 자리를 뺏지 않으려는 것입니다. */
-function toggleOrGo(btn, openNow, first){
-  const id = btn.getAttribute('aria-controls');
-  const box = id && document.getElementById(id);
-  if(box && box.classList.contains('open') && openNow){
-    box.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-    requestAnimationFrame(rest);
-    return;
-  }
-  go(first);
-}
-chRows.forEach(b => b.addEventListener('click',
-  () => toggleOrGo(b, chapterOf(order[cur]) === b.dataset.ch, b.dataset.first)));
+/* 장 줄은 언제나 그 장의 표지로 갑니다.
+   예전에는 이미 그 장 안에 있으면 이동 대신 묶음을 접었는데, 그러면
+   표지 세 쪽(p1 · g1 · w1)에 목차로 다시 갈 방법이 없었습니다.
+   다른 장으로 옮기면 show() 가 이전 장을 알아서 접으므로 접기 단추는 필요 없습니다. */
+chRows.forEach(b => b.addEventListener('click', () => go(b.dataset.first)));
 /* href 가 있으니 Enter·가운데클릭·링크복사가 전부 브라우저 기본으로 됩니다.
    좌클릭만 가로채 SPA 전환으로 넘깁니다. */
 kidRows.forEach(a => a.addEventListener('click', e => {
   if(e.metaKey||e.ctrlKey||e.shiftKey||e.button) return;
   e.preventDefault();
-  /* 중항목도 마찬가지입니다 */
-  if(a.classList.contains('mid')) return toggleOrGo(a, MID_OF[order[cur]] === a.dataset.mid, a.dataset.t);
   go(a.dataset.t);
 }));
 document.getElementById('homeBtn').addEventListener('click', () => show(0));  /* 인삿말 */
