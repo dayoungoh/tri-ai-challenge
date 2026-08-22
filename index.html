@@ -720,6 +720,10 @@ table{width:100%;border-collapse:collapse;font-size:var(--t-sm);
 th,td{text-align:left;padding:10px 16px;border-bottom:1px solid var(--line-2)}
 th{font-weight:640;font-size:var(--t-micro);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);
   background:var(--inset);border-bottom:1px solid var(--line)}
+/* 값이 짧은 표만 가운데로 세웁니다. 왼끝맞춤이 기본입니다 */
+.tw.ctr th,.tw.ctr td{text-align:center}
+/* 열 너비를 똑같이 나눕니다. 값 길이에 따라 칸이 들쭉날쭉해지지 않습니다 */
+.tw.eq table{table-layout:fixed}
 tr:last-child td{border-bottom:0}
 td{color:var(--ink-2)}
 td.n{font-variant-numeric:tabular-nums}
@@ -1741,33 +1745,43 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
   <section id="p3" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-2 · 예시 2</div><h2>엑셀 나누기·합치기</h2></div></div>
     <div class="chips"><span class="chip">#2024.07</span><span class="chip">#Python</span><span class="chip">#openpyxl</span><span class="chip">#pandas</span><span class="chip">#제50기_해외유학후보장학생_선발</span></div>
-    <p class="lead">[1-1에 이어서] PDF 병합을 Python으로 처리하고 나니, 엑셀도 당연히 될 거라 생각해 고민하지 않고 AI와 함께 코딩했습니다. 지원자별 서류를 만드는 작업을 마치고 나니, 다음 미션은 서류 평가를 위한 평가지를 만드는 일이었습니다.
-지원자마다 정성&정량 평가를 작성할 수 있는 평가 시트를 만들고, 이를 평가자별로 담당 지원자에 맞게 나누어 하나의 파일로 묶어 전달해야 했습니다. 평가가 끝난 뒤에는 각 평가자의 결과를 다시 하나의 파일로 취합해야 했습니다.</p>
+    <p class="lead"><strong>[1-1에 이어서]</strong> PDF 병합을 Python으로 처리하고 나니, 그다음부터는 엑셀도 당연히 Python으로 할 수 있을 거라 생각해 단 1초도 고민하지 않고 AI와 함께 코딩했습니다. 지원자별 서류를 만드는 작업을 마치고 나니, 다음 미션은 서류 평가를 위한 평가지를 만드는 일이었습니다. 지원자마다 정성·정량 평가를 작성할 수 있는 <span class="tok">평가 시트</span>를 만들고, 이를 평가자별로 배정된 지원자에 맞게 나누어 하나의 엑셀 파일로 묶어 전달해야 했습니다. 평가가 끝난 뒤에는 전체 결과를 비교할 수 있도록 각 평가자의 결과를 다시 하나의 엑셀 파일로 취합해야 했습니다.</p>
 
     <div class="steps">
 
       <div class="stp">
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
-          <p>지원자 한 명을 <span class="tok">여러 명의</span> 서류평가자가 심사하기 때문에, 배포할 때는 평가자별로 심사 파일을 따로 만들어야 합니다. 그리고 지원자별로 정성&정량 평가를 작성하고, 시트 안에 해당 지원자의 기본 정보를 함께 확인할 수 있도록 심사표를 <span class="tok">지원자별 시트</span>로 구성했습니다.</p>
-          <p>반면 평가가 끝난 뒤에는 한 지원자의 점수를 나란히 놓고 확인해야 하므로, 취합할 때는 다시 <span class="tok">전체 평가 결과를 한 장</span>에 모아야 합니다. 즉, <strong>지원자별 시트로 구성된 심사표를 평가자별로 나누어 배포하고, 평가가 끝나면 다시 하나로 합치는 작업</strong>입니다.</p>
+          <p>지원자 한 명을 <span class="tok">여러 명의 평가자</span>가 평가하기 때문에, <strong>배포할 때는 평가자별로 엑셀 파일을 따로 만들어야 합니다.</strong> 그리고 각 지원자에 대해 정성·정량 평가를 작성할 수 있도록 지원자별로 시트를 나누었으며, 시트 안에 해당 지원자의 정보를 함께 삽입하여 평가에 참고할 수 있도록 했습니다.</p>
+          <p>평가가 끝난 뒤에는 면접 대상자를 선정하기 위해 지원자의 평가 결과를 모두 한 시트에 모아 정렬해야 하므로, <strong><span class="tok">전체 평가 결과를 한 장</span>으로 취합해야 합니다.</strong> 즉, 지원자별 시트로 구성된 심사표를 평가자별로 나누어 배포하고, 평가가 끝난 뒤 전체 결과를 다시 모아야 하는 작업입니다.</p>
           <p>배포와 취합에 각각 시간이 듭니다. 손으로 처리한다면 심사 파일을 만들고 값을 옮기는 데 시간이 많이 소요됩니다.</p>
-          <p>그리고 심사표 한 장에 옮겨 적어야 하는 항목이 <span class="tok">14개</span>이고, 값을 하나 잘못 옮기면 해당 지원자의 심사 결과가 달라지니 각별히 신경써야 합니다.</p>
-          <p>또한 손으로 복사하면 데이터 유효성 검사와 시트 보호가 함께 풀리기 때문에, <strong>평가자마다 다른 형태의 심사표를 받게 됩니다.</strong></p>
+          <p>심사표 한 장에 옮겨 적어야 하는 항목이 <span class="tok">14개</span>인데, <strong>값을 하나 잘못 옮기면 해당 지원자의 심사 결과가 달라지니</strong> 각별히 신경써야 합니다.</p>
+          <p>평가 결과를 자동으로 취합하려면 모든 심사표에서 정해진 평가 셀의 값만 읽을 수 있도록 구조를 동일하게 유지해야 합니다. 이를 위해 평가자가 다른 셀에 값을 입력하거나 형식을 변경하지 못하도록 데이터 유효성 검사와 시트 보호를 적용하고, 심사에 사용하는 파일이므로 비밀번호 설정도 필요하다 생각했습니다. <strong>이를 손으로 처리하는 건 꽤 번거로운 일입니다.</strong></p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
-          <p><strong>명단의 한 행에 담당 평가자가 적혀 있어, 값이 있는 만큼 심사표가 생성됩니다.</strong> 심사표는 템플릿을 복사해 만들고, 데이터 유효성 검사와 조건부 서식과 시트 보호를 함께 복사한 뒤 다시 잠급니다.</p>
-          <p>이름만으로는 자리를 찾을 수 없어서, <strong>배포할 때 시트 안에 두 값을 심어 둡니다.</strong> <span class="tok m">B22</span>에 지원자 번호를 <span class="tok m">E22</span>에 평가자를 넣습니다.</p>
-          <p>취합할 때는 그 두 값으로 자리를 찾습니다. <strong>지원자 번호로 행을 고르고 평가자로 그 행의 몇 번째 칸인지를 고르기 때문에,</strong> 같은 지원자의 평가가 서로 다른 칸에 나란히 들어갑니다.</p>
-          <p><span class="tok">파일명 = 평가자</span>, <span class="tok">시트명 = 지원자</span>도 함께 기록되지만 <strong>맞춰 넣는 데는 쓰지 않습니다.</strong> 나중에 사람이 어느 파일에서 온 값인지 훑어볼 때 씁니다.</p>
+          <p>지원자 명단과 정보가 저장된 엑셀 시트에서 시작합니다. 각 행(=지원자 1명)에 배정된 평가자를 병기하여, <strong>Python 코드로 평가자 수만큼 심사표를 자동으로 생성합니다.</strong> 심사표는 미리 만든 템플릿을 복사해 만들고, 데이터 유효성 검사, 조건부 서식, 시트 보호 설정까지 함께 복사합니다.</p>
+
+          <div class="tw ctr"><table>
+      <caption class="sr">엑셀 나누기·합치기 — 표</caption>
+      <thead>
+            <tr><th scope="col">지원자 고유번호</th><th scope="col">이름</th><th scope="col">소속 대학</th><th scope="col">전공</th><th scope="col">평가자 1</th><th scope="col">평가자 2</th><th scope="col">…</th></tr>
+      </thead>
+      <tbody>
+            <tr><td class="n">12345</td><td>이몽룡</td><td>XX대</td><td>OO학과</td><td>변학도</td><td>성춘향</td><td class="n">…</td></tr>
+            <tr><td class="n">12346</td><td>김향단</td><td>YY대</td><td>△△학과</td><td>변학도</td><td>성춘향</td><td class="n">…</td></tr>
+      </tbody>
+    </table></div>
+          <p>추후 평가 결과를 취합할 것을 고려하여, <strong>배포할 때 각 시트 하단 셀에</strong> <span class="tok">지원자와 평가자의 식별자</span><span class="cite-w"><a class="cite" id="c-p3-1" href="#n-p3-1" aria-describedby="d-p3-1">1</a><span class="cite-t" role="tooltip">여러 대상 가운데 특정 하나를 구분하기 위한 고유한 값. 이름처럼 중복될 수 있는 값은 식별자로 적합하지 않습니다.</span></span>를 삽입합니다. 보통 몇 백명대의 지원자가 있으면 동명이인이 복수로 있어 지원자는 고유번호를 삽입하거나 이메일을 씁니다. 평가자도 수 십명대였지만, 다행이도 동명이인은 없었기에 저는 평가자의 이름을 식별자로 사용했습니다.</p>
+          <p><strong>취합할 때는 이 두 식별자를 기준으로 값을 삽입할 위치를 찾습니다.</strong> <span class="tok">지원자의 고유번호</span>로 해당 지원자의 행을 찾고, <span class="tok">평가자 이름</span>으로 해당 평가자의 점수가 들어갈 열을 찾아 평가 결과가 해당 지원자의 행에 들어가도록 합니다.</p>
+          <p>파일을 만들 때 <span class="tok">파일명은 평가자의 이름으로</span>, <span class="tok">시트명은 지원자 이름으로</span>도 함께 지정하지만, <strong>실제 취합 위치를 찾는 데는 사용하지 않습니다.</strong> 나중에 제가 결과를 확인할 때 어느 파일과 시트에서 온 값인지 추적하기 위한 정보로 활용합니다.</p>
 
           <div class="ann">
             <svg viewBox="0 0 700 322" xmlns="http://www.w3.org/2000/svg" role="img"
               aria-label="한 행이 지원자 한 명인 명단을, 평가자마다 엑셀 파일을 하나씩 만들고 그 파일 안에 지원자마다 시트를 한 장씩 겹쳐 두는 방식으로 나눴다가, 한 지원자에 대한 여러 평가자의 결과를 다시 한 행으로 모으는 그림">
-              <defs><marker id="e2N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="e2G" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="e2A" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><clipPath id="e2c1"><rect x="16" y="112" width="124" height="60" rx="4"/></clipPath><clipPath id="e2c2"><rect x="226" y="106" width="152" height="86" rx="6"/></clipPath><clipPath id="e2c5"><rect x="234" y="140" width="116" height="46" rx="3"/></clipPath><clipPath id="e2c6"><rect x="470" y="116" width="200" height="60" rx="4"/></clipPath></defs>
+              <defs><marker id="e2N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="e2G" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker><clipPath id="e2c1"><rect x="16" y="112" width="124" height="60" rx="4"/></clipPath><clipPath id="e2c2"><rect x="226" y="106" width="152" height="86" rx="6"/></clipPath><clipPath id="e2c5"><rect x="234" y="140" width="116" height="46" rx="3"/></clipPath><clipPath id="e2c6"><rect x="470" y="116" width="200" height="60" rx="4"/></clipPath></defs>
               <rect x="16" y="112" width="124" height="60" rx="4" fill="#fff"/><g clip-path="url(#e2c1)"><rect x="16" y="112" width="124" height="12" fill="#f2f2ef" opacity=".55"/><rect x="16" y="136" width="124" height="12" fill="#f2f2ef"/><path d="M16,124 h124" stroke="#1a1a1a" stroke-width="1.4" opacity=".5"/><path d="M16,136 h124" stroke="#1a1a1a" stroke-width="1" opacity=".22"/><path d="M16,148 h124" stroke="#1a1a1a" stroke-width="1" opacity=".22"/><path d="M16,160 h124" stroke="#1a1a1a" stroke-width="1" opacity=".22"/><path d="M47,112 v60" stroke="#1a1a1a" stroke-width="1" opacity=".22"/><path d="M78,112 v60" stroke="#1a1a1a" stroke-width="1" opacity=".22"/><path d="M109,112 v60" stroke="#1a1a1a" stroke-width="1" opacity=".22"/></g><rect x="16" y="112" width="124" height="60" rx="4" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
               <text class="ic-t" x="78" y="222" text-anchor="middle">명단 한 장</text><text class="ic-s" x="78" y="238" text-anchor="middle">한 행 = 지원자 한 명</text>
               <path d="M152,146 L196,146" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#e2N)"/>
@@ -1788,56 +1802,51 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
               <path d="M280,140 v46" stroke="#1a1a1a" stroke-width="1" opacity=".22"/><path d="M240,180 h20" stroke="#1a5fb4" stroke-width="2.4" stroke-linecap="round"/><path d="M286,180 h24" stroke="#1a5fb4" stroke-width="2.4" stroke-linecap="round"/></g>
               <rect x="234" y="140" width="116" height="46" rx="3" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
               <rect x="226" y="106" width="152" height="86" rx="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-              <text class="ic-t" x="302" y="222" text-anchor="middle">평가자별 심사표</text><text class="ic-s" x="302" y="238" text-anchor="middle">파일 = 평가자 한 명 · 시트 = 지원자 한 명</text><text class="ic-s" x="302" y="254" text-anchor="middle" fill="#1a5fb4">시트 안에 지원자 번호와 평가자를 심어 둡니다</text>
+              <text class="ic-t" x="302" y="222" text-anchor="middle">평가자별 심사표</text><text class="ic-s" x="302" y="238" text-anchor="middle" fill="#1a5fb4">시트 안에 지원자 고유번호와</text><text class="ic-s" x="302" y="254" text-anchor="middle" fill="#1a5fb4">평가자 이름을 심어 둡니다</text>
               <path d="M394,146 L456,146" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linecap="round" marker-end="url(#e2G)"/>
               <text class="ic-s" x="425" y="138" text-anchor="middle" fill="#1a5fb4">합치기</text>
               <rect x="470" y="116" width="200" height="60" rx="4" fill="#fff"/><g clip-path="url(#e2c6)"><rect x="470" y="116" width="200" height="12" fill="#e8f0fb" opacity=".55"/><rect x="470" y="140" width="200" height="12" fill="#e8f0fb"/><path d="M470,128 h200" stroke="#1a5fb4" stroke-width="1.4" opacity=".5"/><path d="M470,140 h200" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M470,152 h200" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M470,164 h200" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M503.333,116 v60" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M536.667,116 v60" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M570,116 v60" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M603.333,116 v60" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M636.667,116 v60" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M573,146 h13" stroke="#1a5fb4" stroke-width="2.2" stroke-linecap="round" opacity=".85"/><path d="M606,146 h13" stroke="#1a5fb4" stroke-width="2.2" stroke-linecap="round" opacity=".85"/><text class="ic-s" x="653" y="151" text-anchor="middle" fill="#1a5fb4">…</text></g><rect x="470" y="116" width="200" height="60" rx="4" fill="none" stroke="#1a5fb4" stroke-width="1.4"/>
-              <text class="ic-t" x="570" y="222" text-anchor="middle" fill="#1a5fb4">다시 한 장</text><text class="ic-s" x="570" y="238" text-anchor="middle" fill="#1a5fb4">한 행에 여러 평가자의 결과</text>
+              <text class="ic-t" x="570" y="222" text-anchor="middle" fill="#1a5fb4">다시 명단 한 장</text><text class="ic-s" x="570" y="238" text-anchor="middle" fill="#1a5fb4">한 행 = 지원자 한 명</text>
               <g stroke="#737370" fill="#737370"><path class="st" d="M186,40 C194,54 200,66 204,78" marker-end="url(#e2N)"/><text class="hw" x="182" y="34" text-anchor="end" stroke="none">평가자마다 파일이 따로 생깁니다</text></g>
-              <g stroke="#737370" fill="#737370"><path class="st" d="M436,272 C424,248 402,212 382,180" marker-end="url(#e2N)"/><text class="hw" x="442" y="280" stroke="none">파일 안에 시트가 여러 장</text><text class="hw" x="442" y="300" stroke="none">심어 둔 두 값으로 자리를 찾습니다</text></g>
+              <g stroke="#737370" fill="#737370"><path class="st" d="M436,278 C424,250 402,212 382,180" marker-end="url(#e2N)"/><text class="hw" x="442" y="286" stroke="none">파일 안에 지원자별로 시트가 생깁니다</text></g>
               <g stroke="#1a5fb4" fill="#1a5fb4"><path class="st" d="M596,54 C590,70 584,92 578,130" marker-end="url(#e2G)"/><text class="hw" x="606" y="46" text-anchor="end" stroke="none">여러 평가자의 결과를 한 행에 모읍니다</text></g>
-              <g stroke="#a16207" fill="#a16207"><path class="st" d="M34,302 C24,266 18,220 16,184" marker-end="url(#e2A)"/><text class="hw" x="16" y="316" stroke="none">명단의 열 위치가 바뀌면 값이 다른 칸에 들어갑니다</text></g>
               </svg>
           </div>
-
-          <div class="tw"><table>
-      <caption class="sr">엑셀 나누기·합치기 — 표</caption>
-      <thead>
-            <tr><th scope="col">지원자번호</th><th scope="col">이름</th><th scope="col">담당 평가자</th></tr>
-      </thead>
-      <tbody>
-            <tr><td class="n">12345</td><td>홍길동</td><td>김평가 · 이평가 …</td></tr>
-            <tr><td class="n">12346</td><td>김철수</td><td>김평가 · 박평가 …</td></tr>
-      </tbody>
-    </table></div>
           <p>취합할 때는 폴더 안의 모든 심사표를 열어 시트마다 지정된 셀의 값을 읽고, <strong>지원자 한 명의 평가를 한 행으로 만들어 다시 한 장에 쌓습니다.</strong></p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n">3</span><div class="t">실행 결과</div></div>
         <div class="bd">
-          <div class="tw"><table>
+          <div class="tw ctr eq"><table>
       <caption class="sr">엑셀 나누기·합치기 — 표</caption>
       <thead>
             <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
       </thead>
       <tbody>
-            <tr><td>심사표 한 장 나누기</td><td>3~4분</td><td><strong>1초</strong></td></tr>
-            <tr><td>시트 한 장 모으기</td><td>2~3분</td><td><strong>0.5초</strong></td></tr>
-            <tr><td>서식·잠금</td><td>손으로 다시</td><td><strong>그대로 유지</strong></td></tr>
+            <tr><td>심사표 배포</td><td>한 장에 3~4분(예측)</td><td><strong>명단 전체를 실행 한 번</strong></td></tr>
+            <tr><td>평가 결과 취합</td><td>한 장에 2~3분(예측)</td><td><strong>폴더 전체를 실행 한 번</strong></td></tr>
       </tbody>
     </table></div>
-          <p>사람이 값을 읽고 입력하는 단계가 없어져, <strong>전사 과정에서 발생하던 오류의 여지도 함께 사라집니다.</strong></p>
+          <p><strong>Python 코드 실행 한 번으로 배포와 취합을 몇 초 안에, 오류 없이 처리할 수 있습니다.</strong></p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
-          <p>명단의 <strong>열 위치가 바뀌면 매핑이 전체적으로 어긋납니다.</strong> 다만, 오류는 발생하지 않고 <span class="tok a">잘못된 값이 그대로 기입되기 때문에</span> 발견이 늦어집니다.</p>
-          <p>파일명과 시트명은 <span class="tok">띄어쓰기 하나</span>만 달라도 일치하지 않기 때문에, <strong>평가자명을 임의로 수정하면 해당 줄이 누락됩니다.</strong></p>
+          <p>참고로, 같은 코드 구조를 <strong>면접 평가표에도 사용했습니다.</strong> 평가자별로 명단을 나누어 파일을 만들고, 평가가 끝난 뒤 다시 한 장으로 취합하는 방식은 같았습니다. 다만 <strong>식별자를 표현하는 방식이 달랐습니다.</strong> 서류 평가에서는 시트 안의 셀에 식별자를 삽입했다면, 면접 평가에서는 <span class="tok">파일명을 전공</span>, <span class="tok">시트명을 평가자</span>로 설정하고, 전공·면접대상자·평가자 세 식별자를 조합해 <strong>결과가 들어갈 위치를 찾았습니다.</strong></p>
+          <p>제 생각에, 모든 데이터 처리 과정이 마찬가지겠지만, 엑셀에서는 <span class="tok">식별자와 셀 주소, 그리고 그 둘의 관계</span>를 적절히 설계하고 활용하면 <strong>상당수의 반복작업을 자동화할 수 있습니다.</strong></p>
+          <p>2024년 7월만 해도 Python으로 <span class="tok">서식을 복사하거나 유지하는 데에는 한계</span>가 있다고 느꼈는데, 최근에는 이 정도의 대량 처리를 할 기회가 없어 지금은 어떤 수준까지 가능한지 잘 모르겠습니다. (해보신 분은 알려주시면 좋겠습니다!)</p>
         </div>
       </div>
 
+    </div>
+
+    <div class="notes">
+      <div class="notes-h">주석</div>
+      <dl>
+        <dt id="n-p3-1">1</dt><dd id="d-p3-1"><b>식별자</b> — 여러 대상 가운데 특정 하나를 구분하기 위한 고유한 값입니다. 이름처럼 중복될 수 있는 값은 식별자로 적합하지 않고, 지원자 고유번호처럼 한 대상에 하나씩 부여되는 값을 사용합니다. 이번 작업에서는 이 값을 이용해 평가 결과를 어느 지원자의 위치에 넣을지 찾습니다. <a class="backref" href="#c-p3-1" aria-label="본문 1번 주석으로 돌아가기">↩</a></dd>
+      </dl>
     </div>
   </section>
 
