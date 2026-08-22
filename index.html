@@ -1835,7 +1835,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <p>참고로, 같은 코드 구조를 <strong>면접 평가표에도 사용했습니다.</strong> 평가자별로 명단을 나누어 파일을 만들고, 평가가 끝난 뒤 다시 한 장으로 취합하는 방식은 같았습니다. 다만 <strong>식별자를 표현하는 방식이 달랐습니다.</strong> 서류 평가에서는 시트 안의 셀에 식별자를 삽입했다면, 면접 평가에서는 <span class="tok">파일명을 전공</span>, <span class="tok">시트명을 평가자</span>로 설정하고, 전공·면접대상자·평가자 세 식별자를 조합해 <strong>결과가 들어갈 위치를 찾았습니다.</strong></p>
-          <p>제 생각에, 모든 데이터 처리 과정이 마찬가지겠지만, 엑셀에서는 <span class="tok">식별자와 셀 주소, 그리고 그 둘의 관계</span>를 적절히 설계하고 활용하면 <strong>상당수의 반복작업을 자동화할 수 있습니다.</strong></p>
+          <p>제 생각에--모든 데이터 처리 과정이 마찬가지겠지만--엑셀에서는 <span class="tok">식별자와 셀 주소, 그리고 그 둘의 관계</span>를 적절히 설계하고 활용하면 <strong>상당수의 반복작업을 자동화할 수 있습니다.</strong></p>
           <p>2024년 7월만 해도 Python으로 <span class="tok">서식을 복사하거나 유지하는 데에는 한계</span>가 있다고 느꼈는데, 최근에는 이 정도의 대량 처리를 할 기회가 없어 지금은 어떤 수준까지 가능한지 잘 모르겠습니다. (해보신 분은 알려주시면 좋겠습니다!)</p>
         </div>
       </div>
@@ -1845,7 +1845,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
     <div class="notes">
       <div class="notes-h">주석</div>
       <dl>
-        <dt id="n-p3-1">1</dt><dd id="d-p3-1"><b>식별자</b> — 여러 대상 가운데 특정 하나를 구분하기 위한 고유한 값입니다. 이름처럼 중복될 수 있는 값은 식별자로 적합하지 않고, 지원자 고유번호처럼 한 대상에 하나씩 부여되는 값을 사용합니다. 이번 작업에서는 이 값을 이용해 평가 결과를 어느 지원자의 위치에 넣을지 찾습니다. <a class="backref" href="#c-p3-1" aria-label="본문 1번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p3-1">1</dt><dd id="d-p3-1"><b>식별자(identifier)</b> — 여러 대상 가운데 특정 하나를 구분하기 위한 고유한 값입니다. 이름처럼 중복될 수 있는 값은 식별자로 적합하지 않고, 지원자 고유번호처럼 한 대상에 하나씩 부여되는 값을 사용합니다. 이번 작업에서는 이 값을 이용해 평가 결과를 어느 지원자의 위치에 넣을지 찾습니다. <a class="backref" href="#c-p3-1" aria-label="본문 1번 주석으로 돌아가기">↩</a></dd>
       </dl>
     </div>
   </section>
@@ -1853,90 +1853,113 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
   <!-- 1-5 -->
   <section id="p5" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-3 · 예시 3</div><h2>개인별 맞춤 메일 발송</h2></div></div>
-    <div class="chips"><span class="chip">#2024.07</span><span class="chip">#2026.08</span><span class="chip">#Python</span><span class="chip">#python-docx</span><span class="chip">#smtplib</span><span class="chip">#Flask</span><span class="chip">#제50기_해외유학후보장학생_선발</span><span class="chip free">#소스 공개</span></div>
-    <p class="lead">동일한 안내를 발송하면서도 사람마다 내용이 달라, 그 차이를 한 통씩 손으로 맞추고 있었습니다.</p>
+    <div class="chips"><span class="chip">#2024.07</span><span class="chip">#2026.08</span><span class="chip">#Python</span><span class="chip">#python-docx</span><span class="chip">#smtplib</span><span class="chip">#Flask</span><span class="chip">#제50기_해외유학후보장학생_선발</span></div>
+    <p class="lead">[1-2 이어서] 지원자별로 서류를 병합하고, 평가지를 만들었으니 평가자에게 자료를 전달해야 합니다. 수합한 평가 결과를 바탕으로 면접대상자가 선정되면, 면접대상자와 면접평가자에게 면접 일시와 장소를 전달해야 합니다. 이러한 교신 과정에서 메일 내용은 동일하지만 특정 필드<span class="cite-w"><a class="cite" id="c-p5-1" href="#n-p5-1" aria-describedby="d-p5-1">1</a><span class="cite-t" role="tooltip">한 통마다 값이 달라지는 자리. 서식 파일에 열 이름을 적어 표시해 두면 코드가 명단에서 같은 이름의 열을 찾아 그 값으로 바꿉니다.</span></span>만 교체해야 하는 경우, 이러한 개인별 맞춤 메일 발송 코드를 만들어 두면 좋습니다. 지금까지 개발한 코드 중 가장 애용한 코드입니다.</p>
 
     <div class="steps">
 
       <div class="stp">
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
-          <p>서류심사 단계에서는 심사위원께 위촉 안내를, 면접 단계에서는 대상자와 위원께 일정 안내를 발송합니다.</p>
-          <p>안내문의 뼈대는 동일하지만 <span class="tok">이름</span>, <span class="tok">전공</span>, <span class="tok">첨부파일</span>이 <strong>사람마다 다릅니다.</strong></p>
-          <p>따라서 <strong>한 벌의 안내문을 사람 수만큼 개인별로 만들어야 했습니다.</strong></p>
-          <p>메일 프로그램의 메일 머지로는 두 가지가 해결되지 않았습니다.</p>
-          <p>첫째, 안내문의 <strong>굵게·색·링크가 유실되기 때문에,</strong> 서식을 살리려면 한 통씩 붙여넣게 됩니다.</p>
-          <p>둘째, <strong>사람마다 다른 첨부</strong>를 지정할 수 없어 첨부만은 직접 선택해야 합니다.</p>
-          <p>만약 손으로 처리한다면 한 통당 <span class="tok">2~3분(예측)</span>이 소요되고, <strong>명단이 길어지면 하루를 넘기는 작업입니다.</strong></p>
+          <p>여러 사람에게 안내 메일을 보낼 때는 메일의 기본 내용은 동일하지만, <span class="tok">이름</span>·<span class="tok">소속</span>·<span class="tok">일정</span>·<span class="tok">첨부파일</span> 등 <strong>일부 정보는 사람마다 달라집니다.</strong></p>
+          <p>따라서 공통된 안내문에 사람마다 다른 정보를 넣어 <strong>개인별 메일을 만들어야 합니다.</strong></p>
+          <p>일반적인 메일 머지 기능으로 이러한 작업을 어느 정도 자동화할 수 있지만, <strong>서식과 첨부파일까지 개인별로 다르게 처리하는 데에는 한계가 있습니다.</strong> 서식이 복잡한 안내문은 굵게·색·링크 등의 형식이 유실될 수 있고, 사람마다 다른 첨부파일을 지정하는 것도 어렵습니다.</p>
+          <p>결국 서식은 유지하면서 개인별 정보를 자동으로 넣고, 각자에게 필요한 첨부파일까지 함께 보내는 <strong>자동화가 필요했습니다.</strong></p>
+          <p>만약 손으로 처리한다면 한 통당 <span class="tok">2~3분(예측)</span>이 소요되고, <strong>명단이 길어지면 하루를 넘길 수 있는 작업입니다.</strong></p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
-          <h3>2024년 — 스크립트</h3>
-          <p>워드 서식을 그대로 읽어 메일 본문으로 옮기도록 하여, <strong>굵게·색·링크가 유지된 상태로 전달됩니다.</strong></p>
-          <p>명단에서 값을 찾아 빈칸을 채우고, <strong>해당 인원 몫의 첨부를 지정합니다.</strong></p>
-          <p>발송 기록이 필요한 주소는 <span class="tok">숨은참조</span>로 넣어, <strong>받는 분께는 노출되지 않도록 하였습니다.</strong></p>
+          <p>워드로 작성한 서식 파일을 그대로 읽어 메일 본문으로 옮겨 <strong>굵게·색·링크 등의 서식을 유지하고,</strong> 명단의 값을 찾아 개인별 빈칸을 채웁니다. 또한 명단을 기준으로 <strong>수신자별 첨부파일을 자동으로 지정합니다.</strong></p>
+          <p>필요한 경우 발송 기록을 위한 주소를 <span class="tok">숨은참조(Bcc)</span>에 자동으로 넣어, <strong>수신자에게는 해당 주소가 보이지 않도록</strong> 할 수도 있습니다.</p>
 
-          <div class="tw"><table>
-      <caption class="sr">개인별 맞춤 메일 발송 — 표</caption>
+          <p>엑셀 명단은 <strong>첫 행에 열 이름을 적고 한 행에 한 사람을 둡니다.</strong> 열 이름이 필드 이름이 되어 워드 서식 파일의 필드와 연결됩니다. 첨부파일은 명단에 <strong>파일 이름만 기록하고,</strong> 실제 파일은 정해진 폴더에 모아 둡니다.</p>
+          <p>워드 서식 파일은 평소처럼 작성하되, <strong>사람마다 달라지는 자리에 <span class="tok m">&#123;열 이름&#125;</span>을 넣습니다.</strong> 코드는 명단에서 해당 값을 찾아 자리를 채우고, <strong>워드의 굵게·색·링크 등의 서식은 그대로 유지합니다.</strong></p>
+
+          <div class="tw ctr"><table>
+      <caption class="sr">면접 안내 메일에서 명단과 서식과 결과가 짝을 이루는 방식 — 표</caption>
       <thead>
-            <tr><th scope="col">받는 사람</th><th scope="col">본문 첫 줄</th><th scope="col">첨부</th></tr>
+            <tr><th scope="col">명단의 1행</th><th scope="col">이름</th><th scope="col">일시</th><th scope="col">장소</th><th scope="col">첨부1</th></tr>
       </thead>
       <tbody>
-            <tr><td>홍길동</td><td>안녕하세요 홍길동 교수님, <strong>경제학</strong> 분야 심사를…</td><td class="n">2개</td></tr>
-            <tr><td>김철수</td><td>안녕하세요 김철수 교수님, <strong>물리학</strong> 분야 심사를…</td><td class="n">3개</td></tr>
+            <tr><th scope="row">필드</th><td><span class="tok m">&#123;이름&#125;</span></td><td><span class="tok m">&#123;일시&#125;</span></td><td><span class="tok m">&#123;장소&#125;</span></td><td>본문에는 넣지 않음</td></tr>
+            <tr><th scope="row">필드값</th><td>홍길동</td><td>3월 12일 14시</td><td>재단 2층 회의실</td><td>면접 안내문.pdf</td></tr>
       </tbody>
     </table></div>
 
-          <p>제50기 선발은 이 코드로 끝냈지만 <strong>이 코드는 제 컴퓨터에서 제가 쓰는 것을 전제로 하고 있습니다.</strong> 명단 파일과 첨부 폴더의 경로 · 첨부 세 개(<span class="tok m">Filename1</span> <span class="tok m">Filename2</span> <span class="tok m">Filename3</span>) · 명단의 열 이름(<span class="tok m">Email</span> <span class="tok m">name</span> <span class="tok m">major</span>)이 코드 안에 적혀 있어 <strong>명단 서식이 달라지거나 첨부가 네 개가 되면 제가 코드를 열어 고쳐야 합니다.</strong></p>
+          <div class="ann">
+            <svg viewBox="0 0 700 352" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="워드 서식 파일의 중괄호 자리에 명단의 값이 들어가 한 통의 메일이 되는 그림. 워드 서식이 메일에 그대로 유지되고 첨부는 명단에 적은 파일이 붙습니다">
+              <defs><marker id="p5N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+              <rect x="20" y="56" width="268" height="222" rx="6" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/><path d="M20,76 h268" stroke="#1a1a1a" stroke-width="1.2" opacity=".45"/><text x="34" y="71" font-size="10.5" fill="#737370">email template.docx</text><rect x="34.0" y="116.5" width="44.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="40.0" y="128.0" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">&#123;이름&#125;</text><text x="81.3" y="128.0" font-size="11" fill="#1a1a1a"> 지원자께.</text><text x="34.0" y="154.0" font-size="11" fill="#1a1a1a">안녕하세요, 장학학술팀입니다.</text><text x="34.0" y="182.0" font-size="11" fill="#1a1a1a">귀하는 </text><rect x="73.4" y="170.5" width="44.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="79.4" y="182.0" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">&#123;전공&#125;</text><text x="120.7" y="182.0" font-size="11" fill="#1a1a1a"> 분야</text><rect x="32.0" y="192.5" width="60.1" height="15" fill="#fdf6e3"/><text x="34.0" y="204.0" font-size="11" fill="#1a1a1a">면접대상자</text><text x="90.1" y="204.0" font-size="11" fill="#1a1a1a">로 선정되셨습니다.</text><text x="34.0" y="234.0" font-size="11" fill="#1a1a1a" font-weight="700">■ 일시: </text><rect x="84.8" y="222.5" width="44.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="90.8" y="234.0" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">&#123;일시&#125;</text><text x="34.0" y="256.0" font-size="11" fill="#1a1a1a" font-weight="700">■ 장소: </text><rect x="84.8" y="244.5" width="44.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="90.8" y="256.0" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">&#123;장소&#125;</text>
+              <text class="ic-t" x="154" y="306" text-anchor="middle">워드 서식 파일</text><text class="ic-s" x="154" y="322" text-anchor="middle">필드는 중괄호로 표시</text>
+              <path d="M300,170 L392,170" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linecap="round" marker-end="url(#p5N)"/>
+              <text class="ic-s" x="346" y="162" text-anchor="middle" fill="#1a5fb4">명단의 값으로</text>
+              <text class="ic-s" x="346" y="186" text-anchor="middle" fill="#1a5fb4">채움</text>
+              <rect x="412" y="56" width="268" height="222" rx="6" fill="#fff" stroke="#1a5fb4" stroke-width="1.5"/><path d="M412,76 h268" stroke="#1a5fb4" stroke-width="1.2" opacity=".45"/><text x="426" y="71" font-size="10.5" fill="#1a5fb4">보낸 메일</text><path d="M434.0,100.0 v-4.6 a2.6 2.6 0 0 1 5.2 0 v6.2 a4.4 4.4 0 0 1 -8.8 0 v-5.4" fill="none" stroke="#737370" stroke-width="1.2" stroke-linecap="round"/><text x="446" y="103" font-size="10" fill="#737370">안내문.pdf</text><path d="M426,112 h240" stroke="#d8d8d4" stroke-width="1" opacity=".5"/><text x="426" y="128.0" font-size="11" fill="#1a1a1a">홍길동 지원자께.</text><text x="426" y="154.0" font-size="11" fill="#1a1a1a">안녕하세요, 장학학술팀입니다.</text><text x="426" y="182.0" font-size="11" fill="#1a1a1a">귀하는 심리학 분야</text><rect x="424" y="192.5" width="60.1" height="15" fill="#fdf6e3"/><text x="426" y="204.0" font-size="11" fill="#1a1a1a">면접대상자</text><text x="482.1" y="204.0" font-size="11" fill="#1a1a1a">로 선정되셨습니다.</text><text x="426" y="234.0" font-size="11" fill="#1a1a1a" font-weight="700">■ 일시: </text><text x="476.8" y="234.0" font-size="11" fill="#1a1a1a">3월 12일 14시</text><text x="426" y="256.0" font-size="11" fill="#1a1a1a" font-weight="700">■ 장소: </text><text x="476.8" y="256.0" font-size="11" fill="#1a1a1a">재단 2층 회의실</text>
+              <text class="ic-t" x="546" y="306" text-anchor="middle" fill="#1a5fb4">나가는 메일</text><text class="ic-s" x="546" y="322" text-anchor="middle" fill="#1a5fb4">한 사람당 한 통</text>
+              <g stroke="#737370" fill="#737370"><path class="st" d="M150,30 C150,38 150,44 150,50" marker-end="url(#p5N)"/><text class="hw" x="150" y="22" text-anchor="middle" stroke="none">워드 서식을 그대로 유지합니다</text></g>
+              </svg>
+          </div>
 
-          <h3>2026년 — 화면</h3>
-          <p><span class="tok">해외유학워크숍</span>의 1:1 멘토링 멘토 의뢰로 개별 메일을 다시 보내게 되면서 <strong>코드를 고쳐 쓰는 대신 화면을 만들었습니다.</strong></p>
-          <p>명단과 서식 파일은 <strong>화면에 끌어다 놓고</strong> 열 이름은 <strong>명단의 첫 행을 읽어 정하기 때문에</strong> 코드를 열지 않고 씁니다. 명단에 <span class="tok m">첨부1</span> · <span class="tok m">첨부2</span> 처럼 열을 늘리면 그만큼 함께 붙습니다.</p>
-          <p>보내기 전에는 <span class="tok">미리보기</span>가 이메일 형식 오류 · 중복 · 첨부 누락 · 채워지지 않은 항목 · 용량 초과를 <strong>표로 보여 주고</strong> <span class="tok">초안으로 열기</span>로 실제 나갈 메일을 확인합니다. 다만, <strong>초안으로 열기는 발송이 아니어서</strong> 이 단계에서는 메일이 발송되지 않습니다.</p>
-          <p><strong>실행 파일 하나로 만들어 두었기 때문에</strong> Python이 설치되지 않은 컴퓨터에서도 그 파일만 있으면 동작합니다.</p>
+          <div class="note warn">메일 발송은 <strong>오류가 바로 외부로 전달될 수 있기 때문에,</strong> 자동으로 바로 발송하지 않고 <span class="tok">초안으로 먼저 확인한 뒤</span> 발송합니다. 수신자와 본문, 첨부파일을 확인한 후 최종 발송합니다.</div>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n">3</span><div class="t">실행 결과</div></div>
         <div class="bd">
-          <div class="tw"><table>
+          <div class="tw ctr eq"><table>
       <caption class="sr">개인별 맞춤 메일 발송 — 표</caption>
       <thead>
-            <tr><th scope="col">항목</th><th scope="col">2024 스크립트</th><th scope="col">2026 웹앱</th></tr>
+            <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
       </thead>
       <tbody>
-            <tr><td>명단 · 첨부 경로</td><td>코드에 적음</td><td><strong>화면에 끌어다 놓기</strong></td></tr>
-            <tr><td>첨부 개수</td><td>3개 고정</td><td><strong>열을 늘리는 만큼</strong></td></tr>
-            <tr><td>명단 열 이름</td><td>코드에 적음</td><td><strong>첫 행을 읽음</strong></td></tr>
+            <tr><td>메일 한 통</td><td>2~3분(예측)</td><td><strong>사람 손이 들지 않음</strong></td></tr>
+            <tr><td>명단 전체</td><td>하루를 넘길 수 있음(예측)</td><td><strong>실행 한 번</strong></td></tr>
+            <tr><td>안내문 서식</td><td>한 통씩 붙여넣기</td><td><strong>서식 파일 그대로</strong></td></tr>
+            <tr><td>개인별 첨부</td><td>한 통씩 직접 붙이기</td><td><strong>명단대로 자동</strong></td></tr>
       </tbody>
     </table></div>
-          <p>코드를 고쳐야 쓸 수 있던 프로그램을 <strong>실행 파일 하나로 전달할 수 있게 되었습니다.</strong></p>
-
-          <h3>소스 코드</h3>
-          <div class="panel">
-            <div class="panel-h"><span class="t">GitHub</span><span class="m">MIT</span></div>
-            <div class="lnk">
-              <a href="https://github.com/dayoungoh/mail-merge-sender" target="_blank" rel="noopener noreferrer">
-                <span class="n">↗</span>
-                <span class="b"><strong>mail-merge-sender</strong><em>github.com/dayoungoh/mail-merge-sender</em></span>
-                <span class="c">공개</span>
-                <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
-              </a>
-            </div>
-            <div class="note">엑셀 명단과 워드 서식을 넣으면 개인별로 치환해 보냅니다. Outlook 방식은 비밀번호를 입력하지 않고 SMTP 방식의 비밀번호는 <strong>그 자리에서만 쓰고 저장하지 않습니다.</strong> 연속 발송에는 <span class="tok">한 묶음 100건</span>과 휴지기간이 걸려 있습니다.</div>
-          </div>
+          <p>손으로 하던 때와 견주면 <strong>사람이 하는 일은 명단과 서식 파일을 준비하는 것까지입니다.</strong> 그 뒤로는 초안을 확인하는 단계만 남습니다.</p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
-          <p><strong>메일은 되돌릴 수 없기 때문에,</strong> 잘못 발송된 줄은 삭제할 수 없고 받는 분의 편지함에 그대로 남습니다.</p>
-          <p>다만, 이 자동화만큼은 <span class="tok a">발송 전에 미리보기와 초안으로 열기를 거쳐</span> <strong>명단과 첨부를 확인합니다.</strong> </p>
+          <p>이 방식으로 <strong>제50기 선발 업무를 처리했지만,</strong> 아직은 범용적인 도구라기보다 특정 업무에 맞춘 자동화 코드에 가깝습니다. 명단 파일과 첨부파일의 경로 · 첨부파일 개수 · 명단의 열 이름 등이 <strong>코드에 고정되어 있기 때문입니다.</strong> 따라서 명단의 형식이나 첨부파일 구성이 달라지면 <strong>코드를 직접 수정해야 합니다.</strong></p>
         </div>
       </div>
 
+      <div class="stp">
+        <div class="hd"><span class="n alt" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg></span><div class="t">2026년 코드 개선 사항</div></div>
+        <div class="bd">
+<p>2026년 <span class="tok">해외유학워크숍</span>의 1:1 멘토링 멘토를 섭외하면서 개별 메일 발송 코드가 다시 필요했습니다. 그런데 매번 코드를 열어 필드명을 바꾸고, 명단과 본문 파일의 경로를 수정하는 일이 번거로워서 <strong>코드를 고쳐 쓰는 대신 프로그램을 만들었습니다.</strong></p>
+          <p>명단과 본문 파일은 <strong>첨부 영역에 끌어다 놓으면 되고,</strong> 열 이름은 <strong>명단의 첫 행을 읽어 자동으로 정하기 때문에</strong> 코드를 열지 않고 사용할 수 있습니다. 그리고 명단에 <span class="tok m">첨부1</span>, <span class="tok m">첨부2</span>처럼 열을 추가하면 추가한 파일도 함께 첨부됩니다.</p>
+          <p>보내기 전에는 <span class="tok">미리보기</span>에서 이메일 형식 오류, 중복, 첨부 누락, 채워지지 않은 항목, 용량 초과를 <strong>표로 먼저 확인하고,</strong> <span class="tok">초안으로 열기</span>를 통해 실제 발송될 메일을 미리 확인합니다. 초안으로 여는 것은 발송이 아니므로, <strong>이 단계에서는 메일이 실제로 발송되지 않습니다.</strong></p>
+          <p><strong>실행 파일(.exe) 하나로 만들어 두었기 때문에,</strong> Python이 설치되지 않은 컴퓨터에서도 해당 파일만 있으면 사용할 수 있습니다.</p>
+
+<div class="tw"><table>
+      <caption class="sr">개인별 맞춤 메일 발송 — 표</caption>
+      <thead>
+            <tr><th scope="col">개인별 맞춤 메일 발송</th><th scope="col">2024 스크립트</th><th scope="col">2026 웹앱</th></tr>
+      </thead>
+      <tbody>
+            <tr><td>명단 · 첨부 경로</td><td>코드에 적음</td><td><strong>화면에 끌어다 놓기</strong></td></tr>
+            <tr><td>첨부 개수</td><td>3개 고정</td><td><strong>열을 추가하는 만큼</strong></td></tr>
+            <tr><td>명단 열 이름</td><td>코드에 적음</td><td><strong>첫 행을 자동으로 읽음</strong></td></tr>
+      </tbody>
+    </table></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="notes">
+      <div class="notes-h">주석</div>
+      <dl>
+        <dt id="n-p5-1">1</dt><dd id="d-p5-1"><b>필드</b> — 서식에서 개별 데이터로 바뀌는 자리입니다. <span class="tok">이름</span>처럼 명단의 열 이름을 표시해 두면, 코드가 해당 열의 값을 가져와 메일마다 다른 내용으로 바꿉니다. 이름·일시·장소처럼 수신자마다 달라지는 정보는 필드로 지정하고, 나머지 문장은 동일하게 발송합니다. <a class="backref" href="#c-p5-1" aria-label="본문 1번 주석으로 돌아가기">↩</a></dd>
+      </dl>
     </div>
   </section>
 
