@@ -1741,17 +1741,18 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
   <section id="p3" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-2 · 예시 2</div><h2>엑셀 나누기·합치기</h2></div></div>
     <div class="chips"><span class="chip">#2024.07</span><span class="chip">#Python</span><span class="chip">#openpyxl</span><span class="chip">#pandas</span><span class="chip">#제50기_해외유학후보장학생_선발</span></div>
-    <p class="lead">1-1과 같은 해외유학후보장학생 선발 과정에서 사용한 코드입니다. 서류평가자에게 지원자별 심사표를 나누어 전달하고, 평가가 끝난 뒤 점수를 다시 한 장으로 모으는 것이 목적이었습니다. 심사는 평가자별로 진행하고 집계는 지원자별로 확인해야 하기 때문에 배포와 취합이 회차마다 반복되었고, 손으로 처리할 경우 심사표의 서식과 잠금까지 매번 다시 맞춰야 했습니다.</p>
+    <p class="lead">[1-1에 이어서] PDF 병합을 Python으로 처리하고 나니, 엑셀도 당연히 될 거라 생각해 고민하지 않고 AI와 함께 코딩했습니다. 지원자별 서류를 만드는 작업을 마치고 나니, 다음 미션은 서류 평가를 위한 평가지를 만드는 일이었습니다.
+지원자마다 정성&정량 평가를 작성할 수 있는 평가 시트를 만들고, 이를 평가자별로 담당 지원자에 맞게 나누어 하나의 파일로 묶어 전달해야 했습니다. 평가가 끝난 뒤에는 각 평가자의 결과를 다시 하나의 파일로 취합해야 했습니다.</p>
 
     <div class="steps">
 
       <div class="stp">
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
-          <p>지원자 한 명을 <span class="tok">최대 세 명</span>의 서류평가자가 심사하기 때문에, 심사표는 평가자별로 따로 만들어야 합니다.</p>
-          <p>반면 집계는 한 지원자의 점수를 나란히 놓고 확인해야 하므로 <span class="tok">전체가 한 장</span>이어야 합니다.</p>
-          <p><strong>배포와 취합에 각각 시간이 듭니다.</strong> 만약 손으로 처리한다면 심사표 한 장을 만드는 데 3~4분(예측), 시트 한 장의 값을 옮기는 데 2~3분(예측)이 소요되는 작업입니다.</p>
-          <p>심사표 한 장에 옮겨 적어야 하는 항목이 <span class="tok">14개</span>이고, <strong>숫자를 하나 잘못 옮기면 해당 지원자의 심사 결과가 달라집니다.</strong></p>
+          <p>지원자 한 명을 <span class="tok">여러 명의</span> 서류평가자가 심사하기 때문에, 배포할 때는 평가자별로 심사 파일을 따로 만들어야 합니다. 그리고 지원자별로 정성&정량 평가를 작성하고, 시트 안에 해당 지원자의 기본 정보를 함께 확인할 수 있도록 심사표를 <span class="tok">지원자별 시트</span>로 구성했습니다.</p>
+          <p>반면 평가가 끝난 뒤에는 한 지원자의 점수를 나란히 놓고 확인해야 하므로, 취합할 때는 다시 <span class="tok">전체 평가 결과를 한 장</span>에 모아야 합니다. 즉, <strong>지원자별 시트로 구성된 심사표를 평가자별로 나누어 배포하고, 평가가 끝나면 다시 하나로 합치는 작업</strong>입니다.</p>
+          <p>배포와 취합에 각각 시간이 듭니다. 손으로 처리한다면 심사 파일을 만들고 값을 옮기는 데 시간이 많이 소요됩니다.</p>
+          <p>그리고 심사표 한 장에 옮겨 적어야 하는 항목이 <span class="tok">14개</span>이고, 값을 하나 잘못 옮기면 해당 지원자의 심사 결과가 달라지니 각별히 신경써야 합니다.</p>
           <p>또한 손으로 복사하면 데이터 유효성 검사와 시트 보호가 함께 풀리기 때문에, <strong>평가자마다 다른 형태의 심사표를 받게 됩니다.</strong></p>
         </div>
       </div>
@@ -1759,7 +1760,9 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
           <p><strong>명단의 한 행에 담당 평가자가 최대 세 명까지 적혀 있어, 값이 있는 만큼 심사표가 생성됩니다.</strong> 심사표는 템플릿을 복사해 만들고, 데이터 유효성 검사와 조건부 서식과 시트 보호를 함께 복사한 뒤 다시 잠급니다.</p>
-          <p>파일과 시트의 이름도 데이터로 활용합니다. <span class="tok">파일명 = 평가자</span>, <span class="tok">시트명 = 지원자</span>로 두고 취합할 때 그 이름을 그대로 열로 읽기 때문에, <strong>파일을 열어 누구의 어느 심사표인지 확인하지 않아도 됩니다.</strong></p>
+          <p>이름만으로는 자리를 찾을 수 없어서, <strong>배포할 때 시트 안에 두 값을 심어 둡니다.</strong> <span class="tok m">B22</span>에 지원자 번호를 <span class="tok m">E22</span>에 평가자를 넣습니다.</p>
+          <p>취합할 때는 그 두 값으로 자리를 찾습니다. <strong>지원자 번호로 행을 고르고 평가자로 그 행의 몇 번째 칸인지를 고르기 때문에,</strong> 같은 지원자의 평가가 서로 다른 칸에 나란히 들어갑니다.</p>
+          <p><span class="tok">파일명 = 평가자</span>, <span class="tok">시트명 = 지원자</span>도 함께 기록되지만 <strong>맞춰 넣는 데는 쓰지 않습니다.</strong> 나중에 사람이 어느 파일에서 온 값인지 훑어볼 때 씁니다.</p>
 
           <div class="ann">
             <svg viewBox="0 0 700 322" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -1782,16 +1785,16 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
               <path d="M234,152 h116" stroke="#1a1a1a" stroke-width="1" opacity=".22"/>
               <path d="M234,163 h116" stroke="#1a1a1a" stroke-width="1" opacity=".22"/>
               <path d="M234,174 h116" stroke="#1a1a1a" stroke-width="1" opacity=".22"/>
-              <path d="M280,140 v46" stroke="#1a1a1a" stroke-width="1" opacity=".22"/></g>
+              <path d="M280,140 v46" stroke="#1a1a1a" stroke-width="1" opacity=".22"/><path d="M240,180 h20" stroke="#1a5fb4" stroke-width="2.4" stroke-linecap="round"/><path d="M286,180 h24" stroke="#1a5fb4" stroke-width="2.4" stroke-linecap="round"/></g>
               <rect x="234" y="140" width="116" height="46" rx="3" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
               <rect x="226" y="106" width="152" height="86" rx="6" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
-              <text class="ic-t" x="302" y="222" text-anchor="middle">평가자별 심사표</text><text class="ic-s" x="302" y="238" text-anchor="middle">파일 하나 = 평가자 한 명</text>
+              <text class="ic-t" x="302" y="222" text-anchor="middle">평가자별 심사표</text><text class="ic-s" x="302" y="238" text-anchor="middle">파일 = 평가자 한 명 · 시트 = 지원자 한 명</text><text class="ic-s" x="302" y="254" text-anchor="middle" fill="#1a5fb4">시트 안에 지원자 번호와 평가자를 심어 둡니다</text>
               <path d="M394,146 L456,146" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linecap="round" marker-end="url(#e2G)"/>
               <text class="ic-s" x="425" y="138" text-anchor="middle" fill="#1a5fb4">합치기</text>
               <rect x="470" y="116" width="200" height="60" rx="4" fill="#fff"/><g clip-path="url(#e2c6)"><rect x="470" y="116" width="200" height="12" fill="#e8f0fb" opacity=".55"/><rect x="470" y="140" width="200" height="12" fill="#e8f0fb"/><path d="M470,128 h200" stroke="#1a5fb4" stroke-width="1.4" opacity=".5"/><path d="M470,140 h200" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M470,152 h200" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M470,164 h200" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M503.333,116 v60" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M536.667,116 v60" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M570,116 v60" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M603.333,116 v60" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M636.667,116 v60" stroke="#1a5fb4" stroke-width="1" opacity=".22"/><path d="M573,146 h13" stroke="#1a5fb4" stroke-width="2.2" stroke-linecap="round" opacity=".85"/><path d="M606,146 h13" stroke="#1a5fb4" stroke-width="2.2" stroke-linecap="round" opacity=".85"/><path d="M639,146 h13" stroke="#1a5fb4" stroke-width="2.2" stroke-linecap="round" opacity=".85"/></g><rect x="470" y="116" width="200" height="60" rx="4" fill="none" stroke="#1a5fb4" stroke-width="1.4"/>
               <text class="ic-t" x="570" y="222" text-anchor="middle" fill="#1a5fb4">다시 한 장</text><text class="ic-s" x="570" y="238" text-anchor="middle" fill="#1a5fb4">한 행에 여러 평가자의 결과</text>
               <g stroke="#737370" fill="#737370"><path class="st" d="M186,40 C194,54 200,66 204,78" marker-end="url(#e2N)"/><text class="hw" x="182" y="34" text-anchor="end" stroke="none">평가자마다 파일이 따로 생깁니다</text></g>
-              <g stroke="#737370" fill="#737370"><path class="st" d="M436,272 C424,248 402,212 382,180" marker-end="url(#e2N)"/><text class="hw" x="442" y="280" stroke="none">파일 안에 시트가 여러 장</text><text class="hw" x="442" y="300" stroke="none">시트 한 장 = 지원자 한 명</text></g>
+              <g stroke="#737370" fill="#737370"><path class="st" d="M436,272 C424,248 402,212 382,180" marker-end="url(#e2N)"/><text class="hw" x="442" y="280" stroke="none">파일 안에 시트가 여러 장</text><text class="hw" x="442" y="300" stroke="none">심어 둔 두 값으로 자리를 찾습니다</text></g>
               <g stroke="#1a5fb4" fill="#1a5fb4"><path class="st" d="M596,54 C590,70 584,92 578,130" marker-end="url(#e2G)"/><text class="hw" x="606" y="46" text-anchor="end" stroke="none">여러 평가자의 결과를 한 행에 모읍니다</text></g>
               <g stroke="#a16207" fill="#a16207"><path class="st" d="M34,302 C24,266 18,220 16,184" marker-end="url(#e2A)"/><text class="hw" x="16" y="316" stroke="none">명단의 열 위치가 바뀌면 값이 다른 칸에 들어갑니다</text></g>
               </svg>
