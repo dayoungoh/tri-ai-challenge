@@ -1981,8 +1981,8 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
   <!-- 1-4 -->
   <section id="p4" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-4 · 예시 4</div><h2>웹 조작(스크래핑)</h2></div></div>
-    <div class="chips"><span class="chip">#2024.12</span><span class="chip">#Python</span><span class="chip">#Selenium</span><span class="chip">#gspread</span><span class="chip">#예산_관리</span><span class="chip">#제51기_해외유학후보장학생_선발</span></div>
-    <p class="lead">Python으로 웹을 조작해 자료를 업로드·다운로드하는 작업은 제50기 해외유학후보장학생 선발을 마친 뒤인 8월 말부터 필요할 때 틈틈이 시도해 보고 있었습니다. 그러다 웹 스크래핑을 실제 업무에 적용해 본 첫 계기는 재단 예산 집행 현황을 파악하는 일이었습니다. (실장님께서 지출·수입 데이터를 Google Spreadsheet로 가져오는 작업을 의뢰하셨습니다.)
+    <div class="chips"><span class="chip">#2024.12</span><span class="chip">#Python</span><span class="chip">#Selenium</span><span class="chip">#gspread</span><span class="chip">#예산_관리</span></div>
+    <p class="lead">웹 스크래핑을 실제 업무에 적용해 본 첫 계기는 재단 예산 집행 현황을 파악하는 일이었습니다. (실장님께서 지출·수입 데이터를 Google Spreadsheet로 가져오는 작업을 의뢰하셨습니다.)
 
 재단은 현재 <span class="tok">아마란스</span>를 사용하고 있지만, 그 전 <span class="tok">다우오피스</span>를 사용하던 당시에는 예산이 얼마나 집행되었는지 확인할 수 있는 집계 시스템이 없었습니다. 필요한 데이터를 직접 손으로 복사하는 대신, 웹에서 자동으로 데이터를 가져와 재단 구성원이 모두 열람할 수 있도록 Google Spreadsheet에 업로드하는 방법을 시도했습니다.</p>
 
@@ -1991,19 +1991,20 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
       <div class="stp">
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
-          <p>예산 집행 현황을 파악하려면 항·목별로 예산이 얼마나 집행되었는지를 한눈에 확인할 수 있어야 합니다. </p>
-          <p>하지만 아마란스에는 이러한 형태로 전체 집행 현황을 모아 볼 수 있는 화면이 없어, 전표를 하나씩 열어 필요한 데이터를 별도의 표로 옮겨 집계해야 했습니다.</p>
-          <p>전표 한 건에서 옮겨야 할 값은 문서번호·지출/입금·발의일자·집행부서·제목·프로그램·항·목·보조과목·금액 등 10개 항목이었습니다. </p>
-          <p>한 전표에 여러 예산 항목이 포함되는 경우도 있어, 가져온 데이터를 예산 집계에 맞게 다시 정리하는 작업도 필요했습니다.</p>
-          <p>손으로 처리하면 한 건당 1~2분(예측)이 걸리고, 전표가 새로 생길 때마다 같은 작업을 반복해야 합니다.</p>
-          <p>따라서 집계표를 한 번 만들어 놓는 것으로 끝나지 않습니다. 새로운 전표가 생길 때마다 데이터를 추가로 옮겨야 하므로, 최신 집행 현황을 유지하는 데에도 계속 사람의 작업이 필요합니다.</p>
+          <p>예산 집행 현황을 파악하려면 항·목별로 예산이 얼마나 집행되었는지를 <strong>한눈에 확인할 수 있어야 합니다.</strong> </p>
+          <p>하지만 다우오피스에는 이러한 형태로 <strong>전체 집행 현황을 모아 볼 수 있는 화면이 없어,</strong> 전표를 하나씩 열어 필요한 데이터를 별도의 표로 옮겨 집계해야 했습니다.</p>
+          <p>전표 한 건에서 옮겨야 할 값은 문서번호·지출/입금·발의일자·집행부서·제목·프로그램·항·목·보조과목·금액 등 <strong>10개 항목이었습니다.</strong> </p>
+          <p><strong>한 전표에 여러 예산 항목이 포함되는 경우도 있어,</strong> 가져온 데이터를 예산 집계에 맞게 다시 정리하는 작업도 필요했습니다.</p>
+          <p>손으로 처리하면 한 건당 <span class="tok">1~2분(예측)</span>이 걸리고, <strong>전표가 새로 생길 때마다 같은 작업을 반복해야 합니다.</strong></p>
+          <p>따라서 집계표를 한 번 만들어 놓는 것으로 끝나지 않습니다. 새로운 전표가 생길 때마다 데이터를 추가로 옮겨야 하므로, <strong>최신 집행 현황을 유지하는 데에도 계속 사람의 작업이 필요합니다.</strong></p>
         </div>
       </div>
 
       <div class="stp">
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
-          <p>웹에서 데이터를 가져오려면 <strong>어떤 데이터를 어디에서 가져올지 지정하는 것과, 가져온 데이터를 어디에 쌓을지를 정하는 것</strong>이 필요합니다.</p>
+          <p>웹에서 데이터를 가져오려면 어떤 데이터를 어디에서 가져올지 정하고, 가져온 데이터를 어디에 쌓을지도 정해야 합니다.</p>
+          <h3>요소 지정</h3>
           <p>코드는 화면을 보고 필요한 값을 판단할 수 없기 때문에, <strong>버튼·입력창·표의 어느 위치를 조작하거나 읽을지 지정해 주어야 합니다.</strong> 브라우저에서 오른쪽 클릭 → 검사를 누르면 요소<span class="cite-w"><a class="cite" id="c-p4-1" href="#n-p4-1" aria-describedby="d-p4-1">1</a><span class="cite-t" role="tooltip">웹 화면을 이루는 조각 하나. 입력칸·버튼·표의 한 칸이 각각 요소이며 저마다 고유한 값을 가지고 있습니다.</span></span>의 <span class="tok m">id</span>, 텍스트, <span class="tok m">XPath</span> 등을 확인할 수 있습니다.</p>
 
           <div class="tw ctr eq xp"><table>
@@ -2019,51 +2020,72 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
       </tbody>
     </table></div>
 
-          <p>로그인 칸은 고유한 ID가 있어 이를 사용했고, 전표 표는 별도의 이름이 없어 <strong>표에서의 위치를 나타내는 XPath를 사용했습니다.</strong> 이 방식은 <span class="tok a">화면 구조가 바뀌면 위치가 달라질 수 있습니다</span>.</p>
-          <p>전표를 읽은 뒤에는 <span class="tok g">Google Sheets</span>에 데이터를 쌓도록 연결했습니다. 시트에 머리글이 없으면 먼저 만들고, 전표에서 읽은 값을 정해진 열에 맞춰 기록합니다. 그리고 <strong><span class="tok">문서번호</span>를 식별자로 사용하여 이미 수집한 전표는 건너뜁니다.</strong></p>
+          <p>로그인 칸은 고유한 ID가 있어 이를 사용했고, 전표 표는 별도의 이름이 없어 <strong>표에서의 위치를 나타내는 XPath를 사용했습니다.</strong> 따라서 전표가 추가되거나 화면 구조가 바뀌면 XPath가 가리키는 위치도 달라질 수 있습니다.</p>
+          <h3>Google Sheets 연결</h3>
+          <p>전표를 읽은 뒤에는 <span class="tok g">Google Sheets</span>에 데이터를 쌓도록 연결했습니다.</p>
+          <p>Google Sheets도 웹 화면이지만 이 부분은 화면을 조작하지 않습니다. <strong>구글이 프로그램끼리 값을 주고받는 창구(API<span class="cite-w"><a class="cite" id="c-p4-2" href="#n-p4-2" aria-describedby="d-p4-2">2</a><span class="cite-t" role="tooltip">프로그램끼리 값을 주고받도록 서비스가 미리 열어 둔 창구. 사람이 쓰는 화면을 거치지 않고 코드가 직접 요청을 보내고 결과를 받습니다.</span></span>)를 열어 두었기 때문에</strong> 브라우저를 띄우지 않고 값을 바로 넣습니다.</p>
+          <p>사람 계정으로 로그인하는 대신 <span class="tok">서비스 계정</span>을 하나 만들고 그 계정에 시트를 공유했습니다. 코드는 구글에서 내려받은 <strong>키 파일로 신분을 증명하며,</strong> 스프레드시트와 드라이브까지만 권한을 받습니다.</p>
+
+          <div class="pre" data-nm="재단 예산 관리 시스템" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code>credentials = Credentials.from_service_account_file(<u>"service-account.json"</u>, scopes=SCOPES)
+client = gspread.authorize(credentials)
+sheet = client.open_by_url(<u>"https://docs.google.com/spreadsheets/…"</u>).sheet1
+
+sheet.append_row(data)</code></div>
+          <p class="pre-cap">앞의 세 줄로 시트에 연결하고, <strong>마지막 한 줄이 값을 시트 맨 아래에 한 행으로 붙입니다.</strong></p>
+          <p>시트에 머리글이 없으면 먼저 만들고, 전표에서 읽은 값을 정해진 열에 맞춰 기록합니다. 그리고 <strong><span class="tok">문서번호</span>를 식별자로 사용하여 이미 수집한 전표는 건너뜁니다.</strong></p>
           <p>전표 하나에 여러 예산 항목이 포함된 경우에는, 문서번호부터 프로그램까지의 정보는 그대로 두고 <strong>항·목·보조과목·금액만 바꾸어 추가로 기록합니다.</strong></p>
-          <p>따라서 코드를 여러 번 실행해도 기존 데이터를 다시 가져오지 않고, <strong>새로운 전표만 Google Sheets에 추가됩니다.</strong> 웹에서 전표를 가져오는 과정과 Google Sheets에 집계하는 과정을 연결해, 별도로 복사·붙여넣기하지 않아도 집계표를 계속 업데이트할 수 있도록 한 것입니다.</p>
+
+
+          <p>전표가 새로 올라오면 코드를 다시 실행하면 됩니다. <strong>그동안 늘어난 전표만 알아서 찾아 시트 아래에 붙습니다.</strong></p>
 
           <div class="ann">
-            <svg viewBox="0 40 640 284" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="시트에 이미 있는 문서번호는 건너뛰고 새 번호만 Google Sheets에 쌓는 흐름">
+            <svg viewBox="0 0 640 268" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="왼쪽 전자결재 목록에서 아직 수집하지 않은 전표만 오른쪽 Google Sheets 아래에 행으로 붙는 그림">
               <defs>
-                <marker id="bkA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
                 <marker id="bkG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+                <marker id="bkA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
               </defs>
 
+              <rect x="18" y="40" width="252" height="178" rx="10" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/>
+              <path d="M18,70 h252" stroke="#1a1a1a" stroke-width="1.2" opacity=".28"/>
+              <text class="ic-t" x="32" y="62">전자결재 전표 목록</text>
+              <text class="ic-s" x="256" y="62" text-anchor="end">1페이지</text>
 
-              <rect x="40" y="58" width="118" height="58" rx="9" fill="#fff" stroke="#737370" stroke-width="1.4" opacity=".55"/>
-              <text class="ic-t" x="99" y="84" text-anchor="middle" fill="#737370">2024-118</text>
-              <text class="ic-s" x="99" y="103" text-anchor="middle">이미 있음</text>
+              <rect x="32" y="78" width="226" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
+              <text class="ic-t" x="44" y="96" fill="#1a5fb4">2024-121</text>
+              <text class="ic-s" x="248" y="96" text-anchor="end" fill="#1a5fb4">새 전표</text>
 
-              <rect x="178" y="58" width="118" height="58" rx="9" fill="#fff" stroke="#737370" stroke-width="1.4" opacity=".55"/>
-              <text class="ic-t" x="237" y="84" text-anchor="middle" fill="#737370">2024-119</text>
-              <text class="ic-s" x="237" y="103" text-anchor="middle">이미 있음</text>
+              <rect x="32" y="112" width="226" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
+              <text class="ic-t" x="44" y="130" fill="#1a5fb4">2024-120</text>
+              <text class="ic-s" x="248" y="130" text-anchor="end" fill="#1a5fb4">새 전표</text>
 
-              <rect x="316" y="58" width="118" height="58" rx="9" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.4"/>
-              <text class="ic-t" x="375" y="84" text-anchor="middle" fill="#1a5fb4">2024-120</text>
-              <text class="ic-s" x="375" y="103" text-anchor="middle" fill="#1a5fb4">새 전표</text>
+              <rect x="32" y="146" width="226" height="26" rx="6" fill="#fff" stroke="#737370" stroke-width="1.3" opacity=".5"/>
+              <text class="ic-t" x="44" y="164" fill="#737370">2024-119</text>
+              <text class="ic-s" x="248" y="164" text-anchor="end">이미 수집</text>
 
-              <rect x="454" y="58" width="118" height="58" rx="9" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.4"/>
-              <text class="ic-t" x="513" y="84" text-anchor="middle" fill="#1a5fb4">2024-121</text>
-              <text class="ic-s" x="513" y="103" text-anchor="middle" fill="#1a5fb4">새 전표</text>
+              <rect x="32" y="180" width="226" height="26" rx="6" fill="#fff" stroke="#737370" stroke-width="1.3" opacity=".5"/>
+              <text class="ic-t" x="44" y="198" fill="#737370">2024-118</text>
+              <text class="ic-s" x="248" y="198" text-anchor="end">이미 수집</text>
 
-              <text class="hw" x="26" y="158" fill="#a16207">이미 있는 번호는 건너뜁니다</text>
-              <path class="st" d="M278,148 C268,136 254,130 240,124" stroke="#a16207" marker-end="url(#bkA)" opacity=".9"/>
+              <path class="st" d="M282,124 L362,124" stroke="#1a5fb4" marker-end="url(#bkG)"/>
+              <text class="hw" x="324" y="106" text-anchor="middle" fill="#1a5fb4">새 전표만</text>
 
-              <path class="st" d="M375,120 C375,146 348,152 336,170" stroke="#1a5fb4" marker-end="url(#bkG)"/>
-              <path class="st" d="M513,120 C513,146 424,150 404,170" stroke="#1a5fb4" marker-end="url(#bkG)"/>
+              <rect x="370" y="40" width="252" height="178" rx="10" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/>
+              <path d="M370,70 h252" stroke="#1a1a1a" stroke-width="1.2" opacity=".28"/>
+              <text class="ic-t" x="384" y="62">Google Sheets</text>
 
-              <rect x="150" y="176" width="340" height="134" rx="10" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/>
-              <path d="M150,204 h340" stroke="#1a1a1a" stroke-width="1.2" opacity=".28"/>
-              <text class="ic-t" x="170" y="197">Google Sheets 원장</text>
-              <text class="ic-s" x="170" y="230" fill="#737370">2024-118</text>
-              <text class="ic-s" x="170" y="254" fill="#737370">2024-119</text>
-              <text class="ic-t" x="170" y="278" fill="#1a5fb4">2024-120</text>
-              <text class="ic-t" x="170" y="300" fill="#1a5fb4">2024-121</text>
-              <text class="ic-s" x="470" y="230" text-anchor="end" fill="#737370">지난번 실행에서 쌓임</text>
-              <text class="ic-s" x="470" y="290" text-anchor="end" fill="#1a5fb4">이번에 추가</text>
+              <text class="ic-t" x="396" y="96" fill="#737370">2024-118</text>
+              <text class="ic-t" x="396" y="130" fill="#737370">2024-119</text>
+              <path d="M384,110 h226" stroke="#1a1a1a" stroke-width="1" opacity=".14"/>
+              <rect x="384" y="146" width="226" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
+              <text class="ic-t" x="396" y="164" fill="#1a5fb4">2024-120</text>
+              <rect x="384" y="180" width="226" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
+              <text class="ic-t" x="396" y="198" fill="#1a5fb4">2024-121</text>
+
+              <text class="hw" x="144" y="248" text-anchor="middle" fill="#a16207">이미 있는 번호는 건너뜁니다</text>
+              <path class="st" d="M144,232 C152,224 160,218 170,212" stroke="#a16207" marker-end="url(#bkA)" opacity=".9"/>
+
+              <text class="hw" x="496" y="248" text-anchor="middle" fill="#737370">행으로 아래에 쌓입니다</text>
             </svg>
             <div class="ann-cap">문서번호를 대조하기 때문에 <strong>여러 차례 실행해도 같은 전표가 두 번 쌓이지 않습니다.</strong></div>
           </div>
@@ -2079,13 +2101,13 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
             <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
       </thead>
       <tbody>
-            <tr><td>전표 한 건</td><td>2~3분</td><td><strong>6~8초</strong></td></tr>
-            <tr><td>어디까지 옮겼나</td><td>사람이 기억</td><td><strong>문서번호로 판별</strong></td></tr>
-            <tr><td>보는 사람</td><td>나</td><td><strong>재단 전체</strong></td></tr>
+            <tr><td>전표 한 건</td><td>1~2분(예측)</td><td><strong>6~8초</strong></td></tr>
+            <tr><td>어디까지 옮겼나</td><td>담당자가 비교하여 확인</td><td><strong>문서번호로 판별</strong></td></tr>
+            <tr><td>보는 사람</td><td>코드를 실행하는 담당자</td><td><strong>재단 전체</strong></td></tr>
       </tbody>
     </table></div>
-          <p><strong>결과가 개인 PC에 남지 않고 재단 구성원이 실시간으로 확인하는 공유 문서에 축적되기 때문에,</strong> 담당자가 자리에 없어도 최신 상태가 유지됩니다.</p>
-          <p>2024년 12월에 만들어 2025년까지 약 1년 사용했습니다. 지금은 결재 시스템이 <span class="tok">아마란스</span>로 바뀌었습니다.</p>
+          <p>Google Sheets와 연동하여 수집한 내역을 개인 PC가 아닌 공유 문서에 축적합니다. 따라서 <strong>재단 구성원 누구나 예산 집행 현황을 확인할 수 있습니다.</strong> </p>
+          <p>이 코드는 2024년 12월에 만들어 <strong>2025년 12월까지 약 1년간 사용했습니다.</strong> 지금은 결재 시스템이 <span class="tok">아마란스</span>로 바뀌어 사용하지 않습니다.</p>
         </div>
       </div>
 
@@ -2093,20 +2115,23 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
         <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
           <h3>대기 처리</h3>
-          <p>웹 페이지가 완전히 준비되기 전에 코드를 실행하면 원하는 요소를 찾지 못하기 때문에 <strong>대기 처리가 필요합니다.</strong> 두 가지 방법을 함께 사용했습니다.</p>
+          <p>웹 페이지는 화면을 여는 즉시 모든 내용이 준비되지 않을 수 있습니다. 따라서 <strong>코드가 다음 동작으로 넘어가기 전에 필요한 화면이나 단추가 준비될 때까지 기다려야 합니다.</strong> 두 가지 방법을 함께 사용했습니다.</p>
 
-          <div class="pre" data-nm="재단 예산 관리 시스템" data-lg="Python" tabindex="0" role="region" aria-label="코드"><code>time.sleep(2)
+          <div class="pre" tabindex="0" role="region" aria-label="코드"><code>time.sleep(<u>2</u>)</code></div>
+          <p class="pre-cap"><strong>정해진 시간만큼 기다리는 방법입니다.</strong> 화면이 2초보다 늦게 준비되면 문제가 생기고, 일찍 준비되어도 2초를 모두 기다립니다.</p>
 
-WebDriverWait(driver, 10).until(
-    EC.element_to_be_clickable((By.XPATH, <u>"//*[@id='last_page']"</u>)))</code></div>
-          <p class="pre-cap">위는 <strong>정해진 시간만큼</strong> 무조건 기다리는 방법입니다. 화면이 그보다 늦게 뜨면 어긋나고 먼저 떠도 그 시간을 다 씁니다. 아래는 <strong>단추를 누를 수 있는 상태가 될 때까지</strong> 기다리는 방법으로, 조건이 되면 바로 넘어가고 10초가 지나도 안 되면 멈춥니다.</p>
+          <div class="pre" tabindex="0" role="region" aria-label="코드"><code>WebDriverWait(driver, <u>10</u>).until(
+    EC.element_to_be_clickable((By.XPATH, <u>"//*[@id='last_page']"</u>))
+)</code></div>
+          <p class="pre-cap"><strong>필요한 단추를 실제로 누를 수 있을 때까지 기다리는 방법입니다.</strong> 준비되면 바로 다음 단계로 넘어가고, 10초가 지나도 준비되지 않으면 멈춥니다.</p>
 
-          <p><span class="tok a">대기 시간이 짧으면 오류 없이 어긋납니다</span> — 화면이 아직 표시되지 않은 상태에서 다음을 누르면 오류가 아니라 빈 값이 입력됩니다. 값이 비어도 코드는 그대로 다음 전표로 넘어가기 때문에 <strong>이 부분에서 오류가 가장 많이 발생했습니다.</strong></p>
+          <p>특히 <span class="tok a">대기 시간이 짧다고 해서 항상 바로 오류가 나는 것은 아닙니다</span>. 화면이 준비되기 전에 값을 읽으면 빈 값이 들어가고, 코드가 이를 오류로 판단하지 않은 채 다음 전표로 넘어갈 수도 있습니다. <strong>그래서 이 부분의 오류는 결과를 확인하기 전까지 알아채기 어려웠습니다.</strong></p>
+          <p>화면이 준비되는 데 걸리는 시간은 그때그때 달라서, 어제 실행되던 코드가 오늘 멈추거나 제 컴퓨터에서는 되던 코드가 다른 컴퓨터에서는 작동하지 않는 일이 생깁니다. 사람이라면 화면이 뜰 때까지 기다리면 될 일이지만, <strong>코드에게는 기다리는 것조차 명령해야 한다는 점이 흥미로웠습니다.</strong> 웹을 조작하는 코드에서 오류가 많이 난 부분도 대기 처리였습니다.</p>
 
           <h3>계정과 주소</h3>
-          <p>이 코드는 <strong>저 혼자 쓰기 때문에</strong> 결재 계정과 시트 주소를 코드에 그대로 적었습니다. 다른 사람과 나눠 쓸 코드라면 <span class="tok g">환경변수</span>로 빼 두는 편이 안전합니다.</p>
+          <p>이 코드는 실장님께 전달해 직접 실행할 수 있도록 만든 프로그램입니다. 실행하면 결재 시스템에 접속해 전체 전표 내용을 가져오기 때문에, 실장님의 결재 계정과 시트 주소가 필요합니다. 당시에는 제가 사용하는 환경을 기준으로 필요한 값을 코드에 직접 기입했지만, 다른 사람이 사용할 프로그램이라면 계정 정보와 같은 값은 코드에 넣지 않고 <span class="tok g">환경변수</span><span class="cite-w"><a class="cite" id="c-p4-3" href="#n-p4-3" aria-describedby="d-p4-3">3</a><span class="cite-t" role="tooltip">값을 코드 안에 적지 않고 컴퓨터에 따로 저장해 두었다가 프로그램이 실행될 때 읽어 오게 하는 방법입니다.</span></span>로 <strong>분리하는 편이 안전하다고 합니다.</strong></p>
+          <p>Google Sheets에 접속하려면 <span class="tok">서비스 계정 키</span>(<span class="tok m">JSON</span><span class="cite-w"><a class="cite" id="c-p4-4" href="#n-p4-4" aria-describedby="d-p4-4">4</a><span class="cite-t" role="tooltip">데이터를 이름과 값의 짝으로 표현하는 파일 형식입니다. 사람이 읽을 수 있는 텍스트이면서 프로그램에서도 쉽게 읽을 수 있습니다.</span></span>)이 필요합니다. 이 파일에는 제 계정의 권한이 담겨 있어 <strong>전달하지 않고 직접 내려받아 쓰시도록 안내했습니다.</strong></p>
 
-          <p>같은 방식으로 만든 <strong>자료 업로드 · 다운로드</strong>는 1-4-1에 적었습니다.</p>
         </div>
       </div>
 
@@ -2115,7 +2140,10 @@ WebDriverWait(driver, 10).until(
     <div class="notes">
       <div class="notes-h">주석</div>
       <dl>
-        <dt id="n-p4-1">1</dt><dd id="d-p4-1"><b>요소(element)</b> — 웹 화면을 이루는 조각 하나입니다. 입력칸·버튼·표의 한 칸이 각각 하나의 요소이며 저마다 <span class="tok m">id</span>나 <span class="tok m">xpath</span> 같은 고유한 값을 가지고 있습니다. 코드는 화면을 보지 못하기 때문에 이 값으로 누를 자리를 찾습니다. <a class="backref" href="#c-p4-1" aria-label="본문 1번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p4-1">1</dt><dd id="d-p4-1"><b>요소(element)</b> — 웹 화면을 이루는 하나의 조각입니다. 입력칸·버튼·표의 한 칸 등이 각각 하나의 요소입니다. 코드는 화면을 직접 볼 수 없기 때문에 id·텍스트·XPath 등의 정보를 이용해 어떤 요소를 조작할지 찾아갑니다.<a class="backref" href="#c-p4-1" aria-label="본문 1번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p4-2">2</dt><dd id="d-p4-2"><b>API</b> — 프로그램이 다른 서비스와 데이터를 주고받을 수 있도록 서비스가 제공하는 통신 창구입니다. 사람이 화면에서 직접 조작하지 않아도 코드가 API를 통해 데이터를 요청하고 결과를 받을 수 있습니다. Google Sheets처럼 API를 제공하는 서비스는 브라우저를 띄우지 않고도 코드로 데이터를 읽고 쓸 수 있습니다. <a class="backref" href="#c-p4-2" aria-label="본문 2번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p4-3">3</dt><dd id="d-p4-3"><b>환경변수</b> — 값을 코드 안에 적지 않고 컴퓨터에 따로 저장해 두었다가 프로그램이 실행될 때 읽어 오게 하는 방법입니다. 아이디·비밀번호처럼 공개하면 안 되는 값이나 사람마다 달라지는 파일 경로 등을 코드와 분리해 관리할 때 사용합니다. 코드를 그대로 전달해도 환경변수에 저장된 값은 함께 전달되지 않습니다. <a class="backref" href="#c-p4-3" aria-label="본문 3번 주석으로 돌아가기">↩</a></dd>
+        <dt id="n-p4-4">4</dt><dd id="d-p4-4"><b>JSON</b> — 데이터를 이름과 값의 짝으로 표현하는 파일 형식입니다. 사람이 읽을 수 있는 텍스트이면서 프로그램에서도 쉽게 읽을 수 있어 설정값이나 데이터 전달에 널리 사용됩니다. 다만 JSON 파일에 비밀번호나 인증 정보를 저장한다고 해서 자동으로 안전해지는 것은 아닙니다. 민감한 정보는 접근 권한과 보관 방식까지 함께 관리해야 합니다. <a class="backref" href="#c-p4-4" aria-label="본문 4번 주석으로 돌아가기">↩</a></dd>
       </dl>
     </div>
   </section>
@@ -2643,7 +2671,7 @@ WebDriverWait(driver, 10).until(
           <p>Apps Script 타이머는 정각을 지정할 수 없고 <span class="tok m">오전 9~10시</span> 처럼 한 시간 구간만 고를 수 있는데, 월 1회 배치라 그 한 시간이 문제가 되지 않습니다.</p>
 
           <h3>② 읽기</h3>
-          <p>OCR로 글자를 뽑고 <strong>정규식으로 날짜 · 금액 · 결제처 셋을 찾습니다.</strong> 금액은 <span class="tok m">합계 · 총액 · 결제금액 · 승인금액</span> 같은 낱말 근처의 숫자를 먼저 보고, 그런 낱말이 없으면 글자 안에서 가장 큰 금액을 씁니다.</p>
+          <p>OCR로 글자를 뽑고 <strong>정규식으로 날짜 · 금액 · 결제처 셋을 찾습니다.</strong> 금액은 <span class="tok m">합계 · 총액 · 결제금액 · 승인금액</span> 같은 단어 근처의 숫자를 먼저 보고, 그런 단어가 없으면 글자 안에서 가장 큰 금액을 씁니다.</p>
           <p>결제처는 <span class="tok m">가맹점명 · 상호 · 매장명</span> 뒤를 읽고, 없으면 OCR 결과의 첫 줄을 씁니다.</p>
 
           <h3>③ 정리</h3>
