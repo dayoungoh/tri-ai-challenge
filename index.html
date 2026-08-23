@@ -1290,14 +1290,14 @@ a.cta{text-decoration:none}
 
       <div class="grp">
         <div class="sec">부록</div>
-        <button class="row" data-ch="5" data-t="apxa" data-first="apxa">
-          <svg aria-hidden="true" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
-          <span class="tx"><b>A. Git과 GitHub</b><span class="ft">되돌릴 수 있게 만들기</span></span>
+        <button class="row" data-ch="5" data-t="apxb" data-first="apxb">
+          <svg aria-hidden="true" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>
+          <span class="tx"><b>A. AI 활용 넓히기</b><span class="ft">스킬 · 플러그인 · 커넥터</span></span>
         </button>
 
-        <button class="row" data-ch="6" data-t="apxb" data-first="apxb">
-          <svg aria-hidden="true" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><rect x="9" y="9" width="6" height="6" rx="1.5"/></svg>
-          <span class="tx"><b>B. AI 활용 넓히기</b><span class="ft">스킬 · 플러그인 · 커넥터</span></span>
+        <button class="row" data-ch="6" data-t="apxa" data-first="apxa">
+          <svg aria-hidden="true" class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg>
+          <span class="tx"><b>B. Git과 GitHub</b><span class="ft">버전 관리</span></span>
         </button>
       </div>
 
@@ -3253,8 +3253,87 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
   </section>
 
   <!-- 부록 A -->
+  <section id="apxb" class="page doc">
+    <div class="phead"><div class="ttl"><div class="eyebrow">부록 A</div><h2>AI 활용 넓히기</h2></div></div>
+    <div class="chips"><span class="chip">#스킬</span><span class="chip">#플러그인</span><span class="chip">#커넥터</span></div>
+    <p class="lead">AI를 쓰다 보면 같은 설명을 반복하게 되기 때문에, 매번 다시 말하지 않으려는 시도가 이 세 가지입니다.</p>
+
+    <div class="note">"우리 부서는 이런 양식을 씁니다. 파일명 규칙은 이렇고, 결과는 이 폴더에 넣어 주세요. 개인정보 열은 항상 마스킹하고요."</div>
+    <p>이 말을 매번 하고 계신다면, 그것이 넓힐 신호입니다.</p>
+
+    <h3>1. 스킬 — 절차를 글로 적어 두는 것</h3>
+    <p><strong>무엇인가.</strong> 특정 작업의 절차서입니다. 코드가 아니라 마크다운 문서 한 장이기 때문에, 폴더 하나에 <span class="tok m">SKILL.md</span> 하나가 전부입니다.</p>
+    <div class="pre" tabindex="0" role="region" aria-label="코드"><code>my-skill/
+└── <b>SKILL.md</b></code></div>
+    <p><strong>어떻게 하나.</strong> 지금 그 일을 어떤 순서로 하고 계신지를 그대로 적으시면 됩니다. 1-1의 순서표를 글로 옮긴다고 생각하시면 가깝습니다.</p>
+    <div class="pre" data-nm="SKILL.md" data-lg="Markdown" tabindex="0" role="region" aria-label="코드"><code><i>---</i>
+<i>name: 지원서-병합</i>
+<i>description: 지원자 폴더의 PDF를 정해진 순서로 1인 1파일로 병합할 때 사용</i>
+<i>---</i>
+
+<b># 절차</b>
+1. 대상 폴더를 확인합니다
+2. <b>파일명 키워드</b>로 서류 종류를 판별합니다
+3. 정해진 순서표대로 정렬합니다
+4. `전공/학번_이름.pdf` 형태로 저장합니다
+
+<b># 주의</b>
+- <u>이름 규칙이 어긋난 파일은 건너뛰고 목록으로 보고합니다</u></code></div>
+    <p><strong>무엇이 좋은가.</strong> 같은 설명을 다시 하지 않아도 되고 그 절차를 팀이 함께 쓰며, 무엇보다 <strong>글이라 누구나 읽고 고칠 수 있습니다.</strong></p>
+    <div class="note">스킬을 잘 쓰는 사람은 코딩을 잘하는 사람이 아니라 <strong>업무 절차를 정확히 글로 적을 수 있는 사람</strong>입니다. 그 능력은 이미 갖고 계실 가능성이 큽니다.</div>
+
+    <h3>2. 플러그인 — 여러 개를 한 번에 나눠 주는 것</h3>
+    <p><strong>무엇인가.</strong> 스킬 여럿과 명령어·설정을 한 꾸러미로 묶은 것입니다. 스킬 하나가 절차서 한 장이라면, 플러그인은 <strong>그 절차서들을 묶은 업무 지침 묶음</strong>입니다.</p>
+    <p><strong>어떻게 하나.</strong> 대개 저장소 주소 하나를 등록하면 안에 든 것이 한꺼번에 들어옵니다.</p>
+    <p><strong>무엇이 좋은가.</strong> <strong>각자 챙기게 두면 각자 다르게 챙기기 때문에,</strong> 여러 사람이 같은 방식으로 일해야 할 때 한 번에 나눠 주고 한 번에 갱신할 수 있습니다.</p>
+    <div class="note warn">다만, 묶음은 안이 보이지 않습니다. 낱개 스킬은 문서 하나만 읽으면 되지만, <strong>플러그인은 무엇이 들어 있는지 목록을 먼저 확인</strong>하셔야 합니다.</div>
+
+    <h3>3. 커넥터 — 바깥 서비스에 연결하는 것</h3>
+    <p><strong>무엇인가.</strong> AI가 메일·문서·데이터베이스 같은 바깥 서비스에 닿을 수 있게 하는 통로입니다. 규격 이름은 <span class="tok m">MCP</span>입니다.</p>
+    <p><strong>어떻게 하나.</strong> 붙이려는 서비스가 제공하는 커넥터를 등록하고, 그 서비스에 로그인해 권한을 허용합니다.</p>
+    <p><strong>무엇이 좋은가.</strong> 스킬이 "어떻게 할지"를 정한다면 커넥터는 <strong>"어디까지 닿을지"</strong>를 넓힙니다. 둘은 짝입니다.</p>
+
+    <div class="tw ctr eq"><table>
+      <caption class="sr">AI 활용 넓히기 — 표</caption>
+      <thead>
+      <tr><th scope="col"></th><th scope="col">스킬</th><th scope="col">커넥터</th></tr>
+      </thead>
+      <tbody>
+      <tr><td>무엇</td><td>절차서 (글)</td><td><strong>연결 통로</strong> (프로그램)</td></tr>
+      <tr><td>하는 일</td><td>"이럴 땐 이렇게 하라"</td><td>"이 서비스에 닿을 수 있게 하라"</td></tr>
+      <tr><td>만들기</td><td>마크다운을 씁니다</td><td>코드가 필요합니다</td></tr>
+      <tr><td>예</td><td>서류 병합 절차</td><td>Gmail · Drive · 데이터베이스</td></tr>
+      </tbody>
+    </table></div>
+
+    <h3>도구 호환성</h3>
+    <p>셋 중 둘은 그렇습니다.</p>
+    <div class="tw ctr eq"><table>
+      <caption class="sr">AI 활용 넓히기 — 표</caption>
+      <thead>
+      <tr><th scope="col">종류</th><th scope="col">표준 여부</th><th scope="col">적용 범위</th></tr>
+      </thead>
+      <tbody>
+      <tr><td><strong>스킬</strong></td><td>예</td><td>Claude Code · Codex · Cursor · VS Code · Gemini CLI · Copilot 등 30여 개 도구</td></tr>
+      <tr><td><strong>커넥터(MCP)</strong></td><td>예</td><td>OpenAI · Google이 정식 지원. 2025년 말 리눅스 재단 산하로 이관</td></tr>
+      <tr><td><strong>플러그인</strong></td><td><strong>아니오</strong></td><td>도구마다 방식이 다릅니다</td></tr>
+      </tbody>
+    </table></div>
+    <p>따라서 <strong>스킬과 커넥터는 한 번 만들어 두면 도구를 바꿔도 따라옵니다.</strong> 플러그인은 그 도구 안에서만 쓰입니다.</p>
+
+    <div class="steps"><div class="stp">
+      <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
+      <div class="bd">
+        <p>스킬은 <strong>AI가 읽는 지시문</strong>입니다. 남의 스킬을 넣는 것은 남이 쓴 지시를 내 AI에게 그대로 읽히는 일이므로, <span class="tok a">무엇을 하라고 적혀 있는지 먼저 읽으십시오</span>. 글이라 읽을 수 있습니다.</p>
+        <p><strong>사내 계정 연결은 정보보안 규정을 확인한 뒤에 하십시오.</strong> Supabase·Netlify는 본인이 만든 것에 붙지만 <span class="tok a">Gmail·Slack은 재단의 메일과 대화에 접근하기 때문에</span>, 결이 다릅니다.</p>
+        <p><strong>남의 코드에 내 메일함 권한을 주는 일</strong>이기 때문에, <span class="tok a">출처가 불분명한 커넥터는 붙이지 마십시오</span>.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- 부록 B -->
   <section id="apxa" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">부록 A</div><h2>Git과 GitHub</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">부록 B</div><h2>Git과 GitHub</h2></div></div>
     <div class="chips"><span class="chip">#Git</span><span class="chip">#GitHub</span></div>
     <p class="lead">고쳤다가 망가뜨려도 되돌릴 수 있게 만드는 일이기 때문에, AI를 쓰든 안 쓰든 필요합니다.</p>
 
@@ -3403,84 +3482,6 @@ Thumbs.db</code></div>
     </div></div>
   </section>
 
-  <!-- 부록 B -->
-  <section id="apxb" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">부록 B</div><h2>AI 활용 넓히기</h2></div></div>
-    <div class="chips"><span class="chip">#스킬</span><span class="chip">#플러그인</span><span class="chip">#커넥터</span></div>
-    <p class="lead">AI를 쓰다 보면 같은 설명을 반복하게 되기 때문에, 매번 다시 말하지 않으려는 시도가 이 세 가지입니다.</p>
-
-    <div class="note">"우리 부서는 이런 양식을 씁니다. 파일명 규칙은 이렇고, 결과는 이 폴더에 넣어 주세요. 개인정보 열은 항상 마스킹하고요."</div>
-    <p>이 말을 매번 하고 계신다면, 그것이 넓힐 신호입니다.</p>
-
-    <h3>1. 스킬 — 절차를 글로 적어 두는 것</h3>
-    <p><strong>무엇인가.</strong> 특정 작업의 절차서입니다. 코드가 아니라 마크다운 문서 한 장이기 때문에, 폴더 하나에 <span class="tok m">SKILL.md</span> 하나가 전부입니다.</p>
-    <div class="pre" tabindex="0" role="region" aria-label="코드"><code>my-skill/
-└── <b>SKILL.md</b></code></div>
-    <p><strong>어떻게 하나.</strong> 지금 그 일을 어떤 순서로 하고 계신지를 그대로 적으시면 됩니다. 1-1의 순서표를 글로 옮긴다고 생각하시면 가깝습니다.</p>
-    <div class="pre" data-nm="SKILL.md" data-lg="Markdown" tabindex="0" role="region" aria-label="코드"><code><i>---</i>
-<i>name: 지원서-병합</i>
-<i>description: 지원자 폴더의 PDF를 정해진 순서로 1인 1파일로 병합할 때 사용</i>
-<i>---</i>
-
-<b># 절차</b>
-1. 대상 폴더를 확인합니다
-2. <b>파일명 키워드</b>로 서류 종류를 판별합니다
-3. 정해진 순서표대로 정렬합니다
-4. `전공/학번_이름.pdf` 형태로 저장합니다
-
-<b># 주의</b>
-- <u>이름 규칙이 어긋난 파일은 건너뛰고 목록으로 보고합니다</u></code></div>
-    <p><strong>무엇이 좋은가.</strong> 같은 설명을 다시 하지 않아도 되고 그 절차를 팀이 함께 쓰며, 무엇보다 <strong>글이라 누구나 읽고 고칠 수 있습니다.</strong></p>
-    <div class="note">스킬을 잘 쓰는 사람은 코딩을 잘하는 사람이 아니라 <strong>업무 절차를 정확히 글로 적을 수 있는 사람</strong>입니다. 그 능력은 이미 갖고 계실 가능성이 큽니다.</div>
-
-    <h3>2. 플러그인 — 여러 개를 한 번에 나눠 주는 것</h3>
-    <p><strong>무엇인가.</strong> 스킬 여럿과 명령어·설정을 한 꾸러미로 묶은 것입니다. 스킬 하나가 절차서 한 장이라면, 플러그인은 <strong>그 절차서들을 묶은 업무 지침 묶음</strong>입니다.</p>
-    <p><strong>어떻게 하나.</strong> 대개 저장소 주소 하나를 등록하면 안에 든 것이 한꺼번에 들어옵니다.</p>
-    <p><strong>무엇이 좋은가.</strong> <strong>각자 챙기게 두면 각자 다르게 챙기기 때문에,</strong> 여러 사람이 같은 방식으로 일해야 할 때 한 번에 나눠 주고 한 번에 갱신할 수 있습니다.</p>
-    <div class="note warn">다만, 묶음은 안이 보이지 않습니다. 낱개 스킬은 문서 하나만 읽으면 되지만, <strong>플러그인은 무엇이 들어 있는지 목록을 먼저 확인</strong>하셔야 합니다.</div>
-
-    <h3>3. 커넥터 — 바깥 서비스에 연결하는 것</h3>
-    <p><strong>무엇인가.</strong> AI가 메일·문서·데이터베이스 같은 바깥 서비스에 닿을 수 있게 하는 통로입니다. 규격 이름은 <span class="tok m">MCP</span>입니다.</p>
-    <p><strong>어떻게 하나.</strong> 붙이려는 서비스가 제공하는 커넥터를 등록하고, 그 서비스에 로그인해 권한을 허용합니다.</p>
-    <p><strong>무엇이 좋은가.</strong> 스킬이 "어떻게 할지"를 정한다면 커넥터는 <strong>"어디까지 닿을지"</strong>를 넓힙니다. 둘은 짝입니다.</p>
-
-    <div class="tw ctr eq"><table>
-      <caption class="sr">AI 활용 넓히기 — 표</caption>
-      <thead>
-      <tr><th scope="col"></th><th scope="col">스킬</th><th scope="col">커넥터</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>무엇</td><td>절차서 (글)</td><td><strong>연결 통로</strong> (프로그램)</td></tr>
-      <tr><td>하는 일</td><td>"이럴 땐 이렇게 하라"</td><td>"이 서비스에 닿을 수 있게 하라"</td></tr>
-      <tr><td>만들기</td><td>마크다운을 씁니다</td><td>코드가 필요합니다</td></tr>
-      <tr><td>예</td><td>서류 병합 절차</td><td>Gmail · Drive · 데이터베이스</td></tr>
-      </tbody>
-    </table></div>
-
-    <h3>도구 호환성</h3>
-    <p>셋 중 둘은 그렇습니다.</p>
-    <div class="tw ctr eq"><table>
-      <caption class="sr">AI 활용 넓히기 — 표</caption>
-      <thead>
-      <tr><th scope="col">종류</th><th scope="col">표준 여부</th><th scope="col">적용 범위</th></tr>
-      </thead>
-      <tbody>
-      <tr><td><strong>스킬</strong></td><td>예</td><td>Claude Code · Codex · Cursor · VS Code · Gemini CLI · Copilot 등 30여 개 도구</td></tr>
-      <tr><td><strong>커넥터(MCP)</strong></td><td>예</td><td>OpenAI · Google이 정식 지원. 2025년 말 리눅스 재단 산하로 이관</td></tr>
-      <tr><td><strong>플러그인</strong></td><td><strong>아니오</strong></td><td>도구마다 방식이 다릅니다</td></tr>
-      </tbody>
-    </table></div>
-    <p>따라서 <strong>스킬과 커넥터는 한 번 만들어 두면 도구를 바꿔도 따라옵니다.</strong> 플러그인은 그 도구 안에서만 쓰입니다.</p>
-
-    <div class="steps"><div class="stp">
-      <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
-      <div class="bd">
-        <p>스킬은 <strong>AI가 읽는 지시문</strong>입니다. 남의 스킬을 넣는 것은 남이 쓴 지시를 내 AI에게 그대로 읽히는 일이므로, <span class="tok a">무엇을 하라고 적혀 있는지 먼저 읽으십시오</span>. 글이라 읽을 수 있습니다.</p>
-        <p><strong>사내 계정 연결은 정보보안 규정을 확인한 뒤에 하십시오.</strong> Supabase·Netlify는 본인이 만든 것에 붙지만 <span class="tok a">Gmail·Slack은 재단의 메일과 대화에 접근하기 때문에</span>, 결이 다릅니다.</p>
-        <p><strong>남의 코드에 내 메일함 권한을 주는 일</strong>이기 때문에, <span class="tok a">출처가 불분명한 커넥터는 붙이지 마십시오</span>.</p>
-      </div>
-    </div></div>
-  </section>
 
         <!-- 쓴 사람 · 목차 밖 페이지 -->
   <section id="me" class="page">
