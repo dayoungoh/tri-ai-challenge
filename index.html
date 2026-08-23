@@ -728,6 +728,7 @@ th{font-weight:640;font-size:var(--t-micro);letter-spacing:.08em;text-transform:
 .tw.eq table{table-layout:fixed}
 /* 마지막 칸에 문장이 들어가는 표는 그 칸만 왼끝맞춤입니다 */
 .tw.xp td:last-child,.tw.xp th:last-child{text-align:left}
+.tw.nw td:nth-child(2){white-space:nowrap}
 tr:last-child td{border-bottom:0}
 td{color:var(--ink-2)}
 td.n{font-variant-numeric:tabular-nums}
@@ -2040,54 +2041,75 @@ sheet.append_row(data)</code></div>
 
           <div class="ann">
             <svg viewBox="0 0 640 268" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="왼쪽 전자결재 목록에서 아직 수집하지 않은 전표만 오른쪽 Google Sheets 아래에 행으로 붙는 그림">
+              aria-label="전표 목록에서 아직 수집하지 않은 전표를 열어 정해진 자리의 값을 읽고 Google Sheets 아래에 행으로 붙이는 흐름">
               <defs>
                 <marker id="bkG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+                <marker id="bkD" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
                 <marker id="bkA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
               </defs>
 
-              <rect x="18" y="40" width="252" height="178" rx="10" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/>
-              <path d="M18,70 h252" stroke="#1a1a1a" stroke-width="1.2" opacity=".28"/>
-              <text class="ic-t" x="32" y="62">전자결재 전표 목록</text>
-              <text class="ic-s" x="256" y="62" text-anchor="end">1페이지</text>
+              <rect x="6" y="40" width="176" height="178" rx="10" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/>
+              <path d="M6,70 h176" stroke="#1a1a1a" stroke-width="1.2" opacity=".28"/>
+              <text class="ic-t" x="18" y="62">전표 목록</text>
+              <text class="ic-s" x="170" y="62" text-anchor="end">1페이지</text>
 
-              <rect x="32" y="78" width="226" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
-              <text class="ic-t" x="44" y="96" fill="#1a5fb4">2024-121</text>
-              <text class="ic-s" x="248" y="96" text-anchor="end" fill="#1a5fb4">새 전표</text>
+              <rect x="18" y="78" width="152" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
+              <text class="ic-t" x="28" y="96" fill="#1a5fb4">2024-121</text>
+              <text class="ic-s" x="160" y="96" text-anchor="end" fill="#1a5fb4">새 전표</text>
 
-              <rect x="32" y="112" width="226" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
-              <text class="ic-t" x="44" y="130" fill="#1a5fb4">2024-120</text>
-              <text class="ic-s" x="248" y="130" text-anchor="end" fill="#1a5fb4">새 전표</text>
+              <rect x="18" y="112" width="152" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
+              <text class="ic-t" x="28" y="130" fill="#1a5fb4">2024-120</text>
+              <text class="ic-s" x="160" y="130" text-anchor="end" fill="#1a5fb4">새 전표</text>
 
-              <rect x="32" y="146" width="226" height="26" rx="6" fill="#fff" stroke="#737370" stroke-width="1.3" opacity=".5"/>
-              <text class="ic-t" x="44" y="164" fill="#737370">2024-119</text>
-              <text class="ic-s" x="248" y="164" text-anchor="end">이미 수집</text>
+              <rect x="18" y="146" width="152" height="26" rx="6" fill="#fff" stroke="#737370" stroke-width="1.3" opacity=".5"/>
+              <text class="ic-t" x="28" y="164" fill="#737370">2024-119</text>
+              <text class="ic-s" x="160" y="164" text-anchor="end">이미 수집</text>
 
-              <rect x="32" y="180" width="226" height="26" rx="6" fill="#fff" stroke="#737370" stroke-width="1.3" opacity=".5"/>
-              <text class="ic-t" x="44" y="198" fill="#737370">2024-118</text>
-              <text class="ic-s" x="248" y="198" text-anchor="end">이미 수집</text>
+              <rect x="18" y="180" width="152" height="26" rx="6" fill="#fff" stroke="#737370" stroke-width="1.3" opacity=".5"/>
+              <text class="ic-t" x="28" y="198" fill="#737370">2024-118</text>
+              <text class="ic-s" x="160" y="198" text-anchor="end">이미 수집</text>
 
-              <path class="st" d="M282,124 L362,124" stroke="#1a5fb4" marker-end="url(#bkG)"/>
-              <text class="hw" x="324" y="106" text-anchor="middle" fill="#1a5fb4">새 전표만</text>
+              <path class="st" d="M190,124 L224,124" stroke="#1a5fb4" marker-end="url(#bkG)"/>
 
-              <rect x="370" y="40" width="252" height="178" rx="10" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/>
-              <path d="M370,70 h252" stroke="#1a1a1a" stroke-width="1.2" opacity=".28"/>
-              <text class="ic-t" x="384" y="62">Google Sheets</text>
+              <rect x="232" y="40" width="176" height="178" rx="10" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/>
+              <path d="M232,70 h176" stroke="#1a1a1a" stroke-width="1.2" opacity=".28"/>
+              <text class="ic-t" x="244" y="62">전표 상세</text>
+              <text class="ic-s" x="244" y="94" fill="#737370">문서번호</text>
+              <rect x="316" y="81" width="84" height="18" rx="4" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1"/>
+              <text class="ic-s" x="392" y="94" text-anchor="end" fill="#1a5fb4">2024-120</text>
+              <text class="ic-s" x="244" y="120" fill="#737370">발의일자</text>
+              <rect x="316" y="107" width="84" height="18" rx="4" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1"/>
+              <text class="ic-s" x="392" y="120" text-anchor="end" fill="#1a5fb4">2024-12-03</text>
+              <text class="ic-s" x="244" y="146" fill="#737370">집행부서</text>
+              <rect x="316" y="133" width="84" height="18" rx="4" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1"/>
+              <text class="ic-s" x="392" y="146" text-anchor="end" fill="#1a5fb4">장학학술팀</text>
+              <text class="ic-s" x="244" y="172" fill="#737370">금액</text>
+              <rect x="316" y="159" width="84" height="18" rx="4" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1"/>
+              <text class="ic-s" x="392" y="172" text-anchor="end" fill="#1a5fb4">1,240,000</text>
+              <path d="M244,186 h152" stroke="#1a1a1a" stroke-width="1" opacity=".14"/>
+              <text class="ic-s" x="320" y="204" text-anchor="middle" fill="#737370">모두 10개 항목</text>
 
-              <text class="ic-t" x="396" y="96" fill="#737370">2024-118</text>
-              <text class="ic-t" x="396" y="130" fill="#737370">2024-119</text>
-              <path d="M384,110 h226" stroke="#1a1a1a" stroke-width="1" opacity=".14"/>
-              <rect x="384" y="146" width="226" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
-              <text class="ic-t" x="396" y="164" fill="#1a5fb4">2024-120</text>
-              <rect x="384" y="180" width="226" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
-              <text class="ic-t" x="396" y="198" fill="#1a5fb4">2024-121</text>
+              <path class="st" d="M416,124 L450,124" stroke="#1a5fb4" marker-end="url(#bkG)"/>
 
-              <text class="hw" x="144" y="248" text-anchor="middle" fill="#a16207">이미 있는 번호는 건너뜁니다</text>
-              <path class="st" d="M144,232 C152,224 160,218 170,212" stroke="#a16207" marker-end="url(#bkA)" opacity=".9"/>
+              <rect x="458" y="40" width="176" height="178" rx="10" fill="#fff" stroke="#1a1a1a" stroke-width="1.4"/>
+              <path d="M458,70 h176" stroke="#1a1a1a" stroke-width="1.2" opacity=".28"/>
+              <text class="ic-t" x="470" y="62">Google Sheets</text>
+              <rect x="470" y="76" width="152" height="20" rx="4" fill="#f2f2ed" stroke="#e5e5df" stroke-width="1"/>
+              <text class="ic-s" x="480" y="90" fill="#737370">문서번호</text>
+              <text class="ic-t" x="480" y="118" fill="#737370">2024-118</text>
+              <text class="ic-t" x="480" y="144" fill="#737370">2024-119</text>
+              <rect x="470" y="152" width="152" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
+              <text class="ic-t" x="480" y="170" fill="#1a5fb4">2024-120</text>
+              <rect x="470" y="182" width="152" height="26" rx="6" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.3"/>
+              <text class="ic-t" x="480" y="200" fill="#1a5fb4">2024-121</text>
 
-              <text class="hw" x="496" y="248" text-anchor="middle" fill="#737370">행으로 아래에 쌓입니다</text>
+              <text class="hw" x="6" y="250" fill="#a16207">이미 있는 번호는 건너뜁니다</text>
+              <path class="st" d="M120,234 C112,228 104,222 96,216" stroke="#a16207" marker-end="url(#bkA)" opacity=".9"/>
+              <text class="hw" x="634" y="22" text-anchor="end" fill="#737370">머리글은 그대로 유지합니다</text>
+              <path class="st" d="M598,34 L598,70" stroke="#737370" marker-end="url(#bkD)" opacity=".85"/>
+              <text class="hw" x="558" y="250" text-anchor="end" fill="#737370">행으로 아래에 쌓입니다</text>
+              <path class="st" d="M582,242 L582,214" stroke="#737370" marker-end="url(#bkD)" opacity=".85"/>
             </svg>
-            <div class="ann-cap">문서번호를 대조하기 때문에 <strong>여러 차례 실행해도 같은 전표가 두 번 쌓이지 않습니다.</strong></div>
           </div>
         </div>
       </div>
@@ -2127,6 +2149,7 @@ sheet.append_row(data)</code></div>
 
           <p>특히 <span class="tok a">대기 시간이 짧다고 해서 항상 바로 오류가 나는 것은 아닙니다</span>. 화면이 준비되기 전에 값을 읽으면 빈 값이 들어가고, 코드가 이를 오류로 판단하지 않은 채 다음 전표로 넘어갈 수도 있습니다. <strong>그래서 이 부분의 오류는 결과를 확인하기 전까지 알아채기 어려웠습니다.</strong></p>
           <p>화면이 준비되는 데 걸리는 시간은 그때그때 달라서, 어제 실행되던 코드가 오늘 멈추거나 제 컴퓨터에서는 되던 코드가 다른 컴퓨터에서는 작동하지 않는 일이 생깁니다. 사람이라면 화면이 뜰 때까지 기다리면 될 일이지만, <strong>코드에게는 기다리는 것조차 명령해야 한다는 점이 흥미로웠습니다.</strong> 웹을 조작하는 코드에서 오류가 많이 난 부분도 대기 처리였습니다.</p>
+          <p>이 코드는 Selenium으로 만들었지만, 요즘 웹 조작에는 Playwright도 많이 사용됩니다. Selenium은 자료와 생태계가 넓다는 장점이 있고, Playwright는 요소가 준비될 때까지 자동으로 기다리는 기능과 최신 웹 앱에 대한 지원이 강하다는 장점이 있습니다. 그래서 <strong>위에 적은 대기 처리를 직접 작성해야 하는 일이 크게 줄어듭니다.</strong></p>
 
           <h3>계정과 주소</h3>
           <p>이 코드는 실장님께 전달해 직접 실행할 수 있도록 만든 프로그램입니다. 실행하면 결재 시스템에 접속해 전체 전표 내용을 가져오기 때문에, 실장님의 결재 계정과 시트 주소가 필요합니다. 당시에는 제가 사용하는 환경을 기준으로 필요한 값을 코드에 직접 기입했지만, 다른 사람이 사용할 프로그램이라면 계정 정보와 같은 값은 코드에 넣지 않고 <span class="tok g">환경변수</span><span class="cite-w"><a class="cite" id="c-p4-3" href="#n-p4-3" aria-describedby="d-p4-3">3</a><span class="cite-t" role="tooltip">값을 코드 안에 적지 않고 컴퓨터에 따로 저장해 두었다가 프로그램이 실행될 때 읽어 오게 하는 방법입니다.</span></span>로 <strong>분리하는 편이 안전하다고 합니다.</strong></p>
@@ -2150,137 +2173,88 @@ sheet.append_row(data)</code></div>
 
   <!-- 1-4-1 · 웹 조작 -->
   <section id="p4a" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-1 · 웹 조작</div><h2>자료 업로드 · 다운로드<span class="ft">계정 등록 · 지원서 저장</span></h2></div></div>
-    <div class="chips"><span class="chip">#2025.07~08</span><span class="chip">#Python</span><span class="chip">#Selenium</span><span class="chip">#openpyxl</span><span class="chip">#제51기_해외유학후보장학생_선발</span></div>
-    <p class="lead">같은 시스템에 명단을 넣고 지원서를 받아야 했는데, 넣는 경로도 받는 경로도 화면뿐이었습니다.</p>
+    <div class="phead"><div class="ttl"><div class="eyebrow">1-4-1 · 웹 조작</div><h2>자료 업로드 · 다운로드</h2></div></div>
+    <div class="chips"><span class="chip">#2025.07~08</span><span class="chip">#2026.08</span><span class="chip">#Python</span><span class="chip">#Selenium</span><span class="chip">#제51기_해외유학후보장학생_선발</span><span class="chip">#해외유학워크숍</span></div>
+    <p class="lead">웹 조작은 화면에서 값을 읽는 데만 쓰는 것이 아니라 자료를 올리고(업로드) 내려받는 데(다운로드)에도 쓸 수 있습니다.</p>
 
-    <div class="steps">
+    <p>가령, 해외유학후보장학생 선발에서는 지원자의 지원서를 PDF로 내려받거나(PDF 인쇄), 평가위원 명단 엑셀 파일을 읽어 평가위원 계정을 등록하고 지원자 자료를 업로드하는 과정이 필요합니다.</p>
 
-      <div class="stp">
-        <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
-        <div class="bd">
-          <p>평가위원 계정은 시스템 관리자 화면에서만 생성할 수 있으며, <strong>파일을 넣는 경로가 없습니다.</strong></p>
-          <p>다만, 명단은 이름·연락처·메일·시작일·종료일이 한 줄에 담긴 <span class="tok">엑셀 한 장</span>으로 접수됩니다.</p>
-          <p><strong>보유한 것은 표이고 입력해야 하는 곳은 화면이어서,</strong> 표의 값을 화면에 옮겨 넣는 작업이 필요했습니다. 한 사람을 등록하려면 등록 버튼 → 세 칸 입력 → 중복 확인 → 날짜 둘 → 활성화 → 저장까지 <strong>화면 조작이 여덟 차례 필요합니다.</strong></p>
-          <p>반대 방향도 사정이 같습니다. 지원서는 시스템 안에서 <strong>웹 화면</strong>으로만 열람되며 내려받기 기능이 없는 반면, 심사위원께는 파일로 전달해야 하고 <strong>전공별로 구분</strong>되어 있어야 합니다.</p>
-          <p>한 사람마다 목록에서 열고, 상단으로 이동한 뒤, 인쇄를 눌러 PDF로 저장하고, 파일명을 정리해 전공 폴더로 옮깁니다.</p>
-          <p>만약 손으로 처리한다면 등록은 한 건당 <span class="tok">1.5~2분(예측)</span>, 저장은 한 건당 <span class="tok">60~90초(예측)</span>가 소요되며, 수백 명이면 <strong>6~8시간(예측)</strong>으로 하루가 통째로 드는 작업입니다.</p>
-          <p>다만, 사람이 처리할 경우 <strong>한 줄을 건너뛰어도 확인할 방법이 없습니다.</strong></p>
-        </div>
-      </div>
-      <div class="stp">
-        <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
-        <div class="bd">
-          <h3>업로드 — 평가위원 계정 등록</h3>
-          <p><strong>사람이 누르던 자리를 코드가 대신하도록, 엑셀을 읽어 한 줄씩 화면에 입력하게 하였습니다.</strong></p>
-          <p>다만, 두 곳에서 막혔습니다.</p>
-          <div class="split">
-            <div class="box"><div class="t">알림창</div><p>중복 확인과 등록 완료마다 뜨는데, 닫지 않으면 다음 조작이 전부 막히기 때문에 <strong>뜰 때까지 기다렸다 닫습니다.</strong></p></div>
-            <div class="box"><div class="t">날짜 칸</div><p>달력 위젯이라 글자를 칠 수 없기 때문에, <strong>칸의 값을 직접 넣어</strong> 우회했습니다.</p></div>
-          </div>
+    <p>2024년에는 시간이 없었기 때문에 코드를 만들지 않았고, 2025년에 제51기 선발을 하며 시도해 보았었는데 <strong>만족스러운 결과를 얻지는 못했습니다.</strong> 업로드는 파일 첨부 단계에서 <span class="tok a">코드가 작동하지 않았고</span>, 다운로드는 실행은 되었지만 페이지 이동(navigation) 등이 <span class="tok a">완벽하게 동작하지 않았습니다</span>.</p>
 
-          <h3>다운로드 — 지원서 PDF 저장</h3>
-          <p>머리글이 포함되거나 배경이 누락되면 같은 서류가 사람마다 다르게 보이기 때문에, 인쇄 설정을 <strong>사전에 고정한 뒤</strong> 시작합니다 — 머리글·바닥글 해제, 배경 그래픽 적용, 여백 기본, 배율 100%.</p>
-          <p><strong>목록을 페이지 단위로 순회하며 한 사람씩 열고,</strong> 상세 화면에서 <span class="tok">이름</span>과 <span class="tok">전공</span>을 읽어 둔 뒤 인쇄를 실행합니다.</p>
-          <p>가장 까다로웠던 부분은 <strong>저장이 완료되었는지 판단하는 것</strong>이었습니다.</p>
-          <div class="note warn">파일이 생성되었다고 하여 전송이 끝난 것은 아닙니다. <strong>크기가 세 차례 연속 동일할 때</strong> 완료로 간주하며, 최대 60초까지 대기하고 그래도 끝나지 않으면 해당 건은 건너뛰고 표시를 남깁니다.</div>
-          <p>수신이 완료되면 <strong>파일명에서 사용할 수 없는 문자를 제거하고 공백을 밑줄로 변환해</strong> <span class="tok">전공 폴더</span>로 이동합니다.</p>
+    <p>당시에는 AI가 디버깅 과정에서 문제를 잘 해결하지 못해 <strong>코드가 점점 '무거워진다'는 느낌을 받을 때가 자주 있었습니다.</strong></p>
 
-          <p>두 방향 모두 명단과 지원서에 개인정보가 포함되어 있기 때문에, 아이디·비밀번호와 파일 경로는 <strong>코드에 두지 않고 <span class="tok g">환경변수</span>로 주입합니다.</strong></p>
-        </div>
-      </div>
-      <div class="stp">
-        <div class="hd"><span class="n">3</span><div class="t">실행 결과</div></div>
-        <div class="bd">
-          <div class="tw ctr eq"><table>
-      <caption class="sr">자료 업로드 · 다운로드 — 표</caption>
-      <thead>
-            <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
-      </thead>
-      <tbody>
-            <tr><td>한 사람 등록</td><td>1.5~2분</td><td><strong>5~8초</strong></td></tr>
-            <tr><td>지원서 한 건 저장</td><td>60~90초</td><td><strong>22초</strong></td></tr>
-            <tr><td>수백 건 전체</td><td>6~8시간</td><td><strong>2시간</strong></td></tr>
-            <tr><td>인쇄 설정</td><td>매번 사람이</td><td><strong>한 번 박아 둠</strong></td></tr>
-            <tr><td>건너뛴 줄</td><td>모름</td><td><strong>줄마다 이름을 찍음</strong></td></tr>
-      </tbody>
-    </table></div>
-          <p>화면 없이 실행되므로, <strong>진행되는 동안 동일한 컴퓨터로 다른 업무를 병행할 수 있습니다.</strong></p>
-        </div>
-      </div>
-      <div class="stp">
-        <div class="hd"><span class="n alt" aria-hidden="true"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/></svg></span><div class="t">비고</div></div>
-        <div class="bd">
-          <p><strong>파일 업로드는 이 시점에 완성하지 못하였습니다.</strong> 계정을 생성하는 값 입력까지는 되었으나 <strong>파일을 첨부해 올리는 부분</strong>은 2025년에 미완으로 남겼습니다. 소스에 그대로 적혀 있습니다 — <span class="tok am">미완성 UNTIL 2026</span>.</p>
-          <p><span class="tok a">이름이나 전공을 읽지 못하면</span> 해당 항목을 <strong>Unknown</strong>·<strong>기타</strong>로 두고 진행합니다. 중단되지 않는 대신 <strong>이후 해당 폴더를 확인해야</strong> 합니다.</p>
-          <p>인쇄는 새 창에서 이루어지므로, <strong>창을 닫지 못하면 다음 건에서 엉킵니다.</strong></p>
-          <p><strong><span class="tok a">화면이 변경되면 중단됩니다</span>.</strong> 버튼 위치를 화면 주소로 지정하기 때문에, 시스템이 개편되면 다시 지정해야 합니다.</p>
-        </div>
-      </div>
+    <p>그래도 당시 바이브 코딩을 하는 제 개발 원칙은 “일단 실행되어 목적을 달성하면 된다”였기 때문에, <strong>완벽하게 만드는 것보다는 실제 업무를 수행하는 데 초점을 두었습니다.</strong> (비유하자면, 못을 박는 것이 목적이라면 망치가 가장 좋은 도구겠지만, 책이든 구두든 못만 박을 수 있다면 일단 상관없다는 느낌입니다.) 사무 자동화 코드는 다른 사람에게 보여주기 위한 것이 아니라 반복되는 일을 대신하기 위한 도구이기 때문입니다.</p>
 
-    </div>
+    <p>2026년 해외유학워크숍에서 다시 업로드 코드가 필요해 Claude와 함께 만들어 보았는데, 이번에는 문제가 금방 해결되었습니다. 같은 작업을 다시 시도하면서 <strong>2년 사이 AI를 활용한 코딩이 상당히 발전했다는 것을 체감한 순간이었습니다.</strong></p>
   </section>
 
   <!-- 1-5 -->
   <section id="p6" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-5 · 예시 5</div><h2>개인정보 마스킹</h2></div></div>
     <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Python</span><span class="chip">#pdfplumber</span><span class="chip">#Kiwi</span><span class="chip">#PyInstaller</span><span class="chip">#해외유학워크숍</span><span class="chip free">#무료</span><span class="chip free">#소스 공개</span></div>
-    <p class="lead">가리는 것 자체는 어렵지 않으나, 가리면서 문서를 쓸 수 없게 만들지 않는 것이 어렵습니다.</p>
+    <p class="lead">2025년에는 2024년에 개발한 코드를 거의 그대로 사용했고, 새로 코딩한 부분은 없었습니다. 2026년에 들어서면서 선발 Agent나 해외유학 컨설팅 Agent가 있으면 좋겠다는 생각이 들었고, 이를 직접 만들어 보고 싶었습니다. 그런데 AI에 자료를 넣어 보려니, 제가 다루는 문건 대부분이 개인정보를 포함하고 있어 원문을 그대로 사용할 수 없었습니다. 그래서 개인정보를 하나씩 지우는 대신, Python으로 개인정보를 자동으로 마스킹하는 도구를 먼저 만들었습니다.</p>
 
     <div class="steps">
 
       <div class="stp">
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
-          <p>선발 자료를 심사위원께 전달하거나 AI에 분석시키려면 <strong>개인정보를 먼저 가려야</strong> 합니다.</p>
-          <p>다만, 자료는 실명으로 접수됩니다. 이름·연락처·소속이 본문 곳곳에 섞여 있습니다.</p>
-          <p>접수는 실명으로 받고 전달은 가린 상태로 해야 하기 때문에, <strong>자료를 받을 때마다 가리는 작업이 필요합니다.</strong></p>
-          <p>한 문서에 같은 이름이 열 차례 나오면 열 곳을 모두 찾아야 하기 때문에, <strong>손으로 가리면 누락됩니다.</strong></p>
-          <p>다만, 전부 <span class="tok">[성명]</span>으로 지울 경우 다른 문제가 발생합니다. 문서 안에서 인물 구분이 사라져 <strong>AI가 지원자와 추천인의 경력을 혼동합니다.</strong></p>
+          <p>개인정보가 담긴 문서를 외부로 전달하려면 먼저 개인정보를 가려야 합니다. 사람에게 전달할 때도, AI에 분석을 맡길 때도 마찬가지입니다.</p>
+          <p>자료는 실명으로 접수되지만, 전달할 때는 가린 상태여야 합니다. 이름·연락처·소속 등이 문서 곳곳에 섞여 있어 자료를 사용할 때마다 개인정보를 가리는 작업이 필요합니다.</p>
+          <p>같은 이름이 한 문서에 여러 번 등장하면 모든 위치를 찾아야 하므로 손으로 처리할수록 누락될 가능성이 높습니다.</p>
+          <p>그렇다고 모든 이름을 <strong>[성명]</strong>처럼 동일하게 바꾸면 다른 문제가 생깁니다. 문서 안에서 누가 누구인지 구분할 수 없기 때문입니다. 예를 들어 선발 자료를 AI에 분석시킬 때 지원자와 추천인의 경력을 서로 다른 사람으로 구분할 수 있어야 합니다.</p>
+          <p>따라서 개인정보를 가리되, 문서의 맥락과 인물 간 구분까지 훼손하지 않는 방식이 필요합니다.</p>
           <p><strong>가리는 정도를 높이면 문서의 쓸모가 줄고, 쓸모를 지키면 가리는 정도가 낮아집니다.</strong></p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
-          <p>지우는 대신 <strong>번호를 부여하였습니다.</strong> 같은 값이면 같은 번호가 되므로, 개인정보는 사라지고 문서의 논리 구조는 남습니다.</p>
+          <p>마스킹에서 정할 것은 두 가지입니다. <span class="tok">마스킹 방식</span>은 가린 자리를 무엇으로 바꿀지 정하고, <span class="tok">마스킹 강도</span>는 어떤 개인정보까지 가릴지를 정합니다. <strong>두 설정은 서로 독립적으로 선택합니다.</strong></p>
 
-          <div class="tw ctr eq"><table>
+          <h3>마스킹 방식</h3>
+          <p>지우는 대신 <strong>번호를 부여했습니다.</strong> 같은 값에는 같은 번호를 부여하기 때문에 개인정보는 가려지면서도 문서 안에서 같은 인물을 계속 구분할 수 있습니다.</p>
+
+          <div class="tw ctr eq xp nw"><table>
       <caption class="sr">개인정보 마스킹 — 표</caption>
+      <colgroup><col style="width:10%"><col style="width:23%"><col style="width:67%"></colgroup>
       <thead>
-            <tr><th scope="col">모드</th><th scope="col">결과</th><th scope="col">용도</th></tr>
+            <tr><th scope="col">방식</th><th scope="col">결과</th><th scope="col">용도</th></tr>
       </thead>
       <tbody>
-            <tr><td><strong>가명</strong></td><td><strong>[성명1]</strong> · <strong>[휴대전화2]</strong></td><td>AI 분석용. 같은 값이면 같은 번호라 <strong>인물이 구분됩니다</strong></td></tr>
-            <tr><td>삭제</td><td>[성명] · [휴대전화]</td><td>외부 공유용. 다시 알아낼 위험이 가장 작음</td></tr>
-            <tr><td>부분</td><td>홍** · 010-****-5678</td><td>사람이 눈으로 대조 검수할 때</td></tr>
+            <tr><td><strong>가명</strong></td><td><strong>[성명1]</strong> · <strong>[휴대전화2]</strong></td><td>AI 분석용. <strong>같은 값에는 같은 번호를 부여해 인물 구분</strong></td></tr>
+            <tr><td>삭제</td><td>[성명] · [휴대전화]</td><td>외부 공유용. 개인정보를 다시 알아낼 가능성을 가장 낮춤</td></tr>
+            <tr><td>부분</td><td>홍** · 010-****-5678</td><td>사람이 눈으로 대조·검수할 때</td></tr>
       </tbody>
     </table></div>
-          <p>기본값은 <span class="tok">가명</span>입니다. 번호는 묶음 전체에서 공유되므로, <strong>파일이 달라도 동일한 전화번호는 동일한 번호를 부여받습니다.</strong></p>
+          <p>기본값은 <span class="tok">가명</span>입니다. 번호는 묶음 전체에서 공유하므로, <strong>파일이 달라도 동일한 개인정보에는 동일한 번호가 부여됩니다.</strong></p>
 
           <h3>마스킹 강도</h3>
-          <p>가릴 항목을 하나씩 고르기 번거롭기 때문에 <strong>강도 하나만 고르면 나머지가 따라오도록 하였습니다.</strong></p>
+          <p>가릴 항목을 하나씩 고르기 번거롭기 때문에 <strong>강도 하나만 선택하면 미리 정해 둔 항목들이 함께 가려지도록 하였습니다.</strong></p>
 
-          <div class="tw ctr eq"><table>
+          <div class="tw ctr eq xp"><table>
       <caption class="sr">마스킹 강도 — 표</caption>
+      <colgroup><col style="width:23%"><col style="width:39%"><col style="width:38%"></colgroup>
       <thead>
             <tr><th scope="col">강도</th><th scope="col">가리는 것</th><th scope="col">쓰는 곳</th></tr>
       </thead>
       <tbody>
-            <tr><td>1 · 기본 보호</td><td>고유식별정보 · 연락처</td><td>내부 검토. 문서 원형을 최대한 남깁니다</td></tr>
+            <tr><td>1 · 기본 보호</td><td>고유식별정보 · 연락처</td><td>내부 검토. 문서 원형을 최대한 남김</td></tr>
             <tr><td><strong>2 · 표준</strong></td><td><strong>이름 · 주소 · 소속 · 민감정보까지</strong></td><td><strong>AI 입력 · 외부 공유</strong></td></tr>
-            <tr><td>3 · 최대</td><td>라벨이 붙은 칸의 모르는 번호까지</td><td>재식별 위험 최소화</td></tr>
+            <tr><td>3 · 최대</td><td>식별 가능한 숫자까지</td><td>재식별 위험 최소화</td></tr>
             <tr><td>4 · 숫자 전면 삭제</td><td>남은 숫자를 전부</td><td>정성 분석 전용</td></tr>
       </tbody>
     </table></div>
-          <p>기본값은 <span class="tok">2단계</span>입니다. <strong>개별 지정이 강도보다 우선하기 때문에</strong> 소속만 남기고 싶으면 2단계에 소속 유지를 더하면 됩니다.</p>
+          <p>기본값은 <span class="tok">2단계</span>입니다. <strong>개별 설정이 강도보다 우선하기 때문에,</strong> 2단계를 선택한 뒤 소속을 남기도록 설정하면 소속은 가리지 않습니다.</p>
 
           <h3>선택 항목</h3>
           <div class="split">
-            <div class="box"><div class="t">민감정보</div><p>장애·병역·건강·종교·소득분위. <strong>개인정보보호법 제23조</strong> 대상이면서 동시에 <strong>전형 기준</strong>이기도 합니다.</p></div>
-            <div class="box"><div class="t">소속·학교·전공</div><p><strong>블라인드 심사면 가리고, 평가 요소로 쓸 때는 남깁니다.</strong></p></div>
-            <div class="box"><div class="t">라벨 조건</div><p><strong>여</strong>·<strong>대한민국</strong>은 그 자체로는 개인정보가 아닙니다. 앞에 항목 이름이 붙어 있을 때만 가립니다.</p></div>
-            <div class="box"><div class="t">오탐 막기</div><p><strong>A형 간염</strong>·<strong>등록금 면제</strong>·<strong>21세기</strong>를 잘못 잡지 않는지 시험으로 고정해 뒀습니다.</p></div>
+            <div class="box"><div class="t">민감정보</div><p>장애·병역·건강·종교 등은 별도로 가릴 수 있습니다. 이 가운데 건강·종교 등은 <strong>「개인정보 보호법」상 민감정보에 해당할 수 있으므로,</strong> 실제 적용 범위는 법령상 정의에 맞춰 구분해야 합니다.</p></div>
+            <div class="box"><div class="t">소속·학교·전공</div><p><strong>블라인드 심사라면 가리고, 평가 요소로 활용할 때는 남깁니다.</strong></p></div>
+            <div class="box"><div class="t">라벨 조건</div><p><strong>여</strong>·<strong>대한민국</strong>처럼 값만 놓고 보면 개인정보가 아닌 내용도, 앞에 항목 이름이 붙어 있을 때는 가릴 수 있도록 조건을 둡니다.</p></div>
+            <div class="box"><div class="t">이름 탐지</div><p>라벨이 붙은 이름만 잡을지, 본문에 툭 나오는 이름까지 잡을지 고릅니다. 성씨만으로 찾으면 <strong>인재육성</strong>·<strong>이용</strong> 같은 오탐이 쏟아져서, 형태소 분석으로 고유명사를 골라낸 뒤 성씨로 한 번 더 확인합니다.</p></div>
+            <div class="box"><div class="t">출력 파일명</div><p>원본 파일명에 이름이 들어 있는 경우가 있어, <strong>파일명도 함께 익명화할 수 있습니다.</strong></p></div>
+            <div class="box"><div class="t">오탐 막기</div><p><strong>A형 간염</strong>·<strong>등록금 면제</strong>·<strong>21세기</strong>처럼 개인정보가 아닌 표현을 잘못 가리지 않는지 시험 사례를 만들어 확인합니다.</p></div>
           </div>
         </div>
       </div>
@@ -2290,7 +2264,7 @@ sheet.append_row(data)</code></div>
           <div class="stats">
             <div class="stat"><div class="b"><div class="l">탐지 항목</div><div class="n">34<span class="u">종</span></div></div><div class="f">3등급 · 민감정보 별도</div></div>
             <div class="stat"><div class="b"><div class="l">읽는 형식</div><div class="n">5<span class="u">가지</span></div></div><div class="f">PDF · DOCX · HWPX · HWP · TXT</div></div>
-            <div class="stat"><div class="b"><div class="l">마스킹 모드</div><div class="n">3<span class="u">개</span></div></div><div class="f">가명 · 삭제 · 부분</div></div>
+            <div class="stat"><div class="b"><div class="l">마스킹 방식</div><div class="n">3<span class="u">개</span></div></div><div class="f">가명 · 삭제 · 부분</div></div>
           </div>
           <p>결과마다 <strong>원본 파일의 지문(SHA-256)</strong>과 항목별 마스킹 건수를 함께 기록합니다. 이후 <strong>"이 사본이 어느 원본에서 생성되었는지"</strong>를 증명할 수 있습니다.</p>
 
@@ -2310,6 +2284,20 @@ sheet.append_row(data)</code></div>
     </table></div>
           <p>1단계가 남기는 23건은 주소 · 생년월일 · 나이 · 성별 · 소속처럼 <strong>업무에 필요할 수 있는 준식별자여서 의도한 것이고</strong> 주민등록번호 · 연락처 · 계좌 · 이름은 1단계에서도 가립니다.</p>
 
+          <div class="ann">
+            <a class="shot-l" href="photos/piimask-webapp-2026.png" target="_blank" rel="noopener noreferrer">
+              <img class="shot" src="photos/piimask-webapp-2026.png" width="1375" height="1558" loading="lazy"
+                alt="마스킹 프로그램의 브라우저 화면. 맨 위에 처리 전 확인 사항이 상자로 적혀 있고, 그 아래에 문서를 끌어다 놓는 점선 상자가 있습니다. 이어서 마스킹 강도·마스킹 방식·이름 탐지·소속 학교 전공·민감정보·탐지 범위를 고르는 여섯 개의 선택 칸이 두 줄로 놓여 있고, 각 칸 아래에 고른 값의 설명이 한 문단씩 붙어 있습니다. 그 아래로 가명과 원본의 매핑표 포함, 출력 파일명 익명화, 표를 Markdown 표로 변환, 스캔본 글자 인식을 켜고 끄는 네 개의 확인란이 있으며, 맨 아래에 변환 시작 단추가 있습니다.">
+            </a>
+            <div class="ann-cap"><strong>코드를 열지 않고 화면에서 강도와 방식을 고릅니다.</strong> 고른 값이 무엇을 뜻하는지 칸마다 한 문단씩 붙어 있어, 처음 쓰는 사람도 무엇을 고르는지 알 수 있습니다.</div>
+          </div>
+
+          <h3>Markdown으로 내보내기</h3>
+          <p>결과는 원본 형식이 아니라 <span class="tok m">.md</span> 파일로 나옵니다. PDF · 워드 · 한글 · 텍스트를 모두 받아 같은 형태로 내보냅니다.</p>
+          <p>제목과 표 구조는 살리고 글꼴 · 색 같은 서식은 버립니다. <strong>사람이 보기 좋은 문서가 아니라 AI가 읽기 좋은 문서를 만드는 것이 목적입니다.</strong></p>
+          <p>사본 맨 위에는 <span class="tok">개인정보를 자동 마스킹한 사본</span>이라는 안내가 붙습니다.</p>
+          <p>결과는 임시 폴더에 만들어집니다. <span class="tok a">창을 닫으면 함께 지워지기 때문에</span> 쓸 것은 ZIP으로 내려받아 두어야 합니다.</p>
+
           <h3>소스 코드</h3>
           <div class="panel">
             <div class="panel-h"><span class="t">GitHub</span><span class="m">MIT</span></div>
@@ -2328,7 +2316,8 @@ sheet.append_row(data)</code></div>
       <div class="stp">
         <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
-          <p><strong><span class="tok a">스캔한 문서는 읽지 못합니다</span>.</strong> 글자가 이미지로 저장되어 있으면 좌표를 읽을 수 없습니다.</p>
+          <p><strong>스캔한 문서는 기본적으로 읽지 않습니다.</strong> 글자가 이미지로 저장되어 있으면 좌표를 읽을 수 없어, 지금은 <span class="tok">사람이 확인 필요</span>로 표시만 하고 넘깁니다.</p>
+          <p>윈도우에 들어 있는 글자 인식기를 붙이면 읽을 수는 있어 선택 기능으로 넣어 두었지만, <strong>기본으로 켜지는 않았습니다.</strong> 인식률이 93~96%라 「홍길동」이 「홍길둥」으로 읽히면 정규식도 명단도 잡지 못합니다. <span class="tok a">결과물은 깨끗해 보이는데 개인정보가 남습니다.</span> 못 읽었다고 경고하면 사람이 직접 확인하지만, 인식을 붙이는 순간 그 경고가 사라집니다.</p>
           <p>한글 문서는 <span class="tok m">.hwp 보다 .hwpx</span>로 저장해 넣어야 <strong>표 구조가 유지되어 정확도가 올라갑니다.</strong></p>
           <p>위에서 잰 누출은 <strong>패턴으로 잡히는 항목의 누출입니다.</strong> 이름과 연락처를 모두 가려도 <span class="tok a">서술 자체가 사람을 가리키는 경우</span>는 남아서 학위 과정 · 분야 · 연도가 함께 적힌 글은 <strong>이름이 없어도 누구인지 좁혀집니다.</strong></p>
           <p>4단계는 남은 숫자를 전부 지우기 때문에 연도와 나이가 함께 사라지지만 <strong>그만큼 문서를 정성 분석 외에는 쓸 수 없게 됩니다.</strong></p>
@@ -3261,7 +3250,9 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
     <div class="note">"우리 부서는 이런 양식을 씁니다. 파일명 규칙은 이렇고, 결과는 이 폴더에 넣어 주세요. 개인정보 열은 항상 마스킹하고요."</div>
     <p>이 말을 매번 하고 계신다면, 그것이 넓힐 신호입니다.</p>
 
-    <h3>1. 스킬 — 절차를 글로 적어 두는 것</h3>
+    <div class="stp">
+      <div class="hd"><span class="n">1</span><div class="t">스킬</div></div>
+      <div class="bd">
     <p><strong>무엇인가.</strong> 특정 작업의 절차서입니다. 코드가 아니라 마크다운 문서 한 장이기 때문에, 폴더 하나에 <span class="tok m">SKILL.md</span> 하나가 전부입니다.</p>
     <div class="pre" tabindex="0" role="region" aria-label="코드"><code>my-skill/
 └── <b>SKILL.md</b></code></div>
@@ -3281,14 +3272,22 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
 - <u>이름 규칙이 어긋난 파일은 건너뛰고 목록으로 보고합니다</u></code></div>
     <p><strong>무엇이 좋은가.</strong> 같은 설명을 다시 하지 않아도 되고 그 절차를 팀이 함께 쓰며, 무엇보다 <strong>글이라 누구나 읽고 고칠 수 있습니다.</strong></p>
     <div class="note">스킬을 잘 쓰는 사람은 코딩을 잘하는 사람이 아니라 <strong>업무 절차를 정확히 글로 적을 수 있는 사람</strong>입니다. 그 능력은 이미 갖고 계실 가능성이 큽니다.</div>
+      </div>
+    </div>
 
-    <h3>2. 플러그인 — 여러 개를 한 번에 나눠 주는 것</h3>
+    <div class="stp">
+      <div class="hd"><span class="n">2</span><div class="t">플러그인</div></div>
+      <div class="bd">
     <p><strong>무엇인가.</strong> 스킬 여럿과 명령어·설정을 한 꾸러미로 묶은 것입니다. 스킬 하나가 절차서 한 장이라면, 플러그인은 <strong>그 절차서들을 묶은 업무 지침 묶음</strong>입니다.</p>
     <p><strong>어떻게 하나.</strong> 대개 저장소 주소 하나를 등록하면 안에 든 것이 한꺼번에 들어옵니다.</p>
     <p><strong>무엇이 좋은가.</strong> <strong>각자 챙기게 두면 각자 다르게 챙기기 때문에,</strong> 여러 사람이 같은 방식으로 일해야 할 때 한 번에 나눠 주고 한 번에 갱신할 수 있습니다.</p>
     <div class="note warn">다만, 묶음은 안이 보이지 않습니다. 낱개 스킬은 문서 하나만 읽으면 되지만, <strong>플러그인은 무엇이 들어 있는지 목록을 먼저 확인</strong>하셔야 합니다.</div>
+      </div>
+    </div>
 
-    <h3>3. 커넥터 — 바깥 서비스에 연결하는 것</h3>
+    <div class="stp">
+      <div class="hd"><span class="n">3</span><div class="t">커넥터</div></div>
+      <div class="bd">
     <p><strong>무엇인가.</strong> AI가 메일·문서·데이터베이스 같은 바깥 서비스에 닿을 수 있게 하는 통로입니다. 규격 이름은 <span class="tok m">MCP</span>입니다.</p>
     <p><strong>어떻게 하나.</strong> 붙이려는 서비스가 제공하는 커넥터를 등록하고, 그 서비스에 로그인해 권한을 허용합니다.</p>
     <p><strong>무엇이 좋은가.</strong> 스킬이 "어떻게 할지"를 정한다면 커넥터는 <strong>"어디까지 닿을지"</strong>를 넓힙니다. 둘은 짝입니다.</p>
@@ -3305,8 +3304,12 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
       <tr><td>예</td><td>서류 병합 절차</td><td>Gmail · Drive · 데이터베이스</td></tr>
       </tbody>
     </table></div>
+      </div>
+    </div>
 
-    <h3>도구 호환성</h3>
+    <div class="stp">
+      <div class="hd"><span class="n">4</span><div class="t">도구 호환성</div></div>
+      <div class="bd">
     <p>셋 중 둘은 그렇습니다.</p>
     <div class="tw ctr eq"><table>
       <caption class="sr">AI 활용 넓히기 — 표</caption>
@@ -3320,6 +3323,8 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
       </tbody>
     </table></div>
     <p>따라서 <strong>스킬과 커넥터는 한 번 만들어 두면 도구를 바꿔도 따라옵니다.</strong> 플러그인은 그 도구 안에서만 쓰입니다.</p>
+      </div>
+    </div>
 
     <div class="steps"><div class="stp">
       <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
@@ -3337,14 +3342,16 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
     <div class="chips"><span class="chip">#Git</span><span class="chip">#GitHub</span></div>
     <p class="lead">고쳤다가 망가뜨려도 되돌릴 수 있게 만드는 일이기 때문에, AI를 쓰든 안 쓰든 필요합니다.</p>
 
-    <h3>이미 하고 있던 일</h3>
+    <div class="stp">
+      <div class="hd"><span class="n">1</span><div class="t">손으로 하는 버전 관리</div></div>
+      <div class="bd">
     <p>누구나 이런 폴더를 갖고 있습니다.</p>
-    <div class="pre" tabindex="0" role="region" aria-label="코드"><code>사업계획서.hwp
-사업계획서_수정.hwp
-사업계획서_수정2.hwp
-사업계획서_최종.hwp
-<b>사업계획서_최종_진짜최종.hwp</b>
-<u>사업계획서_최종_진짜최종_팀장님피드백반영.hwp</u></code></div>
+    <div class="pre" tabindex="0" role="region" aria-label="코드"><code>사업계획서.docx
+사업계획서_수정.docx
+사업계획서_수정2.docx
+사업계획서_최종.docx
+<b>사업계획서_최종_진짜최종.docx</b>
+<u>사업계획서_최종_진짜최종_팀장님피드백반영.docx</u></code></div>
     <p class="pre-cap">이것이 사람이 손으로 하는 버전 관리입니다. 문제는 셋입니다.</p>
 
     <div class="tw ctr eq"><table>
@@ -3358,8 +3365,12 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
       <tr><td>왜 바꿨는지 모릅니다</td><td>변경마다 <strong>이유를 적어</strong> 남깁니다</td></tr>
       </tbody>
     </table></div>
+      </div>
+    </div>
 
-    <h3>Git과 GitHub의 차이</h3>
+    <div class="stp">
+      <div class="hd"><span class="n">2</span><div class="t">Git과 GitHub의 차이</div></div>
+      <div class="bd">
     <p>가장 흔한 오해라 먼저 짚습니다.</p>
     <div class="tw ctr eq"><table>
       <caption class="sr">Git과 GitHub — 표</caption>
@@ -3373,8 +3384,12 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
       </tbody>
     </table></div>
     <p>GitLab · Bitbucket · Gitea 처럼 올려두는 곳은 GitHub 말고도 있는데, <strong>Git 자체가 어디에도 매이지 않기 때문입니다.</strong></p>
+      </div>
+    </div>
 
-    <h3>파일이 거치는 네 곳</h3>
+    <div class="stp">
+      <div class="hd"><span class="n">3</span><div class="t">파일이 거치는 네 곳</div></div>
+      <div class="bd">
     <p>Git이 어렵게 느껴지는 유일한 이유는 <strong>파일이 네 곳을 거치기 때문</strong>입니다. 이 그림만 아시면 나머지는 사전 찾기입니다.</p>
 
     <div class="ann">
@@ -3440,8 +3455,12 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
 
     <p>왜 굳이 <span class="tok">스테이지</span>를 거치는가. <strong>오늘 세 가지를 고쳤는데 그중 두 가지만 기록으로 남기고 싶을 때가 있기 때문</strong>입니다. 커밋을 의미 단위로 만들라고 있는 칸입니다.</p>
     <p><span class="tok m">git add .</span>로 전부 올리고 커밋해도 아무 문제 없기 때문에, 처음에는 신경 쓰지 않으셔도 됩니다.</p>
+      </div>
+    </div>
 
-    <h3>매일 쓰는 다섯 개</h3>
+    <div class="stp">
+      <div class="hd"><span class="n">4</span><div class="t">매일 쓰는 다섯 개</div></div>
+      <div class="bd">
     <div class="tw ctr eq"><table>
       <caption class="sr">Git과 GitHub — 표</caption>
       <thead>
@@ -3456,8 +3475,12 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
       </tbody>
     </table></div>
     <div class="note"><strong>막히면 일단 <span class="tok m">git status</span>.</strong> 위험이 없고 Git이 지금 무엇을 하려는지 알려주기 때문에, 아무리 자주 쳐도 좋습니다.</div>
+      </div>
+    </div>
 
-    <h3>.gitignore — 올리면 안 되는 것</h3>
+    <div class="stp">
+      <div class="hd"><span class="n">5</span><div class="t">.gitignore</div></div>
+      <div class="bd">
     <p>Git이 <strong>쳐다보지도 않을 파일 목록</strong>이기 때문에, 여기 안 적으면 그대로 올라갑니다.</p>
     <div class="pre" data-nm=".gitignore" tabindex="0" role="region" aria-label="코드"><code><u>.env</u>
 <u>*.key</u>
@@ -3471,6 +3494,8 @@ output/
 venv/
 __pycache__/
 Thumbs.db</code></div>
+      </div>
+    </div>
 
     <div class="steps"><div class="stp">
       <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
@@ -3991,7 +4016,7 @@ const FIX = {
   p6:[
     {k:'path',l:'원본 폴더',c:'가릴 문서가 담긴 폴더',d:['PDF · DOCX · HWPX · HWP · TXT 를 섞어 넣어도 됩니다','a:스캔본은 글자가 이미지라 읽지 못합니다']},
     {k:'path',l:'결과 폴더',c:'가려진 결과가 나올 곳',d:['파일마다 .md 하나 + 요약표 + 감사 기록이 함께 나옵니다']},
-    {k:'rule',l:'마스킹 모드',c:'가명 · 삭제 · 부분 중 하나',d:['g:AI에게 넘길 자료라면 가명. 인물 구분이 살아남습니다','외부 공유는 삭제, 눈으로 대조할 때는 부분']},
+    {k:'rule',l:'마스킹 방식',c:'가명 · 삭제 · 부분 중 하나',d:['g:AI에게 넘길 자료라면 가명. 인물 구분이 살아남습니다','외부 공유는 삭제, 눈으로 대조할 때는 부분']},
     {k:'rule',l:'소속 처리',c:'블라인드면 가림 · 평가 요소면 남김',d:['소속 · 학교 · 전공 세 가지가 함께 켜지고 꺼집니다','g:남기기를 골라도 이름 · 연락처는 그대로 가려집니다']},
     {k:'rule',l:'민감정보 처리',c:'가림이 기본',d:['장애 · 병역 · 건강 · 종교 · 소득분위','a:전형 기준으로 필요할 때만 남기세요. 남기면 법 제23조 대상 자료가 됩니다']},
     {k:'list',l:'검출 제외 항목',c:'IP · SNS · 학교처럼 안 쓰는 항목',d:['등급으로 한 번에 낮추거나 항목별로 끕니다']},
