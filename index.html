@@ -1262,7 +1262,7 @@ a.cta{text-decoration:none}
           <svg aria-hidden="true" class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="kids" id="kids2" data-kids="2"><div>
-          <a class="row" href="#g0" data-t="g0"><span class="kn">2-1</span><span class="kt">해외유학 대면교류 지원</span></a>
+          <a class="row" href="#g0" data-t="g0"><span class="kn">2-1</span><span class="kt">해외유학 대면모임 지원</span></a>
           <a class="row" href="#g2" data-t="g2"><span class="kn">2-2</span><span class="kt">법인카드 영수증 정리</span></a>
         </div></div>
 
@@ -2305,10 +2305,11 @@ sheet.append_row(data)</code></div>
   <!-- 2-1 -->
   <section id="g1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">2 · 안내문</div><h2>Apps Script로 업무 자동화<span class="ft">ft. Google Apps Script</span></h2></div></div>
-    <div class="chips"><span class="chip">#2026.02</span><span class="chip">#2026.08</span><span class="chip">#Apps_Script</span><span class="chip">#해외유학장학생_대면_교류_지원</span><span class="chip">#설치 0개</span><span class="chip free">#무료</span></div>
+    <div class="chips"><span class="chip">#2026.02</span><span class="chip">#2026.08</span><span class="chip">#Apps_Script</span><span class="chip">#해외유학장학생_대면모임_지원</span><span class="chip">#설치 0개</span><span class="chip free">#무료</span></div>
     <p class="lead">Apps Script<span class="cite-w"><a class="cite" id="c-g1-1" href="#n-g1-1" aria-describedby="d-g1-1">1</a><span class="cite-t" role="tooltip">Google 문서·시트·캘린더·드라이브 등을 다루는 코드를 Google 계정으로 작성하고 Google 서버에서 실행하는 자동화 도구.</span></span>는 Google 문서·시트·캘린더·드라이브 등을 다루는 코드를 Google 계정으로 작성하고 Google 서버에서 실행하는 자동화 도구입니다. 별도의 프로그램을 설치하지 않아도 브라우저에서 바로 시작할 수 있기 때문에, 후기와 영수증을 수합하여 실비를 지급하는 업무처럼 Google 도구를 중심으로 이루어지는 반복 작업에 유용합니다.</p>
 
     <h3>Apps Script의 장점</h3>
+    <p>제가 쓰면서 느낀 장점은 네 가지입니다.</p>
 
     <div class="stp">
       <div class="hd"><span class="n">1</span><div class="t">설치 0개</div></div>
@@ -2329,7 +2330,7 @@ sheet.append_row(data)</code></div>
           <tr><th scope="col">트리거</th><th scope="col">실행 시점</th><th scope="col">쓴 곳</th></tr>
       </thead>
       <tbody>
-          <tr><td><strong>양식 제출 시</strong></td><td>폼이 제출된 뒤</td><td>해외유학 대면교류 지원(2-1)</td></tr>
+          <tr><td><strong>양식 제출 시</strong></td><td>폼이 제출된 뒤</td><td>해외유학 대면모임 지원(2-1)</td></tr>
           <tr><td><strong>시간 기반</strong></td><td>매달 3일처럼 정해 둔 시각</td><td>법인카드 영수증 정리(2-2)</td></tr>
       </tbody>
     </table></div>
@@ -2409,21 +2410,25 @@ sheet.append_row(data)</code></div>
   </section>
 
 <section id="g0" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">2-1 · 예시 1</div><h2>해외유학 대면교류 지원<span class="ft">폼 하나로 캘린더와 문서까지</span></h2></div></div>
-    <div class="chips"><span class="chip">#2026.02</span><span class="chip">#Apps_Script</span><span class="chip">#Forms</span><span class="chip">#Calendar</span><span class="chip">#Docs</span><span class="chip">#해외유학장학생_대면_교류_지원</span></div>
-    <p class="lead">폼으로 받은 것을 캘린더와 문서로 옮기는 일을 제가 손으로 하고 있었는데, 옮기는 자리가 셋이라 어느 하나만 늦어도 그 뒤가 전부 밀렸습니다.</p>
+    <div class="phead"><div class="ttl"><div class="eyebrow">2-1 · 예시 1</div><h2>해외유학 대면모임 지원<span class="ft">폼 하나로 캘린더와 문서까지</span></h2></div></div>
+    <div class="chips"><span class="chip">#2026.02</span><span class="chip">#Apps_Script</span><span class="chip">#Forms</span><span class="chip">#Calendar</span><span class="chip">#Docs</span><span class="chip">#해외유학장학생_대면모임_지원</span></div>
+    <p class="lead">2025년 말부터 2026년 초 사이 새롭게 추진한 사업으로 <span class="tok">해외유학장학생 대면모임 지원</span>이 있습니다. 전 세계에 흩어져 있는 장학생들이 각지에서 네 명 이상 모이면 1인당 최대 50 USD를 실비로 환급하는 사업으로, 상·하반기 각 한 번씩 지원합니다.</p>
+
+    <p>처음 사업을 설계하면서 신청부터 정산까지의 과정을 어떻게 연결할지 생각했습니다. 특히 신청서와 후기, 영수증을 받은 뒤 <strong>정산 문서를 사람이 다시 작성하는 과정이 반복될 것으로 보여,</strong> Google 도구를 연결할 수 있는 Apps Script로 전체 흐름을 자동화해 보기로 했습니다.</p>
+
+    <p>신청은 Google Form으로 받고, 모임 일정은 다른 장학생도 참여할 수 있도록 공유 Google Calendar에 등록합니다. 모임이 끝나면 후기와 영수증을 제출받고, <strong>그 내용을 바탕으로 정산 문서를 Google Docs로 자동 생성합니다.</strong></p>
 
     <div class="steps">
 
       <div class="stp">
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
-          <p>대면 교류 지원은 <span class="tok">신청</span> · <span class="tok">후기</span> · <span class="tok">정산</span> 세 갈래인데, 들어오는 문은 폼 두 장입니다. 모임을 열 때 내는 신청 폼이 하나, 모임이 끝난 뒤 내는 후기·정산 폼이 하나입니다.</p>
+          <p>대면모임 지원은 <span class="tok">신청</span> · <span class="tok">후기</span> · <span class="tok">정산</span> 세 갈래인데, 들어오는 문은 폼 두 장입니다. 모임을 열 때 내는 신청 폼이 하나, 모임이 끝난 뒤 내는 후기·정산 폼이 하나입니다.</p>
           <p>전 세계에 흩어진 장학생들이 각지에서 모임을 여는데, 다른 장학생이 그 모임에 참여하려면 일정이 <span class="tok">공유 캘린더</span>에 있어야 합니다. <strong>신청이 쌓이는 곳과 사람들이 보는 곳이 다르기 때문에,</strong> 폼으로 받는 한 옮기는 일이 매번 생깁니다.</p>
-          <p>옮기는 데 한 건에 3분이지만 <strong>시간만 드는 것이 아닙니다.</strong> 제가 확인하기 전까지 일정이 안 올라가기 때문에, 제가 자거나 회의 중이면 그동안은 아무에게도 안 보입니다. 사람을 못 모으기 때문에, 모집 마감이 임박한 모임에게 <strong>그 지연은 그대로 손해입니다.</strong></p>
+          <p>만약 손으로 옮긴다면 한 건에 <span class="tok">3분(예측)</span>이지만 <strong>시간만 드는 것이 아닙니다.</strong> 제가 확인하기 전까지 일정이 안 올라가기 때문에, 제가 자거나 회의 중이면 그동안은 아무에게도 안 보입니다. 사람을 못 모으기 때문에, 모집 마감이 임박한 모임에게 <strong>그 지연은 그대로 손해입니다.</strong></p>
           <p>모임이 끝나면 후기를 받는데, 참석자는 후기만 내고 모임장은 <strong>후기와 정산 서류</strong>를 함께 냅니다. 역할이 다르니 필요한 서류도 달라서, <strong>같은 폼에서 두 가지 다른 산출물이 나와야 합니다.</strong></p>
           <p>후기에는 사진이 여러 장 붙고 정산에는 영수증이 붙는데 <strong>사진 크기가 제각각입니다.</strong> 그대로 넣으면 어떤 장은 한 쪽을 다 먹고 어떤 장은 손톱만 합니다. 그리고 <strong>아이폰 사진은 문서에 아예 안 들어갑니다.</strong> 형식이 다릅니다.</p>
-          <p>후기 한 건에 <span class="tok">20~25분</span>이 걸렸습니다. 참석자가 많은 달에는 이것만으로 며칠이 갔습니다.</p>
+          <p>후기 한 건에 <span class="tok">20~25분(예측)</span>이 걸리는 일이라, 참석자가 많은 달에는 이것만으로 며칠이 갑니다.</p>
           <p>저는 폼을 먼저 손으로 만들고 코드를 나중에 붙였기 때문에, <strong>질문 제목을 코드에 맞춰 지은 것이 아니라 코드를 질문 제목에 맞춰 짜게 되었습니다.</strong> 그러다 보니 두 폼이 같은 것을 서로 다르게 부릅니다. 신청 폼은 <span class="tok m">성명 (한글)</span>, 후기 폼은 <span class="tok m">이름(한글)</span>입니다.</p>
         </div>
       </div>
@@ -2575,19 +2580,19 @@ sheet.append_row(data)</code></div>
     </table></div>
 
           <div class="tw ctr eq"><table>
-      <caption class="sr">해외유학 대면교류 지원 — 표</caption>
+      <caption class="sr">해외유학 대면모임 지원 — 표</caption>
       <thead>
             <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
       </thead>
       <tbody>
-            <tr><td>신청 한 건 옮기기</td><td>3분</td><td><strong>사람 손이 들지 않음</strong></td></tr>
+            <tr><td>신청 한 건 옮기기</td><td>3분(예측)</td><td><strong>사람 손이 들지 않음</strong></td></tr>
             <tr><td>캘린더에 올라가기까지</td><td>내가 확인할 때까지</td><td><strong>제출과 동시에</strong></td></tr>
-            <tr><td>후기 한 건</td><td>20~25분</td><td><strong>제출과 동시에</strong></td></tr>
+            <tr><td>후기 한 건</td><td>20~25분(예측)</td><td><strong>제출과 동시에</strong></td></tr>
             <tr><td>계좌 옮겨 적기</td><td>손으로</td><td><strong>없어짐</strong></td></tr>
       </tbody>
     </table></div>
 
-          <p><strong>모집 기간이 온전히 확보됐습니다.</strong> 줄어든 것은 3분이지만 되찾은 것은 그 사이에 잃던 며칠입니다.</p>
+          <p><strong>모집 기간이 온전히 확보됐습니다.</strong> 줄어든 것은 3분이지만 되찾은 것은 그 사이에 잃을 뻔한 며칠입니다.</p>
           <p><strong>해외 송금은 한 글자만 틀려도 반송되기 때문에,</strong> 시간보다 큰 것은 계좌 쪽입니다. 사람이 옮겨 적는 단계를 없앤 것이 여기서는 속도보다 값어치가 있었습니다.</p>
           <p>사람이 폼과 문서 사이에서 값을 옮겨 적는 단계가 사라졌기 때문에, <strong>제가 하던 일은 옮겨 적기가 아니라 폼 문구를 관리하는 일로 바뀌었습니다.</strong></p>
         </div>
