@@ -732,6 +732,10 @@ th{font-weight:640;font-size:var(--t-micro);letter-spacing:.08em;text-transform:
 .tw.lft tbody td{text-align:left}
 /* 칸이 많은 표는 좌우 여백을 줄여 한 줄에 담습니다 */
 .tw.tight th,.tw.tight td{padding-left:12px;padding-right:12px}
+.tw.qlink tbody a{color:inherit;text-decoration:none;border-bottom:0;background:none}
+.tw.qlink tbody a:hover{text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
+.tw.qlink tbody td:nth-child(1),.tw.qlink tbody td:nth-child(2),.tw.qlink tbody td:nth-child(3){text-align:left}
+.tw.qlink tbody td.sub{padding-left:28px}
 .tw.nw td:nth-child(2){white-space:nowrap}
 tr:last-child td{border-bottom:0}
 td{color:var(--ink-2)}
@@ -1396,28 +1400,28 @@ a.cta{text-decoration:none}
 
     <h3>이 문서의 구조</h3>
     <p>세 장으로 나뉘고, 각 장은 도구를 소개하는 <strong>안내문 하나와 실제 사례 여럿</strong>으로 되어 있습니다. 절 이름을 누르면 해당 쪽으로 이동합니다.</p>
-    <div class="tw ctr eq xp tight"><table>
+    <div class="tw ctr eq tight qlink"><table>
       <caption class="sr">이 문서의 구조 — 표</caption>
-      <colgroup><col style="width:27%"><col style="width:28%"><col style="width:22%"><col style="width:23%"></colgroup>
+      <colgroup><col style="width:20%"><col style="width:30%"><col style="width:28%"><col style="width:22%"></colgroup>
       <thead>
-      <tr><th scope="col">절</th><th scope="col">내용</th><th scope="col">도구</th><th scope="col">시기</th></tr>
+      <tr><th scope="col">시기</th><th scope="col">절</th><th scope="col">내용</th><th scope="col">도구</th></tr>
       </thead>
       <tbody>
-      <tr><td><a href="#p1"><strong>1 · Python으로 업무 자동화</strong></a></td><td>파일과 시스템 화면을 다룰 때</td><td>Python · PyCharm</td><td class="n">2024.07~</td></tr>
-      <tr><td><a href="#p2">1-1 · PDF 편집·병합</a></td><td>해외유학후보장학생 선발</td><td>PyPDF</td><td class="n">2024.07</td></tr>
-      <tr><td><a href="#p3">1-2 · 엑셀 나누기·합치기</a></td><td>해외유학후보장학생 선발</td><td>openpyxl</td><td class="n">2024.07</td></tr>
-      <tr><td><a href="#p5">1-3 · 개인별 맞춤 메일 발송</a></td><td>선발 · 해외유학워크숍</td><td>smtplib · Flask</td><td class="n">2024.07 · 2026.08</td></tr>
-      <tr><td><a href="#p4">1-4 · 웹 조작(스크래핑)</a></td><td>재단 예산 관리</td><td>Selenium · gspread</td><td class="n">2024.12</td></tr>
-      <tr><td><a href="#p4a">1-4-1 · 자료 업로드·다운로드</a></td><td>선발 · 해외유학워크숍</td><td>Selenium</td><td class="n">2025.07~08</td></tr>
-      <tr><td><a href="#p6">1-5 · 개인정보 마스킹</a></td><td>해외유학워크숍 · 선발</td><td>pdfplumber · Kiwi</td><td class="n">2026.07~</td></tr>
-      <tr><td><a href="#g1"><strong>2 · Apps Script로 업무 자동화</strong></a></td><td>신청을 받아 처리할 때</td><td>Apps Script</td><td class="n">2026.02~</td></tr>
-      <tr><td><a href="#g0">2-1 · 해외유학 대면모임 지원</a></td><td>대면모임 신청 · 정산</td><td>Forms · Calendar</td><td class="n">2026.02</td></tr>
-      <tr><td><a href="#g2">2-2 · 법인카드 영수증 정리</a></td><td>팀비 정산</td><td>Drive · OCR · Sheets</td><td class="n">2026.08</td></tr>
-      <tr><td><a href="#w1"><strong>3 · 서버 없이 웹앱 개발·배포</strong></a></td><td>각자 로그인해서 쓸 때</td><td>Supabase · Netlify</td><td class="n">2026.07~</td></tr>
-      <tr><td><a href="#w2">3-1 · 워크숍 이수율 tracker</a></td><td>해외유학워크숍</td><td>Supabase · Netlify</td><td class="n">2026.07</td></tr>
-      <tr><td><a href="#w3">3-2 · 인재성장 플랫폼</a></td><td>인재성장 HUB · <strong>개발 중</strong></td><td>Supabase · Vercel</td><td class="n">2026.07~</td></tr>
-      <tr><td><a href="#apxb">부록 A · AI 활용 넓히기</a></td><td>스킬 · 플러그인 · 커넥터</td><td>—</td><td class="n">—</td></tr>
-      <tr><td><a href="#apxa">부록 B · Git과 GitHub</a></td><td>버전 관리</td><td>Git · GitHub</td><td class="n">—</td></tr>
+      <tr><td class="n">2024.07~</td><td><a href="#p1"><strong>1 · Python으로 업무 자동화</strong></a></td><td>파일과 시스템 화면을 다룰 때</td><td>Python · PyCharm</td></tr>
+      <tr><td class="n">2024.07</td><td class="sub"><a href="#p2">1-1 · PDF 편집·병합</a></td><td>해외유학후보장학생 선발</td><td>PyPDF</td></tr>
+      <tr><td class="n">2024.07</td><td class="sub"><a href="#p3">1-2 · 엑셀 나누기·합치기</a></td><td>해외유학후보장학생 선발</td><td>openpyxl</td></tr>
+      <tr><td class="n">2024.07 · 2026.08</td><td class="sub"><a href="#p5">1-3 · 개인별 맞춤 메일 발송</a></td><td>선발 · 해외유학워크숍</td><td>smtplib · Flask</td></tr>
+      <tr><td class="n">2024.12</td><td class="sub"><a href="#p4">1-4 · 웹 조작(스크래핑)</a></td><td>재단 예산 관리</td><td>Selenium · gspread</td></tr>
+      <tr><td class="n">2025.07~08</td><td class="sub"><a href="#p4a">1-4-1 · 자료 업로드·다운로드</a></td><td>선발 · 해외유학워크숍</td><td>Selenium</td></tr>
+      <tr><td class="n">2026.07~</td><td class="sub"><a href="#p6">1-5 · 개인정보 마스킹</a></td><td>해외유학워크숍 · 선발</td><td>pdfplumber · Kiwi</td></tr>
+      <tr><td class="n">2026.02~</td><td><a href="#g1"><strong>2 · Apps Script로 업무 자동화</strong></a></td><td>신청을 받아 처리할 때</td><td>Apps Script</td></tr>
+      <tr><td class="n">2026.02</td><td class="sub"><a href="#g0">2-1 · 해외유학 대면모임 지원</a></td><td>대면모임 신청 · 정산</td><td>Forms · Calendar</td></tr>
+      <tr><td class="n">2026.08</td><td class="sub"><a href="#g2">2-2 · 법인카드 영수증 정리</a></td><td>팀비 정산</td><td>Drive · OCR · Sheets</td></tr>
+      <tr><td class="n">2026.07~</td><td><a href="#w1"><strong>3 · 서버 없이 웹앱 개발·배포</strong></a></td><td>각자 로그인해서 쓸 때</td><td>Supabase · Netlify</td></tr>
+      <tr><td class="n">2026.07</td><td class="sub"><a href="#w2">3-1 · 워크숍 이수율 tracker</a></td><td>해외유학워크숍</td><td>Supabase · Netlify</td></tr>
+      <tr><td class="n">2026.07~</td><td class="sub"><a href="#w3">3-2 · 인재성장 플랫폼</a></td><td>인재성장 HUB · <strong>개발 중</strong></td><td>Supabase · Vercel</td></tr>
+      <tr><td class="n">—</td><td><a href="#apxb">부록 A · AI 활용 넓히기</a></td><td>스킬 · 플러그인 · 커넥터</td><td>—</td></tr>
+      <tr><td class="n">—</td><td><a href="#apxa">부록 B · Git과 GitHub</a></td><td>버전 관리</td><td>Git · GitHub</td></tr>
       </tbody>
     </table></div>
 
@@ -2317,7 +2321,7 @@ sheet.append_row(data)</code></div>
   <section id="g1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">2 · 안내문</div><h2>Apps Script로 업무 자동화<span class="ft">ft. Google Apps Script</span></h2></div></div>
     <div class="chips"><span class="chip">#2026.02</span><span class="chip">#2026.08</span><span class="chip">#Apps_Script</span><span class="chip">#해외유학장학생_대면모임_지원</span><span class="chip">#설치 0개</span><span class="chip free">#무료</span></div>
-    <p class="lead">Apps Script<span class="cite-w"><a class="cite" id="c-g1-1" href="#n-g1-1" aria-describedby="d-g1-1">1</a><span class="cite-t" role="tooltip">Google 문서·시트·캘린더·드라이브 등을 다루는 코드를 Google 계정으로 작성하고 Google 서버에서 실행하는 자동화 도구.</span></span>는 Google 문서·시트·캘린더·드라이브 등을 다루는 코드를 Google 계정으로 작성하고 Google 서버에서 실행하는 자동화 도구입니다. 별도의 프로그램을 설치하지 않아도 브라우저에서 바로 시작할 수 있기 때문에, 후기와 영수증을 수합하여 실비를 지급하는 업무처럼 Google 도구를 중심으로 이루어지는 반복 작업에 유용합니다.</p>
+    <p class="lead">Apps Script<span class="cite-w"><a class="cite" id="c-g1-1" href="#n-g1-1" aria-describedby="d-g1-1">1</a><span class="cite-t" role="tooltip">Google 문서·시트·캘린더·드라이브 등을 다루는 코드를 Google 계정으로 작성하고 Google 서버에서 실행하는 자동화 도구.</span></span>는 Google 문서·시트·캘린더·드라이브 등을 다루는 코드를 Google 계정으로 작성하고 Google 서버에서 실행하는 자동화 도구입니다. 별도의 프로그램을 설치하지 않아도 브라우저에서 바로 시작할 수 있기 때문에 Google 도구를 중심으로 이루어지는 반복 작업에 유용합니다. 후기와 영수증을 수합하여 실비를 지급하는 업무처럼 증빙 문서를 만들어야 할 때 Google Apps Script(GAS)를 자주 사용합니다.</p>
 
     <h3>Apps Script의 장점</h3>
     <p>제가 쓰면서 느낀 장점은 네 가지입니다.</p>
@@ -2346,24 +2350,23 @@ sheet.append_row(data)</code></div>
       </tbody>
     </table></div>
 
-        <p>1장의 Python 코드는 제가 직접 실행해야 했기 때문에 자리에 없으면 아무 일도 일어나지 않습니다. 반면 <strong>트리거를 설정해 두면 밤이나 휴일에 신청이 들어와도 정해 둔 작업이 자동으로 실행됩니다.</strong></p>
-        <div class="note warn">여기서 주의할 점은 스크립트를 <strong>저장하는 것</strong>과 트리거를 <strong>설정하는 것</strong>은 별개의 작업이라는 것입니다. 코드를 완성했는데도 자동으로 실행되지 않는다면 트리거가 설정되어 있는지 먼저 확인해야 합니다.</div>
+        <p>1장의 Python 코드는 컴퓨터를 켜서 실행하지 않으면 아무 일도 일어나지 않습니다(그러나 Power Automate 같은 서비스를 연동하면 자동화 할 수는 있습니다.) 반면 GAS를 활용하여 <strong>트리거를 설정해 두면 밤이나 휴일에 신청이 들어와도 정해 둔 작업이 자동으로 실행됩니다.</strong></p>
+        <div class="note warn">여기서 주의할 점은 스크립트를 <strong>저장하는 것</strong>과 트리거를 <strong>설정하는 것</strong>은 별개의 작업이라는 것입니다! 코드를 완성했는데도 자동으로 실행되지 않는다면 트리거가 설정되어 있는지 먼저 확인해야 합니다.</div>
       </div>
     </div>
 
     <div class="stp">
       <div class="hd"><span class="n">3</span><div class="t">구글 도구 연결</div></div>
       <div class="bd">
-        <p><strong>Google 도구를 바로 연결할 수 있습니다.</strong> Form·Sheets·Docs·Calendar·Drive 등을 Google 계정의 권한으로 조작할 수 있습니다. 처음 실행할 때 Google이 필요한 권한을 묻고, 재단 계정으로 승인하면 해당 계정이 접근할 수 있는 문서와 일정 등을 코드에서 다룰 수 있습니다.</p>
+        <p><strong>Google 도구를 바로 연결할 수 있습니다.</strong> Form·Sheets·Docs·Calendar·Drive 등을 Google 계정의 권한으로 조작할 수 있습니다. 처음 실행할 때 Google이 필요한 권한을 묻고, 승인하면 해당 계정이 접근할 수 있는 문서와 일정 등을 코드에서 다룰 수 있습니다.</p>
         <p>1장에서 Python으로 Google Sheets에 값을 넣을 때는 <span class="tok a">서비스 계정 키 파일</span>을 따로 만들어 코드에 연결해야 했습니다(1-4). <strong>Apps Script는 Google 서비스와 같은 환경에서 실행되기 때문에 이러한 연결 과정이 훨씬 간단합니다.</strong></p>
-        <p>기본 기능 외에도 <span class="tok">고급 서비스</span>를 추가하면 사용할 수 있는 Google API의 범위를 넓힐 수 있습니다. 다만 어떤 기능을 사용하는지는 실제 구현에 따라 달라집니다.</p>
       </div>
     </div>
 
     <div class="stp">
       <div class="hd"><span class="n">4</span><div class="t">문서 자동 작성</div></div>
       <div class="bd">
-        <p><strong>문서도 자동으로 만들 수 있습니다.</strong> 서식 문서를 미리 만들어 두고 값이 들어갈 자리를 표시해 두면, 코드가 사본을 만들어 해당 자리를 실제 값으로 채울 수 있습니다.</p>
+        <p><strong>문서도 자동으로 만들 수 있습니다.</strong> 서식 문서를 미리 만들어 두고 값이 들어갈 자리(필드; field)를 표시해 두면, 코드가 사본을 만들어 해당 자리를 필드 값으로 채울 수 있습니다.</p>
         <p>예를 들어 신청자가 Google Form을 제출하면 응답 내용을 바탕으로 지출결의에 첨부할 문서나 증빙 자료를 자동으로 만들도록 구성할 수 있습니다. <strong>사람이 응답 내용을 다시 문서에 옮겨 적는 작업을 줄일 수 있습니다.</strong></p>
       </div>
     </div>
@@ -2409,7 +2412,7 @@ sheet.append_row(data)</code></div>
         </a>
       </div>
     </div>
-    <div class="note"><strong>트리거</strong>는 Apps Script 편집기 왼쪽의 시계 아이콘(트리거) → <strong>트리거 추가</strong>에서 설정합니다. 예를 들어 폼이 제출될 때 실행하려면 이벤트 유형을 <strong>양식 제출 시</strong>로 선택합니다. 스크립트를 작성하는 것만으로 자동 실행되지는 않습니다.<br>처음 실행할 때는 Google이 필요한 권한을 묻습니다. 재단 계정으로 승인하면 해당 계정의 권한으로 Google 캘린더·문서·시트 등을 조작합니다.</div>
+    <div class="note"><strong>트리거</strong>는 Apps Script 편집기 왼쪽의 시계 아이콘(트리거) → <strong>트리거 추가</strong>에서 설정합니다. 예를 들어 폼이 제출될 때 실행하려면 이벤트 유형을 <strong>양식 제출 시</strong>로 선택합니다. 스크립트를 작성하는 것만으로 자동 실행되지는 않습니다.<br>처음 실행할 때는 Google이 필요한 권한을 묻습니다. 승인하면 해당 계정의 권한으로 Google 캘린더·문서·시트 등을 조작합니다.</div>
     <p>Google 서비스를 중심으로 반복 작업을 자동화한다면 Apps Script가 편하고, <strong>파일 처리·웹 조작·외부 프로그램 연동처럼 범위가 넓어지면 Python이 좋습니다.</strong></p>
     <div class="notes">
       <div class="notes-h">주석</div>
@@ -2425,151 +2428,74 @@ sheet.append_row(data)</code></div>
     <div class="chips"><span class="chip">#2026.02</span><span class="chip">#Apps_Script</span><span class="chip">#Forms</span><span class="chip">#Calendar</span><span class="chip">#Docs</span><span class="chip">#해외유학장학생_대면모임_지원</span></div>
     <p class="lead">2025년 말부터 2026년 초 사이 새롭게 추진한 사업으로 <span class="tok">해외유학장학생 대면모임 지원</span>이 있습니다. 전 세계에 흩어져 있는 장학생들이 각지에서 네 명 이상 모이면 1인당 최대 50 USD를 실비로 환급하는 사업으로, 상·하반기 각 한 번씩 지원합니다.</p>
 
-    <p>처음 사업을 설계하면서 신청부터 정산까지의 과정을 어떻게 연결할지 생각했습니다. 특히 신청서와 후기, 영수증을 받은 뒤 <strong>정산 문서를 사람이 다시 작성하는 과정이 반복될 것으로 보여,</strong> Google 도구를 연결할 수 있는 Apps Script로 전체 흐름을 자동화해 보기로 했습니다.</p>
+    <p class="lead">처음 사업을 설계하면서 신청부터 정산까지의 과정을 어떻게 연결할지 생각했습니다. 특히 신청서와 후기, 영수증을 받은 뒤 <strong>정산 문서를 사람이 다시 작성하는 과정이 반복될 것으로 보여,</strong> Google 도구를 연결할 수 있는 Apps Script로 전체 흐름을 자동화해 보기로 했습니다.</p>
 
-    <p>신청은 Google Form으로 받고, 모임 일정은 다른 장학생도 참여할 수 있도록 공유 Google Calendar에 등록합니다. 모임이 끝나면 후기와 영수증을 제출받고, <strong>그 내용을 바탕으로 정산 문서를 Google Docs로 자동 생성합니다.</strong></p>
+    <p class="lead">신청은 Google Form으로 받고, 모임 일정은 다른 장학생도 참여할 수 있도록 공유 Google Calendar에 등록합니다. 모임이 끝나면 후기와 영수증을 제출받고, <strong>그 내용을 바탕으로 정산 문서를 Google Docs로 자동 생성합니다.</strong></p>
 
     <div class="steps">
 
       <div class="stp">
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
-          <p>대면모임 지원은 <span class="tok">신청</span> · <span class="tok">후기</span> · <span class="tok">정산</span> 세 갈래인데, 들어오는 문은 폼 두 장입니다. 모임을 열 때 내는 신청 폼이 하나, 모임이 끝난 뒤 내는 후기·정산 폼이 하나입니다.</p>
-          <p>전 세계에 흩어진 장학생들이 각지에서 모임을 여는데, 다른 장학생이 그 모임에 참여하려면 일정이 <span class="tok">공유 캘린더</span>에 있어야 합니다. <strong>신청이 쌓이는 곳과 사람들이 보는 곳이 다르기 때문에,</strong> 폼으로 받는 한 옮기는 일이 매번 생깁니다.</p>
-          <p>만약 손으로 옮긴다면 한 건에 <span class="tok">3분(예측)</span>이지만 <strong>시간만 드는 것이 아닙니다.</strong> 제가 확인하기 전까지 일정이 안 올라가기 때문에, 제가 자거나 회의 중이면 그동안은 아무에게도 안 보입니다. 사람을 못 모으기 때문에, 모집 마감이 임박한 모임에게 <strong>그 지연은 그대로 손해입니다.</strong></p>
-          <p>모임이 끝나면 후기를 받는데, 참석자는 후기만 내고 모임장은 <strong>후기와 정산 서류</strong>를 함께 냅니다. 역할이 다르니 필요한 서류도 달라서, <strong>같은 폼에서 두 가지 다른 산출물이 나와야 합니다.</strong></p>
-          <p>후기에는 사진이 여러 장 붙고 정산에는 영수증이 붙는데 <strong>사진 크기가 제각각입니다.</strong> 그대로 넣으면 어떤 장은 한 쪽을 다 먹고 어떤 장은 손톱만 합니다. 그리고 <strong>아이폰 사진은 문서에 아예 안 들어갑니다.</strong> 형식이 다릅니다.</p>
-          <p>후기 한 건에 <span class="tok">20~25분(예측)</span>이 걸리는 일이라, 참석자가 많은 달에는 이것만으로 며칠이 갑니다.</p>
-          <p>저는 폼을 먼저 손으로 만들고 코드를 나중에 붙였기 때문에, <strong>질문 제목을 코드에 맞춰 지은 것이 아니라 코드를 질문 제목에 맞춰 짜게 되었습니다.</strong> 그러다 보니 두 폼이 같은 것을 서로 다르게 부릅니다. 신청 폼은 <span class="tok m">성명 (한글)</span>, 후기 폼은 <span class="tok m">이름(한글)</span>입니다.</p>
+          <p>대면모임 지원은 크게 <span class="tok">신청</span>·<span class="tok">후기</span>·<span class="tok">정산</span> 세 단계로 이루어집니다. 신청은 모임을 열기 전에, 후기는 모임이 끝난 뒤에 받으며, 두 과정 모두 <span class="tok">Google Form</span>을 사용합니다.</p>
+          <p>후기는 Word 파일로 받아도 되지만, 작성자가 각자 파일을 만들어 제출하면 글꼴·사진 크기·문서 구성 등이 달라질 수 있습니다. 정해진 양식을 사용하게 하려면 먼저 서식 파일을 내려받아 작성한 뒤 다시 제출해야 하므로 참여자에게도 번거롭습니다. 그래서 후기는 링크만 있으면 바로 작성할 수 있는 Google Form으로 받되, <strong>제출된 내용은 같은 형식의 문서로 정리하는 방식을 택했습니다.</strong></p>
+          <p>신청한 모임의 일정은 <span class="tok">사업추진2팀 캘린더</span>에 먼저 등록합니다. 팀에서 어떤 모임이 언제 열리는지 확인하기 위해서입니다. 이후 공개 모임으로 승인된 일정은 <span class="tok">해외유학장학생 공유 캘린더</span>에 복사합니다. 다른 장학생도 공유 캘린더를 보고 어떤 모임이 열리는지 확인하고 참여할 수 있습니다. 따라서 <strong>두 캘린더는 각각 내부 관리와 모임 공개·참여자 모집이라는 다른 용도로 사용합니다.</strong></p>
+          <p>모임이 끝난 뒤에는 참석자는 후기를 제출하고, 모임장은 후기와 함께 정산에 필요한 자료를 제출합니다. 후기에는 사진이 여러 장 첨부되고 정산에는 영수증이 첨부되는데, <strong>사진의 크기와 파일 형식이 제각각이라 이를 그대로 문서에 넣으면 결과물의 형식이 일정하지 않습니다.</strong> 일부 휴대전화 사진은 파일 형식 때문에 문서에 바로 삽입되지 않는 경우도 있습니다.</p>
+          <p>결국 이 사업은 단순히 신청서를 받고 끝나는 업무가 아니라, <strong>신청 → 내부 일정 관리 → 공개 모임 등록 → 후기·정산 자료 수합 → 문서 작성</strong>으로 이어집니다. 각 단계에서 사용하는 Google Form·Calendar·Docs를 따로 관리하기보다, 하나의 흐름으로 연결해 두면 참여자는 간단하게 제출하고 담당자는 같은 형식의 자료를 받을 수 있겠다는 생각에서 자동화를 설계했습니다.</p>
         </div>
       </div>
 
       <div class="stp">
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
-          <h3>① 폼 구성</h3>
-          <p>값 하나가 지나가는 자리는 셋인데, <strong>폼 질문 제목 · 템플릿 문서에 적어둔 자리 · 코드가 찾는 키가 모두 같은 글자여야 합니다.</strong> 한 곳이라도 다르면 오류가 나지 않고 <span class="tok a">그 자리만 조용히 빈칸으로</span> 나가기 때문에, 세 곳을 같이 놓고 맞추는 것이 폼을 만드는 일의 전부입니다.</p>
+          <h3>① 신청과 캘린더 등록</h3>
+          <p>신청 폼이 제출되면 코드가 응답을 읽어 <strong>사업추진2팀 캘린더에 일정을 등록합니다.</strong> 모임 일시는 날짜 질문으로 받기 때문에 코드가 그대로 일정 시각으로 옮깁니다.</p>
 
-          <div class="tw ctr eq"><table>
-      <caption class="sr">Form 만들기 코드가 읽을 폼 — 표</caption>
-      <thead>
-            <tr><th scope="col">폼 질문 제목</th><th scope="col">템플릿 필드</th><th scope="col">반영 위치</th></tr>
-      </thead>
-      <tbody>
-            <tr><td>이름(한글)</td><td><span class="tok m">&#123;&#123;이름(한글)&#125;&#125;</span></td><td>문서 제목과 본문</td></tr>
-            <tr><td>참석 유형</td><td><span class="tok m">&#123;&#123;참석 유형&#125;&#125;</span></td><td><strong>모임장일 때만</strong> 정산 문서</td></tr>
-            <tr><td>모임 일시</td><td><span class="tok m">&#123;&#123;모임 일시&#125;&#125;</span></td><td>파일 이름 · 일정 시작 시각</td></tr>
-            <tr><td>증빙 서류(영수증)</td><td><span class="tok m">&#123;&#123;증빙 서류(영수증)&#125;&#125;</span></td><td>그림으로 바꿔 문서에 삽입</td></tr>
-      </tbody>
-    </table></div>
+          <h3>② 승인과 공유 캘린더 복사</h3>
+          <p>등록된 일정을 보고 제가 지원 여부를 확정한 뒤 신청자에게 이메일로 알립니다. 승인한 모임 가운데 <strong>공개 모집으로 신청한 것만 해외유학장학생 공유 캘린더에 복사합니다.</strong> 다른 장학생은 이 캘린더를 보고 참여할 모임을 찾습니다.</p>
 
-          <p>답을 자유롭게 받으면 코드가 읽지 못하는 자리가 있어서, <strong>세 가지는 폼에서 답의 모양을 묶어 두었습니다.</strong></p>
-          <p><span class="tok">모임 일시</span>는 날짜 질문으로 받아야 코드가 시각으로 바꿔 일정을 잡는데, 자유 입력으로 받으면 형식이 어긋나 <span class="tok a">일정이 아예 만들어지지 않습니다</span>.</p>
-          <p><span class="tok">참석 유형</span>은 객관식으로 두고 선택지를 <span class="tok m">모임장</span>과 한 글자도 다르지 않게 적어야, 모임장이 냈을 때만 정산 문서가 따라 나옵니다.</p>
-          <p><span class="tok">모임 성격</span>은 선택지 문구에 <span class="tok m">비공개</span>라는 글자가 들어 있는지로 연락처 공개가 갈리기 때문에, <strong>선택지 문구 자체가 규칙입니다.</strong></p>
-
-          <div class="note">파일 첨부는 파일이 아니라 <span class="tok">드라이브 링크 문자열</span>로 넘어오고 여러 장이면 하나로 이어 붙어 오기 때문에, 코드가 그 문자열을 잘라 사진을 한 장씩 꺼냅니다. 폼에서 여러 개 첨부를 허용해 두면 그다음은 코드가 알아서 셉니다.</div>
 
           <div class="ann">
-      <svg viewBox="0 0 660 250" xmlns="http://www.w3.org/2000/svg" role="img"
-        aria-label="폼 응답 시트의 열 제목을 코드가 키로 쓰는 방식을 손글씨 주석으로 표시한 그림">
-        <!-- ── 주석 화살촉 세 개. 곡선 끝 접선에 맞춰 자동으로 돌아갑니다 ──
-             날개는 축에서 정확히 ±25.3°, 길이 10.3으로 좌우 대칭입니다.
-             손으로 좌표를 찍으면 이 각도가 어긋나 촉이 갈고리처럼 보입니다.
-             회색=사실 · 파랑=코드가 해주는 일 · 주황=깨지는 곳 ── -->
-        <defs>
-          <marker id="hwN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
-            markerUnits="userSpaceOnUse" orient="auto">
-            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </marker>
-          <marker id="hwG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
-            markerUnits="userSpaceOnUse" orient="auto">
-            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </marker>
-          <marker id="hwA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
-            markerUnits="userSpaceOnUse" orient="auto">
-            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </marker>
-        </defs>
-        <!-- 실물: 폼 응답이 쌓이는 시트 한 줄 -->
-        <text class="cel" x="582" y="94" text-anchor="end" font-size="11" fill="#737370">폼 응답이 쌓이는 Spreadsheet</text>
-        <rect x="78" y="104" width="504" height="62" rx="8" fill="#fff" stroke="#ededea"/>
-        <path d="M78,112 Q78,104 86,104 L574,104 Q582,104 582,112 L582,134 L78,134 Z" fill="#fafaf9"/>
-        <rect x="330" y="105" width="126" height="29" fill="#e8f0fb"/>
-        <rect x="456" y="105" width="125" height="29" fill="#e8f0fb"/>
-        <path d="M78,134 H582 M204,104 V166 M330,104 V166 M456,104 V166" stroke="#ededea" fill="none"/>
-        <text class="hd" x="141" y="123" text-anchor="middle">타임스탬프</text>
-        <text class="hd" x="267" y="123" text-anchor="middle">모임 제목</text>
-        <text class="hd" x="393" y="123" text-anchor="middle">참석 예정 인원</text>
-        <text class="hd" x="519" y="123" text-anchor="middle">공개 여부</text>
-        <text class="cel" x="141" y="155" text-anchor="middle">2026-03-04</text>
-        <text class="cel" x="267" y="155" text-anchor="middle">보스턴 신년 모임</text>
-        <text class="cel" x="393" y="155" text-anchor="middle">12</text>
-        <text class="cel" x="519" y="155" text-anchor="middle">비공개</text>
-
-        <!-- 가리키는 손 · 사실 -->
-        <g stroke="#737370" fill="#737370">
-          <path class="st" d="M150,53 C147,67 141,81 139,94" marker-end="url(#hwN)"/>
-          <text class="hw" x="150" y="44" text-anchor="end" stroke="none">폼이 자동으로 적습니다</text>
-          <path class="st" d="M298,48 C285,60 275,77 271,94" marker-end="url(#hwN)"/>
-          <text class="hw" x="300" y="40" stroke="none">캘린더 제목이 됩니다</text>
-        </g>
-
-        <!-- 가리키는 손 · 코드가 실제로 하는 일 -->
-        <g stroke="#1a5fb4" fill="#1a5fb4">
-          <path class="st" d="M344,201 C362,197 380,188 390,176" marker-end="url(#hwG)"/>
-          <text class="hw" x="330" y="213" text-anchor="end" stroke="none">이 문구가 그대로 키</text>
-          <path class="st" d="M472,199 C492,196 508,187 516,175" marker-end="url(#hwG)"/>
-          <text class="hw" x="440" y="218" stroke="none">'비공개'면 연락처를 뺍니다</text>
-        </g>
-
-        <!-- 가리키는 손 · 깨지는 곳 -->
-        <g stroke="#a16207" fill="#a16207">
-          <text class="hw" x="330" y="233" text-anchor="end" stroke="none">한 글자만 고쳐도 빈칸</text>
-        </g>
-      </svg>
-      <div class="ann-cap">코드는 <strong>열 제목 글자 그대로</strong>를 키로 씁니다. 폼 문구를 다듬는 순간 그 키가 사라집니다.</div>
-    </div>
-
-          <h3>② 캘린더 등록</h3>
-          <p>폼이 제출되는 순간 코드가 깨어나 캘린더에 쓰기 때문에, 사람이 확인하는 단계가 없어졌습니다. 메모에 무엇을 적을지는 <span class="tok">공개 여부</span>가 정하기 때문에, 사람이 판단하지 않습니다.</p>
-
-          <div class="tw ctr eq"><table>
-      <caption class="sr">Calendar에 반영 Spreadsheet 응답을 옮깁니다 — 표</caption>
-      <thead>
-            <tr><th scope="col">기재 항목</th><th scope="col">공개 모임</th><th scope="col">비공개 모임</th></tr>
-      </thead>
-      <tbody>
-            <tr><td>제목 · 장소 · 목적</td><td>기재</td><td>기재</td></tr>
-            <tr><td><strong>연락처</strong></td><td>기재</td><td><strong>기재 안 함</strong></td></tr>
-            <tr><td><strong>모집 마감</strong></td><td>기재</td><td><strong>기재 안 함</strong></td></tr>
-      </tbody>
-    </table></div>
-
-          <p>사람이 옮겨 적으면 언젠가 실수하지만, <strong>규칙으로 박아두면 실수 자체가 불가능해집니다.</strong> 비공개 모임의 연락처는 적으려야 적을 수가 없습니다.</p>
-
-          <h3>③ 문서 생성</h3>
-          <p>사진은 종류를 보고 크기를 정하는데, 영수증만 더 큽니다 — <strong>글씨를 읽어야 하기 때문입니다.</strong></p>
-
-          <div class="tw ctr eq"><table>
-      <caption class="sr">Docs 생성 후기 · 영수증 증빙 — 표</caption>
-      <thead>
-            <tr><th scope="col">사진 종류</th><th scope="col">처리</th></tr>
-      </thead>
-      <tbody>
-            <tr><td>일반 사진</td><td>높이 10cm로 맞춰 삽입</td></tr>
-            <tr><td>아이폰 사진</td><td>형식을 자동 변환한 뒤 삽입</td></tr>
-            <tr><td>영수증</td><td>높이 20cm — 글씨를 읽어야 해서 더 크게</td></tr>
-      </tbody>
-    </table></div>
-
-          <div class="split">
-            <div class="box"><div class="t">참석자 제출</div><p>후기 문서 1개</p></div>
-            <div class="box"><div class="t">모임장 제출</div><p>후기 문서 + <strong>환급 계좌·영수증 문서</strong></p></div>
+            <a class="shot-l" href="photos/meetup-calendar-2026.png" target="_blank" rel="noopener noreferrer">
+              <img class="shot" src="photos/meetup-calendar-2026.png" width="1100" height="785" loading="lazy"
+                alt="Google Calendar 월 보기 위에 일정 하나가 펼쳐져 있습니다. 제목은 대괄호 예시 공개(Open) US New York, 기간은 2026년 3월 31일 저녁 8시부터 4월 1일 자정까지입니다. 아래에 신청자명·모임 설명, 모임 지역 및 장소, 모집 일정 및 연락처가 항목별로 적혀 있고, 연락처와 모집 마감 일시, 시간대가 함께 들어 있습니다. 맨 아래에 KFAS 해외유학장학생 Calendar 라고 표시되어 있습니다.">
+            </a>
+            <div class="ann-cap">폼 응답이 <strong>일정 하나로 그대로 옮겨집니다.</strong> 신청자명·모임 지역·모집 마감 일시·연락처를 코드가 일정 설명란에 항목별로 적어 두기 때문에, 다른 장학생은 캘린더만 보고 참여 여부를 정할 수 있습니다.</div>
           </div>
+
+          <h3>③ 후기 제출과 문서 생성</h3>
+          <p>모임이 끝나면 참석자 전원이 후기 폼을 제출합니다. 폼에서 <span class="tok">모임원</span>과 <span class="tok">모임장</span>을 고르게 하고, <strong>모임장은 환급 계좌를 추가로 적습니다.</strong> 제출과 동시에 코드가 그 내용을 문서로 만듭니다.</p>
+
+          <div class="tw ctr eq"><table>
+      <caption class="sr">후기 폼 제출과 자동 생성 문서 — 표</caption>
+      <thead>
+            <tr><th scope="col">제출</th><th scope="col">자동 생성</th></tr>
+      </thead>
+      <tbody>
+            <tr><td>모임원</td><td>후기 문서 1개</td></tr>
+            <tr><td><strong>모임장</strong></td><td>후기 문서 <strong>+ 영수증이 붙은 환급 계좌 문서</strong></td></tr>
+      </tbody>
+    </table></div>
+
+
+          <div class="ann">
+            <a class="shot-l" href="photos/meetup-review-template.png" target="_blank" rel="noopener noreferrer">
+              <img class="shot" src="photos/meetup-review-template.png" width="673" height="448" loading="lazy"
+                alt="후기 문서의 서식 파일입니다. 표 맨 위에 해외유학장학생 대면 모임 후기라는 제목과 참석 유형 칸이 있고, 그 아래로 작성자 정보(이름·소속·모임 일시·모임 장소), 참석 후기, 사진, 비고 순으로 구역이 나뉘어 있습니다. 값이 들어갈 자리는 모두 이중 중괄호로 감싼 표시로 비워 두었습니다.">
+            </a>
+            <div class="ann-cap">후기 문서의 <strong>서식 파일</strong>입니다. 이중 중괄호로 표시한 자리에 폼 응답이 들어갑니다.</div>
+          </div>
+
+          <div class="ann">
+            <a class="shot-l" href="photos/meetup-refund-template.png" target="_blank" rel="noopener noreferrer">
+              <img class="shot" src="photos/meetup-refund-template.png" width="642" height="554" loading="lazy"
+                alt="환급 계좌 문서의 서식 파일입니다. 표 맨 위에 해외유학장학생 대면 모임 환급 계좌 정보라는 제목과 참석 인원 칸이 있고, 그 아래로 작성자 정보(이름·소속·모임 일시·모임 장소)와 환급 정보 구역이 이어집니다. 환급 정보에는 통화·환급액·성명(영문)·예금주 주소·수취인 앞 전달 내용·수취 계좌번호·SWIFT Code·해외은행명·해외은행 주소·증빙 서류(영수증) 항목이 있고, 값이 들어갈 자리는 이중 중괄호로 비워 두었습니다.">
+            </a>
+            <div class="ann-cap">모임장만 받는 <strong>환급 계좌 문서</strong>입니다. 해외 송금에 필요한 항목을 미리 자리로 잡아 두었기 때문에, 사람이 계좌 정보를 옮겨 적는 단계가 없습니다. 맨 아래 자리에는 제출된 영수증이 그림으로 들어갑니다.</div>
+          </div>
+
+          <p>첨부된 사진은 코드가 규격을 맞춰 넣습니다 — <strong>일반 사진은 높이 10cm, 영수증은 글씨를 읽어야 해서 20cm로 맞추고, 문서에 바로 들어가지 않는 형식은 변환한 뒤 삽입합니다.</strong></p>
+
         </div>
       </div>
 
@@ -2584,9 +2510,9 @@ sheet.append_row(data)</code></div>
             <tr><th scope="col">제출</th><th scope="col">자동 생성</th></tr>
       </thead>
       <tbody>
-            <tr><td>신청 폼</td><td>공유 캘린더에 일정 1건</td></tr>
-            <tr><td>후기·정산 폼 — 참석자</td><td>후기 문서 1개</td></tr>
-            <tr><td>후기·정산 폼 — 모임장</td><td>후기 문서 <strong>+ 환급 계좌·영수증 문서</strong></td></tr>
+            <tr><td>신청 폼</td><td>팀 캘린더에 일정 1건</td></tr>
+            <tr><td>후기 폼 — 모임원</td><td>후기 문서 1개</td></tr>
+            <tr><td>후기 폼 — 모임장</td><td>후기 문서 <strong>+ 환급 계좌·영수증 문서</strong></td></tr>
       </tbody>
     </table></div>
 
@@ -2596,15 +2522,13 @@ sheet.append_row(data)</code></div>
             <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
       </thead>
       <tbody>
-            <tr><td>신청 한 건 옮기기</td><td>3분(예측)</td><td><strong>사람 손이 들지 않음</strong></td></tr>
-            <tr><td>캘린더에 올라가기까지</td><td>내가 확인할 때까지</td><td><strong>제출과 동시에</strong></td></tr>
-            <tr><td>후기 한 건</td><td>20~25분(예측)</td><td><strong>제출과 동시에</strong></td></tr>
+            <tr><td>신청 한 건 옮기기</td><td>손으로 옮김</td><td><strong>사람 손이 들지 않음</strong></td></tr>
+            <tr><td>팀 캘린더에 올라가기까지</td><td>내가 옮길 때까지</td><td><strong>제출과 동시에</strong></td></tr>
+            <tr><td>후기 문서 한 건</td><td>손으로 작성</td><td><strong>제출과 동시에</strong></td></tr>
             <tr><td>계좌 옮겨 적기</td><td>손으로</td><td><strong>없어짐</strong></td></tr>
       </tbody>
     </table></div>
 
-          <p><strong>모집 기간이 온전히 확보됐습니다.</strong> 줄어든 것은 3분이지만 되찾은 것은 그 사이에 잃을 뻔한 며칠입니다.</p>
-          <p><strong>해외 송금은 한 글자만 틀려도 반송되기 때문에,</strong> 시간보다 큰 것은 계좌 쪽입니다. 사람이 옮겨 적는 단계를 없앤 것이 여기서는 속도보다 값어치가 있었습니다.</p>
           <p>사람이 폼과 문서 사이에서 값을 옮겨 적는 단계가 사라졌기 때문에, <strong>제가 하던 일은 옮겨 적기가 아니라 폼 문구를 관리하는 일로 바뀌었습니다.</strong></p>
         </div>
       </div>
@@ -2612,13 +2536,7 @@ sheet.append_row(data)</code></div>
       <div class="stp">
         <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
-          <p>폼 질문의 <span class="tok a">문구를 바꾸면 그 값이 조용히 빈칸이 됩니다</span>. 코드가 질문 제목을 키로 쓰기 때문입니다. 맞춤법을 고치거나 물음표 하나를 더해도 마찬가지이기 때문에, <strong>폼 문구는 코드의 일부입니다.</strong></p>
-
-          <div class="note warn"><strong>필수 응답으로 묶지 않은 질문은 빈칸인 채로 들어옵니다.</strong> 코드는 빈칸을 오류로 보지 않고 그대로 문서에 옮기기 때문에, <span class="tok a">막는 자리는 코드가 아니라 폼</span>입니다.</div>
-
           <p>폼은 Apps Script로도 만들 수 있지만 저는 손으로 만들었는데, 한 번 만들고 마는 폼이라면 손으로 만드는 편이 빠르기 때문입니다.</p>
-          <p>사진이 아주 많으면 문서가 무거워지기 때문에, 만드는 데 시간이 걸리고 여는 쪽도 느립니다.</p>
-          <p>다시 한다면 코드를 짜기 전에 두 폼의 질문 제목부터 같은 말로 통일하겠습니다. 나중에 맞추려면 이미 들어온 응답들의 열 제목이 함께 어긋나기 때문에, <strong>고칠 수 있는 시점은 첫 응답이 들어오기 전까지입니다.</strong></p>
         </div>
       </div>
 
