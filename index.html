@@ -2565,16 +2565,16 @@ sheet.append_row(data)</code></div>
   <section id="g2" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">2-2 · 예시 2</div><h2>법인카드 영수증 정리<span class="ft">찍어서 올려 두면 월 1회 읽습니다</span></h2></div></div>
     <div class="chips"><span class="chip">#2026.08</span><span class="chip">#Apps_Script</span><span class="chip">#Drive</span><span class="chip">#OCR</span><span class="chip">#Sheets</span><span class="chip">#팀비_정산</span></div>
-    <p class="lead">손으로 해도 되는 일이라 만들기를 미뤄 왔습니다. 그런데 영수증을 스캔해 파일 이름을 바꾸고 누가 · 어디서 · 얼마를 썼는지 적는 일이 매번 귀찮아, 이번 기회에 만들었습니다.</p>
+    <p class="lead">법인카드 영수증 정리가 귀찮아서 언젠가는 자동화해야겠다고 생각했지만, <strong>자동화하는 것 자체도 귀찮아서(…<span class="tok">^^</span>) 계속 미루던 작업</strong>이었습니다. 그런데 요즘 AI 코딩이 워낙 잘 되다 보니, 이번에는 <span class="tok">GAS</span>로 금방 만들어 보았습니다. Google Drive에 영수증 파일을 넣어 두면 Apps Script가 영수증의 날짜 · 금액 등을 읽어 파일명을 바꾸고, 월별 폴더로 정리하고, Spreadsheet에 내역까지 기록해 줍니다.</p>
 
     <div class="steps">
 
       <div class="stp">
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
-          <p>팀비를 쓰면 영수증이 남는데 지출결의는 <span class="tok">한 달에 한 번</span>입니다. 그 사이 영수증은 지갑과 사진첩에 흩어져 있다가 정산할 때 한꺼번에 모입니다.</p>
-          <p>모아서 하는 일은 영수증마다 <strong>날짜 · 사용처 · 사용자 · 금액을 읽어 시트에 적고,</strong> 파일 이름을 바꿔 월별 폴더에 넣는 것입니다. 어려운 일은 아니지만 매달 반복되고 손이 갑니다.</p>
-          <p>원하는 것은 간단했습니다. <strong>영수증을 Google Drive에 올려 두기만 하면 나머지는 알아서 되는 것</strong>입니다.</p>
+          <p>법인카드 사용 후 지출결의서를 작성하려면 사용한 영수증을 찾아 첨부해야 합니다. 그런데 영수증을 사진이나 PDF로 받아 두면 <strong>파일명이 제각각이라</strong> 나중에 어떤 영수증인지 다시 확인해야 하고, 첨부하기 전에 파일명을 직접 바꾸는 작업도 필요합니다.</p>
+          <p>영수증이 많지 않을 때는 간단하지만, <strong>매번 같은 작업을 반복하는 것이 번거로웠습니다.</strong></p>
+          <p>따라서 영수증을 <span class="tok">Google Drive</span>에 올려 두기만 하면 날짜와 금액을 확인하고 파일명까지 자동으로 정리하도록 만들었습니다.</p>
         </div>
       </div>
 
@@ -2582,13 +2582,14 @@ sheet.append_row(data)</code></div>
         <div class="hd"><span class="n">2</span><div class="t">해결 방법</div></div>
         <div class="bd">
           <h3>① 실행 주기</h3>
-          <p>사진을 올리는 순간 처리하도록 만들 수도 있었지만 <strong>지출결의가 월 1회라 그럴 이유가 없었습니다.</strong> 법인카드 사용내역을 정리하는 마감 전에 맞춰 <span class="tok">매월 초 한 번</span> 깨어나, 그동안 쌓인 것을 한꺼번에 읽습니다.</p>
+          <p>영수증을 올리는 즉시 처리하도록 만들 수도 있지만, 지출결의가 월 1회이기 때문에 매번 처리할 필요는 없었습니다. 법인카드 사용내역을 정리하는 시기에 맞춰 <span class="tok">매월 초 한 번</span> 자동으로 실행하고, 그동안 쌓인 영수증을 한꺼번에 처리하도록 했습니다.</p>
 
           <h3>② 읽고 정리하기</h3>
-          <p>올려 둔 파일에서 글자를 읽어 <strong>날짜 · 사용처 · 금액을 찾습니다.</strong> <span class="tok">사진과 PDF 모두</span> 읽습니다. 영수증 서식이 가게마다 달라 합계가 어디 적혔는지 일정하지 않기 때문에, 금액은 총액을 가리키는 단어 근처를 먼저 보고 없으면 가장 큰 금액을 씁니다.</p>
-          <p>읽고 나면 파일 이름을 <span class="tok m">yyyymmdd_금액</span> 으로 바꾸고 <span class="tok">보관 폴더의 연도 · 월</span> 아래로 옮깁니다. 시트에는 <strong>날짜 · 금액 · 결제처 · 사용자 · 원본 링크 · 처리 시각</strong> 여섯 칸이 한 줄로 쌓입니다.</p>
-          <p>같이 쓴 사람은 올릴 때 <strong>파일 이름을 사람 이름으로 바꿔 두면</strong> 시트의 사용자 칸에 들어갑니다. 안 바꾸면 빈칸으로 남고 나중에 시트에서 채우면 됩니다.</p>
-          <div class="note">이 자동화는 코드를 직접 쓰지 않고, <strong>Claude에 Google 커넥터를 붙여 만들었습니다.</strong> 커넥터가 무엇인지는 <a href="#apxb">부록 A</a>에 적어 두었습니다.</div>
+          <p>Google Drive에 올려 둔 파일에서 글자를 읽어 <strong>날짜 · 사용처 · 금액을 찾습니다.</strong> <span class="tok">사진과 PDF 모두</span> 처리합니다.</p>
+          <p>영수증마다 서식이 달라 금액의 위치가 일정하지 않기 때문에, 총액을 나타내는 표현 주변에서 금액을 먼저 찾고, 해당 표현을 찾지 못하면 영수증에서 가장 큰 금액을 사용하도록 했습니다.</p>
+          <p>읽은 뒤에는 파일 이름을 <span class="tok m">yyyymmdd_금액</span> 형식으로 바꾸고, 보관 폴더의 연도 · 월별 폴더로 옮깁니다. 동시에 <span class="tok">Google Sheets</span>에는 <strong>날짜 · 금액 · 결제처 · 사용자 · 원본 링크 · 처리 시각</strong>을 한 줄씩 기록합니다.</p>
+          <p>사용자 정보는 별도의 입력을 추가하지 않고, 영수증을 올릴 때 <strong>파일 이름을 사람 이름으로 바꾸어 두면</strong> 그 이름을 사용자로 기록하도록 했습니다. 이름을 바꾸지 않은 경우에는 빈칸으로 남겨 두었다가 시트에서 나중에 입력할 수 있습니다.</p>
+          <div class="note">이 자동화는 코드를 직접 작성하기보다 <strong>Claude에 Google 커넥터를 연결해 함께 만들었습니다.</strong> 커넥터에 대한 설명은 <a href="#apxb">부록 A</a>에 정리했습니다.</div>
         </div>
       </div>
 
@@ -2601,22 +2602,23 @@ sheet.append_row(data)</code></div>
             <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
       </thead>
       <tbody>
-            <tr><td>영수증 한 장</td><td>눈으로 읽어 옮겨 적기</td><td><strong>올려 두면 자동</strong></td></tr>
-            <tr><td>파일 이름 · 월별 폴더</td><td>손으로</td><td><strong>없어짐</strong></td></tr>
-            <tr><td>사람이 여는 시점</td><td>정산할 때 한꺼번에</td><td><strong>시트가 이미 채워져 있음</strong></td></tr>
+            <tr><td>영수증 한 장</td><td>눈으로 읽어 옮겨 적기</td><td><strong>올려 두면 자동 처리</strong></td></tr>
+            <tr><td>파일 이름 · 월별 폴더</td><td>손으로 정리</td><td><strong>자동 정리</strong></td></tr>
+            <tr><td>정산 시점</td><td>한꺼번에 확인</td><td><strong>시트에 이미 정리되어 있음</strong></td></tr>
       </tbody>
     </table></div>
-          <p>입력 폴더가 <strong>비어 있는 것이 정상입니다.</strong> 파일이 남아 있으면 그 건은 처리하지 못했다는 표시입니다.</p>
+          <p>입력 폴더는 <strong>비어 있는 것이 정상입니다.</strong> 파일이 남아 있다면 해당 영수증을 처리하지 못했다는 뜻입니다.</p>
         </div>
       </div>
 
       <div class="stp">
         <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
         <div class="bd">
-          <div class="note warn"><strong>사업자등록번호를 날짜로 읽었습니다.</strong> <span class="tok m">123-45-67890</span> 을 날짜 모양으로 보고 <span class="tok am">2023-45-67</span> 을 넣었습니다. 네 자리 연도를 먼저 찾고 월은 1~12 · 일은 1~31 안에 드는지 검사해 막았습니다.</div>
-          <p><span class="tok a">휴대전화 사진 형식을 OCR 이 받지 않습니다</span>. 그래서 원본 대신 <strong>Drive 가 미리 만들어 둔 미리보기 그림을 받아 읽습니다.</strong> 실제 영수증으로 확인했고 날짜 · 금액 · 결제처가 모두 나왔습니다.</p>
-          <p>실패한 파일은 입력 폴더에 그대로 남아 <strong>다음 달 실행에서 다시 시도됩니다.</strong> 자료가 사라지지는 않습니다.</p>
-          <p>날짜 · 금액 · 결제처는 규칙으로 찾는 값이라 <span class="tok a">서식이 특이한 영수증에서는 틀리게 나올 수 있습니다</span>. 정확도가 부족해지면 별도의 OCR 서비스로 바꾸는 것을 생각하고 있습니다.</p>
+          <p>실제 사용 과정에서는 몇 가지 예외가 발견되었습니다.</p>
+          <div class="note warn"><strong>사업자등록번호를 날짜로 잘못 인식하는 경우가 있었습니다.</strong> 예를 들어 <span class="tok m">123-45-67890</span> 을 날짜처럼 읽어 <span class="tok am">2023-45-67</span> 과 같은 값을 만들 수 있었습니다. 이를 막기 위해 네 자리 연도를 먼저 찾고, 월은 1~12, 일은 1~31 범위에 들어오는지 확인하는 조건을 추가했습니다.</div>
+          <p>휴대전화로 촬영한 일부 사진은 <span class="tok a">원본 파일을 바로 읽기 어려웠습니다.</span> 이 경우 <strong>Google Drive가 만들어 둔 미리보기 이미지를 가져와 글자를 읽도록</strong> 처리했습니다. 실제 영수증으로 확인한 결과 날짜 · 금액 · 결제처를 정상적으로 추출할 수 있었습니다.</p>
+          <p>처리에 실패한 파일은 입력 폴더에 그대로 남겨 둡니다. <strong>다음 실행에서 다시 처리할 수 있도록</strong> 하기 위해서입니다. 따라서 오류가 발생했다고 원본 파일이 사라지는 일은 없습니다.</p>
+          <p>다만 날짜 · 금액 · 결제처는 일정한 규칙으로 찾아내기 때문에 <span class="tok a">서식이 특이한 영수증에서는 잘못 읽을 수 있습니다.</span> 현재는 규칙 기반으로 처리하고 있으며, 정확도를 더 높일 필요가 생기면 별도의 OCR 서비스를 사용하는 방법을 검토할 수 있습니다.</p>
         </div>
       </div>
 
@@ -2768,7 +2770,7 @@ sheet.append_row(data)</code></div>
 
           <div class="ann">
             <a class="shot-l" href="photos/saw-tracker-participant.png" target="_blank" rel="noopener noreferrer">
-              <img class="shot" src="photos/saw-tracker-participant.png" width="754" height="728" loading="lazy"
+              <img class="shot" src="photos/saw-tracker-participant.png" width="990" height="747" loading="lazy"
                 alt="참여자가 로그인해서 보는 화면입니다. 맨 위에 해외유학워크숍 이수율 트래커라는 제목과 본인 이수 현황이라는 안내가 있고, 그 아래 카드에 이름·소속과 함께 큰 글씨로 20퍼센트가 표시되어 있습니다. 그 밑에 0부터 100까지의 가로 막대가 채워진 만큼 칠해져 있고, 이수 요건 2/9 완료·잔여 80퍼센트라고 적혀 있습니다. 이어서 2026년 항목이 카드로 줄지어 있는데, 강연 1과 강연 2는 완료 표시가 붙어 있고 나머지는 빈 표시입니다. 각 카드에는 시기·항목 이름·제출물·이수율 배점이 적혀 있습니다.">
             </a>
             <div class="ann-cap">참여자 화면입니다. <strong>로그인한 사람의 기록만 보입니다.</strong> 맨 위에 지금 몇 퍼센트인지와 남은 몫이 나오고, 그 아래로 열두 항목이 완료 여부와 함께 줄지어 있어 남은 기간을 스스로 계획할 수 있습니다.</div>
@@ -2790,19 +2792,11 @@ sheet.append_row(data)</code></div>
     </table></div>
 
           <div class="ann">
-            <a class="shot-l" href="photos/saw-tracker-admin-individual.png" target="_blank" rel="noopener noreferrer">
-              <img class="shot" src="photos/saw-tracker-admin-individual.png" width="680" height="756" loading="lazy"
-                alt="관리자가 보는 개별 등록 화면입니다. 위쪽에 일괄 등록과 개별 등록을 고르는 단추가 있고, 분야와 참여자를 고르는 선택 칸이 나란히 놓여 있습니다. 오른쪽에는 전체 평균 이수율이 표시됩니다. 그 아래는 참여자 화면과 같은 카드가 이어지는데, 항목마다 오른쪽에 O와 X 단추가 붙어 있어 눌러서 이수 여부를 정합니다.">
-            </a>
-            <div class="ann-cap">관리자 화면의 <strong>개별 등록</strong>입니다. 참여자를 고르면 그 사람의 항목이 그대로 펼쳐지고, 항목마다 O·X를 눌러 이수 여부를 정합니다. 참여자가 보는 것과 같은 화면이라 무엇을 고쳤는지 바로 보입니다.</div>
-          </div>
-
-          <div class="ann">
-            <a class="shot-l" href="photos/saw-tracker-admin-bulk.png" target="_blank" rel="noopener noreferrer">
-              <img class="shot" src="photos/saw-tracker-admin-bulk.png" width="680" height="698" loading="lazy"
+            <a class="shot-l" href="photos/saw-tracker-admin.png" target="_blank" rel="noopener noreferrer">
+              <img class="shot" src="photos/saw-tracker-admin.png" width="985" height="764" loading="lazy"
                 alt="관리자가 보는 일괄 등록 화면입니다. 열두 개 항목이 번호와 함께 세로로 나열되어 있고, 항목마다 오른쪽에 전체 O·전체 X·해제 단추가 놓여 있습니다. 각 항목 아래에는 현재 O가 몇 명·X가 몇 명·미정이 몇 명인지 작은 글씨로 적혀 있습니다.">
             </a>
-            <div class="ann-cap"><strong>일괄 등록</strong>입니다. 강연처럼 대부분이 참석한 항목은 전체를 한 번에 O로 놓고 빠진 사람만 개별 등록에서 바꿉니다. 항목마다 지금 몇 명이 O·X·미정인지 함께 보여 줍니다.</div>
+            <div class="ann-cap">관리자 화면입니다. 강연처럼 대부분이 참석한 항목은 <strong>전체를 한 번에 O로 놓고</strong>, 빠진 사람만 따로 바꿉니다. 항목마다 지금 몇 명이 O·X·미정인지 함께 보여 줍니다.</div>
           </div>
         </div>
       </div>
