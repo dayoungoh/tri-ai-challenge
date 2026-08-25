@@ -3207,6 +3207,14 @@ constraint coffee_chat_not_self check (from_user &lt;&gt; to_user)</code></div>
           <p>일반적인 추론은 이제 대체로 상향평준화되어 가는 것 같습니다. 그래서 앞으로는 각 모델이 무엇에 특화되어 있는지 살펴보고 취사선택해야 한다고 느꼈습니다.</p>
           <p>그리고 지금 가장 좋은 도구를 직접 써 보는 편이 좋다고 생각합니다. 다만 좋은 모델도 너무 빨리 바뀌어 피로하기는 합니다.
 Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 것을 느꼈는데, (사용하는 동안 먹통이 되기도 했습니다) 그 사이 모두 Claude보다 Codex를 추천하시더군요. 또 이제는 스킬, 커넥터 등을 많이 연동해 두어 다른 생태계로 옮기는 것도 피로한 일인 거 같습니다. (마치 갤럭시에서 Apple로 옮기기 어렵고, 반대로 Apple에서 갤럭시로 옮겨가기 어렵듯이) </p>
+
+          <div class="ann">
+            <a class="shot-l" href="photos/frontier-intelligence-over-time-2026.png" target="_blank" rel="noopener noreferrer">
+              <img class="shot" src="photos/frontier-intelligence-over-time-2026.png" width="4516" height="2032" loading="lazy"
+                alt="여러 AI 회사의 대표 모델 지능 지수가 2022년 11월부터 2026년 8월까지 오르는 꺾은선 그래프입니다. Anthropic·OpenAI·Google·DeepSeek을 비롯한 여러 회사의 선이 초반에는 낮게 붙어 있다가 뒤로 갈수록 함께 위로 몰리며 촘촘하게 얽혀 올라갑니다.">
+            </a>
+            <div class="ann-cap">여러 회사의 모델이 <strong>시간이 갈수록 함께 위로 몰려 올라갑니다.</strong> 상향평준화되며 선두가 촘촘하게 얽히는 모습입니다. 출처: <a href="https://artificialanalysis.ai/#intelligence" target="_blank" rel="noopener noreferrer">Artificial Analysis</a> · 2026.08</div>
+          </div>
         </div>
       </div>
 
@@ -3232,7 +3240,7 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
     <p class="lead">AI를 사용하면서 스킬 · 플러그인 · 커넥터 셋을 알아두니 작업이 더 편했습니다. 저도 사용한지 얼마 되지 않아 아주 자세히는 몰라, 저도 배우고자 부록을 (*AI한테 시켜) 작성해 보았습니다. 참고만 해 주시면 좋을 거 같습니다.  </p>
 
     <div class="note">"양식은 이걸 쓰고, 파일 이름은 이 규칙으로 붙이고, 결과는 이 폴더에 넣고, 개인정보 열은 가려라."</div>
-    <p>새 대화를 열 때마다 이 말을 다시 적고 있었습니다. 아래 셋은 그 반복을 줄이는 방법입니다.</p>
+    <p>AI에 이런 지시를 매번 다시 적게 되는데, 아래 셋은 그 반복을 줄이는 방법입니다.</p>
 
     <div class="stp">
       <div class="hd"><span class="n">1</span><div class="t">스킬</div></div>
@@ -3240,7 +3248,7 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
     <p>특정 작업의 절차서입니다. 코드가 아니라 마크다운 문서 한 장이라, 폴더 하나에 <span class="tok m">SKILL.md</span> 하나가 전부입니다.</p>
     <div class="pre" tabindex="0" role="region" aria-label="코드"><code>my-skill/
 └── <b>SKILL.md</b></code></div>
-    <p>그 일을 지금 어떤 순서로 하고 있는지 그대로 적습니다. 1-1의 병합 순서표를 글로 옮긴 것과 비슷합니다.</p>
+    <p>작업을 지금 어떤 순서로 하는지 그대로 적으면 됩니다. 아래는 1-1의 서류 병합을 절차서로 옮긴 예입니다.</p>
     <div class="pre" data-nm="SKILL.md" data-lg="Markdown" tabindex="0" role="region" aria-label="코드"><code><i>---</i>
 <i>name: 지원서-병합</i>
 <i>description: 지원자 폴더의 PDF를 정해진 순서로 1인 1파일로 병합할 때 사용</i>
@@ -3298,8 +3306,8 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
     <div class="steps"><div class="stp">
       <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
       <div class="bd">
-        <p>스킬은 <strong>AI가 읽는 지시문</strong>입니다. 남이 만든 스킬을 넣는 것은 남이 쓴 지시를 내 AI에게 그대로 읽히는 일이라, <span class="tok a">무엇을 하라고 적혀 있는지 먼저 읽습니다</span>. 글이라 읽을 수 있습니다.</p>
-        <p>커넥터는 결이 다릅니다. Supabase · Netlify는 제가 만든 것에 붙지만 <span class="tok a">Gmail · Slack은 재단의 메일과 대화에 닿습니다</span>. <strong>사내 계정을 연결할 때는 정보보안 규정을 먼저 확인해야 합니다.</strong></p>
+        <p>스킬은 <strong>AI가 읽는 지시문</strong>입니다. 남이 만든 스킬을 넣는 것은 남이 쓴 지시를 그대로 AI에 읽히는 일이라, <span class="tok a">무엇을 하라고 적혀 있는지 먼저 확인하는 것이 안전합니다.</span></p>
+        <p>커넥터는 닿는 범위가 넓습니다. 개인이 만든 서비스에 붙이는 것과 달리, <span class="tok a">Gmail · Slack 같은 업무 계정에 연결하면 실제 메일과 대화에 접근</span>하게 됩니다. <strong>사내 계정을 연결할 때는 정보보안 규정을 먼저 확인해야 합니다.</strong></p>
       </div>
     </div></div>
   </section>
@@ -3313,7 +3321,7 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
     <div class="stp">
       <div class="hd"><span class="n">1</span><div class="t">손으로 하는 버전 관리</div></div>
       <div class="bd">
-    <p>제 폴더에도 이런 파일들이 쌓여 있었습니다.</p>
+    <p>누구나 한 번쯤 이런 폴더를 본 적이 있습니다.</p>
     <div class="pre" tabindex="0" role="region" aria-label="코드"><code>사업계획서.docx
 사업계획서_수정.docx
 사업계획서_수정2.docx
@@ -3339,7 +3347,7 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
     <div class="stp">
       <div class="hd"><span class="n">2</span><div class="t">Git과 GitHub의 차이</div></div>
       <div class="bd">
-    <p>저도 처음에는 둘을 같은 것으로 알고 있었습니다.</p>
+    <p>둘을 같은 것으로 여기기 쉽지만, 다릅니다.</p>
     <div class="tw ctr eq"><table>
       <caption class="sr">Git과 GitHub — 표</caption>
       <thead>
@@ -3358,7 +3366,7 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
     <div class="stp">
       <div class="hd"><span class="n">3</span><div class="t">파일이 거치는 네 곳</div></div>
       <div class="bd">
-    <p>Git이 어렵게 느껴졌던 이유는 <strong>파일이 네 곳을 거치기 때문</strong>이었습니다. 네 곳을 알고 나니 명령은 필요할 때 찾아 쓰면 됐습니다.</p>
+    <p>Git이 어렵게 느껴지는 이유는 <strong>파일이 네 곳을 거치기 때문</strong>입니다. 이 네 곳만 알면 명령은 필요할 때 찾아 쓰면 됩니다.</p>
 
     <div class="ann">
       <svg viewBox="-14 0 700 200" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -3421,8 +3429,8 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
       <div class="ann-cap">인터넷 없이도 세 번째 칸까지는 전부 됩니다. <strong>GitHub는 공유와 백업을 위한 선택입니다.</strong></div>
     </div>
 
-    <p><span class="tok">스테이지</span>를 거치는 이유는 <strong>오늘 세 가지를 고쳤는데 그중 두 가지만 기록으로 남기고 싶을 때가 있기 때문</strong>입니다. 커밋을 의미 단위로 만들라고 있는 칸입니다.</p>
-    <p>저는 대개 <span class="tok m">git add .</span> 로 전부 올리고 커밋합니다. 그래도 문제가 된 적은 없습니다.</p>
+    <p><span class="tok">스테이지</span>를 거치는 이유는 <strong>여러 가지를 고쳤어도 그중 일부만 골라 기록으로 남기고 싶을 때가 있기 때문</strong>입니다. 커밋을 의미 단위로 나누라고 있는 칸입니다.</p>
+    <p><span class="tok m">git add .</span> 로 전부 올리고 커밋해도 됩니다. 처음에는 이 방식으로 충분합니다.</p>
       </div>
     </div>
 
@@ -3442,7 +3450,7 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
       <tr><td>이력 보기</td><td><strong>git log --oneline</strong></td><td>한 줄씩 이력</td></tr>
       </tbody>
     </table></div>
-    <div class="note"><strong>막히면 일단 <span class="tok m">git status</span> 를 칩니다.</strong> 아무것도 바꾸지 않고 지금 상태만 알려주기 때문에, 자주 쳐도 잃을 것이 없습니다.</div>
+    <div class="note"><strong>막히면 일단 <span class="tok m">git status</span> 입니다.</strong> 아무것도 바꾸지 않고 지금 상태만 알려주기 때문에, 자주 쳐도 잃을 것이 없습니다.</div>
       </div>
     </div>
 
@@ -3470,7 +3478,7 @@ Thumbs.db</code></div>
       <div class="bd">
         <p><strong>.gitignore는 "앞으로 무시하라"는 뜻이지 "이미 올린 것을 지우라"는 뜻이 아닙니다.</strong></p>
         <p>키가 든 파일을 한 번이라도 커밋했다면 목록에 추가해도 <span class="tok a">이력에는 그대로 남기 때문에</span>, 이력을 지우려 애쓰는 것보다 확실한 조치는 <strong>그 키를 폐기하고 새로 발급하는 것</strong>입니다.</p>
-        <p>커밋 하나가 되돌아올 수 있는 지점 하나이기 때문에, 이 문서도 Git으로 관리합니다.</p>
+        <p>커밋 하나가 되돌아올 수 있는 지점 하나가 됩니다. 자주 커밋할수록 되돌릴 여지가 늘어납니다.</p>
       </div>
     </div></div>
   </section>
