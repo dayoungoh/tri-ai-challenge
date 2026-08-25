@@ -8,7 +8,17 @@
      프로젝트 페이지의 robots.txt 는 크롤러가 안 봅니다 — 도메인 뿌리의 것만 봅니다.
      그래서 이 한 줄이 실제로 듣는 유일한 장치입니다. 다 쓰면 지우세요. -->
 <meta name="robots" content="noindex, nofollow">
-<title>TRI-AI Challenge 응모작 · 오다영</title>
+<title>TRI-AI Challenge · 오다영</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2323173a' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 17c1.2 0 1.8.8 3 .8s1.8-.8 3-.8 1.8.8 3 .8 1.8-.8 3-.8 1.8.8 3 .8'/%3E%3Cpath d='M5 14.5 4 10h16l-2.2 4.5'/%3E%3Cpath d='M12 10V3l6 3.5-6 1'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TRI-AI Challenge · 오다영">
+<meta property="og:description" content="코딩을 모르던 사람이 AI로 업무를 자동화해 온 2년의 기록">
+<meta property="og:image" content="photos/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TRI-AI Challenge · 오다영">
+<meta name="twitter:image" content="photos/og-cover.png">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" as="style" crossorigin
   href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -2547,7 +2557,7 @@ sheet.append_row(data)</code></div>
   <section id="g2" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">2-2 · 예시 2</div><h2>법인카드 영수증 정리<span class="ft">찍어서 올려 두면 월 1회 읽습니다</span></h2></div></div>
     <div class="chips"><span class="chip">#2026.08</span><span class="chip">#Apps_Script</span><span class="chip">#Drive</span><span class="chip">#OCR</span><span class="chip">#Sheets</span><span class="chip">#팀비_정산</span></div>
-    <p class="lead">영수증은 그때그때 생기지만 정산은 한 달에 한 번이라, 빠르게 만들 필요가 없는 자동화였습니다.</p>
+    <p class="lead">손으로 해도 되는 일이라 만들기를 미뤄 왔습니다. 그런데 영수증을 스캔해 파일 이름을 바꾸고 누가 · 어디서 · 얼마를 썼는지 적는 일이 매번 귀찮아, 이번 기회에 만들었습니다.</p>
 
     <div class="steps">
 
@@ -2555,8 +2565,8 @@ sheet.append_row(data)</code></div>
         <div class="hd"><span class="n">1</span><div class="t">상황·문제</div></div>
         <div class="bd">
           <p>팀비를 쓰면 영수증이 남는데 지출결의는 <span class="tok">한 달에 한 번</span>입니다. 그 사이 영수증은 지갑과 사진첩에 흩어져 있다가 정산할 때 한꺼번에 모입니다.</p>
-          <p>모아서 하는 일은 <strong>사진마다 날짜 · 금액 · 결제처를 눈으로 읽어 시트에 옮겨 적고,</strong> 파일 이름을 정리해 월별 폴더에 넣는 것입니다. 옮겨 적는 값은 셋뿐이지만 <strong>영수증 서식이 가게마다 다릅니다.</strong> 어디에 합계가 적혀 있는지 매번 눈으로 찾아야 합니다.</p>
-          <p>원하는 것은 간단했습니다. <strong>사진을 올려 두기만 하면 파일 이름이 정리되고 시트에 내역이 쌓이는 것</strong>입니다.</p>
+          <p>모아서 하는 일은 영수증마다 <strong>날짜 · 사용처 · 사용자 · 금액을 읽어 시트에 적고,</strong> 파일 이름을 바꿔 월별 폴더에 넣는 것입니다. 어려운 일은 아니지만 매달 반복되고 손이 갑니다.</p>
+          <p>원하는 것은 간단했습니다. <strong>영수증을 Google Drive에 올려 두기만 하면 나머지는 알아서 되는 것</strong>입니다.</p>
         </div>
       </div>
 
@@ -2567,9 +2577,10 @@ sheet.append_row(data)</code></div>
           <p>사진을 올리는 순간 처리하도록 만들 수도 있었지만 <strong>지출결의가 월 1회라 그럴 이유가 없었습니다.</strong> 법인카드 사용내역을 정리하는 마감 전에 맞춰 <span class="tok">매월 초 한 번</span> 깨어나, 그동안 쌓인 것을 한꺼번에 읽습니다.</p>
 
           <h3>② 읽고 정리하기</h3>
-          <p>OCR로 영수증의 글자를 뽑아 <strong>날짜 · 금액 · 결제처 셋을 찾습니다.</strong> 서식이 가게마다 다르기 때문에 <span class="tok m">합계 · 총액 · 결제금액</span> 같은 단어 근처의 숫자를 먼저 보고, 그런 단어가 없으면 가장 큰 금액을 씁니다.</p>
+          <p>올려 둔 파일에서 글자를 읽어 <strong>날짜 · 사용처 · 금액을 찾습니다.</strong> <span class="tok">사진과 PDF 모두</span> 읽습니다. 영수증 서식이 가게마다 달라 합계가 어디 적혔는지 일정하지 않기 때문에, 금액은 총액을 가리키는 단어 근처를 먼저 보고 없으면 가장 큰 금액을 씁니다.</p>
           <p>읽고 나면 파일 이름을 <span class="tok m">yyyymmdd_금액</span> 으로 바꾸고 <span class="tok">보관 폴더의 연도 · 월</span> 아래로 옮깁니다. 시트에는 <strong>날짜 · 금액 · 결제처 · 사용자 · 원본 링크 · 처리 시각</strong> 여섯 칸이 한 줄로 쌓입니다.</p>
           <p>같이 쓴 사람은 올릴 때 <strong>파일 이름을 사람 이름으로 바꿔 두면</strong> 시트의 사용자 칸에 들어갑니다. 안 바꾸면 빈칸으로 남고 나중에 시트에서 채우면 됩니다.</p>
+          <div class="note">이 자동화는 코드를 직접 쓰지 않고, <strong>Claude에 Google 커넥터를 붙여 만들었습니다.</strong> 커넥터가 무엇인지는 <a href="#apxb">부록 A</a>에 적어 두었습니다.</div>
         </div>
       </div>
 
@@ -2582,7 +2593,7 @@ sheet.append_row(data)</code></div>
             <tr><th scope="col">처리 범위</th><th scope="col">이전</th><th scope="col">이후</th></tr>
       </thead>
       <tbody>
-            <tr><td>영수증 한 장</td><td>눈으로 읽어 옮겨 적기</td><td><strong>3~5초</strong></td></tr>
+            <tr><td>영수증 한 장</td><td>눈으로 읽어 옮겨 적기</td><td><strong>올려 두면 자동</strong></td></tr>
             <tr><td>파일 이름 · 월별 폴더</td><td>손으로</td><td><strong>없어짐</strong></td></tr>
             <tr><td>사람이 여는 시점</td><td>정산할 때 한꺼번에</td><td><strong>시트가 이미 채워져 있음</strong></td></tr>
       </tbody>
@@ -2716,7 +2727,7 @@ sheet.append_row(data)</code></div>
   <section id="w2" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">3-1 · 예시 1</div><h2>워크숍 이수율 tracker</h2></div></div>
     <div class="chips"><span class="chip">#2026.07</span><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#해외유학워크숍</span></div>
-    <p class="lead">참여자가 각자 자기 진도만 볼 수 있어야 했기 때문에, 파일이 아니라 웹으로 만들었습니다.</p>
+    <p class="lead">참여자가 각자 자기 진도만 볼 수 있어야 했기 때문에 파일이 아니라 웹으로 만들었고, 처음 만들어 본 웹앱입니다.</p>
 
     <div class="panel">
       <div class="panel-h"><span class="t">직접 보기</span><span class="m">1</span></div>
@@ -2735,16 +2746,17 @@ sheet.append_row(data)</code></div>
       <div class="stp">
         <div class="hd"><span class="n">1</span><div class="t">문제</div></div>
         <div class="bd">
-          <p>1년에 걸쳐 진행되는 해외유학워크숍입니다. 이수 항목이 열두 개이고 배점 합계가 100점인데, <span class="tok">90점 이상</span>이어야 수료증이 나갑니다.</p>
-          <p>참여자는 자기가 지금 몇 점인지 알아야 남은 기간을 계획할 수 있는데, 항목마다 배점이 다르고 회차도 여럿이라 <strong>자기 진도를 스스로 계산하기 어렵습니다.</strong></p>
-          <p>그렇다고 전체 명단을 공유하면 남의 점수까지 보이기 때문에, 회차마다 제가 개인별로 계산해 안내했습니다. <strong>한 번에 2~3시간이 들었고 그 사이 문의가 또 들어왔습니다.</strong></p>
+          <p>교육 프로그램을 운영하면서 가장 아쉬운 것은 참여율입니다. 앞서 맡았던 연수 프로그램에서 참여가 저조했던 것이 마음에 남아, <strong>해외유학워크숍은 선발 전 과정 안내에서부터 <span class="tok">이수율 90% 이상이어야 수료증</span>이라고 못박아 두었습니다.</strong></p>
+          <p>그러면 참여자가 자기 이수율을 알아야 하는데, 이수 항목이 열두 개이고 항목마다 배점이 다르며 회차도 여럿이라 <strong>스스로 계산하기 어렵습니다.</strong></p>
+          <p>그렇다고 전체 명단을 공유하면 남의 점수까지 보입니다. 그래서 회차마다 제가 개인별로 계산해 안내했는데, <strong>각자 자기 것만 확인할 수 있는 시스템이 필요했습니다.</strong></p>
         </div>
       </div>
       <div class="stp">
         <div class="hd"><span class="n">2</span><div class="t">해결</div></div>
         <div class="bd">
-          <p>기록은 한 곳에 모여 있는데 봐야 하는 것은 각자 자기 것뿐입니다. 파일은 <strong>연 사람이 누구인지 모르기 때문에</strong> 이 구분을 파일로는 만들 수 없어, 웹으로 만들었습니다.</p>
-          <p><span class="tok g">비밀번호 없는 이메일 링크 로그인</span>으로 들어오면 데이터베이스가 그 사람의 것만 보여주고, 관리자는 같은 페이지에서 전체를 입력합니다.</p>
+          <p>각자 자기 것만 봐야 하는데 파일은 <strong>연 사람이 누구인지 모르기 때문에</strong> 이 구분을 만들 수 없어, 웹으로 만들었습니다.</p>
+          <p><span class="tok g">비밀번호 없는 이메일 링크 로그인</span>으로 들어오면 데이터베이스가 그 사람의 기록만 보여주고, 관리자인 저는 같은 화면에서 <strong>전체 승인 · 학생별 승인</strong>으로 참석을 넣습니다.</p>
+          <div class="note">코드를 직접 쓰지 않고, 이수율 기준을 <strong>Claude에 전달해 화면을 만든 뒤</strong> 거기에 <span class="tok">Supabase(데이터베이스) · Netlify(배포)</span>를 커넥터로 연결해 완성했습니다. 커넥터는 <a href="#apxb">부록 A</a>에 적어 두었습니다.</div>
 
           <div class="ann">
             <a class="shot-l" href="photos/saw-tracker-participant.png" target="_blank" rel="noopener noreferrer">
