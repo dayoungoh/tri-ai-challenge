@@ -3038,31 +3038,32 @@ sheet.append_row(data)</code></div>
         <p>여기서 중요한 것은 학자형 인재를 <strong>덜 기르겠다는 뜻이 아니라는 점</strong>입니다. 학자형은 여전히 재단이 지원하는 한 갈래로 남고, 그 옆에 개척가 · 예술가 · 글로벌리더 · 기업가 · 정책가 · 전문가처럼 다른 경로로 사회적 가치를 만드는 인재가 함께 늘어납니다.</p>
 
         <div class="ann">
-          <svg viewBox="0 0 700 288" xmlns="http://www.w3.org/2000/svg" role="img"
-            aria-label="시간이 흐를수록 학자형 인재가 차지하는 몫은 줄지만 사라지지 않고, 그 위로 다른 유형의 인재가 쌓여 전체가 늘어나는 그림. 아래에는 개척가형 예술가형 글로벌리더형 기업가형 정책가형 전문가형 학자형 일곱 유형의 머리글자가 TALENTS로 놓여 있고 학자형만 주황으로 표시되어 있습니다.">
-            <!-- 전체(TALENTS) 아래 면 -->
-            <path d="M60,126 C180,120 250,104 340,88 C430,72 520,60 640,52 L640,196 L60,196 Z"
-              fill="#1a1a1a" opacity=".06"/>
-            <!-- 학자형(S) 몫 — 줄지만 사라지지 않습니다 -->
-            <path d="M60,134 C186,142 252,158 340,168 C426,178 514,185 640,188 L640,196 L60,196 Z"
-              fill="#a16207" opacity=".18"/>
-            <path d="M60,134 C186,142 252,158 340,168 C426,178 514,185 640,188"
-              fill="none" stroke="#a16207" stroke-width="2" stroke-linecap="round"/>
-            <!-- 전체 윤곽 -->
-            <path d="M60,126 C180,120 250,104 340,88 C430,72 520,60 640,52"
-              fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
-            <path d="M52,196 H648" stroke="#ededea" stroke-width="1.4"/>
+          <svg viewBox="0 0 700 292" xmlns="http://www.w3.org/2000/svg" role="img"
+            aria-label="학자형 인재를 나타내는 곡선은 왼쪽 위에서 오른쪽 아래로 내려오고, 다양한 유형의 인재를 나타내는 곡선은 왼쪽 아래에서 오른쪽 위로 올라가 가운데에서 서로 교차합니다. 올라가는 곡선 아래에는 지층처럼 겹이 오른쪽으로 갈수록 두껍게 쌓입니다. 아래에는 개척가형 예술가형 글로벌리더형 기업가형 정책가형 전문가형 학자형 일곱 유형의 머리글자가 TALENTS로 놓여 있고 학자형만 주황으로 표시되어 있습니다.">
+            <defs>
+              <clipPath id="tlUnder"><path d="M60,186 C180,178 250,150 350,126 C450,102 530,80 640,64 L640,200 L60,200 Z"/></clipPath>
+            </defs>
+            <!-- 쌓이는 지층 -->
+            <path d="M60,186 C180,178 250,150 350,126 C450,102 530,80 640,64 L640,200 L60,200 Z" fill="#1a1a1a" opacity=".05"/>
+            <g clip-path="url(#tlUnder)"><path d="M60,202 C180,194 250,166 350,142 C450,118 530,96 640,80" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/><path d="M60,218 C180,210 250,182 350,158 C450,134 530,112 640,96" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/><path d="M60,234 C180,226 250,198 350,174 C450,150 530,128 640,112" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/><path d="M60,250 C180,242 250,214 350,190 C450,166 530,144 640,128" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/><path d="M60,266 C180,258 250,230 350,206 C450,182 530,160 640,144" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/><path d="M60,282 C180,274 250,246 350,222 C450,198 530,176 640,160" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/></g>
+            <!-- 다양한 유형 : 올라옵니다 -->
+            <path d="M60,186 C180,178 250,150 350,126 C450,102 530,80 640,64" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+            <!-- 학자형 : 내려오지만 사라지지 않습니다 -->
+            <path d="M60,72 C180,80 250,106 350,126 C450,146 530,166 640,178" fill="none" stroke="#a16207" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="350" cy="126" r="4.5" fill="#fff" stroke="#a16207" stroke-width="2"/>
+            <path d="M52,200 H648" stroke="#ededea" stroke-width="1.4"/>
 
-            <text class="ic-t" x="640" y="40" text-anchor="end">TALENTS 전체</text>
-            <text class="ic-t" x="150" y="170" fill="#a16207">S · 학자형</text>
-            <text class="ic-s" x="150" y="186" fill="#a16207">몫은 줄지만 남습니다</text>
-            <text class="ic-s" x="60" y="212">과거</text>
-            <text class="ic-s" x="640" y="212" text-anchor="end">앞으로</text>
+            <text class="ic-t" x="392" y="180">TALENTS</text>
+            <text class="ic-s" x="392" y="196">겹이 쌓입니다</text>
+            <text class="ic-t" x="62" y="58" fill="#a16207">S · 학자형</text>
+            <text class="ic-s" x="640" y="196" text-anchor="end" fill="#a16207">한 갈래로 남습니다</text>
+            <text class="ic-s" x="60" y="216">과거</text>
+            <text class="ic-s" x="640" y="216" text-anchor="end">앞으로</text>
 
-            <path d="M52,222 H648" stroke="#ededea" stroke-width="1"/>
-            <text class="ic-t" x="96" y="236" text-anchor="middle" fill="#1a1a1a" font-size="15">T</text><text class="ic-s" x="96" y="252" text-anchor="middle" fill="#737370">개척가형</text><text class="ic-t" x="174" y="236" text-anchor="middle" fill="#1a1a1a" font-size="15">A</text><text class="ic-s" x="174" y="252" text-anchor="middle" fill="#737370">예술가형</text><text class="ic-t" x="252" y="236" text-anchor="middle" fill="#1a1a1a" font-size="15">L</text><text class="ic-s" x="252" y="252" text-anchor="middle" fill="#737370">글로벌리더형</text><text class="ic-t" x="330" y="236" text-anchor="middle" fill="#1a1a1a" font-size="15">E</text><text class="ic-s" x="330" y="252" text-anchor="middle" fill="#737370">기업가형</text><text class="ic-t" x="408" y="236" text-anchor="middle" fill="#1a1a1a" font-size="15">N</text><text class="ic-s" x="408" y="252" text-anchor="middle" fill="#737370">정책가형</text><text class="ic-t" x="486" y="236" text-anchor="middle" fill="#1a1a1a" font-size="15">X</text><text class="ic-s" x="486" y="252" text-anchor="middle" fill="#737370">전문가형</text><text class="ic-t" x="564" y="236" text-anchor="middle" fill="#a16207" font-size="15">S</text><text class="ic-s" x="564" y="252" text-anchor="middle" fill="#a16207">학자형</text>
+            <path d="M52,226 H648" stroke="#ededea" stroke-width="1"/>
+            <text class="ic-t" x="96" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">T</text><text class="ic-s" x="96" y="256" text-anchor="middle" fill="#737370">개척가형</text><text class="ic-t" x="174" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">A</text><text class="ic-s" x="174" y="256" text-anchor="middle" fill="#737370">예술가형</text><text class="ic-t" x="252" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">L</text><text class="ic-s" x="252" y="256" text-anchor="middle" fill="#737370">글로벌리더형</text><text class="ic-t" x="330" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">E</text><text class="ic-s" x="330" y="256" text-anchor="middle" fill="#737370">기업가형</text><text class="ic-t" x="408" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">N</text><text class="ic-s" x="408" y="256" text-anchor="middle" fill="#737370">정책가형</text><text class="ic-t" x="486" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">X</text><text class="ic-s" x="486" y="256" text-anchor="middle" fill="#737370">전문가형</text><text class="ic-t" x="564" y="240" text-anchor="middle" fill="#a16207" font-size="15">S</text><text class="ic-s" x="564" y="256" text-anchor="middle" fill="#a16207">학자형</text>
           </svg>
-          <div class="ann-cap">플랫폼은 인재를 일곱 유형으로 나누어 보는데, <strong>그 머리글자를 모으면 TALENTS가 됩니다.</strong> 학자형은 그중 <span class="tok a">S 하나</span>입니다. 두 면은 경향을 그린 것이지 실제 수치가 아닙니다 — 학자형이 사라지는 것이 아니라, 그 옆에 다른 유형이 함께 자란다는 뜻입니다.</div>
+          <div class="ann-cap">플랫폼은 인재를 일곱 유형으로 나누어 보는데, <strong>그 머리글자를 모으면 TALENTS가 됩니다.</strong> 학자형은 그중 <span class="tok a">S 하나</span>입니다. 두 선은 경향을 그린 것이지 실제 수치가 아닙니다 — 학자형이 사라지는 것이 아니라, 그 옆으로 다른 유형이 겹겹이 쌓인다는 뜻입니다.</div>
         </div>
       </div>
     </div>
@@ -3376,7 +3377,7 @@ sheet.append_row(data)</code></div>
           <div class="q"><div class="qt">3. 언제 요청받으면 부담스럽지 않을까요?</div>
             <div class="qa">아무 때나 오는 메일은 무시되지만, 그렇다고 뜸하면 데이터가 낡습니다.</div></div>
           <div class="acts">
-            <a class="cta" href="https://forms.gle/____의견-폼-주소를-여기에____" target="_blank" rel="noopener noreferrer">의견 남기기
+            <a class="cta" href="#me">의견 남기기
               <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
           </div>
         </div>
