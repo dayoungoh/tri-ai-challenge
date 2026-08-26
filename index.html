@@ -2494,6 +2494,102 @@ sheet.append_row(data)</code></div>
           <h3>③ 후기 제출과 문서 생성</h3>
           <p>모임이 끝나면 참석자 전원이 후기 폼을 제출합니다. 폼에서 <span class="tok">모임원</span>과 <span class="tok">모임장</span>을 고르게 하고, <strong>모임장은 환급 계좌 정보와 영수증 사진을 제출합니다.</strong> 제출과 동시에 코드가 그 내용을 문서로 만듭니다.</p>
 
+          <div class="ann">
+            <svg viewBox="-10 0 700 348" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="신청 폼이 팀 캘린더로 이어지고 승인 뒤 공개 모임만 공유 캘린더로 복사되는 윗줄, 후기 폼이 모임원이면 후기 문서 하나로 모임장이면 후기 문서와 환급 계좌 문서 둘로 갈라지는 아랫줄">
+              <defs>
+                <marker id="mtN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/></marker>
+                <marker id="mtG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/></marker>
+                <marker id="mtA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/></marker>
+              </defs>
+
+              <!-- ── 윗줄 : 모임을 열기 전 ── -->
+              <text class="ic-s" x="-4" y="26" fill="#737370">모임을 열기 전</text>
+              <path d="M0,34 H660" stroke="#ededea" stroke-width="1"/>
+
+              <rect x="4" y="56" width="96" height="46" rx="8" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5"/>
+              <path d="M22,72 h44 M22,82 h30" stroke="#1a5fb4" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+              <text class="ic-t" x="52" y="120" text-anchor="middle" fill="#1a5fb4">신청 폼</text>
+
+              <rect x="186" y="56" width="104" height="46" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+              <path d="M186,70 h104" stroke="#1a1a1a" stroke-width="1.3" opacity=".45"/>
+              <path d="M204,62 v-8 M272,62 v-8" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+              <text class="ic-t" x="238" y="120" text-anchor="middle">팀 캘린더</text>
+              <text class="ic-s" x="238" y="136" text-anchor="middle">내부 확인용</text>
+
+              <circle cx="404" cy="79" r="25" fill="#fdf6e3" stroke="#a16207" stroke-width="1.5"/>
+              <path d="M394,79 l7,7 13,-14" fill="none" stroke="#a16207" stroke-width="2.2"
+                stroke-linecap="round" stroke-linejoin="round"/>
+              <text class="ic-t" x="404" y="120" text-anchor="middle" fill="#a16207">내가 승인</text>
+              <text class="ic-s" x="404" y="136" text-anchor="middle" fill="#a16207">메일로 알림</text>
+
+              <rect x="518" y="56" width="112" height="46" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+              <path d="M518,70 h112" stroke="#1a1a1a" stroke-width="1.3" opacity=".45"/>
+              <path d="M538,62 v-8 M610,62 v-8" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+              <text class="ic-t" x="574" y="120" text-anchor="middle">공유 캘린더</text>
+              <text class="ic-s" x="574" y="136" text-anchor="middle">다른 장학생이 봄</text>
+
+              <path d="M110,79 L176,79" fill="none" stroke="#1a5fb4" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#mtG)"/>
+              <path d="M300,79 L369,79" fill="none" stroke="#737370" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#mtN)"/>
+              <path d="M439,79 L508,79" fill="none" stroke="#a16207" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#mtA)"/>
+              <text class="ic-s" x="473" y="70" text-anchor="middle" fill="#a16207">공개 모임만</text>
+
+              <!-- ── 아랫줄 : 모임이 끝난 뒤 ── -->
+              <text class="ic-s" x="-4" y="188" fill="#737370">모임이 끝난 뒤</text>
+              <path d="M0,196 H660" stroke="#ededea" stroke-width="1"/>
+
+              <rect x="4" y="234" width="96" height="46" rx="8" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5"/>
+              <path d="M22,250 h44 M22,260 h30" stroke="#1a5fb4" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+              <text class="ic-t" x="52" y="298" text-anchor="middle" fill="#1a5fb4">후기 폼</text>
+
+              <path d="M110,257 L176,232" fill="none" stroke="#737370" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#mtN)"/>
+              <path d="M110,257 L176,282" fill="none" stroke="#737370" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#mtN)"/>
+
+              <text class="ic-t" x="196" y="228" fill="#1a1a1a">모임원</text>
+              <text class="ic-t" x="196" y="292" fill="#1a1a1a">모임장</text>
+
+              <!-- 산출물 : 모임원 -->
+              <path d="M300,206 q0,-4 4,-4 h25 l11,11 v31 q0,4 -4,4 h-32 q-4,0 -4,-4 Z"
+                fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M325,202 v7 q0,4 4,4 h7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M309,226 h20 M309,232 h14" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".36"/>
+              <text class="ic-t" x="356" y="222">후기 문서</text>
+              <text class="ic-s" x="356" y="238">1개</text>
+
+              <!-- 산출물 : 모임장 -->
+              <path d="M300,268 q0,-4 4,-4 h25 l11,11 v31 q0,4 -4,4 h-32 q-4,0 -4,-4 Z"
+                fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M325,264 v7 q0,4 4,4 h7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M309,288 h20 M309,294 h14" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".36"/>
+              <path d="M418,268 q0,-4 4,-4 h25 l11,11 v31 q0,4 -4,4 h-32 q-4,0 -4,-4 Z"
+                fill="#fdf6e3" stroke="#a16207" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M443,264 v7 q0,4 4,4 h7" fill="none" stroke="#a16207" stroke-width="1.4" stroke-linejoin="round"/>
+              <path d="M427,288 h20 M427,294 h14" stroke="#a16207" stroke-width="1.6" stroke-linecap="round" opacity=".45"/>
+              <text class="ic-t" x="474" y="284">후기 문서 + 환급 계좌 문서</text>
+              <text class="ic-s" x="474" y="300">영수증이 그림으로 들어감</text>
+
+              <g stroke="#1a5fb4" fill="#1a5fb4">
+                <path class="st" d="M196,330 C202,318 202,308 202,298" marker-end="url(#mtG)"/>
+                <text class="hw" x="4" y="336" stroke="none">폼 하나가 역할에 따라 갈립니다</text>
+              </g>
+            </svg>
+            <div class="ann-cap">윗줄은 모임을 열기 전, 아랫줄은 끝난 뒤입니다. <strong>사람이 판단하는 자리는 승인 한 곳뿐이고,</strong> 나머지는 폼이 제출되는 순간 코드가 이어받습니다.</div>
+          </div>
+
           <div class="tw ctr eq"><table>
       <caption class="sr">후기 폼 제출과 자동 생성 문서 — 표</caption>
       <thead>
@@ -2598,6 +2694,72 @@ sheet.append_row(data)</code></div>
           <p>Google Drive에 올려 둔 파일에서 글자를 읽어 <strong>날짜 · 사용처 · 금액을 찾습니다.</strong> <span class="tok">사진과 PDF 모두</span> 처리할 수 있습니다.</p>
           <p>영수증마다 서식이 달라 금액의 위치가 일정하지 않기 때문에, <strong>총액을 나타내는 표현 주변에서 금액을 먼저 찾고,</strong> 해당 표현을 찾지 못하면 영수증에서 가장 큰 금액을 사용하도록 했습니다.</p>
           <p>읽은 뒤에는 파일 이름을 <span class="tok m">yyyymmdd_금액</span> 형식으로 바꾸고, 보관 폴더의 연도 · 월별 폴더로 옮깁니다. 동시에 <span class="tok">Google Sheets</span>에는 <strong>날짜 · 금액 · 결제처 · 사용자 · 원본 링크 · 처리 시각</strong>을 한 줄씩 기록합니다.</p>
+
+          <div class="ann">
+            <svg viewBox="-10 0 700 210" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="드라이브에 올려 둔 영수증이 매월 초 한 번 실행되어 글자를 읽고, 파일 이름을 바꿔 월별 폴더로 옮기고, 시트에 한 줄로 기록되는 흐름">
+              <defs>
+                <marker id="rcN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/></marker>
+                <marker id="rcG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                  markerUnits="userSpaceOnUse" orient="auto">
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"/></marker>
+              </defs>
+
+              <!-- 1. 입력 폴더 -->
+              <path d="M14,62 q0,-6 6,-6 h22 l6,8 h40 q6,0 6,6 v40 q0,6 -6,6 H20 q-6,0 -6,-6 Z"
+                fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M30,78 h30 M30,88 h44 M30,98 h22" stroke="#1a1a1a" stroke-width="2"
+                stroke-linecap="round" opacity=".38"/>
+              <text class="ic-t" x="55" y="136" text-anchor="middle">입력 폴더</text>
+              <text class="ic-s" x="55" y="152" text-anchor="middle">사진 · PDF 올려 두기</text>
+
+              <!-- 2. 읽기 -->
+              <rect x="196" y="56" width="92" height="56" rx="8" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5"/>
+              <path d="M214,74 h34 M214,84 h50 M214,94 h28" stroke="#1a5fb4" stroke-width="2"
+                stroke-linecap="round" opacity=".5"/>
+              <text class="ic-t" x="242" y="136" text-anchor="middle" fill="#1a5fb4">글자 읽기</text>
+              <text class="ic-s" x="242" y="152" text-anchor="middle" fill="#1a5fb4">날짜 · 사용처 · 금액</text>
+
+              <!-- 3. 보관 폴더 -->
+              <path d="M380,62 q0,-6 6,-6 h22 l6,8 h40 q6,0 6,6 v40 q0,6 -6,6 H386 q-6,0 -6,-6 Z"
+                fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/>
+              <text class="cel" x="421" y="92" text-anchor="middle" font-size="11" fill="#737370">2026 / 08</text>
+              <text class="ic-t" x="421" y="136" text-anchor="middle">보관 폴더</text>
+              <text class="ic-s" x="421" y="152" text-anchor="middle">이름 바꿔 연도 · 월로</text>
+
+              <!-- 4. 시트 -->
+              <rect x="556" y="56" width="96" height="56" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+              <path d="M556,72 h96" stroke="#1a1a1a" stroke-width="1.4" opacity=".45"/>
+              <path d="M588,56 v56 M620,56 v56" stroke="#1a1a1a" stroke-width="1" opacity=".28"/>
+              <path d="M564,86 h16 M596,86 h16 M628,86 h16 M564,100 h16 M596,100 h16 M628,100 h16"
+                stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" opacity=".3"/>
+              <text class="ic-t" x="604" y="136" text-anchor="middle">Sheets</text>
+              <text class="ic-s" x="604" y="152" text-anchor="middle">한 줄씩 기록</text>
+
+              <!-- 잇는 선 -->
+              <path d="M124,84 L186,84" fill="none" stroke="#1a5fb4" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#rcG)"/>
+              <path d="M298,84 L370,84" fill="none" stroke="#737370" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#rcN)"/>
+              <path d="M490,84 L546,84" fill="none" stroke="#737370" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#rcN)"/>
+
+              <!-- 손글씨 -->
+              <g stroke="#1a5fb4" fill="#1a5fb4">
+                <path class="st" d="M155,40 C155,48 155,58 155,70" marker-end="url(#rcG)"/>
+                <text class="hw" x="155" y="30" text-anchor="middle" stroke="none">매월 초 한 번, 쌓인 것을 한꺼번에</text>
+              </g>
+              <g stroke="#737370" fill="#737370">
+                <path class="st" d="M300,186 C320,180 340,168 356,144" marker-end="url(#rcN)"/>
+                <text class="hw" x="292" y="196" text-anchor="end" stroke="none">yyyymmdd_금액</text>
+              </g>
+            </svg>
+            <div class="ann-cap">올려 두기만 하면 <strong>나머지 세 칸은 사람 손이 닿지 않습니다.</strong> 처리하지 못한 영수증은 입력 폴더에 그대로 남아 다음 실행에서 다시 시도됩니다.</div>
+          </div>
           <p>사용자 정보는 별도의 입력을 추가하지 않고, 영수증을 올릴 때 <strong>파일 이름을 사람 이름으로 바꾸어 두면</strong> 그 이름을 사용자로 기록하도록 했습니다. (가령, 업로드할 때 파일명을 "오다영, 이몽룡, 변학도" 이렇게 바꾸어 두면 됩니다.) 이름을 바꾸지 않은 경우에는 빈칸으로 남겨 두었다가 시트에서 나중에 입력할 수 있습니다. </p>
           <div class="note">이 자동화는 코드를 직접 작성하기보다 <strong>Claude에 Google 커넥터를 연결해 함께 만들었습니다.</strong> 커넥터에 대한 설명은 <a href="#apxb">부록 A</a>에 정리했습니다.</div>
         </div>
