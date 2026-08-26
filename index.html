@@ -3268,51 +3268,35 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
   <section id="apxb" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">부록 A</div><h2>AI 활용 넓히기</h2></div></div>
     <div class="chips"><span class="chip">#스킬</span><span class="chip">#플러그인</span><span class="chip">#커넥터</span></div>
-    <p class="lead">AI를 사용하면서 스킬 · 플러그인 · 커넥터 셋을 알아두니 작업이 더 편했습니다. 저도 사용한지 얼마 되지 않아 아주 자세히는 몰라, 저도 배우고자 부록을 (*AI한테 시켜) 작성해 보았습니다. 참고만 해 주시면 좋을 거 같습니다.  </p>
+    <p class="lead">AI를 사용하면서 스킬 · 플러그인 · 커넥터 셋을 알아두니 작업이 더 편했습니다. 저도 사용한 지 얼마 되지 않아 아주 자세히는 몰라, 저도 배우고자 부록을 (AI에게 시켜) 작성해 보았습니다. 참고만 해 주시면 좋을 것 같습니다!</p>
 
     <div class="note">"양식은 이걸 쓰고, 파일 이름은 이 규칙으로 붙이고, 결과는 이 폴더에 넣고, 개인정보 열은 가려라."</div>
-    <p>AI에 이런 지시를 매번 다시 적게 되는데, 아래 셋은 그 반복을 줄이는 방법입니다.</p>
+    <p>AI에게 이런 지시를 매번 다시 적는 대신, <strong>작업에 필요한 지침을 미리 만들어 두거나 외부 서비스와 연결해 두는 방법</strong>이 있습니다. 제가 이해한 범위에서 크게 세 가지가 있습니다.</p>
 
     <div class="stp">
       <div class="hd"><span class="n">1</span><div class="t">스킬</div></div>
       <div class="bd">
-    <p>특정 작업의 절차서입니다. 코드가 아니라 마크다운 문서 한 장이라, 폴더 하나에 <span class="tok m">SKILL.md</span> 하나가 전부입니다.</p>
-    <div class="pre" tabindex="0" role="region" aria-label="코드"><code>my-skill/
-└── <b>SKILL.md</b></code></div>
-    <p>작업을 지금 어떤 순서로 하는지 그대로 적으면 됩니다. 아래는 1-1의 서류 병합을 절차서로 옮긴 예입니다.</p>
-    <div class="pre" data-nm="SKILL.md" data-lg="Markdown" tabindex="0" role="region" aria-label="코드"><code><i>---</i>
-<i>name: 지원서-병합</i>
-<i>description: 지원자 폴더의 PDF를 정해진 순서로 1인 1파일로 병합할 때 사용</i>
-<i>---</i>
-
-<b># 절차</b>
-1. 대상 폴더를 확인합니다
-2. <b>파일명 키워드</b>로 서류 종류를 판별합니다
-3. 정해진 순서표대로 정렬합니다
-4. `전공/학번_이름.pdf` 형태로 저장합니다
-
-<b># 주의</b>
-- <u>이름 규칙이 어긋난 파일은 건너뛰고 목록으로 보고합니다</u></code></div>
-    <p>같은 설명을 다시 하지 않아도 되고, <strong>글이라 나중에 다시 읽고 고칠 수 있습니다.</strong></p>
+        <p>특정 작업을 어떻게 처리할지 적어 둔 <strong>절차서</strong>입니다. 대표적으로 <span class="tok m">SKILL.md</span>처럼 마크다운 문서로 작성할 수 있습니다. 코드 자체라기보다 "이런 작업을 할 때는 이런 순서와 규칙을 따라라"라고 AI에게 알려 주는 문서에 가깝습니다.</p>
+        <p>예를 들어 서류 병합 작업이라면 대상 폴더 확인 → 파일명으로 서류 종류 판별 → 정해진 순서로 정렬 → 하나의 PDF로 병합 → 이름 규칙에 맞춰 저장하는 식으로 적어 둘 수 있습니다.</p>
+        <p>한 번 만들어 두면 같은 작업을 할 때 <strong>처음부터 설명을 반복할 필요가 없고,</strong> 사람이 읽고 직접 수정할 수도 있습니다.</p>
       </div>
     </div>
 
     <div class="stp">
       <div class="hd"><span class="n">2</span><div class="t">플러그인</div></div>
       <div class="bd">
-    <p>스킬 여럿과 명령어 · 설정을 한 꾸러미로 묶은 것입니다. 스킬 하나가 절차서 한 장이라면, 플러그인은 <strong>그 절차서들을 묶은 것</strong>입니다.</p>
-    <p>대개 저장소 주소 하나를 등록하면 안에 든 것이 한꺼번에 들어옵니다.</p>
-    <p>여러 사람이 같은 방식으로 일해야 할 때 <strong>한 번에 나눠 주고 한 번에 갱신할 수 있습니다.</strong></p>
-    <div class="note warn">묶음은 안이 바로 보이지 않습니다. 낱개 스킬은 문서 하나만 읽으면 되지만, <strong>플러그인은 무엇이 들어 있는지 목록을 먼저 봅니다.</strong></div>
+        <p>AI에 기능이나 외부 도구를 추가하는 <strong>확장 기능</strong>입니다. 여러 스킬이나 도구, 설정 등을 하나의 묶음으로 제공하는 형태도 있습니다.</p>
+        <p>스킬 하나가 "이 작업은 이렇게 하라"는 절차서라면, 플러그인은 <strong>여러 기능을 한꺼번에 추가하는 꾸러미</strong>에 가깝습니다.</p>
+        <p>다만 플러그인을 묶고 설치하는 방식은 AI 도구마다 다릅니다. 따라서 플러그인은 반드시 스킬을 묶은 것이라기보다, <strong>AI의 기능을 확장하는 단위</strong>라고 이해하는 편이 좋습니다.</p>
       </div>
     </div>
 
     <div class="stp">
       <div class="hd"><span class="n">3</span><div class="t">커넥터</div></div>
       <div class="bd">
-    <p>AI가 메일 · 문서 · 데이터베이스 같은 바깥 서비스에 닿을 수 있게 하는 통로입니다. 규격 이름은 <span class="tok m">MCP</span>입니다.</p>
-    <p>붙이려는 서비스가 제공하는 커넥터를 등록하고, 그 서비스에 로그인해 권한을 허용합니다.</p>
-    <p>스킬이 "어떻게 할지"를 정한다면, 커넥터는 <strong>"어디까지 닿을지"</strong>를 넓힙니다.</p>
+        <p>AI가 <span class="tok">Gmail · Google Drive · 문서 · 데이터베이스</span> 같은 외부 서비스와 연결될 수 있게 하는 기능입니다. 이미 제공되는 커넥터라면 직접 코드를 작성하지 않고 <strong>로그인하고 권한을 허용하는 것만으로</strong> 연결할 수도 있습니다.</p>
+        <p><span class="tok m">MCP</span>(Model Context Protocol)는 AI와 외부 도구 · 데이터를 연결하기 위한 개방형 표준 가운데 하나입니다. 따라서 <strong>커넥터와 MCP가 같은 말은 아니고,</strong> MCP를 이용해 AI와 외부 서비스를 연결할 수 있다고 이해하면 됩니다.</p>
+        <p>스킬이 "어떻게 할지"를 정한다면, 커넥터는 <strong>"어떤 서비스와 연결해서 무엇을 가져오거나 실행할 수 있는지"</strong>를 넓혀 줍니다.</p>
       </div>
     </div>
 
@@ -3320,25 +3304,24 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
 
     <div class="tw ctr eq"><table>
       <caption class="sr">스킬 · 플러그인 · 커넥터의 차이 — 표</caption>
-      <colgroup><col style="width:16%"><col style="width:28%"><col style="width:28%"><col style="width:28%"></colgroup>
+      <colgroup><col style="width:16%"><col style="width:24%"><col style="width:32%"><col style="width:28%"></colgroup>
       <thead>
       <tr><th scope="col">구분</th><th scope="col">스킬</th><th scope="col">플러그인</th><th scope="col">커넥터</th></tr>
       </thead>
       <tbody>
-      <tr><td>무엇</td><td>절차서 한 장</td><td>스킬 묶음</td><td><strong>바깥으로 가는 통로</strong></td></tr>
-      <tr><td>하는 일</td><td>이럴 땐 이렇게</td><td>여럿을 한 번에</td><td>이 서비스에 닿게</td></tr>
-      <tr><td>만들기</td><td>마크다운을 씁니다</td><td>스킬을 모읍니다</td><td>코드가 필요합니다</td></tr>
-      <tr><td>예</td><td>서류 병합 절차</td><td>팀 공용 지침 묶음</td><td>Gmail · Drive</td></tr>
+      <tr><td>무엇</td><td>작업 절차서</td><td>AI 기능을 확장하는 꾸러미</td><td><strong>외부 서비스와 연결하는 통로</strong></td></tr>
+      <tr><td>하는 일</td><td>이럴 때 이렇게</td><td>기능이나 도구를 추가</td><td>외부 데이터 · 서비스에 접근</td></tr>
+      <tr><td>예</td><td>서류 병합 절차</td><td>여러 작업 기능 묶음</td><td>Gmail · Drive 연결</td></tr>
       </tbody>
     </table></div>
-
-    <p><strong>스킬과 커넥터는 특정 도구에 매인 형식이 아니라,</strong> 쓰는 프로그램을 바꿔도 그대로 따라옵니다. 플러그인은 도구마다 묶는 방식이 달라 그 도구 안에서만 쓰입니다.</p>
 
     <div class="steps"><div class="stp">
       <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
       <div class="bd">
-        <p>스킬은 <strong>AI가 읽는 지시문</strong>입니다. 남이 만든 스킬을 넣는 것은 남이 쓴 지시를 그대로 AI에 읽히는 일이라, <span class="tok a">무엇을 하라고 적혀 있는지 먼저 확인하는 것이 안전합니다.</span></p>
-        <p>커넥터는 닿는 범위가 넓습니다. 개인이 만든 서비스에 붙이는 것과 달리, <span class="tok a">Gmail · Slack 같은 업무 계정에 연결하면 실제 메일과 대화에 접근</span>하게 됩니다. <strong>사내 계정을 연결할 때는 정보보안 규정을 먼저 확인해야 합니다.</strong></p>
+        <p>스킬은 <strong>AI를 다시 학습시키는 것은 아닙니다.</strong> AI 모델 자체를 바꾸는 것이 아니라, 해당 작업을 할 때 참고할 지침을 미리 제공하는 방식입니다.</p>
+        <p>스킬이나 플러그인을 다른 사람이 만든 경우에는 <span class="tok a">무엇을 하라고 적혀 있는지 먼저 확인하는 것이 좋습니다.</span> 결국 AI에게 새로운 지시를 추가하는 것이기 때문입니다.</p>
+        <p>커넥터는 특히 <strong>권한을 잘 확인해야 합니다.</strong> Gmail · Drive 같은 업무 계정을 연결하면 <span class="tok a">AI가 실제 메일이나 파일에 접근하거나 작업을 실행할 수 있습니다.</span></p>
+        <p>또한 스킬 · 플러그인 · 커넥터의 설치 방식과 지원 범위는 AI 도구마다 다릅니다. <span class="tok m">SKILL.md</span>나 <span class="tok m">MCP</span>처럼 여러 도구에서 사용할 수 있는 표준이나 형식이 있지만, <strong>한 도구에서 되는 기능이 다른 도구에서도 그대로 작동한다고 볼 수는 없습니다.</strong></p>
       </div>
     </div></div>
   </section>
@@ -3347,57 +3330,65 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
   <section id="apxa" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">부록 B</div><h2>Git과 GitHub</h2></div></div>
     <div class="chips"><span class="chip">#Git</span><span class="chip">#GitHub</span></div>
-    <p class="lead">버전 관리는 고쳤다가 망가뜨려도 되돌릴 수 있게 만드는 일이기 때문에, AI를 쓰든 안 쓰든 필요합니다.</p>
+    <p class="lead">버전 관리는 고쳤다가 망가뜨려도 <strong>이전 상태로 돌아갈 수 있도록 변경 이력을 남기는 일</strong>입니다. AI를 쓰든 안 쓰든 코드를 계속 고치다 보면 필요한 기능입니다.</p>
 
     <div class="stp">
       <div class="hd"><span class="n">1</span><div class="t">손으로 하는 버전 관리</div></div>
       <div class="bd">
-    <p>누구나 한 번쯤 이런 폴더를 본 적이 있습니다.</p>
-    <div class="pre" tabindex="0" role="region" aria-label="코드"><code>사업계획서.docx
+        <p>누구나 한 번쯤 이런 폴더를 본 적이 있을 겁니다.</p>
+        <div class="pre" tabindex="0" role="region" aria-label="코드"><code>사업계획서.docx
 사업계획서_수정.docx
 사업계획서_수정2.docx
 사업계획서_최종.docx
 <b>사업계획서_최종_진짜최종.docx</b>
 <u>사업계획서_최종_진짜최종_팀장님피드백반영.docx</u></code></div>
-    <p class="pre-cap">이것이 사람이 손으로 하는 버전 관리입니다. 문제는 셋입니다.</p>
+        <p>이것도 일종의 버전 관리입니다. 다만 사람이 파일 이름을 붙여 가며 관리하는 방식이라 <strong>몇 번만 수정해도 어느 파일이 최신인지, 무엇이 달라졌는지, 왜 바꿨는지 알기 어려워집니다.</strong></p>
+        <p>Git은 이 일을 대신합니다. 파일을 수정할 때마다 새로운 파일을 만드는 것이 아니라, <strong>하나의 프로젝트에 변경 이력을 차곡차곡 기록합니다.</strong> 이전 상태를 확인하거나 필요한 시점으로 되돌릴 수도 있습니다.</p>
 
-    <div class="tw ctr eq"><table>
-      <caption class="sr">Git과 GitHub — 표</caption>
+        <div class="tw ctr eq"><table>
+      <caption class="sr">손으로 하는 버전 관리와 Git — 표</caption>
       <thead>
-      <tr><th scope="col">수작업</th><th scope="col">Git의 답</th></tr>
+      <tr><th scope="col">수작업</th><th scope="col">Git</th></tr>
       </thead>
       <tbody>
-      <tr><td>어느 것이 최신인지 모릅니다</td><td>최신은 <strong>언제나 하나</strong>입니다</td></tr>
-      <tr><td>무엇이 바뀌었는지 모릅니다</td><td><strong>바뀐 줄만</strong> 정확히 보여줍니다</td></tr>
-      <tr><td>왜 바꿨는지 모릅니다</td><td>변경마다 <strong>이유를 적어</strong> 남깁니다</td></tr>
+      <tr><td>어느 파일이 최신인지 확인</td><td><strong>현재 상태가 하나</strong></td></tr>
+      <tr><td>파일을 열어 비교</td><td>변경 내용을 비교</td></tr>
+      <tr><td>파일 이름에 수정 이유를 적음</td><td>커밋 메시지로 이유를 기록</td></tr>
+      <tr><td>이전 파일을 따로 보관</td><td>이전 기록에서 복원</td></tr>
       </tbody>
     </table></div>
       </div>
     </div>
 
     <div class="stp">
-      <div class="hd"><span class="n">2</span><div class="t">Git과 GitHub의 차이</div></div>
+      <div class="hd"><span class="n">2</span><div class="t">Git과 GitHub는 다릅니다</div></div>
       <div class="bd">
-    <p>둘을 같은 것으로 여기기 쉽지만, 다릅니다.</p>
-    <div class="tw ctr eq"><table>
-      <caption class="sr">Git과 GitHub — 표</caption>
+        <p>둘을 한 세트처럼 생각하기 쉽지만 역할이 다릅니다.</p>
+
+        <div class="tw ctr eq lft"><table>
+      <caption class="sr">Git과 GitHub의 차이 — 표</caption>
+      <colgroup><col style="width:15%"><col style="width:27%"><col style="width:58%"></colgroup>
       <thead>
       <tr><th scope="col">구분</th><th scope="col">Git</th><th scope="col">GitHub</th></tr>
       </thead>
       <tbody>
-      <tr><td>무엇</td><td>내 컴퓨터에서 도는 <strong>프로그램</strong></td><td>그 결과물을 올려두는 <strong>웹 서비스</strong></td></tr>
-      <tr><td>의존 관계</td><td>Git 없이는 GitHub를 못 씁니다</td><td><strong>GitHub 없이 Git은 완전히 됩니다</strong></td></tr>
-      <tr><td>비유</td><td>카메라</td><td>사진 공유 사이트</td></tr>
+      <tr><td>무엇</td><td>버전 관리 프로그램</td><td>Git 저장소를 온라인에 보관하고 협업할 수 있게 해 주는 서비스</td></tr>
+      <tr><td>어디서</td><td>내 컴퓨터</td><td>인터넷</td></tr>
+      <tr><td>주요 역할</td><td>변경 기록 · 비교 · 복원</td><td>저장 · 공유 · 협업 · PR 등</td></tr>
+      <tr><td>인터넷 필요</td><td><strong>없어도 사용 가능</strong></td><td>온라인 서비스이므로 필요</td></tr>
+      <tr><td>비유</td><td>내 컴퓨터에 있는 사진의 촬영 이력</td><td>그 사진을 올려두고 함께 보는 온라인 공간</td></tr>
       </tbody>
     </table></div>
-    <p>올려두는 곳은 GitHub 말고도 있습니다. <strong>Git 자체가 어디에도 매이지 않기 때문입니다.</strong></p>
+
+        <p>GitHub는 Git으로 관리하는 프로젝트를 온라인 저장소(repository)에 올려두고, 다른 사람과 공유하거나 변경 내용을 검토할 수 있게 합니다. <strong>GitHub가 없어도 Git은 사용할 수 있고,</strong> GitHub가 아닌 다른 서버를 원격 저장소로 사용할 수도 있습니다.</p>
+        <div class="note">그래서 아주 단순하게 기억하면 됩니다.<br><strong>Git</strong> = 내 컴퓨터에서 변경 이력을 관리하는 도구<br><strong>GitHub</strong> = 그 Git 프로젝트를 온라인에 올려두고 함께 쓰는 곳</div>
       </div>
     </div>
 
     <div class="stp">
       <div class="hd"><span class="n">3</span><div class="t">파일이 거치는 네 곳</div></div>
       <div class="bd">
-    <p>Git이 어렵게 느껴지는 이유는 <strong>파일이 네 곳을 거치기 때문</strong>입니다. 이 네 곳만 알면 명령은 필요할 때 찾아 쓰면 됩니다.</p>
+        <p>Git이 처음 어려운 이유는 <strong>"파일을 고쳤는데 왜 바로 기록되지 않는가?"</strong> 때문입니다. 실제로는 다음 네 공간을 거칩니다.</p>
 
     <div class="ann">
       <svg viewBox="-14 0 700 200" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -3460,56 +3451,88 @@ Claude를 두 달 써보는 사이 금방 모델 성능이 안 좋아진다는 �
       <div class="ann-cap">인터넷 없이도 세 번째 칸까지는 전부 됩니다. <strong>GitHub는 공유와 백업을 위한 선택입니다.</strong></div>
     </div>
 
-    <p><span class="tok">스테이지</span>를 거치는 이유는 <strong>여러 가지를 고쳤어도 그중 일부만 골라 기록으로 남기고 싶을 때가 있기 때문</strong>입니다. 커밋을 의미 단위로 나누라고 있는 칸입니다.</p>
-    <p><span class="tok m">git add .</span> 로 전부 올리고 커밋해도 됩니다. 처음에는 이 방식으로 충분합니다.</p>
+        <p><strong>① 작업 폴더</strong> — 평소처럼 파일을 열어 코드를 고치는 곳입니다.</p>
+        <p><strong>② 스테이지</strong> — 이번에 기록할 변경 사항을 골라 올려놓는 곳입니다. <span class="tok m">git add</span>가 이 일을 합니다. 여러 파일을 고쳤더라도 그중 일부만 다음 기록에 포함시킬 수 있습니다.</p>
+        <p><strong>③ 로컬 저장소</strong> — <span class="tok m">git commit</span>을 하면 스테이지에 올려 둔 변경 사항이 하나의 기록으로 저장됩니다. 이 기록이 바로 커밋(commit)입니다. 커밋에는 변경 내용뿐 아니라 언제, 누가, 어떤 메시지로 기록했는지도 남습니다.</p>
+        <p><strong>④ GitHub</strong> — 로컬에서 만든 커밋을 <span class="tok m">git push</span>하면 GitHub에 올라갑니다. 이제 다른 컴퓨터에서도 가져올 수 있고, 다른 사람과 공유하거나 협업할 수 있습니다.</p>
+        <div class="note">처음에는 이렇게만 기억하면 충분합니다.<br><strong>고친다 → 담는다 → 기록한다 → 올린다</strong><br><span class="tok m">git add</span> → <span class="tok m">git commit</span> → <span class="tok m">git push</span> 의 순서입니다.</div>
+        <p>GitHub를 사용하지 않는다면 마지막 단계는 없어도 됩니다. <strong>세 번째 단계까지는 인터넷 없이도 사용할 수 있습니다.</strong></p>
       </div>
     </div>
 
     <div class="stp">
-      <div class="hd"><span class="n">4</span><div class="t">매일 쓰는 다섯 개</div></div>
+      <div class="hd"><span class="n">4</span><div class="t">스테이지가 왜 필요한가</div></div>
       <div class="bd">
-    <div class="tw ctr eq"><table>
-      <caption class="sr">Git과 GitHub — 표</caption>
+        <p>"그냥 고친 것을 바로 기록하면 되지, 왜 중간에 하나를 더 거치지?"라는 생각이 들 수 있습니다. 스테이지는 <strong>이번 커밋에 어떤 변경을 넣을지 고르는 곳</strong>입니다.</p>
+        <p>예를 들어 오늘 코드에서 로그인 기능도 고치고 화면 디자인도 바꿨다고 해 보겠습니다. 로그인 기능만 먼저 하나의 기록으로 남기고 싶다면 로그인 관련 파일만 스테이지에 올릴 수 있습니다.</p>
+        <p>물론 처음에는 복잡하게 나눌 필요가 없습니다. <span class="tok m">git add .</span> 로 현재 변경 사항을 한꺼번에 올린 뒤 커밋해도 충분합니다.</p>
+      </div>
+    </div>
+
+    <div class="stp">
+      <div class="hd"><span class="n">5</span><div class="t">매일 쓰는 다섯 개</div></div>
+      <div class="bd">
+        <div class="tw ctr eq lft"><table>
+      <caption class="sr">매일 쓰는 명령 다섯 개 — 표</caption>
+      <colgroup><col style="width:20%"><col style="width:32%"><col style="width:48%"></colgroup>
       <thead>
-      <tr><th scope="col">목적</th><th scope="col">명령</th><th scope="col">동작</th></tr>
+      <tr><th scope="col">목적</th><th scope="col">명령</th><th scope="col">하는 일</th></tr>
       </thead>
       <tbody>
-      <tr><td>지금 상태 확인</td><td><strong>git status</strong></td><td>무엇이 바뀌었고 무엇이 담겼는지</td></tr>
-      <tr><td>바뀐 내용 보기</td><td><strong>git diff</strong></td><td>줄 단위 변경 내역</td></tr>
-      <tr><td>기록할 것 고르기</td><td><strong>git add .</strong></td><td>전부 스테이지로</td></tr>
-      <tr><td>저장점 새기기</td><td><strong>git commit -m "메시지"</strong></td><td>되돌아올 지점이 하나 생김</td></tr>
-      <tr><td>이력 보기</td><td><strong>git log --oneline</strong></td><td>한 줄씩 이력</td></tr>
+      <tr><td>지금 상태 확인</td><td><strong>git status</strong></td><td>무엇이 바뀌었고 무엇이 스테이지에 들어갔는지 확인</td></tr>
+      <tr><td>바뀐 내용 보기</td><td><strong>git diff</strong></td><td>코드가 어떻게 달라졌는지 확인</td></tr>
+      <tr><td>기록할 것 고르기</td><td><strong>git add .</strong></td><td>변경 사항을 스테이지에 올림</td></tr>
+      <tr><td>기록 남기기</td><td><strong>git commit -m "메시지"</strong></td><td>현재 상태를 하나의 변경 이력으로 기록</td></tr>
+      <tr><td>이력 보기</td><td><strong>git log --oneline</strong></td><td>지금까지의 커밋을 한 줄씩 확인</td></tr>
       </tbody>
     </table></div>
-    <div class="note"><strong>막히면 일단 <span class="tok m">git status</span> 입니다.</strong> 아무것도 바꾸지 않고 지금 상태만 알려주기 때문에, 자주 쳐도 잃을 것이 없습니다.</div>
+        <div class="note">막히면 일단 <strong>git status</strong> 를 입력하면 됩니다. 현재 상태를 보여 주는 명령이라 파일을 변경하지 않습니다. 무엇이 바뀌었는지, 무엇이 아직 기록되지 않았는지 확인할 때 가장 먼저 찾는 명령이라고 생각하면 됩니다.</div>
       </div>
     </div>
 
     <div class="stp">
-      <div class="hd"><span class="n">5</span><div class="t">.gitignore</div></div>
+      <div class="hd"><span class="n">6</span><div class="t">커밋은 저장과 조금 다릅니다</div></div>
       <div class="bd">
-    <p>Git이 <strong>쳐다보지도 않을 파일 목록</strong>입니다. 여기 안 적으면 그대로 올라갑니다.</p>
-    <div class="pre" data-nm=".gitignore" tabindex="0" role="region" aria-label="코드"><code><u>.env</u>
+        <p>커밋을 흔히 "저장점"이라고 설명하지만, 일반적인 <span class="tok m">Ctrl+S</span> 와는 다릅니다.</p>
+        <p>파일을 저장하면 현재 파일의 내용이 바뀝니다. 커밋은 그중 <strong>기록하기로 선택한 변경 사항을 "이 시점의 프로젝트 상태"로 남기는 것</strong>입니다.</p>
+        <p>따라서 코드를 계속 수정했다고 해서 자동으로 커밋이 생기는 것은 아닙니다. 원하는 시점에 직접 커밋해야 합니다.</p>
+        <p>커밋을 적절한 단위로 자주 남겨 두면 <strong>문제가 생겼을 때 어느 시점으로 돌아갈지 선택하기 쉬워집니다.</strong> Git은 프로젝트의 변경 이력을 커밋이라는 시점별 기록으로 관리합니다.</p>
+      </div>
+    </div>
+
+    <div class="stp">
+      <div class="hd"><span class="n">7</span><div class="t">.gitignore</div></div>
+      <div class="bd">
+        <p><span class="tok m">.gitignore</span> 는 Git에게 <strong>"이 파일은 버전 관리 대상에서 제외하라"</strong>고 알려 주는 목록입니다. 예를 들어 다음과 같은 파일을 넣을 수 있습니다.</p>
+        <div class="pre" data-nm=".gitignore" tabindex="0" role="region" aria-label="코드"><code><u>.env</u>
 <u>*.key</u>
 <u>credentials.json</u>
-
-<i># 개인정보가 든 실제 데이터</i>
 <u>data/지원자명단.xlsx</u>
 output/
-
-<i># 환경·부산물 — 남에게 필요 없습니다</i>
 venv/
 __pycache__/
 Thumbs.db</code></div>
+        <p>특히 중요한 것은 <strong>개인정보가 들어 있는 실제 데이터와 비밀번호 · API 키 같은 비밀정보를 GitHub에 올리지 않는 것</strong>입니다. <span class="tok m">.gitignore</span> 에 적어 두면 <span class="tok m">git add</span> 를 할 때 기본적으로 해당 파일을 추가하지 않습니다.</p>
+        <div class="note warn">다만 <span class="tok m">.gitignore</span> 는 <strong>이미 올라간 파일을 삭제하는 기능이 아닙니다.</strong> 예를 들어 API 키가 들어 있는 파일을 이미 커밋했다면 나중에 목록에 추가하는 것만으로 <span class="tok a">과거 커밋에서 그 키가 사라지지는 않습니다.</span> 이미 노출된 키는 폐기하고 새 키를 발급하는 것이 우선입니다.</div>
+      </div>
+    </div>
+
+    <div class="stp">
+      <div class="hd"><span class="n">8</span><div class="t">그래서 AI를 쓸 때 Git이 더 중요합니다</div></div>
+      <div class="bd">
+        <p>AI에게 코드를 수정해 달라고 하면 한 번에 많은 부분이 바뀌기도 합니다.</p>
+        <div class="note">"이것도 고쳐줘."<br>"여기 디자인도 바꿔줘."<br>"로그인 기능도 추가해줘."</div>
+        <p>이렇게 계속 수정하다 보면 어느 순간 프로그램이 작동하지 않을 수 있습니다. 이때 Git이 있으면 <strong>AI가 무엇을 바꿨는지 확인하고, 문제가 생기기 전 상태로 돌아가는 것</strong>이 쉬워집니다.</p>
+        <p>AI가 코드를 잘 작성해 주는 것과 코드를 안전하게 관리하는 것은 별개의 문제입니다. <strong>오히려 AI와 함께 코드를 빠르게 여러 번 수정할수록 변경 이력을 남기는 것이 중요해집니다.</strong></p>
       </div>
     </div>
 
     <div class="steps"><div class="stp">
       <div class="hd"><span class="n alt" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/></svg></span><div class="t">비고</div></div>
       <div class="bd">
-        <p><strong>.gitignore는 "앞으로 무시하라"는 뜻이지 "이미 올린 것을 지우라"는 뜻이 아닙니다.</strong></p>
-        <p>키가 든 파일을 한 번이라도 커밋했다면 목록에 추가해도 <span class="tok a">이력에는 그대로 남기 때문에</span>, 이력을 지우려 애쓰는 것보다 확실한 조치는 <strong>그 키를 폐기하고 새로 발급하는 것</strong>입니다.</p>
-        <p>커밋 하나가 되돌아올 수 있는 지점 하나가 됩니다. 자주 커밋할수록 되돌릴 여지가 늘어납니다.</p>
+        <p>Git의 커밋은 <strong>"백업 파일을 하나 더 만드는 것"과는 조금 다릅니다.</strong> 프로젝트의 변경 이력을 기록하고, 각 시점의 상태를 비교하거나 복원할 수 있게 하는 것이 핵심입니다.</p>
+        <p>GitHub에 올렸다고 해서 자동으로 모든 변경 사항이 기록되는 것도 아닙니다. <strong>Git에서 커밋한 뒤 push해야</strong> 그 커밋이 GitHub의 원격 저장소에 올라갑니다.</p>
+        <p>그리고 GitHub는 단순한 저장 공간만은 아닙니다. 여러 사람이 코드를 검토하고 변경을 제안하는 <span class="tok m">Pull Request(PR)</span>, 이슈 관리, 자동 테스트와 배포 같은 기능도 제공합니다. 다만 처음에는 <strong>"Git으로 버전을 관리하고, GitHub에 그 저장소를 올려 함께 관리한다"</strong> 정도만 이해해도 충분합니다.</p>
       </div>
     </div></div>
   </section>
