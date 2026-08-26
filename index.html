@@ -2411,20 +2411,20 @@ sheet.append_row(data)</code></div>
 
     <h3>시작 준비</h3>
     <p>설치할 것은 없고, Google 계정과 브라우저만 있으면 시작할 수 있습니다.</p>
-    <p>① Google Form을 만들고 ② Apps Script 편집기에서 코드를 작성한 뒤 ③ 필요하면 트리거를 설정합니다.</p>
+    <p>① Apps Script 편집기에서 코드를 작성하고 ② 필요하면 트리거를 설정합니다. <strong>폼으로 신청을 받는 경우에만</strong> Google Form을 함께 만듭니다.</p>
     <div class="panel">
       <div class="panel-h"><span class="t">설치 0개 · 링크 세 개</span><span class="m">3</span></div>
       <div class="lnk">
-        <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer">
+        <a href="https://script.google.com/home/?hl=ko" target="_blank" rel="noopener noreferrer">
           <span class="n">1</span>
-          <span class="b"><strong>Google Form 만들기</strong><em>forms.google.com</em></span>
+          <span class="b"><strong>Apps Script 편집기</strong><em>script.google.com/home</em></span>
           <span class="c">무료</span>
           <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
         </a>
-        <a href="https://script.google.com/home/?hl=ko" target="_blank" rel="noopener noreferrer">
+        <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer">
           <span class="n">2</span>
-          <span class="b"><strong>Apps Script 편집기</strong><em>script.google.com/home</em></span>
-          <span class="c">무료</span>
+          <span class="b"><strong>Google Form 만들기</strong><em>forms.google.com</em></span>
+          <span class="c opt">필요할 때</span>
           <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
         </a>
         <a href="https://developers.google.com/apps-script" target="_blank" rel="noopener noreferrer">
@@ -2436,7 +2436,6 @@ sheet.append_row(data)</code></div>
       </div>
     </div>
     <div class="note"><strong>트리거</strong>는 Apps Script 편집기 왼쪽의 시계 아이콘(트리거) → <strong>트리거 추가</strong>에서 설정합니다. 예를 들어 폼이 제출될 때 실행하려면 이벤트 유형을 <strong>양식 제출 시</strong>로 선택합니다. 스크립트를 작성하는 것만으로 자동 실행되지는 않습니다.<br>처음 실행할 때는 Google이 필요한 권한을 묻습니다. 승인하면 해당 계정의 권한으로 Google 캘린더·문서·시트 등을 조작합니다.</div>
-    <p>Google 서비스를 중심으로 반복 작업을 자동화한다면 Apps Script가 편하고, <strong>파일 처리·웹 조작·외부 프로그램 연동처럼 범위가 넓어지면 Python이 좋습니다.</strong></p>
     <div class="notes">
       <div class="notes-h">주석</div>
       <dl>
