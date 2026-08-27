@@ -4127,7 +4127,10 @@ const go = id => show(order.indexOf(id));
 chRows.forEach(b => b.addEventListener('click', () => {
   const ch = b.dataset.ch;
   const kids = document.querySelector('.kids[data-kids="' + ch + '"]');
-  if(kids && chapterOf(order[cur]) === ch){
+  /* 접었다 펴는 것은 그 장의 첫 쪽에 서 있을 때만입니다.
+     장 안의 다른 쪽(1-1 등)에 있을 때 눌렀는데 접히기만 하고
+     정작 그 장으로 넘어가지 않는 일이 있었습니다. */
+  if(kids && b.dataset.t === order[cur]){
     const open = kids.classList.contains('open');
     kids.classList.toggle('open', !open);
     if(b.hasAttribute('aria-expanded')) b.setAttribute('aria-expanded', String(!open));
