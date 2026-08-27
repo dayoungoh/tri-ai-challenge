@@ -503,17 +503,18 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 
 /* 쓰는 칸은 맨 위 한 줄. 라벨 · 이름 · 한 마디 · 단추 */
 /* 쓰는 칸이 아래로 내려갔습니다. 선도 위로 옮깁니다 */
-.gb-f{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0;
+.gb-f{display:flex;align-items:flex-end;gap:8px;flex-wrap:wrap;margin:0;
   padding:9px 11px;background:var(--inset);border-top:1px solid var(--line)}
 .gb-f .gb-lb{flex:0 0 auto;font-size:var(--t-ui);font-weight:700;color:var(--ink);
   letter-spacing:-.01em}
-.gb-f input{font-family:inherit;color:var(--ink);background:var(--shell);
+.gb-f input,.gb-f textarea{font-family:inherit;color:var(--ink);background:var(--shell);
   border:0;border-radius:6px;padding:7px 10px;outline:none;
   box-shadow:inset 0 0 0 1px var(--line);font-size:var(--t-ui)}
 .gb-f .nm{flex:0 0 96px;min-width:0;font-weight:640}
-.gb-f .bd{flex:1 1 220px;min-width:0}
-.gb-f input:focus-visible{box-shadow:inset 0 0 0 1px var(--ink)}
-.gb-f input::placeholder{color:var(--ink-3);font-weight:400}
+.gb-f .bd{flex:1 1 220px;min-width:0;resize:none;overflow-y:hidden;
+  line-height:1.55;max-height:132px}
+.gb-f input:focus-visible,.gb-f textarea:focus-visible{box-shadow:inset 0 0 0 1px var(--ink)}
+.gb-f input::placeholder,.gb-f textarea::placeholder{color:var(--ink-3);font-weight:400}
 /* 한 번 눌러 채우는 단추. 값을 미리 박아 두면 아무나 그대로 눌러
    같은 글만 쌓이므로, 채우기만 하고 보내기는 사람이 누릅니다. */
 .gb-quick{flex:0 0 auto;border:0;border-radius:6px;padding:6px 10px;cursor:pointer;
@@ -533,27 +534,32 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   color:var(--amber);font-weight:700;font-variant-numeric:tabular-nums}
 .gb-f .c[hidden]{display:none}
 
-/* 한 줄에 한 마디. 길면 접히고, 접힌 줄은 가운뎃점 자리만큼 들여씁니다 */
-.gb-list{display:flex;flex-direction:column;
-  max-height:min(420px,58vh);overflow-y:auto;padding:6px 0}
+/* 대화창처럼 — 내가 남긴 글은 오른쪽, 남이 남긴 글은 왼쪽 말풍선입니다.
+   "내 글"은 남길 때 그 글 번호를 이 브라우저에 적어 두는 것으로만 압니다.
+   계정이 없으니 기기가 바뀌면 알아보지 못합니다. */
+.gb-list{display:flex;flex-direction:column;gap:11px;
+  max-height:min(560px,64vh);overflow-y:auto;padding:16px 14px;
+  overscroll-behavior:contain}
 .gb-list:empty{display:none}
-/* 창 안의 글자는 두 크기만 씁니다 — 본문은 --t-ui, 곁말은 --t-micro.
-   앞서는 목록만 --t-sm 이라 쓰는 칸보다 커 보였습니다. */
-.gb-item{display:flex;gap:7px;padding:5px 13px;
-  font-size:var(--t-ui);line-height:1.65;color:var(--ink-2)}
-.gb-item .dot{flex:0 0 auto;color:var(--ink-3);user-select:none}
-.gb-item .ln{min-width:0;flex:1;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
-.gb-item .bd{word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap}
-.gb-item .nm{font-weight:660;white-space:nowrap}
-.gb-item .bd{font-size:var(--t-ui)}
-.gb-item time{margin-left:6px;font-family:var(--mono);font-size:var(--t-micro);
+.gb-item{display:flex;flex-direction:column;align-items:flex-start;gap:3px;
+  width:100%;font-size:var(--t-ui);line-height:1.65}
+.gb-item.mine{align-items:flex-end}
+.gb-item .nm{padding:0 4px;font-size:var(--t-micro);font-weight:660;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.gb-item .bd{max-width:min(78%,440px);padding:8px 13px;
+  border-radius:15px 15px 15px 4px;background:var(--inset);color:var(--ink);
+  font-size:var(--t-ui);line-height:1.62;
+  word-break:break-word;overflow-wrap:anywhere;white-space:pre-wrap}
+.gb-item.mine .bd{border-radius:15px 15px 4px 15px;
+  background:var(--ink);color:var(--shell)}
+.gb-item .mt{display:flex;align-items:center;gap:4px;padding:0 3px}
+.gb-item time{font-family:var(--mono);font-size:var(--t-micro);
   color:var(--ink-3);white-space:nowrap}
-.gb-item:hover{background:var(--inset)}
-/* 반응 — 줄 끝의 아주 작은 단추 둘. 평소엔 흐리고, 셈이 있으면 또렷합니다 */
-.gb-item .rx{margin-left:auto;display:flex;gap:3px;flex:0 0 auto}
+/* 반응 — 말풍선 아래 아주 작은 단추 둘. 셈이 있으면 또렷합니다 */
+.gb-item .rx{display:flex;gap:2px}
 .gb-item .rx button{display:inline-flex;align-items:center;gap:3px;border:0;background:none;
   padding:1px 5px;border-radius:6px;cursor:pointer;font-family:inherit;
-  font-size:var(--t-micro);color:var(--ink-3);opacity:.45;
+  font-size:var(--t-micro);color:var(--ink-3);opacity:.55;
   transition:opacity 140ms ease,background-color 140ms ease,transform 120ms var(--out)}
 .gb-item:hover .rx button,.gb-item .rx button.has{opacity:1}
 .gb-item .rx button:hover{background:rgb(26 26 26/.06)}
@@ -1117,6 +1123,9 @@ a.cta{text-decoration:none}
 .pre.card .cbody{padding:11px 13px;background:var(--code-bg);overflow-x:auto;
   border-radius:0 0 10px 10px}
 .pre.card .ln{display:flex}
+.doc .poem{margin:26px 0 30px;padding:4px 0 4px 24px;border-left:2px solid var(--line-2)}
+.doc .poem p{margin:0;color:var(--ink-2);font-style:italic;line-height:1.85}
+.doc .poem .src{display:block;margin-top:12px;font-size:.88em;color:var(--ink-3)}
 .pre.card .ln .no{flex:0 0 22px;text-align:right;font-family:var(--mono);
   font-size:var(--t-micro);line-height:1.86;color:rgb(115 115 112/.55);user-select:none}
 .pre.card .ln .tx{padding-left:11px;min-width:0}
@@ -1395,8 +1404,7 @@ a.cta{text-decoration:none}
       <div class="ttl"><div class="eyebrow">인삿말</div>
         <h2 class="hi">Hello, <span class="rot" id="rot" aria-hidden="true"><span class="rw" data-org="kfas" data-s="cur">KFAS</span><span class="rw" data-org="chey">CHEY</span><span class="rw" data-org="cses">CSES</span></span>!<span class="sr">KFAS · CHEY · CSES</span></h2></div>
     </div>
-    <p class="lead">안녕하세요.</p>
-    <p>한국고등교육재단 사업추진2팀 오다영 매니저입니다.</p>
+    <p>안녕하세요. 한국고등교육재단 사업추진2팀 오다영 매니저입니다.</p>
 
     <p>우선 이렇게 제가 AI를 업무에 활용해 온 방법을 나누고, 동시에 다른 분들의 활용 사례도 배울 수 있는 귀한 기회를 마련해 주셔서 진심으로 감사드립니다.</p>
 
@@ -3029,32 +3037,31 @@ sheet.append_row(data)</code></div>
     <p>학자형 인재를 덜 기르겠다는 뜻은 아닙니다. <strong>학자형은 여전히 남고, 그 옆으로 개척가 · 예술가 · 글로벌리더 · 기업가 · 정책가 · 전문가가 더해집니다.</strong> 플랫폼에서는 인재를 이 일곱 유형으로 나누어 보고, 머리글자를 모아 <strong>TALENTS</strong>라고 부릅니다. 학자형은 그중 S 하나입니다.</p>
 
     <div class="ann">
-      <svg viewBox="0 0 700 292" xmlns="http://www.w3.org/2000/svg" role="img"
-        aria-label="학자형 인재를 나타내는 곡선은 왼쪽 위에서 오른쪽 아래로 내려오고, 다양한 유형의 인재를 나타내는 곡선은 왼쪽 아래에서 오른쪽 위로 올라가 가운데에서 서로 교차합니다. 올라가는 곡선 아래에는 지층처럼 겹이 오른쪽으로 갈수록 두껍게 쌓입니다. 아래에는 개척가형 예술가형 글로벌리더형 기업가형 정책가형 전문가형 학자형 일곱 유형의 머리글자가 TALENTS로 놓여 있고 학자형만 주황으로 표시되어 있습니다.">
-        <defs>
-          <clipPath id="tlUnder"><path d="M60,186 C180,178 250,150 350,126 C450,102 530,80 640,64 L640,200 L60,200 Z"/></clipPath>
-        </defs>
-        <!-- 쌓이는 지층 -->
-        <path d="M60,186 C180,178 250,150 350,126 C450,102 530,80 640,64 L640,200 L60,200 Z" fill="#1a1a1a" opacity=".05"/>
-        <g clip-path="url(#tlUnder)"><path d="M60,202 C180,194 250,166 350,142 C450,118 530,96 640,80" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/><path d="M60,218 C180,210 250,182 350,158 C450,134 530,112 640,96" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/><path d="M60,234 C180,226 250,198 350,174 C450,150 530,128 640,112" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/><path d="M60,250 C180,242 250,214 350,190 C450,166 530,144 640,128" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/><path d="M60,266 C180,258 250,230 350,206 C450,182 530,160 640,144" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/><path d="M60,282 C180,274 250,246 350,222 C450,198 530,176 640,160" fill="none" stroke="#1a1a1a" stroke-width="1.1" opacity=".22"/></g>
-        <!-- 다양한 유형 : 올라옵니다 -->
-        <path d="M60,186 C180,178 250,150 350,126 C450,102 530,80 640,64" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
-        <!-- 학자형 : 내려오지만 사라지지 않습니다 -->
-        <path d="M60,72 C180,80 250,106 350,126 C450,146 530,166 640,178" fill="none" stroke="#a16207" stroke-width="2.4" stroke-linecap="round"/>
-        <circle cx="350" cy="126" r="4.5" fill="#fff" stroke="#a16207" stroke-width="2"/>
-        <path d="M52,200 H648" stroke="#ededea" stroke-width="1.4"/>
-
-        <text class="ic-t" x="392" y="180">TALENTS</text>
-        <text class="ic-s" x="392" y="196">겹이 쌓입니다</text>
-        <text class="ic-t" x="62" y="58" fill="#a16207">S · 학자형</text>
-        <text class="ic-s" x="640" y="196" text-anchor="end" fill="#a16207">한 갈래로 남습니다</text>
-        <text class="ic-s" x="60" y="216">과거</text>
-        <text class="ic-s" x="640" y="216" text-anchor="end">앞으로</text>
-
-        <path d="M52,226 H648" stroke="#ededea" stroke-width="1"/>
-        <text class="ic-t" x="96" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">T</text><text class="ic-s" x="96" y="256" text-anchor="middle" fill="#737370">개척가형</text><text class="ic-t" x="174" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">A</text><text class="ic-s" x="174" y="256" text-anchor="middle" fill="#737370">예술가형</text><text class="ic-t" x="252" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">L</text><text class="ic-s" x="252" y="256" text-anchor="middle" fill="#737370">글로벌리더형</text><text class="ic-t" x="330" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">E</text><text class="ic-s" x="330" y="256" text-anchor="middle" fill="#737370">기업가형</text><text class="ic-t" x="408" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">N</text><text class="ic-s" x="408" y="256" text-anchor="middle" fill="#737370">정책가형</text><text class="ic-t" x="486" y="240" text-anchor="middle" fill="#1a1a1a" font-size="15">X</text><text class="ic-s" x="486" y="256" text-anchor="middle" fill="#737370">전문가형</text><text class="ic-t" x="564" y="240" text-anchor="middle" fill="#a16207" font-size="15">S</text><text class="ic-s" x="564" y="256" text-anchor="middle" fill="#a16207">학자형</text>
+      <svg viewBox="0 0 700 318" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="학자형 인재를 나타내는 곡선은 왼쪽 위에서 오른쪽 아래로 내려오고, 새로 더해지는 여섯 유형을 나타내는 곡선은 왼쪽 아래에서 시작해 서로 다른 높이까지 부챗살처럼 올라가며 가운데에서 학자형 곡선과 교차합니다. 가로축은 왼쪽이 과거, 오른쪽이 앞으로입니다. 아래에는 개척가형 예술가형 글로벌리더형 기업가형 정책가형 전문가형 학자형 일곱 유형의 머리글자가 TALENTS로 놓여 있고 학자형만 주황으로 표시되어 있습니다.">
+        <g fill="none" stroke-linecap="round">
+          <path d="M68 232H646" stroke="#d6d6d2" stroke-width="1.4"/>
+          <path d="M646 232l-8-4.5M646 232l-8 4.5" stroke="#d6d6d2" stroke-width="1.4"/>
+          <path d="M68 232V26" stroke="#d6d6d2" stroke-width="1.4"/>
+          <path d="M68 26l-4.5 8M68 26l4.5 8" stroke="#d6d6d2" stroke-width="1.4"/>
+          <path d="M100 218 C210 218 260 218 320 137 C390 56 470 56 636 56" stroke="#1a1a1a" stroke-opacity="1" stroke-width="1.7"/>
+          <path d="M100 221 C210 221 282 221 342 155 C412 88 492 88 636 88" stroke="#1a1a1a" stroke-opacity=".88" stroke-width="1.7"/>
+          <path d="M100 224 C210 224 306 224 366 172 C436 120 516 120 636 120" stroke="#1a1a1a" stroke-opacity=".76" stroke-width="1.7"/>
+          <path d="M100 226 C210 226 334 226 394 188 C464 150 544 150 636 150" stroke="#1a1a1a" stroke-opacity=".64" stroke-width="1.7"/>
+          <path d="M100 228 C210 228 368 228 428 203 C498 178 578 178 636 178" stroke="#1a1a1a" stroke-opacity=".52" stroke-width="1.7"/>
+          <path d="M100 230 C210 230 406 230 466 216 C536 202 616 202 636 202" stroke="#1a1a1a" stroke-opacity=".4" stroke-width="1.7"/>
+          <path d="M100 50 C205 50 250 88 322 146 C398 206 500 218 636 222" stroke="#a16207" stroke-width="2.2"/>
+        </g>
+        <text class="ic-t" x="106" y="86" fill="#a16207">S · 학자형</text>
+        <text class="ic-s" x="106" y="102" fill="#a16207">한 갈래로 남습니다</text>
+        <text class="ic-t" x="150" y="160">TALENTS</text>
+        <text class="ic-s" x="150" y="176">여섯 유형이 더해집니다</text>
+        <text class="ic-s" x="100" y="252">과거</text>
+        <text class="ic-s" x="646" y="252" text-anchor="end">앞으로</text>
+        <path d="M68 264H646" stroke="#eceae5" stroke-width="1"/>
+        <text class="ic-t" x="96" y="288" text-anchor="middle" fill="#1a1a1a" font-size="15">T</text><text class="ic-s" x="96" y="304" text-anchor="middle" fill="#737370">개척가형</text><text class="ic-t" x="174" y="288" text-anchor="middle" fill="#1a1a1a" font-size="15">A</text><text class="ic-s" x="174" y="304" text-anchor="middle" fill="#737370">예술가형</text><text class="ic-t" x="252" y="288" text-anchor="middle" fill="#1a1a1a" font-size="15">L</text><text class="ic-s" x="252" y="304" text-anchor="middle" fill="#737370">글로벌리더형</text><text class="ic-t" x="330" y="288" text-anchor="middle" fill="#1a1a1a" font-size="15">E</text><text class="ic-s" x="330" y="304" text-anchor="middle" fill="#737370">기업가형</text><text class="ic-t" x="408" y="288" text-anchor="middle" fill="#1a1a1a" font-size="15">N</text><text class="ic-s" x="408" y="304" text-anchor="middle" fill="#737370">정책가형</text><text class="ic-t" x="486" y="288" text-anchor="middle" fill="#1a1a1a" font-size="15">T</text><text class="ic-s" x="486" y="304" text-anchor="middle" fill="#737370">전문가형</text><text class="ic-t" x="564" y="288" text-anchor="middle" fill="#a16207" font-size="15">S</text><text class="ic-s" x="564" y="304" text-anchor="middle" fill="#a16207">학자형</text>
       </svg>
-      <div class="ann-cap">플랫폼은 인재를 일곱 유형으로 나누어 보는데 <strong>그 머리글자를 모으면 TALENTS가 됩니다.</strong> 학자형은 그중 <span class="tok a">S 하나</span>입니다. 두 선은 경향을 그린 것이지 실제 수치가 아닙니다 — 학자형이 사라지는 것이 아니라, 그 옆으로 다른 유형이 겹겹이 쌓인다는 뜻입니다.</div>
+      <div class="ann-cap">플랫폼은 인재를 일곱 유형으로 나누어 보는데 <strong>그 머리글자를 모으면 TALENTS가 됩니다.</strong> 학자형은 그중 <span class="tok a">S 하나</span>입니다. 선은 경향을 그린 것이지 실제 수치가 아닙니다 — 학자형이 사라지는 것이 아니라, 그 옆으로 다른 유형이 더해진다는 뜻입니다.</div>
     </div>
 
     <h3>Horizon 1 · 선발과 육성</h3>
@@ -3511,11 +3518,26 @@ Claude Opus 5를 두 달 써보는 사이 금방 모델 성능이 안 좋아진�
   <!-- 4 -->
   <section id="f1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">맺음</div><h2>맺음말</h2></div></div>
-    <h3>오디세이</h3>
-    <p>2024년 7~8월을 돌이켜 보면, 업무 시간에는 선발 업무를 하고 남는 시간에는 다음 단계의 업무를 자동화하기 위해 AI와 함께 코드를 만들었던 것 같습니다. <strong>처음에는 분명 퇴근하고 싶어서 시작한 일이었습니다.</strong> 그런데 이상하게도 하다 보니 “이것도 되나?” 싶어 하나씩 시도해 보는 재미가 생겼고, 어느 순간에는 귀가 후에도 코딩을 하고 있었습니다.</p>
-    <p>문득 크리스토퍼 놀란 감독의 〈오디세이〉를 보며 비슷한 생각이 들었습니다. 오디세우스는 분명 이타카로 돌아가고 싶어 했는데 집으로 돌아가는 데 10년이나 걸렸습니다. 그렇게 오랫동안 돌아가지 못했다면 <strong>그 여정에는 귀향이라는 목적만큼이나 그 과정에서 겪은 모험과 사건들이 주는 재미도 있지 않았을까.</strong></p>
-    <p>저 역시 처음에는 그저 “빨리 집에 가고 싶다”는 마음으로 시작했는데 어느 순간 집에 가서도 코딩을 하고 있었습니다. 목적은 같았는데 어느새 과정이 조금 재미있어진 셈입니다.</p>
-    <p>어쩌면 사람은 누구나 귀향을 원하면서도 <strong>그 길에서 의외로 재미있는 것들을 발견하며 살아가는 것인지도 모르겠습니다.</strong></p>
+    <p>여기까지 읽어주셔서 감사드립니다! 사실 전문 읽으셨을 거라는 생각은 하지 않고, (저도 읽기 힘들었습니다.) 필요한 부분만 취사선택하여 보시는 정도로만 활용하셔도 좋을 거 같습니다.</p>
+
+    <p>Challenge에 낼 자료를 작성하는 게 생각보다 방대하여 도중에 진심으로 그만두고 싶었는데, 시작한 이상 끝은 봐야지 라는 어줍잖은 책임감으로 완벽하지는 않지만 완성은 해 보았습니다. (혹시 보이는 비문은 넓은 아량으로 용서 바랍니다.)</p>
+
+    <p>저는 미술대학원에서 석사 학위를 받았는데, 수료 후 석사 논문을 안 쓰고 도망갈까?를 한 때 진지하게 생각해 본 적이 있습니다. 자료를 작성하며 문득 석사 논문을 작성하던 때가 떠올랐는데, 자승자박이라는 사자성어를 함께 숙고하게 되었습니다.</p>
+
+    <p>요즘 크리스토퍼 놀란 감독의 &lt;오디세이&gt;를 많이 보시던데, 오디세우스의 여정의 목적은 귀향이었지만, 가지 않아도 될 곳에 구태여 찾아가보고(키클롭스의 섬) 듣지 않아도 될 소리를 몸을 묶어가며 듣는(세이렌) 오디세우스야말로 자승자박의 아이콘이 아닐지... 그래서 소소한 재미로 홈페이지에 배(ship) 아이콘이 집으로 돌아가는 컨셉으로 본 웹앱을 디자인해 보았습니다.</p>
+
+    <p>'24년 7월 처음, 바이브 코딩이라는 단어가 생기기도 전에 제가 하던게 바이브코딩이라는 것도 모르고 AI로 Python 코드를 고쳐가며 PDF를 병합하던 때, 분명 저도 이것을 만들어 내지 못 하면 왠지 한동안 저녁에 집에 돌아가지 못 할 거 같다... 라는 두려움이 엄습하여 시작했었습니다. 그러나 하다보니 순간 순간 재미를 느끼기도 했고, 저녁이나 주말에 코드를 돌려보기도 했던 기억이 있습니다.</p>
+
+    <p>보면 문득 사람들은 내가 왜 이러고 있지?라는 생각이 드는 상황에 자신을 몰아넣으면서도 종종 재미를 느끼고 사는, 참 다양하고도 모순되는 마음을 품고 사는 구나 싶습니다.</p>
+
+    <p>그런 의미에서 제가 좋아하는 Walt Whitman의 시 구절을 하나 남기고 이만 글을 줄이겠습니다.</p>
+
+    <div class="poem">
+      <p>Do I contradict myself?<br>Very well then I contradict myself,<br>(I am large, I contain multitudes.)</p>
+      <span class="src">- Song of Myself, 51</span>
+    </div>
+
+    <p>감사합니다.<br>오다영 드림.</p>
   </section>
 
   <!-- 부록 A -->
@@ -3829,7 +3851,7 @@ Thumbs.db</code></div>
       <form class="gb-f" id="gbForm">
         <span class="gb-lb">한 마디</span>
         <input class="nm" id="gbName" name="name" maxlength="20" placeholder="이름 또는 별명" aria-label="이름" autocomplete="off" required>
-        <input class="bd" id="gbBody" name="body" maxlength="300" placeholder="남기고 싶은 말을 적어 주세요" aria-label="남길 말" autocomplete="off" required>
+        <textarea class="bd" id="gbBody" name="body" rows="1" maxlength="300" placeholder="남기고 싶은 말을 적어 주세요" aria-label="남길 말" autocomplete="off" required></textarea>
         <button class="gb-quick" type="button" id="gbQuick" title="퍼가요~♡ 채워 넣기">퍼가요~♡</button>
         <span class="c" id="gbLen" hidden></span>
         <span class="gb-msg" id="gbMsg" role="status" aria-live="polite"></span>
@@ -5211,7 +5233,6 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
   function paint(rows){
     listEl.replaceChildren();
     countEl.textContent = rows.length ? rows.length + '개' : '';
-    listEl.scrollTop = 0;
     if(!rows.length){
       emptyEl.hidden = false;
       emptyEl.textContent = '아직 아무도 남기지 않았습니다. 첫 글을 남겨 주세요.';
@@ -5220,19 +5241,19 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
     emptyEl.hidden = true;
     for(const r of rows){
       const it = document.createElement('div'); it.className = 'gb-item';
-      const dot = document.createElement('span'); dot.className = 'dot';
-      dot.textContent = '·'; dot.setAttribute('aria-hidden', 'true');
+      const mineRow = localStorage.getItem('gb-mine-' + r.id);
+      if(mineRow) it.classList.add('mine');
 
-      const ln = document.createElement('span'); ln.className = 'ln';
-      const bd = document.createElement('span'); bd.className = 'bd';
-      bd.textContent = r.body;                                  /* textContent — 남의 글 */
       const nm = document.createElement('span'); nm.className = 'nm';
-      nm.style.color = hue(r.name);
-      nm.textContent = ' (' + r.name + ')';                     /* textContent — 남의 글 */
-      const t = document.createElement('time');
-      t.dateTime = r.created_at; t.textContent = ago(r.created_at);
+      nm.style.color = mineRow ? 'var(--ink-3)' : hue(r.name);
+      nm.textContent = r.name;                                  /* textContent — 남의 글 */
 
-      ln.append(bd, nm, t);
+      const bd = document.createElement('div'); bd.className = 'bd';
+      bd.textContent = r.body;                                  /* textContent — 남의 글 */
+
+      const mt = document.createElement('div'); mt.className = 'mt';
+      const t0 = document.createElement('time');
+      t0.dateTime = r.created_at; t0.textContent = ago(r.created_at);
 
       /* 하트 · 따봉. 셈은 서버가 올리고, 한 줄에 한 번만 누를 수 있게
          내 브라우저에 표시를 남깁니다 — 계정이 없으니 그 이상은 막을 수 없습니다. */
@@ -5245,11 +5266,11 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
         btn.className = (cnt ? 'has' : '') + (mine ? ' mine' : '');
         btn.setAttribute('aria-label', kind === 'heart' ? '하트' : '좋아요');
         btn.append(glyph + ' ');
-        const b = document.createElement('b'); b.textContent = cnt || ''; btn.append(b);
+        const bc = document.createElement('b'); bc.textContent = cnt || ''; btn.append(bc);
         if(!mine) btn.addEventListener('click', async () => {
           if(btn.classList.contains('mine')) return;
           btn.classList.add('mine', 'has');
-          b.textContent = (+b.textContent || 0) + 1;          /* 먼저 올려 보여줍니다 */
+          bc.textContent = (+bc.textContent || 0) + 1;          /* 먼저 올려 보여줍니다 */
           localStorage.setItem('gb-rx-' + r.id + '-' + kind, '1');
           try{
             await fetch(GB_URL + '/rest/v1/rpc/gb_react', {
@@ -5262,16 +5283,17 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
         rx.append(btn);
       }
 
-      ln.append(rx);
-      it.append(dot, ln); listEl.append(it);
+      if(mineRow) mt.append(rx, t0); else mt.append(t0, rx);
+      it.append(nm, bd, mt); listEl.append(it);
     }
+    listEl.scrollTop = listEl.scrollHeight;      /* 새 글이 있는 아래쪽을 봅니다 */
   }
 
   async function load(){
     if(loaded) return; loaded = true;
     emptyEl.hidden = false; emptyEl.textContent = '불러오는 중…';
     try{
-      const r = await fetch(GB_URL + '/rest/v1/guestbook?select=id,name,body,created_at,heart,thumb&order=created_at.desc&limit=100', { headers: GB_H });
+      const r = await fetch(GB_URL + '/rest/v1/guestbook?select=id,name,body,created_at,heart,thumb&order=created_at.asc&limit=200', { headers: GB_H });
       if(!r.ok) throw new Error(r.status);
       paint(await r.json());
     }catch(e){
@@ -5301,12 +5323,27 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
     bodyEl.dispatchEvent(new Event('input'));
     (nameEl.value.trim() ? bodyEl : nameEl).focus();
   });
+  /* 글이 길어지면 칸이 아래로 늘어납니다. 옆으로 밀려 안 보이지 않게 */
+  const grow = () => {
+    bodyEl.style.height = 'auto';
+    const h = Math.min(bodyEl.scrollHeight, 132);
+    bodyEl.style.height = h + 'px';
+    bodyEl.style.overflowY = bodyEl.scrollHeight > 132 ? 'auto' : 'hidden';
+  };
   bodyEl.addEventListener('input', () => {
     /* 300자에 가까워질 때만 셈을 보여 줍니다. 늘 떠 있으면 잔소리입니다 */
     const n = bodyEl.value.length;
     lenEl.hidden = n <= 260;
     lenEl.textContent = n + ' / 300';
+    grow();
     ready();
+  });
+  /* Enter 는 보내기, Shift+Enter 는 줄바꿈 — 대화창과 같습니다 */
+  bodyEl.addEventListener('keydown', e => {
+    if(e.key === 'Enter' && !e.shiftKey && !e.isComposing){
+      e.preventDefault();
+      if(!sendEl.disabled) form.requestSubmit();
+    }
   });
 
 
@@ -5316,16 +5353,28 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
     if(!name || !body){ say('이름과 한 마디를 모두 적어 주세요.', 'err'); return; }
     sendEl.disabled = true; sendEl.classList.remove('on'); say('보내는 중…');
     try{
-      const r = await fetch(GB_URL + '/rest/v1/guestbook', {
+      /* 돌려받은 글 번호를 이 브라우저에 적어 둡니다 — 다음에 열 때
+         내가 남긴 글임을 알아보고 오른쪽 말풍선으로 그립니다.
+         돌려주지 못하는 설정이면 조용히 예전 방식으로 다시 보냅니다. */
+      const post = pref => fetch(GB_URL + '/rest/v1/guestbook', {
         method: 'POST',
-        headers: { ...GB_H, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        headers: { ...GB_H, 'Content-Type': 'application/json', Prefer: pref },
         body: JSON.stringify({ name, body }),
       });
+      let r = await post('return=representation');
+      if(r.ok){
+        const rows = await r.json().catch(() => null);
+        const id = Array.isArray(rows) && rows[0] && rows[0].id;
+        if(id) localStorage.setItem('gb-mine-' + id, '1');
+      }else{
+        r = await post('return=minimal');
+      }
       if(!r.ok){
         const j = await r.json().catch(() => ({}));
         throw new Error(j.message || ('오류 ' + r.status));
       }
       bodyEl.value = ''; lenEl.hidden = true;
+      grow();
       ready();
       say('고맙습니다. 잘 남겨졌습니다.', 'ok');
       loaded = false; await load();
