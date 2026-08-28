@@ -766,13 +766,41 @@ th{font-weight:640;font-size:var(--t-micro);letter-spacing:.08em;text-transform:
 .tw.qlink tbody td.sub2{padding-left:46px}
 /* 시기 열은 연도가 먼저 눈에 들어와야 언제 무엇을 했는지 흐름이 잡힙니다.
    연도가 바뀌는 줄에만 진한 선을 둡니다 — 2024 · 2025 · 2026 세 덩이가 갈립니다 */
-.tw.qlink tbody td.n{color:var(--ink-3);white-space:nowrap}
+/* 날짜 하나는 안 쪼개되, 날짜와 날짜 사이에서는 줄이 바뀌게 둡니다 */
+.tw.qlink tbody td.n{color:var(--ink-3)}
+.tw.qlink tbody td.n .d{white-space:nowrap}
 .tw.qlink tbody td.n .y{font-weight:500;color:var(--ink-3)}
 /* 연도가 처음 나오는 줄에서만 또렷합니다. 아래로는 흐려서 한 덩이로 읽힙니다 */
 .tw.qlink tbody tr.yr td.n .y{font-weight:680;color:var(--ink)}
 .tw.qlink tbody tr.yr>td{border-top:1px solid rgb(26 26 26/.14)}
 .tw.qlink tbody tr.yr:first-child>td{border-top:0}
+
+/* ── 좁은 화면의 표 ──
+   칸을 억지로 좁히면 「3-2-3 · 플랫폼 유지 방안」이 열 줄로 떨어지는 식으로
+   표가 읽히지 않습니다. 칸 수에 맞는 최소 너비를 두어 줄을 지키고,
+   자리가 모자라면 표만 옆으로 밀리게 둡니다. 쪽 전체는 넘어가지 않습니다 */
+@media(max-width:640px){
+  /* 넓은 화면에서는 칸을 똑같이 나누는 편이 반듯한데, 좁아지면 그 균등함이
+     칸마다 한 글자씩 떨어뜨립니다. 여기서는 글 길이에 맞춰 칸을 나눕니다 */
+  .tw.eq table{table-layout:auto}
+  /* 칸 너비를 퍼센트로 못 박아 둔 표가 있습니다. 넓을 때는 그 비율이 보기
+     좋지만 좁아지면 「방식」 두 글자가 세로로 서 버립니다. 여기서는 비율을
+     풀고 글 길이에 맡깁니다 */
+  .tw table col{width:auto!important}
+  /* 한국어는 아무 데서나 줄이 바뀝니다. 좁은 칸에서는 「방식」이 「방」과
+     「식」으로 갈라지므로, 띄어쓰기에서만 줄이 바뀌게 막습니다 */
+  .tw th,.tw td{word-break:keep-all}
+  /* 좌우 여백을 조금 줄여 칸에 글자가 들어갈 자리를 만듭니다 */
+  .tw th,.tw td{padding-left:11px;padding-right:11px}
+  .tw.tight th,.tw.tight td{padding-left:9px;padding-right:9px}
+  /* 칸을 줄여도 글이 살아남지 않는 표가 넷 있습니다. 이것만 폭을 지키고
+     모자라면 표를 옆으로 밀어 봅니다 */
+  .tw.wide table{min-width:520px}
+}
 .tw.nw td:nth-child(2){white-space:nowrap}
+/* 「홍** · 010-****-5678」처럼 한 줄로 묶어 둔 칸이 좁은 화면에서는 칸을
+   넘습니다. 좁을 때만 가운뎃점에서 줄이 바뀌게 풉니다 */
+@media(max-width:640px){ .tw.nw td:nth-child(2){white-space:normal} }
 tr:last-child td{border-bottom:0}
 td{color:var(--ink-2)}
 td.n{font-variant-numeric:tabular-nums}
@@ -1497,22 +1525,22 @@ a.cta{text-decoration:none}
       <tr><th scope="col">시기</th><th scope="col">절</th><th scope="col">내용</th><th scope="col">도구</th></tr>
       </thead>
       <tbody>
-      <tr class="yr"><td class="n"><span class="y">2024</span>.07~</td><td><a href="#p1"><strong>1 · Python으로 업무 자동화</strong></a></td><td>파일과 시스템 화면을 다룰 때</td><td>Python · PyCharm</td></tr>
-      <tr><td class="n"><span class="y">2024</span>.07</td><td class="sub"><a href="#p2">1-1 · PDF 편집·병합</a></td><td>해외유학후보장학생 선발</td><td>PyPDF</td></tr>
-      <tr><td class="n"><span class="y">2024</span>.07</td><td class="sub"><a href="#p3">1-2 · 엑셀 나누기·합치기</a></td><td>해외유학후보장학생 선발</td><td>openpyxl</td></tr>
-      <tr><td class="n"><span class="y">2024</span>.07 · <span class="y">2026</span>.08</td><td class="sub"><a href="#p5">1-3 · 개인별 맞춤 메일 발송</a></td><td>선발 · 해외유학워크숍</td><td>smtplib · Flask</td></tr>
-      <tr><td class="n"><span class="y">2024</span>.12</td><td class="sub"><a href="#p4">1-4 · 웹 조작(스크래핑)</a></td><td>재단 예산 관리</td><td>Selenium · gspread</td></tr>
-      <tr class="yr"><td class="n"><span class="y">2025</span>.07~08</td><td class="sub"><a href="#p4a">1-4-1 · 자료 업로드·다운로드</a></td><td>선발 · 해외유학워크숍</td><td>Selenium</td></tr>
-      <tr class="yr"><td class="n"><span class="y">2026</span>.07~</td><td class="sub"><a href="#p6">1-5 · 개인정보 마스킹</a></td><td>해외유학워크숍 · 선발</td><td>pdfplumber · Kiwi</td></tr>
-      <tr><td class="n"><span class="y">2026</span>.02~</td><td><a href="#g1"><strong>2 · Apps Script로 업무 자동화</strong></a></td><td>신청을 받아 처리할 때</td><td>Apps Script</td></tr>
-      <tr><td class="n"><span class="y">2026</span>.02</td><td class="sub"><a href="#g0">2-1 · 해외유학 대면모임 지원</a></td><td>대면모임 신청 · 정산</td><td>Forms · Calendar</td></tr>
-      <tr><td class="n"><span class="y">2026</span>.08</td><td class="sub"><a href="#g2">2-2 · 법인카드 영수증 정리</a></td><td>팀비 정산</td><td>Drive · OCR · Sheets</td></tr>
-      <tr><td class="n"><span class="y">2026</span>.07~</td><td><a href="#w1"><strong>3 · 웹앱 개발·배포</strong></a></td><td>각자 로그인해서 쓸 때</td><td>Supabase · Netlify</td></tr>
-      <tr><td class="n"><span class="y">2026</span>.07</td><td class="sub"><a href="#w2">3-1 · 워크숍 이수율 tracker</a></td><td>해외유학워크숍</td><td>Supabase · Netlify</td></tr>
-      <tr><td class="n"><span class="y">2026</span>.07~</td><td class="sub"><a href="#w3">3-2 · 인재성장 플랫폼</a></td><td>성장 기록과 동문 연결 · <strong>개발 중</strong></td><td>Supabase · Vercel</td></tr>
-      <tr><td class="n"><span class="y">2026</span>.07~</td><td class="sub2"><a href="#w3a">3-2-1 · 나의 나무</a></td><td>개인성장계획(IDP) 기록</td><td>Supabase</td></tr>
-      <tr><td class="n"><span class="y">2026</span>.07~</td><td class="sub2"><a href="#w3b">3-2-2 · 숲 산책</a></td><td>동문 검색 · 커피챗 · CV 정리</td><td>RAG · Vercel</td></tr>
-      <tr><td class="n"><span class="y">2026</span>.07~</td><td class="sub2"><a href="#w3c">3-2-3 · 플랫폼 유지 방안</a></td><td>동문 편입 · <strong>설계 중</strong></td><td>—</td></tr>
+      <tr class="yr"><td class="n"><span class="d"><span class="y">2024</span>.07~</span></td><td><a href="#p1"><strong>1 · Python으로 업무 자동화</strong></a></td><td>파일과 시스템 화면을 다룰 때</td><td>Python · PyCharm</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span></td><td class="sub"><a href="#p2">1-1 · PDF 편집·병합</a></td><td>해외유학후보장학생 선발</td><td>PyPDF</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span></td><td class="sub"><a href="#p3">1-2 · 엑셀 나누기·합치기</a></td><td>해외유학후보장학생 선발</td><td>openpyxl</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span> · <span class="d"><span class="y">2026</span>.08</span></td><td class="sub"><a href="#p5">1-3 · 개인별 맞춤 메일 발송</a></td><td>선발 · 해외유학워크숍</td><td>smtplib · Flask</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2024</span>.12</span></td><td class="sub"><a href="#p4">1-4 · 웹 조작(스크래핑)</a></td><td>재단 예산 관리</td><td>Selenium · gspread</td></tr>
+      <tr class="yr"><td class="n"><span class="d"><span class="y">2025</span>.07~08</span></td><td class="sub"><a href="#p4a">1-4-1 · 자료 업로드·다운로드</a></td><td>선발 · 해외유학워크숍</td><td>Selenium</td></tr>
+      <tr class="yr"><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="sub"><a href="#p6">1-5 · 개인정보 마스킹</a></td><td>해외유학워크숍 · 선발</td><td>pdfplumber · Kiwi</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.02~</span></td><td><a href="#g1"><strong>2 · Apps Script로 업무 자동화</strong></a></td><td>신청을 받아 처리할 때</td><td>Apps Script</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.02</span></td><td class="sub"><a href="#g0">2-1 · 해외유학 대면모임 지원</a></td><td>대면모임 신청 · 정산</td><td>Forms · Calendar</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.08</span></td><td class="sub"><a href="#g2">2-2 · 법인카드 영수증 정리</a></td><td>팀비 정산</td><td>Drive · OCR · Sheets</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td><a href="#w1"><strong>3 · 웹앱 개발·배포</strong></a></td><td>각자 로그인해서 쓸 때</td><td>Supabase · Netlify</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07</span></td><td class="sub"><a href="#w2">3-1 · 워크숍 이수율 tracker</a></td><td>해외유학워크숍</td><td>Supabase · Netlify</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="sub"><a href="#w3">3-2 · 인재성장 플랫폼</a></td><td>성장 기록과 동문 연결 · <strong>개발 중</strong></td><td>Supabase · Vercel</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="sub2"><a href="#w3a">3-2-1 · 나의 나무</a></td><td>개인성장계획(IDP) 기록</td><td>Supabase</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="sub2"><a href="#w3b">3-2-2 · 숲 산책</a></td><td>동문 검색 · 커피챗 · CV 정리</td><td>RAG · Vercel</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="sub2"><a href="#w3c">3-2-3 · 플랫폼 유지 방안</a></td><td>동문 편입 · <strong>설계 중</strong></td><td>—</td></tr>
       <tr class="yr"><td class="n">—</td><td><a href="#rf1"><strong>맺음 · AI에 대한 생각</strong></a></td><td>언어 · 20:80 · 춘추전국시대</td><td>—</td></tr>
       <tr><td class="n">—</td><td><a href="#apxb">부록 A · AI 활용 넓히기</a></td><td>스킬 · 플러그인 · 커넥터</td><td>—</td></tr>
       <tr><td class="n">—</td><td><a href="#apxa">부록 B · Git과 GitHub</a></td><td>버전 관리</td><td>Git · GitHub</td></tr>
@@ -1704,7 +1732,7 @@ a.cta{text-decoration:none}
     <p>이제는 AI가 필요한 라이브러리를 찾아 설치하고 코드에 적용하는 과정까지 상당 부분 처리할 수 있습니다. 따라서 모든 라이브러리의 이름과 사용법을 미리 외워둘 필요는 없다고 생각합니다. 그래도 라이브러리 목록을 한 번 훑어보면 <strong>Python으로 어떤 일을 할 수 있는지</strong> 감을 잡는 데 도움이 됩니다.</p>
     <p>아래는 제가 AI와 Python 코딩하며 실제로 사용한 라이브러리입니다. <strong>오른쪽 번호를 누르면 해당 라이브러리를 사용한 프로젝트로 이동합니다.</strong></p>
 
-    <div class="tw ctr eq"><table>
+    <div class="tw ctr eq wide"><table>
       <caption class="sr">Python 으로 할 수 있는 일과 그때 쓴 라이브러리</caption>
       <thead>
       <tr><th scope="col">항목</th><th scope="col">주요 라이브러리·도구</th><th scope="col">실제 활용</th></tr>
@@ -1725,7 +1753,7 @@ a.cta{text-decoration:none}
     <h3>파일 확장자</h3>
     <p>Python으로 프로그램을 만들 때는 보통 PyCharm 같은 IDE에서 코드를 작성하고 실행합니다. 하지만 프로그램을 어느 정도 완성한 뒤에는 <strong>매번 IDE를 열어 코드를 실행할 필요가 없습니다.</strong> 자주 사용하는 프로그램이라면 <span class="tok m">.bat</span> 파일로 실행 과정을 간단하게 만들거나 <span class="tok m">.exe</span> 파일로 만들어 일반 프로그램처럼 실행할 수 있습니다.</p>
 
-    <div class="tw ctr eq"><table>
+    <div class="tw ctr eq wide"><table>
       <caption class="sr">Python으로 업무 자동화 ft. PyCharm — 표</caption>
       <thead>
       <tr><th scope="col">확장자</th><th scope="col">정의</th><th scope="col">주요 용도</th></tr>
@@ -2001,7 +2029,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
           <p>엑셀 명단은 <strong>첫 행에 열 이름을 적고 한 행에 한 사람을 둡니다.</strong> 열 이름이 필드 이름이 되어 워드 서식 파일의 필드와 연결됩니다. 첨부파일은 명단에 <strong>파일 이름만 기록하고</strong> 실제 파일은 정해진 폴더에 모아 둡니다.</p>
           <p>워드 서식 파일은 평소처럼 작성하되, <strong>사람마다 달라지는 자리에 <span class="tok m">&#123;열 이름&#125;</span>을 넣습니다.</strong> 코드는 명단에서 해당 값을 찾아 자리를 채우고, <strong>서식은 그대로 유지합니다.</strong></p>
 
-          <div class="tw ctr"><table>
+          <div class="tw ctr wide"><table>
       <caption class="sr">면접 안내 메일에서 명단과 서식과 결과가 짝을 이루는 방식 — 표</caption>
       <thead>
             <tr><th scope="col">명단의 1행</th><th scope="col">이름</th><th scope="col">일시</th><th scope="col">장소</th><th scope="col">첨부1</th></tr>
@@ -2125,7 +2153,7 @@ pages_to_add = min(num_pages, 2) if keyword == "논문 및 저서" else num_page
           <h3>요소 지정</h3>
           <p>코드는 화면을 보고 필요한 값을 판단할 수 없기 때문에 <strong>버튼·입력창·표의 어느 위치를 조작하거나 읽을지 지정해 주어야 합니다.</strong> 브라우저에서 오른쪽 클릭 → 검사를 누르면 요소<span class="cite-w"><a class="cite" id="c-p4-1" href="#n-p4-1" aria-describedby="d-p4-1">1</a><span class="cite-t" role="tooltip">웹 화면을 이루는 조각 하나. 입력칸·버튼·표의 한 칸이 각각 요소이며 저마다 고유한 값을 가지고 있습니다.</span></span>의 <span class="tok m">id</span>, 텍스트, <span class="tok m">XPath</span> 등을 확인할 수 있습니다.</p>
 
-          <div class="tw ctr eq xp"><table>
+          <div class="tw ctr eq xp wide"><table>
       <caption class="sr">웹 조작 — 요소를 지정하는 세 가지 방식</caption>
       <colgroup><col style="width:15%"><col style="width:26%"><col style="width:59%"></colgroup>
       <thead>
