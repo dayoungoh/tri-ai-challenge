@@ -142,9 +142,8 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .ws .cv{flex:0 0 12px;color:var(--ink-3)}
 
 .side-scroll{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:8px 12px 14px;display:flex}
+/* 배가 지나던 점선 자국은 뺐습니다. 배만 자리를 옮겨 다닙니다 */
 .rail{width:18px;flex:0 0 18px;position:relative}
-.rail::before{content:"";position:absolute;left:8px;top:14px;bottom:14px;width:1px;
-  background:repeating-linear-gradient(to bottom,var(--line) 0 3px,transparent 3px 7px)}
 .ship{position:absolute;left:0;top:0;width:16px;height:16px;color:var(--ink);
   transition:transform 420ms var(--out);will-change:transform}
 .groups{flex:1;min-width:0;position:relative}
@@ -1228,9 +1227,6 @@ a.cta{text-decoration:none}
 .scrim.on{opacity:1;pointer-events:auto}
 @media(max-width:1000px){
   body{padding:0}
-  /* 배가 지나는 점선 자국입니다. 넓은 화면에서는 거의 안 보이는데
-     화면이 촘촘한 휴대전화에서는 또렷하게 떠서 여기서는 감춥니다 */
-  .rail::before{display:none}
   .shell{border-radius:0;height:100dvh}
   /* 좁은 화면에서 서랍이 화면을 다 덮지 않도록 */
   .side{position:fixed;inset:0 auto 0 0;z-index:20;width:min(var(--nav-w),84vw);
