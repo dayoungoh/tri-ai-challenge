@@ -568,7 +568,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gb-item:hover .rx button,.gb-item .rx button.has{opacity:1}
 .gb-item .rx button:hover{background:rgb(26 26 26/.06)}
 .gb-item .rx button:active{transform:scale(.88)}
-.gb-item .rx button.mine{opacity:1;color:var(--ink);cursor:default}
+.gb-item .rx button.mine{opacity:1;color:var(--ink)}
 .gb-item .rx b{font-weight:640;font-variant-numeric:tabular-nums}
 
 .gb-h{display:flex;align-items:center;justify-content:space-between;gap:12px;
@@ -5361,30 +5361,46 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
       const t0 = document.createElement('time');
       t0.dateTime = r.created_at; t0.textContent = ago(r.created_at);
 
-      /* 하트 · 따봉. 셈은 서버가 올리고, 한 줄에 한 번만 누를 수 있게
-         내 브라우저에 표시를 남깁니다 — 계정이 없으니 그 이상은 막을 수 없습니다. */
+      /* 하트 · 따봉. 다시 누르면 물러납니다. 누가 눌렀는지는 내 브라우저에만
+         남기므로, 다른 기기에서 누른 것까지는 물러줄 수 없습니다 */
       const rx = document.createElement('span'); rx.className = 'rx';
       for(const [kind, glyph] of [['heart', '♥'], ['thumb', '👍']]){
         const btn = document.createElement('button');
         btn.type = 'button';
         const cnt = r[kind] || 0;
-        const mine = localStorage.getItem('gb-rx-' + r.id + '-' + kind);
-        btn.className = (cnt ? 'has' : '') + (mine ? ' mine' : '');
-        btn.setAttribute('aria-label', kind === 'heart' ? '하트' : '좋아요');
+        let mine = !!localStorage.getItem('gb-rx-' + r.id + '-' + kind);
+        const nm0 = kind === 'heart' ? '하트' : '좋아요';
         btn.append(glyph + ' ');
-        const bc = document.createElement('b'); bc.textContent = cnt || ''; btn.append(bc);
-        if(!mine) btn.addEventListener('click', async () => {
-          if(btn.classList.contains('mine')) return;
-          btn.classList.add('mine', 'has');
-          bc.textContent = (+bc.textContent || 0) + 1;          /* 먼저 올려 보여줍니다 */
-          localStorage.setItem('gb-rx-' + r.id + '-' + kind, '1');
+        const bc = document.createElement('b'); btn.append(bc);
+        const paint = n => {
+          btn.classList.toggle('mine', mine);
+          btn.classList.toggle('has', n > 0);
+          btn.setAttribute('aria-pressed', String(mine));
+          btn.setAttribute('aria-label', mine ? nm0 + ' 물러내기' : nm0);
+          bc.textContent = n || '';
+        };
+        paint(cnt);
+        btn.addEventListener('click', async () => {
+          if(btn.disabled) return;
+          btn.disabled = true;
+          const was = mine, before = +bc.textContent || 0;
+          mine = !was;
+          paint(Math.max(0, before + (was ? -1 : 1)));            /* 먼저 보여주고 */
           try{
-            await fetch(GB_URL + '/rest/v1/rpc/gb_react', {
-              method: 'POST',
-              headers: { ...GB_H, 'Content-Type': 'application/json' },
-              body: JSON.stringify({ p_id: r.id, p_kind: kind }),
-            });
+            if(was){
+              const ok = await unreact(r.id, kind);
+              if(ok) localStorage.removeItem('gb-rx-' + r.id + '-' + kind);
+              else { mine = true; paint(before); }        /* 서버가 안 받으면 원래대로 */
+            }else{
+              localStorage.setItem('gb-rx-' + r.id + '-' + kind, '1');
+              await fetch(GB_URL + '/rest/v1/rpc/gb_react', {
+                method: 'POST',
+                headers: { ...GB_H, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ p_id: r.id, p_kind: kind }),
+              });
+            }
           }catch(_){ /* 실패해도 화면은 그대로 둡니다. 다음 방문 때 서버 값으로 맞춰집니다 */ }
+          btn.disabled = false;
         });
         rx.append(btn);
       }
@@ -5393,6 +5409,37 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
       it.append(nm, bd, mt); listEl.append(it);
     }
     listEl.scrollTop = listEl.scrollHeight;      /* 새 글이 있는 아래쪽을 봅니다 */
+  }
+
+  /* 섬을 하나 내립니다. 올리는 것과 같이 서버 함수가 합니다.
+     함수가 아직 없으면(404) 표를 직접 고쳐 보고, 그것도 막혀 있으면
+     null 을 돌려줍니다. 부른 쪽은 화면을 원래대로 되돌립니다 */
+  async function unreact(id, kind){
+    try{
+      const r = await fetch(GB_URL + '/rest/v1/rpc/gb_unreact', {
+        method: 'POST',
+        headers: { ...GB_H, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ p_id: id, p_kind: kind }),
+      });
+      if(r.ok) return true;
+    }catch(_){}
+    /* 지금 값을 읽고, 그 값이 그대로일 때만 바꿉니다.
+       그 사이에 남이 눌렀으면 바뀌지 않고, 세 번까지 다시 해 봅니다 */
+    for(let i = 0; i < 3; i++){
+      const q = await fetch(GB_URL + '/rest/v1/guestbook?select=' + kind + '&id=eq.' + id, { headers: GB_H });
+      const rows = await q.json().catch(() => []);
+      const cur = (rows[0] || {})[kind] || 0;
+      if(cur <= 0) return true;
+      const u = await fetch(GB_URL + '/rest/v1/guestbook?id=eq.' + id + '&' + kind + '=eq.' + cur, {
+        method: 'PATCH',
+        headers: { ...GB_H, 'Content-Type': 'application/json', Prefer: 'return=representation' },
+        body: JSON.stringify({ [kind]: cur - 1 }),
+      });
+      const out = await u.json().catch(() => []);
+      if(Array.isArray(out) && out.length) return true;
+      if(!Array.isArray(out)) break;
+    }
+    return null;
   }
 
   async function load(){
