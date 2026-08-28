@@ -79,7 +79,8 @@
   /* Consolas 를 맨 앞에 둡니다. ui-monospace 를 앞세우면 Windows 11 에서는
      Cascadia Mono 로 잡혀 Consolas 가 한 번도 쓰이지 않았습니다. */
   --mono:Consolas,ui-monospace,SFMono-Regular,"SF Mono",Menlo,"Liberation Mono",
-    "Pretendard Variable",Pretendard,-apple-system,sans-serif;
+    "Roboto Mono","Noto Sans Mono","Droid Sans Mono","DejaVu Sans Mono","Courier New",
+    "Pretendard Variable",Pretendard,-apple-system,monospace;
   --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --out:cubic-bezier(.23,1,.32,1);
   --nav-w:320px;
@@ -616,6 +617,8 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .topbar{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid var(--line)}
 .crumb{display:flex;align-items:center;gap:7px;font-size:var(--t-ui);color:var(--ink-3);min-width:0}
 .crumb b{color:var(--ink);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 앞의 「본문」과 화살표는 줄지 않습니다. 좁으면 쪽 이름만 …로 줄어듭니다 */
+.crumb>span{flex:0 0 auto;white-space:nowrap}
 .crumb svg{flex:0 0 12px;color:var(--ink-3)}
 .tb-sp{flex:1}
 .srch{display:flex;align-items:center;gap:8px;width:280px;max-width:34vw;height:32px;padding:0 10px;
@@ -1064,12 +1067,16 @@ a.cta{text-decoration:none}
 /* ── 본문 안 링크 ──
    바깥으로 나가는 길입니다. 태그처럼 보이면 안 되고, 그냥 글자여도 안 됩니다.
    밑줄을 글자에서 한 칸 떨어뜨려 받침을 안 건드리게 합니다. */
-.doc p a[href^="http"],.doc dd a[href^="http"],.doc li a[href^="http"]{
+.doc p a[href^="http"],.doc dd a[href^="http"],.doc li a[href^="http"],
+.doc .ann-cap a[href^="http"]{
   color:var(--ink);text-decoration:underline;text-decoration-color:rgb(26 26 26/.28);
   text-underline-offset:3px;text-decoration-thickness:1px;
   transition:text-decoration-color 140ms ease}
-.doc p a[href^="http"]:hover,.doc dd a[href^="http"]:hover,.doc li a[href^="http"]:hover{
+.doc p a[href^="http"]:hover,.doc dd a[href^="http"]:hover,.doc li a[href^="http"]:hover,
+.doc .ann-cap a[href^="http"]:hover{
   text-decoration-color:var(--ink)}
+/* 그림을 크게 여는 링크입니다. 글자가 없으니 밑줄도 색도 붙을 일이 없어야 합니다 */
+.doc a.shot-l{display:block;color:inherit;text-decoration:none}
 
 /* ── 주석 ──
    본문에서 용어를 설명하려면 괄호를 열어야 하고, 괄호가 길어지면 문장이 끊깁니다.
@@ -1189,6 +1196,9 @@ a.cta{text-decoration:none}
 .scrim.on{opacity:1;pointer-events:auto}
 @media(max-width:1000px){
   body{padding:0}
+  /* 배가 지나는 점선 자국입니다. 넓은 화면에서는 거의 안 보이는데
+     화면이 촘촘한 휴대전화에서는 또렷하게 떠서 여기서는 감춥니다 */
+  .rail::before{display:none}
   .shell{border-radius:0;height:100dvh}
   /* 좁은 화면에서 서랍이 화면을 다 덮지 않도록 */
   .side{position:fixed;inset:0 auto 0 0;z-index:20;width:min(var(--nav-w),84vw);
@@ -1339,10 +1349,10 @@ a.cta{text-decoration:none}
         </button>
         <div class="kids" id="kids3" data-kids="3"><div>
           <a class="row" href="#w2" data-t="w2"><span class="kn">3-1</span><span class="kt">워크숍 이수율 tracker</span></a>
-          <a class="row mid" href="#w3" data-t="w3" data-mid="32" aria-expanded="false" aria-controls="gk32"><span class="kn">3-2</span><span class="kt">인재성장 플랫폼(개발 중)</span><svg aria-hidden="true" class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
+          <a class="row mid" href="#w3" data-t="w3" data-mid="32" aria-expanded="false" aria-controls="gk32"><span class="kn">3-2</span><span class="kt">인재성장 플랫폼<span class="kx">(개발 중)</span></span><svg aria-hidden="true" class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
           <div class="gkids" id="gk32" data-gkids="32"><div>
-            <a class="row" href="#w3a" data-t="w3a"><span class="kn">3-2-1</span><span class="kt">나의 나무(IDP)</span></a>
-            <a class="row" href="#w3b" data-t="w3b"><span class="kn">3-2-2</span><span class="kt">숲 산책(동문 네트워크)</span></a>
+            <a class="row" href="#w3a" data-t="w3a"><span class="kn">3-2-1</span><span class="kt">나의 나무<span class="kx">(IDP)</span></span></a>
+            <a class="row" href="#w3b" data-t="w3b"><span class="kn">3-2-2</span><span class="kt">숲 산책<span class="kx">(동문 네트워크)</span></span></a>
             <a class="row" href="#w3c" data-t="w3c"><span class="kn">3-2-3</span><span class="kt">플랫폼 유지 방안</span></a>
           </div></div>
         </div></div>
@@ -1466,9 +1476,9 @@ a.cta{text-decoration:none}
       <div class="ttl"><div class="eyebrow">서문</div><h2>개요</h2></div>
     </div>
     <p class="lead">돌아보면 사실 어떤 툴을 먼저 알아서 그 툴을 사용해 문제 상황을 해결했다기보다는 문제를 해결하기 위해 해당 툴을 사용하게 되었다는 쪽에 가깝습니다. 그래서 담당 사업별로 그리고 그 사업을 진행했던 시기별로 다뤘던 툴이 다릅니다.</p>
-    <p>해외유학후보장학생을 선발했던 &lsquo;24년 7~8월의 경우 대량의 개인정보가 들어간 자료를 반복해서 처리해야 한다는 제약이 있어 AI를 활용해 Python 코딩을 했습니다. 이후에도 선발처럼 개인정보를 다량으로 다뤄야 하는 경우에는 Python으로 우선 궁리해 보는 것 같습니다.</p>
-    <p>참여자에게 어떤 정보나 자료를 받아 증빙해야 하는 행정 처리의 경우에는 자동 문서 생성이 용이한 Google Apps Script를 사용했습니다.</p>
-    <p>그리고 참여자와 상호 소통이 필요하거나 로그인 과정이 필요한 경우에는 웹앱을 만들었습니다.</p>
+    <p class="lead">해외유학후보장학생을 선발했던 &lsquo;24년 7~8월의 경우 대량의 개인정보가 들어간 자료를 반복해서 처리해야 한다는 제약이 있어 AI를 활용해 Python 코딩을 했습니다. 이후에도 선발처럼 개인정보를 다량으로 다뤄야 하는 경우에는 Python으로 우선 궁리해 보는 것 같습니다.</p>
+    <p class="lead">참여자에게 어떤 정보나 자료를 받아 증빙해야 하는 행정 처리의 경우에는 자동 문서 생성이 용이한 Google Apps Script를 사용했습니다.</p>
+    <p class="lead">그리고 참여자와 상호 소통이 필요하거나 로그인 과정이 필요한 경우에는 웹앱을 만들었습니다.</p>
 
 
 
@@ -3983,7 +3993,15 @@ Thumbs.db</code></div>
 const targets = [...document.querySelectorAll('.row[data-t]')];
 const order   = targets.map(el => el.dataset.t);
 const titles  = targets.map(el => {
-  const kt = el.querySelector('.kt'); if(kt) return kt.textContent.trim();
+  /* 목차에만 붙이는 괄호 설명(.kx)은 위 칸·앞뒤 쪽 이름에서 뺍니다.
+     「웹 조작(스크래핑)」처럼 이름의 일부인 괄호는 그대로 둬야 해서
+     괄호를 통째로 지우지 않고 표시해 둔 것만 지웁니다 */
+  const kt = el.querySelector('.kt');
+  if(kt){
+    const c = kt.cloneNode(true);
+    c.querySelectorAll('.kx').forEach(x => x.remove());
+    return c.textContent.trim();
+  }
   const b = el.querySelector('.tx b');
   return (b ? b.textContent : el.textContent).replace(/^\d+\.\s*/,'').trim();
 });
@@ -4146,9 +4164,16 @@ document.addEventListener('click', e => {
   [t, dd].forEach(el => { if(!el) return; el.classList.remove('hit'); void el.offsetWidth; el.classList.add('hit'); });
 });
 
+/* 손가락으로 누르면 mouseenter 가 한 번 나고 mouseleave 는 나지 않습니다.
+   그래서 눌렀던 줄에 회색 자국이 그대로 남았습니다. 마우스가 있는 기기에서만
+   따라다니게 하고, 자판으로 옮길 때(focus)는 어디서나 켭니다 */
+const FINE = window.matchMedia('(hover:hover) and (pointer:fine)');
 rows.forEach(el => {
-  el.addEventListener('mouseenter', () => { if(!el.classList.contains('cur')) moveHL(el); });
+  el.addEventListener('mouseenter', () => {
+    if(FINE.matches && !el.classList.contains('cur')) moveHL(el);
+  });
   el.addEventListener('focus', () => { if(!el.classList.contains('cur')) moveHL(el); });
+  el.addEventListener('blur', () => { if(!FINE.matches) hl.style.opacity = 0; });
 });
 groups.addEventListener('mouseleave', () => { hl.style.opacity = 0; });
 document.querySelectorAll('.kids,.gkids').forEach(k =>
