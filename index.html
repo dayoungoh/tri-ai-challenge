@@ -601,20 +601,14 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   transition:background-color 140ms ease,box-shadow 140ms ease,transform 120ms var(--out)}
 .gb-item .rx button:hover{background:var(--shell);box-shadow:inset 0 0 0 1px var(--ink-3)}
 .gb-item .rx button:active{transform:scale(.88)}
-/* 내가 누른 것은 안을 채우고 바탕에도 옅게 색을 깝니다 */
-.gb-item .rx button.mine[data-k="heart"]{background:var(--red-soft);
-  box-shadow:inset 0 0 0 1px rgb(179 38 30/.28)}
-.gb-item .rx button.mine[data-k="thumb"]{background:var(--blue-soft);
-  box-shadow:inset 0 0 0 1px rgb(26 95 180/.28)}
-/* 하트와 따봉은 서로 다른 것이니 색도 나눕니다. 빨강과 파랑은 색을 잘
-   구분하지 못하는 눈에서도 멀리 떨어집니다 — 주황은 빨강과 붙어 보여
-   쓰지 않았습니다. 모양(하트·엄지)만으로도 구분되니 색은 거들 뿐입니다 */
-.gb-item .rx button[data-k="heart"]{color:var(--red)}
-.gb-item .rx button[data-k="thumb"]{color:var(--blue)}
+/* 색은 이모지가 냅니다. 내가 누른 것은 테두리를 진하게 해 표시합니다 —
+   바탕에까지 색을 깔면 이 문서에서 너무 큽니다 */
+.gb-item .rx button.mine{background:var(--shell);color:var(--ink);
+  box-shadow:inset 0 0 0 1px var(--ink)}
 .gb-item .rx b{font-weight:640;font-variant-numeric:tabular-nums}
-/* 아이콘은 문서의 다른 아이콘과 같은 굵기·크기입니다. 눌러 둔 것은 채웁니다 */
-.gb-item .rx svg{flex:0 0 11px;width:11px;height:11px}
-.gb-item .rx button.mine svg{fill:currentColor}
+/* 이모지는 글자보다 작게 앉으므로 한 단계 키우고 밑선을 맞춥니다 */
+.gb-item .rx .em{font-size:12px;line-height:1;
+  font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 
 .gb-h{display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:10px 13px;border-bottom:1px solid var(--line)}
@@ -5387,11 +5381,9 @@ function drawReceipt(){
 const GB_URL = 'https://nqakjixblwxnbcbmfxdq.supabase.co';
 const GB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5xYWtqaXhibHd4bmJjYm1meGRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY2NjEyMzQsImV4cCI6MjEwMjIzNzIzNH0.1TfDpzhQZ4p7EPlW54R77NWm3wAzeTZLkPInl1dGffo';
 const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
-/* 하트·따봉. 이모지 대신 문서의 다른 아이콘과 같은 선 그림을 씁니다 */
-const GB_ICON = {
-  heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
-  thumb: '<path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/>',
-};
+/* 하트·따봉. 반응 단추는 이모지가 가장 빨리 읽힙니다. 둘 다 컬러 이모지로
+   맞춰 짝이 어긋나지 않게 합니다 */
+const GB_ICON = { heart: '❤️', thumb: '👍' };
 
 (() => {
   const form = document.getElementById('gbForm'); if(!form) return;
@@ -5457,16 +5449,16 @@ const GB_ICON = {
       /* 하트 · 따봉. 다시 누르면 물러납니다. 누가 눌렀는지는 내 브라우저에만
          남기므로, 다른 기기에서 누른 것까지는 물러줄 수 없습니다 */
       const rx = document.createElement('span'); rx.className = 'rx';
-      for(const [kind, path] of [['heart', GB_ICON.heart], ['thumb', GB_ICON.thumb]]){
+      for(const [kind, glyph] of [['heart', GB_ICON.heart], ['thumb', GB_ICON.thumb]]){
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.dataset.k = kind;
         const cnt = r[kind] || 0;
         let mine = !!localStorage.getItem('gb-rx-' + r.id + '-' + kind);
         const nm0 = kind === 'heart' ? '하트' : '좋아요';
-        btn.insertAdjacentHTML('beforeend',
-          '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"'
-          + ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + path + '</svg>');
+        const ic = document.createElement('span'); ic.className = 'em';
+        ic.setAttribute('aria-hidden', 'true'); ic.textContent = glyph;
+        btn.append(ic);
         const bc = document.createElement('b'); btn.append(bc);
         const paint = n => {
           btn.classList.toggle('mine', mine);
