@@ -597,14 +597,12 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gb-item .rx button{display:inline-flex;align-items:center;gap:4px;border:0;cursor:pointer;
   padding:2px 8px;border-radius:999px;font-family:inherit;
   font-size:var(--t-micro);color:var(--ink-3);
-  background:var(--inset);box-shadow:inset 0 0 0 1px var(--line);
-  transition:background-color 140ms ease,box-shadow 140ms ease,transform 120ms var(--out)}
-.gb-item .rx button:hover{background:var(--shell);box-shadow:inset 0 0 0 1px var(--ink-3)}
+  background:rgb(26 26 26/.05);
+  transition:background-color 140ms ease,color 140ms ease,transform 120ms var(--out)}
+.gb-item .rx button:hover{background:rgb(26 26 26/.10)}
 .gb-item .rx button:active{transform:scale(.88)}
-/* 색은 이모지가 냅니다. 내가 누른 것은 테두리를 진하게 해 표시합니다 —
-   바탕에까지 색을 깔면 이 문서에서 너무 큽니다 */
-.gb-item .rx button.mine{background:var(--shell);color:var(--ink);
-  box-shadow:inset 0 0 0 1px var(--ink)}
+/* 색은 이모지가 냅니다. 내가 누른 것은 바탕을 한 톤 눌러 표시합니다 */
+.gb-item .rx button.mine{background:rgb(26 26 26/.13);color:var(--ink)}
 .gb-item .rx b{font-weight:640;font-variant-numeric:tabular-nums}
 /* 이모지는 글자보다 작게 앉으므로 한 단계 키우고 밑선을 맞춥니다 */
 .gb-item .rx .em{font-size:12px;line-height:1;
