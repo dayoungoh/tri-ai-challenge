@@ -5636,10 +5636,20 @@ const GB_ICON = { heart: '❤️', thumb: '👍' };
     home.classList.contains('on') && on()));
 })();
 
+/* 배는 늘 0(맨 위)에서 시작합니다. 첫 배치까지 미끄러지면 새로고침할 때마다
+   서문에서 현재 쪽까지 배가 훑고 내려옵니다. 첫 자리만 소리 없이 앉힙니다 */
+ship.style.transition = 'none';
+
 const h0 = location.hash.slice(1);
 if(h0 === 'me'){ show(0, false); showMe(false); }
 else if(h0 === 'mui'){ show(0, false); showMui(false); }
 else { const s = order.indexOf(h0); show(s >= 0 ? s : 0, false); }
+
+/* 목차 묶음이 펴지는 데 300ms 가 걸립니다. 그동안 배가 따라 움직이면
+   그것도 미끄러져 보이므로, 다 펴진 뒤에 전이를 되돌립니다.
+   이후의 쪽 이동은 예전처럼 그대로 미끄러집니다 */
+requestAnimationFrame(() => requestAnimationFrame(() => moveShip(activeEl())));
+setTimeout(() => { moveShip(activeEl()); ship.style.transition = ''; }, 380);
 
 
 /* ── 코드 칸 머리띠 · 줄번호 · 복사 ──
