@@ -213,6 +213,11 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gkids .kn{min-width:34px}
 .kids .row.cur .kn{color:var(--ink)}
 .kids .kt{min-width:0;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 「개발 중」처럼 아직 끝나지 않았다는 표시입니다. 본문에서 조심할 곳을
+   가리키는 주황 표시와 같은 모양을 씁니다 — 새 모양을 하나 더 만들지 않습니다 */
+.kids .kx.st{margin-left:5px;padding:1px 6px;border-radius:6px;
+  background:var(--amber-soft);color:var(--amber-ink);
+  font-size:.9em;font-weight:600;letter-spacing:-.01em}
 .hide{display:none!important}
 .nores{padding:12px 8px;font-size:var(--t-ui);color:var(--ink-3)}
 /* 검색 중에만 나타나는 적중 수 */
@@ -1385,7 +1390,7 @@ a.cta{text-decoration:none}
         </button>
         <div class="kids" id="kids3" data-kids="3"><div>
           <a class="row" href="#w2" data-t="w2"><span class="kn">3-1</span><span class="kt">워크숍 이수율 tracker</span></a>
-          <a class="row mid" href="#w3" data-t="w3" data-mid="32" aria-expanded="false" aria-controls="gk32"><span class="kn">3-2</span><span class="kt">인재성장 플랫폼<span class="kx">(개발 중)</span></span><svg aria-hidden="true" class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
+          <a class="row mid" href="#w3" data-t="w3" data-mid="32" aria-expanded="false" aria-controls="gk32"><span class="kn">3-2</span><span class="kt">인재성장 플랫폼<span class="kx st">개발 중</span></span><svg aria-hidden="true" class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></a>
           <div class="gkids" id="gk32" data-gkids="32"><div>
             <a class="row" href="#w3a" data-t="w3a"><span class="kn">3-2-1</span><span class="kt">나의 나무<span class="kx">(IDP)</span></span></a>
             <a class="row" href="#w3b" data-t="w3b"><span class="kn">3-2-2</span><span class="kt">숲 산책<span class="kx">(동문 네트워크)</span></span></a>
