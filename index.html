@@ -757,6 +757,14 @@ th{font-weight:640;font-size:var(--t-micro);letter-spacing:.08em;text-transform:
 .tw.qlink tbody td:nth-child(1),.tw.qlink tbody td:nth-child(2),.tw.qlink tbody td:nth-child(3){text-align:left}
 .tw.qlink tbody td.sub{padding-left:28px}
 .tw.qlink tbody td.sub2{padding-left:46px}
+/* 시기 열은 연도가 먼저 눈에 들어와야 언제 무엇을 했는지 흐름이 잡힙니다.
+   연도가 바뀌는 줄에만 진한 선을 둡니다 — 2024 · 2025 · 2026 세 덩이가 갈립니다 */
+.tw.qlink tbody td.n{color:var(--ink-3);white-space:nowrap}
+.tw.qlink tbody td.n .y{font-weight:500;color:var(--ink-3)}
+/* 연도가 처음 나오는 줄에서만 또렷합니다. 아래로는 흐려서 한 덩이로 읽힙니다 */
+.tw.qlink tbody tr.yr td.n .y{font-weight:680;color:var(--ink)}
+.tw.qlink tbody tr.yr>td{border-top:1px solid rgb(26 26 26/.14)}
+.tw.qlink tbody tr.yr:first-child>td{border-top:0}
 .tw.nw td:nth-child(2){white-space:nowrap}
 tr:last-child td{border-bottom:0}
 td{color:var(--ink-2)}
@@ -1457,17 +1465,17 @@ a.cta{text-decoration:none}
     <div class="phead">
       <div class="ttl"><div class="eyebrow">서문</div><h2>개요</h2></div>
     </div>
-    <p class="lead">지금까지의 경험을 아주 단순하게 정리하면 다음과 같습니다.</p>
-    <ol>
-      <li>개인정보가 포함된 대량의 문서를 반복해서 처리해야 한다면 저는 로컬에서 실행할 수 있는 <span class="tok">파이썬 자동화</span>를 먼저 생각합니다.</li>
-      <li>Google Workspace 안에서 반복적인 증빙·자료 처리 업무를 자동화해야 한다면 <span class="tok">Google Apps Script</span>를 활용합니다.</li>
-      <li>단순히 제 업무를 줄이는 것을 넘어 다른 사람의 참여와 입력이 필요한 업무라면 <span class="tok">Supabase</span>와 <span class="tok">Netlify</span> 같은 서비스를 활용해 웹앱 형태로 만들어 보고 있습니다.</li>
-    </ol>
+    <p class="lead">돌아보면 사실 어떤 툴을 먼저 알아서 그 툴을 사용해 문제 상황을 해결했다기보다는 문제를 해결하기 위해 해당 툴을 사용하게 되었다는 쪽에 가깝습니다. 그래서 담당 사업별로 그리고 그 사업을 진행했던 시기별로 다뤘던 툴이 다릅니다.</p>
+    <p>해외유학후보장학생을 선발했던 &lsquo;24년 7~8월의 경우 대량의 개인정보가 들어간 자료를 반복해서 처리해야 한다는 제약이 있어 AI를 활용해 Python 코딩을 했습니다. 이후에도 선발처럼 개인정보를 다량으로 다뤄야 하는 경우에는 Python으로 우선 궁리해 보는 것 같습니다.</p>
+    <p>참여자에게 어떤 정보나 자료를 받아 증빙해야 하는 행정 처리의 경우에는 자동 문서 생성이 용이한 Google Apps Script를 사용했습니다.</p>
+    <p>그리고 참여자와 상호 소통이 필요하거나 로그인 과정이 필요한 경우에는 웹앱을 만들었습니다.</p>
 
 
 
     <h3>이 문서의 구조</h3>
-    <p>세 장으로 나뉘고, 각 장은 도구를 소개하는 <strong>안내문 하나와 실제 사례 여럿</strong>으로 되어 있습니다. 절 이름을 누르면 해당 쪽으로 이동합니다.</p>
+    <p>그래서 본문에서는 크게 1) Python 2) Google Apps Script 3) 웹앱으로 나누어 각 툴의 장점과 특성 그리고 시작 방법을 서술했으며 하위에는 각 툴을 이용한 실제 사례를 넣었습니다.</p>
+    <p>각 사례는 I) 상황·문제 II) 해결 방법 III) 실행 결과의 순으로 서술하였습니다.</p>
+    <p>본 문서의 목차를 정리하자면 다음과 같습니다.</p>
     <div class="tw ctr eq tight qlink"><table>
       <caption class="sr">이 문서의 구조 — 표</caption>
       <colgroup><col style="width:20%"><col style="width:30%"><col style="width:28%"><col style="width:22%"></colgroup>
@@ -1475,23 +1483,23 @@ a.cta{text-decoration:none}
       <tr><th scope="col">시기</th><th scope="col">절</th><th scope="col">내용</th><th scope="col">도구</th></tr>
       </thead>
       <tbody>
-      <tr><td class="n">2024.07~</td><td><a href="#p1"><strong>1 · Python으로 업무 자동화</strong></a></td><td>파일과 시스템 화면을 다룰 때</td><td>Python · PyCharm</td></tr>
-      <tr><td class="n">2024.07</td><td class="sub"><a href="#p2">1-1 · PDF 편집·병합</a></td><td>해외유학후보장학생 선발</td><td>PyPDF</td></tr>
-      <tr><td class="n">2024.07</td><td class="sub"><a href="#p3">1-2 · 엑셀 나누기·합치기</a></td><td>해외유학후보장학생 선발</td><td>openpyxl</td></tr>
-      <tr><td class="n">2024.07 · 2026.08</td><td class="sub"><a href="#p5">1-3 · 개인별 맞춤 메일 발송</a></td><td>선발 · 해외유학워크숍</td><td>smtplib · Flask</td></tr>
-      <tr><td class="n">2024.12</td><td class="sub"><a href="#p4">1-4 · 웹 조작(스크래핑)</a></td><td>재단 예산 관리</td><td>Selenium · gspread</td></tr>
-      <tr><td class="n">2025.07~08</td><td class="sub"><a href="#p4a">1-4-1 · 자료 업로드·다운로드</a></td><td>선발 · 해외유학워크숍</td><td>Selenium</td></tr>
-      <tr><td class="n">2026.07~</td><td class="sub"><a href="#p6">1-5 · 개인정보 마스킹</a></td><td>해외유학워크숍 · 선발</td><td>pdfplumber · Kiwi</td></tr>
-      <tr><td class="n">2026.02~</td><td><a href="#g1"><strong>2 · Apps Script로 업무 자동화</strong></a></td><td>신청을 받아 처리할 때</td><td>Apps Script</td></tr>
-      <tr><td class="n">2026.02</td><td class="sub"><a href="#g0">2-1 · 해외유학 대면모임 지원</a></td><td>대면모임 신청 · 정산</td><td>Forms · Calendar</td></tr>
-      <tr><td class="n">2026.08</td><td class="sub"><a href="#g2">2-2 · 법인카드 영수증 정리</a></td><td>팀비 정산</td><td>Drive · OCR · Sheets</td></tr>
-      <tr><td class="n">2026.07~</td><td><a href="#w1"><strong>3 · 웹앱 개발·배포</strong></a></td><td>각자 로그인해서 쓸 때</td><td>Supabase · Netlify</td></tr>
-      <tr><td class="n">2026.07</td><td class="sub"><a href="#w2">3-1 · 워크숍 이수율 tracker</a></td><td>해외유학워크숍</td><td>Supabase · Netlify</td></tr>
-      <tr><td class="n">2026.07~</td><td class="sub"><a href="#w3">3-2 · 인재성장 플랫폼</a></td><td>성장 기록과 동문 연결 · <strong>개발 중</strong></td><td>Supabase · Vercel</td></tr>
-      <tr><td class="n">2026.07~</td><td class="sub2"><a href="#w3a">3-2-1 · 나의 나무</a></td><td>개인성장계획(IDP) 기록</td><td>Supabase</td></tr>
-      <tr><td class="n">2026.07~</td><td class="sub2"><a href="#w3b">3-2-2 · 숲 산책</a></td><td>동문 검색 · 커피챗 · CV 정리</td><td>RAG · Vercel</td></tr>
-      <tr><td class="n">2026.07~</td><td class="sub2"><a href="#w3c">3-2-3 · 플랫폼 유지 방안</a></td><td>동문 편입 · <strong>설계 중</strong></td><td>—</td></tr>
-      <tr><td class="n">—</td><td><a href="#rf1"><strong>맺음 · AI에 대한 생각</strong></a></td><td>언어 · 20:80 · 춘추전국시대</td><td>—</td></tr>
+      <tr class="yr"><td class="n"><span class="y">2024</span>.07~</td><td><a href="#p1"><strong>1 · Python으로 업무 자동화</strong></a></td><td>파일과 시스템 화면을 다룰 때</td><td>Python · PyCharm</td></tr>
+      <tr><td class="n"><span class="y">2024</span>.07</td><td class="sub"><a href="#p2">1-1 · PDF 편집·병합</a></td><td>해외유학후보장학생 선발</td><td>PyPDF</td></tr>
+      <tr><td class="n"><span class="y">2024</span>.07</td><td class="sub"><a href="#p3">1-2 · 엑셀 나누기·합치기</a></td><td>해외유학후보장학생 선발</td><td>openpyxl</td></tr>
+      <tr><td class="n"><span class="y">2024</span>.07 · <span class="y">2026</span>.08</td><td class="sub"><a href="#p5">1-3 · 개인별 맞춤 메일 발송</a></td><td>선발 · 해외유학워크숍</td><td>smtplib · Flask</td></tr>
+      <tr><td class="n"><span class="y">2024</span>.12</td><td class="sub"><a href="#p4">1-4 · 웹 조작(스크래핑)</a></td><td>재단 예산 관리</td><td>Selenium · gspread</td></tr>
+      <tr class="yr"><td class="n"><span class="y">2025</span>.07~08</td><td class="sub"><a href="#p4a">1-4-1 · 자료 업로드·다운로드</a></td><td>선발 · 해외유학워크숍</td><td>Selenium</td></tr>
+      <tr class="yr"><td class="n"><span class="y">2026</span>.07~</td><td class="sub"><a href="#p6">1-5 · 개인정보 마스킹</a></td><td>해외유학워크숍 · 선발</td><td>pdfplumber · Kiwi</td></tr>
+      <tr><td class="n"><span class="y">2026</span>.02~</td><td><a href="#g1"><strong>2 · Apps Script로 업무 자동화</strong></a></td><td>신청을 받아 처리할 때</td><td>Apps Script</td></tr>
+      <tr><td class="n"><span class="y">2026</span>.02</td><td class="sub"><a href="#g0">2-1 · 해외유학 대면모임 지원</a></td><td>대면모임 신청 · 정산</td><td>Forms · Calendar</td></tr>
+      <tr><td class="n"><span class="y">2026</span>.08</td><td class="sub"><a href="#g2">2-2 · 법인카드 영수증 정리</a></td><td>팀비 정산</td><td>Drive · OCR · Sheets</td></tr>
+      <tr><td class="n"><span class="y">2026</span>.07~</td><td><a href="#w1"><strong>3 · 웹앱 개발·배포</strong></a></td><td>각자 로그인해서 쓸 때</td><td>Supabase · Netlify</td></tr>
+      <tr><td class="n"><span class="y">2026</span>.07</td><td class="sub"><a href="#w2">3-1 · 워크숍 이수율 tracker</a></td><td>해외유학워크숍</td><td>Supabase · Netlify</td></tr>
+      <tr><td class="n"><span class="y">2026</span>.07~</td><td class="sub"><a href="#w3">3-2 · 인재성장 플랫폼</a></td><td>성장 기록과 동문 연결 · <strong>개발 중</strong></td><td>Supabase · Vercel</td></tr>
+      <tr><td class="n"><span class="y">2026</span>.07~</td><td class="sub2"><a href="#w3a">3-2-1 · 나의 나무</a></td><td>개인성장계획(IDP) 기록</td><td>Supabase</td></tr>
+      <tr><td class="n"><span class="y">2026</span>.07~</td><td class="sub2"><a href="#w3b">3-2-2 · 숲 산책</a></td><td>동문 검색 · 커피챗 · CV 정리</td><td>RAG · Vercel</td></tr>
+      <tr><td class="n"><span class="y">2026</span>.07~</td><td class="sub2"><a href="#w3c">3-2-3 · 플랫폼 유지 방안</a></td><td>동문 편입 · <strong>설계 중</strong></td><td>—</td></tr>
+      <tr class="yr"><td class="n">—</td><td><a href="#rf1"><strong>맺음 · AI에 대한 생각</strong></a></td><td>언어 · 20:80 · 춘추전국시대</td><td>—</td></tr>
       <tr><td class="n">—</td><td><a href="#apxb">부록 A · AI 활용 넓히기</a></td><td>스킬 · 플러그인 · 커넥터</td><td>—</td></tr>
       <tr><td class="n">—</td><td><a href="#apxa">부록 B · Git과 GitHub</a></td><td>버전 관리</td><td>Git · GitHub</td></tr>
       </tbody>
@@ -1517,12 +1525,16 @@ a.cta{text-decoration:none}
       </tbody>
     </table></div>
 
-    <h3>읽는 방법</h3>
-    <p>왼쪽에서 <strong>장을 누르면 안내문</strong>이 열리고 그 아래로 예시가 펼쳐집니다. 키보드 <strong>← →</strong> 로도 넘어갑니다.</p>
-    <p>상단 검색은 제목만이 아니라 <strong>본문 내용까지</strong> 찾기 때문에 자기 업무와 닮은 대목이 보이면 그 장만 보셔도 됩니다.</p>
-    <p>본문에서 <span class="tok g">파란 글씨</span>는 코드나 AI가 하는 일이고 <span class="tok a">주황 글씨</span>는 깨지기 쉬워 조심할 곳입니다. 작은 숫자가 붙은 용어에 마우스를 올리면 짧은 설명이 뜨고, 누르면 쪽 아래 주석으로 이동합니다.</p>
+    <h3>팁</h3>
+    <ol>
+      <li>예시의 초두는 서로 연결되어 있습니다. 시기별로 그리고 담당 사업별로 제가 왜 해당 툴을 다루게 되었는지를 서술해 두었기 때문에 앞의 사례부터 따라가며 읽으셔도 좋습니다. 서로 연결되는 부분은 <span class="cont">초록색 알약</span>으로 표시해 두었습니다.</li>
+      <li>마우스 클릭뿐만 아니라 좌우 방향키로도 페이지 간 navigate할 수 있습니다.</li>
+      <li>우측 상단에 검색창이 있습니다. 상단 검색은 제목뿐만 아니라 본문 내용까지 찾습니다.</li>
+      <li>각 예시 상단의 hashtag를 클릭하면 필터가 적용되어 해당 hashtag가 붙은 예시만 추려볼 수 있습니다.</li>
+      <li>본문에서 <span class="tok g">파란 글씨</span>는 코드나 AI가 하는 일이고 <span class="tok a">주황 글씨</span>는 깨지기 쉬워 조심해야 할 부분입니다.</li>
+      <li>각주가 붙은 용어에 마우스를 올리면 짧은 설명이 뜨고 누르면 페이지 아래의 주석으로 이동합니다.</li>
+    </ol>
   </section>
-
   <!-- 1-1 -->
   <section id="p1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1 · 안내문</div><h2>Python으로 업무 자동화</h2></div></div>
@@ -2320,6 +2332,21 @@ sheet.append_row(data)</code></div>
     </table></div>
           <p>기본값은 번호를 붙여 가리는 방식입니다. 홍길동이라는 이름이 문서에 열 번 나오면 모두 <span class="tok"><strong>[성명1]</strong></span>로 바뀝니다. <strong>이름 자체는 보이지 않지만 문서 안에서 같은 사람이라는 구분은 유지됩니다.</strong></p>
           <p>여러 파일을 함께 처리할 때도 같은 번호 체계를 사용합니다. 따라서 <strong>다른 파일에 같은 사람의 정보가 나오면 같은 번호가 부여됩니다.</strong></p>
+
+          <div class="ann">
+            <svg viewBox="0 0 700 344" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="원문 문서와 마스킹한 문서를 나란히 놓은 그림. 원문의 홍길동은 성명1로 김철수는 성명2로 바뀌고, 문장 안에 다시 나오는 같은 이름에도 같은 번호가 붙어 문서 안에서 두 사람을 구분할 수 있습니다">
+              <defs><marker id="p6N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+              <rect x="18" y="56" width="284" height="214" rx="6" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/><path d="M18,76 h284" stroke="#1a1a1a" stroke-width="1.2" opacity=".45"/><text x="32" y="71" font-size="10.5" fill="#737370">지원서.pdf</text><text x="34" y="110" font-size="10.5" fill="#737370">성명</text><text x="104" y="110" font-size="11" fill="#1a1a1a">홍길동</text><text x="34" y="140" font-size="10.5" fill="#737370">연락처</text><text x="104" y="140" font-size="11" fill="#1a1a1a">010-1234-5678</text><text x="34" y="170" font-size="10.5" fill="#737370">추천인</text><text x="104" y="170" font-size="11" fill="#1a1a1a">김철수</text><path d="M34,192 h252" stroke="#d8d8d4" stroke-width="1"/><text x="34" y="222" font-size="11" fill="#1a1a1a">홍길동 지원자는 김철수 교수의</text><text x="34" y="244" font-size="11" fill="#1a1a1a">지도로 학부 논문을 썼습니다.</text>
+              <text class="ic-t" x="160" y="298" text-anchor="middle">원문</text><text class="ic-s" x="160" y="314" text-anchor="middle">같은 이름이 여러 번 나옵니다</text>
+              <path d="M314,160 L384,160" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linecap="round" marker-end="url(#p6N)"/>
+              <text class="ic-s" x="349" y="152" text-anchor="middle" fill="#1a5fb4">찾아서</text>
+              <text class="ic-s" x="349" y="176" text-anchor="middle" fill="#1a5fb4">번호로 바꿈</text>
+              <rect x="398" y="56" width="284" height="214" rx="6" fill="#fff" stroke="#1a5fb4" stroke-width="1.5"/><path d="M398,76 h284" stroke="#1a5fb4" stroke-width="1.2" opacity=".45"/><text x="412" y="71" font-size="10.5" fill="#1a5fb4">마스킹 결과</text><text x="414" y="110" font-size="10.5" fill="#737370">성명</text><rect x="484.0" y="98.5" width="50.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="490.0" y="110" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">[성명1]</text><text x="414" y="140" font-size="10.5" fill="#737370">연락처</text><rect x="484.0" y="128.5" width="71.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="490.0" y="140" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">[휴대전화1]</text><text x="414" y="170" font-size="10.5" fill="#737370">추천인</text><rect x="484.0" y="158.5" width="50.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="490.0" y="170" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">[성명2]</text><path d="M414,192 h252" stroke="#cfe0f5" stroke-width="1"/><rect x="412.0" y="210.5" width="50.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="418.0" y="222" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">[성명1]</text><text x="468.3" y="222" font-size="11" fill="#1a1a1a">지원자는</text><rect x="512.9" y="210.5" width="50.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="518.9" y="222" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">[성명2]</text><text x="569.2" y="222" font-size="11" fill="#1a1a1a">교수의</text><text x="414" y="244" font-size="11" fill="#1a1a1a">지도로 학부 논문을 썼습니다.</text>
+              <text class="ic-t" x="540" y="298" text-anchor="middle" fill="#1a5fb4">마스킹 문서</text><text class="ic-s" x="540" y="314" text-anchor="middle" fill="#1a5fb4">가명 방식 · 2단계</text>
+              <g stroke="#737370" fill="#737370"><path class="st" d="M540,30 C540,38 540,44 540,50" marker-end="url(#p6N)"/><text class="hw" x="540" y="22" text-anchor="middle" stroke="none">같은 이름에는 같은 번호가 붙습니다</text></g>
+              </svg>
+          </div>
 
           <h3>마스킹 강도</h3>
           <p>가리는 범위를 단계로 선택합니다. <strong>강도를 높일수록 더 많은 개인정보가 가려집니다.</strong></p>
@@ -3531,17 +3558,17 @@ Claude Opus 5를 두 달 써보는 사이 금방 모델 성능이 안 좋아진�
   <!-- 4 -->
   <section id="f1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">맺음</div><h2>맺음말</h2></div></div>
-    <p>여기까지 읽어주셔서 감사드립니다! 사실 전문 읽으셨을 거라는 생각은 하지 않고, 필요한 부분만 취사선택하여 보시는 정도로만 활용하셔도 좋을 거 같습니다. (저도 읽기 힘들었습니다....)</p>
+    <p>여기까지 읽어주셔서 감사드립니다! 사실 전문 읽으셨을 거라는 기대는 하지 않고(저도 읽기 힘듭니다....), 필요한 부분만 취사선택하여 보시는 정도로만 활용하셔도 좋을 거 같습니다.</p>
 
     <p>Challenge에 낼 자료를 작성하는 게 생각보다 방대하여 도중에 진심으로 그만두고 싶었는데, 시작한 이상 끝은 봐야지 라는 어줍잖은 책임감으로 완벽하지는 않지만 완성은 해 보았습니다. 혹시 보이는 비문은 넓은 아량으로 용서 바랍니다.</p>
 
     <p>저는 미술대학원에서 석사 학위를 받았는데, 수료 후 석사 논문을 안 쓰고 도망갈까?를 한 때 진지하게 생각해 본 적이 있습니다. 자료를 작성하며 문득 석사 논문을 작성하던 (제 기준 끔찍한) 시절이 떠오르며 자승자박이라는 사자성어를 함께 숙고하게 되었습니다.</p>
 
-    <p>요즘 크리스토퍼 놀란 감독의 &lt;오디세이&gt;를 많이 보시던데, 초기 오디세우스의 여정의 목적은 귀향이었지만, 가지 않아도 될 곳에 구태여 찾아가보고(키클롭스의 섬), 듣지 않아도 될 소리를 몸을 묶어가며 듣는(세이렌) 오디세우스야말로 자승자박의 아이콘이 아닐지... 그래서 소소한 재미로 홈페이지에 배(ship)<svg class="ig" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c1.2 0 1.8.8 3 .8s1.8-.8 3-.8 1.8.8 3 .8 1.8-.8 3-.8 1.8.8 3 .8"/><path d="M5 14.5 4 10h16l-2.2 4.5"/><path d="M12 10V3l6 3.5-6 1"/></svg> 아이콘이 집<svg class="ig" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V21"/></svg>으로 돌아가는 컨셉으로 본 웹앱을 디자인해 보았습니다.</p>
+    <p>요즘 크리스토퍼 놀란 감독의 &lt;오디세이&gt;를 많이 보시던데, 초기 오디세우스의 여정의 목적은 귀향이었지만, 가지 않아도 될 곳에 구태여 찾아가보고(키클롭스의 섬), 듣지 않아도 될 노래(세이렌)를 몸을 묶어가며 듣는 오디세우스야말로 자승자박의 아이콘이 아닐지... 그래서 보셨을 지는 모르겠지만 소소한 재미로 홈페이지에 배(ship, <svg class="ig" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c1.2 0 1.8.8 3 .8s1.8-.8 3-.8 1.8.8 3 .8 1.8-.8 3-.8 1.8.8 3 .8"/><path d="M5 14.5 4 10h16l-2.2 4.5"/><path d="M12 10V3l6 3.5-6 1"/></svg>) 아이콘이 집(<svg class="ig" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V21"/></svg>)으로 돌아가는 컨셉으로 본 웹앱을 디자인해 보았습니다.</p>
 
-    <p>'24년 7월, 바이브 코딩이라는 단어가 생기기도 전에 제가 하던게 바이브코딩이라는 것도 모르고 AI로 Python 코드를 고쳐가며 PDF를 병합하던 때, 분명 저도 이것을 만들어 내지 못 하면 왠지 한동안 저녁에 집에 돌아가지 못 할 거 같다... 라는 두려움이 엄습하여 시작했었습니다. 그러나 하다보니 순간 순간 재미를 느끼기도 했고, 저녁이나 주말에 코드를 돌려보기도 했던 기억이 있습니다. 그래서 저 혼자 당시를 돌이켜보며 이것이야말로 '오디세이 프로젝트'지라 생각하며 작업했습니다.</p>
+    <p>'24년 7월, 바이브 코딩이라는 단어가 생기기도 전에 제가 하던게 바이브 코딩이라는 것도 모르고 AI로 Python 코드를 고쳐가며 PDF를 병합하던 때, 분명 저도 이 코드를 만들어 내지 못 하면 왠지 한동안 저녁에 집에 돌아가지 못 할 거 같다... 라는 두려움이 엄습하여 시작했었습니다. 그러나 하다보니 순간 순간 재미를 느끼기도 했고, 저녁이나 주말에 코드를 고치던 기억이 있습니다. 그래서 당시를 돌이켜보며 이것이야말로 '오디세이 프로젝트'지라 생각하며 본 과제를 작성했습니다.</p>
 
-    <p>보면 문득 사람은 오디세우스처럼 안정과 도파민 사이에서 갈팡질팡하며(이것이 쇼펜하우어가 말하는 "인생은 고통과 권태 사이를 오락가락하는 시계추와 같다"는 로직일까요), 내가 왜 이러고 있지?라는 생각이 드는 상황에 자신을 몰아넣으면서도 와중에 재미를 느끼고 사는, 참 다양하고도 모순되는 마음을 품고 사는 구나 싶습니다.</p>
+    <p>문득 보면 사람은 오디세우스처럼 안정과 도파민 사이에서 갈팡질팡하며(이것이 쇼펜하우어가 말하는 "인생은 고통과 권태 사이를 오락가락하는 시계추와 같다"는 로직일까요?), 내가 왜 이러고 있지?라는 생각이 드는 상황에 자신을 몰아넣으면서도 와중에 우연히 재미를 느끼고 사는, 참 다양하고도 모순되는 마음을 품고 사는 구나 싶습니다.</p>
 
     <p>그런 의미에서 제가 좋아하는 Walt Whitman의 시 구절을 하나 남기고 이만 글을 줄이겠습니다.</p>
     <div class="poem">
