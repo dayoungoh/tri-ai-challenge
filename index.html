@@ -78,6 +78,7 @@
      글리프 폴백은 글자 단위라 Sheet2·.pdf는 모노, 한글은 본문 서체. ── */
   /* Consolas 를 맨 앞에 둡니다. ui-monospace 를 앞세우면 Windows 11 에서는
      Cascadia Mono 로 잡혀 Consolas 가 한 번도 쓰이지 않았습니다. */
+  /* 고정폭은 코드 조각에만 씁니다. 나머지 글자는 모두 Pretendard 입니다 */
   --mono:Consolas,ui-monospace,SFMono-Regular,"SF Mono",Menlo,"Liberation Mono",
     "Roboto Mono","Noto Sans Mono","Droid Sans Mono","DejaVu Sans Mono","Courier New",
     "Pretendard Variable",Pretendard,-apple-system,monospace;
@@ -188,7 +189,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   visibility:hidden;transition:visibility 0s 300ms}
 .kids.open>div{visibility:visible;transition:visibility 0s}
 .kids .row{padding-left:31px;font-size:14px}
-.kids .kn{flex:0 0 auto;min-width:26px;font-family:var(--mono);font-size:var(--t-micro);
+.kids .kn{flex:0 0 auto;min-width:26px;font-family:var(--sans);font-size:var(--t-micro);
   color:var(--ink-3);transition:color 150ms ease}
 
 /* ── 3단 ──
@@ -292,7 +293,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 /* 연락처는 이 쪽에서 가장 덜 중요한 것입니다. 필요할 때 찾으면 되는 것이지
    두 번째로 눈에 들어올 것이 아닙니다. 상자를 걷고 한 줄로 내립니다. */
 .me-lines{margin-top:10px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
-.me-lines a{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:var(--t-ui);color:var(--ink-3);
+.me-lines a{display:inline-flex;align-items:center;gap:6px;font-family:var(--sans);font-size:var(--t-ui);color:var(--ink-3);
   transition:color 140ms ease}
 .me-lines a:hover{color:var(--ink)}
 .me-lines a .k{display:none}
@@ -330,14 +331,14 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .cats-nav button svg{width:13px;height:13px}
 .cats-bar{flex:1;height:3px;border-radius:2px;background:var(--line);overflow:hidden}
 .cats-bar .fill{display:block;height:100%;border-radius:2px;background:var(--ink-3)}
-.cats-num{flex:none;font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);
+.cats-num{flex:none;font-family:var(--sans);font-size:var(--t-micro);color:var(--ink-3);
   font-variant-numeric:tabular-nums}
 .cat img{width:100%;height:100%;object-fit:cover;display:block;
   pointer-events:none;-webkit-user-drag:none}
 .cat.empty{display:grid;place-items:center;padding:10px;text-align:center;
   background:repeating-linear-gradient(45deg,var(--inset) 0 7px,var(--shell) 7px 14px);
   box-shadow:inset 0 0 0 1px var(--line)}
-.cat.empty em{font-style:normal;font-family:var(--mono);font-size:var(--t-micro);
+.cat.empty em{font-style:normal;font-family:var(--sans);font-size:var(--t-micro);
   color:var(--ink-3);line-height:1.45;word-break:break-all}
 
 /* ── 사진 크게 보기 ──
@@ -426,13 +427,13 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .pet .rows .r{display:flex;gap:12px;font-size:var(--t-ui);line-height:1.5}
 .pet .rows .k{flex:0 0 72px;color:var(--ink-3)}
 /* 아직 안 채운 칸 */
-.pet .rows .v.todo-v{font-family:var(--mono);font-size:var(--t-micro)}
+.pet .rows .v.todo-v{font-family:var(--sans);font-size:var(--t-micro)}
 .pet .rows .v{color:var(--ink);font-weight:560}
 .pet .rows .v .soft{color:var(--ink-3);font-weight:400}
 .petrow{grid-column:2;display:flex;align-items:center;gap:11px;flex-wrap:wrap;
   padding-top:9px;border-top:1px solid var(--line)}
 .petrow .msg{font-size:var(--t-ui);color:var(--ink-2);line-height:1.5}
-.petrow .n{font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);
+.petrow .n{font-family:var(--sans);font-size:var(--t-micro);color:var(--ink-3);
   font-variant-numeric:tabular-nums}
 .pet.done .msg{color:var(--amber)}
 /* 자석 겉옷. 옮기는 일만 합니다 —
@@ -533,7 +534,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gb-send.on{background:var(--ink);color:var(--shell)}
 .gb-send:active{transform:scale(.96)}
 .gb-send:disabled{cursor:default}
-.gb-f .c{flex:0 0 auto;font-family:var(--mono);font-size:var(--t-micro);
+.gb-f .c{flex:0 0 auto;font-family:var(--sans);font-size:var(--t-micro);
   color:var(--amber);font-weight:700;font-variant-numeric:tabular-nums}
 .gb-f .c[hidden]{display:none}
 
@@ -556,7 +557,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gb-item.mine .bd{border-radius:15px 15px 4px 15px;
   background:var(--ink);color:var(--shell)}
 .gb-item .mt{display:flex;align-items:center;gap:4px;padding:0 3px}
-.gb-item time{font-family:var(--mono);font-size:var(--t-micro);
+.gb-item time{font-family:var(--sans);font-size:var(--t-micro);
   color:var(--ink-3);white-space:nowrap}
 /* 반응 — 말풍선 아래 아주 작은 단추 둘. 셈이 있으면 또렷합니다 */
 .gb-item .rx{display:flex;gap:2px}
@@ -628,7 +629,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .srch input{min-width:0;flex:1;background:none;border:0;outline:none;font-family:inherit;font-size:var(--t-ui);color:var(--ink)}
 .srch input::placeholder{color:var(--ink-3)}
 .srch kbd{flex:0 0 auto;padding:2px 5px;border-radius:6px;background:var(--shell);
-  font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);box-shadow:var(--shadow-hair)}
+  font-family:var(--sans);font-size:var(--t-micro);color:var(--ink-3);box-shadow:var(--shadow-hair)}
 /* 거른 상태를 푸는 단추. 검색창이 비어 있을 때는 / 태그가, 글자가 있을 때는 이것이 보입니다.
    거르고 나서 다른 쪽으로 넘어가면 눌렀던 태그가 화면 밖이라, 나갈 길이 여기 하나뿐입니다. */
 .srch .clr{flex:0 0 auto;display:grid;place-items:center;width:19px;height:19px;padding:0;border:0;
@@ -674,7 +675,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
 /* 붙어 있으면 제목·꼬리표·본문이 한 덩어리로 읽힙니다 */
 .chips+.lead,.chips+p{margin-top:30px}
-.chip{font-family:var(--mono);font-size:var(--t-ui);color:var(--ink-2);background:var(--shell);
+.chip{font-family:var(--sans);font-size:var(--t-ui);color:var(--ink-2);background:var(--shell);
   box-shadow:var(--shadow-hair);border-radius:999px;padding:3px 10px}
 /* 눌러서 거를 수 있다는 표시. 태그 글자가 곧 검색어입니다 */
 .chip{cursor:pointer;transition:background 120ms ease,color 120ms ease}
@@ -684,7 +685,7 @@ p strong,td strong,.v strong{color:var(--ink);font-weight:600}
 .chip.hold{color:var(--amber);background:var(--amber-soft);box-shadow:none}
 /* 아직 내용이 없는 페이지. 제출 전에 빠뜨릴 수 없게 눈에 띄어야 합니다 */
 .chip.todo{color:var(--amber);background:var(--amber-soft);box-shadow:inset 0 0 0 1px rgb(161 98 7/.3);font-weight:700}
-.todo-v{color:var(--amber)!important;font-family:var(--mono);font-size:var(--t-sm)}
+.todo-v{color:var(--amber)!important;font-family:var(--sans);font-size:var(--t-sm)}
 
 /* ── 지표 카드 ── */
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
@@ -737,7 +738,10 @@ table{width:100%;border-collapse:collapse;font-size:var(--t-sm);
 .tw{margin-top:16px;background:var(--shell);border-radius:14px;box-shadow:var(--shadow-card);overflow:auto hidden}
 .tw table{margin:0}
 /* 표를 색인으로도 쓰라고 절 번호를 답니다. 글이 아니라 자리 표시입니다 */
-.where{margin-left:6px;font-family:var(--mono);font-size:var(--t-micro);white-space:nowrap}
+/* 알약 셋이 나란히 붙으면 좁은 화면에서 칸을 넘었습니다.
+   알약 하나는 안 쪼개되, 알약과 알약 사이에서는 줄이 바뀌게 둡니다 */
+.where{margin-left:6px;font-family:var(--sans);font-size:var(--t-micro)}
+.where a{white-space:nowrap}
 .where a{color:var(--ink-3);text-decoration:none;padding:1px 8px;border-radius:999px;
   box-shadow:inset 0 0 0 1px var(--line-2);transition:box-shadow 160ms ease-out,background 160ms ease-out}
 .where a:hover{background:var(--inset);box-shadow:inset 0 0 0 1px var(--line)}
@@ -787,7 +791,7 @@ td.n{font-variant-numeric:tabular-nums}
   width:1px;height:10px;background:var(--line-2)}
 .step b{color:var(--ink);font-weight:620}
 .step .s{flex:0 0 21px;height:21px;border-radius:6px;background:var(--inset);color:var(--ink-3);
-  font-family:var(--mono);font-size:var(--t-micro);display:grid;place-items:center;
+  font-family:var(--sans);font-size:var(--t-micro);display:grid;place-items:center;
   margin-top:1px}  /* (15px × 1.55 − 21px) / 2 ≈ 1px — 첫 줄 광학 중심 */
 .step.key{background:var(--amber-soft);box-shadow:0 0 0 1px rgb(150 105 12/.3)}
 .step.key .s{background:var(--amber);color:#fff}
@@ -832,7 +836,7 @@ td.n{font-variant-numeric:tabular-nums}
   background:var(--shell);padding:12px 16px;font-size:var(--t-sm);
   color:var(--ink-2);line-height:1.55}
 .ask li::before{content:counter(a);flex:0 0 17px;height:17px;border-radius:6px;
-  background:var(--inset);color:var(--ink-3);font-family:var(--mono);
+  background:var(--inset);color:var(--ink-3);font-family:var(--sans);
   font-size:var(--t-micro);display:grid;place-items:center;transform:translateY(2px)}
 .acts{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
 /* 유령 버튼 — 같은 크기, 낮은 목소리. 주 동작이 하나임을 지킵니다 */
@@ -854,8 +858,8 @@ a.cta{text-decoration:none}
 .pager .d{display:none}
 .pager .t{font-weight:600;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pager .nx{margin-left:auto}
-.pager button:not(.nx)::before{content:"←";font-family:var(--mono);opacity:.7}
-.pager .nx::after{content:"→";font-family:var(--mono);opacity:.7}
+.pager button:not(.nx)::before{content:"←";font-family:var(--sans);opacity:.7}
+.pager .nx::after{content:"→";font-family:var(--sans);opacity:.7}
 @media(max-width:620px){ .pager .t{max-width:36vw} }
 
 /* ── 바꿔야 하는 값 (칩 목록) ── */
@@ -884,7 +888,7 @@ a.cta{text-decoration:none}
 .fix-row .lb{flex:0 0 auto;font-size:var(--t-ui);font-weight:600;color:var(--ink);letter-spacing:-.008em}
 .fix-row .cp{flex:1;min-width:0;display:inline-flex;align-items:center;height:23px;padding:0 8px;
   border-radius:6px;background:var(--inset);box-shadow:var(--shadow-hair);
-  font-family:var(--mono);font-size:var(--t-ui);color:var(--ink-2);
+  font-family:var(--sans);font-size:var(--t-ui);color:var(--ink-2);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:background 100ms ease}
 .fix-row .cp.warn{color:var(--amber);background:var(--amber-soft);box-shadow:none}
 
@@ -900,7 +904,7 @@ a.cta{text-decoration:none}
 .fix-det li.g::before,.fix-det li.a::before{font-weight:700;margin-right:5px}
 .fix-det li.g::before{content:"↑ "}
 .fix-det li.a::before{content:"! "}
-.fix-det li.m{font-family:var(--mono)}
+.fix-det li.m{font-family:var(--sans)}
 .fix-det li.g{color:var(--blue)}
 .fix-det li.a{color:var(--amber)}
 
@@ -910,10 +914,10 @@ a.cta{text-decoration:none}
   text-decoration:none;color:inherit;transition:background 140ms ease}
 .lnk a:first-child{border-top:0}
 .lnk .n{flex:0 0 22px;height:22px;border-radius:6px;background:var(--inset);color:var(--ink-3);
-  font-family:var(--mono);font-size:var(--t-micro);display:grid;place-items:center}
+  font-family:var(--sans);font-size:var(--t-micro);display:grid;place-items:center}
 .lnk .b{flex:1;min-width:0}
 .lnk .b strong{display:block;font-size:var(--t-sm);font-weight:620;color:var(--ink);letter-spacing:-.008em}
-.lnk .b em{display:block;font-style:normal;font-family:var(--mono);font-size:var(--t-ui);color:var(--ink-3);
+.lnk .b em{display:block;font-style:normal;font-family:var(--sans);font-size:var(--t-ui);color:var(--ink-3);
   margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .lnk .c{flex:0 0 auto;font-size:var(--t-micro);font-weight:700;letter-spacing:.05em;
   color:var(--green);background:var(--green-soft);border-radius:999px;padding:3px 9px}
@@ -952,7 +956,7 @@ a.cta{text-decoration:none}
    들어가도록 글자만 조금 줄였습니다 */
 .stp>.hd .n{display:grid;place-items:center;width:23px;height:23px;border-radius:6px;
   background:var(--ink);color:var(--shell);
-  font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:-.02em}
+  font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:-.02em}
 /* keep-all 이 없으면 "Human Error 감소" 가 단어 가운데서 끊깁니다 */
 /* 장 제목보다 한 칸 아래여야 합니다. 크기가 같으니 굵기와 자간으로 낮춥니다 */
 .stp .t{margin-top:8px;font-size:13pt;font-weight:600;color:var(--ink);letter-spacing:-.004em;
@@ -1087,7 +1091,7 @@ a.cta{text-decoration:none}
   min-width:16px;height:16px;padding:0 3.5px;margin-left:2px;
   vertical-align:5px;border-radius:6px;
   background:var(--inset);box-shadow:inset 0 0 0 1px var(--line);
-  font-family:var(--mono);font-size:10.5px;font-weight:600;line-height:1;
+  font-family:var(--sans);font-size:10.5px;font-weight:600;line-height:1;
   color:var(--ink-3);transition:background 140ms ease,color 140ms ease}
 .cite:hover,.cite:focus-visible{background:var(--ink);color:var(--shell);box-shadow:none}
 /* 뜻은 번호 위에 뜹니다. 손가락에는 hover 가 없어, 눌러서 목록으로 가는 길도 둡니다 */
@@ -1104,10 +1108,10 @@ a.cta{text-decoration:none}
 
 /* 쪽 끝에 모아 두는 뜻풀이 */
 .notes{margin-top:40px;padding-top:15px;border-top:1px solid var(--line)}
-.notes-h{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.06em;
+.notes-h{font-family:var(--sans);font-size:var(--t-micro);letter-spacing:.06em;
   text-transform:uppercase;color:var(--ink-3);margin-bottom:11px}
 .notes dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px 12px;margin:0}
-.notes dt{font-family:var(--mono);font-size:var(--t-micro);color:var(--ink-3);
+.notes dt{font-family:var(--sans);font-size:var(--t-micro);color:var(--ink-3);
   font-variant-numeric:tabular-nums;padding-top:3px}
 .notes dd{margin:0;font-size:var(--t-ui);line-height:1.6;color:var(--ink-2);word-break:keep-all}
 /* 각주를 눌러 내려왔으면 올라갈 길도 있어야 합니다 */
@@ -1131,7 +1135,7 @@ a.cta{text-decoration:none}
 .pre.card .cbar{display:flex;align-items:center;justify-content:space-between;gap:10px;
   padding:7px 9px 7px 13px;border-bottom:1px solid var(--line)}
 .pre.card .cbar .nm{flex:1 1 auto;display:flex;align-items:baseline;gap:8px;min-width:0}
-.pre.card .cbar .f{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--ink);
+.pre.card .cbar .f{font-family:var(--sans);font-size:12px;font-weight:600;color:var(--ink);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pre.card .cbar .lg{font-size:11px;color:var(--ink-3);white-space:nowrap}
 .pre.card .cpy{flex:0 0 auto;white-space:nowrap;display:flex;align-items:center;gap:5px;height:23px;padding:0 7px;border:0;
@@ -4172,8 +4176,12 @@ rows.forEach(el => {
   el.addEventListener('mouseenter', () => {
     if(FINE.matches && !el.classList.contains('cur')) moveHL(el);
   });
-  el.addEventListener('focus', () => { if(!el.classList.contains('cur')) moveHL(el); });
-  el.addEventListener('blur', () => { if(!FINE.matches) hl.style.opacity = 0; });
+  /* 손가락으로 누르면 focus 는 들어오지만 :focus-visible 은 아닙니다.
+     자판으로 옮겨 온 것만 골라 켭니다 */
+  el.addEventListener('focus', () => {
+    if(el.matches(':focus-visible') && !el.classList.contains('cur')) moveHL(el);
+  });
+  el.addEventListener('blur', () => { hl.style.opacity = 0; });
 });
 groups.addEventListener('mouseleave', () => { hl.style.opacity = 0; });
 document.querySelectorAll('.kids,.gkids').forEach(k =>
@@ -4224,6 +4232,9 @@ const drawer = open => {
   mbtn.setAttribute('aria-expanded', String(open));
   if(open) side.querySelector('.row').focus();      /* 열면 첫 항목으로 포커스가 들어갑니다 */
   else mbtn.focus();                                 /* 닫으면 누른 자리로 돌아옵니다 */
+  /* 위의 포커스는 자판을 쓰는 분을 위한 것이지 "이 줄을 보고 있다"는 뜻이 아닙니다.
+     이것 때문에 서랍을 열 때마다 첫 줄(인삿말)에 회색 자국이 남았습니다 */
+  hl.style.opacity = 0;
 };
 mbtn.addEventListener('click', () => drawer(!side.classList.contains('open')));
 scrim.addEventListener('click', () => drawer(false));
