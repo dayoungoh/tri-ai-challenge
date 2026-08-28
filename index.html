@@ -573,8 +573,13 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gb-item{display:flex;flex-direction:column;align-items:flex-start;gap:3px;
   width:100%;font-size:var(--t-ui);line-height:1.65}
 .gb-item.mine{align-items:flex-end}
-.gb-item .nm{padding:0 4px;font-size:var(--t-micro);font-weight:660;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+/* 이름 · 시간이 한 줄. 이름이 길면 이름만 줄어들고 시간은 남습니다 */
+.gb-item .nm{display:flex;align-items:baseline;gap:5px;max-width:100%;
+  padding:0 4px;font-size:var(--t-micro);line-height:1.5}
+.gb-item .nm .who{font-weight:660;min-width:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gb-item .nm .dot{flex:0 0 auto;color:var(--line)}
+.gb-item .nm time{flex:0 0 auto;font-weight:400}
 .gb-item .bd{max-width:min(78%,440px);padding:8px 13px;
   border-radius:15px 15px 15px 4px;background:var(--inset);color:var(--ink);
   font-size:var(--t-ui);line-height:1.62;
@@ -586,7 +591,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   color:var(--ink-3);white-space:nowrap}
 /* 반응 — 말풍선 아래 아주 작은 단추 둘. 셈이 있으면 또렷합니다 */
 .gb-item .rx{display:flex;gap:2px}
-.gb-item .rx button{display:inline-flex;align-items:center;gap:3px;border:0;background:none;
+.gb-item .rx button{display:inline-flex;align-items:center;gap:4px;border:0;background:none;
   padding:1px 5px;border-radius:6px;cursor:pointer;font-family:inherit;
   font-size:var(--t-micro);color:var(--ink-3);opacity:.55;
   transition:opacity 140ms ease,background-color 140ms ease,transform 120ms var(--out)}
@@ -595,6 +600,9 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .gb-item .rx button:active{transform:scale(.88)}
 .gb-item .rx button.mine{opacity:1;color:var(--ink)}
 .gb-item .rx b{font-weight:640;font-variant-numeric:tabular-nums}
+/* 아이콘은 문서의 다른 아이콘과 같은 굵기·크기입니다. 눌러 둔 것은 채웁니다 */
+.gb-item .rx svg{flex:0 0 11px;width:11px;height:11px}
+.gb-item .rx button.mine svg{fill:currentColor}
 
 .gb-h{display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:10px 13px;border-bottom:1px solid var(--line)}
@@ -5367,6 +5375,11 @@ function drawReceipt(){
 const GB_URL = 'https://nqakjixblwxnbcbmfxdq.supabase.co';
 const GB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5xYWtqaXhibHd4bmJjYm1meGRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY2NjEyMzQsImV4cCI6MjEwMjIzNzIzNH0.1TfDpzhQZ4p7EPlW54R77NWm3wAzeTZLkPInl1dGffo';
 const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
+/* 하트·따봉. 이모지 대신 문서의 다른 아이콘과 같은 선 그림을 씁니다 */
+const GB_ICON = {
+  heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+  thumb: '<path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2a3.13 3.13 0 0 1 3 3.88Z"/>',
+};
 
 (() => {
   const form = document.getElementById('gbForm'); if(!form) return;
@@ -5412,27 +5425,35 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
       const mineRow = localStorage.getItem('gb-mine-' + r.id);
       if(mineRow) it.classList.add('mine');
 
-      const nm = document.createElement('span'); nm.className = 'nm';
-      nm.style.color = mineRow ? 'var(--ink-3)' : hue(r.name);
-      nm.textContent = r.name;                                  /* textContent — 남의 글 */
+      const nm = document.createElement('div'); nm.className = 'nm';
+      const nmT = document.createElement('span'); nmT.className = 'who';
+      nmT.style.color = mineRow ? 'var(--ink-3)' : hue(r.name);
+      nmT.textContent = r.name;                                 /* textContent — 남의 글 */
+      const t0 = document.createElement('time');
+      t0.dateTime = r.created_at; t0.textContent = ago(r.created_at);
+      const sep = document.createElement('span'); sep.className = 'dot';
+      sep.textContent = '·'; sep.setAttribute('aria-hidden', 'true');
+      /* 누가·언제는 위에 붙이고, 말풍선 아래에는 반응만 남깁니다.
+         셋을 한 줄에 두면 그 줄이 말풍선보다 넓어져 어디에 붙은 글인지 흐려집니다 */
+      if(mineRow) nm.append(t0, sep, nmT); else nm.append(nmT, sep, t0);
 
       const bd = document.createElement('div'); bd.className = 'bd';
       bd.textContent = r.body;                                  /* textContent — 남의 글 */
 
       const mt = document.createElement('div'); mt.className = 'mt';
-      const t0 = document.createElement('time');
-      t0.dateTime = r.created_at; t0.textContent = ago(r.created_at);
 
       /* 하트 · 따봉. 다시 누르면 물러납니다. 누가 눌렀는지는 내 브라우저에만
          남기므로, 다른 기기에서 누른 것까지는 물러줄 수 없습니다 */
       const rx = document.createElement('span'); rx.className = 'rx';
-      for(const [kind, glyph] of [['heart', '♥'], ['thumb', '👍']]){
+      for(const [kind, path] of [['heart', GB_ICON.heart], ['thumb', GB_ICON.thumb]]){
         const btn = document.createElement('button');
         btn.type = 'button';
         const cnt = r[kind] || 0;
         let mine = !!localStorage.getItem('gb-rx-' + r.id + '-' + kind);
         const nm0 = kind === 'heart' ? '하트' : '좋아요';
-        btn.append(glyph + ' ');
+        btn.insertAdjacentHTML('beforeend',
+          '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor"'
+          + ' stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + path + '</svg>');
         const bc = document.createElement('b'); btn.append(bc);
         const paint = n => {
           btn.classList.toggle('mine', mine);
@@ -5467,7 +5488,7 @@ const GB_H = { apikey: GB_KEY, Authorization: 'Bearer ' + GB_KEY };
         rx.append(btn);
       }
 
-      if(mineRow) mt.append(rx, t0); else mt.append(t0, rx);
+      mt.append(rx);
       it.append(nm, bd, mt); listEl.append(it);
     }
     listEl.scrollTop = listEl.scrollHeight;      /* 새 글이 있는 아래쪽을 봅니다 */
