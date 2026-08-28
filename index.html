@@ -216,9 +216,10 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .hide{display:none!important}
 .nores{padding:12px 8px;font-size:var(--t-ui);color:var(--ink-3)}
 /* 검색 중에만 나타나는 적중 수 */
+/* 숫자는 좋고 나쁨을 뜻하지 않으니 중립색으로 둡니다 */
 .mc{flex:0 0 auto;height:17px;min-width:17px;padding:0 5px;border-radius:10px;display:grid;
   place-items:center;font-size:var(--t-micro);font-weight:700;font-variant-numeric:tabular-nums;
-  background:var(--green-soft);color:var(--green)}
+  background:rgb(26 26 26/.07);color:var(--ink-2)}
 
 .side-foot{position:relative;padding:10px 12px 12px;border-top:1px solid var(--line)}
 .uc{display:flex;align-items:center;gap:10px;width:100%;padding:8px;border-radius:10px;
@@ -1575,6 +1576,7 @@ a.cta{text-decoration:none}
       <li>예시의 초두는 서로 연결되어 있습니다. 시기별로 그리고 담당 사업별로 제가 왜 해당 툴을 다루게 되었는지를 서술해 두었기 때문에 앞의 사례부터 따라가며 읽으셔도 좋습니다. 서로 연결되는 부분은 <span class="cont">초록색 알약</span>으로 표시해 두었습니다.</li>
       <li>마우스 클릭뿐만 아니라 좌우 방향키로도 페이지 간 navigate할 수 있습니다.</li>
       <li>우측 상단에 검색창이 있습니다. 상단 검색은 제목뿐만 아니라 본문 내용까지 찾습니다.</li>
+      <li>검색하면 목차의 각 항목 오른쪽에 회색 숫자가 붙습니다. 그 쪽 본문에 검색어가 몇 번 나오는지를 센 것이라, 숫자가 큰 쪽이 그 내용을 주로 다루는 쪽입니다.</li>
       <li>각 예시 상단의 hashtag를 클릭하면 필터가 적용되어 해당 hashtag가 붙은 예시만 추려볼 수 있습니다.</li>
       <li>본문에서 <span class="tok g">파란 글씨</span>는 코드나 AI가 하는 일이고 <span class="tok a">주황 글씨</span>는 깨지기 쉬워 조심해야 할 부분입니다.</li>
       <li>각주가 붙은 용어에 마우스를 올리면 짧은 설명이 뜨고 누르면 페이지 아래의 주석으로 이동합니다.</li>
@@ -4325,6 +4327,16 @@ function setCount(row, n){
   el.textContent = n;
 }
 
+/* 배는 목차 위의 어느 줄을 가리킵니다. 걸러낸 뒤 그 줄이 사라졌으면
+   가리킬 곳이 없으니 배도 숨깁니다 — 아무것도 안 걸린 때가 그렇습니다.
+   곁길(오다영·무이네)에서는 이미 숨겨 두었으므로 건드리지 않습니다 */
+function shipForFilter(){
+  if(document.querySelector('.pager').style.display === 'none') return;
+  const el = activeEl();
+  const on = el && !el.classList.contains('hide') && el.offsetParent !== null;
+  ship.style.opacity = on ? '' : '0';
+  if(on) moveShip(el);
+}
 function runSearch(){
   const v = norm(q.value.trim());
   const grps = [...document.querySelectorAll('.grp')];
@@ -4335,7 +4347,7 @@ function runSearch(){
     nores.classList.add('hide');
     const ch = chapterOf(order[cur]);
     document.querySelectorAll('.kids').forEach(k => k.classList.toggle('open', k.dataset.kids === ch));
-    requestAnimationFrame(rest); return;
+    requestAnimationFrame(() => { rest(); shipForFilter(); }); return;
   }
 
   let hits = 0;
@@ -4358,6 +4370,7 @@ function runSearch(){
   nores.classList.toggle('hide', hits > 0);
   live.textContent = hits ? hits + '개 항목' : '일치하는 항목이 없습니다';
   hl.style.opacity = 0;
+  requestAnimationFrame(shipForFilter);
 }
 q.addEventListener('input', runSearch);
 
