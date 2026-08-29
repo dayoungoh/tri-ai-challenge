@@ -3697,21 +3697,45 @@ sheet.append_row(data)</code></div>
           <p>지금 제가 하는 일을 100으로 나눠 보면, 처음 10은 제가 하고, 10부터 80까지는 AI가 하고, 마지막 20은 다시 제가 하는 거 같습니다. 물론 과제마다 비중은 다르겠고, 아마 웹앱 제작 같은 예시에 해당하는 이야기일 거 같습니다.</p>
           <p>사실 80에서 멈춰도 됩니다. AI를 이용하면 적당한 수준까지는 꽤 쉽게 완성이 됩니다. 그런데 결과물이 마음에 들지 않기 시작하면 80에서 100 사이에 아주 많은 노력을 들이게 되는데 이즈음부터는 <span class="tok">취향과 예술의 영역</span>이 아닐지...</p>
     <div class="ann">
-      <svg viewBox="0 0 700 108" xmlns="http://www.w3.org/2000/svg" role="img"
-        aria-label="일을 100으로 나눈 가로 막대. 0에서 10까지는 내가, 10에서 80까지는 AI가, 80에서 100까지는 다시 내가 맡습니다. 마지막 80에서 100 구간이 취향과 예술의 영역입니다.">
-        <rect x="64" y="40" width="57.2" height="30" fill="#1a1a1a" fill-opacity="0.12" stroke="#1a1a1a" stroke-width="1.4"/>
-        <rect x="121.2" y="40" width="400.4" height="30" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
-        <rect x="521.6" y="40" width="114.4" height="30" fill="#1a1a1a" fill-opacity="0.12" stroke="#1a1a1a" stroke-width="1.4"/>
-        <text class="ic-t" x="92.6" y="60" text-anchor="middle">나</text>
-        <text class="ic-t" x="321.4" y="60" text-anchor="middle" fill="#6a6a67">AI</text>
-        <text class="ic-t" x="578.8" y="60" text-anchor="middle">나</text>
-        <g fill="#737370">
-          <text class="ic-s" x="64" y="88" text-anchor="middle" font-size="10">0</text>
-          <text class="ic-s" x="121.2" y="88" text-anchor="middle" font-size="10">10</text>
-          <text class="ic-s" x="521.6" y="88" text-anchor="middle" font-size="10">80</text>
-          <text class="ic-s" x="636" y="88" text-anchor="middle" font-size="10">100</text>
+      <svg viewBox="0 0 660 236" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="일을 100으로 나눈 세 단계. 처음 10은 내가 시작하고, 10에서 80까지는 AI가 만들고, 80에서 100까지 남는 20을 다시 내가 다듬습니다. 마지막 20이 취향과 예술의 영역입니다.">
+        <defs>
+          <marker id="pwN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+            markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+          <marker id="pwA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+            markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+        </defs>
+
+        <circle cx="95" cy="112" r="14" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+        <path d="M95,105 v14 M88,112 h14" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="60" y="140" width="70" height="9" rx="4.5" fill="#1a1a1a" fill-opacity=".14" stroke="#1a1a1a" stroke-width="1.3"/>
+        <text class="ic-t" x="95" y="176" text-anchor="middle">나</text>
+        <text class="ic-s" x="95" y="192" text-anchor="middle">0 → 10 · 시작</text>
+
+        <path d="M150,124 L216,124" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#pwN)"/>
+
+        <rect x="256" y="96" width="88" height="34" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+        <text class="ic-t" x="300" y="118" text-anchor="middle" fill="#6a6a67">AI</text>
+        <rect x="242" y="140" width="116" height="9" rx="4.5" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
+        <text class="ic-t" x="300" y="176" text-anchor="middle">AI</text>
+        <text class="ic-s" x="300" y="192" text-anchor="middle">10 → 80 · 만들기</text>
+
+        <path d="M378,124 L444,124" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#pwN)"/>
+
+        <circle cx="518" cy="112" r="14" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+        <path d="M512,112 l4,5 l10,-11" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="483" y="140" width="70" height="9" rx="4.5" fill="#1a1a1a" fill-opacity=".14" stroke="#1a1a1a" stroke-width="1.3"/>
+        <text class="ic-t" x="518" y="176" text-anchor="middle">나</text>
+        <text class="ic-s" x="518" y="192" text-anchor="middle">80 → 100 · 다듬기</text>
+
+        <g stroke="#a16207" fill="#a16207">
+          <path class="st" d="M470,214 C486,220 506,216 516,206" marker-end="url(#pwA)"/>
+          <text class="hw" x="462" y="220" text-anchor="end" stroke="none">여기가 취향과 예술입니다</text>
         </g>
-        <text class="ic-s" x="578.8" y="104" text-anchor="middle" fill="#a16207">취향과 예술</text>
       </svg>
     </div>
           <p>이 웹앱도 구조 자체는 금방 잡혔는데, 제 취향에 맞게 다듬는 데는 꽤 오랜 시간이 걸렸습니다. 웹에서의 제 취향이 무엇인지 저도 잘 모르는 상태로 AI와 함께 만들다 보니 그랬던 거 같습니다. 디자인도, 문체도 마음에 들지 않아 계속 고치게 되었습니다. 물론 제가 이것저것 직접 해 보고 만들어 보는 것을 좋아해서이기도 합니다.</p>
@@ -3720,22 +3744,50 @@ sheet.append_row(data)</code></div>
           <p>그래서 오히려 처음에 내가 무엇을 중요하게 생각하는지, 어떤 방식과 결과를 선호하는지를 충분히 고민한 뒤에 AI에게 지시하는 것이 중요하다고 생각합니다.</p>
           <p>마지막 5를 남겨 둔 이유는 끝에 남는 것은 결국 사람의 몫이라는 생각이 들었기 때문입니다. AI가 95까지 만들어 주더라도 그것을 계속 유지/보수하는 일, 보안과 같은 문제를 책임지는 일, 무엇보다 AI가 내놓은 결과가 사실인지 판단하는 일까지 AI에게 맡길 수는 없을 거 같습니다. (제가 만든 마스킹 도구, 개별 메일 전송 도구도 저는 전공자가 아니기 때문에 유지, 보수, 보안을 책임질 수 없어 배포는 못 하겠다는 결론에 도달했습니다.)</p>
     <div class="ann">
-      <svg viewBox="0 0 700 108" xmlns="http://www.w3.org/2000/svg" role="img"
-        aria-label="일을 100으로 나눈 가로 막대. 0에서 15까지는 내가 맥락과 취향을 건네고, 15에서 95까지는 AI가, 95에서 100까지 남는 5만 다시 내 몫입니다.">
-        <rect x="64" y="40" width="85.8" height="30" fill="#1a1a1a" fill-opacity="0.12" stroke="#1a1a1a" stroke-width="1.4"/>
-        <rect x="149.8" y="40" width="457.6" height="30" fill="none" stroke="#1a1a1a" stroke-width="1.4"/>
-        <rect x="607.4" y="40" width="28.6" height="30" fill="#1a1a1a" fill-opacity="0.12" stroke="#1a1a1a" stroke-width="1.4"/>
-        <text class="ic-t" x="106.9" y="60" text-anchor="middle">나</text>
-        <text class="ic-t" x="378.6" y="60" text-anchor="middle" fill="#6a6a67">AI</text>
-        <text class="ic-t" x="621.7" y="60" text-anchor="middle">나</text>
-        <g fill="#737370">
-          <text class="ic-s" x="64" y="88" text-anchor="middle" font-size="10">0</text>
-          <text class="ic-s" x="149.8" y="88" text-anchor="middle" font-size="10">15</text>
-          <text class="ic-s" x="607.4" y="88" text-anchor="middle" font-size="10">95</text>
-          <text class="ic-s" x="636" y="88" text-anchor="middle" font-size="10">100</text>
+      <svg viewBox="0 0 660 236" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="일을 100으로 나눈 세 단계. 처음 15에서 내가 맥락과 취향을 건네고, 15에서 95까지는 AI가 만들고, 95에서 100까지 남는 5만 내가 책임지고 판단합니다.">
+        <defs>
+          <marker id="qwN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+            markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+          <marker id="qwA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+            markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+        </defs>
+
+        <path d="M78,98 q0,-4 4,-4 h22 l6,7 h30 q4,0 4,4 v22 q0,4 -4,4 H82 q-4,0 -4,-4 Z"
+          fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M88,110 h20 M88,119 h30" stroke="#737370" stroke-width="1.4" stroke-linecap="round"/>
+        <rect x="55" y="142" width="80" height="9" rx="4.5" fill="#1a1a1a" fill-opacity=".14" stroke="#1a1a1a" stroke-width="1.3"/>
+        <text class="ic-t" x="95" y="178" text-anchor="middle">나</text>
+        <text class="ic-s" x="95" y="194" text-anchor="middle">0 → 15 · 맥락과 취향</text>
+
+        <path d="M150,124 L216,124" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#qwN)"/>
+
+        <rect x="256" y="96" width="88" height="34" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+        <text class="ic-t" x="300" y="118" text-anchor="middle" fill="#6a6a67">AI</text>
+        <rect x="236" y="142" width="128" height="9" rx="4.5" fill="none" stroke="#1a1a1a" stroke-width="1.3"/>
+        <text class="ic-t" x="300" y="178" text-anchor="middle">AI</text>
+        <text class="ic-s" x="300" y="194" text-anchor="middle">15 → 95 · 만들기</text>
+
+        <path d="M378,124 L444,124" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#qwN)"/>
+
+        <circle cx="518" cy="112" r="14" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+        <path d="M518,105 v8 M518,118 v1" stroke="#1a1a1a" stroke-width="1.7" stroke-linecap="round"/>
+        <rect x="500" y="142" width="36" height="9" rx="4.5" fill="#1a1a1a" fill-opacity=".14" stroke="#1a1a1a" stroke-width="1.3"/>
+        <text class="ic-t" x="518" y="178" text-anchor="middle">나</text>
+        <text class="ic-s" x="518" y="194" text-anchor="middle">95 → 100 · 책임과 판단</text>
+
+        <g stroke="#a16207" fill="#a16207">
+          <path class="st" d="M104,72 C102,80 100,86 98,90" marker-end="url(#qwA)"/>
+          <text class="hw" x="112" y="66" stroke="none">앞을 늘리면</text>
         </g>
-        <text class="ic-s" x="106.9" y="104" text-anchor="middle" fill="#a16207">맥락 · 취향</text>
-        <text class="ic-s" x="621.7" y="104" text-anchor="middle" fill="#a16207">책임 · 판단</text>
+        <g stroke="#a16207" fill="#a16207">
+          <path class="st" d="M540,74 C536,82 528,88 522,92" marker-end="url(#qwA)"/>
+          <text class="hw" x="548" y="68" stroke="none">끝이 줄어듭니다</text>
+        </g>
       </svg>
     </div>
           <p>결국 AI에게 일을 많이 맡길수록 오히려 처음의 15와 마지막의 5, 즉 내가 무엇을 원하는지 정하고 그 결과에 책임지는 일이 더 중요해지는 거 같습니다.</p>
