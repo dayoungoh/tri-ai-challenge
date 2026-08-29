@@ -3476,6 +3476,75 @@ sheet.append_row(data)</code></div>
           <p>2) <strong>순위 매기기</strong> — 여기서 뜻이 들어옵니다. 남은 사람들을 <strong>CV에서 추출한 조각</strong>으로 견줍니다. 낱말 점수는 글자가 겹치는 정도를 세는데 한국어는 조사가 붙어 「기후」와 「기후를」이 다른 낱말로 잡히니 낱말과 두 글자 조각을 함께 셉니다. 벡터 점수는 <span class="tok g">AI가 만듭니다.</span> 문장을 AI 모델에 주면 뜻을 담은 숫자 목록으로 바꿔 주는데 글자가 달라도 뜻이 가까우면 숫자가 가까워집니다. 「기후」로 「탄소중립」이 걸리는 것은 이 점수 덕분입니다.</p>
           <p>두 점수는 사람 단위로 합칩니다. 한 사람의 CV는 여러 조각으로 나뉘어 있어 조각 점수를 그대로 더하면 <strong>글이 긴 사람이 무조건 위로 올라옵니다.</strong> 그래서 가장 높은 조각을 그 사람의 점수로 삼고 나머지는 조금만 더합니다.</p>
           <p>3) <strong>재정렬</strong> — 이렇게 추린 상위 후보 목록을 질문과 함께 AI에게 건네 질문에 맞는 순서로 다시 세우게 합니다. AI는 건네받은 후보 안에서만 고를 수 있어 <strong>목록에 없는 사람을 지어내지 못합니다.</strong> 검색이 추리고 AI가 다듬는 RAG의 구조가 여기에 있습니다.</p>
+    <div class="ann">
+      <svg viewBox="0 0 700 232" xmlns="http://www.w3.org/2000/svg" role="img"
+        aria-label="RAG 검색 세 층을 그린 그림. 왼쪽 명부 전체의 많은 점이 조건 거르기를 지나며 줄고, 순위 매기기를 지나 상위 후보 몇이 남고, 마지막에 AI가 그 후보의 순서만 다시 세웁니다. AI가 개입하는 곳은 주황으로 표시되어 있습니다">
+        <defs>
+          <marker id="rgN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+            markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/></marker>
+          <marker id="rgA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+            markerUnits="userSpaceOnUse" orient="auto">
+            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round"/></marker>
+        </defs>
+
+        <g fill="#1a1a1a" fill-opacity=".72">
+          <circle cx="38" cy="52" r="3.4"/><circle cx="62" cy="44" r="3.4"/><circle cx="88" cy="56" r="3.4"/>
+          <circle cx="46" cy="78" r="3.4"/><circle cx="72" cy="70" r="3.4"/><circle cx="96" cy="82" r="3.4"/>
+          <circle cx="36" cy="104" r="3.4"/><circle cx="60" cy="96" r="3.4"/><circle cx="86" cy="108" r="3.4"/>
+          <circle cx="48" cy="130" r="3.4"/><circle cx="74" cy="124" r="3.4"/><circle cx="98" cy="134" r="3.4"/>
+          <circle cx="40" cy="156" r="3.4"/><circle cx="66" cy="150" r="3.4"/><circle cx="92" cy="160" r="3.4"/>
+        </g>
+        <text class="ic-t" x="67" y="190" text-anchor="middle">명부 전체</text>
+
+        <path d="M116,102 L172,102" fill="none" stroke="#737370" stroke-width="1.4"
+          stroke-linecap="round" marker-end="url(#rgN)"/>
+        <text class="ic-s" x="144" y="88" text-anchor="middle">① 조건 거르기</text>
+        <text class="ic-s" x="144" y="120" text-anchor="middle" font-size="10">규칙</text>
+
+        <g fill="#1a1a1a" fill-opacity=".72">
+          <circle cx="204" cy="66" r="3.4"/><circle cx="230" cy="58" r="3.4"/>
+          <circle cx="210" cy="96" r="3.4"/><circle cx="238" cy="90" r="3.4"/>
+          <circle cx="202" cy="126" r="3.4"/><circle cx="232" cy="120" r="3.4"/>
+          <circle cx="218" cy="152" r="3.4"/>
+        </g>
+        <text class="ic-t" x="221" y="190" text-anchor="middle">조건에 맞는 사람</text>
+
+        <path d="M258,102 L318,102" fill="none" stroke="#737370" stroke-width="1.4"
+          stroke-linecap="round" marker-end="url(#rgN)"/>
+        <text class="ic-s" x="288" y="88" text-anchor="middle">② 순위 매기기</text>
+        <text class="ic-s" x="288" y="120" text-anchor="middle" font-size="10">낱말 + <tspan fill="#a16207">벡터</tspan></text>
+
+        <g>
+          <circle cx="352" cy="58" r="3.4" fill="#1a1a1a"/><path d="M364,58 h44" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="352" cy="86" r="3.4" fill="#1a1a1a"/><path d="M364,86 h34" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="352" cy="114" r="3.4" fill="#1a1a1a"/><path d="M364,114 h26" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="352" cy="142" r="3.4" fill="#1a1a1a"/><path d="M364,142 h18" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <text class="ic-t" x="380" y="190" text-anchor="middle">상위 후보</text>
+
+        <path d="M428,102 L488,102" fill="none" stroke="#a16207" stroke-width="1.6"
+          stroke-linecap="round" marker-end="url(#rgA)"/>
+        <text class="ic-s" x="458" y="88" text-anchor="middle" fill="#a16207">③ 재정렬</text>
+        <text class="ic-s" x="458" y="120" text-anchor="middle" font-size="10" fill="#a16207">AI</text>
+
+        <g>
+          <circle cx="522" cy="58" r="4.2" fill="#a16207"/><path d="M536,58 h44" stroke="#a16207" stroke-width="2" stroke-linecap="round" stroke-opacity=".55"/>
+          <circle cx="522" cy="86" r="3.4" fill="#1a1a1a"/><path d="M536,86 h36" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="522" cy="114" r="3.4" fill="#1a1a1a"/><path d="M536,114 h28" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="522" cy="142" r="3.4" fill="#1a1a1a"/><path d="M536,142 h20" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
+        </g>
+        <text class="ic-t" x="551" y="190" text-anchor="middle">질문에 맞는 순서</text>
+
+        <g stroke="#a16207" fill="#a16207">
+          <path class="st" d="M510,40 C482,48 458,54 438,62" marker-end="url(#rgA)"/>
+          <text class="hw" x="692" y="34" text-anchor="end" stroke="none">AI는 이 안에서만 고릅니다</text>
+        </g>
+      </svg>
+      <div class="ann-cap">단계를 지날 때마다 사람이 줄어듭니다. <strong>AI(주황)가 개입하는 곳은 뜻을 숫자로 바꾸는 벡터 점수와 마지막 재정렬 두 군데뿐이고,</strong> 건네받은 후보 밖의 사람을 답에 넣지 못합니다.</div>
+    </div>
           <p>개발은 기준선부터 만들었습니다. AI가 없는 낱말 검색을 먼저 완성하고 시험 질문과 정답 묶음으로 점수를 잰 뒤에 벡터와 재정렬을 한 층씩 얹으며 <strong>기준선보다 나아지는지를 확인했습니다.</strong> 정답은 사람이 임의로 매기지 않고 정형 자료에서 뽑았습니다. 「유럽에서 일하는 경제학자」의 정답은 지역이 유럽이고 전공이 경제학인 사람 전원입니다. 점수 계산은 평가기와 실제 검색이 <strong>한 벌을 같이 씁니다.</strong> 따로 두면 평가 숫자가 좋아져도 화면이 좋아졌다는 보장이 없습니다.</p>
           <p>이 검색은 배포한 화면에서 실제로 돌아갑니다. 「출산율 떨어지는 문제」라고 물으면 저출생을 연구하는 사람들이 나옵니다. <strong>그 말은 명부 어디에도 없지만 뜻이 가까워서 걸립니다.</strong> 점수를 재고 다듬는 루프는 지금도 돌리고 있습니다.</p>
           <p>이 검색에서 AI가 하는 일은 <span class="tok g">뜻을 숫자로 바꾸는 것</span>과 <span class="tok g">추려진 후보의 순서를 다시 세우는 것</span> 두 가지입니다. 조건을 거르고 점수를 합치는 일은 규칙이 하고 결과에서 누구에게 연락할지는 사람이 정합니다.</p>
