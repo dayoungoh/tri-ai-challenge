@@ -798,11 +798,12 @@ th{font-weight:640;font-size:var(--t-micro);letter-spacing:.08em;text-transform:
 
 /* ── 표 정렬 규칙 ──
    머리 행은 언제나 가운데입니다. 본문 칸은 열 단위로 정합니다:
-   그 열에서 가장 긴 칸이 18자 미만이면 가운데, 18자 이상이면 열 전체를
+   그 열에서 가장 긴 칸이 19자 미만이면 가운데, 19자 이상이면 열 전체를
    왼끝맞춤합니다(td 에 l 표시). 짧은 값은 가운데가 반듯하고 문장은
-   왼끝이 읽히기 때문입니다. 경계는 이 문서의 표 서른다섯 개를 재서
-   정했습니다 — 가운데 열은 모두 17자 이하, 왼끝 열은 모두 19자 이상이라
-   18에서 정확히 갈립니다. */
+   왼끝이 읽히기 때문입니다.
+   길이는 「 · 」로 이은 나열을 항목 하나로 세어 잽니다 —
+   「Supabase · Netlify · Vercel · GitHub」 는 서른여섯 자짜리 문장이
+   아니라 여덟 자짜리 이름 넷이라 가운데가 맞습니다. */
 .tw.ctr tbody td.l{text-align:left}
 /* 갈래가 다른 것을 한 표에 담을 때 쓰는 머리줄. 칸 이름이 아니라
    아래 몇 줄이 무엇인지 말합니다 */
@@ -1570,25 +1571,25 @@ a.cta{text-decoration:none}
       <tr><th scope="col">시기</th><th scope="col">절</th><th scope="col">내용</th><th scope="col">도구</th></tr>
       </thead>
       <tbody>
-      <tr class="yr"><td class="n"><span class="d"><span class="y">2024</span>.07~</span></td><td class="l"><a href="#p1"><strong>1 · Python으로 업무 자동화</strong></a></td><td class="l">파일과 시스템 화면을 다룰 때</td><td class="l">Python · PyCharm</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span></td><td class="l sub"><a href="#p2">1-1 · PDF 편집·병합</a></td><td class="l">해외유학후보장학생 선발</td><td class="l">PyPDF</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span></td><td class="l sub"><a href="#p3">1-2 · 엑셀 나누기·합치기</a></td><td class="l">해외유학후보장학생 선발</td><td class="l">openpyxl</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span> · <span class="d"><span class="y">2026</span>.08</span></td><td class="l sub"><a href="#p5">1-3 · 개인별 맞춤 메일 발송</a></td><td class="l">선발 · 해외유학워크숍</td><td class="l">smtplib · Flask</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2024</span>.12</span></td><td class="l sub"><a href="#p4">1-4 · 웹 조작(스크래핑)</a></td><td class="l">재단 예산 관리</td><td class="l">Selenium · gspread</td></tr>
-      <tr class="yr"><td class="n"><span class="d"><span class="y">2025</span>.07~08</span></td><td class="l sub"><a href="#p4a">1-4-1 · 자료 업로드·다운로드</a></td><td class="l">선발 · 해외유학워크숍</td><td class="l">Selenium</td></tr>
-      <tr class="yr"><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub"><a href="#p6">1-5 · 개인정보 마스킹</a></td><td class="l">해외유학워크숍 · 선발</td><td class="l">pdfplumber · Kiwi</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.02~</span></td><td class="l"><a href="#g1"><strong>2 · Apps Script로 업무 자동화</strong></a></td><td class="l">신청을 받아 처리할 때</td><td class="l">Apps Script</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.02</span></td><td class="l sub"><a href="#g0">2-1 · 해외유학 대면모임 지원</a></td><td class="l">대면모임 신청 · 정산</td><td class="l">Forms · Calendar</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.08</span></td><td class="l sub"><a href="#g2">2-2 · 법인카드 영수증 정리</a></td><td class="l">팀비 정산</td><td class="l">Drive · OCR · Sheets</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l"><a href="#w1"><strong>3 · 웹앱 개발·배포</strong></a></td><td class="l">각자 로그인해서 쓸 때</td><td class="l">Supabase · Netlify</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.07</span></td><td class="l sub"><a href="#w2">3-1 · 워크숍 이수율 tracker</a></td><td class="l">해외유학워크숍</td><td class="l">Supabase · Netlify</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub"><a href="#w3">3-2 · 인재성장 플랫폼</a></td><td class="l">성장 기록과 동문 연결 · <strong>개발 중</strong></td><td class="l">Supabase · Vercel</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub2"><a href="#w3a">3-2-1 · 나의 나무</a></td><td class="l">IDP 기록 · CV 정리</td><td class="l">Supabase</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub2"><a href="#w3b">3-2-2 · 숲 산책</a></td><td class="l">동문 검색 · 커피챗 · RAG</td><td class="l">RAG · Vercel</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub2"><a href="#w3c">3-2-3 · 플랫폼 유지 방안</a></td><td class="l">동문 편입 · <strong>설계 중</strong></td><td class="l">—</td></tr>
-      <tr class="yr"><td class="n">—</td><td class="l"><a href="#rf1"><strong>맺음 · AI에 대한 생각</strong></a></td><td class="l">언어 · 20:80 · 춘추전국시대</td><td class="l">—</td></tr>
-      <tr><td class="n">—</td><td class="l"><a href="#apxb">부록 A · AI 활용 넓히기</a></td><td class="l">스킬 · 플러그인 · 커넥터</td><td class="l">—</td></tr>
-      <tr><td class="n">—</td><td class="l"><a href="#apxa">부록 B · Git과 GitHub</a></td><td class="l">버전 관리</td><td class="l">Git · GitHub</td></tr>
+      <tr class="yr"><td class="n"><span class="d"><span class="y">2024</span>.07~</span></td><td class="l"><a href="#p1"><strong>1 · Python으로 업무 자동화</strong></a></td><td>파일과 시스템 화면을 다룰 때</td><td>Python · PyCharm</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span></td><td class="l sub"><a href="#p2">1-1 · PDF 편집·병합</a></td><td>해외유학후보장학생 선발</td><td>PyPDF</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span></td><td class="l sub"><a href="#p3">1-2 · 엑셀 나누기·합치기</a></td><td>해외유학후보장학생 선발</td><td>openpyxl</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span> · <span class="d"><span class="y">2026</span>.08</span></td><td class="l sub"><a href="#p5">1-3 · 개인별 맞춤 메일 발송</a></td><td>선발 · 해외유학워크숍</td><td>smtplib · Flask</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2024</span>.12</span></td><td class="l sub"><a href="#p4">1-4 · 웹 조작(스크래핑)</a></td><td>재단 예산 관리</td><td>Selenium · gspread</td></tr>
+      <tr class="yr"><td class="n"><span class="d"><span class="y">2025</span>.07~08</span></td><td class="l sub"><a href="#p4a">1-4-1 · 자료 업로드·다운로드</a></td><td>선발 · 해외유학워크숍</td><td>Selenium</td></tr>
+      <tr class="yr"><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub"><a href="#p6">1-5 · 개인정보 마스킹</a></td><td>해외유학워크숍 · 선발</td><td>pdfplumber · Kiwi</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.02~</span></td><td class="l"><a href="#g1"><strong>2 · Apps Script로 업무 자동화</strong></a></td><td>신청을 받아 처리할 때</td><td>Apps Script</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.02</span></td><td class="l sub"><a href="#g0">2-1 · 해외유학 대면모임 지원</a></td><td>대면모임 신청 · 정산</td><td>Forms · Calendar</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.08</span></td><td class="l sub"><a href="#g2">2-2 · 법인카드 영수증 정리</a></td><td>팀비 정산</td><td>Drive · OCR · Sheets</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l"><a href="#w1"><strong>3 · 웹앱 개발·배포</strong></a></td><td>각자 로그인해서 쓸 때</td><td>Supabase · Netlify</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07</span></td><td class="l sub"><a href="#w2">3-1 · 워크숍 이수율 tracker</a></td><td>해외유학워크숍</td><td>Supabase · Netlify</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub"><a href="#w3">3-2 · 인재성장 플랫폼</a></td><td>성장 기록과 동문 연결 · <strong>개발 중</strong></td><td>Supabase · Vercel</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub2"><a href="#w3a">3-2-1 · 나의 나무</a></td><td>IDP 기록 · CV 정리</td><td>Supabase</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub2"><a href="#w3b">3-2-2 · 숲 산책</a></td><td>동문 검색 · 커피챗 · RAG</td><td>RAG · Vercel</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub2"><a href="#w3c">3-2-3 · 플랫폼 유지 방안</a></td><td>동문 편입 · <strong>설계 중</strong></td><td>—</td></tr>
+      <tr class="yr"><td class="n">—</td><td class="l"><a href="#rf1"><strong>맺음 · AI에 대한 생각</strong></a></td><td>언어 · 20:80 · 춘추전국시대</td><td>—</td></tr>
+      <tr><td class="n">—</td><td class="l"><a href="#apxb">부록 A · AI 활용 넓히기</a></td><td>스킬 · 플러그인 · 커넥터</td><td>—</td></tr>
+      <tr><td class="n">—</td><td class="l"><a href="#apxa">부록 B · Git과 GitHub</a></td><td>버전 관리</td><td>Git · GitHub</td></tr>
       </tbody>
     </table></div>
 
@@ -1602,14 +1603,14 @@ a.cta{text-decoration:none}
       </thead>
       <tbody>
       <tr class="grp"><td colspan="3">만드는 데 쓴 AI</td></tr>
-      <tr><td class="l">ChatGPT (GPT-4o)</td><td>무료</td><td class="l">1-1 ~ 1-4-1</td></tr>
-      <tr><td class="l">Claude</td><td>무료</td><td class="l">2장 전체 · 3-1</td></tr>
-      <tr><td class="l"><strong>Claude Pro</strong></td><td><strong>월 구독</strong></td><td class="l">1-3(2026) · 1-5 · 3-2</td></tr>
-      <tr class="grp"><td colspan="3">만든 것이 도는 데</td></tr>
-      <tr><td class="l">Python · PyCharm · 라이브러리</td><td>무료</td><td class="l">1장 전체</td></tr>
-      <tr><td class="l">Google Apps Script</td><td>무료</td><td class="l">2장 전체</td></tr>
-      <tr><td class="l">Supabase · Netlify · Vercel · GitHub</td><td>무료 티어</td><td class="l">3장 전체</td></tr>
-      <tr><td class="l">Gemini API</td><td>무료</td><td class="l">3-2 검색</td></tr>
+      <tr><td>ChatGPT</td><td>무료</td><td>1-1 ~ 1-4-1</td></tr>
+      <tr><td>Claude</td><td>무료</td><td>2장 전체 · 3-1</td></tr>
+      <tr><td><strong>Claude Pro</strong></td><td><strong>월 구독</strong></td><td>1-3(2026) · 1-5 · 3-2</td></tr>
+      <tr class="grp"><td colspan="3">돌아가는 데 쓰는 서비스</td></tr>
+      <tr><td>Python · PyCharm · 라이브러리</td><td>무료</td><td>1장 전체</td></tr>
+      <tr><td>Google Apps Script</td><td>무료</td><td>2장 전체</td></tr>
+      <tr><td>Supabase · Netlify · Vercel · GitHub</td><td>무료 티어</td><td>3장 전체</td></tr>
+      <tr><td>Gemini API</td><td>무료</td><td>3-2 검색</td></tr>
       </tbody>
     </table></div>
 
@@ -1784,12 +1785,12 @@ a.cta{text-decoration:none}
       <tr><th scope="col">항목</th><th scope="col">주요 라이브러리·도구</th><th scope="col">실제 활용</th></tr>
       </thead>
       <tbody>
-            <tr><td><strong>파일·문서 처리</strong></td><td class="l"><span class="tok m">openpyxl</span> · <span class="tok m">pandas</span> · <span class="tok m">python-docx</span></td><td class="l">엑셀 나누기·합치기, 데이터 정리, 워드 서식 읽기 및 메일 본문 생성 <span class="where"><a href="#p3">1-2</a> · <a href="#p5">1-3</a></span></td></tr>
-            <tr><td><strong>PDF 처리</strong></td><td class="l"><span class="tok m">pypdf</span> · <span class="tok m">pdfplumber</span> · <span class="tok m">PyMuPDF</span></td><td class="l">PDF 편집·병합, 텍스트·좌표 추출 <span class="where"><a href="#p2">1-1</a> · <a href="#p4a">1-4-1</a> · <a href="#p6">1-5</a></span></td></tr>
-            <tr><td><strong>웹 브라우저 자동화</strong></td><td class="l"><span class="tok m">Selenium</span></td><td class="l">웹사이트 로그인, 조회·입력, 자료 다운로드 <span class="where"><a href="#p4">1-4</a></span></td></tr>
-            <tr><td><strong>이메일·프로그램 연동</strong></td><td class="l"><span class="tok m">smtplib</span> · <span class="tok m">pywin32</span> · <span class="tok m">gspread</span></td><td class="l">맞춤형 이메일 발송, Outlook 연동, Google Sheets 데이터 축적 <span class="where"><a href="#p5">1-3</a> · <a href="#p4">1-4</a></span></td></tr>
-            <tr><td><strong>데이터 처리·변환</strong></td><td class="l"><span class="tok m">pandas</span></td><td class="l">표 데이터 가공, 데이터 형식 변환 <span class="where"><a href="#p3">1-2</a> · <a href="#p6">1-5</a></span></td></tr>
-            <tr><td><strong>화면·프로그램 제작</strong></td><td class="l"><span class="tok m">Flask</span> · <span class="tok m">PyInstaller</span></td><td class="l">다른 사람이 사용할 웹 화면 제작, Python 프로그램 EXE 패키징 <span class="where"><a href="#p5">1-3</a> · <a href="#p6">1-5</a></span></td></tr>
+            <tr><td><strong>파일·문서 처리</strong></td><td><span class="tok m">openpyxl</span> · <span class="tok m">pandas</span> · <span class="tok m">python-docx</span></td><td class="l">엑셀 나누기·합치기, 데이터 정리, 워드 서식 읽기 및 메일 본문 생성 <span class="where"><a href="#p3">1-2</a> · <a href="#p5">1-3</a></span></td></tr>
+            <tr><td><strong>PDF 처리</strong></td><td><span class="tok m">pypdf</span> · <span class="tok m">pdfplumber</span> · <span class="tok m">PyMuPDF</span></td><td class="l">PDF 편집·병합, 텍스트·좌표 추출 <span class="where"><a href="#p2">1-1</a> · <a href="#p4a">1-4-1</a> · <a href="#p6">1-5</a></span></td></tr>
+            <tr><td><strong>웹 브라우저 자동화</strong></td><td><span class="tok m">Selenium</span></td><td class="l">웹사이트 로그인, 조회·입력, 자료 다운로드 <span class="where"><a href="#p4">1-4</a></span></td></tr>
+            <tr><td><strong>이메일·프로그램 연동</strong></td><td><span class="tok m">smtplib</span> · <span class="tok m">pywin32</span> · <span class="tok m">gspread</span></td><td class="l">맞춤형 이메일 발송, Outlook 연동, Google Sheets 데이터 축적 <span class="where"><a href="#p5">1-3</a> · <a href="#p4">1-4</a></span></td></tr>
+            <tr><td><strong>데이터 처리·변환</strong></td><td><span class="tok m">pandas</span></td><td class="l">표 데이터 가공, 데이터 형식 변환 <span class="where"><a href="#p3">1-2</a> · <a href="#p6">1-5</a></span></td></tr>
+            <tr><td><strong>화면·프로그램 제작</strong></td><td><span class="tok m">Flask</span> · <span class="tok m">PyInstaller</span></td><td class="l">다른 사람이 사용할 웹 화면 제작, Python 프로그램 EXE 패키징 <span class="where"><a href="#p5">1-3</a> · <a href="#p6">1-5</a></span></td></tr>
       </tbody>
     </table></div>
     <p>Python에는 이 밖에도 다양한 라이브러리가 있습니다. 예를 들어 수치 계산과 데이터 시각화에는 <span class="tok m">NumPy</span>·<span class="tok m">Matplotlib</span>, 웹 서버 구축에는 <span class="tok m">FastAPI</span>·<span class="tok m">Django</span>, 머신러닝에는 <span class="tok m">scikit-learn</span>·<span class="tok m">PyTorch</span> 등이 널리 사용된다고 합니다. 다만 제가 자동화한 업무가 주로 파일·문서 처리와 웹 브라우저 조작에 집중되어 있어, <strong>위에 언급한 라이브러리는 실제 업무에서는 사용할 일이 없었습니다.</strong></p>
@@ -2411,9 +2412,9 @@ sheet.append_row(data)</code></div>
             <tr><th scope="col">방식</th><th scope="col">결과</th><th scope="col">용도</th></tr>
       </thead>
       <tbody>
-            <tr><td><strong>가명</strong></td><td class="l"><strong>[성명1]</strong> · <strong>[휴대전화2]</strong></td><td class="l">AI 분석용. <strong>같은 값에는 같은 번호를 부여해 인물 구분</strong></td></tr>
-            <tr><td>삭제</td><td class="l">[성명] · [휴대전화]</td><td class="l">외부 공유용. 개인정보를 다시 알아낼 가능성을 가장 낮춤</td></tr>
-            <tr><td>부분</td><td class="l">홍** · 010-****-5678</td><td class="l">사람이 눈으로 대조·검수할 때</td></tr>
+            <tr><td><strong>가명</strong></td><td><strong>[성명1]</strong> · <strong>[휴대전화2]</strong></td><td class="l">AI 분석용. <strong>같은 값에는 같은 번호를 부여해 인물 구분</strong></td></tr>
+            <tr><td>삭제</td><td>[성명] · [휴대전화]</td><td class="l">외부 공유용. 개인정보를 다시 알아낼 가능성을 가장 낮춤</td></tr>
+            <tr><td>부분</td><td>홍** · 010-****-5678</td><td class="l">사람이 눈으로 대조·검수할 때</td></tr>
       </tbody>
     </table></div>
           <p>기본값은 번호를 붙여 가리는 방식입니다. 홍길동이라는 이름이 문서에 열 번 나오면 모두 <span class="tok"><strong>[성명1]</strong></span>로 바뀝니다. <strong>이름 자체는 보이지 않지만 문서 안에서 같은 사람이라는 구분은 유지됩니다.</strong></p>
@@ -2444,10 +2445,10 @@ sheet.append_row(data)</code></div>
             <tr><th scope="col">강도</th><th scope="col">가리는 것</th><th scope="col">쓰는 곳</th></tr>
       </thead>
       <tbody>
-            <tr><td>1 · 기본 보호</td><td class="l">고유식별정보 · 연락처</td><td class="l">내부 검토. 문서 원형을 최대한 남김</td></tr>
-            <tr><td><strong>2 · 표준</strong></td><td class="l"><strong>이름 · 주소 · 소속 · 민감정보까지</strong></td><td class="l"><strong>AI 입력 · 외부 공유</strong></td></tr>
-            <tr><td>3 · 최대</td><td class="l">라벨이 붙은 칸의 모르는 번호까지</td><td class="l">재식별 위험 최소화</td></tr>
-            <tr><td>4 · 숫자 전면 삭제</td><td class="l">남은 숫자를 전부</td><td class="l">정성 분석 전용</td></tr>
+            <tr><td>1 · 기본 보호</td><td>고유식별정보 · 연락처</td><td class="l">내부 검토. 문서 원형을 최대한 남김</td></tr>
+            <tr><td><strong>2 · 표준</strong></td><td><strong>이름 · 주소 · 소속 · 민감정보까지</strong></td><td class="l"><strong>AI 입력 · 외부 공유</strong></td></tr>
+            <tr><td>3 · 최대</td><td>라벨이 붙은 칸의 모르는 번호까지</td><td class="l">재식별 위험 최소화</td></tr>
+            <tr><td>4 · 숫자 전면 삭제</td><td>남은 숫자를 전부</td><td class="l">정성 분석 전용</td></tr>
       </tbody>
     </table></div>
           <p>기본값은 <span class="tok">2단계</span>입니다. 2단계에서는 소속도 가리지만 옆의 소속·학교·전공 항목을 <span class="tok">남기기</span>로 선택하면 해당 정보는 가리지 않습니다. <strong>즉, 개별 설정을 먼저 적용하고 나머지 항목에는 선택한 강도를 적용합니다.</strong></p>
@@ -3568,8 +3569,8 @@ sheet.append_row(data)</code></div>
       <tr><th scope="col">갈래</th><th scope="col">무엇을</th><th scope="col">누가 넣나</th></tr>
       </thead>
       <tbody>
-      <tr><td>정형 자료</td><td class="l">이름 · 성별 · 프로그램 · 기수 · 출생연도 · 학력 · 전공</td><td>재단이 이미 가진 것을 올립니다</td></tr>
-      <tr><td><strong>CV · Resume</strong></td><td class="l">지금 어디서 무엇을 하고 있는지</td><td><strong>본인이 파일 하나를 올립니다</strong></td></tr>
+      <tr><td>정형 자료</td><td>이름 · 성별 · 프로그램 · 기수 · 출생연도 · 학력 · 전공</td><td>재단이 이미 가진 것을 올립니다</td></tr>
+      <tr><td><strong>CV · Resume</strong></td><td>지금 어디서 무엇을 하고 있는지</td><td><strong>본인이 파일 하나를 올립니다</strong></td></tr>
       </tbody>
     </table></div>
           <p>동문에게 처음부터 긴 입력 양식을 요청할 수는 없는데 CV 업로드는 이미 있는 파일 하나를 올리는 일이라 <strong>허들이 가장 낮으면서 재단은 가장 최신 정보를 얻습니다.</strong> 올린 뒤에는 <a class="xref" href="#w3a">3-2-1</a>의 CV 정리 과정을 그대로 타기 때문에 <strong>장학생과 동문이 같은 입구를 쓰게 됩니다.</strong></p>
