@@ -665,6 +665,8 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 /* 앞의 「본문」과 화살표는 줄지 않습니다. 좁으면 쪽 이름만 …로 줄어듭니다 */
 .crumb>span{flex:0 0 auto;white-space:nowrap}
 .crumb svg{flex:0 0 12px;color:var(--ink-3)}
+/* svg 는 [hidden] 만으로 안 숨는 자리가 있어(.crumb svg 가 눌러 버립니다) 못 박습니다 */
+.crumb svg[hidden]{display:none}
 /* 가운데 장 이름 — 누르면 그 장 첫 쪽으로 갑니다. 좁으면 쪽 이름보다 먼저 줄어듭니다 */
 .crumb .cbmid{flex:0 1 auto;min-width:0;background:none;border:0;padding:0;margin:0;font:inherit;
   color:var(--ink-3);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1598,7 +1600,7 @@ a.cta{text-decoration:none}
       <tr><td class="n"><span class="d"><span class="y">2026</span>.07</span></td><td class="l sub"><a href="#w2">3-1 · 워크숍 이수율 tracker</a></td><td>해외유학워크숍</td><td>Supabase · Netlify</td></tr>
       <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub"><a href="#w3">3-2 · 인재성장 플랫폼</a></td><td>성장 기록과 동문 연결 · <strong>개발 중</strong></td><td>Supabase · Vercel</td></tr>
       <tr><td class="n tie">↳</td><td class="l sub2"><a href="#w3a">3-2-1 · 나의 나무(IDP)</a></td><td>IDP 기록 · CV 정리</td><td>Supabase</td></tr>
-      <tr><td class="n tie">↳</td><td class="l sub2"><a href="#w3b">3-2-2 · 숲 산책</a></td><td>동문 검색 · 커피챗 · RAG</td><td>RAG · Vercel</td></tr>
+      <tr><td class="n tie">↳</td><td class="l sub2"><a href="#w3b">3-2-2 · 숲 산책(동문 네트워크)</a></td><td>동문 검색 · 커피챗 · RAG</td><td>RAG · Vercel</td></tr>
       <tr><td class="n tie">↳</td><td class="l sub2"><a href="#w3c">3-2-3 · 플랫폼 유지 방안</a></td><td>동문 편입 · <strong>설계 중</strong></td><td>—</td></tr>
       <tr class="yr"><td class="n">—</td><td class="l"><a href="#rf1"><strong>맺음 · AI에 대한 생각</strong></a></td><td>언어 · 20:80 · 춘추전국시대</td><td>—</td></tr>
       <tr><td class="n">—</td><td class="l"><a href="#apxb">부록 A · AI 활용 넓히기</a></td><td>스킬 · 플러그인 · 커넥터</td><td>—</td></tr>
@@ -3313,7 +3315,7 @@ sheet.append_row(data)</code></div>
         <img class="shot" src="photos/tlab-home-forest.png" width="1445" height="773" loading="lazy"
           alt="플랫폼 첫 화면입니다. 인재 성장의 숲이라는 제목 아래 크고 작은 나무 여러 그루가 모여 숲을 이루고 있고, 그 아래 나의 나무(IDP)와 숲 산책(동문 네트워크) 두 입구가 나란히 놓여 있습니다. 맨 아래에 한 해가 한 Chapter이고 Chapter를 마칠 때마다 나의 나무에 나이테가 한 겹 쌓이며 그 나무들이 모여 숲이 된다는 안내가 적혀 있습니다.">
       </a>
-      <div class="ann-cap">플랫폼의 첫 화면입니다. ‘나의 나무(IDP)’와 ‘숲 산책’이라는 두 개의 입구​를 두고, 개인의 나무가 모여 하나의 숲을 이룬다는 개념을 로그인 후 첫 화면에서 보여 줍니다.</div>
+      <div class="ann-cap">플랫폼의 첫 화면입니다. ‘나의 나무(IDP)’와 ‘숲 산책(동문 네트워크)’이라는 두 개의 입구​를 두고, 개인의 나무가 모여 하나의 숲을 이룬다는 개념을 로그인 후 첫 화면에서 보여 줍니다.</div>
     </div>
 
     <div class="steps">
@@ -3433,10 +3435,10 @@ sheet.append_row(data)</code></div>
   </section>
 
   <section id="w3b" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2-2 · 화면</div><h2>숲 산책</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">3-2-2 · 화면</div><h2>숲 산책(동문 네트워크)</h2></div></div>
     <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Alumni</span><span class="chip">#커피챗</span><span class="chip">#RAG</span><span class="chip">#개발 중</span></div>
 
-    <p class="lead">나의 나무(IDP)가 기록을 쌓는 곳이라면 숲 산책은 그 기록을 바탕으로 동문이 교류하는 곳입니다.</p>
+    <p class="lead">나의 나무(IDP)가 기록을 쌓는 곳이라면 숲 산책(동문 네트워크)은 그 기록을 바탕으로 동문이 교류하는 곳입니다.</p>
 
     <div class="steps">
 
@@ -3460,7 +3462,7 @@ sheet.append_row(data)</code></div>
     <div class="ann">
       <a class="shot-l" href="photos/tlab-network-map.png" target="_blank" rel="noopener noreferrer">
         <img class="shot" src="photos/tlab-network-map.png" width="1429" height="773" loading="lazy"
-          alt="숲 산책의 동문 찾기 화면입니다. 오른쪽에 세계지도가 있고 서울, 뮌헨, 새너제이, 휴스턴, 볼티모어 등 도시 위에 동문 수가 원으로 표시되어 있습니다. 왼쪽에는 프로그램·기수·계열·전공·국가·지역을 고르는 조건 칸과 어떤 동문을 찾으세요라는 대화창이 있고, 미국에서 정책 하는 사람 같은 보기 질문이 붙어 있습니다. 위에는 재단과 동문 소식 알림과 커피챗 알림이 떠 있습니다. 화면의 사람과 수치는 모두 시험용 자료입니다.">
+          alt="숲 산책(동문 네트워크)의 동문 찾기 화면입니다. 오른쪽에 세계지도가 있고 서울, 뮌헨, 새너제이, 휴스턴, 볼티모어 등 도시 위에 동문 수가 원으로 표시되어 있습니다. 왼쪽에는 프로그램·기수·계열·전공·국가·지역을 고르는 조건 칸과 어떤 동문을 찾으세요라는 대화창이 있고, 미국에서 정책 하는 사람 같은 보기 질문이 붙어 있습니다. 위에는 재단과 동문 소식 알림과 커피챗 알림이 떠 있습니다. 화면의 사람과 수치는 모두 시험용 자료입니다.">
       </a>
       <div class="ann-cap">동문 찾기 화면입니다. <strong>세계지도 위에 분포가 보이고</strong> 왼쪽 대화창에 말로 조건을 쌓습니다. 화면의 사람과 수치는 모두 시험용 자료입니다.</div>
     </div>
@@ -4340,13 +4342,15 @@ function show(i, push = true){
   crumb.classList.remove('solo');
   cbSec.textContent = SECS[ch] || '본문';
   const land = CH_LAND[ch];
-  if(land && order[i] !== land){
+  const hasMid = !!land && order[i] !== land;
+  if(hasMid){
     cbMid.textContent = titles[order.indexOf(land)];
     cbMid.dataset.to = land;
-    cbMid.hidden = cbMidSep.hidden = false;
-  }else{
-    cbMid.hidden = cbMidSep.hidden = true;
   }
+  /* cbMidSep 은 SVG 라 .hidden 프로퍼티가 안 먹습니다(HTMLElement 가 아님).
+     속성을 직접 토글해야 화살표가 가운데 이름과 함께 켜지고 꺼집니다 */
+  cbMid.hidden = !hasMid;
+  cbMidSep.toggleAttribute('hidden', !hasMid);
   cbPage.textContent = titles[i];
   prevB.disabled = tPrev.disabled = i === 0;
   nextB.disabled = tNext.disabled = i === order.length - 1;
@@ -4813,7 +4817,7 @@ function showMe(push = true){
   rows.forEach(r => { r.classList.remove('cur'); r.setAttribute('aria-current', 'false'); });
   /* 예전엔 "곁 / 쓴 사람" 이었습니다. 목차 밖이라는 뜻으로 "곁"을 썼는데,
      읽는 사람에게 그 뜻이 닿지 않았습니다. 한 칸으로 줄입니다. */
-  cbSec.textContent = '쓴 사람'; cbPage.textContent = ''; cbMid.hidden = cbMidSep.hidden = true;
+  cbSec.textContent = '쓴 사람'; cbPage.textContent = ''; cbMid.hidden = true; cbMidSep.toggleAttribute('hidden', true);
   crumb.classList.add('solo');
   prevB.disabled = nextB.disabled = tPrev.disabled = tNext.disabled = true;
   prevT.textContent = nextT.textContent = '';
@@ -4895,7 +4899,7 @@ function showMui(push = true){
   allPages.forEach(p => p.classList.remove('on'));
   muiSec.classList.add('on');
   rows.forEach(r => { r.classList.remove('cur'); r.setAttribute('aria-current', 'false'); });
-  cbSec.textContent = '무이네 편의점'; cbPage.textContent = ''; cbMid.hidden = cbMidSep.hidden = true;
+  cbSec.textContent = '무이네 편의점'; cbPage.textContent = ''; cbMid.hidden = true; cbMidSep.toggleAttribute('hidden', true);
   crumb.classList.add('solo');
   prevB.disabled = nextB.disabled = tPrev.disabled = tNext.disabled = true;
   prevT.textContent = nextT.textContent = '';
