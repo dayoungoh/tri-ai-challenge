@@ -818,6 +818,10 @@ th{font-weight:640;font-size:var(--t-micro);letter-spacing:.08em;text-transform:
 
 .tw.qlink tbody td.sub{padding-left:28px}
 .tw.qlink tbody td.sub2{padding-left:46px}
+/* 위 줄에 딸린 쪽입니다. 시기를 따로 적지 않고 이어진다는 표시만 둡니다 —
+   빈칸으로 두면 자료가 빠진 것처럼 보입니다 */
+.tw.qlink tbody td.n.tie{text-align:right;padding-right:22px;
+  color:var(--ink-3);opacity:.45;font-size:var(--t-ui)}
 /* 시기 열은 연도가 먼저 눈에 들어와야 언제 무엇을 했는지 흐름이 잡힙니다.
    연도가 바뀌는 줄에만 진한 선을 둡니다 — 2024 · 2025 · 2026 세 덩이가 갈립니다 */
 /* 날짜 하나는 안 쪼개되, 날짜와 날짜 사이에서는 줄이 바뀌게 둡니다 */
@@ -1575,8 +1579,8 @@ a.cta{text-decoration:none}
       <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span></td><td class="l sub"><a href="#p2">1-1 · PDF 편집·병합</a></td><td>해외유학후보장학생 선발</td><td>PyPDF</td></tr>
       <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span></td><td class="l sub"><a href="#p3">1-2 · 엑셀 나누기·합치기</a></td><td>해외유학후보장학생 선발</td><td>openpyxl</td></tr>
       <tr><td class="n"><span class="d"><span class="y">2024</span>.07</span> · <span class="d"><span class="y">2026</span>.08</span></td><td class="l sub"><a href="#p5">1-3 · 개인별 맞춤 메일 발송</a></td><td>선발 · 해외유학워크숍</td><td>smtplib · Flask</td></tr>
-      <tr><td class="n">—</td><td class="l sub"><a href="#p4">1-4 · 웹 조작(스크래핑)</a></td><td>재단 예산 관리</td><td>Selenium · gspread</td></tr>
-      <tr class="yr"><td class="n"><span class="d"><span class="y">2025</span>.07~08</span></td><td class="l sub"><a href="#p4a">1-4-1 · 자료 업로드·다운로드</a></td><td>선발 · 해외유학워크숍</td><td>Selenium</td></tr>
+      <tr><td class="n"><span class="d"><span class="y">2024</span>.12</span></td><td class="l sub"><a href="#p4">1-4 · 웹 조작(스크래핑)</a></td><td>재단 예산 관리</td><td>Selenium · gspread</td></tr>
+      <tr><td class="n tie">↳</td><td class="l sub2"><a href="#p4a">1-4-1 · 자료 업로드·다운로드</a></td><td>선발 · 해외유학워크숍</td><td>Selenium</td></tr>
       <tr class="yr"><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub"><a href="#p6">1-5 · 개인정보 마스킹</a></td><td>해외유학워크숍 · 선발</td><td>pdfplumber · Kiwi</td></tr>
       <tr><td class="n"><span class="d"><span class="y">2026</span>.02~</span></td><td class="l"><a href="#g1"><strong>2 · Apps Script로 업무 자동화</strong></a></td><td>신청을 받아 처리할 때</td><td>Apps Script</td></tr>
       <tr><td class="n"><span class="d"><span class="y">2026</span>.02</span></td><td class="l sub"><a href="#g0">2-1 · 해외유학 대면모임 지원</a></td><td>대면모임 신청 · 정산</td><td>Forms · Calendar</td></tr>
@@ -1584,9 +1588,9 @@ a.cta{text-decoration:none}
       <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l"><a href="#w1"><strong>3 · 웹앱 개발·배포</strong></a></td><td>각자 로그인해서 쓸 때</td><td>Supabase · Netlify</td></tr>
       <tr><td class="n"><span class="d"><span class="y">2026</span>.07</span></td><td class="l sub"><a href="#w2">3-1 · 워크숍 이수율 tracker</a></td><td>해외유학워크숍</td><td>Supabase · Netlify</td></tr>
       <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub"><a href="#w3">3-2 · 인재성장 플랫폼</a></td><td>성장 기록과 동문 연결 · <strong>개발 중</strong></td><td>Supabase · Vercel</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub2"><a href="#w3a">3-2-1 · 나의 나무</a></td><td>IDP 기록 · CV 정리</td><td>Supabase</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub2"><a href="#w3b">3-2-2 · 숲 산책</a></td><td>동문 검색 · 커피챗 · RAG</td><td>RAG · Vercel</td></tr>
-      <tr><td class="n"><span class="d"><span class="y">2026</span>.07~</span></td><td class="l sub2"><a href="#w3c">3-2-3 · 플랫폼 유지 방안</a></td><td>동문 편입 · <strong>설계 중</strong></td><td>—</td></tr>
+      <tr><td class="n tie">↳</td><td class="l sub2"><a href="#w3a">3-2-1 · 나의 나무</a></td><td>IDP 기록 · CV 정리</td><td>Supabase</td></tr>
+      <tr><td class="n tie">↳</td><td class="l sub2"><a href="#w3b">3-2-2 · 숲 산책</a></td><td>동문 검색 · 커피챗 · RAG</td><td>RAG · Vercel</td></tr>
+      <tr><td class="n tie">↳</td><td class="l sub2"><a href="#w3c">3-2-3 · 플랫폼 유지 방안</a></td><td>동문 편입 · <strong>설계 중</strong></td><td>—</td></tr>
       <tr class="yr"><td class="n">—</td><td class="l"><a href="#rf1"><strong>맺음 · AI에 대한 생각</strong></a></td><td>언어 · 20:80 · 춘추전국시대</td><td>—</td></tr>
       <tr><td class="n">—</td><td class="l"><a href="#apxb">부록 A · AI 활용 넓히기</a></td><td>스킬 · 플러그인 · 커넥터</td><td>—</td></tr>
       <tr><td class="n">—</td><td class="l"><a href="#apxa">부록 B · Git과 GitHub</a></td><td>버전 관리</td><td>Git · GitHub</td></tr>
