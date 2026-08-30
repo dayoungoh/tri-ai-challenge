@@ -468,7 +468,7 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
   .pet-state{margin-left:0}
   /* 좁은 상단에서는 가운데 장 이름이 쪽 이름을 밀어냅니다. 모바일에서는
      본문 › 쪽 두 단만 두고 가운데 단은 숨깁니다 */
-  .crumb .cbmid,#cbMidSep{display:none!important}
+  .crumb .cbmid,#cbMidSep,#cbMid2Sep{display:none!important}
 }
 @media(max-width:560px){
   .pet img{grid-row:auto}
@@ -1507,6 +1507,8 @@ a.cta{text-decoration:none}
       <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
       <button type="button" id="cbMid" class="cbmid" hidden></button>
       <svg id="cbMidSep" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" hidden><path d="m9 6 6 6-6 6"/></svg>
+      <button type="button" id="cbMid2" class="cbmid" hidden></button>
+      <svg id="cbMid2Sep" aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" hidden><path d="m9 6 6 6-6 6"/></svg>
       <b id="cbPage">개요</b>
     </div>
     <div class="tb-sp"></div>
@@ -4226,10 +4228,16 @@ midRows.forEach(m => { if(m.dataset.t) MID_OF[m.dataset.t] = m.dataset.mid; });
 
 /* 자식 쪽이 있는 장만 가운데 단을 두면 됩니다.
    장 자체 쪽(p1·g1·w1)에서는 가운데가 자신과 겹쳐 안 넣습니다 */
+/* 손자 쪽이 있는 중항목만 가운데 단을 하나 더 둡니다 */
+const MID_LAND = {};
 const CH_LAND = {};
 chRows.forEach(b => {
   if(b.dataset.t && document.querySelector('.kids[data-kids="' + b.dataset.ch + '"]'))
     CH_LAND[b.dataset.ch] = b.dataset.t;
+});
+midRows.forEach(m => {
+  if(m.dataset.t && document.querySelector('.gkids[data-gkids="' + m.dataset.mid + '"]'))
+    MID_LAND[m.dataset.mid] = m.dataset.t;
 });
 
 const groups=document.getElementById('groups'), hl=document.getElementById('hl');
@@ -4238,6 +4246,8 @@ const content=document.getElementById('content'), live=document.getElementById('
 const mbtn=document.getElementById('mbtn');
 const cbSec=document.getElementById('cbSec'), cbPage=document.getElementById('cbPage');
 const cbMid=document.getElementById('cbMid'), cbMidSep=document.getElementById('cbMidSep');
+const cbMid2=document.getElementById('cbMid2'), cbMid2Sep=document.getElementById('cbMid2Sep');
+cbMid2.addEventListener('click', () => { const t=cbMid2.dataset.to; if(t) show(order.indexOf(t)); });
 cbMid.addEventListener('click', () => { const t=cbMid.dataset.to; if(t) show(order.indexOf(t)); });
 const crumb=document.querySelector('.crumb');
 const prevB=document.getElementById('prev'), nextB=document.getElementById('next');
@@ -4341,6 +4351,15 @@ function show(i, push = true){
      속성을 직접 토글해야 화살표가 가운데 이름과 함께 켜지고 꺼집니다 */
   cbMid.hidden = !hasMid;
   cbMidSep.toggleAttribute('hidden', !hasMid);
+  /* 중항목 단 — 3-2 인재성장 플랫폼처럼 그 아래 쪽이 또 있는 자리입니다 */
+  const land2 = MID_LAND[mid];
+  const hasMid2 = !!land2 && order[i] !== land2;
+  if(hasMid2){
+    cbMid2.textContent = titles[order.indexOf(land2)];
+    cbMid2.dataset.to = land2;
+  }
+  cbMid2.hidden = !hasMid2;
+  cbMid2Sep.toggleAttribute('hidden', !hasMid2);
   cbPage.textContent = titles[i];
   prevB.disabled = tPrev.disabled = i === 0;
   nextB.disabled = tNext.disabled = i === order.length - 1;
@@ -4807,7 +4826,7 @@ function showMe(push = true){
   rows.forEach(r => { r.classList.remove('cur'); r.setAttribute('aria-current', 'false'); });
   /* 예전엔 "곁 / 쓴 사람" 이었습니다. 목차 밖이라는 뜻으로 "곁"을 썼는데
      읽는 사람에게 그 뜻이 닿지 않았습니다. 한 칸으로 줄입니다. */
-  cbSec.textContent = '쓴 사람'; cbPage.textContent = ''; cbMid.hidden = true; cbMidSep.toggleAttribute('hidden', true);
+  cbSec.textContent = '쓴 사람'; cbPage.textContent = ''; cbMid.hidden = true; cbMidSep.toggleAttribute('hidden', true); cbMid2.hidden = true; cbMid2Sep.toggleAttribute('hidden', true);
   crumb.classList.add('solo');
   prevB.disabled = nextB.disabled = tPrev.disabled = tNext.disabled = true;
   prevT.textContent = nextT.textContent = '';
@@ -4889,7 +4908,7 @@ function showMui(push = true){
   allPages.forEach(p => p.classList.remove('on'));
   muiSec.classList.add('on');
   rows.forEach(r => { r.classList.remove('cur'); r.setAttribute('aria-current', 'false'); });
-  cbSec.textContent = '무이네 편의점'; cbPage.textContent = ''; cbMid.hidden = true; cbMidSep.toggleAttribute('hidden', true);
+  cbSec.textContent = '무이네 편의점'; cbPage.textContent = ''; cbMid.hidden = true; cbMidSep.toggleAttribute('hidden', true); cbMid2.hidden = true; cbMid2Sep.toggleAttribute('hidden', true);
   crumb.classList.add('solo');
   prevB.disabled = nextB.disabled = tPrev.disabled = tNext.disabled = true;
   prevT.textContent = nextT.textContent = '';
