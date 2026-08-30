@@ -698,7 +698,9 @@ body{background:var(--canvas);color:var(--ink);font-family:var(--sans);font-opti
 .ibtn:disabled{opacity:.3;cursor:default}
 .ibtn:disabled:active{transform:none}
 
-.content{flex:1;overflow-y:auto;padding:26px 32px 44px}
+/* 가로는 잠급니다. 숨어 있는 주석 풍선말이 좁은 창에서 스크롤 폭을 넓혀
+   본문이 옆으로 끌리던 일이 있었습니다. 넓은 표·도표는 각자 통 안에서 돕니다 */
+.content{flex:1;overflow-y:auto;overflow-x:hidden;padding:26px 32px 44px}
 .wrap{max-width:780px;margin:0 auto}
 
 .phead{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:13px}
