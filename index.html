@@ -905,6 +905,9 @@ td.n{font-variant-numeric:tabular-nums}
    곁말과 주의는 같은 기호를 쓰되 색으로 나눕니다 — 회색이면 곁말, 빨강이면 조심할 곳. */
 .note{position:relative;padding:1px 0 1px 31px;margin-top:22px;color:var(--ink-2);
   font-size:var(--t-body);line-height:1.62}
+/* 참고가 여러 문단일 때. 첫 문단은 아이콘과 첫 줄이 나란해야 해서 위 여백을 지웁니다 */
+.note>p{margin-top:11px;line-height:inherit}
+.note>p:first-child{margin-top:0}
 .note::before{content:"";position:absolute;left:0;top:.16em;width:19px;height:19px;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23737370' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 13h.01'/%3E%3Cpath d='M12 6v3'/%3E%3Cpath d='M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20'/%3E%3C/svg%3E") center/contain no-repeat}
 /* 조심할 곳. 세로선은 "곁말" 이라는 뜻뿐이라, 조심하라는 말을 못 합니다.
@@ -1538,9 +1541,9 @@ a.cta{text-decoration:none}
 
     <p>본 Challenge의 목표이기도 한 저의 <span class="tok">AI에 대한 고찰</span>을 읽어보고 싶으시다면 하단 링크를 통해 편하게 읽어주시면 됩니다.</p>
 
-    <p>그리고 시간 여유가 있으시다면 제가 개발하고 있는 인재성장 플랫폼도 한 번 살펴봐 주시고 의견을 남겨주시면 감사하겠습니다! 제가 현재 가장 고민하고 있는 것은 “동문이 자발적으로 참여하고 활동하도록 만드는 incentive는 무엇인가?”​입니다. </p>
+    <p>그리고 시간 여유가 있으시다면 제가 개발하고 있는 인재성장 플랫폼도 한 번 살펴봐 주시고 의견을 남겨주시면 감사하겠습니다! 제가 현재 <strong>가장 고민하고 있는 부분은 “동문이 자발적으로 참여하고 활동하도록 만드는 incentive는 무엇인가?”​입니다.</strong> </p>
 
-    <p>아직 개발 중인 플랫폼이라 부족한 점이 많지만, 의견을 들으며 앞으로 어떻게 발전시켜 나갈지 고민해 보고자 합니다. 하단 링크를 통해 플랫폼에 접속하실 수 있습니다. (기입된 정보는 모두 dummy data입니다.)</p>
+    <p>아직 개발 중인 플랫폼이라 부족한 점이 많지만 의견을 들으며 앞으로 어떻게 발전시켜 나갈지 고민해 보고자 합니다. 하단 링크를 통해 플랫폼에 접속하실 수 있습니다. (참고. 기입된 정보는 모두 dummy data입니다.)</p>
 
     <p>감사합니다.<br>오다영 드림.</p>
 
@@ -3366,8 +3369,10 @@ sheet.append_row(data)</code></div>
       <tr><td class="n"><strong>S</strong></td><td class="n">5</td><td><strong>달성도 측정</strong></td><td class="l">세운 목표에 얼마나 닿았는지 점검합니다</td></tr>
       </tbody>
     </table></div>
+          <div class="note">
           <p>K·F·A·S는 제가 여러 곳에서 활용하고 있는 프레임인데, 저는 이것이 삶에도 통용될 수 있다고 생각합니다. 자기 자신을 잘 알아야 앞으로 어디로, 어떻게 나아갈지 전략을 세울 수 있습니다. 그리고 그 전략을 바탕으로 직접 실행하고, 그 과정에서 나와 사회에 어떤 영향을 미쳤는지 성찰합니다. 그 성찰을 통해 다시 자신에 대한 이해를 높이고, 다음 계획을 세우는 순환 과정입니다. (개인적으로 우리 장학생들이 IDP를 통해 이 구조를 잘 내면화하기를 소망합니다.)</p>
           <p>체스로 비유하면, 내가 Knight인지 Bishop인지 알아야 내가 어떤 방식으로 움직일 수 있는지를 알 수 있습니다. 그리고 내가 놓인 환경과 형세를 살펴보면서, 그 안에서 어떤 전략을 시도할지 결정하게 됩니다.</p>
+          </div>
 
     <div class="ann">
       <a class="shot-l" href="photos/tlab-idp-chapter.png" target="_blank" rel="noopener noreferrer">
@@ -3739,7 +3744,7 @@ sheet.append_row(data)</code></div>
 
     <p>요즘 크리스토퍼 놀란 감독의 <span class="tok">&lt;오디세이&gt;</span>를 많이 보시던데, 초기 오디세우스의 여정의 목적은 귀향이었지만, 가지 않아도 될 곳에 구태여 찾아가보고(키클롭스의 섬), 듣지 않아도 될 노래(세이렌)를 몸을 묶어가며 듣는 오디세우스야말로 자승자박의 아이콘이 아닐지... 그래서 보셨을 지는 모르겠지만 소소한 재미로 홈페이지에 <span class="tok">배(ship, <svg class="ig" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c1.2 0 1.8.8 3 .8s1.8-.8 3-.8 1.8.8 3 .8 1.8-.8 3-.8 1.8.8 3 .8"/><path d="M5 14.5 4 10h16l-2.2 4.5"/><path d="M12 10V3l6 3.5-6 1"/></svg>)</span> 아이콘이 <span class="tok">집(<svg class="ig" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6.5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1V21"/></svg>)</span>으로 돌아가는 컨셉으로 본 웹앱을 디자인해 보았습니다.</p>
 
-    <p>2024년 7월, 바이브 코딩이라는 단어가 생기기도 전에 제가 하던게 바이브 코딩이라는 것도 모르고 AI로 Python 코드를 고쳐가며 PDF를 병합하던 때, 분명 '이 코드를 만들어 내지 못 하면 왠지 한동안 저녁에 집에 돌아가지 못 할 거 같다'라는 두려움이 엄습하여 시작했었습니다. 그러나 하다보니 순간 순간 재미를 느끼기도 했고, 저녁이나 주말에도 코드를 고치며 놀던 기억이 있습니다. 자료를 작성하면서 당시를 다시 떠올려 보니, 이것이야말로 ‘오디세이 프로젝트’가 아닐까 하는 생각을 혼자 하며 이번 Challenge 과제를 작성했습니다.</p>
+    <p>2024년 7월, 바이브 코딩이라는 단어가 생기기도 전에 제가 하던게 바이브 코딩이라는 것도 모르고 AI로 Python 코드를 고쳐가며 PDF를 병합하던 때, 분명 '이 코드를 만들어 내지 못 하면 왠지 한동안 저녁에 집에 돌아가지 못 할 거 같다...'라는 두려움이 엄습하여 시작했었습니다. 그러나 하다보니 순간 순간 재미를 느끼기도 했고, 저녁이나 주말에도 코드를 고치며 놀던 기억이 있습니다. 자료를 작성하면서 당시를 다시 떠올려 보니, 이것이야말로 ‘오디세이’가 아닐까 하는 생각을 혼자 하며 이번 Challenge 과제를 작성했습니다.</p>
 
     <p>문득 보면 사람은 오디세우스처럼 안정과 도파민 추구 사이에서 갈팡질팡하며(이것이 쇼펜하우어가 말하는 "인생은 고통과 권태 사이를 오락가락하는 시계추와 같다"는 로직일까요?), 내가 왜 이러고 있지?라는 생각이 드는 상황에 자신을 몰아넣으면서도 와중에 우연히 재미를 느끼고 사는, 참 다양하고도 모순되는 마음을 품고 사는 구나 싶습니다.</p>
 
