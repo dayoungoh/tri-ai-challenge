@@ -4163,7 +4163,7 @@ Thumbs.db</code></div>
             <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
           </a>
         </div>
-        <div class="me-upd">최종 수정 2026년 8월 30일<span class="me-dot">·</span><button type="button" class="deck-open" id="deckOpen" aria-haspopup="dialog" aria-controls="deckGate">발표 자료</button></div>
+        <div class="me-upd">최종 수정 2026년 8월 30일</div>
       </div>
     </div>
 
@@ -6003,17 +6003,17 @@ setTimeout(() => { moveShip(activeEl()); ship.style.transition = ''; }, 380);
 /* 발표 자료 문. 비밀번호는 그대로 적어 두지 않고 간단한 셈값만 둡니다.
    막는 장치가 아니라 지나가는 사람 눈에 안 띄게 하는 가림막입니다. */
 (function(){
-  var open = document.getElementById('deckOpen');
-  if(!open) return;
+  var gate = document.getElementById('deckGate');
+  if(!gate) return;
   var
       ask  = document.getElementById('deckAsk'),
       pw   = document.getElementById('deckPw'),
       msg  = document.getElementById('deckMsg');
   function num(w){ var v = 0; for(var i = 0; i < w.length; i++){ v = (v * 131 + w.charCodeAt(i)) % 1000000007; } return v; }
   var WANT = 1885981;
-  var gate = document.getElementById('deckGate'), last = null;
+  var back = null;
   function show(){
-    last = document.activeElement;
+    back = document.activeElement;
     gate.hidden = false;
     // hidden 을 뗀 직후 바로 클래스를 붙이면 브라우저가 한 프레임 안에서
     // 처리해 스며드는 느낌 없이 튀어 나옵니다. 한 박자 늦춥니다.
@@ -6023,9 +6023,19 @@ setTimeout(() => { moveShip(activeEl()); ship.style.transition = ''; }, 380);
     gate.classList.remove('on');
     msg.textContent = ''; pw.value = '';
     setTimeout(function(){ gate.hidden = true; }, 200);
-    if(last) last.focus();
+    if(back) back.focus();
   }
-  open.addEventListener('click', show);
+  /* 왼쪽 위 제목을 빠르게 세 번 누르면 열립니다.
+     눈에 보이는 단추를 두지 않으려고 이렇게 했습니다 — 세 번 다 첫 쪽으로
+     가는 평소 동작이 함께 일어나므로 잘못 눌러도 어색하지 않습니다. */
+  var hits = 0, tapAt = 0;
+  var logo = document.getElementById('homeBtn');
+  if(logo) logo.addEventListener('click', function(){
+    var now = Date.now();
+    hits = (now - tapAt < 700) ? hits + 1 : 1;
+    tapAt = now;
+    if(hits >= 3){ hits = 0; show(); }
+  });
   gate.addEventListener('mousedown', function(e){ if(e.target === gate) hide(); });
   document.addEventListener('keydown', function(e){
     if(e.key === 'Escape' && !gate.hidden) hide();
