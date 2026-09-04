@@ -2104,7 +2104,7 @@ kidRows.forEach(a => a.addEventListener('click', e => {
   e.preventDefault();
   go(a.dataset.t);
 }));
-document.getElementById('homeBtn').addEventListener('click', () => show(0));  /* 인삿말 */
+document.getElementById('homeBtn').addEventListener('click', () => { location.href = 'index.html'; });  /* 문서로 돌아가기 */
 /* 본문 어디서든 특정 페이지로 보내는 버튼 */
 document.querySelectorAll('[data-go]').forEach(b =>
   b.addEventListener('click', () => {
