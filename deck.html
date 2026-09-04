@@ -1427,6 +1427,38 @@ a.cta{text-decoration:none}
   text-align:center}
 .qr .t b{display:block;font-size:13.5px;font-weight:660;color:var(--ink)}
 @media (min-width:1100px){ .qr{display:flex} }
+
+/* ── 발표용 · 검은 바탕 ──
+   원래 문서는 밝은 종이 그대로 두고, 발표 자료만 뒤집습니다.
+   색 이름은 그대로 두고 값만 바꾸었으므로 나머지 규칙은 손대지 않았습니다.
+   프로젝터에서 검정은 회색으로 뜨므로 바탕은 아주 어둡게, 글자는 순백보다
+   한 톤 눌러(#f2f2f0) 눈부심을 줄였습니다. ── */
+:root{
+  color-scheme:dark;
+  --canvas:#000;
+  --shell:#101012;
+  --side:#0a0a0b;
+  --ink:#f2f2f0; --ink-2:#a6a6a1; --ink-3:#95958f;
+  --line:#2e2e31; --line-2:#242427;
+  --inset:#191a1c;
+  --code-bg:#1c1c1f; --code-line:#333338;
+  --hover:rgb(255 255 255/.07);
+  --blue:#7ab0f5; --blue-soft:#17263c;
+  --green:#6fcf97; --green-soft:#14261b;
+  --amber:#e0a94a; --amber-soft:#2e2412;
+  --amber-ink:#e8b96a;
+  --red:#ff8f85; --red-soft:#331a1a;
+  --paper:#0e0e10;
+  --shadow-hair:0 0 0 1px rgb(255 255 255/.09);
+  --shadow-card:0 0 0 1px rgb(255 255 255/.08),0 1px 2px rgb(0 0 0/.5);
+  --shadow-card-2:0 0 0 1px rgb(255 255 255/.08),0 2px 8px rgb(0 0 0/.55);
+  --shadow-lift:0 0 0 1px rgb(255 255 255/.1),0 1px 2px rgb(0 0 0/.5);
+  --shadow-shell:0 0 0 1px rgb(255 255 255/.06),0 10px 34px rgb(0 0 0/.6);
+}
+/* QR 은 어두운 칸 위에서 읽히지 않습니다. 이 카드만 흰 종이로 남깁니다. */
+.qr{background:#fff;box-shadow:0 0 0 1px rgb(255 255 255/.14)}
+.qr .t{color:#5f5f5c}
+.qr .t b{color:#1a1a1a}
 </style>
 </head>
 <body>
@@ -1586,59 +1618,59 @@ a.cta{text-decoration:none}
               <defs>
                 <marker id="rcN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
                   markerUnits="userSpaceOnUse" orient="auto">
-                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5"
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#9b9b96" stroke-width="1.5"
                     stroke-linecap="round" stroke-linejoin="round"/></marker>
                 <marker id="rcG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
                   markerUnits="userSpaceOnUse" orient="auto">
-                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5"
+                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#7ab0f5" stroke-width="1.5"
                     stroke-linecap="round" stroke-linejoin="round"/></marker>
               </defs>
 
               <!-- 1. 입력 폴더 -->
               <path d="M14,62 q0,-6 6,-6 h22 l6,8 h40 q6,0 6,6 v40 q0,6 -6,6 H20 q-6,0 -6,-6 Z"
-                fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/>
-              <path d="M30,78 h30 M30,88 h44 M30,98 h22" stroke="#1a1a1a" stroke-width="2"
+                fill="#18181b" stroke="#ececea" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M30,78 h30 M30,88 h44 M30,98 h22" stroke="#ececea" stroke-width="2"
                 stroke-linecap="round" opacity=".38"/>
               <text class="ic-t" x="55" y="136" text-anchor="middle">입력 폴더</text>
               <text class="ic-s" x="55" y="152" text-anchor="middle">사진 · PDF 올려 두기</text>
 
               <!-- 2. 읽기 -->
-              <rect x="196" y="56" width="92" height="56" rx="8" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5"/>
-              <path d="M214,74 h34 M214,84 h50 M214,94 h28" stroke="#1a5fb4" stroke-width="2"
+              <rect x="196" y="56" width="92" height="56" rx="8" fill="#17263c" stroke="#7ab0f5" stroke-width="1.5"/>
+              <path d="M214,74 h34 M214,84 h50 M214,94 h28" stroke="#7ab0f5" stroke-width="2"
                 stroke-linecap="round" opacity=".5"/>
-              <text class="ic-t" x="242" y="136" text-anchor="middle" fill="#1a5fb4">글자 읽기</text>
-              <text class="ic-s" x="242" y="152" text-anchor="middle" fill="#1a5fb4">날짜 · 사용처 · 금액</text>
+              <text class="ic-t" x="242" y="136" text-anchor="middle" fill="#7ab0f5">글자 읽기</text>
+              <text class="ic-s" x="242" y="152" text-anchor="middle" fill="#7ab0f5">날짜 · 사용처 · 금액</text>
 
               <!-- 3. 보관 폴더 -->
               <path d="M380,62 q0,-6 6,-6 h22 l6,8 h40 q6,0 6,6 v40 q0,6 -6,6 H386 q-6,0 -6,-6 Z"
-                fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/>
-              <text class="cel" x="421" y="92" text-anchor="middle" font-size="11" fill="#737370">2026 / 08</text>
+                fill="#18181b" stroke="#ececea" stroke-width="1.5" stroke-linejoin="round"/>
+              <text class="cel" x="421" y="92" text-anchor="middle" font-size="11" fill="#9b9b96">2026 / 08</text>
               <text class="ic-t" x="421" y="136" text-anchor="middle">보관 폴더</text>
               <text class="ic-s" x="421" y="152" text-anchor="middle">이름 바꿔 연도 · 월로</text>
 
               <!-- 4. 시트 -->
-              <rect x="556" y="56" width="96" height="56" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
-              <path d="M556,72 h96" stroke="#1a1a1a" stroke-width="1.4" opacity=".45"/>
-              <path d="M588,56 v56 M620,56 v56" stroke="#1a1a1a" stroke-width="1" opacity=".28"/>
+              <rect x="556" y="56" width="96" height="56" rx="8" fill="#18181b" stroke="#ececea" stroke-width="1.5"/>
+              <path d="M556,72 h96" stroke="#ececea" stroke-width="1.4" opacity=".45"/>
+              <path d="M588,56 v56 M620,56 v56" stroke="#ececea" stroke-width="1" opacity=".28"/>
               <path d="M564,86 h16 M596,86 h16 M628,86 h16 M564,100 h16 M596,100 h16 M628,100 h16"
-                stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" opacity=".3"/>
+                stroke="#ececea" stroke-width="2" stroke-linecap="round" opacity=".3"/>
               <text class="ic-t" x="604" y="136" text-anchor="middle">Sheets</text>
               <text class="ic-s" x="604" y="152" text-anchor="middle">한 줄씩 기록</text>
 
               <!-- 잇는 선 -->
-              <path d="M124,84 L186,84" fill="none" stroke="#1a5fb4" stroke-width="1.4"
+              <path d="M124,84 L186,84" fill="none" stroke="#7ab0f5" stroke-width="1.4"
                 stroke-linecap="round" marker-end="url(#rcG)"/>
-              <path d="M298,84 L370,84" fill="none" stroke="#737370" stroke-width="1.4"
+              <path d="M298,84 L370,84" fill="none" stroke="#9b9b96" stroke-width="1.4"
                 stroke-linecap="round" marker-end="url(#rcN)"/>
-              <path d="M490,84 L546,84" fill="none" stroke="#737370" stroke-width="1.4"
+              <path d="M490,84 L546,84" fill="none" stroke="#9b9b96" stroke-width="1.4"
                 stroke-linecap="round" marker-end="url(#rcN)"/>
 
               <!-- 손글씨 -->
-              <g stroke="#1a5fb4" fill="#1a5fb4">
+              <g stroke="#7ab0f5" fill="#7ab0f5">
                 <path class="st" d="M155,40 C155,48 155,58 155,70" marker-end="url(#rcG)"/>
                 <text class="hw" x="155" y="30" text-anchor="middle" stroke="none">매월 초 한 번, 쌓인 것을 한꺼번에</text>
               </g>
-              <g stroke="#737370" fill="#737370">
+              <g stroke="#9b9b96" fill="#9b9b96">
                 <path class="st" d="M300,186 C320,180 340,168 356,144" marker-end="url(#rcN)"/>
                 <text class="hw" x="292" y="196" text-anchor="end" stroke="none">yyyymmdd_금액</text>
               </g>
@@ -1686,22 +1718,22 @@ a.cta{text-decoration:none}
       <svg viewBox="0 0 700 244" xmlns="http://www.w3.org/2000/svg" role="img"
         aria-label="인재성장 지원허브의 순환 구조 그림. 인재성장 계획에서 인재성장 플랫폼으로 기록이 쌓이고 플랫폼의 자료를 인재성장 연구가 분석하고 연구가 다시 계획의 지원 설계를 개선하는 화살표가 한 바퀴 돕니다">
         <defs>
-          <marker id="hubU" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
+          <marker id="hubU" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#9b9b96" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker>
         </defs>
-        <rect x="40" y="30" width="270" height="70" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+        <rect x="40" y="30" width="270" height="70" rx="8" fill="#18181b" stroke="#ececea" stroke-width="1.5"/>
         <text class="ic-t" x="175" y="60" text-anchor="middle">인재성장 계획</text>
         <text class="ic-s" x="175" y="80" text-anchor="middle">IDP 수립 · 정기 면담 · 멘토링</text>
-        <rect x="390" y="30" width="270" height="70" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+        <rect x="390" y="30" width="270" height="70" rx="8" fill="#18181b" stroke="#ececea" stroke-width="1.5"/>
         <text class="ic-t" x="525" y="60" text-anchor="middle">인재성장 연구</text>
         <text class="ic-s" x="525" y="80" text-anchor="middle">장기 기록·분석 · 지원 방안 설계</text>
-        <rect x="40" y="160" width="620" height="70" rx="8" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5"/>
-        <text class="ic-t" x="350" y="190" text-anchor="middle" fill="#1a5fb4">인재성장 플랫폼 (인재 DB)</text>
-        <text class="ic-s" x="350" y="210" text-anchor="middle" fill="#1a5fb4">성장 기록이 개인 단위로 매년 동일한 방식으로 축적</text>
-        <path d="M175 108 V152" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#hubU)"/>
+        <rect x="40" y="160" width="620" height="70" rx="8" fill="#17263c" stroke="#7ab0f5" stroke-width="1.5"/>
+        <text class="ic-t" x="350" y="190" text-anchor="middle" fill="#7ab0f5">인재성장 플랫폼 (인재 DB)</text>
+        <text class="ic-s" x="350" y="210" text-anchor="middle" fill="#7ab0f5">성장 기록이 개인 단위로 매년 동일한 방식으로 축적</text>
+        <path d="M175 108 V152" fill="none" stroke="#9b9b96" stroke-width="1.4" stroke-linecap="round" marker-end="url(#hubU)"/>
         <text class="ic-s" x="185" y="134">기록이 쌓임</text>
-        <path d="M525 152 V108" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#hubU)"/>
+        <path d="M525 152 V108" fill="none" stroke="#9b9b96" stroke-width="1.4" stroke-linecap="round" marker-end="url(#hubU)"/>
         <text class="ic-s" x="535" y="134">자료를 분석</text>
-        <path d="M382 65 H318" fill="none" stroke="#737370" stroke-width="1.4" stroke-linecap="round" marker-end="url(#hubU)"/>
+        <path d="M382 65 H318" fill="none" stroke="#9b9b96" stroke-width="1.4" stroke-linecap="round" marker-end="url(#hubU)"/>
         <text class="ic-s" x="350" y="52" text-anchor="middle">지원 설계 개선</text>
       </svg>
     </div>
