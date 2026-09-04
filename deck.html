@@ -1405,7 +1405,8 @@ a.cta{text-decoration:none}
    밀립니다. 본문 통은 화면폭에서 사이드바 320 과 안여백 64 를 뺀 값이라,
    1260 폭을 다 쓰려면 화면이 1644 는 되어야 합니다. 그래서 1600 이상에서만 겁니다. */
 @media (min-width:1600px){
-  .wrap{max-width:1260px}
+  /* 오른쪽 위 QR 이 앉을 자리만큼 폭을 조금 물렸습니다. */
+  .wrap{max-width:1200px}
   .doc .lead,.doc p,.doc li,.doc .kv .v,.doc .note,.doc .tw td,
   .doc .box p,.doc .tip,.doc .step,.doc .qa,.doc .ask p,.doc .ask li,
   .doc .stat .f,.doc .lnk .b strong,.doc .gain-cap,.doc .dg-cap,
@@ -1416,14 +1417,17 @@ a.cta{text-decoration:none}
 }
 
 /* ── 발표용 · 웹사이트 QR ──
-   듣는 동안 훑어보라고 오른쪽 아래에 붙입니다. 본문 아래 여백에 얹히고
+   듣는 동안 훑어보라고 오른쪽 위, 머리띠 바로 아래에 크게 붙입니다.
+   쪽 제목은 왼쪽에 있어 이 자리는 늘 비어 있습니다.
    좁은 화면에서는 자리를 못 내주므로 숨깁니다. */
-.qr{position:fixed;right:26px;bottom:22px;z-index:9;display:none;
-  align-items:center;gap:9px;padding:8px 12px 8px 8px;
-  background:var(--shell);border-radius:14px;box-shadow:var(--shadow-card-2)}
-.qr svg{display:block;width:74px;height:74px}
-.qr .t{font-size:12px;line-height:1.35;color:var(--ink-3);letter-spacing:-.01em}
-.qr .t b{display:block;font-size:13px;font-weight:660;color:var(--ink)}
+.srch{display:none}
+.qr{position:fixed;right:22px;top:76px;z-index:9;display:none;
+  flex-direction:column;align-items:center;gap:8px;padding:13px 13px 11px;
+  background:var(--shell);border-radius:16px;box-shadow:var(--shadow-card-2)}
+.qr svg{display:block;width:124px;height:124px}
+.qr .t{font-size:12.5px;line-height:1.35;color:var(--ink-3);letter-spacing:-.01em;
+  text-align:center}
+.qr .t b{display:block;font-size:13.5px;font-weight:660;color:var(--ink)}
 @media (min-width:1100px){ .qr{display:flex} }
 </style>
 </head>
@@ -1470,7 +1474,6 @@ a.cta{text-decoration:none}
           <svg aria-hidden="true" class="cv" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>
         </button>
         <div class="kids" id="kids1" data-kids="1"><div>
-          <a class="row" href="#px2" data-t="px2"><span class="kn">1-3</span><span class="kt">맞춤 메일 발송 · 실연</span></a>
         </div></div>
         
 
@@ -1490,15 +1493,6 @@ a.cta{text-decoration:none}
         </button>
         <div class="kids" id="kids3" data-kids="3"><div>
           <a class="row" href="#w3" data-t="w3"><span class="kn">3-2</span><span class="kt">인재성장 플랫폼 · 배경</span></a>
-          <a class="row" href="#w3y" data-t="w3y"><span class="kn"></span><span class="kt">플랫폼과 선순환</span></a>
-          <a class="row" href="#w3y2" data-t="w3y2"><span class="kn"></span><span class="kt">두 개의 입구</span></a>
-          <a class="row" href="#w3a" data-t="w3a"><span class="kn">3-2-1</span><span class="kt">나의 나무(IDP)</span></a>
-          <a class="row" href="#w3a2" data-t="w3a2"><span class="kn"></span><span class="kt">IDP 한 바퀴</span></a>
-          <a class="row" href="#w3ax" data-t="w3ax"><span class="kn"></span><span class="kt">CV를 쓰는 이유</span></a>
-          <a class="row" href="#w3ay" data-t="w3ay"><span class="kn"></span><span class="kt">CV 정리 네 단계</span></a>
-          <a class="row" href="#w3b" data-t="w3b"><span class="kn">3-2-2</span><span class="kt">숲 산책 · 메뉴</span></a>
-          <a class="row" href="#w3bx" data-t="w3bx"><span class="kn"></span><span class="kt">동문 찾기(RAG)</span></a>
-          <a class="row" href="#w3bx2" data-t="w3bx2"><span class="kn"></span><span class="kt">RAG 세 층</span></a>
         </div></div>
         
       </div>
@@ -1562,39 +1556,9 @@ a.cta{text-decoration:none}
         <li>제가 느낀 Python의 가장 큰 장점은 개인정보가 담긴 서류를 내 PC 안에서 처리하면서도 <span class="tok">대량의 반복 업무</span>를 빠르고 일관되게 처리할 수 있다는 점입니다.</li>
         <li>2024년에는 AI에게 코드를 받아 제가 직접 실행하고 오류를 수정했지만 이제는 코드를 만들고 실행하고 결과를 확인하고 수정하는 반복 과정까지 <span class="tok">AI가 상당 부분 대신</span>할 수 있습니다.</li>
       </ul>
-  </section>
 
-  
-
-  
-
-  <section id="px2" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">1 · 예시</div><h2>개인별 맞춤 메일 발송</h2></div></div>
-    <div class="steps">
-      <div class="stp">
-            <div class="hd"><span class="n">1-3</span><div class="t">개인별 맞춤 메일 발송</div></div>
-            <div class="bd">
-              
-              <div class="ann">
-            <svg viewBox="0 0 700 344" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="워드 서식 파일의 중괄호 자리에 명단의 값이 들어가 한 통의 메일이 되는 그림. 워드 서식이 메일에 그대로 유지되고 첨부는 명단에 적은 파일이 붙습니다">
-              <defs><marker id="p5N" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto"><path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-              <rect x="20" y="56" width="268" height="214" rx="6" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/><path d="M20,76 h268" stroke="#1a1a1a" stroke-width="1.2" opacity=".45"/><text x="34" y="71" font-size="10.5" fill="#737370">email template.docx</text><rect x="34.0" y="110.5" width="44.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="40.0" y="122.0" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">&#123;이름&#125;</text><text x="81.3" y="122.0" font-size="11" fill="#1a1a1a"> 지원자께.</text><text x="34.0" y="146.0" font-size="11" fill="#1a1a1a">안녕하세요, 장학학술팀입니다.</text><text x="34.0" y="174.0" font-size="11" fill="#1a1a1a">귀하는 </text><rect x="73.4" y="162.5" width="44.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="79.4" y="174.0" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">&#123;전공&#125;</text><text x="120.7" y="174.0" font-size="11" fill="#1a1a1a"> 분야</text><rect x="32.0" y="184.5" width="60.1" height="15" fill="#fdf6e3"/><text x="34.0" y="196.0" font-size="11" fill="#1a1a1a">면접대상자</text><text x="90.1" y="196.0" font-size="11" fill="#1a1a1a">로 선정되셨습니다.</text><text x="34.0" y="226.0" font-size="11" fill="#1a1a1a" font-weight="700">■ 일시: </text><rect x="84.8" y="214.5" width="44.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="90.8" y="226.0" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">&#123;일시&#125;</text><text x="34.0" y="248.0" font-size="11" fill="#1a1a1a" font-weight="700">■ 장소: </text><rect x="84.8" y="236.5" width="44.3" height="16" rx="4" fill="#eef3fb" stroke="#1a5fb4" stroke-width=".9"/><text x="90.8" y="248.0" font-size="10.5" fill="#1a5fb4" font-family="Consolas,monospace">&#123;장소&#125;</text>
-              <text class="ic-t" x="154" y="298" text-anchor="middle">워드 서식 파일</text><text class="ic-s" x="154" y="314" text-anchor="middle">필드는 중괄호로 표시</text>
-              <path d="M300,160 L370,160" fill="none" stroke="#1a5fb4" stroke-width="1.4" stroke-linecap="round" marker-end="url(#p5N)"/>
-              <text class="ic-s" x="335" y="152" text-anchor="middle" fill="#1a5fb4">명단의 값으로</text>
-              <text class="ic-s" x="335" y="176" text-anchor="middle" fill="#1a5fb4">채움</text>
-              <rect x="412" y="56" width="268" height="214" rx="6" fill="#fff" stroke="#1a5fb4" stroke-width="1.5"/><path d="M412,76 h268" stroke="#1a5fb4" stroke-width="1.2" opacity=".45"/><text x="426" y="71" font-size="10.5" fill="#1a5fb4">보낸 메일</text><rect x="426.0" y="86.0" width="81.4" height="17" rx="8" fill="#f4f4f1" stroke="#d8d8d4" stroke-width=".9"/><path d="M437.0,97.0 v-4 a2.3 2.3 0 0 1 4.6 0 v5.4 a3.9 3.9 0 0 1 -7.8 0 v-4.7" fill="none" stroke="#737370" stroke-width="1.1" stroke-linecap="round"/><text x="447.0" y="98.0" font-size="10" fill="#737370">안내문.pdf</text><text x="426.0" y="122.0" font-size="11" fill="#1a1a1a">홍길동 지원자께.</text><text x="426.0" y="146.0" font-size="11" fill="#1a1a1a">안녕하세요, 장학학술팀입니다.</text><text x="426.0" y="174.0" font-size="11" fill="#1a1a1a">귀하는 심리학 분야</text><rect x="424.0" y="184.5" width="60.1" height="15" fill="#fdf6e3"/><text x="426.0" y="196.0" font-size="11" fill="#1a1a1a">면접대상자</text><text x="482.1" y="196.0" font-size="11" fill="#1a1a1a">로 선정되셨습니다.</text><text x="426.0" y="226.0" font-size="11" fill="#1a1a1a" font-weight="700">■ 일시: </text><text x="476.8" y="226.0" font-size="11" fill="#1a1a1a">3월 12일 14시</text><text x="426.0" y="248.0" font-size="11" fill="#1a1a1a" font-weight="700">■ 장소: </text><text x="476.8" y="248.0" font-size="11" fill="#1a1a1a">재단 2층 회의실</text>
-              <text class="ic-t" x="546" y="298" text-anchor="middle" fill="#1a5fb4">나가는 메일</text><text class="ic-s" x="546" y="314" text-anchor="middle" fill="#1a5fb4">한 사람당 한 통</text>
-              <g stroke="#737370" fill="#737370"><path class="st" d="M150,30 C150,38 150,44 150,50" marker-end="url(#p5N)"/><text class="hw" x="150" y="22" text-anchor="middle" stroke="none">워드 서식을 그대로 유지합니다</text></g>
-              </svg>
-          </div>
-            </div>
-          </div>
-    </div>
-  
     <div class="panel">
-      <div class="panel-h"><span class="t">실연</span><span class="m">1</span></div>
+      <div class="panel-h"><span class="t">실연</span></div>
       <div class="lnk">
         <a href="http://127.0.0.1:5057" target="_blank" rel="noopener noreferrer">
           <span class="n">I</span>
@@ -1605,150 +1569,89 @@ a.cta{text-decoration:none}
       </div>
     </div>
   </section>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  <!-- 2-1 -->
-  <section id="g1" class="page doc">
+<section id="g1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">2 · 안내문</div><h2>Apps Script로 업무 자동화</h2></div></div>
-    
     <ul class="bul lead">
-        
-        
         <li>후기와 영수증을 수합하여 실비를 지급하는 업무처럼 증빙 문서를 만들어야 할 때 Google Apps Script(GAS)를 종종 사용합니다.</li>
       </ul>
   <div class="steps">
       <div class="stp">
-            <div class="hd"><span class="n">2-1</span><div class="t">해외유학 대면모임 지원</div></div>
+            <div class="hd"><span class="n">2-2</span><div class="t">법인카드 영수증 정리</div></div>
             <div class="bd">
+              <ul class="bul">
+                <li>Google Drive에 영수증 파일을 넣어 두면 Apps Script가 영수증의 날짜, 사용처, 금액 등을 읽어 <strong>파일명을 바꾸고 월별 폴더로 정리하고 Spreadsheet에 내역까지 기록해 줍니다.</strong></li>
+              </ul>
               <div class="ann">
-            <svg viewBox="-10 0 700 348" xmlns="http://www.w3.org/2000/svg" role="img"
-              aria-label="신청 폼이 팀 캘린더로 이어지고 승인 뒤 공개 모임만 공유 캘린더로 복사되는 윗줄, 후기 폼이 모임원이면 후기 문서 하나로 모임장이면 후기 문서와 환급 계좌 문서 둘로 갈라지는 아랫줄">
+            <svg viewBox="-10 0 700 210" xmlns="http://www.w3.org/2000/svg" role="img"
+              aria-label="드라이브에 올려 둔 영수증이 매월 초 한 번 실행되어 글자를 읽고 파일 이름을 바꿔 월별 폴더로 옮기고 시트에 한 줄로 기록되는 흐름">
               <defs>
-                <marker id="mtN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                <marker id="rcN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
                   markerUnits="userSpaceOnUse" orient="auto">
                   <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5"
                     stroke-linecap="round" stroke-linejoin="round"/></marker>
-                <marker id="mtG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
+                <marker id="rcG" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
                   markerUnits="userSpaceOnUse" orient="auto">
                   <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#1a5fb4" stroke-width="1.5"
                     stroke-linecap="round" stroke-linejoin="round"/></marker>
-                <marker id="mtA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
-                  markerUnits="userSpaceOnUse" orient="auto">
-                  <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5"
-                    stroke-linecap="round" stroke-linejoin="round"/></marker>
               </defs>
 
-              <!-- ── 윗줄 : 모임을 열기 전 ── -->
-              <text class="ic-s" x="-4" y="26" fill="#737370">모임을 열기 전</text>
-              <path d="M0,34 H660" stroke="#ededea" stroke-width="1"/>
+              <!-- 1. 입력 폴더 -->
+              <path d="M14,62 q0,-6 6,-6 h22 l6,8 h40 q6,0 6,6 v40 q0,6 -6,6 H20 q-6,0 -6,-6 Z"
+                fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/>
+              <path d="M30,78 h30 M30,88 h44 M30,98 h22" stroke="#1a1a1a" stroke-width="2"
+                stroke-linecap="round" opacity=".38"/>
+              <text class="ic-t" x="55" y="136" text-anchor="middle">입력 폴더</text>
+              <text class="ic-s" x="55" y="152" text-anchor="middle">사진 · PDF 올려 두기</text>
 
-              <rect x="4" y="56" width="96" height="46" rx="8" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5"/>
-              <path d="M22,72 h44 M22,82 h30" stroke="#1a5fb4" stroke-width="2" stroke-linecap="round" opacity=".5"/>
-              <text class="ic-t" x="52" y="120" text-anchor="middle" fill="#1a5fb4">신청 폼</text>
+              <!-- 2. 읽기 -->
+              <rect x="196" y="56" width="92" height="56" rx="8" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5"/>
+              <path d="M214,74 h34 M214,84 h50 M214,94 h28" stroke="#1a5fb4" stroke-width="2"
+                stroke-linecap="round" opacity=".5"/>
+              <text class="ic-t" x="242" y="136" text-anchor="middle" fill="#1a5fb4">글자 읽기</text>
+              <text class="ic-s" x="242" y="152" text-anchor="middle" fill="#1a5fb4">날짜 · 사용처 · 금액</text>
 
-              <rect x="186" y="56" width="104" height="46" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
-              <path d="M186,70 h104" stroke="#1a1a1a" stroke-width="1.3" opacity=".45"/>
-              <path d="M204,62 v-8 M272,62 v-8" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
-              <text class="ic-t" x="238" y="120" text-anchor="middle">팀 캘린더</text>
-              <text class="ic-s" x="238" y="136" text-anchor="middle">내부 확인용</text>
+              <!-- 3. 보관 폴더 -->
+              <path d="M380,62 q0,-6 6,-6 h22 l6,8 h40 q6,0 6,6 v40 q0,6 -6,6 H386 q-6,0 -6,-6 Z"
+                fill="#fff" stroke="#1a1a1a" stroke-width="1.5" stroke-linejoin="round"/>
+              <text class="cel" x="421" y="92" text-anchor="middle" font-size="11" fill="#737370">2026 / 08</text>
+              <text class="ic-t" x="421" y="136" text-anchor="middle">보관 폴더</text>
+              <text class="ic-s" x="421" y="152" text-anchor="middle">이름 바꿔 연도 · 월로</text>
 
-              <circle cx="404" cy="79" r="25" fill="#fdf6e3" stroke="#a16207" stroke-width="1.5"/>
-              <path d="M394,79 l7,7 13,-14" fill="none" stroke="#a16207" stroke-width="2.2"
-                stroke-linecap="round" stroke-linejoin="round"/>
-              <text class="ic-t" x="404" y="120" text-anchor="middle" fill="#a16207">내가 승인</text>
-              <text class="ic-s" x="404" y="136" text-anchor="middle" fill="#a16207">메일로 알림</text>
+              <!-- 4. 시트 -->
+              <rect x="556" y="56" width="96" height="56" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
+              <path d="M556,72 h96" stroke="#1a1a1a" stroke-width="1.4" opacity=".45"/>
+              <path d="M588,56 v56 M620,56 v56" stroke="#1a1a1a" stroke-width="1" opacity=".28"/>
+              <path d="M564,86 h16 M596,86 h16 M628,86 h16 M564,100 h16 M596,100 h16 M628,100 h16"
+                stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" opacity=".3"/>
+              <text class="ic-t" x="604" y="136" text-anchor="middle">Sheets</text>
+              <text class="ic-s" x="604" y="152" text-anchor="middle">한 줄씩 기록</text>
 
-              <rect x="518" y="56" width="112" height="46" rx="8" fill="#fff" stroke="#1a1a1a" stroke-width="1.5"/>
-              <path d="M518,70 h112" stroke="#1a1a1a" stroke-width="1.3" opacity=".45"/>
-              <path d="M538,62 v-8 M610,62 v-8" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
-              <text class="ic-t" x="574" y="120" text-anchor="middle">공유 캘린더</text>
-              <text class="ic-s" x="574" y="136" text-anchor="middle">다른 장학생이 봄</text>
+              <!-- 잇는 선 -->
+              <path d="M124,84 L186,84" fill="none" stroke="#1a5fb4" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#rcG)"/>
+              <path d="M298,84 L370,84" fill="none" stroke="#737370" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#rcN)"/>
+              <path d="M490,84 L546,84" fill="none" stroke="#737370" stroke-width="1.4"
+                stroke-linecap="round" marker-end="url(#rcN)"/>
 
-              <path d="M110,79 L176,79" fill="none" stroke="#1a5fb4" stroke-width="1.4"
-                stroke-linecap="round" marker-end="url(#mtG)"/>
-              <path d="M300,79 L369,79" fill="none" stroke="#737370" stroke-width="1.4"
-                stroke-linecap="round" marker-end="url(#mtN)"/>
-              <path d="M439,79 L508,79" fill="none" stroke="#a16207" stroke-width="1.4"
-                stroke-linecap="round" marker-end="url(#mtA)"/>
-              <text class="ic-s" x="473" y="70" text-anchor="middle" fill="#a16207">공개 모임만</text>
-
-              <!-- ── 아랫줄 : 모임이 끝난 뒤 ── -->
-              <text class="ic-s" x="-4" y="188" fill="#737370">모임이 끝난 뒤</text>
-              <path d="M0,196 H660" stroke="#ededea" stroke-width="1"/>
-
-              <rect x="4" y="234" width="96" height="46" rx="8" fill="#f3f7fd" stroke="#1a5fb4" stroke-width="1.5"/>
-              <path d="M22,250 h44 M22,260 h30" stroke="#1a5fb4" stroke-width="2" stroke-linecap="round" opacity=".5"/>
-              <text class="ic-t" x="52" y="298" text-anchor="middle" fill="#1a5fb4">후기 폼</text>
-
-              <path d="M110,257 L176,232" fill="none" stroke="#737370" stroke-width="1.4"
-                stroke-linecap="round" marker-end="url(#mtN)"/>
-              <path d="M110,257 L176,282" fill="none" stroke="#737370" stroke-width="1.4"
-                stroke-linecap="round" marker-end="url(#mtN)"/>
-
-              <text class="ic-t" x="196" y="228" fill="#1a1a1a">모임원</text>
-              <text class="ic-t" x="196" y="292" fill="#1a1a1a">모임장</text>
-
-              <!-- 산출물 : 모임원 -->
-              <path d="M300,206 q0,-4 4,-4 h25 l11,11 v31 q0,4 -4,4 h-32 q-4,0 -4,-4 Z"
-                fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
-              <path d="M325,202 v7 q0,4 4,4 h7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
-              <path d="M309,226 h20 M309,232 h14" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".36"/>
-              <text class="ic-t" x="356" y="222">후기 문서</text>
-              <text class="ic-s" x="356" y="238">1개</text>
-
-              <!-- 산출물 : 모임장 -->
-              <path d="M300,268 q0,-4 4,-4 h25 l11,11 v31 q0,4 -4,4 h-32 q-4,0 -4,-4 Z"
-                fill="#fff" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
-              <path d="M325,264 v7 q0,4 4,4 h7" fill="none" stroke="#1a1a1a" stroke-width="1.4" stroke-linejoin="round"/>
-              <path d="M309,288 h20 M309,294 h14" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" opacity=".36"/>
-              <path d="M418,268 q0,-4 4,-4 h25 l11,11 v31 q0,4 -4,4 h-32 q-4,0 -4,-4 Z"
-                fill="#fdf6e3" stroke="#a16207" stroke-width="1.4" stroke-linejoin="round"/>
-              <path d="M443,264 v7 q0,4 4,4 h7" fill="none" stroke="#a16207" stroke-width="1.4" stroke-linejoin="round"/>
-              <path d="M427,288 h20 M427,294 h14" stroke="#a16207" stroke-width="1.6" stroke-linecap="round" opacity=".45"/>
-              <text class="ic-t" x="474" y="284">후기 문서 + 환급 계좌 문서</text>
-              <text class="ic-s" x="474" y="300">영수증이 그림으로 들어감</text>
-
+              <!-- 손글씨 -->
               <g stroke="#1a5fb4" fill="#1a5fb4">
-                <path class="st" d="M196,330 C202,318 202,308 202,298" marker-end="url(#mtG)"/>
-                <text class="hw" x="4" y="336" stroke="none">폼 하나가 역할에 따라 갈립니다</text>
+                <path class="st" d="M155,40 C155,48 155,58 155,70" marker-end="url(#rcG)"/>
+                <text class="hw" x="155" y="30" text-anchor="middle" stroke="none">매월 초 한 번, 쌓인 것을 한꺼번에</text>
+              </g>
+              <g stroke="#737370" fill="#737370">
+                <path class="st" d="M300,186 C320,180 340,168 356,144" marker-end="url(#rcN)"/>
+                <text class="hw" x="292" y="196" text-anchor="end" stroke="none">yyyymmdd_금액</text>
               </g>
             </svg>
-            <div class="ann-cap">윗줄은 모임을 열기 전, 아랫줄은 끝난 뒤입니다. <strong>사람이 판단하는 자리는 승인 한 곳뿐이고</strong> 나머지는 폼이 제출되는 순간 코드가 이어받습니다.</div>
+            <div class="ann-cap">올려 두기만 하면 <strong>나머지 세 칸은 사람 손이 닿지 않습니다.</strong> 처리하지 못한 영수증은 입력 폴더에 그대로 남아 다음 실행에서 다시 시도됩니다.</div>
           </div>
-              
             </div>
           </div>
     </div>
-    <div class="note">이 자동화는 코드를 직접 작성하기보다 <strong>Claude에 Google 커넥터를 연결해 함께 만들었습니다.</strong> 커넥터에 대한 설명은 부록 A에 정리했습니다.</div>
+    <div class="note">이 자동화는 코드를 직접 작성하기보다 <strong>Claude에 Google 커넥터를 연결해 함께 만들었습니다.</strong></div>
     </section>
-
-  
-
-  
-
-  
-
-
-
-  
-
-  <!-- 3-1 -->
-  <section id="w1" class="page doc">
+<section id="w1" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">3 · 안내문</div><h2>웹앱 개발·배포</h2></div></div>
     <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Supabase</span><span class="chip">#Netlify</span><span class="chip">#Vercel</span><span class="chip">#GitHub</span><span class="chip free">#무료 티어</span></div>
     <ul class="bul lead">
@@ -1769,48 +1672,15 @@ a.cta{text-decoration:none}
 
   <!-- 3-3 -->
   <section id="w3" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2 · 예시 2</div><h2>인재성장 플랫폼</h2></div></div>
+    <div class="phead"><div class="ttl"><div class="eyebrow">3-2 · 배경</div><h2>인재성장 플랫폼</h2></div></div>
     <div class="chips"><span class="chip">#2026.07~</span><span class="chip">#Supabase</span><span class="chip">#Vercel</span><span class="chip">#인재성장_지원허브</span><span class="chip">#개발 중</span></div>
 
     <ul class="bul lead">
-        <li><span class="cont">3-1에 이어서</span>워크순 이수율 Tracker를 만들면서 로그인한 사람에게 그 사람의 기록만 보여 주는 구조를 만들어 보았습니다.</li>
-        <li>그 경험을 확장한 것이 지금 만들고 있는 <span class="tok">인재성장 플랫폼(인재 DB)</span>입니다.</li>
-        <li>플랫폼은 크게 두 화면으로 구성되어 있습니다.</li>
-        <li>참여자가 해마다 자신의 성장 기록을 쌓아가는 <span class="tok">'나의 나무(IDP)'</span>와, 그 기록을 바탕으로 서로 교류하는 <span class="tok">'숲 산책(동문 네트워크)'</span>입니다.</li>
-        <li>이 플랫폼은 어떤 도구가 필요해서 만든게 아니라 재단의 인재육성체계가 개편되면서 필요해진 것이라 사업 구조부터 설명드리고 싶습니다.</li>
-        <li>사업 배경보다 실제 웹앱이 궁금하시면 <a class="xref" href="#w3a">3-2-1 나의 나무(IDP)</a>부터 보셔도 됩니다.</li>
-      </ul>
-
-    
-
-    <div class="panel">
-      <div class="panel-h"><span class="t">직접 보기</span><span class="m">1</span></div>
-      <div class="lnk">
-        <a href="https://tlab-db.vercel.app/" target="_blank" rel="noopener noreferrer">
-          <span class="n">I</span>
-          <span class="b"><strong>KFAS 인재성장 플랫폼</strong><em>tlab-db.vercel.app</em></span>
-          <span class="c">개발 중</span>
-          <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  
-
-  
-
-  
-
-  
-
-  <section id="w3y" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2 · 구조</div><h2>플랫폼과 선순환</h2></div></div>
-    <h3>플랫폼</h3>
-    <ul class="bul">
-        <li>여기서 <span class="tok">플랫폼</span>이 필요해집니다.</li>
-        <li>인재성장 계획과 인재성장 연구가 제대로 작동하려면 장학생들이 자신의 진로를 어떻게 설계하고 있고 어떤 지원을 필요로 하는지가 지속적으로 데이터로 축적되어야 합니다.</li>
+        <li>이 플랫폼은 어떤 도구가 필요해서 만든게 아니라 <strong>재단의 인재육성체계가 개편되면서 필요해진 것이라</strong> 사업 구조부터 설명드리고 싶습니다.</li>
+        <li>인재성장 계획과 인재성장 연구가 제대로 작동하려면 장학생들이 자신의 진로를 어떻게 설계하고 있고 어떤 지원을 필요로 하는지가 <strong>지속적으로 데이터로 축적</strong>되어야 합니다.</li>
         <li>그런데 면담 내용이 담당자의 기억이나 흩어진 파일에만 남아 있다면 해마다 변화를 비교하기도 어렵고 이를 연구 자료로 활용하기도 어렵습니다.</li>
+        <li>그래서 성장 기록을 개인 단위로, 매년 동일한 방식으로 축적하는 <span class="tok">인재성장 플랫폼(인재 DB)</span>을 만들고 있습니다.</li>
+        <li>장학생 개인의 성장 기록이 재단의 지원 설계로 이어지고 그 지원이 다시 개인의 성장을 돕는 <strong>선순환 구조를 만드는 것이 목표</strong>입니다.</li>
       </ul>
 
     <div class="ann">
@@ -1836,297 +1706,20 @@ a.cta{text-decoration:none}
         <text class="ic-s" x="350" y="52" text-anchor="middle">지원 설계 개선</text>
       </svg>
     </div>
-  </section>
 
-  <section id="w3y2" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2 · 구조</div><h2>두 개의 입구</h2></div></div>
-    <ul class="bul">
-        <li>그래서 성장 기록을 개인 단위로, 매년 동일한 방식으로 축적하는 인재성장 플랫폼(인재 DB)을 만들고 있습니다.</li>
-        <li>장학생 개인의 성장 기록이 재단의 지원 설계로 이어지고 그 지원이 다시 개인의 성장을 돕는 ​선순환 구조를 만드는 것이 목표입니다.</li>
-      </ul>
-    
-
-    <div class="ann">
-      <a class="shot-l" href="photos/tlab-home-forest.png" target="_blank" rel="noopener noreferrer">
-        <img class="shot" draggable="false" src="photos/tlab-home-forest.png" width="1445" height="773" loading="lazy"
-          alt="플랫폼 첫 화면입니다. 인재 성장의 숲이라는 제목 아래 크고 작은 나무 여러 그루가 모여 숲을 이루고 있고 그 아래 나의 나무(IDP)와 숲 산책(동문 네트워크) 두 입구가 나란히 놓여 있습니다. 맨 아래에 한 해가 한 Chapter이고 Chapter를 마칠 때마다 나의 나무에 나이테가 한 겹 쌓이며 그 나무들이 모여 숲이 된다는 안내가 적혀 있습니다.">
-      </a>
-      <div class="ann-cap">플랫폼의 첫 화면입니다. ‘나의 나무(IDP)’와 ‘숲 산책(동문 네트워크)’이라는 두 개의 입구​를 두고 개인의 나무가 모여 하나의 숲을 이룬다는 개념을 로그인 후 첫 화면에서 보여 줍니다.</div>
-    </div>
-
-    
-  </section>
-
-  <section id="w3a" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2-1 · 화면</div><h2>나의 나무(IDP)</h2></div></div>
-    
-
-    <ul class="bul lead">
-        
-        <li>성장을 한 번의 결과가 아니라 시간에 따라 축적되는 과정으로 바라보고 싶어 ‘나무’라고 표현했고 이는 <strong>나무를 가꾸듯 인재를 키운다</strong>는 재단의 철학과도 연결됩니다.</li>
-      </ul>
-
-    <div class="ann">
-      <a class="shot-l" href="photos/tlab-mytree-rings.png" target="_blank" rel="noopener noreferrer">
-        <img class="shot" draggable="false" src="photos/tlab-mytree-rings.png" width="964" height="638" loading="lazy"
-          alt="나의 나무(IDP) 화면입니다. 왼쪽 책장에는 나이테 모양의 동심원이 그려져 있고 올해 Chapter 2가 붉은 고리로 칠해져 있습니다. 오른쪽 차례에는 Chapter 2 아래 역량·유형 설문, 현황(CV), 목표 설계, 실행, 달성도 측정 다섯 항목이 놓여 있고 마친 항목에는 표시가 붙어 있습니다. 위에는 한 해가 한 Chapter이고 나이테가 한 겹씩 늘어나 7년째까지 이어진다는 안내가 있습니다.">
-      </a>
-      <div class="ann-cap">한 해가 하나의 Chapter가 되고 Chapter를 마칠 때마다 나무의 나이테가 한 겹씩 늘어납니다. 책을 왼쪽으로 넘기면 지난해 Chapter를 펼쳐 볼 수 있습니다.</div>
-    </div>
-  </section>
-
-  <section id="w3a2" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2-1 · IDP</div><h2>IDP 한 바퀴</h2></div></div>
-    <div class="steps">
-      <div class="stp">
-        <div class="hd"><span class="n">I</span><div class="t">IDP Chapter</div></div>
-        <div class="bd">
-          <ul class="bul">
-        <li>Chapter 하나가 개인성장계획(Individual Development Plan)의 한 해분입니다.</li>
-        <li>IDP는 KFAS 네 국면 안에 다섯 단계로 구성되어 있으며 <strong>앞 단계를 마쳐야 다음 단계가 열립니다</strong>.</li>
-        <li>네 국면은 재단의 이름인 KFAS 네 글자를 딴 것입니다.</li>
-        <li><strong>K</strong>(<strong>K</strong>now Yourself · 나를 안다) → <strong>F</strong>(<strong>F</strong>rame Your Future · 미래를 설계한다) → <strong>A</strong>(<strong>A</strong>ct with Purpose · 목적을 갖고 실행한다) → <strong>S</strong>(<strong>S</strong>elf-Evaluate the Impacts · 성과와 영향을 성찰한다) 구조로 참여자의 성찰과 성장을 돕습니다.</li>
-      </ul>
-
-          <div class="tw ctr eq"><table>
-      <caption class="sr">IDP 한 바퀴 — 네 국면과 다섯 단계 — 표</caption>
-      <colgroup><col style="width:11%"><col style="width:11%"><col style="width:23%"><col style="width:55%"></colgroup>
-      <thead>
-      <tr><th scope="col">국면</th><th scope="col">단계</th><th scope="col">이름</th><th scope="col">하는 일</th></tr>
-      </thead>
-      <tbody>
-      <tr><td class="n" rowspan="2"><strong>K</strong></td><td class="n">1</td><td><strong>역량 · 유형 설문</strong></td><td class="l">설문으로 자기 성향과 역량을 확인합니다</td></tr>
-      <tr><td class="n">2</td><td><strong>현황(CV)</strong></td><td class="l">이력서를 올리면 항목별로 정리됩니다</td></tr>
-      <tr><td class="n"><strong>F</strong></td><td class="n">3</td><td><strong>목표 설계</strong></td><td class="l">한 해 동안 무엇을 이룰지 계획을 세웁니다</td></tr>
-      <tr><td class="n"><strong>A</strong></td><td class="n">4</td><td><strong>실행</strong></td><td class="l">한 해 동안 무엇을 했는지 기록합니다</td></tr>
-      <tr><td class="n"><strong>S</strong></td><td class="n">5</td><td><strong>달성도 측정</strong></td><td class="l">세운 목표에 얼마나 닿았는지 점검합니다</td></tr>
-      </tbody>
-    </table></div>
-          <div class="note">
-          
-          
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  
-
-  <section id="w3ax" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2-1 · CV</div><h2>CV를 쓰는 이유</h2></div></div>
-    <div class="steps">
-      <div class="stp">
-        <div class="hd"><span class="n">II</span><div class="t">CV 사용 이유</div></div>
-        <div class="bd">
-          <ul class="bul">
-        <li>플랫폼에서 인재 정보는 두 층으로 쌓입니다.</li>
-        <li>이름·프로그램·기수·학력·전공처럼 형식이 일정한 정형 정보는 재단이 입력하고 경력·연구·수상처럼 사람마다 다르고 계속 확장되는 ​세부 정보는 본인이 올린 CV에서 추출합니다.</li>
-        <li><strong>이 두 층의 정보를 쌓고 이를 검색과 연결에 활용하는 구조가 이 플랫폼의 핵심입니다</strong>.</li>
-        <li>CV와 Resume는 ① 본인의 대외 경력과 활동을 비교적 세밀하게 보여주는 자료이고, ② 경력이 바뀔 때마다 본인이 주기적으로 갱신하며, ③ 외부 공개를 염두에 두고 작성되는 자료이기 때문에 플랫폼에서의 정보 공개에 대한 동의를 설명하고 받기에도 상대적으로 수월합니다.</li>
-        <li>이 특성은 뒤에서 말씀드릴 동문 참여에서 더 중요해집니다.</li>
-        <li>CV 업로드는 이미 가지고 있는 파일 하나를 올리는 방식이기 때문에 <strong>진입 허들을 낮추고 별도의 추가 입력을 요구하지 않으면서 최신에 가까운 정보를 확보할 수 있습니다</strong>.</li>
-      </ul>
-          <div class="note">단, 이 방식은 참여자가 CV 혹은 Resume를 정기적으로 업데이트하는 업종에 종사할 때에 한하여 성립한다는 게 이 전략의 한계입니다.</div>
-          
-        </div>
-      </div>
-    </div>
-  
     <div class="panel">
-      <div class="panel-h"><span class="t">실연</span><span class="m">1</span></div>
+      <div class="panel-h"><span class="t">직접 보기</span></div>
       <div class="lnk">
         <a href="https://tlab-db.vercel.app/" target="_blank" rel="noopener noreferrer">
           <span class="n">I</span>
-          <span class="b"><strong>나의 나무 · CV 올리기</strong><em>tlab-db.vercel.app · 시험 자료</em></span>
+          <span class="b"><strong>KFAS 인재성장 플랫폼</strong><em>tlab-db.vercel.app</em></span>
           <span class="c">개발 중</span>
           <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
         </a>
       </div>
     </div>
   </section>
-
-  <section id="w3ay" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2-1 · CV</div><h2>CV 정리 네 단계</h2></div></div>
-    <div class="steps">
-      <div class="stp">
-        <div class="hd"><span class="n">III</span><div class="t">CV 저장 방식</div></div>
-        <div class="bd">
-          <ul class="bul">
-        <li>CV는 사람마다 서식이 제각각이라 그대로는 구조화된 검색에 활용하기 어렵습니다.</li>
-        <li>그래서 네 단계로 정리하는데 <strong>문서를 다듬고 검산하는 일은 자바스크립트 규칙이 맡고 항목으로 나누는 일은 AI가 맡습니다.</strong></li>
-      </ul>
-
-          <div class="tw ctr eq"><table>
-      <caption class="sr">CV 정리 네 단계 — 표</caption>
-      <colgroup><col style="width:22%"><col style="width:18%"><col style="width:60%"></colgroup>
-      <thead>
-      <tr><th scope="col">단계</th><th scope="col">담당</th><th scope="col">내용</th></tr>
-      </thead>
-      <tbody>
-      <tr><td>① 다듬기</td><td>규칙</td><td class="l">깨진 글자를 고치고 문서를 절 단위로 나눕니다</td></tr>
-      <tr><td>② 항목 나누기</td><td>AI</td><td class="l">각 줄을 유형 · 제목 · 기관 · 기간으로 나눕니다</td></tr>
-      <tr><td>③ 검산</td><td>규칙</td><td class="l">빠진 항목이 없는지 원문과 대조합니다</td></tr>
-      <tr><td>④ 확정</td><td>사람</td><td class="l">후보 항목을 검토하고 확정합니다</td></tr>
-      </tbody>
-    </table></div>
-          
-          
-          
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="w3b" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2-2 · 화면</div><h2>숲 산책(동문 네트워크)</h2></div></div>
-    
-
-    <ul class="bul lead">
-        <li>나의 나무(IDP)가 기록을 쌓는 곳이라면 숲 산책(동문 네트워크)은 그 기록을 바탕으로 동문이 교류하는 곳입니다.</li>
-      </ul>
-
-    <div class="steps">
-      <div class="stp">
-        <div class="hd"><span class="n">I</span><div class="t">메뉴</div></div>
-        <div class="bd">
-          
-
-    <div class="ann">
-      <a class="shot-l" href="photos/tlab-network-map.png" target="_blank" rel="noopener noreferrer">
-        <img class="shot" draggable="false" src="photos/tlab-network-map.png" width="1429" height="773" loading="lazy"
-          alt="숲 산책(동문 네트워크)의 동문 찾기 화면입니다. 오른쪽에 세계지도가 있고 서울, 뮌헨, 새너제이, 휴스턴, 볼티모어 등 도시 위에 동문 수가 원으로 표시되어 있습니다. 왼쪽에는 프로그램·기수·계열·전공·국가·지역을 고르는 조건 칸과 어떤 동문을 찾으세요라는 대화창이 있고 미국에서 정책 하는 사람 같은 보기 질문이 붙어 있습니다. 위에는 재단과 동문 소식 알림과 커피챗 알림이 떠 있습니다. 화면의 사람과 수치는 모두 시험용 자료입니다.">
-      </a>
-      <div class="ann-cap">동문 찾기입니다. 세계지도 위에서 동문의 분포를 볼 수 있고 왼쪽 대화창에 원하는 조건을 말로 입력해 사람을 찾습니다. (참고. 현재 화면에 보이는 사람과 수치는 모두 시험용 자료입니다.)</div>
-    </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="w3bx" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2-2 · 검색</div><h2>동문 찾기(RAG)</h2></div></div>
-    <div class="steps">
-      <div class="stp">
-        <div class="hd"><span class="n">II</span><div class="t">동문 찾기(RAG)</div></div>
-        <div class="bd">
-          <ul class="bul">
-        <li>동문 찾기에서 「quantum science」로 검색하면 CV에 해당 표현이 그대로 들어 있지 않더라도 <strong>quantum computing이나 quantum information처럼 관련된 연구를 하는 사람</strong>도 찾을 수 있어야 합니다.</li>
-        <li>키워드가 정확히 일치하는 사람만 찾으면 관련된 동문을 놓칠 수 있기 때문에 <strong>뜻으로 찾는 검색</strong>이 필요했습니다.</li>
-        <li>그렇다고 검색을 통째로 AI에게 맡길 수는 없습니다.</li>
-        <li>AI 모델은 우리 동문 자료를 알고 있는 것이 아니기 때문에 자료를 검색하지 않고 질문하면 근거 없이 답하거나 없는 내용을 만들어낼 수 있습니다.</li>
-        <li>그렇다고 질문할 때마다 전체 자료를 함께 보내는 것도 데이터의 양과 비용 면에서 무리입니다.</li>
-        <li>그래서 먼저 검색으로 후보를 추리고 AI에게는 그 후보 자료만 건네 판단하게 하는 방식을 썼습니다.</li>
-        <li>이런 구조를 RAG(Retrieval-Augmented Generation, 검색 증강 생성)라고 합니다.</li>
-        <li><strong>AI가 자기 기억에 의존하지 않고 검색해 온 자료를 근거로 답하게 만드는 방식입니다</strong>.</li>
-        <li>검색은 세 층으로 구성되어 있고 <a class="xref" href="#w3a">3-2-1</a>에서 말씀드린 자료의 두 층을 그대로 활용합니다.</li>
-        <li>조건은 재단이 입력한 정형 정보로 먼저 좁히고 의미는 CV에서 추출한 세부 정보로 찾습니다.</li>
-        <li>이렇게 추린 후보를 AI가 다시 판단해 최종 결과를 보여줍니다.</li>
-      </ul>
-        </div>
-      </div>
-    </div>
-  
-    <div class="panel">
-      <div class="panel-h"><span class="t">실연</span><span class="m">1</span></div>
-      <div class="lnk">
-        <a href="https://tlab-db.vercel.app/" target="_blank" rel="noopener noreferrer">
-          <span class="n">I</span>
-          <span class="b"><strong>숲 산책 · 동문 찾기</strong><em>tlab-db.vercel.app · 뜻으로 찾는 검색</em></span>
-          <span class="c">개발 중</span>
-          <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6M10 14 21 3"/></svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section id="w3bx2" class="page doc">
-    <div class="phead"><div class="ttl"><div class="eyebrow">3-2-2 · 검색</div><h2>RAG 세 층</h2></div></div>
-    <div class="ann">
-      <svg viewBox="0 0 700 232" xmlns="http://www.w3.org/2000/svg" role="img"
-        aria-label="RAG 검색 세 층을 그린 그림. 왼쪽 명부 전체의 많은 점이 조건 거르기를 지나며 줄고 순위 매기기를 지나 상위 후보 몇이 남고 마지막에 AI가 그 후보의 순서만 다시 세웁니다. AI가 개입하는 곳은 주황으로 표시되어 있습니다">
-        <defs>
-          <marker id="rgN" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
-            markerUnits="userSpaceOnUse" orient="auto">
-            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#737370" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round"/></marker>
-          <marker id="rgA" viewBox="0 0 12 12" refX="10.5" refY="6" markerWidth="12" markerHeight="12"
-            markerUnits="userSpaceOnUse" orient="auto">
-            <path d="M1.2,1.6 L10.5,6 L1.2,10.4" fill="none" stroke="#a16207" stroke-width="1.5"
-              stroke-linecap="round" stroke-linejoin="round"/></marker>
-        </defs>
-
-        <g fill="#1a1a1a" fill-opacity=".72">
-          <circle cx="38" cy="52" r="3.4"/><circle cx="62" cy="44" r="3.4"/><circle cx="88" cy="56" r="3.4"/>
-          <circle cx="46" cy="78" r="3.4"/><circle cx="72" cy="70" r="3.4"/><circle cx="96" cy="82" r="3.4"/>
-          <circle cx="36" cy="104" r="3.4"/><circle cx="60" cy="96" r="3.4"/><circle cx="86" cy="108" r="3.4"/>
-          <circle cx="48" cy="130" r="3.4"/><circle cx="74" cy="124" r="3.4"/><circle cx="98" cy="134" r="3.4"/>
-          <circle cx="40" cy="156" r="3.4"/><circle cx="66" cy="150" r="3.4"/><circle cx="92" cy="160" r="3.4"/>
-        </g>
-        <text class="ic-t" x="67" y="190" text-anchor="middle">명단 전체</text>
-
-        <path d="M116,102 L172,102" fill="none" stroke="#737370" stroke-width="1.4"
-          stroke-linecap="round" marker-end="url(#rgN)"/>
-        <text class="ic-s" x="144" y="88" text-anchor="middle">① 조건 거르기</text>
-        <text class="ic-s" x="144" y="120" text-anchor="middle" font-size="10">규칙</text>
-
-        <g fill="#1a1a1a" fill-opacity=".72">
-          <circle cx="204" cy="66" r="3.4"/><circle cx="230" cy="58" r="3.4"/>
-          <circle cx="210" cy="96" r="3.4"/><circle cx="238" cy="90" r="3.4"/>
-          <circle cx="202" cy="126" r="3.4"/><circle cx="232" cy="120" r="3.4"/>
-          <circle cx="218" cy="152" r="3.4"/>
-        </g>
-        <text class="ic-t" x="221" y="190" text-anchor="middle">조건에 맞는 사람</text>
-
-        <path d="M258,102 L318,102" fill="none" stroke="#737370" stroke-width="1.4"
-          stroke-linecap="round" marker-end="url(#rgN)"/>
-        <text class="ic-s" x="288" y="88" text-anchor="middle">② 순위 매기기</text>
-        <text class="ic-s" x="288" y="120" text-anchor="middle" font-size="10">낱말 + <tspan fill="#a16207">벡터</tspan></text>
-
-        <g>
-          <circle cx="352" cy="58" r="3.4" fill="#1a1a1a"/><path d="M364,58 h44" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="352" cy="86" r="3.4" fill="#1a1a1a"/><path d="M364,86 h34" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="352" cy="114" r="3.4" fill="#1a1a1a"/><path d="M364,114 h26" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="352" cy="142" r="3.4" fill="#1a1a1a"/><path d="M364,142 h18" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
-        </g>
-        <text class="ic-t" x="380" y="190" text-anchor="middle">상위 후보</text>
-
-        <path d="M428,102 L488,102" fill="none" stroke="#a16207" stroke-width="1.6"
-          stroke-linecap="round" marker-end="url(#rgA)"/>
-        <text class="ic-s" x="458" y="88" text-anchor="middle" fill="#a16207">③ 재정렬</text>
-        <text class="ic-s" x="458" y="120" text-anchor="middle" font-size="10" fill="#a16207">AI</text>
-
-        <g>
-          <circle cx="522" cy="58" r="4.2" fill="#a16207"/><path d="M536,58 h44" stroke="#a16207" stroke-width="2" stroke-linecap="round" stroke-opacity=".55"/>
-          <circle cx="522" cy="86" r="3.4" fill="#1a1a1a"/><path d="M536,86 h36" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="522" cy="114" r="3.4" fill="#1a1a1a"/><path d="M536,114 h28" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
-          <circle cx="522" cy="142" r="3.4" fill="#1a1a1a"/><path d="M536,142 h20" stroke="#d6d6d2" stroke-width="2" stroke-linecap="round"/>
-        </g>
-        <text class="ic-t" x="551" y="190" text-anchor="middle">질문에 맞는 순서</text>
-
-        <g stroke="#a16207" fill="#a16207">
-          <path class="st" d="M510,40 C482,48 458,54 438,62" marker-end="url(#rgA)"/>
-          <text class="hw" x="692" y="34" text-anchor="end" stroke="none">AI는 이 안에서만 고릅니다</text>
-        </g>
-      </svg>
-      <div class="ann-cap">단계를 지날 때마다 사람이 줄어듭니다. AI(주황)가 개입하는 곳은 뜻을 숫자로 바꾸는 벡터 점수와 마지막 재정렬 두 군데뿐입니다. 그리고 AI에게는 이미 추려진 후보만 건네기 때문에 후보 목록 밖의 사람을 결과에 넣을 수 없습니다.</div>
-    </div>
-  </section>
-
-  
-
-  
-
-  
-
-
-
-  
-
-  
-
-        <!-- 쓴 사람 · 목차 밖 페이지 -->
-  <section id="me" class="page">
+<section id="me" class="page">
     <div class="me-head">
       <button class="me-av" id="muiAv" aria-label="무이 보기"><span class="gl">오</span><svg class="face" aria-hidden="true" viewBox="0 0 64 64"><circle cx="22.5" cy="26.6" r="2.6" fill="currentColor"/><circle cx="41.5" cy="26.6" r="2.6" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M27.4,40.4 L32,33.8 L36.6,40.4"/><path d="M8,29.8 L17.5,31.5M7.4,35.4 L17.5,35.4M8,41 L17.5,38.3"/><path d="M56,29.8 L46.5,31.5M56.6,35.4 L46.5,35.4M56,41 L46.5,38.3"/></g><circle cx="32" cy="31.6" r="1.7" fill="currentColor"/></svg><svg class="ears" aria-hidden="true" viewBox="0 -13 64 27"><path d="M8.0,10.8 L13.1,-5.9 Q14.0,-9.0 16.5,-7.0 L26.0,0.6 Z M56.0,10.8 L50.9,-5.9 Q50.0,-9.0 47.5,-7.0 L38.0,0.6 Z"/></svg></button>
       <div class="me-id">
