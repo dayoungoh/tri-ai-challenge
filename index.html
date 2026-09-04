@@ -1373,6 +1373,26 @@ a.cta{text-decoration:none}
   .row:hover{color:var(--ink)}
   .row:hover .ic{color:var(--ink-2)}
 }
+
+/* ── 발표 자료로 넘어가는 문 ──
+   최종 수정 날짜 옆에 한 줄로 답니다. 자물쇠가 아니라 가림막입니다 —
+   정적 파일이라 소스를 열면 검사 방식이 보입니다. */
+.me-dot{margin:0 7px;color:var(--line)}
+.deck-open{border:0;background:none;padding:0;font-family:inherit;
+  font-size:var(--t-micro);letter-spacing:.01em;color:var(--ink-3);cursor:pointer;
+  text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;
+  transition:color 120ms ease,text-decoration-color 120ms ease}
+.deck-open:hover{color:var(--ink);text-decoration-color:var(--ink-3)}
+.gate-ask{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:9px}
+.gate-ask input{flex:0 1 150px;height:31px;padding:0 10px;border-radius:10px;
+  border:0;background:var(--inset);box-shadow:inset 0 0 0 1px var(--line);
+  font-family:inherit;font-size:var(--t-ui);color:var(--ink)}
+.gate-ask input:focus{outline:2px solid var(--ink);outline-offset:1px}
+.gate-go{height:31px;padding:0 13px;border:0;border-radius:10px;background:var(--ink);
+  color:var(--shell);font-family:inherit;font-size:var(--t-ui);font-weight:640;cursor:pointer;
+  transition:transform 140ms var(--out)}
+.gate-go:active{transform:scale(.97)}
+.gate-msg{font-size:var(--t-ui);color:var(--red)}
 </style>
 </head>
 <body>
@@ -4108,7 +4128,13 @@ Thumbs.db</code></div>
             <svg aria-hidden="true" class="go" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></svg>
           </a>
         </div>
-        <div class="me-upd">최종 수정 2026년 8월 30일</div>
+        <div class="me-upd">최종 수정 2026년 8월 30일<span class="me-dot">·</span><button type="button" class="deck-open" id="deckOpen" aria-expanded="false" aria-controls="deckAsk">발표 자료</button></div>
+        <form class="gate-ask" id="deckAsk" hidden>
+          <label class="sr" for="deckPw">발표 자료 비밀번호</label>
+          <input id="deckPw" type="password" autocomplete="off" spellcheck="false" placeholder="비밀번호">
+          <button class="gate-go" type="submit">열기</button>
+          <span class="gate-msg" id="deckMsg" role="status" aria-live="polite"></span>
+        </form>
       </div>
     </div>
 
@@ -5940,6 +5966,37 @@ setTimeout(() => { moveShip(activeEl()); ship.style.transition = ''; }, 380);
         }, 1500);
       });
     });
+  });
+})();
+</script>
+
+<script>
+/* 발표 자료 문. 비밀번호는 그대로 적어 두지 않고 간단한 셈값만 둡니다.
+   막는 장치가 아니라 지나가는 사람 눈에 안 띄게 하는 가림막입니다. */
+(function(){
+  var open = document.getElementById('deckOpen');
+  if(!open) return;
+  var
+      ask  = document.getElementById('deckAsk'),
+      pw   = document.getElementById('deckPw'),
+      msg  = document.getElementById('deckMsg');
+  function num(w){ var v = 0; for(var i = 0; i < w.length; i++){ v = (v * 131 + w.charCodeAt(i)) % 1000000007; } return v; }
+  var WANT = 1885981;
+  open.addEventListener('click', function(){
+    var on = ask.hidden;
+    ask.hidden = !on;
+    open.setAttribute('aria-expanded', on ? 'true' : 'false');
+    if(on) pw.focus();
+  });
+  ask.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(num(pw.value.trim().toLowerCase()) === WANT){
+      msg.textContent = '';
+      location.href = 'deck.html';
+    } else {
+      msg.textContent = '다시 확인해 주세요.';
+      pw.select();
+    }
   });
 })();
 </script>
