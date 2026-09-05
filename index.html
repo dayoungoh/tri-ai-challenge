@@ -4346,6 +4346,11 @@ const activeEl = () => {
   return chRows.find(b => b.dataset.ch === chapterOf(order[cur]));
 };
 
+/* 넓은 화면에서 .shell 에 zoom 을 걸어 두었습니다. getBoundingClientRect 는 화면
+   픽셀로 재고 transform·top·scrollTop 은 배율 전 픽셀로 먹으므로, 잰 값을 배율로
+   나눠야 배와 밝힘이 제자리에 옵니다. */
+const zoomOf = () => parseFloat(getComputedStyle(document.querySelector('.shell')).zoom) || 1;
+const rz = el => { const r = el.getBoundingClientRect(), z = zoomOf(); return { top: r.top / z, height: r.height / z }; };
 function moveHL(el){
   if(!el || el.offsetParent === null){ hl.style.opacity = 0; return; }
   const g = groups.getBoundingClientRect(), r = el.getBoundingClientRect();
@@ -4359,8 +4364,8 @@ function moveHL(el){
 function shipY(el){
   /* 배가 놓이는 기준은 스크롤 통이 아니라 배를 담은 레일입니다.
      통을 기준으로 재면 레일이 통보다 8px 내려와 있는 만큼 계속 어긋납니다. */
-  const t = ship.offsetParent.getBoundingClientRect().top;
-  let y = el.getBoundingClientRect().top - t;
+  const t = rz(ship.offsetParent).top;
+  let y = rz(el).top - t;
   for(const k of document.querySelectorAll('.kids,.gkids')){
     if(k.contains(el)) continue;                 /* 나를 담은 통은 나를 밀어내지 않습니다 */
     /* 내 아래에 있는 통도 상관없습니다 */
@@ -4371,13 +4376,13 @@ function shipY(el){
     const cs = getComputedStyle(inner);
     /* 접혀도 안쪽 여백만큼은 남습니다. 0 으로 치면 통마다 1px 씩 어긋납니다 */
     const shut = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
-    const now = k.getBoundingClientRect().height;
+    const now = rz(k).height;
     const end = k.classList.contains('open') ? inner.scrollHeight : shut;
     y += end - now;
   }
   /* 행 높이가 한 줄(32px)과 두 줄(장 이름+부제)로 다릅니다.
      6 처럼 고정값을 더하면 두 줄 행에서 배가 위로 쏠립니다. */
-  return y + (el.getBoundingClientRect().height - 16) / 2;
+  return y + (rz(el).height - 16) / 2;
 }
 function moveShip(el){
   if(!el) return;
@@ -4472,8 +4477,7 @@ document.addEventListener('click', e => {
   const t = document.getElementById(a.getAttribute('href').slice(1));
   if(!t) return;
   const box = document.getElementById('content');
-  const top = box.scrollTop + t.getBoundingClientRect().top
-            - box.getBoundingClientRect().top - box.clientHeight / 2;
+  const top = box.scrollTop + rz(t).top - rz(box).top - box.clientHeight / 2;
   box.scrollTo({ top, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
   /* 어느 줄로 왔는지 잠깐 밝힙니다 */
   const dd = t.nextElementSibling;
