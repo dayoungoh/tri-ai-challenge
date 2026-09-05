@@ -1540,6 +1540,23 @@ a.cta{text-decoration:none}
   .doc .kwl{font-size:18px}
   .doc .kwl.sm{font-size:16px}
 }
+
+/* ── 발표용 · 넘김 · 시연 단추 · 쪽 번호 ──
+   쪽이 바뀔 때 투명도만 160ms 올립니다. 움직임은 넣지 않습니다.
+   시연 패널은 실제로 누르는 곳이라 파란 테두리와 눌림 반응을 줍니다. ── */
+@keyframes pgin{from{opacity:0}to{opacity:1}}
+.page.on{animation:pgin 160ms ease-out}
+.doc .panel.demo{box-shadow:0 0 0 1px var(--blue),var(--shadow-card-2)}
+.doc .panel.demo .panel-h .t{color:var(--blue)}
+.doc .lnk a{transition:background 120ms ease,transform 120ms cubic-bezier(.23,1,.32,1)}
+.doc .lnk a:hover{background:var(--hover)}
+.doc .lnk a:active{transform:scale(.985)}
+.pgn{font-size:var(--t-ui);color:var(--ink-3);font-variant-numeric:tabular-nums;
+  letter-spacing:.02em;margin-right:6px;align-self:center;white-space:nowrap}
+@media (prefers-reduced-motion:reduce){
+  .page.on{animation:none}
+  .doc .lnk a{transition:none}
+}
 </style>
 </head>
 <body>
@@ -1648,7 +1665,7 @@ a.cta{text-decoration:none}
         <svg aria-hidden="true" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </label>
-    <button class="ibtn" id="tPrev" aria-label="이전"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg></button>
+    <span class="pgn" id="pgn" aria-live="polite"></span><button class="ibtn" id="tPrev" aria-label="이전"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg></button>
     <button class="ibtn" id="tNext" aria-label="다음"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button>
   </div>
 
@@ -1700,7 +1717,7 @@ a.cta{text-decoration:none}
               </svg>
           </div>
 
-    <div class="panel">
+    <div class="panel demo">
       <div class="panel-h"><span class="t">시연</span></div>
       <div class="lnk">
         <a href="http://127.0.0.1:5057" target="_blank" rel="noopener noreferrer">
@@ -1901,7 +1918,7 @@ a.cta{text-decoration:none}
       </svg>
     </div>
 
-    <div class="panel">
+    <div class="panel demo">
       <div class="panel-h"><span class="t">직접 보기</span></div>
       <div class="lnk">
         <a href="https://tlab-db.vercel.app/" target="_blank" rel="noopener noreferrer">
@@ -2180,6 +2197,7 @@ function show(i, push = true){
   /* pages 에는 목차 밖 페이지(#me)가 없어, 이것만 지우면 프로필이 밑에 남았습니다 */
   document.querySelectorAll('section.page').forEach(p => p.classList.remove('on'));
   pages[i].classList.add('on');
+  { const n = document.getElementById('pgn'); if(n) n.textContent = (i + 1) + ' / ' + order.length; }
 
   const ch = chapterOf(order[i]), mid = MID_OF[order[i]];
   document.querySelectorAll('.kids').forEach(k => k.classList.toggle('open', k.dataset.kids === ch));
