@@ -4353,7 +4353,7 @@ const zoomOf = () => parseFloat(getComputedStyle(document.querySelector('.shell'
 const rz = el => { const r = el.getBoundingClientRect(), z = zoomOf(); return { top: r.top / z, height: r.height / z }; };
 function moveHL(el){
   if(!el || el.offsetParent === null){ hl.style.opacity = 0; return; }
-  const g = groups.getBoundingClientRect(), r = el.getBoundingClientRect();
+  const g = rz(groups), r = rz(el);
   hl.style.top = (r.top - g.top) + 'px'; hl.style.height = r.height + 'px'; hl.style.opacity = 1;
 }
 /* 배가 갈 자리.
