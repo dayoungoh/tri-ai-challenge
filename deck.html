@@ -1494,7 +1494,7 @@ a.cta{text-decoration:none}
   .pager{display:none}
   .doc .ann,.doc .pre,.doc .panel{max-width:1150px}
   /* 배경 두 쪽은 도표 위아래에 상자가 있어 도표만 조금 물립니다. */
-  #p1b .ann{max-width:1000px} #p1b .note{margin-top:12px} #w3 .ann{max-width:720px}
+  #w3 .ann{max-width:720px}
   #w3z .ann{max-width:900px}
 }
 
@@ -1503,7 +1503,8 @@ a.cta{text-decoration:none}
    화면은 지금 무슨 이야기인지만 붙잡아 줍니다. ── */
 .doc .kwl{margin-top:20px;font-size:26px;font-weight:640;letter-spacing:-.015em;
   line-height:1.45;color:var(--ink)}
-.doc .kwl.sm{font-size:21px;font-weight:600;color:var(--ink-2)}
+.doc .kwl .warn-in{font-weight:500;font-size:.78em;color:var(--ink-3)}
+.kwl.sm{font-size:21px;font-weight:600;color:var(--ink-2)}
 .doc .kwl.mt{margin-top:22px}
 .doc .kwl b{font-weight:700;color:var(--ink)}
 .doc .ar{display:inline-block;margin:0 10px;color:var(--blue);font-weight:700}
@@ -1700,7 +1701,7 @@ a.cta{text-decoration:none}
   <section id="p1b" class="page doc">
     <div class="phead"><div class="ttl"><div class="eyebrow">1-3 · 예시</div><h2>개인별 맞춤 메일 발송</h2></div></div>
 
-    <div class="kwl sm">같은 메일, 다른 <b>이름·소속·일정·첨부파일</b>. 수십 건 규모</div>
+    <div class="kwl sm">같은 메일, 다른 <b>이름·소속·일정·첨부파일</b>. 수십 건 규모 <span class="warn-in">(⚠ 수백 건 대량 발송은 메일 서버가 제한·차단)</span></div>
 
     <div class="ann">
             <svg viewBox="0 0 700 344" xmlns="http://www.w3.org/2000/svg" role="img"
@@ -1716,8 +1717,6 @@ a.cta{text-decoration:none}
               <g stroke="#9b9b96" fill="#9b9b96"><path class="st" d="M150,30 C150,38 150,44 150,50" marker-end="url(#p5N)"/><text class="hw" x="150" y="22" text-anchor="middle" stroke="none">워드 서식을 그대로 유지합니다</text></g>
               </svg>
           </div>
-
-    <div class="note warn"><strong>수백 건 대량 발송 부적합.</strong> 짧은 시간에 많이 보내면 메일 서버가 제한·차단. 적합한 규모: 수신자마다 내용이 다른 <strong>수십 건</strong></div>
 
     <div class="panel demo">
       <div class="panel-h"><span class="t">시연</span></div>
